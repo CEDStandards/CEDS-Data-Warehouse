@@ -21,9 +21,8 @@ expect when they use the data model.  Below are rules to use when creating objec
 in the database.
 
 * Use CEDS entity and element names when possible.
-  * (Note: CEDS element names have parts to give full context when applicable. Name parts include entity, qualifier, property, and representation. See the nameing conventions section in the CEDS Data Model Guide.)
+  * (Note: CEDS element names have parts to give full context when applicable. Name parts include entity, qualifier, property, and representation. See the naming conventions section in the CEDS Data Model Guide.)
   * A table name often includes the entity part and a column name often includes a property part. For example, in the IDS the "Name" column in the table “Financial Account” corresponds to the CEDS element "Financial Account Name."
-  * (Add DW example?)
 * Use Pascal Case for all objects.
 * Avoid abbreviations, except for the following:
   * PS = Postsecondary
@@ -38,7 +37,7 @@ in the database.
 
 * All tables names must be in plural form (eg. DimSchools).
 * Dimension tables should be in this format "Dim[CEDS Entity/Element Name]".
-* Fact tables should be in this format "Fact[Busienss Process or Line of Business]".
+* Fact tables should be in this format "Fact[Business Process or Line of Business]".
 
 ## Star Schema
 
@@ -69,14 +68,14 @@ following benefits:
   * Students who are reported at the LEA and SEA level only.
 
 All organization dimensions are Type 2 Slowly Changing Dimensions with fields
-named RecordStartDateTime and RecordEndDateTime fields to track effective dates
+named RecordStartDateTime and RecordEndDateTime to track effective dates
 of the rows.  
 
 ### Fact Tables
 
-Fact tables are design as much as possible to be reusable for many reporting
-use cases.  Use DimFactTypes to keep data used for different purposes (and may
-conflict) separated.  When designing a new fact table, [consider the following](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/four-4-step-design-process/):
+Fact tables are designed as much as possible to be reusable for many reporting
+use cases.  Use DimFactTypes to keep data used for different purposes separated within a fact table.  
+When designing a new fact table, [consider the following](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/four-4-step-design-process/):
 
 1. The business process or line of business being addressed.  
 2. Declare the grain.
@@ -87,7 +86,7 @@ Fact tables should not be used to track entities directly, such as a table named
 
 ### Bridge Tables
 
-Use [bridge tables](https://www.kimballgroup.com/2012/02/design-tip-142-building-bridges/) to track many-to-many relationships that don't fit well into the existing fact/dimension structure, such as the relationship between a students and race codes. 
+Use [bridge tables](https://www.kimballgroup.com/2012/02/design-tip-142-building-bridges/) to track many-to-many relationships that don't fit well into the existing fact/dimension structure, such as the relationship between a student and race codes. 
 
 ### Report tables
 
