@@ -29,7 +29,7 @@ in the database.
 * Use acronyms that are used in CEDS, such as:
   * SEA = State Education Agency
   * LEA = Local Education Agency
-  * IEU = Intermediate Education Community
+  * IEU = Intermediate Educational Unit
   * EL = Early Learning
 * Acronyms should be treated as full words, with only the first letter uppercase and the remainder lowercase.
 
