@@ -9,7 +9,7 @@ Contributions are welcome from the community. Questions can be asked on the
 If you have direct contributions you would like considered for incorporation
 into the project you can [fork this repository](https://help.github.com/articles/fork-a-repo/) and
 [submit a pull request](https://help.github.com/articles/about-pull-requests/) for review.  Along with your pull request, please
-create an issue and attach a completed [use case document](/doc/CEDS Data Warehouse Reporting Use Case.docx) that details the
+create a [use case ticket](https://github.com/CEDStandards/CEDS-Data-Warehouse/issues/new?assignees=&labels=&template=ceds-integrated-data-store-and-data-warehouse-use-case.md&title=) that details the
 parameters for your changes.
 
 # Data Warehouse Design Guidelines
@@ -82,7 +82,7 @@ When designing a new fact table, [consider the following](https://www.kimballgro
 3. Identify the dimensions.  
 4. Identify the facts. 
 
-Fact tables should not be used to track entities directly, such as a table named FactStudent.  This information should be stored in slowly changing dimensions.  Rather, fact tables should address some aspect of education, such as student graduation (FactK12Graduation).
+Fact tables should not be used to track entities directly, such as a table named FactStudent.  This information should be stored in Slowly Changing Dimensions.  Rather, fact tables should address some aspect of education, such as student graduation (FactK12Graduation).
 
 ### Bridge Tables
 

@@ -10,7 +10,7 @@ Modeled for longitudinal storage and reporting of P-20W data, the Common Educati
 To create a new instance of the CEDS Data Warehouse on your SQL Server, perform the following steps.
 
 1. Open the database creation script at /src/ddl/CEDS-Data-Warehouse.sql using your preferred SQL client. 
-2. Connect to the server on which you want to create the CEDS IDS instance.
+2. Connect to the server on which you want to create the CEDS Data Warehouse instance.
 3. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-7_0_0_0) with the database name of your choice.
 4. Run the script. 
 
@@ -18,7 +18,7 @@ The database is empty by default.  Proceed with the following instructions to lo
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [Contributing.md](/Contributing.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -26,7 +26,7 @@ We use a customized version of [Explicit Versioning](https://github.com/exadra37
 
 ## Authors
 
-See the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See the list of [contributors](/Contributors.md) who participated in this project.
 
 ## License
 
