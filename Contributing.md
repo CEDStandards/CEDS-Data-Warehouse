@@ -2,7 +2,7 @@ Contributing
 ============
 
 Contributions are welcome from the community. Questions can be asked on the
-[CEDS Community of Practice website](https://ceds.grads360.org/#program).
+[CEDS Community of Practice website](https://ceds.communities.ed.gov/#program).
 
 # Submitting Code Changes
 

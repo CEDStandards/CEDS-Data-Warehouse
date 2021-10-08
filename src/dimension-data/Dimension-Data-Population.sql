@@ -1,6 +1,6 @@
 /*    
 
-	Copyright 2020 Common Education Data Standards
+	Copyright 2021 Common Education Data Standards
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -16,12 +16,14 @@
 
 	
 	Common Education Data Standards (CEDS)
-    Version 8.0.0.0
+    Version 9.0.0.0
     CEDS Data Warehouse (DW)
     
 	Model database dimension table population script
 	
-    This script populates the dimension tables in a DW version 8 model database.  
+    This script populates some of the dimension tables in a DW version 9.0.0.0 model database.
+	It does not populate all of them. There are opportunities to add to this code through the
+	Open Source Community.
     
     WARNING!!!!
     This script is intended for use on a model database and should not 
@@ -30,12 +32,21 @@
     The script was generated from a model database 
     hosted on a Microsoft SQL Server 2012 platform.  
     
-    Questions on this script can be sent to ceds@ed.gov
+    Questions on this script can be sent to https://ceds.ed.gov/ContactUs.aspx
     
     More information on the data model is available at the CEDS website:  
     http://ceds.ed.gov
-      	  
+   
+	Instructions for Use:
+	This script pulls reference data from the CEDS Integrated Data Store. You will
+	need the CEDS IDS installed. It presently references the [CEDS-IDS-V9_0_0_0] database.
+	If your IDS is named differently, use a find/replace for [CEDS-IDS-V9_0_0_0]
+
+
 */ 
+
+USE [CEDS-Data-Warehouse-V9-0-0-0] -- replace this if the name of your data warehouse is different
+GO
 
 	-------------------
 	-- Populate DimAges
@@ -45,6 +56,20 @@
 		SET IDENTITY_INSERT RDS.DimAges ON;
 		INSERT INTO RDS.DimAges (DimAgeId, AgeCode, AgeDescription, AgeEdFactsCode, AgeValue) VALUES (-1, 'MISSING', 'MISSING', 'MISSING', -1)
 		SET IDENTITY_INSERT RDS.DimAges OFF;  
+	END
+
+	-- Create MISSING record  (DimCipCodes doesnt have identity property set)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimCipCodes WHERE DimCipCodeId = -1) BEGIN 
+		--SET IDENTITY_INSERT RDS.DimCipCodes ON;
+		INSERT INTO RDS.DimCipCodes (DimCipCodeId) VALUES (-1)
+		--SET IDENTITY_INSERT RDS.DimCipCodes OFF;  
+	END
+	
+	-- Create MISSING record 
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimLanguages WHERE DimLanguageId = -1) BEGIN 
+		SET IDENTITY_INSERT RDS.DimLanguages ON;
+		INSERT INTO RDS.DimLanguages (DimLanguageId) VALUES (-1)
+		SET IDENTITY_INSERT RDS.DimLanguages OFF;  
 	END
 
 	-- Create a temp table and fill it with ages 1-130
@@ -85,7 +110,7 @@
 		  p.Code
 		, p.Description
 		, p.Definition
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefProgramType p
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefProgramType p
 	LEFT JOIN RDS.DimK12ProgramTypes dp
 		ON p.Code = dp.ProgramTypeCode
 	WHERE dp.ProgramTypeCode IS NULL
@@ -107,47 +132,20 @@
 		  oc.CalendarYear
 		, ocs.BeginDate
 		, ocs.EndDate
-	FROM [ceds-IDS-V8_0_0_0].dbo.OrganizationDetail od
-	JOIN [ceds-IDS-V8_0_0_0].dbo.OrganizationCalendar oc
+	FROM [CEDS-IDS-V9_0_0_0].dbo.OrganizationDetail od
+	JOIN [CEDS-IDS-V9_0_0_0].dbo.OrganizationCalendar oc
 		ON od.OrganizationId = oc.OrganizationId
-	JOIN [ceds-IDS-V8_0_0_0].dbo.OrganizationCalendarSession ocs
+	JOIN [CEDS-IDS-V9_0_0_0].dbo.OrganizationCalendarSession ocs
 		ON oc.OrganizationCalendarId = ocs.OrganizationCalendarId
-	JOIN [ceds-IDS-V8_0_0_0].dbo.RefSessionType st
+	JOIN [CEDS-IDS-V9_0_0_0].dbo.RefSessionType st
 		ON ocs.RefSessionTypeId = st.RefSessionTypeId
 		AND st.Code = 'FullSchoolYear'
-	JOIN [ceds-IDS-V8_0_0_0].dbo.RefOrganizationType ot
+	JOIN [CEDS-IDS-V9_0_0_0].dbo.RefOrganizationType ot
 		ON od.RefOrganizationTypeId = ot.RefOrganizationTypeId
 		AND ot.Code = 'SEA'
 	LEFT JOIN rds.DimSchoolYears sy
 		ON oc.CalendarYear = sy.SchoolYear
 	WHERE sy.SchoolYear IS NULL
-
-	---------------------------------
-	-- Populate DimDataCollections
-	---------------------------------
-	--IF NOT EXISTS (SELECT 1 FROM RDS.DimDataCollections d WHERE d.DataCollectionName = 'MISSING') BEGIN
-	--	SET IDENTITY_INSERT RDS.DimDataCollections ON
-
-	--	INSERT INTO RDS.DimDataCollections (DimDataCollectionId, SourceSystemDataCollectionIdentifier, SourceSystemName, DataCollectionName, DataCollectionDescription, DataCollectionOpenDate, DataCollectionCloseDate, DataCollectionAcademicSchoolYear, DataCollectionSchoolYear)
-	--		VALUES (-1, -1, 'MISSING', 'MISSING', 'MISSING', '1/1/1900', '1/1/1900', 'MISSING', 'MISSING')
-
-	--	SET IDENTITY_INSERT RDS.DimDataCollections OFF
-	--END
-
-	--INSERT INTO RDS.DimDataCollections
-	--SELECT DISTINCT
-	--	  dc.SourceSystemDataCollectionIdentifier
-	--	, dc.SourceSystemName
-	--	, dc.DataCollectionName
-	--	, dc.DataCollectionDescription
-	--	, dc.DataCollectionOpenDate
-	--	, dc.DataCollectionCloseDate
-	--	, dc.DataCollectionAcademicSchoolYear
-	--	, dc.DataCollectionSchoolYear
-	--FROM [ceds-IDS-V8_0_0_0].dbo.DataCollection dc
-	--LEFT JOIN RDS.DimDataCollections ddc
-	--	ON dc.DataCollectionName = ddc.DataCollectionName
-	--WHERE ddc.DataCollectionName IS NULL
 
 
 	------------------------------------------------
@@ -156,8 +154,10 @@
 	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12Courses d WHERE d.CourseIdentifier = 'MISSING') BEGIN
 		SET IDENTITY_INSERT RDS.DimK12Courses ON
 
-		INSERT INTO RDS.DimK12Courses ([DimK12CourseId],[CourseIdentifier],[CourseCodeSystemCode],[CourseCodeSystemDesciption],[CourseTitle],[CourseDescription],[CourseDepartmentName],[CourseCreditUnitsCode],[CourseCreditUnitsDescription],[CreditValue],[AdvancedPlacementCourseCode],[CareerClusterCode],[CareerClusterDescription],[CourseCertificationDescription],[TuitionFunded],[CourseFundingProgram])
-		VALUES (-1, 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING', -1, 'MISSING', 'MISSING', 'MISSING', 'MISSING', 0, 'MISSING')
+		INSERT INTO RDS.DimK12Courses 
+		(DimK12CourseId,CourseIdentifier,CourseCodeSystemCode,CourseCodeSystemDesciption,CourseTitle,CourseDescription,CourseDepartmentName,CourseCreditUnitsCode,CourseCreditUnitsDescription
+		,CreditValue,AdvancedPlacementCourseCode,CareerClusterCode,CareerClusterDescription,CourseCertificationDescription,TuitionFunded,CourseFundingProgram )
+		VALUES (-1,'MISSING','MISSING','MISSING','MISSING','MISSING','MISSING','MISSING','MISSING',-0.00,'MISSING','MISSING','MISSING','MISSING',0,'MISSING')
 
 		SET IDENTITY_INSERT RDS.DimK12Courses OFF
 	END
@@ -186,27 +186,68 @@
 		  ,rois.Description as CourseCodeSystemDesciption
 		  ,od.Name as CourseTitle
 		  ,c.Description as CourseDescription
-		  ,NULL as CourseDepartmentName
-		  ,NULL as CourseCreditUnitsCode
-		  ,NULL as CourseCreditUnitsDescription
-		  ,NULL as CreditValue
-		  ,NULL as AdvancedPlacementCourseCode
-		  ,NULL as CareerClusterCode
-		  ,NULL as CareerClusterDescription
-		  ,NULL as CourseCertificationDescription
-		  ,NULL as TuitionFunded
-		  ,NULL as CourseFundingProgram  
-	FROM [ceds-IDS-V8_0_0_0].dbo.Course c
-	JOIN [ceds-IDS-V8_0_0_0].dbo.OrganizationIdentifier oi
+		  ,'MISSING' as CourseDepartmentName
+		  ,'MISSING' as CourseCreditUnitsCode
+		  ,'MISSING' as CourseCreditUnitsDescription
+		  , 0.00 as CreditValue
+		  ,'MISSING' as AdvancedPlacementCourseCode
+		  ,'MISSING' as CareerClusterCode
+		  ,'MISSING' as CareerClusterDescription
+		  ,'MISSING' as CourseCertificationDescription
+		  , 0 as TuitionFunded
+		  ,'MISSING' as CourseFundingProgram  
+	FROM [CEDS-IDS-V9_0_0_0].dbo.Course c
+	JOIN [CEDS-IDS-V9_0_0_0].dbo.OrganizationIdentifier oi
 		on c.OrganizationId = oi.OrganizationId
-	JOIN [ceds-IDS-V8_0_0_0].dbo.OrganizationDetail od
+	JOIN [CEDS-IDS-V9_0_0_0].dbo.OrganizationDetail od
 		on c.OrganizationId = od.OrganizationId
-	JOIN [ceds-IDS-V8_0_0_0].dbo.RefOrganizationIdentificationSystem  rois
+	JOIN [CEDS-IDS-V9_0_0_0].dbo.RefOrganizationIdentificationSystem  rois
 		on rois.RefOrganizationIdentificationSystemId=oi.RefOrganizationIdentificationSystemId
 	LEFT JOIN rds.DimK12Courses cs
 		ON oi.Identifier = cs.CourseIdentifier
 			and od.Name = cs.CourseTitle
 	WHERE cs.DimK12CourseId IS NULL
+
+	------------------------------------------------
+	-- Populate DimScedCodes					  --
+	------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimScedCodes d WHERE d.ScedCourseCode = 'MISSING') BEGIN
+		SET IDENTITY_INSERT RDS.DimScedCodes ON
+
+		INSERT INTO RDS.DimScedCodes 
+		(DimScedCodeId,ScedCourseCode,ScedCourseTitle,ScedCourseDescription,ScedCourseLevelCode,ScedCourseLevelDescription,
+	ScedCourseSubjectAreaCode,ScedCourseSubjectAreaDescription,ScedGradeSpan,ScedSequenceOfCourse)
+		VALUES (-1,'-1','MISSING','MISSING','MISSING','MISSING','MISSING','MISSING','-1','MISSING')
+
+		SET IDENTITY_INSERT RDS.DimScedCodes OFF
+	END
+
+	INSERT INTO RDS.DimScedCodes 
+		(
+		ScedCourseCode
+		,ScedCourseTitle
+		,ScedCourseDescription
+		,ScedCourseLevelCode
+		,ScedCourseLevelDescription
+		,ScedCourseSubjectAreaCode
+		,ScedCourseSubjectAreaDescription
+		,ScedGradeSpan
+		,ScedSequenceOfCourse    
+		)
+	Select DISTINCT
+		c.[SCEDCourseCode], 
+		'MISSING' as [ScedCourseTitle], 
+		'MISSING' as [ScedCourseDescription], 
+		'MISSING' as [ScedCourseLevelCode], 
+		'MISSING' as [ScedCourseLevelDescription], 
+		'MISSING' as [ScedCourseSubjectAreaCode], 
+		'MISSING' as [ScedCourseSubjectAreaDescription], 
+		'-1'	  as [ScedGradeSpan], 
+		'MISSING' as [ScedSequenceOfCourse]
+	From [CEDS-IDS-V9_0_0_0].dbo.K12Course c
+		LEFT JOIN rds.DimScedCodes cs
+			ON c.[SCEDCourseCode] = cs.ScedCourseCode
+	WHERE cs.DimScedCodeId IS NULL 
 
 	------------------------------------------------
 	-- Populate DimDates						 ---
@@ -250,30 +291,6 @@
 	
 		SET @start = DATEADD(dd,1,@start)
 	  END
-	  	  	  
-	------------------------------------------------
-	-- Populate DimK12CourseStatuses			 ---
-	------------------------------------------------
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12CourseStatuses d WHERE d.CourseLevelCharacteristicCode = 'MISSING') BEGIN
-		SET IDENTITY_INSERT RDS.DimK12CourseStatuses ON
-
-		INSERT INTO RDS.DimK12CourseStatuses (DimK12CourseStatusId, CourseLevelCharacteristicCode, CourseLevelCharacteristicDescription) VALUES (-1, 'MISSING', 'MISSING')
-
-		SET IDENTITY_INSERT RDS.DimK12CourseStatuses OFF
-	END
-
-	INSERT INTO RDS.DimK12CourseStatuses 
-		(
-		  CourseLevelCharacteristicCode        
-		, CourseLevelCharacteristicDescription
-		)
-	SELECT 
-		  clc.Code
-		, clc.Description
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefCourseLevelCharacteristic clc
-	LEFT JOIN rds.DimK12CourseStatuses cs
-		ON clc.Code = cs.CourseLevelCharacteristicCode
-	WHERE cs.DimK12CourseStatusId IS NULL
 
 	  	  	  
 	------------------------------------------------
@@ -287,7 +304,7 @@
 	SELECT 
 		  Code
 		, Description
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefPescAwardLevelType
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefPescAwardLevelType
 
 	CREATE TABLE #ProfessionalTechnicalCredentialType (ProfessionalTechnicalCredentialTypeCode VARCHAR(50), ProfessionalTechnicalCredentialTypeDescription VARCHAR(200))
 
@@ -296,7 +313,7 @@
 	SELECT
 		  Code
 		, Description
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefProfessionalTechnicalCredentialType
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefProfessionalTechnicalCredentialType
 
 	-- Populate RDS.DimPsAcademicAwardStatuses
 	INSERT INTO RDS.DimPsAcademicAwardStatuses
@@ -334,13 +351,13 @@
 			, PostsecondaryExitOrWithdrawalTypeDescription
 		)
 	SELECT 
-		  pes.PostsecondaryExitOrWithdrawalTypeCode
-		, pes.PostsecondaryExitOrWithdrawalTypeDescription
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefPSExitOrWithdrawalType ewt
+		  ewt.Code as PostsecondaryExitOrWithdrawalTypeCode
+		, ewt.Description as PostsecondaryExitOrWithdrawalTypeDescription
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefPSExitOrWithdrawalType ewt
 	LEFT JOIN rds.DimPsEnrollmentStatuses pes
 		ON ewt.Code = pes.PostsecondaryExitOrWithdrawalTypeCode
 	WHERE pes.DimPsEnrollmentStatusId IS NULL
-	  	  	  
+
 	------------------------------------------------
 	-- Populate DimK12EnrollmentStatuses			 ---
 	------------------------------------------------
@@ -384,7 +401,7 @@
 	SELECT 
 		  Code
 		, Description
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefEnrollmentStatus
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefEnrollmentStatus
 
 	CREATE TABLE #EntryType (EntryTypeCode VARCHAR(50), EntryTypeDescription VARCHAR(200))
 
@@ -393,7 +410,7 @@
 	SELECT 
 		  Code
 		, Description
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefEntryType
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefEntryType
 
 	CREATE TABLE #ExitOrWithdrawalType (ExitOrWithdrawalTypeCode VARCHAR(50), ExitOrWithdrawalTypeDescription VARCHAR(200))
 
@@ -402,7 +419,7 @@
 	SELECT 
 		  Code
 		, Description
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefExitOrWithdrawalType
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefExitOrWithdrawalType
 
 	CREATE TABLE #PostSecondaryEnrollmentStatus (PostSecondaryEnrollmentStatusCode VARCHAR(50), PostSecondaryEnrollmentStatusDescription VARCHAR(200), PostSecondaryEnrollmentStatusEdFactsCode VARCHAR(50))
 
@@ -412,7 +429,7 @@
 		  Code
 		, Description
 		, Code
-	FROM [ceds-IDS-V8_0_0_0].dbo.RefPsEnrollmentStatus
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefPsEnrollmentStatus
 
 
 	INSERT INTO RDS.DimK12EnrollmentStatuses
@@ -452,3 +469,133 @@
 	DROP TABLE #EntryType
 	DROP TABLE #ExitOrWithdrawalType
 	DROP TABLE #PostSecondaryEnrollmentStatus
+
+
+	
+	------------------------------------------------
+	-- Populate DimProgramTypes					 ---
+	------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimProgramTypes d WHERE d.ProgramTypeCode = 'MISSING') BEGIN
+		SET IDENTITY_INSERT RDS.DimProgramTypes ON
+
+		INSERT INTO RDS.DimProgramTypes (DimProgramTypeId, ProgramTypeCode, ProgramTypeDescription)
+			VALUES (-1, 'MISSING', 'MISSING')
+
+		SET IDENTITY_INSERT RDS.DimProgramTypes OFF
+	END
+
+	INSERT INTO RDS.DimProgramTypes
+		(
+			  ProgramTypeCode
+			, ProgramTypeDescription		
+		)
+	SELECT 
+		  pt.Code as ProgramTypeCode
+		, pt.Description as ProgramTypeDescription
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefProgramType pt
+	LEFT JOIN rds.DimProgramTypes dpt
+		ON pt.Code = dpt.ProgramTypeCode
+	WHERE dpt.DimProgramTypeId IS NULL
+
+
+	-----------------------------------------------------
+	-- Populate DimK12Demographics                     --
+	-----------------------------------------------------
+	
+	CREATE TABLE #MilitaryConnectedStudentIndicator (MilitaryConnectedStudentIndicatorCode VARCHAR(50), MilitaryConnectedStudentIndicatorDescription VARCHAR(200), MilitaryConnectedStudentIndicatorEdFactsCode VARCHAR(50))
+
+	INSERT INTO #MilitaryConnectedStudentIndicator VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #MilitaryConnectedStudentIndicator 
+	SELECT 
+		  Code
+		, Description
+		, CASE Code
+			WHEN 'ActiveDuty' THEN 'MILCNCTD'
+			WHEN 'NationalGuardOrReserve' THEN 'MILCNCTD'
+			ELSE 'Missing'
+		  END
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefMilitaryConnectedStudentIndicator
+
+	CREATE TABLE #HomelessPrimaryNighttimeResidence (HomelessPrimaryNighttimeResidenceCode VARCHAR(50), HomelessPrimaryNighttimeResidenceDescription VARCHAR(200), HomelessPrimaryNighttimeResidenceEdFactsCode VARCHAR(50))
+
+	INSERT INTO #HomelessPrimaryNighttimeResidence VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #HomelessPrimaryNighttimeResidence 
+	SELECT 
+		  Code
+		, Description
+		, CASE Code
+			WHEN 'Shelters' THEN 'STH'
+			WHEN 'DoubledUp' THEN 'D'
+			WHEN 'Unsheltered' THEN 'U'
+			WHEN 'HotelMotel' THEN 'HM'
+		  END
+	FROM [CEDS-IDS-V9_0_0_0].dbo.RefHomelessNighttimeResidence
+
+
+	INSERT INTO RDS.DimK12Demographics
+		(
+			  EconomicDisadvantageStatusCode
+			, EconomicDisadvantageStatusDescription
+			, EconomicDisadvantageStatusEdFactsCode
+			, HomelessnessStatusCode
+			, HomelessnessStatusDescription
+			, HomelessnessStatusEdFactsCode
+			, EnglishLearnerStatusCode
+			, EnglishLearnerStatusDescription
+			, EnglishLearnerStatusEdFactsCode
+			, MigrantStatusCode
+			, MigrantStatusDescription
+			, MigrantStatusEdFactsCode
+			, MilitaryConnectedStudentIndicatorCode
+			, MilitaryConnectedStudentIndicatorDescription
+			, MilitaryConnectedStudentIndicatorEdFactsCode
+			, HomelessPrimaryNighttimeResidenceCode
+			, HomelessPrimaryNighttimeResidenceDescription
+			, HomelessPrimaryNighttimeResidenceEdFactsCode
+			, HomelessUnaccompaniedYouthStatusCode
+			, HomelessUnaccompaniedYouthStatusDescription
+			, HomelessUnaccompaniedYouthStatusEdFactsCode
+		)
+	SELECT DISTINCT
+		  EcoDis.Code
+		, EcoDis.Description
+		, EcoDis.EdFactsCode
+		, Homeless.Code
+		, Homeless.Description
+		, Homeless.EdFactsCode
+		, EL.Code
+		, EL.Description
+		, EL.EdFactsCode
+		, Migrant.Code
+		, Migrant.Description
+		, Migrant.EdFactsCode
+		, military.MilitaryConnectedStudentIndicatorCode
+		, military.MilitaryConnectedStudentIndicatorDescription
+		, military.MilitaryConnectedStudentIndicatorEdFactsCode
+		, homelessres.HomelessPrimaryNighttimeResidenceCode
+		, homelessres.HomelessPrimaryNighttimeResidenceDescription
+		, homelessres.HomelessPrimaryNighttimeResidenceEdFactsCode
+		, UnaccYouth.Code
+		, UnaccYouth.Description
+		, UnaccYouth.EdFactsCode
+	FROM (VALUES('Yes', 'Economically Disadvantaged', 'ECODIS'),('No', 'Not Economoically Disadvantaged', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) EcoDis(Code, Description, EdFactsCode)
+	CROSS JOIN (VALUES('Yes', 'Homeless enrolled', 'HOMELSENRL'),('No', 'Not Homeless enrolled', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) Homeless(Code, Description, EdFactsCode)
+	CROSS JOIN (VALUES('LEP', 'Limited English proficient (LEP) Student', 'LEP'),('NLEP', 'Non-limited English proficient (non-LEP) Student', 'NLEP'),('LEPP', 'Perkins LEP Student', 'LEPP'),('MISSING', 'MISSING', 'MISSING')) EL(Code, Description, EdFactsCode)
+	CROSS JOIN (VALUES('Yes', 'Migrant students', 'MS'),('No', 'Not a Migrant students', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) Migrant(Code, Description, EdFactsCode)
+	CROSS JOIN (VALUES('Yes', 'Unaccompanied Youth', 'UY'),('No', 'Not Unaccompanied Youth', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) UnaccYouth(Code, Description, EdFactsCode)
+	CROSS JOIN #MilitaryConnectedStudentIndicator military
+	CROSS JOIN #HomelessPrimaryNighttimeResidence homelessres
+	LEFT JOIN RDS.DimK12Demographics rdkd
+		ON EcoDis.Code = rdkd.EconomicDisadvantageStatusCode
+		AND Homeless.Code = rdkd.HomelessnessStatusCode
+		AND EL.Code = rdkd.EnglishLearnerStatusCode
+		AND Migrant.Code = rdkd.MigrantStatusCode
+		AND military.MilitaryConnectedStudentIndicatorCode = rdkd.MilitaryConnectedStudentIndicatorCode
+		AND homelessres.HomelessPrimaryNighttimeResidenceCode = rdkd.HomelessPrimaryNighttimeResidenceCode
+		AND UnaccYouth.Code = rdkd.HomelessUnaccompaniedYouthStatusCode
+	WHERE rdkd.DimK12DemographicId IS NULL
+
+	DROP TABLE #MilitaryConnectedStudentIndicator
+	DROP TABLE #HomelessPrimaryNighttimeResidence
+
