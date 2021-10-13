@@ -11,10 +11,17 @@ To create a new instance of the CEDS Data Warehouse on your SQL Server, perform 
 
 1. Open the database creation script at /src/ddl/CEDS-Data-Warehouse.sql using your preferred SQL client. 
 2. Connect to the server on which you want to create the CEDS Data Warehouse instance.
-3. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V9_0_0_0) with the database name of your choice.
+3. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V9_1_0_0) with the database name of your choice.
 4. Run the script. 
 
 The database is empty by default.  Proceed with the following instructions to load CEDS Element metadata and CEDS Option Set values into the reference tables.
+1. Open the Create CEDS Element Tables V9.0.0.0 document at /src/dimension-data/Create-CEDS-Element-Tables-V9.0.0.0
+2. Connect to the server on which you created the CEDS Version 9.1.0.0 instance
+3. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V9_1_0_0) with the name of your data warehouse instance.
+4. Run the script
+5. Open the Junk-Table-Dimension-Population-V9.1.0.0 document at /src/dimension-data/Junk-Table-Dimension-Population-V9.1.0.0
+6. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V9_1_0_0) with the name of your data warehouse instance.
+7. Run the script
 
 ## Contributing
 
