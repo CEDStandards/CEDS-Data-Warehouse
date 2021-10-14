@@ -4,4 +4,19 @@ Before CEPI, the [Center for the Integration of IDEA Data](https://ciidta.grads3
 
 In the next few years, CEDS will continue to work with stakeholders to find ways to bring the community together. The CEDS team is excited to continue to partner with you, the community, in this new era.
 
-This version of the CEDS Data Warehouse has been updated primarily by the CIID development staff. An update to this version is anticipated in late September 2021 based on work done through the CEDS Data Warehouse Expansion Project (https://ceds.communities.ed.gov/#communities/ceds-osc/workgroups/ceds-dw-expansion)
+This version of the CEDS Data Warehouse has been updated primarily based on work done through the CEDS Data Warehouse Expansion Project (https://ceds.communities.ed.gov/#communities/ceds-osc/workgroups/ceds-dw-expansion)
+
+We would like to thank the following organizations for their contributions in the release of the CEDS Data Warehouse V9.1.0.0
+
+[The Colorado Department of Education](https://www.cde.state.co.us/)
+[Michigan's Center for Educational Performance and Infomration (CEPI)](https://www.michigan.gov/cepi/) 
+
+These two education agencies provided extensive time to the build out of the model around their specific use cases providing subject matter experts when needed.
+
+[Double Line](https://wearedoubleline.com/)
+
+Double Line assisted in the build out of the metadata tagging you will find on the elements in the dimension tables. Search the extended properties of the Dimension tables and you will see the associated CEDS element information.
+
+Numerous other stakeholders from state education agencies, local education agencies and the vendor community contributed through participation in meetings throughout the project and providing insight into the special education and adult education use cases that made up the scope of the project. It is the CEDS community of stakeholders that make all of this possible.
+
+
