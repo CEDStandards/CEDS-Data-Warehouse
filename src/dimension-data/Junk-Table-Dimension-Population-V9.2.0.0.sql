@@ -46,7 +46,7 @@ GO
 
 
 DECLARE @CEDSVersion VARCHAR(10)
-SET @CEDSVersion = '10'
+SET @CEDSVersion = '9'
 
 CREATE TABLE CEDS.CedsOptionSetMapping
 	(CedsElementName VARCHAR(1000)
@@ -69,14 +69,14 @@ INSERT INTO CEDS.CedsOptionSetMapping
 	,EdFactsOptionSetCode)
 
 SELECT DISTINCT t.Name, t.XMLName, t.GlobalID, c.Code, c.Description, c.CodeDefinition, NULL, NULL
-FROM CEDS.dbo.Term t
-JOIN CEDS.dbo.TermxCodeSet tcs
+FROM CEDS.Term t
+JOIN CEDS.TermxCodeSet tcs
 	ON t.TermID = tcs.TermID
-JOIN CEDS.dbo.CodeSet cs
+JOIN CEDS.CodeSet cs
 	ON tcs.CodeSetID = cs.CodeSetID
-JOIN CEDS.dbo.CodeSetxCode csxc
+JOIN CEDS.CodeSetxCode csxc
 	ON cs.CodeSetID = csxc.CodeSetID
-JOIN CEDS.dbo.Code c
+JOIN CEDS.Code c
 	ON csxc.CodeID = c.CodeID
 WHERE t.Version = @CEDSVersion
 	AND t.HasCodeSet = '1'
@@ -1154,8 +1154,7 @@ SET EdFactsOptionSetCode = 'MISSING'
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, EdFactsOptionSetCode
-	FROM CEDS.CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeExitType'
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeExitType'
 
 
 	INSERT INTO RDS.DimK12EnrollmentStatuses
@@ -1458,18 +1457,18 @@ SET EdFactsOptionSetCode = 'MISSING'
 	INSERT INTO #DisabilityConditionType VALUES ('MISSING', 'MISSING')
 	INSERT INTO #DisabilityConditionType
 	SELECT 
-		  Code
-		, Description
-	FROM dbo.RefDisabilityConditionType
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'DisabilityConditionType'
 
 	CREATE TABLE #DisabilityDeterminationSourceType (DisabilityDeterminationSourceTypeCode VARCHAR(50), DisabilityDeterminationSourceTypeDescription VARCHAR(200))
 
 	INSERT INTO #DisabilityDeterminationSourceType VALUES ('MISSING', 'MISSING')
 	INSERT INTO #DisabilityDeterminationSourceType
 	SELECT 
-		  Code
-		, Description
-	FROM dbo.RefDisabilityDeterminationSourceType
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'DisabilityDeterminationSourceType'
 
 	INSERT INTO rds.DimDisabilityStatuses 
 		(
@@ -1484,22 +1483,22 @@ SET EdFactsOptionSetCode = 'MISSING'
 			, DisabilityDeterminationSourceTypeDescription
 		)
 	SELECT 
-		  Disability.Code
-		, Disability.Description
-		, Section504.Code
-		, Section504.Description
+		  Disability.CedsOptionSetCode
+		, Disability.CedsOptionSetDescription
+		, Section504.CedsOptionSetCode
+		, Section504.CedsOptionSetDescription
 		, Section504.EdFactsCode
 		, dct.DisabilityConditionTypeCode
 		, dct.DisabilityConditionTypeDescription
 		, ddst.DisabilityDeterminationSourceTypeCode
 		, ddst.DisabilityDeterminationSourceTypeDescription
-	FROM (VALUES('Yes', 'Disability students'),('No', 'Not a Disability students'),('MISSING', 'MISSING')) Disability (Code, Description)
-	CROSS JOIN (VALUES('YES', 'Section 504 Students', 'SECTION504'),('NO', 'Non Section 504 Students','NONSECTION504'),('MISSING', 'MISSING', 'MISSING')) Section504 (Code, Description, EdFactsCode)
+	FROM (VALUES('Yes', 'Disability students'),('No', 'Not a Disability students'),('MISSING', 'MISSING')) Disability (CedsOptionSetCode, CedsOptionSetDescription)
+	CROSS JOIN (VALUES('YES', 'Section 504 Students', 'SECTION504'),('NO', 'Non Section 504 Students','NONSECTION504'),('MISSING', 'MISSING', 'MISSING')) Section504 (CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
 	CROSS JOIN #DisabilityConditionType dct
 	CROSS JOIN #DisabilityDeterminationSourceType ddst
 	LEFT JOIN rds.DimDisabilityStatuses dds
-	ON Disability.Code = dds.DisabilityStatusCode
-		AND Section504.Code = dds.Section504StatusCode
+	ON Disability.CedsOptionSetCode = dds.DisabilityStatusCode
+		AND Section504.CedsOptionSetCode = dds.Section504StatusCode
 		AND dct.DisabilityConditionTypeCode = dds.DisabilityConditionTypeCode
 		AND ddst.DisabilityDeterminationSourceTypeCode = dds.DisabilityDeterminationSourceTypeCode
 	WHERE dds.DimDisabilityStatusId IS NULL
@@ -1525,9 +1524,9 @@ SET EdFactsOptionSetCode = 'MISSING'
 						, TitleiiiAccountabilityProgressStatusCode
 						, TitleiiiAccountabilityProgressStatusDescription
 						, TitleiiiAccountabilityProgressStatusEdFactsCode
-						, TitleiiiLanguageInstructionCode
-						, TitleiiiLanguageInstructionDescription
-						, TitleiiiLanguageInstructionEdFactsCode
+						, TitleIIILanguageInstructionProgramTypeCode
+						, TitleiiiLanguageInstructionProgramTypeDescription
+						, TitleiiiLanguageInstructionProgramTypeEdFactsCode
 					)
 			VALUES (
 					-1
@@ -1552,23 +1551,23 @@ SET EdFactsOptionSetCode = 'MISSING'
 	INSERT INTO #TitleIIIAccountability VALUES ('MISSING', 'MISSING', 'MISSING')
 	INSERT INTO #TitleIIIAccountability
 	SELECT 
-		  Code
-		, Description
-		, CASE Code
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode
 			WHEN 'PROGRESS' THEN 'PROGRESS'
 			WHEN 'NOPROGRESS' THEN 'NOPROGRESS'
 			WHEN 'PROFICIENT' THEN 'PROFICIENT'
 		  END
-	FROM dbo.RefTitleIIIAccountability
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'TitleIIIAccountability'
 
 	CREATE TABLE #TitleIIILanguageInstructionProgramType (TitleiiiLanguageInstructionCode VARCHAR(50), TitleiiiLanguageInstructionDescription VARCHAR(200), TitleiiiLanguageInstructionEdFactsCode VARCHAR(50))
 
 	INSERT INTO #TitleIIILanguageInstructionProgramType VALUES ('MISSING', 'MISSING', 'MISSING')
 	INSERT INTO #TitleIIILanguageInstructionProgramType
 	SELECT 
-		  Code
-		, Description
-		, CASE Code
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode
 			WHEN 'DualLanguage' THEN 'LNGPRGDU'
 			WHEN 'TwoWayImmersion' THEN 'LNGPRGDU'
 			WHEN 'TransitionalBilingual' THEN 'LNGPRGBI'
@@ -1582,7 +1581,7 @@ SET EdFactsOptionSetCode = 'MISSING'
 			WHEN 'Other' THEN 'LNGPRGOTH'
 			WHEN 'PullOutESL' THEN 'LNGPRGESLELD'
 		  END
-	FROM dbo.RefTitleIIILanguageInstructionProgramType
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'TitleIIILanguageInstructionProgramType'
 
 	INSERT INTO rds.DimEnglishLearnerStatuses 
 		(
@@ -1595,16 +1594,16 @@ SET EdFactsOptionSetCode = 'MISSING'
 			, TitleiiiAccountabilityProgressStatusCode
 			, TitleiiiAccountabilityProgressStatusDescription
 			, TitleiiiAccountabilityProgressStatusEdFactsCode
-			, TitleiiiLanguageInstructionCode
-			, TitleiiiLanguageInstructionDescription
-			, TitleiiiLanguageInstructionEdFactsCode
+			, TitleIIILanguageInstructionProgramTypeCode
+			, TitleIIILanguageInstructionProgramTypeDescription
+			, TitleIIILanguageInstructionProgramTypeEdFactsCode
 		)
 	SELECT 
-		  EnglishLearner.Code
-		, EnglishLearner.Description
+		  EnglishLearner.CedsOptionSetCode
+		, EnglishLearner.CedsOptionSetDescription
 		, EnglishLearner.EdFactsCode
-		, PerkinsLEP.Code
-		, PerkinsLEP.Description
+		, PerkinsLEP.CedsOptionSetCode
+		, PerkinsLEP.CedsOptionSetDescription
 		, PerkinsLEP.EdFactsCode
 		, ta.TitleiiiAccountabilityProgressStatusCode
 		, ta.TitleiiiAccountabilityProgressStatusDescription
@@ -1612,15 +1611,15 @@ SET EdFactsOptionSetCode = 'MISSING'
 		, tlipt.TitleiiiLanguageInstructionCode
 		, tlipt.TitleiiiLanguageInstructionDescription
 		, tlipt.TitleiiiLanguageInstructionEdFactsCode
-	FROM (VALUES('Yes', 'Limited English proficient (LEP) Student', 'LEP'),('No', 'Non-limited English proficient (non-LEP) Student', 'NLEP'),('MISSING', 'MISSING', 'MISSING')) EnglishLearner (Code, Description, EdFactsCode)
-	CROSS JOIN (VALUES('YES', 'Perkins LEP students', 'LEPP'),('NO', 'Not Perkins LEP students','MISSING'),('MISSING', 'MISSING', 'MISSING')) PerkinsLEP (Code, Description, EdFactsCode)
+	FROM (VALUES('Yes', 'Limited English proficient (LEP) Student', 'LEP'),('No', 'Non-limited English proficient (non-LEP) Student', 'NLEP'),('MISSING', 'MISSING', 'MISSING')) EnglishLearner (CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
+	CROSS JOIN (VALUES('YES', 'Perkins LEP students', 'LEPP'),('NO', 'Not Perkins LEP students','MISSING'),('MISSING', 'MISSING', 'MISSING')) PerkinsLEP (CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
 	CROSS JOIN #TitleIIIAccountability ta
 	CROSS JOIN #TitleIIILanguageInstructionProgramType tlipt
 	LEFT JOIN rds.DimEnglishLearnerStatuses dels
-	ON EnglishLearner.Code = dels.EnglishLearnerStatusCode
-		AND PerkinsLEP.Code = dels.PerkinsLEPStatusCode
+	ON EnglishLearner.CedsOptionSetCode = dels.EnglishLearnerStatusCode
+		AND PerkinsLEP.CedsOptionSetCode = dels.PerkinsLEPStatusCode
 		AND ta.TitleiiiAccountabilityProgressStatusCode = dels.TitleiiiAccountabilityProgressStatusCode
-		AND tlipt.TitleiiiLanguageInstructionCode = dels.TitleiiiLanguageInstructionCode
+		AND tlipt.TitleiiiLanguageInstructionCode = dels.TitleIIILanguageInstructionProgramTypeCode
 	WHERE dels.DimEnglishLearnerStatusId IS NULL
 
 	DROP TABLE #TitleIIIAccountability
@@ -1646,12 +1645,12 @@ SET EdFactsOptionSetCode = 'MISSING'
 			, ProgramParticipationFosterCareEdFactsCode
 		)
 	SELECT 
-		  FosterCare.Code
-		, FosterCare.Description
+		  FosterCare.CedsOptionSetCode
+		, FosterCare.CedsOptionSetDescription
 		, FosterCare.EdFactsCode
-	FROM (VALUES('Yes', 'Foster Care Students', 'FOSTERCARE'), ('No', 'Non Foster Care Students', 'NONFOSTERCARE')) FosterCare(Code, Description, EdFactsCode)
+	FROM (VALUES('Yes', 'Foster Care Students', 'FOSTERCARE'), ('No', 'Non Foster Care Students', 'NONFOSTERCARE')) FosterCare(CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
 	LEFT JOIN rds.DimFosterCareStatuses dfcs
-		ON FosterCare.Code = dfcs.ProgramParticipationFosterCareCode
+		ON FosterCare.CedsOptionSetCode = dfcs.ProgramParticipationFosterCareCode
 	WHERE dfcs.DimFosterCareStatusId IS NULL
 
 	-----------------------------------------------------
@@ -1696,9 +1695,9 @@ SET EdFactsOptionSetCode = 'MISSING'
 	INSERT INTO #HomelessPrimaryNighttimeResidenceK12 VALUES ('MISSING', 'MISSING', 'MISSING')
 	INSERT INTO #HomelessPrimaryNighttimeResidenceK12 
 	SELECT 
-		  Code
-		, Description
-		, CASE Code
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode
 			WHEN 'Shelter' THEN 'STH'
 			WHEN 'DoubledUp' THEN 'D'
 			WHEN 'Unsheltered' THEN 'U'
@@ -1706,7 +1705,7 @@ SET EdFactsOptionSetCode = 'MISSING'
 			WHEN 'SheltersTransitionalHousing' THEN 'STH'
 			WHEN 'TransitionalHousing' THEN 'STH'
 		  END
-	FROM dbo.RefHomelessNighttimeResidence
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'HomelessPrimaryNighttimeResidence'
 
 	INSERT INTO RDS.DimHomelessnessStatuses
 		(
@@ -1723,25 +1722,25 @@ SET EdFactsOptionSetCode = 'MISSING'
 			, HomelessUnaccompaniedYouthStatusEdfactsCode
 		)
 	SELECT 
-		  Homeless.Code
-		, Homeless.Description
+		  Homeless.CedsOptionSetCode
+		, Homeless.CedsOptionSetDescription
 		, Homeless.EdFactsCode
 		, homelessres.HomelessPrimaryNighttimeResidenceCode
 		, homelessres.HomelessPrimaryNighttimeResidenceDescription
 		, homelessres.HomelessPrimaryNighttimeResidenceEdFactsCode
-		, ServicedIndicator.Code
-		, ServicedIndicator.Description
-		, UnaccYouth.Code
-		, UnaccYouth.Description
+		, ServicedIndicator.CedsOptionSetCode
+		, ServicedIndicator.CedsOptionSetDescription
+		, UnaccYouth.CedsOptionSetCode
+		, UnaccYouth.CedsOptionSetDescription
 		, UnaccYouth.EdFactsCode
-	FROM (VALUES('Yes', 'Homeless enrolled', 'HOMELSENRL'),('No', 'Not Homeless enrolled', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) Homeless(Code, Description, EdFactsCode)
-	CROSS JOIN (VALUES('Yes', 'Homeless Serviced'),('No', 'Not Homeless Serviced'),('MISSING', 'MISSING')) ServicedIndicator(Code, Description)
-	CROSS JOIN (VALUES('Yes', 'Unaccompanied Youth', 'UY'),('No', 'Not Unaccompanied Youth', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) UnaccYouth(Code, Description, EdFactsCode)
+	FROM (VALUES('Yes', 'Homeless enrolled', 'HOMELSENRL'),('No', 'Not Homeless enrolled', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) Homeless(CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
+	CROSS JOIN (VALUES('Yes', 'Homeless Serviced'),('No', 'Not Homeless Serviced'),('MISSING', 'MISSING')) ServicedIndicator(CedsOptionSetCode, CedsOptionSetDescription)
+	CROSS JOIN (VALUES('Yes', 'Unaccompanied Youth', 'UY'),('No', 'Not Unaccompanied Youth', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) UnaccYouth(CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
 	CROSS JOIN #HomelessPrimaryNighttimeResidenceK12 homelessres
 	LEFT JOIN rds.DimHomelessnessStatuses dhs
-		ON Homeless.Code = dhs.HomelessnessStatusCode
-		AND ServicedIndicator.Code = dhs.HomelessServicedIndicatorCode
-		AND UnaccYouth.Code = dhs.HomelessUnaccompaniedYouthStatusCode
+		ON Homeless.CedsOptionSetCode = dhs.HomelessnessStatusCode
+		AND ServicedIndicator.CedsOptionSetCode = dhs.HomelessServicedIndicatorCode
+		AND UnaccYouth.CedsOptionSetCode = dhs.HomelessUnaccompaniedYouthStatusCode
 		AND homelessres.HomelessPrimaryNighttimeResidenceCode = dhs.HomelessPrimaryNighttimeResidenceCode
 	WHERE dhs.DimHomelessnessStatusId IS NULL
 
@@ -1766,9 +1765,6 @@ SET EdFactsOptionSetCode = 'MISSING'
 						, ContinuationOfServicesReasonCode
 						, ContinuationOfServicesReasonDescription
 						, ContinuationOfServicesReasonEdFactsCode
-						, ConsolidatedMepFundsStatusCode
-						, ConsolidatedMepFundsStatusDescription
-						, ConsolidatedMepFundsStatusEdFactsCode
 						, MigrantEducationProgramServicesTypeCode
 						, MigrantEducationProgramServicesTypeDescription
 						, MigrantEducationProgramServicesTypeEdFactsCode
@@ -1778,9 +1774,6 @@ SET EdFactsOptionSetCode = 'MISSING'
 					)
 			VALUES (
 					-1
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
 					, 'MISSING'
 					, 'MISSING'
 					, 'MISSING'
@@ -1805,9 +1798,9 @@ SET EdFactsOptionSetCode = 'MISSING'
 	INSERT INTO #MepEnrollmentType VALUES ('MISSING', 'MISSING', 'MISSING')
 	INSERT INTO #MepEnrollmentType 
 	SELECT 
-		  Code
-		, Description
-		, CASE Code
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode
 			WHEN '01' THEN 'MISSING'
 			WHEN '02' THEN 'MEPRSYDAY'
 			WHEN '03' THEN 'MEPSUM'
@@ -1815,30 +1808,30 @@ SET EdFactsOptionSetCode = 'MISSING'
 			WHEN '05' THEN '??'
 			WHEN '06' THEN 'MISSING'
 		  END
-	FROM dbo.RefMepEnrollmentType 
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'MigrantEducationProgramEnrollmentType' 
 
 	CREATE TABLE #ContinuationOfServices (ContinuationOfServicesReasonCode VARCHAR(50), ContinuationOfServicesReasonDescription VARCHAR(200), ContinuationOfServicesReasonEdFactsCode VARCHAR(50))
 
 	INSERT INTO #ContinuationOfServices VALUES ('MISSING', 'MISSING', 'MISSING')
 	INSERT INTO #ContinuationOfServices
 	SELECT 
-		  Code
-		, Description
-		, CASE Code
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode
 			WHEN '01' THEN 'CONTINUED'
 			WHEN '02' THEN 'CONTINUED'
 			WHEN '03' THEN 'CONTINUED'
 		  END
-	FROM dbo.RefContinuationOfServices
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'ContinuationOfServicesReason'
 
 	CREATE TABLE #MepServiceType (MigrantEducationProgramServicesTypeCode VARCHAR(50), MigrantEducationProgramServicesTypeDescription VARCHAR(200), MigrantEducationProgramServicesTypeEdFactsCode VARCHAR(50))
 
 	INSERT INTO #MepServiceType VALUES ('MISSING', 'MISSING', 'MISSING')
 	INSERT INTO #MepServiceType
 	SELECT 
-		  Code
-		, Description
-		, CASE Code
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode
 			WHEN 'CounselingServices' THEN 'COUNSELSERV'
 			WHEN 'HighSchoolAccrual' THEN 'HSACCRUAL'
 			WHEN 'InstructionalServices' THEN 'INTRSERV'
@@ -1847,7 +1840,7 @@ SET EdFactsOptionSetCode = 'MISSING'
 			WHEN 'ReferralServices' THEN 'REFSERV'
 			WHEN 'SupportServices' THEN 'SUPPSERV'
 		  END
-	FROM dbo.RefMepServiceType
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'MigrantEducationProgramServicesType'
 
 	INSERT INTO RDS.DimMigrantStatuses
 		(
@@ -1860,9 +1853,6 @@ SET EdFactsOptionSetCode = 'MISSING'
 			, ContinuationOfServicesReasonCode
 			, ContinuationOfServicesReasonDescription
 			, ContinuationOfServicesReasonEdFactsCode
-			, ConsolidatedMepFundsStatusCode
-			, ConsolidatedMepFundsStatusDescription
-			, ConsolidatedMepFundsStatusEdFactsCode
 			, MigrantEducationProgramServicesTypeCode
 			, MigrantEducationProgramServicesTypeDescription
 			, MigrantEducationProgramServicesTypeEdFactsCode
@@ -1871,8 +1861,8 @@ SET EdFactsOptionSetCode = 'MISSING'
 			, MigrantPrioritizedForServicesEdFactsCode
 		)
 	SELECT 
-		  Migrant.Code
-		, Migrant.Description
+		  Migrant.CedsOptionSetCode
+		, Migrant.CedsOptionSetDescription
 		, Migrant.EdFactsCode
 		, met.MigrantEducationProgramEnrollmentTypeCode
 		, met.MigrantEducationProgramEnrollmentTypeDescription
@@ -1880,28 +1870,24 @@ SET EdFactsOptionSetCode = 'MISSING'
 		, cs.ContinuationOfServicesReasonCode
 		, cs.ContinuationOfServicesReasonDescription
 		, cs.ContinuationOfServicesReasonEdFactsCode
-		, ConsolidatedMepFund.Code
-		, ConsolidatedMepFund.Description
-		, ConsolidatedMepFund.EdFactsCode
 		, mst.MigrantEducationProgramServicesTypeCode
 		, mst.MigrantEducationProgramServicesTypeDescription
 		, mst.MigrantEducationProgramServicesTypeEdFactsCode
-		, PrioritizedForServices.Code
-		, PrioritizedForServices.Description
+		, PrioritizedForServices.CedsOptionSetCode
+		, PrioritizedForServices.CedsOptionSetDescription
 		, PrioritizedForServices.EdFactsCode
-	FROM (VALUES('Yes', 'Migrant students', 'MS'),('No', 'Not a Migrant students', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) Migrant(Code, Description, EdFactsCode)
-	CROSS JOIN (VALUES('YES', 'Consolidated', 'YES'),('NO', 'Not Consolidated','NO'),('NA', 'Not applicable','NA'),('MISSING', 'MISSING', 'MISSING')) ConsolidatedMepFund(Code, Description, EdFactsCode)
-	CROSS JOIN (VALUES('YES', 'Prioritized for Services', 'PS'),('NO', 'Not Prioritized for Services', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) PrioritizedForServices(Code, Description, EdFactsCode)
+	FROM (VALUES('Yes', 'Migrant students', 'MS'),('No', 'Not a Migrant students', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) Migrant(CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
+	CROSS JOIN (VALUES('YES', 'Consolidated', 'YES'),('NO', 'Not Consolidated','NO'),('NA', 'Not applicable','NA'),('MISSING', 'MISSING', 'MISSING')) ConsolidatedMepFund(CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
+	CROSS JOIN (VALUES('YES', 'Prioritized for Services', 'PS'),('NO', 'Not Prioritized for Services', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) PrioritizedForServices(CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
 	CROSS JOIN #MepEnrollmentType met
 	CROSS JOIN #ContinuationOfServices cs
 	CROSS JOIN #MepServiceType mst
 	LEFT JOIN rds.DimMigrantStatuses dms
-		ON Migrant.Code = dms.MigrantStatusCode
+		ON Migrant.CedsOptionSetCode = dms.MigrantStatusCode
 		AND met.MigrantEducationProgramEnrollmentTypeCode = dms.MigrantEducationProgramEnrollmentTypeCode
 		AND cs.ContinuationOfServicesReasonCode = dms.ContinuationOfServicesReasonCode
-		AND ConsolidatedMepFund.Code = dms.ConsolidatedMepFundsStatusCode
 		AND mst.MigrantEducationProgramServicesTypeCode = dms.MigrantEducationProgramServicesTypeCode
-		AND PrioritizedForServices.Code = dms.MigrantPrioritizedForServicesCode
+		AND PrioritizedForServices.CedsOptionSetCode = dms.MigrantPrioritizedForServicesCode
 	WHERE dms.DimMigrantStatusId IS NULL
 
 	DROP TABLE #MepEnrollmentType
@@ -2229,9 +2215,9 @@ SET EdFactsOptionSetCode = 'MISSING'
 	INSERT INTO #ChildOutcomesSummaryRating VALUES ('MISSING', 'MISSING')
 	INSERT INTO #ChildOutcomesSummaryRating
 	SELECT 
-		  Code
-		, Description
-	FROM dbo.RefChildOutcomesSummaryRating
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'COSRatingA'
 
 	INSERT INTO rds.DimChildOutcomeSummaries 
 		(
@@ -2255,15 +2241,15 @@ SET EdFactsOptionSetCode = 'MISSING'
 		, cosrb.COSRatingDescription
 		, cosrc.COSRatingCode
 		, cosrc.COSRatingDescription
-		, COSProgressA.Code
-		, COSProgressA.Description
-		, COSProgressB.Code
-		, COSProgressB.Description
-		, COSProgressC.Code
-		, COSProgressC.Description
-	FROM (VALUES('Yes', 'Indicates that the child demonstrates progress in positive social-emotional skills, including social relationships'),('No', 'Indicates that the child did not demonstrate progress in positive social-emotional skills, including social relationships'),('MISSING', 'MISSING')) COSProgressA (Code, Description)
-	CROSS JOIN (VALUES('Yes', 'Indicates that the child demonstrates progress in acquisition and use of knowledge and skills, including early language/communication'),('No', 'Indicates that the child did not demonstrate progress in acquisition and use of knowledge and skills, including early language/communication'),('MISSING', 'MISSING')) COSProgressB (Code, Description)
-	CROSS JOIN (VALUES('Yes', 'Indicates that the child demonstrates progress in use of appropriate behaviors to meet their needs.'),('No', 'Indicates that the child did not demonstrate progress in use of appropriate behaviors to meet their needs'),('MISSING', 'MISSING')) COSProgressC (Code, Description)
+		, COSProgressA.CedsOptionSetCode
+		, COSProgressA.CedsOptionSetDescription
+		, COSProgressB.CedsOptionSetCode
+		, COSProgressB.CedsOptionSetDescription
+		, COSProgressC.CedsOptionSetCode
+		, COSProgressC.CedsOptionSetDescription
+	FROM (VALUES('Yes', 'Indicates that the child demonstrates progress in positive social-emotional skills, including social relationships'),('No', 'Indicates that the child did not demonstrate progress in positive social-emotional skills, including social relationships'),('MISSING', 'MISSING')) COSProgressA (CedsOptionSetCode, CedsOptionSetDescription)
+	CROSS JOIN (VALUES('Yes', 'Indicates that the child demonstrates progress in acquisition and use of knowledge and skills, including early language/communication'),('No', 'Indicates that the child did not demonstrate progress in acquisition and use of knowledge and skills, including early language/communication'),('MISSING', 'MISSING')) COSProgressB (CedsOptionSetCode, CedsOptionSetDescription)
+	CROSS JOIN (VALUES('Yes', 'Indicates that the child demonstrates progress in use of appropriate behaviors to meet their needs.'),('No', 'Indicates that the child did not demonstrate progress in use of appropriate behaviors to meet their needs'),('MISSING', 'MISSING')) COSProgressC (CedsOptionSetCode, CedsOptionSetDescription)
 	CROSS JOIN #ChildOutcomesSummaryRating cosra
 	CROSS JOIN #ChildOutcomesSummaryRating cosrb
 	CROSS JOIN #ChildOutcomesSummaryRating cosrc
@@ -2271,9 +2257,9 @@ SET EdFactsOptionSetCode = 'MISSING'
 	ON cosra.COSRatingCode = dcos.COSRatingACode
 		AND cosrb.COSRatingCode = dcos.COSRatingBCode
 		AND cosrc.COSRatingCode = dcos.COSRatingCCode
-		AND COSProgressA.Code = dcos.COSProgressAIndicatorCode
-		AND COSProgressB.Code = dcos.COSProgressBIndicatorCode
-		AND COSProgressC.Code = dcos.COSProgressCIndicatorCode
+		AND COSProgressA.CedsOptionSetCode = dcos.COSProgressAIndicatorCode
+		AND COSProgressB.CedsOptionSetCode = dcos.COSProgressBIndicatorCode
+		AND COSProgressC.CedsOptionSetCode = dcos.COSProgressCIndicatorCode
 	WHERE dcos.DimChildOutcomeSummaryId IS NULL
 
 	DROP TABLE #ChildOutcomesSummaryRating
@@ -2309,18 +2295,18 @@ SET EdFactsOptionSetCode = 'MISSING'
 	INSERT INTO #IndividualizedProgramType VALUES ('MISSING', 'MISSING')
 	INSERT INTO #IndividualizedProgramType
 	SELECT 
-		  Code
-		, Description
-	FROM dbo.RefIndividualizedProgramType
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'IndividualizedProgramType'
 
 	CREATE TABLE #StudentSupportServiceType (StudentSupportServiceTypeCode VARCHAR(50), StudentSupportServiceTypeDescription VARCHAR(200))
 
 	INSERT INTO #StudentSupportServiceType VALUES ('MISSING', 'MISSING')
 	INSERT INTO #StudentSupportServiceType
 	SELECT 
-		  Code
-		, Description
-	FROM dbo.RefStudentSupportServiceType
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM CEDS.CedsOptionSetMapping WHERE CedsElementTechnicalName = 'StudentSupportServiceType'
 
 	INSERT INTO rds.DimIndividualizedProgramStatuses 
 		(
@@ -2336,15 +2322,15 @@ SET EdFactsOptionSetCode = 'MISSING'
 		, ipt.IndividualizedProgramTypeDescription
 		, ssst.StudentSupportServiceTypeCode
 		, ssst.StudentSupportServiceTypeDescription
-		, ConsentToEvaluation.Code
-		, ConsentToEvaluation.Description
-	FROM (VALUES('Yes', 'Indicates that parent agreed to evaluate student'),('No', 'Indicates that parent did not agree to evaluate student'),('MISSING', 'MISSING')) ConsentToEvaluation (Code, Description)
+		, ConsentToEvaluation.CedsOptionSetCode
+		, ConsentToEvaluation.CedsOptionSetDescription
+	FROM (VALUES('Yes', 'Indicates that parent agreed to evaluate student'),('No', 'Indicates that parent did not agree to evaluate student'),('MISSING', 'MISSING')) ConsentToEvaluation (CedsOptionSetCode, CedsOptionSetDescription)
 	CROSS JOIN #IndividualizedProgramType ipt
 	CROSS JOIN #StudentSupportServiceType ssst
 	LEFT JOIN rds.DimIndividualizedProgramStatuses dips
 	ON ipt.IndividualizedProgramTypeCode = dips.IndividualizedProgramTypeCode
 		AND ssst.StudentSupportServiceTypeCode = dips.StudentSupportServiceTypeCode
-		AND ConsentToEvaluation.Code = dips.ConsentToEvaluationIndicatorCode
+		AND ConsentToEvaluation.CedsOptionSetCode = dips.ConsentToEvaluationIndicatorCode
 	WHERE dips.DimIndividualizedProgramStatusId IS NULL
 
 	DROP TABLE #IndividualizedProgramType
@@ -2416,17 +2402,17 @@ SET EdFactsOptionSetCode = 'MISSING'
 			, TitleIIIImmigrantParticipationStatusEdFactsCode
 		)
 	SELECT 
-		  TitleIIIImmigrant.Code
-		, TitleIIIImmigrant.Description
+		  TitleIIIImmigrant.CedsOptionSetCode
+		, TitleIIIImmigrant.CedsOptionSetDescription
 		, TitleIIIImmigrant.EdFactsCode
-		, TitleIIIImmigrantParticipation.Code
-		, TitleIIIImmigrantParticipation.Description
+		, TitleIIIImmigrantParticipation.CedsOptionSetCode
+		, TitleIIIImmigrantParticipation.CedsOptionSetDescription
 		, TitleIIIImmigrantParticipation.EdFactsCode
-	FROM (VALUES('Yes', 'The child is an immigrant according to the Title III of ESEA definition', 'PART'),('No', 'The child is not an immigrant according to the Title III of ESEA definition', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) TitleIIIImmigrant (Code, Description, EdFactsCode)
-	CROSS JOIN (VALUES('Yes', 'Immigrant Title III Immigrant Program Participant', 'IMMIGNTTTLIII'),('No', 'Non Immigrant Title III Immigrant Program Participant', 'NONIMMIGNTTTLIII'),('MISSING', 'MISSING', 'MISSING')) TitleIIIImmigrantParticipation (Code, Description, EdFactsCode)
+	FROM (VALUES('Yes', 'The child is an immigrant according to the Title III of ESEA definition', 'PART'),('No', 'The child is not an immigrant according to the Title III of ESEA definition', 'MISSING'),('MISSING', 'MISSING', 'MISSING')) TitleIIIImmigrant (CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
+	CROSS JOIN (VALUES('Yes', 'Immigrant Title III Immigrant Program Participant', 'IMMIGNTTTLIII'),('No', 'Non Immigrant Title III Immigrant Program Participant', 'NONIMMIGNTTTLIII'),('MISSING', 'MISSING', 'MISSING')) TitleIIIImmigrantParticipation (CedsOptionSetCode, CedsOptionSetDescription, EdFactsCode)
 	LEFT JOIN rds.DimImmigrantStatuses dis
-	ON TitleIIIImmigrant.Code = dis.TitleIIIImmigrantStatusCode
-		AND TitleIIIImmigrantParticipation.Code = dis.TitleIIIImmigrantParticipationStatusCode
+	ON TitleIIIImmigrant.CedsOptionSetCode = dis.TitleIIIImmigrantStatusCode
+		AND TitleIIIImmigrantParticipation.CedsOptionSetCode = dis.TitleIIIImmigrantParticipationStatusCode
 	WHERE dis.DimImmigrantStatusId IS NULL
 
 	-----------------------------------------------------
