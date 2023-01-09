@@ -20,7 +20,7 @@ It is important to apply a consistent naming standard so users know what to
 expect when they use the data model.  Below are rules to use when creating objects
 in the database.
 
-* Use CEDS entity and element names when possible.
+* Use CEDS entity and technical element names when possible.
   * (Note: CEDS element names have parts to give full context when applicable. Name parts include entity, qualifier, property, and representation. See the naming conventions section in the CEDS Data Model Guide.)
   * A table name often includes the entity part and a column name often includes a property part. For example, in the IDS the "Name" column in the table “Financial Account” corresponds to the CEDS element "Financial Account Name."
 * Use Pascal Case for all objects.
