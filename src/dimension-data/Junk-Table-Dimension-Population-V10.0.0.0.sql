@@ -583,6 +583,10 @@ GO
 		ON ceds.CedsOptionSetCode = main.RaceCode
 	WHERE main.RaceCode IS NULL
 		AND ceds.CedsElementTechnicalName = 'Race'
+	
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimRaces WHERE RaceCode = 'HispanicOrLatinoEthnicity') BEGIN
+		INSERT INTO RDS.DimRaces (RaceCode, RaceDescription, RaceEdFactsCode) VALUES ('HispanicorLatinoEthnicity', 'Hispanic', 'HI7')
+	END
 
 
 	-------------------
