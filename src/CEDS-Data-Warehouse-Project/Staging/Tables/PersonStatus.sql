@@ -1,0 +1,73 @@
+CREATE TABLE [Staging].[PersonStatus] (
+    [Id]                                                     INT            IDENTITY (1, 1) NOT NULL,
+    [StudentIdentifierState]                                 NVARCHAR (40)  NULL,
+    [LeaIdentifierSeaAccountability]                         NVARCHAR (50)  NULL,
+    [LeaIdentifierSeaAttendance]                             NVARCHAR (50)  NULL,
+    [LeaIdentifierSeaFunding]                                NVARCHAR (50)  NULL,
+    [LeaIdentifierSeaGraduation]                             NVARCHAR (50)  NULL,
+    [LeaIdentifierSeaIndividualizedEducationProgram]         NVARCHAR (50)  NULL,
+    [SchoolIdentifierSea]                                    NVARCHAR (50)  NULL,
+    [ResponsibleSchoolTypeAccountability]                    BIT            NULL,
+    [ResponsibleSchoolTypeAttendance]                        BIT            NULL,
+    [ResponsibleSchoolTypeFunding]                           BIT            NULL,
+    [ResponsibleSchoolTypeGraduation]                        BIT            NULL,
+    [ResponsibleSchoolTypeIndividualizedEducationProgram]    BIT            NULL,
+    [ResponsibleSchoolTypeTransportation]                    BIT            NULL,
+    [ResponsibleSchoolTypeIepServiceProvider]                BIT            NULL,
+    [EnrollmentEntryDate]                                    DATE           NULL,
+    [EnrollmentExitDate]                                     DATE           NULL,
+    [HomelessnessStatus]                                     BIT            NULL,
+    [Homelessness_StatusStartDate]                           DATE           NULL,
+    [Homelessness_StatusEndDate]                             DATE           NULL,
+    [HomelessNightTimeResidence]                             NVARCHAR (100) NULL,
+    [HomelessNightTimeResidence_StartDate]                   DATE           NULL,
+    [HomelessNightTimeResidence_EndDate]                     DATE           NULL,
+    [HomelessUnaccompaniedYouth]                             BIT            NULL,
+    [HomelessServicedIndicator]                              BIT            NULL,
+    [EconomicDisadvantageStatus]                             BIT            NULL,
+    [EconomicDisadvantage_StatusStartDate]                   DATE           NULL,
+    [EconomicDisadvantage_StatusEndDate]                     DATE           NULL,
+    [EligibilityStatusForSchoolFoodServicePrograms]          NVARCHAR (100) NULL,
+    [NationalSchoolLunchProgramDirectCertificationIndicator] BIT            NULL,
+    [MigrantStatus]                                          BIT            NULL,
+    [Migrant_StatusStartDate]                                DATE           NULL,
+    [Migrant_StatusEndDate]                                  DATE           NULL,
+    [MilitaryConnectedStudentIndicator]                      NVARCHAR (100) NULL,
+    [MilitaryConnected_StatusStartDate]                      DATE           NULL,
+    [MilitaryConnected_StatusEndDate]                        DATE           NULL,
+    [MilitaryActiveStudentIndicator]                         NVARCHAR (100) NULL,
+    [MilitaryBranch]                                         NVARCHAR (100) NULL,
+    [MilitaryVeteranStudentIndicator]                        NVARCHAR (100) NULL,
+    [ProgramType_FosterCare]                                 BIT            NULL,
+    [FosterCare_ProgramParticipationStartDate]               DATE           NULL,
+    [FosterCare_ProgramParticipationEndDate]                 DATE           NULL,
+    [ProgramType_Section504]                                 BIT            NULL,
+    [Section504_ProgramParticipationStartDate]               DATE           NULL,
+    [Section504_ProgramParticipationEndDate]                 DATE           NULL,
+    [ProgramType_Immigrant]                                  BIT            NULL,
+    [Immigrant_ProgramParticipationStartDate]                DATE           NULL,
+    [Immigrant_ProgramParticipationEndDate]                  DATE           NULL,
+    [EnglishLearnerStatus]                                   BIT            NULL,
+    [EnglishLearner_StatusStartDate]                         DATE           NULL,
+    [EnglishLearner_StatusEndDate]                           DATE           NULL,
+    [ISO_639_2_NativeLanguage]                               NVARCHAR (100) NULL,
+    [ISO_639_2_HomeLanguage]                                 NVARCHAR (100) NULL,
+    [PerkinsEnglishLearnerStatus]                            NVARCHAR (100) NULL,
+    [PerkinsEnglishLearnerStatus_StatusStartDate]            DATE           NULL,
+    [PerkinsEnglishLearnerStatus_StatusEndDate]              DATE           NULL,
+    [RecordStartDatetime]                                    DATETIME       NULL,
+    [RecordEndDateTime]                                      DATETIME       NULL,
+    [DataCollectionName]                                     NVARCHAR (100) NULL,
+    [DataCollectionId]                                       INT            NULL,
+    CONSTRAINT [PK_PersonStatus] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [Staging_PersonStatus_WithIdentifiers]
+    ON [Staging].[PersonStatus]([DataCollectionName] ASC, [LeaIdentifierSeaAccountability] ASC, [LeaIdentifierSeaAttendance] ASC, [LeaIdentifierSeaFunding] ASC, [LeaIdentifierSeaGraduation] ASC, [LeaIdentifierSeaIndividualizedEducationProgram] ASC, [SchoolIdentifierSea] ASC, [StudentIdentifierState] ASC);
+
+
+GO
+

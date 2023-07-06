@@ -1,0 +1,72 @@
+CREATE TABLE [RDS].[ReportEDFactsK12StudentDisciplines] (
+    [ReportEDFactsK12StudentDisciplineId]           INT             IDENTITY (1, 1) NOT NULL,
+    [AGE]                                           NVARCHAR (50)   NULL,
+    [SPECIALEDUCATIONEXITREASON]                    NVARCHAR (50)   NULL,
+    [CTEPARTICIPANT]                                NVARCHAR (50)   NULL,
+    [Categories]                                    NVARCHAR (300)  NULL,
+    [CategorySetCode]                               NVARCHAR (40)   NOT NULL,
+    [IDEADISABILITYTYPE]                            NVARCHAR (50)   NULL,
+    [DISCIPLINARYACTIONTAKEN]                       NVARCHAR (50)   NULL,
+    [DISCIPLINEMETHODOFCHILDRENWITHDISABILITIES]    NVARCHAR (50)   NULL,
+    [DisciplineCount]                               INT             NOT NULL,
+    [ECONOMICDISADVANTAGESTATUS]                    NVARCHAR (50)   NULL,
+    [EDUCATIONALSERVICESAFTERREMOVAL]               NVARCHAR (50)   NULL,
+    [IDEAEDUCATIONALENVIRONMENTFORSCHOOLAGE]        NVARCHAR (50)   NULL,
+    [ELIGIBILITYSTATUSFORSCHOOLFOODSERVICEPROGRAMS] NVARCHAR (50)   NULL,
+    [PROGRAMPARTICIPATIONFOSTERCARE]                NVARCHAR (50)   NULL,
+    [HOMELESSNESSSTATUS]                            NVARCHAR (50)   NULL,
+    [TITLEIIIIMMIGRANTPARTICIPATIONSTATUS]          NVARCHAR (50)   NULL,
+    [ENGLISHLEARNERSTATUS]                          NVARCHAR (50)   NULL,
+    [MIGRANTSTATUS]                                 NVARCHAR (50)   NULL,
+    [OrganizationName]                              NVARCHAR (1000) NOT NULL,
+    [OrganizationIdentifierNces]                    NVARCHAR (100)  NOT NULL,
+    [OrganizationIdentifierSea]                     NVARCHAR (100)  NOT NULL,
+    [ParentOrganizationIdentifierSea]               NVARCHAR (MAX)  NULL,
+    [RACE]                                          NVARCHAR (50)   NULL,
+    [REMOVALLENGTH]                                 NVARCHAR (50)   NULL,
+    [IDEAINTERIMREMOVALREASON]                      NVARCHAR (50)   NULL,
+    [IDEAINTERIMREMOVAL]                            NVARCHAR (50)   NULL,
+    [ReportCode]                                    NVARCHAR (40)   NOT NULL,
+    [ReportLevel]                                   NVARCHAR (40)   NOT NULL,
+    [ReportYear]                                    NVARCHAR (40)   NOT NULL,
+    [SECTION504STATUS]                              NVARCHAR (50)   NULL,
+    [SEX]                                           NVARCHAR (50)   NULL,
+    [StateANSICode]                                 NVARCHAR (100)  NOT NULL,
+    [StateAbbreviationCode]                         NVARCHAR (100)  NOT NULL,
+    [StateAbbreviationDescription]                  NVARCHAR (1000) NOT NULL,
+    [TableTypeAbbrv]                                NVARCHAR (MAX)  NULL,
+    [TotalIndicator]                                NVARCHAR (MAX)  NULL,
+    [MILITARYCONNECTEDSTUDENTINDICATOR]             NVARCHAR (50)   NULL,
+    [TITLEIIIIMMIGRANTSTATUS]                       NVARCHAR (50)   NULL,
+    [HOMELESSPRIMARYNIGHTTIMERESIDENCE]             NVARCHAR (50)   NULL,
+    [HOMELESSUNACCOMPANIEDYOUTHSTATUS]              NVARCHAR (50)   NULL,
+    [DISCIPLINEELSTATUS]                            VARCHAR (50)    NULL,
+    [FIREARMTYPE]                                   VARCHAR (50)    NULL,
+    [DISCIPLINEMETHODFORFIREARMSINCIDENTS]          VARCHAR (50)    NULL,
+    [IDEADISCIPLINEMETHODFORFIREARMSINCIDENTS]      VARCHAR (50)    NULL,
+    [GRADELEVEL]                                    VARCHAR (50)    NULL,
+    [YEAR]                                          NVARCHAR (50)   NULL,
+    [CTEAEDISPLACEDHOMEMAKERINDICATOR]              NVARCHAR (50)   NULL,
+    [CTENONTRADITIONALGENDERSTATUS]                 NVARCHAR (50)   NULL,
+    [SINGLEPARENTORSINGLEPREGNANTWOMANSTATUS]       NVARCHAR (50)   NULL,
+    [CTEGRADUATIONRATEINCLUSION]                    NVARCHAR (50)   NULL,
+    [REPRESENTATIONSTATUS]                          NVARCHAR (50)   NULL,
+    [HOMELESSSERVICEDINDICATOR]                     NVARCHAR (50)   NULL,
+    [PERKINSENGLISHLEARNERSTATUS]                   NVARCHAR (50)   NULL,
+    [IDEAINDICATOR]                                 VARCHAR (50)    NULL,
+    [CTECONCENTRATOR]                               NVARCHAR (50)   NULL,
+    [IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD]   NVARCHAR (50)   NULL,
+    [DISCIPLINEREASON]                              NVARCHAR (50)   NULL,
+    [INCIDENTBEHAVIOR]                              NVARCHAR (50)   NULL,
+    [INCIDENTINJURYTYPE]                            NVARCHAR (50)   NULL
+);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IX_FactStudentDisciplineReports_ReportCode_ReportYear_ReportLevel_CategorySetCode]
+    ON [RDS].[ReportEDFactsK12StudentDisciplines]([ReportCode] ASC, [ReportYear] ASC, [ReportLevel] ASC, [CategorySetCode] ASC);
+
+
+GO
+

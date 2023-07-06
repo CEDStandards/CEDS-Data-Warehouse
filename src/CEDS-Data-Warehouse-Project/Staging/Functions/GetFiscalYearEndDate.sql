@@ -1,0 +1,8 @@
+CREATE FUNCTION Staging.GetFiscalYearEndDate(@SchoolYear SMALLINT)
+RETURNS DATE
+AS BEGIN
+	RETURN CAST(CAST(@SchoolYear AS VARCHAR) + '-06-30' AS DATE)
+END
+
+GO
+

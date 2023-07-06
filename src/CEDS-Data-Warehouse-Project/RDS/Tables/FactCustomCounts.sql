@@ -1,0 +1,70 @@
+CREATE TABLE [RDS].[FactCustomCounts] (
+    [FactCustomCountId]               INT             IDENTITY (1, 1) NOT NULL,
+    [Category1]                       NVARCHAR (100)  NULL,
+    [CategorySetCode]                 NVARCHAR (40)   NOT NULL,
+    [Col_1]                           DECIMAL (18, 2) NULL,
+    [Col_10]                          DECIMAL (18, 2) NULL,
+    [Col_10a]                         DECIMAL (18, 2) NULL,
+    [Col_10b]                         DECIMAL (18, 2) NULL,
+    [Col_11]                          DECIMAL (18, 2) NULL,
+    [Col_11a]                         DECIMAL (18, 2) NULL,
+    [Col_11b]                         DECIMAL (18, 2) NULL,
+    [Col_11c]                         DECIMAL (18, 2) NULL,
+    [Col_11d]                         DECIMAL (18, 2) NULL,
+    [Col_11e]                         DECIMAL (18, 2) NULL,
+    [Col_12]                          DECIMAL (18, 2) NULL,
+    [Col_12a]                         DECIMAL (18, 2) NULL,
+    [Col_12b]                         DECIMAL (18, 2) NULL,
+    [Col_13]                          DECIMAL (18, 2) NULL,
+    [Col_14]                          DECIMAL (18, 2) NULL,
+    [Col_14a]                         DECIMAL (18, 2) NULL,
+    [Col_14b]                         DECIMAL (18, 2) NULL,
+    [Col_14c]                         DECIMAL (18, 2) NULL,
+    [Col_14d]                         DECIMAL (18, 2) NULL,
+    [Col_15]                          DECIMAL (18, 2) NULL,
+    [Col_16]                          DECIMAL (18, 2) NULL,
+    [Col_17]                          DECIMAL (18, 2) NULL,
+    [Col_18]                          DECIMAL (18, 2) NULL,
+    [Col_2]                           DECIMAL (18, 2) NULL,
+    [Col_3]                           DECIMAL (18, 2) NULL,
+    [Col_4]                           DECIMAL (18, 2) NULL,
+    [Col_5]                           DECIMAL (18, 2) NULL,
+    [Col_6]                           DECIMAL (18, 2) NULL,
+    [Col_7]                           DECIMAL (18, 2) NULL,
+    [Col_8]                           DECIMAL (18, 2) NULL,
+    [Col_9]                           DECIMAL (18, 2) NULL,
+    [OrganizationName]                NVARCHAR (1000) NOT NULL,
+    [OrganizationIdentifierNces]      NVARCHAR (100)  NOT NULL,
+    [OrganizationIdentifierSea]       NVARCHAR (100)  NOT NULL,
+    [ParentOrganizationIdentifierSea] NVARCHAR (100)  NULL,
+    [ReportCode]                      NVARCHAR (40)   NOT NULL,
+    [ReportLevel]                     NVARCHAR (40)   NOT NULL,
+    [ReportYear]                      NVARCHAR (40)   NOT NULL,
+    [StateANSICode]                   NVARCHAR (100)  NOT NULL,
+    [StateAbbreviationCode]           NVARCHAR (100)  NOT NULL,
+    [StateAbbreviationDescription]    NVARCHAR (500)  NOT NULL,
+    [ReportFilter]                    NVARCHAR (100)  NULL,
+    [col_18a]                         DECIMAL (18, 2) NULL,
+    [col_18b]                         DECIMAL (18, 2) NULL,
+    [col_18c]                         DECIMAL (18, 2) NULL,
+    [col_18d]                         DECIMAL (18, 2) NULL,
+    [col_18e]                         DECIMAL (18, 2) NULL,
+    [col_18f]                         DECIMAL (18, 2) NULL,
+    [col_18g]                         DECIMAL (18, 2) NULL,
+    [col_18h]                         DECIMAL (18, 2) NULL,
+    [col_18i]                         DECIMAL (18, 2) NULL,
+    [Category2]                       VARCHAR (50)    NULL,
+    [Category3]                       VARCHAR (50)    NULL,
+    [Category4]                       VARCHAR (50)    NULL,
+    CONSTRAINT [PK_FactCustomCounts] PRIMARY KEY CLUSTERED ([FactCustomCountId] ASC)
+);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IX_FactCustomCounts_ReportCode_ReportYear_ReportLevel_CategorySetCode]
+    ON [RDS].[FactCustomCounts]([ReportCode] ASC, [ReportYear] ASC, [ReportLevel] ASC, [CategorySetCode] ASC);
+
+
+GO
+
