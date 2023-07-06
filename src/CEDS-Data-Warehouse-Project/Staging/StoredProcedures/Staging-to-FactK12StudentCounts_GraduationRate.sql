@@ -108,7 +108,6 @@ BEGIN
 			, DisabilityStatusId					int null
 			, LanguageId							int null
 			, MigrantStatusId						int null
-			, K12StudentStatusId					int null
 			, TitleIStatusId						int null
 			, TitleIIIStatusId						int null
 			, AttendanceId							int null
@@ -146,7 +145,6 @@ BEGIN
 			, -1														DisabilityStatusId							
 			, -1														LanguageId							
 			, -1								 						MigrantStatusId						
-			, -1														K12StudentStatusId					
 			, -1														TitleIStatusId						
 			, -1														TitleIIIStatusId						
 			, -1														AttendanceId							
@@ -300,7 +298,6 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]
@@ -335,7 +332,6 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]

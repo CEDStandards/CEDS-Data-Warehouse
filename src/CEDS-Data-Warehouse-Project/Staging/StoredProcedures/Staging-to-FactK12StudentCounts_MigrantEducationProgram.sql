@@ -81,7 +81,6 @@ BEGIN
 			, DisabilityStatusId					int null
 			, LanguageId							int null
 			, MigrantStatusId						int null
-			, K12StudentStatusId					int null
 			, TitleIStatusId						int null
 			, TitleIIIStatusId						int null
 			, AttendanceId							int null
@@ -119,7 +118,6 @@ BEGIN
 			, -1														DisabilityStatusId							
 			, -1														LanguageId							
 			, ISNULL(rdis.DimMigrantStatusId, -1) 						MigrantStatusId						
-			, -1														K12StudentStatusId					
 			, -1														TitleIStatusId						
 			, -1														TitleIIIStatusId						
 			, -1														AttendanceId							
@@ -216,7 +214,6 @@ BEGIN
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]
@@ -251,7 +248,6 @@ BEGIN
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]

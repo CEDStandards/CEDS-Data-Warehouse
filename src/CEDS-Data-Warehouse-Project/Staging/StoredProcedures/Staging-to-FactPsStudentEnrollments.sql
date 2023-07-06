@@ -47,7 +47,7 @@ BEGIN
 		AND sssrd.TableName = 'RefSex'
 		AND spse.Sex = sssrd.InputCode
 	LEFT JOIN RDS.DimPeople rdp
-		ON spse.StudentIdentifierState = rdp.PsStudentIdentifierState
+		ON spse.StudentIdentifierState = rdp.PsStudentStudentIdentifierState
 		AND ISNULL(spse.FirstName, '') = ISNULL(rdp.FirstName, '')
 		AND ISNULL(spse.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 		AND ISNULL(spse.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
@@ -105,7 +105,7 @@ BEGIN
 	INNER JOIN RDS.DimDataCollections rddc
 		ON rfpse.DataCollectionId = rddc.DimDataCollectionId
 	LEFT JOIN Staging.PsPersonRace sppp
-		ON rdps.PsStudentIdentifierState = sppp.StudentIdentifierState
+		ON rdps.PsStudentStudentIdentifierState = sppp.StudentIdentifierState
 		AND CONVERT(VARCHAR(100), rdpi.IPEDSIdentifier) = sppp.InstitutionIpedsUnitId
 		AND rdatd.AcademicTermDesignatorMap = sppp.AcademicTermDesignator
 	--	AND rdsy.SchoolYear = sppp.SchoolYear -- Can't join on School Year because it is set to the data collection school year in the RDS
@@ -113,7 +113,7 @@ BEGIN
 		AND entryDate.DateValue = sppp.RecordStartDateTime
 		AND ISNULL(exitDate.DateValue, '1900-01-01') = ISNULL(sppp.RecordEndDateTime, '1900-01-01')
 	LEFT JOIN Staging.PsStudentEnrollment spse
-		ON rdps.PsStudentIdentifierState = spse.StudentIdentifierState
+		ON rdps.PsStudentStudentIdentifierState = spse.StudentIdentifierState
 		AND rdpi.IPEDSIdentifier = spse.InstitutionIpedsUnitId
 		AND spse.HispanicLatinoEthnicity = 1
 		AND rdatd.AcademicTermDesignatorMap = spse.AcademicTermDesignator

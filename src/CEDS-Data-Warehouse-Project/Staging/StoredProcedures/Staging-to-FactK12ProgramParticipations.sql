@@ -101,7 +101,7 @@ AS BEGIN
 		AND ISNULL(skpp.ResponsibleSchoolTypeAccountability, 0)				= ISNULL(sppse.ResponsibleSchoolTypeAccountability, 0)
 		AND ISNULL(skpp.StudentIdentifierState, '')							= ISNULL(sppse.StudentIdentifierState, '')
 	JOIN RDS.DimPeople rdp
-		ON skpp.StudentIdentifierState												= rdp.K12StudentIdentifierState
+		ON skpp.StudentIdentifierState												= rdp.K12StudentStudentIdentifierState
 		AND ske.RecordStartDateTime													BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 		AND ISNULL(ske.FirstName, '')												= ISNULL(rdp.FirstName, '')
 		AND ISNULL(ske.MiddleName, '')												= ISNULL(rdp.MiddleName, '')
@@ -146,7 +146,7 @@ AS BEGIN
 		AND ISNULL(ske.Sex, 'MISSING')												= ISNULL(rdkd.SexMap, rdkd.SexCode)
 	LEFT JOIN RDS.vwDimIdeaStatuses rdis
 		ON skpp.SchoolYear = rdis.SchoolYear
-		AND ISNULL(CAST(sps.IDEAIndicator AS SMALLINT), -1)							= rdis.IdeaIndicatorMap
+		AND ISNULL(CAST(sppse.IDEAIndicator AS SMALLINT), -1)						= rdis.IdeaIndicatorMap
 		AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood, 'MISSING')	= ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
 		AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge, 'MISSING')			= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)			
 		AND ISNULL(sppse.SpecialEducationExitReason, 'MISSING')						= ISNULL(rdis.SpecialEducationExitReasonMap, rdis.SpecialEducationExitReasonCode)						
@@ -167,13 +167,13 @@ AS BEGIN
 	( 
 		SELECT 
 			  DimPersonId
-			, rdp.K12StudentIdentifierState
-			, ROW_NUMBER() OVER (PARTITION BY rdp.K12StudentIdentifierState ORDER BY rdp.RecordStartDateTime)		AS RecNum
+			, rdp.K12StudentStudentIdentifierState
+			, ROW_NUMBER() OVER (PARTITION BY rdp.K12StudentStudentIdentifierState ORDER BY rdp.RecordStartDateTime)		AS RecNum
 		FROM #Facts fact
 		JOIN Staging.K12Enrollment ske
 			ON fact.StagingId = ske.Id
 		LEFT JOIN RDS.DimPeople rdp
-			ON ske.StudentIdentifierState																			= rdp.K12StudentIdentifierState
+			ON ske.StudentIdentifierState																			= rdp.K12StudentStudentIdentifierState
 			AND ISNULL(ske.EnrollmentEntryDate, GETDATE())															<= ISNULL(rdp.RecordEndDateTime, GETDATE())
 			AND ISNULL(ske.EnrollmentExitDate, GETDATE())															>= ISNULL(rdp.RecordStartDateTime, GETDATE())
 			AND ISNULL(ske.FirstName, 'MISSING')																	= ISNULL(rdp.FirstName, 'MISSING')
@@ -182,7 +182,7 @@ AS BEGIN
 			AND ISNULL(ske.Birthdate, '1/1/1900')																	= ISNULL(rdp.BirthDate, '1/1/1900')
 		WHERE fact.K12StudentId IS NULL
 	) p
-		ON ske.StudentIdentifierState = p.K12StudentIdentifierState
+		ON ske.StudentIdentifierState = p.K12StudentStudentIdentifierState
 		AND p.RecNum = 1
 		
 	-- Get the FIRST DimPersonId since there isn't an overlap between enrollment dates
@@ -196,20 +196,20 @@ AS BEGIN
 	( 
 		SELECT 
 			  DimPersonId
-			, rdp.K12StudentIdentifierState
-			, ROW_NUMBER() OVER (PARTITION BY rdp.K12StudentIdentifierState ORDER BY rdp.RecordStartDateTime)		AS RecNum
+			, rdp.K12StudentStudentIdentifierState
+			, ROW_NUMBER() OVER (PARTITION BY rdp.K12StudentStudentIdentifierState ORDER BY rdp.RecordStartDateTime)		AS RecNum
 		FROM #Facts fact
 		JOIN Staging.K12Enrollment ske
 			ON fact.StagingId = ske.Id
 		LEFT JOIN RDS.DimPeople rdp
-			ON ske.StudentIdentifierState																			= rdp.K12StudentIdentifierState
+			ON ske.StudentIdentifierState																			= rdp.K12StudentStudentIdentifierState
 			AND ISNULL(ske.FirstName, 'MISSING')																	= ISNULL(rdp.FirstName, 'MISSING')
 			AND ISNULL(ske.MiddleName, 'MISSING')																	= ISNULL(rdp.MiddleName, 'MISSING')
 			AND ISNULL(ske.LastOrSurname, 'MISSING')																= ISNULL(rdp.LastOrSurname, 'MISSING')
 			AND ISNULL(ske.Birthdate, '1/1/1900')																	= ISNULL(rdp.BirthDate, '1/1/1900')
 		WHERE fact.K12StudentId IS NULL
 	) p
-		ON ske.StudentIdentifierState = p.K12StudentIdentifierState
+		ON ske.StudentIdentifierState = p.K12StudentStudentIdentifierState
 		AND p.RecNum = 1
 
 
@@ -278,7 +278,7 @@ AS BEGIN
 	JOIN RDS.DimDates countEndDate
 		ON rfkse.ProgramParticipationExitDateId = countEndDate.DimDateId
 	LEFT JOIN Staging.K12Enrollment ske
-		ON rdp.K12StudentIdentifierState = ske.StudentIdentifierState
+		ON rdp.K12StudentStudentIdentifierState = ske.StudentIdentifierState
 		AND ISNULL(rdks.SchoolIdentifierSea, '') = ISNULL(ske.SchoolIdentifierSea, '')
 		AND ISNULL(rdlsAcc.LeaIdentifierSea, '') = ISNULL(ske.LeaIdentifierSeaAccountability, '')
 		AND ISNULL(rdlsAtt.LeaIdentifierSea, '') = ISNULL(ske.LeaIdentifierSeaAttendance, '')
@@ -289,7 +289,7 @@ AS BEGIN
 		AND ISNULL(rddc.DataCollectionName, '') = ISNULL(ske.DataCollectionName, '')
 		AND countStartDate.DateValue BETWEEN ske.RecordStartDateTime AND ISNULL(ske.RecordEndDateTime, GETDATE())
 	LEFT JOIN Staging.K12PersonRace skpr
-		ON rdp.K12StudentIdentifierState = skpr.StudentIdentifierState
+		ON rdp.K12StudentStudentIdentifierState = skpr.StudentIdentifierState
 		AND	ISNULL(rdks.SchoolIdentifierSea, '') = ISNULL(skpr.SchoolIdentifierSea, '')
 		AND ISNULL(ske.ResponsibleSchoolTypeAttendance, 0)		= ISNULL(skpr.ResponsibleSchoolTypeAttendance, 0)
 		AND ISNULL(ske.ResponsibleSchoolTypeAccountability, 0)	= ISNULL(skpr.ResponsibleSchoolTypeAccountability, 0)

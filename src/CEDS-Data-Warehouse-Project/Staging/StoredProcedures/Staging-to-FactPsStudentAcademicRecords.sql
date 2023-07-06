@@ -75,7 +75,7 @@ AS
 			ON ISNULL(spse.Sex, 'MISSING') = ISNULL(rdpd.SexMap, rdpd.SexCode)
 			AND spse.SchoolYear = rdpd.SchoolYear
 		LEFT JOIN RDS.DimPeople rdp
-			ON spse.StudentIdentifierState = rdp.PsStudentIdentifierState
+			ON spse.StudentIdentifierState = rdp.PsStudentStudentIdentifierState
 			AND spse.RecordStartDateTime BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 			AND ISNULL(spse.FirstName, '') = ISNULL(rdp.FirstName, '')
 			AND ISNULL(spse.MiddleName, '') = ISNULL(rdp.MiddleName, '')
@@ -108,7 +108,7 @@ AS
 			ON rfpsar.SchoolYearId = rdsy.DimSchoolYearId
 		JOIN RDS.DimPeople rdps
 			ON rfpsar.PsStudentId = rdps.DimPersonId
-			AND rdps.PsStudentIdentifierState like CAST(@firstDigit AS VARCHAR(1)) + '%'
+			AND rdps.PsStudentStudentIdentifierState like CAST(@firstDigit AS VARCHAR(1)) + '%'
 		JOIN RDS.DimPsInstitutions rdpi
 			ON rfpsar.PsInstitutionId = rdpi.DimPsInstitutionId
 		JOIN RDS.vwDimAcademicTermDesignators rdatd
@@ -119,7 +119,7 @@ AS
 		JOIN RDS.DimDates exitDate
 			ON rfpsar.EnrollmentExitDateId = exitDate.DimDateId
 		JOIN Staging.MiPsStudentAcademicRecord smpsar
-			ON rdps.PsStudentIdentifierState = smpsar.StudentIdentifierState
+			ON rdps.PsStudentStudentIdentifierState = smpsar.StudentIdentifierState
 			AND rdpi.IPEDSIdentifier = smpsar.InstitutionIpedsUnitId
 			AND rdatd.AcademicTermDesignatorMap = smpsar.AcademicTermDesignator
 			AND entryDate.DateValue = smpsar.EntryDate

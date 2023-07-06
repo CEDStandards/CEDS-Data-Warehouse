@@ -32,8 +32,8 @@ BEGIN
 			, PositionTitle					  NVARCHAR(100) NULL
 			, ElectronicEmailAddressWork	  NVARCHAR(126) NULL
 			, TelephoneNumberWork			  NVARCHAR(24) NULL
-			, K12StudentIdentifierState		  NVARCHAR(40) NULL
-			, PsStudentIdentifierState		  NVARCHAR(40) NULL
+			, K12StudentStudentIdentifierState		  NVARCHAR(40) NULL
+			, PsStudentStudentIdentifierState		  NVARCHAR(40) NULL
 			, K12StaffMemberIdentiferState	  NVARCHAR(40) NULL
 			, IsActiveK12Student			  BIT
 			, IsActivePsStudent				  BIT
@@ -41,8 +41,8 @@ BEGIN
 			, RecordStartDateTime			  DATETIME
 		)
 		
-		CREATE CLUSTERED INDEX IX_People_K12Identifiers ON #People (K12StudentIdentifierState, BirthDate, FirstName, MiddleName, LastOrSurname)
-		CREATE NONCLUSTERED INDEX IX_People_PsIdentifiers ON #People (PsStudentIdentifierState, BirthDate, FirstName, MiddleName, LastOrSurname)
+		CREATE CLUSTERED INDEX IX_People_K12Identifiers ON #People (K12StudentStudentIdentifierState, BirthDate, FirstName, MiddleName, LastOrSurname)
+		CREATE NONCLUSTERED INDEX IX_People_PsIdentifiers ON #People (PsStudentStudentIdentifierState, BirthDate, FirstName, MiddleName, LastOrSurname)
 
 		INSERT INTO #People
 		(
@@ -54,8 +54,8 @@ BEGIN
 			, PositionTitle
 			, ElectronicEmailAddressWork
 			, TelephoneNumberWork
-			, K12StudentIdentifierState
-			, PsStudentIdentifierState
+			, K12StudentStudentIdentifierState
+			, PsStudentStudentIdentifierState
 			, K12StaffMemberIdentiferState
 			, IsActiveK12Student
 			, IsActivePsStudent
@@ -71,8 +71,8 @@ BEGIN
 			, NULL AS PositionTitle
 			, NULL AS ElectronicMailAddressWork
 			, NULL AS TelephoneNumberWork
-			, ke.StudentIdentifierState AS K12StudentIdentifierState
-			, pe.StudentIdentifierState AS PsStudentIdentifierState
+			, ke.StudentIdentifierState AS K12StudentStudentIdentifierState
+			, pe.StudentIdentifierState AS PsStudentStudentIdentifierState
 			, NULL AS K12StaffMemberIdentiferState
 			, 1
 			, CASE WHEN pe.StudentIdentifierState IS NOT NULL THEN 1 ELSE 0 END
@@ -100,8 +100,8 @@ BEGIN
 			, PositionTitle
 			, ElectronicEmailAddressWork
 			, TelephoneNumberWork
-			, K12StudentIdentifierState
-			, PsStudentIdentifierState
+			, K12StudentStudentIdentifierState
+			, PsStudentStudentIdentifierState
 			, K12StaffMemberIdentiferState
 			, IsActiveK12Student
 			, IsActivePsStudent
@@ -117,8 +117,8 @@ BEGIN
 			, NULL AS PositionTitle
 			, NULL AS ElectronicMailAddressWork
 			, NULL AS TelephoneNumberWork
-			, NULL AS K12StudentIdentifierState
-			, spe.StudentIdentifierState AS PsStudentIdentifierState
+			, NULL AS K12StudentStudentIdentifierState
+			, spe.StudentIdentifierState AS PsStudentStudentIdentifierState
 			, NULL AS K12StaffMemberIdentiferState
 			, 0
 			, 1
@@ -126,13 +126,13 @@ BEGIN
 			, spe.RecordStartDateTime
 		FROM Staging.PsStudentEnrollment spe
 		LEFT JOIN #People p
-			ON  ISNULL(spe.StudentIdentifierState, '') = ISNULL(p.PsStudentIdentifierState, '')
+			ON  ISNULL(spe.StudentIdentifierState, '') = ISNULL(p.PsStudentStudentIdentifierState, '')
 			AND ISNULL(spe.BirthDate, '') = ISNULL(p.BirthDate, '')
 			AND ISNULL(spe.FirstName, '') = ISNULL(p.FirstName, '')
 			AND ISNULL(spe.MiddleName, '') = ISNULL(p.MiddleName, '')
 			AND ISNULL(spe.LastOrSurname, '') = ISNULL(p.LastOrSurname, '')
 			AND ISNULL(spe.RecordStartDateTime, '') = ISNULL(p.RecordStartDateTime, '')
-		WHERE p.PsStudentIdentifierState IS NULL
+		WHERE p.PsStudentStudentIdentifierState IS NULL
 
 		INSERT INTO #People
 		(
@@ -144,8 +144,8 @@ BEGIN
 			, PositionTitle
 			, ElectronicEmailAddressWork
 			, TelephoneNumberWork
-			, K12StudentIdentifierState
-			, PsStudentIdentifierState
+			, K12StudentStudentIdentifierState
+			, PsStudentStudentIdentifierState
 			, K12StaffMemberIdentiferState
 			, IsActiveK12Student
 			, IsActivePsStudent
@@ -162,8 +162,8 @@ BEGIN
 			, SeaContact_PositionTitle				AS PositionTitle
 			, SeaContact_ElectronicMailAddress		AS ElectronicMailAddressWork
 			, SeaContact_PhoneNumber				AS TelephoneNumberWork
-			, NULL									AS K12StudentIdentifierState
-			, NULL									AS PsStudentIdentifierState
+			, NULL									AS K12StudentStudentIdentifierState
+			, NULL									AS PsStudentStudentIdentifierState
 			, SeaContact_Identifier					AS K12StaffMemberIdentiferState
 			, 0
 			, 0
@@ -174,8 +174,8 @@ BEGIN
 
 		MERGE rds.DimPeople AS trgt
 		USING #People AS src
-				ON  ISNULL(trgt.k12StudentIdentifierState, '') = ISNULL(src.k12StudentIdentifierState, '')
-				AND ISNULL(trgt.PsStudentIdentifierState, '') = ISNULL(src.PsStudentIdentifierState, '')
+				ON  ISNULL(trgt.K12StudentStudentIdentifierState, '') = ISNULL(src.K12StudentStudentIdentifierState, '')
+				AND ISNULL(trgt.PsStudentStudentIdentifierState, '') = ISNULL(src.PsStudentStudentIdentifierState, '')
 				AND ISNULL(trgt.K12StaffMemberIdentiferState, '') = ISNULL(src.K12StaffMemberIdentiferState, '')
 				AND ISNULL(trgt.FirstName, '') = ISNULL(src.FirstName, '')
 				AND ISNULL(trgt.LastOrSurname, '') = ISNULL(src.LastOrSurname, '')
@@ -188,8 +188,8 @@ BEGIN
 			, FirstName
 			, LastOrSurname
 			, MiddleName
-			, K12StudentIdentifierState
-			, PsStudentIdentifierState
+			, K12StudentStudentIdentifierState
+			, PsStudentStudentIdentifierState
 			, K12StaffMemberIdentiferState
 			, IsActiveK12Student
 			, IsActivePsStudent	
@@ -201,8 +201,8 @@ BEGIN
 			, src.FirstName
 			, src.LastOrSurname
 			, src.MiddleName
-			, src.K12StudentIdentifierState
-			, src.PsStudentIdentifierState
+			, src.K12StudentStudentIdentifierState
+			, src.PsStudentStudentIdentifierState
 			, src.K12StaffMemberIdentiferState
 			, src.IsActiveK12Student
 			, src.IsActivePsStudent	
@@ -217,8 +217,8 @@ BEGIN
 			SELECT DISTINCT K12.DimPersonId
 			FROM RDS.DimPeople k12
 			JOIN RDS.DimPeople ps
-				ON k12.K12StudentIdentifierState = ps.K12StudentIdentifierState
-				AND K12.K12StudentIdentifierState = ps.PsStudentIdentifierState
+				ON k12.K12StudentStudentIdentifierState = ps.K12StudentStudentIdentifierState
+				AND K12.K12StudentStudentIdentifierState = ps.PsStudentStudentIdentifierState
 				AND k12.RecordStartDateTime = ps.RecordStartDateTime
 				AND ISNULL(k12.BirthDate, '1900-01-01') = ISNULL(ps.BirthDate, '1900-01-01')
 				AND K12.DimPersonId <> ps.DimPersonId
@@ -246,31 +246,31 @@ BEGIN
 		Drop Table If Exists #upd
 
 		CREATE TABLE #upd (
-			  K12StudentIdentifierState		NVARCHAR(60)
-			, PsStudentIdentifierState		NVARCHAR(60)
+			  K12StudentStudentIdentifierState		NVARCHAR(60)
+			, PsStudentStudentIdentifierState		NVARCHAR(60)
 			, RecordStartDateTime			DATETIME
 			, RecordEndDateTime				DATETIME
 		)
 
 		INSERT INTO #upd
 		SELECT  --6.7 minutes
-			  startd.[K12StudentIdentifierState]
-			, startd.[PsStudentIdentifierState]
+			  startd.[K12StudentStudentIdentifierState]
+			, startd.[PsStudentStudentIdentifierState]
 			, startd.RecordStartDateTime               		 
 			, DATEADD(D, -1, MIN(endd.RecordStartDateTime)) as RecordEndDateTime
 		FROM RDS.DimPeople startd 
 		JOIN RDS.DimPeople endd
-			ON ISNULL(startd.[K12StudentIdentifierState],startd.[PsStudentIdentifierState])
-				=ISNULL(endd.[K12StudentIdentifierState],endd.[PsStudentIdentifierState]) 
+			ON ISNULL(startd.[K12StudentStudentIdentifierState],startd.[PsStudentStudentIdentifierState])
+				=ISNULL(endd.[K12StudentStudentIdentifierState],endd.[PsStudentStudentIdentifierState]) 
 		WHERE startd.RecordStartDateTime < isnull(endd.RecordStartDateTime,getdate())
-			AND ISNULL(startd.K12StudentIdentifierState, startd.PsStudentIdentifierState) IS NOT NULL
+			AND ISNULL(startd.K12StudentStudentIdentifierState, startd.PsStudentStudentIdentifierState) IS NOT NULL
 		GROUP BY
-			  startd.[K12StudentIdentifierState]
-			, startd.[PsStudentIdentifierState]
+			  startd.[K12StudentStudentIdentifierState]
+			, startd.[PsStudentStudentIdentifierState]
 			, startd.RecordStartDateTime 
 
-		CREATE INDEX IX_upd ON #upd (K12StudentIdentifierState, PsStudentIdentifierState, RecordStartDateTime)		
-		CREATE NONCLUSTERED INDEX [IX_upd2] ON #upd ([RecordEndDateTime]) INCLUDE ([K12StudentIdentifierState],[PsStudentIdentifierState],[RecordStartDateTime])
+		CREATE INDEX IX_upd ON #upd (K12StudentStudentIdentifierState, PsStudentStudentIdentifierState, RecordStartDateTime)		
+		CREATE NONCLUSTERED INDEX [IX_upd2] ON #upd ([RecordEndDateTime]) INCLUDE ([K12StudentStudentIdentifierState],[PsStudentStudentIdentifierState],[RecordStartDateTime])
 				
 		
 		DECLARE @index SMALLINT = 0
@@ -287,12 +287,12 @@ BEGIN
 			SET RecordEndDateTime = upd.RecordEndDateTime
 			FROM rds.DimPeople rdp
 			INNER JOIN #upd	upd
-				ON  ISNULL(rdp.[K12StudentIdentifierState], -1)	= ISNULL(upd.[K12StudentIdentifierState], -1)
-				AND ISNULL(rdp.[PsStudentIdentifierState], -1)	= ISNULL(upd.[PsStudentIdentifierState], -1)
+				ON  ISNULL(rdp.[K12StudentStudentIdentifierState], -1)	= ISNULL(upd.[K12StudentStudentIdentifierState], -1)
+				AND ISNULL(rdp.[PsStudentStudentIdentifierState], -1)	= ISNULL(upd.[PsStudentStudentIdentifierState], -1)
 				AND rdp.RecordStartDateTime = upd.RecordStartDateTime
 			WHERE upd.RecordEndDateTime <> '1900-01-01 00:00:00.000'
 				AND rdp.RecordEndDateTime IS NULL
-				AND ISNULL(rdp.[K12StudentIdentifierState],rdp.[PsStudentIdentifierState]) like CAST(@index AS VARCHAR) + '%'
+				AND ISNULL(rdp.[K12StudentStudentIdentifierState],rdp.[PsStudentStudentIdentifierState]) like CAST(@index AS VARCHAR) + '%'
 	
 			print 'ENDING ' + CAST(@index AS VARCHAR) + '%'
 

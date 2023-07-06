@@ -53,17 +53,17 @@ BEGIN
 			, spi.[MostPrevalentLevelOfInstitutionCode]
 			, spi.[PredominantCalendarSystem]          
 			, smam.[AddressStreetNumberAndName]						AS MailingAddressStreetNumberAndName
-			, smam.[AddressApartmentRoomOrSuite]					AS MailingAddressApartmentRoomOrSuiteNumber
+			, smam.[AddressApartmentRoomOrSuiteNumber]				AS MailingAddressApartmentRoomOrSuiteNumber
 			, smam.[AddressCity]									AS MailingAddressCity
 			, smam.[StateAbbreviation]								AS MailingAddressStateAbbreviation
 			, smam.[AddressPostalCode]								AS MailingAddressPostalCode
-			, smam.[AddressCountyAnsiCode]							AS MailingAddressCountyAnsiCode
+			, smam.[AddressCountyAnsiCodeCode]						AS MailingAddressCountyAnsiCodeCode
 			, smap.[AddressStreetNumberAndName]						AS PhysicalAddressStreetNumberAndName
-			, smap.[AddressApartmentRoomOrSuite]					AS PhysicalAddressApartmentRoomOrSuiteNumber
+			, smap.[AddressApartmentRoomOrSuiteNumber]				AS PhysicalAddressApartmentRoomOrSuiteNumber
 			, smap.[AddressCity]									AS PhysicalAddressCity
 			, smap.[StateAbbreviation]								AS PhysicalAddressStateAbbreviation
 			, smap.[AddressPostalCode]								AS PhysicalAddressPostalCode
-			, smap.[AddressCountyAnsiCode]							AS PhysicalAddressCountyAnsiCode
+			, smap.[AddressCountyAnsiCodeCode]						AS PhysicalAddressCountyAnsiCodeCode
 			, smap.[Longitude]
 			, smap.[Latitude]
 			, MIN(spi.[RecordStartDateTime])						AS RecordStartDateTime
@@ -112,17 +112,17 @@ BEGIN
 			, spi.[MostPrevalentLevelOfInstitutionCode]
 			, spi.[PredominantCalendarSystem]          
 			, smam.[AddressStreetNumberAndName]				
-			, smam.[AddressApartmentRoomOrSuite]			
+			, smam.[AddressApartmentRoomOrSuiteNumber]			
 			, smam.[AddressCity]							
 			, smam.[StateAbbreviation]						
 			, smam.[AddressPostalCode]						
-			, smam.[AddressCountyAnsiCode]					
+			, smam.[AddressCountyAnsiCodeCode]					
 			, smap.[AddressStreetNumberAndName]				
-			, smap.[AddressApartmentRoomOrSuite]			
+			, smap.[AddressApartmentRoomOrSuiteNumber]			
 			, smap.[AddressCity]							
 			, smap.[StateAbbreviation]						
 			, smap.[AddressPostalCode]						
-			, smap.[AddressCountyAnsiCode]					
+			, smap.[AddressCountyAnsiCodeCode]					
 			, smap.[Longitude]
 			, smap.[Latitude]
 	)
@@ -141,13 +141,13 @@ BEGIN
 			, trgt.[MailingAddressCity]                    = src.[MailingAddressCity]                   
 			, trgt.[MailingAddressPostalCode]              = src.[MailingAddressPostalCode]             
 			, trgt.[MailingAddressStateAbbreviation]       = src.[MailingAddressStateAbbreviation]      
-			, trgt.[MailingAddressCountyAnsiCode]          = src.[MailingAddressCountyAnsiCode]         
+			, trgt.[MailingAddressCountyAnsiCodeCode]      = src.[MailingAddressCountyAnsiCodeCode]         
 			, trgt.[PhysicalAddressStreetNameAndNumber]    = src.[PhysicalAddressStreetNumberAndName]   
 			, trgt.[PhysicalAddressApartmentRoomOrSuite]   = src.[PhysicalAddressApartmentRoomOrSuiteNumber]  
 			, trgt.[PhysicalAddressCity]                   = src.[PhysicalAddressCity]                  
 			, trgt.[PhysicalAddressPostalCode]             = src.[PhysicalAddressPostalCode]            
 			, trgt.[PhysicalAddressStateAbbreviation]      = src.[PhysicalAddressStateAbbreviation]     
-			, trgt.[PhysicalAddressCountyAnsiCode]         = src.[PhysicalAddressCountyAnsiCode]        
+			, trgt.[PhysicalAddressCountyAnsiCodeCode]         = src.[PhysicalAddressCountyAnsiCodeCode]        
 			, trgt.[WebsiteAddress]                        = src.[WebsiteAddress]                       
 			, trgt.[Latitude]                              = src.[Latitude]                             
 			, trgt.[Longitude]                             = src.[Longitude]                            
@@ -165,13 +165,13 @@ BEGIN
 		, [MailingAddressCity]                   
 		, [MailingAddressPostalCode]             
 		, [MailingAddressStateAbbreviation]      
-		, [MailingAddressCountyAnsiCode]         
+		, [MailingAddressCountyAnsiCodeCode]         
 		, [PhysicalAddressStreetNameAndNumber]   
 		, [PhysicalAddressApartmentRoomOrSuite]  
 		, [PhysicalAddressCity]                  
 		, [PhysicalAddressPostalCode]            
 		, [PhysicalAddressStateAbbreviation]     
-		, [PhysicalAddressCountyAnsiCode]        
+		, [PhysicalAddressCountyAnsiCodeCode]        
 		, [WebsiteAddress]                       
 		, [Latitude]                             
 		, [Longitude]                            
@@ -188,13 +188,13 @@ BEGIN
 		, src.[MailingAddressCity]                   
 		, src.[MailingAddressPostalCode]             
 		, src.[MailingAddressStateAbbreviation]      
-		, src.[MailingAddressCountyAnsiCode]         
+		, src.[MailingAddressCountyAnsiCodeCode]         
 		, src.[PhysicalAddressStreetNumberAndName]   
 		, src.[PhysicalAddressApartmentRoomOrSuiteNumber]  
 		, src.[PhysicalAddressCity]                  
 		, src.[PhysicalAddressPostalCode]            
 		, src.[PhysicalAddressStateAbbreviation]     
-		, src.[PhysicalAddressCountyAnsiCode]        
+		, src.[PhysicalAddressCountyAnsiCodeCode]        
 		, src.[WebsiteAddress]                       
 		, src.[Latitude]                             
 		, src.[Longitude]                            

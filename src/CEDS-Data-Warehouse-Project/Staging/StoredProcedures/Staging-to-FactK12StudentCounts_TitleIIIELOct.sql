@@ -103,7 +103,6 @@ BEGIN
 			, DisabilityStatusId					int null
 			, LanguageId							int null
 			, MigrantStatusId						int null
-			, K12StudentStatusId					int null
 			, TitleIStatusId						int null
 			, TitleIIIStatusId						int null
 			, AttendanceId							int null
@@ -141,7 +140,6 @@ BEGIN
 			, -1										DisabilityStatusId							
 			, ISNULL(rdvl.DimLanguageId, -1)			LanguageId							
 			, -1										MigrantStatusId						
-			, -1										K12StudentStatusId					
 			, -1										TitleIStatusId						
 			, -1										TitleIIIStatusId						
 			, -1										AttendanceId							
@@ -214,7 +212,7 @@ BEGIN
 			AND rdp.IsActiveK12Student = 1
 			AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
 			AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
-			AND ISNULL(ske.LastName, 'MISSING') = ISNULL(rdp.LastName, 'MISSING')
+			AND ISNULL(ske.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
 			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
 			AND rdp.RecordStartDateTime  <= @ReportingDate
 			AND ISNULL(rdp.RecordEndDateTime, @SYEndDate) >= @ReportingDate
@@ -239,7 +237,6 @@ BEGIN
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]
@@ -274,7 +271,6 @@ BEGIN
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]

@@ -21,6 +21,7 @@ CREATE TABLE [RDS].[FactK12StudentCounts] (
     [ImmigrantStatusId]                     INT    CONSTRAINT [DF_FactK12StudentCounts_ImmigrantStatusId] DEFAULT ((-1)) NOT NULL,
     [K12DemographicId]                      INT    CONSTRAINT [DF_FactK12StudentCounts_K12Demographic] DEFAULT ((-1)) NOT NULL,
     [K12EnrollmentStatusId]                 INT    CONSTRAINT [DF_FactK12StudentCounts_EnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
+    [K12AcademicAwardStatusId]              INT    CONSTRAINT [DF_FactK12StudentCounts_K12AcademicAwardStatusId] DEFAULT ((-1)) NOT NULL,
     [LanguageId]                            INT    CONSTRAINT [DF_FactK12StudentCounts_LanguageId] DEFAULT ((-1)) NOT NULL,
     [MigrantStatusId]                       INT    CONSTRAINT [DF_FactK12StudentCounts_MigrantStatusId] DEFAULT ((-1)) NOT NULL,
     [NOrDStatusId]                          INT    CONSTRAINT [DF_FactK12StudentCounts_NOrDStatusId] DEFAULT ((-1)) NOT NULL,
@@ -49,6 +50,7 @@ CREATE TABLE [RDS].[FactK12StudentCounts] (
     CONSTRAINT [FK_FactK12StudentCounts_ImmigrantStatusId] FOREIGN KEY ([ImmigrantStatusId]) REFERENCES [RDS].[DimImmigrantStatuses] ([DimImmigrantStatusId]),
     CONSTRAINT [FK_FactK12StudentCounts_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactK12StudentCounts_K12EnrollmentStatusId] FOREIGN KEY ([K12EnrollmentStatusId]) REFERENCES [RDS].[DimK12EnrollmentStatuses] ([DimK12EnrollmentStatusId]),
+    CONSTRAINT [FK_FactK12StudentCounts_K12AcademicAwardStatusId] FOREIGN KEY ([K12AcademicAwardStatusId]) REFERENCES [RDS].[DimK12AcademicAwardStatuses] ([DimK12AcademicAwardStatusId]),
     CONSTRAINT [FK_FactK12StudentCounts_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentCounts_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentCounts_LanguageId] FOREIGN KEY ([LanguageId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]),
@@ -84,6 +86,11 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_K12EnrollmentStatusId]
     ON [RDS].[FactK12StudentCounts]([K12EnrollmentStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_K12AcademicAwardStatusId]
+    ON [RDS].[FactK12StudentCounts]([K12AcademicAwardStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO

@@ -108,7 +108,6 @@ BEGIN
 			, DisabilityStatusId					int null
 			, LanguageId							int null
 			, MigrantStatusId						int null
-			, K12StudentStatusId					int null
 			, TitleIStatusId						int null
 			, TitleIIIStatusId						int null
 			, AttendanceId							int null
@@ -146,7 +145,6 @@ BEGIN
 			, -1														DisabilityStatusId							
 			, -1														LanguageId							
 			, ISNULL(rdis.DimMigrantStatusId, -1) 						MigrantStatusId						
-			, -1														K12StudentStatusId					
 			, ISNULL(rdtis.DimTitleIStatusId, -1)						TitleIStatusId						
 			, -1														TitleIIIStatusId						
 			, -1														AttendanceId							
@@ -284,7 +282,6 @@ Title I Indicator from Staging.ProgramParticipationTitleI is supposd to be mappe
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]
@@ -319,7 +316,6 @@ Title I Indicator from Staging.ProgramParticipationTitleI is supposd to be mappe
 			, [DisabilityStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]

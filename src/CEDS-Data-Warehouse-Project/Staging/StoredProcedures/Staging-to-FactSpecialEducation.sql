@@ -187,7 +187,7 @@ BEGIN
 		--AND ISNULL(ske.LeaIdentifierSeaIndividualizedEducationProgram, '')	= ISNULL(sppse.LeaIdentifierSeaIndividualizedEducationProgram, '')
 		AND ISNULL(ske.SchoolIdentifierSea, '')								= ISNULL(sppse.SchoolIdentifierSea, '')
 	INNER JOIN RDS.DimPeople rdp
-		ON ske.StudentIdentifierState										= rdp.K12StudentIdentifierState
+		ON ske.StudentIdentifierState										= rdp.K12StudentStudentIdentifierState
 		AND ske.RecordStartDateTime											BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 		AND ISNULL(ske.FirstName, 'MISSING')								= ISNULL(rdp.FirstName, 'MISSING')
 		AND ISNULL(ske.MiddleName, 'MISSING')								= ISNULL(rdp.MiddleName, 'MISSING')
@@ -726,7 +726,7 @@ SELECT		  ISNULL([SchoolYearId]											, -1)
 	JOIN RDS.DimDates countDate
 		ON rfse.CountDateId = countDate.DimDateId
 	LEFT JOIN Staging.K12PersonRace skpr
-		ON rdp.K12StudentIdentifierState			= skpr.StudentIdentifierState
+		ON rdp.K12StudentStudentIdentifierState			= skpr.StudentIdentifierState
 		AND ISNULL(rdks.SchoolIdentifierSea, '')	= ISNULL(skpr.SchoolIdentifierSea, '')
 		AND ISNULL(rdlsAcc.LeaIdentifierSea, '')	= ISNULL(skpr.LeaIdentifierSeaAccountability, '')
 		AND ISNULL(rdlsAtt.LeaIdentifierSea, '')	= ISNULL(skpr.LeaIdentifierSeaAttendance, '')
@@ -736,7 +736,7 @@ SELECT		  ISNULL([SchoolYearId]											, -1)
 		AND rddc.DataCollectionName					= skpr.DataCollectionName
 		AND countDate.DateValue						BETWEEN skpr.RecordStartDateTime AND ISNULL(skpr.RecordEndDateTime, GETDATE())
 	LEFT JOIN Staging.K12Enrollment ske
-		ON rdp.K12StudentIdentifierState									= ske.StudentIdentifierState
+		ON rdp.K12StudentStudentIdentifierState									= ske.StudentIdentifierState
 		AND ISNULL(rdks.SchoolIdentifierSea, '')							= ISNULL(ske.SchoolIdentifierSea, '')
 		AND ISNULL(skpr.LeaIdentifierSeaAccountability, '')					= ISNULL(ske.LeaIdentifierSeaAccountability, '')
 		AND ISNULL(skpr.LeaIdentifierSeaAttendance, '')						= ISNULL(ske.LeaIdentifierSeaAttendance, '')
@@ -783,7 +783,7 @@ SELECT		  ISNULL([SchoolYearId]											, -1)
 	JOIN RDS.DimDates countDate
 		ON rfse.countDateId = countDate.DimDateId
 	LEFT JOIN Staging.IdeaDisabilityType sidt
-		ON rdp.K12StudentIdentifierState = sidt.StudentIdentifierState
+		ON rdp.K12StudentStudentIdentifierState = sidt.StudentIdentifierState
 		AND ISNULL(rdks.SchoolIdentifierSea, '')	= ISNULL(sidt.SchoolIdentifierSea, '')
 		AND ISNULL(rdlsAcc.LeaIdentifierSea, '')	= ISNULL(sidt.LeaIdentifierSeaAccountability, '')
 		AND ISNULL(rdlsAtt.LeaIdentifierSea, '')	= ISNULL(sidt.LeaIdentifierSeaAttendance, '')
@@ -794,7 +794,7 @@ SELECT		  ISNULL([SchoolYearId]											, -1)
 		AND countDate.DateValue	BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
 	LEFT JOIN RDS.vwDimIdeaDisabilityTypes rdidt
 		ON sidt.SchoolYear = rdidt.SchoolYear
-		AND sidt.IdeaDisabilityType = rdidt.IdeaDisabilityTypeMap
+		AND sidt.IdeaDisabilityTypeCode = rdidt.IdeaDisabilityTypeMap
 
 END
 

@@ -89,7 +89,7 @@ BEGIN
 	JOIN RDS.DimDataCollections rddc
 		ON ske.DataCollectionName = rddc.DataCollectionName 
 	LEFT JOIN RDS.DimPeople rdp
-		ON ske.StudentIdentifierState = rdp.K12StudentIdentifierState
+		ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
 		AND ske.RecordStartDateTime BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 		AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
 		AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
@@ -135,7 +135,7 @@ BEGIN
 	JOIN RDS.DimDataCollections rddc
 		ON rfksc.DataCollectionId = rddc.DimDataCollectionId
 	LEFT JOIN Staging.K12PersonRace skpr
-		ON rdps.K12StudentIdentifierState = skpr.StudentIdentifierState
+		ON rdps.K12StudentStudentIdentifierState = skpr.StudentIdentifierState
 		AND CONVERT(VARCHAR(100), rdks.SchoolIdentifierSea) = skpr.SchoolIdentifierSea
 		AND CONVERT(VARCHAR(100), rdlsAcc.LeaIdentifierSea) = skpr.LeaIdentifierSeaAccountability
 		AND CONVERT(VARCHAR(100), rdlsAtt.LeaIdentifierSea) = skpr.LeaIdentifierSeaAttendance
@@ -143,7 +143,7 @@ BEGIN
 		AND CONVERT(VARCHAR(100), rdlsGrad.LeaIdentifierSea) = skpr.LeaIdentifierSeaGraduation
 		AND rddc.DataCollectionName = skpr.DataCollectionName
 	LEFT JOIN Staging.K12Enrollment skse
-		ON rdps.K12StudentIdentifierState = skse.StudentIdentifierState
+		ON rdps.K12StudentStudentIdentifierState = skse.StudentIdentifierState
 		AND rdks.SchoolIdentifierSea = skse.SchoolIdentifierSea
 		AND ISNULL(skpr.LeaIdentifierSeaAccountability, '') = ISNULL(skse.LeaIdentifierSeaAccountability, '')
 		AND ISNULL(skpr.LeaIdentifierSeaAttendance, '') = ISNULL(skse.LeaIdentifierSeaAttendance, '')

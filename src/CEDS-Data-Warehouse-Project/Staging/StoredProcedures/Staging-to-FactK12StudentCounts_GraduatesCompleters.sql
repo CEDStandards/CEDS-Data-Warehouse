@@ -16,7 +16,7 @@ BEGIN
 	BEGIN TRY
 
 	-- Drop temp tables.  This allows for running the procedure as a script while debugging
-		IF OBJECT_ID(N'tempdb..#vwStudentStatuses') IS NOT NULL DROP TABLE #vwStudentStatuses
+		IF OBJECT_ID(N'tempdb..#vwK12AcademicAwardStatuses') IS NOT NULL DROP TABLE #vwK12AcademicAwardStatuses
 		IF OBJECT_ID(N'tempdb..#vwK12Demographics') IS NOT NULL DROP TABLE #vwK12Demographics
 		IF OBJECT_ID(N'tempdb..#vwRaces') IS NOT NULL DROP TABLE #vwRaces
 		IF OBJECT_ID(N'tempdb..#vwIdeaStatuses') IS NOT NULL DROP TABLE #vwIdeaStatuses
@@ -38,11 +38,11 @@ BEGIN
 
 	--Create the temp views (and any relevant indexes) needed for this domain
 		SELECT *
-		INTO #vwK12StudentStatuses
+		INTO #vwK12AcademicAwardStatuses
 		FROM RDS.vwDimK12StudentStatuses
 		WHERE SchoolYear = @SchoolYear
-		CREATE CLUSTERED INDEX ix_tempvwK12StudentStatuses 
-			ON #vwK12StudentStatuses (HighSchoolDiplomaTypeCode, NSLPDirectCertificationIndicatorCode);
+		CREATE CLUSTERED INDEX ix_tempvwK12AcademicAwardStatuses 
+			ON #vwK12AcademicAwardStatuses (HighSchoolDiplomaTypeCode, NSLPDirectCertificationIndicatorCode);
 
 		SELECT *
 		INTO #vwK12Demographics
@@ -95,7 +95,7 @@ BEGIN
 			, IdeaStatusId								int null
 			, LanguageId								int null
 			, MigrantStatusId							int null
-			, K12StudentStatusId						int null
+			, K12AcademicAwardStatusId					int null
 			, TitleIStatusId							int null
 			, TitleIIIStatusId							int null
 			, AttendanceId								int null
@@ -131,7 +131,7 @@ BEGIN
 			, ISNULL(rdis.DimIdeaStatusId, -1)							IdeaStatusId							
 			, -1														LanguageId							
 			, ISNULL(rdhs.DimMigrantStatusId, -1)						MigrantStatusId						
-			, ISNULL(rkss.DimK12StudentStatusId, -1)					K12StudentStatusId					
+			, ISNULL(rdkaas.DimK12AcademicAwardStatusId, -1)				K12AcademicAwardStatusId					
 			, -1														TitleIStatusId						
 			, -1														TitleIIIStatusId						
 			, -1														AttendanceId							
@@ -211,12 +211,8 @@ BEGIN
 		JOIN RDS.vwDimK12Demographics rdkd
 			ON rsy.SchoolYear = rdkd.SchoolYear
 			AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
-		JOIN #vwK12StudentStatuses rkss
-			ON ISNULL(ske.HighSchoolDiplomaType, 'MISSING') = ISNULL(rkss.DiplomaCredentialTypeMap, rkss.DiplomaCredentialTypeCode)
-			AND rkss.MobilityStatus12moCode = 'MISSING'
-			AND rkss.MobilityStatusSYCode = 'MISSING'	
-			AND rkss.ReferralStatusCode = 'MISSING'	
-			AND rkss.MobilityStatus36moCode = 'MISSING'
+		JOIN #vwDimK12AcademicAwardStatuses rdkaas
+			ON ISNULL(ske.HighSchoolDiplomaType, 'MISSING') = ISNULL(rdkaas.HighSchoolDiplomaTypeCode, rdkaas.HighSchoolDiplomaTypeMap)
 	--english learner (RDS)
 		LEFT JOIN RDS.vwDimEnglishLearnerStatuses rdels
 			ON rsy.SchoolYear = rdels.SchoolYear
@@ -279,7 +275,7 @@ BEGIN
 			, [IdeaStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
+			, [K12AcademicAwardStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]
@@ -313,7 +309,7 @@ BEGIN
 			, [IdeaStatusId]
 			, [LanguageId]
 			, [MigrantStatusId]
-			, [K12StudentStatusId]
+			, [K12AcademicAwardStatusId]
 			, [TitleIStatusId]
 			, [TitleIIIStatusId]
 			, [AttendanceId]

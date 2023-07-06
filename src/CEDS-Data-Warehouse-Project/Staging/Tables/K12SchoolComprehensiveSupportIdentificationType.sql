@@ -1,8 +1,8 @@
 CREATE TABLE [Staging].[K12SchoolComprehensiveSupportIdentificationType] (
     [Id]                                      INT           IDENTITY (1, 1) NOT NULL,
     [SchoolYear]                              VARCHAR (4)   NULL,
-    [LEA_Identifier_State]                    VARCHAR (100) NULL,
-    [School_Identifier_State]                 VARCHAR (100) NULL,
+    [LEAIdentifierSea]                        VARCHAR (100) NULL,
+    [SchoolIdentifierSea]                     VARCHAR (100) NULL,
     [ComprehensiveSupport]                    VARCHAR (20)  NULL,
     [ComprehensiveSupportReasonApplicability] VARCHAR (20)  NULL,
     [RecordStartDateTime]                     DATETIME      NULL,
@@ -21,7 +21,7 @@ EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0typ
 
 GO
 
-EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'School_Identifier_State';
+EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'SchoolIdentifierSea';
 
 
 GO
@@ -56,7 +56,7 @@ EXECUTE sp_addextendedproperty @name = N'Lookup', @value = N'RefComprehensiveSup
 
 GO
 
-EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'LEA_Identifier_State';
+EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'LEAIdentifierSea';
 
 
 GO

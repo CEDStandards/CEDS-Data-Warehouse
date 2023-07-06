@@ -47,11 +47,6 @@ BEGIN
 		FROM RDS.vwDimSubgroups
 		WHERE SchoolYear = @SchoolYear
 
-		SELECT *
-		INTO #vwDimComprehensiveSupportReasonApplicabilities
-		FROM RDS.vwDimComprehensiveSupportReasonApplicabilities
-		WHERE SchoolYear = @SchoolYear
-
 		SELECT @FactTypeId = DimFactTypeId 
 		FROM rds.DimFactTypes
 		WHERE FactTypeCode = 'compsupport'
@@ -67,26 +62,25 @@ BEGIN
 			,LeaId
 			,K12StaffId
 			,K12SchoolId
-			,SchoolStatusId
+			,K12SchoolStatusId
 			,SeaId
 			,TitleIStatusId
 			,OrganizationCount
 			,TitleIParentalInvolveRes
 			,TitleIPartAAllocations
-			,CharterSchoolApproverAgencyId
-			,CharterSchoolManagerOrganizationId
-			,CharterSchoolSecondaryApproverAgencyId
-			,CharterSchoolUpdatedManagerOrganizationId
+			,AuthorizingBodyCharterSchoolAuthorizerId
+			,CharterSchoolManagementOrganizationId
+			,SecondaryAuthorizingBodyCharterSchoolAuthorizerId
+			,CharterSchoolUpdatedManagementOrganizationId
 			,SchoolImprovementFunds
-			,OrganizationStatusId
-			,SchoolStateStatusId
-			,FederalFundAllocationType
+			,K12OrganizationStatusId
+			,K12SchoolStateStatusId
+			,FederalProgramsFundingAllocationType
 			,FederalProgramCode
-			,FederalFundAllocated
+			,FederalProgramsFundingAllocation
 			,ComprehensiveAndTargetedSupportId
 			,CharterSchoolStatusId
-			,DimSubgroupId
-			,DimComprehensiveSupportReasonApplicabilityId
+			,SubgroupId
 		)
 		SELECT 
 			[SchoolYearId] = rsy.DimSchoolYearId
@@ -94,33 +88,32 @@ BEGIN
 			,[LeaId] = -1
 			,[K12StaffId] = -1
 			,[K12SchoolId] = ISNULL(rdksch.DimK12SchoolId,-1)
-			,[SchoolStatusId] = -1
+			,[K12SchoolStatusId] = -1
 			,[SeaId] = -1
 			,[TitleIStatusId] = -1
 			,[OrganizationCount] = 1
 			,[TitleIParentalInvolveRes] = -1
 			,[TitleIPartAAllocations] = -1
-			,[CharterSchoolApproverAgencyId] = -1
-			,[CharterSchoolManagerOrganizationId] = -1
-			,[CharterSchoolSecondaryApproverAgencyId] = -1
-			,[CharterSchoolUpdatedManagerOrganizationId] = -1
+			,[AuthorizingBodyCharterSchoolAuthorizerId] = -1
+			,[CharterSchoolManagementOrganizationId] = -1
+			,[SecondaryAuthorizingBodyCharterSchoolAuthorizerId] = -1
+			,[CharterSchoolUpdatedManagementOrganizationId] = -1
 			,[SchoolImprovementFunds] = -1
-			,[OrganizationStatusId] = -1
-			,[SchoolStateStatusId] = -1
-			,[FederalFundAllocationType] = -1
+			,[K12OrganizationStatusId] = -1
+			,[K12SchoolStateStatusId] = -1
+			,[FederalProgramsFundingAllocationType] = -1
 			,[FederalProgramCode] = -1
-			,[FederalFundAllocated] = -1
+			,[FederalProgramsFundingAllocation] = -1
 			,[ComprehensiveAndTargetedSupportId] = ISNULL(vcts.DimComprehensiveAndTargetedSupportId,-1)
 			,[CharterSchoolStatusId] = -1
-			,[DimSubgroupId] = -1
-			,[DimComprehensiveSupportReasonApplicabilityId] = ISNULL(vra.DimComprehensiveSupportReasonApplicabilityId,-1)
+			,[SubgroupId] = -1
 		FROM Staging.K12Organization sko
 		INNER JOIN RDS.DimSchoolYears rsy
 			ON sko.SchoolYear = rsy.SchoolYear
 		LEFT JOIN RDS.DimK12Schools rdksch
-			ON sko.School_Identifier_State = rdksch.SchoolIdentifierState
+			ON sko.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
 		INNER JOIN Staging.K12SchoolComprehensiveSupportIdentificationType scsupp
-			ON sko.School_Identifier_State = scsupp.School_Identifier_State
+			ON sko.SchoolIdentifierSea = scsupp.SchoolIdentifierSea
 		INNER JOIN #vwDimComprehensiveAndTargetedSupports vcts
 			ON sko.SchoolYear = vcts.SchoolYear
 				AND scsupp.ComprehensiveSupport = vcts.ComprehensiveSupportMap
@@ -129,9 +122,6 @@ BEGIN
 				AND vcts.ComprehensiveSupportImprovementCode = 'MISSING'
 				AND vcts.TargetedSupportCode = 'MISSING'
 				AND vcts.TargetedSupportImprovementCode = 'MISSING'
-		INNER JOIN #vwDimComprehensiveSupportReasonApplicabilities vra
-			ON sko.SchoolYear = vra.SchoolYear
-			AND scsupp.ComprehensiveSupportReasonApplicability = vra.ComprehensiveSupportReasonApplicabilityMap
 
 		/*Targeted support subgroups*/
 		INSERT INTO RDS.FactOrganizationCounts (
@@ -140,26 +130,25 @@ BEGIN
 			,LeaId
 			,K12StaffId
 			,K12SchoolId
-			,SchoolStatusId
+			,K12SchoolStatusId
 			,SeaId
 			,TitleIStatusId
 			,OrganizationCount
 			,TitleIParentalInvolveRes
 			,TitleIPartAAllocations
-			,CharterSchoolApproverAgencyId
-			,CharterSchoolManagerOrganizationId
-			,CharterSchoolSecondaryApproverAgencyId
-			,CharterSchoolUpdatedManagerOrganizationId
+			,AuthorizingBodyCharterSchoolAuthorizerId
+			,CharterSchoolManagementOrganizationId
+			,SecondaryAuthorizingBodyCharterSchoolAuthorizerId
+			,CharterSchoolUpdatedManagementOrganizationId
 			,SchoolImprovementFunds
-			,OrganizationStatusId
-			,SchoolStateStatusId
-			,FederalFundAllocationType
+			,K12OrganizationStatusId
+			,K12SchoolStateStatusId
+			,FederalProgramsFundingAllocationType
 			,FederalProgramCode
-			,FederalFundAllocated
+			,FederalProgramsFundingAllocation
 			,ComprehensiveAndTargetedSupportId
 			,CharterSchoolStatusId
-			,DimSubgroupId
-			,DimComprehensiveSupportReasonApplicabilityId
+			,SubgroupId
 		)
 		SELECT 
 			[SchoolYearId] = rsy.DimSchoolYearId
@@ -167,39 +156,35 @@ BEGIN
 			,[LeaId] = -1
 			,[K12StaffId] = -1
 			,[K12SchoolId] = ISNULL(rdksch.DimK12SchoolId,-1)
-			,[SchoolStatusId] = -1
+			,[K12SchoolStatusId] = -1
 			,[SeaId] = -1
 			,[TitleIStatusId] = -1
 			,[OrganizationCount] = 1
 			,[TitleIParentalInvolveRes] = -1
 			,[TitleIPartAAllocations] = -1
-			,[CharterSchoolApproverAgencyId] = -1
-			,[CharterSchoolManagerOrganizationId] = -1
-			,[CharterSchoolSecondaryApproverAgencyId] = -1
-			,[CharterSchoolUpdatedManagerOrganizationId] = -1
+			,[AuthorizingBodyCharterSchoolAuthorizerId] = -1
+			,[CharterSchoolManagementOrganizationId] = -1
+			,[SecondaryAuthorizingBodyCharterSchoolAuthorizerId] = -1
+			,[CharterSchoolUpdatedManagementOrganizationId] = -1
 			,[SchoolImprovementFunds] = -1
-			,[OrganizationStatusId] = -1
-			,[SchoolStateStatusId] = -1
-			,[FederalFundAllocationType] = -1
+			,[K12OrganizationStatusId] = -1
+			,[K12SchoolStateStatusId] = -1
+			,[FederalProgramsFundingAllocationType] = -1
 			,[FederalProgramCode] = -1
-			,[FederalFundAllocated] = -1
+			,[FederalProgramsFundingAllocation] = -1
 			,[ComprehensiveAndTargetedSupportId] = -1
 			,[CharterSchoolStatusId] = -1
-			,[DimSubgroupId] = ISNULL(vs.DimSubgroupId,-1)
-			,[DimComprehensiveSupportReasonApplicabilityId] = ISNULL(vra.DimComprehensiveSupportReasonApplicabilityId,-1)
+			,[SubgroupId] = ISNULL(vs.DimSubgroupId,-1)
 		FROM Staging.K12Organization sko
 		INNER JOIN RDS.DimSchoolYears rsy
 			ON sko.SchoolYear = rsy.SchoolYear
 		LEFT JOIN RDS.DimK12Schools rdksch
-			ON sko.School_Identifier_State = rdksch.SchoolIdentifierState
+			ON sko.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
 		INNER JOIN Staging.K12SchoolTargetedSupportIdentificationType sktsup
-			ON sko.School_Identifier_State = sktsup.School_Identifier_State
+			ON sko.SchoolIdentifierSea = sktsup.SchoolIdentifierSea
 		INNER JOIN #vwDimSubgroups vs
 			ON sko.SchoolYear = vs.SchoolYear
 			AND sktsup.Subgroup = vs.SubgroupMap
-		INNER JOIN #vwDimComprehensiveSupportReasonApplicabilities vra
-			ON sko.SchoolYear = vra.SchoolYear
-			AND sktsup.ComprehensiveSupportReasonApplicability = vra.ComprehensiveSupportReasonApplicabilityMap
 			
 	END TRY
 	BEGIN CATCH
