@@ -406,7 +406,7 @@ AS
 	LEFT JOIN RDS.DimLanguages rdlNative
 		ON ISNULL(sps.ISO_639_2_NativeLanguage, 'MISSING')														= rdlNative.Iso6392LanguageCodeCode
 	LEFT JOIN RDS.DimLanguages rdlHome
-		ON ISNULL(sps.ISO_639_2_HomeLanguage, 'MISSING')														= rdlNative.Iso6392LanguageCodeCode
+		ON ISNULL(sps.ISO_639_2_HomeLanguage, 'MISSING')														= rdlHome.Iso6392LanguageCodeCode
 	LEFT JOIN RDS.DimDates rddedStart
 		ON sps.EconomicDisadvantage_StatusStartDate																= rddedStart.DateValue
 	LEFT JOIN RDS.DimDates rddedEnd
@@ -466,7 +466,7 @@ AS
 		AND sidt.IsPrimaryDisability																			= 1
 	LEFT JOIN #vwDimIdeaDisabilityTypes rdidtSecondary
 		ON ske.SchoolYear																						= rdidtSecondary.SchoolYear
-		AND ISNULL(sidt.IdeaDisabilityTypeCode, 'MISSING')														= ISNULL(rdidtPrimary.IdeaDisabilityTypeMap, rdidtPrimary.IdeaDisabilityTypeCode)
+		AND ISNULL(sidt.IdeaDisabilityTypeCode, 'MISSING')														= ISNULL(rdidtSecondary.IdeaDisabilityTypeMap, rdidtSecondary.IdeaDisabilityTypeCode)
 		AND sidt.IsSecondaryDisability																			= 1
 	LEFT JOIN RDS.DimDates rddiStart
 		ON sppse.ProgramParticipationBeginDate																	= rddiStart.DateValue
