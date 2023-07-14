@@ -18,3 +18,93 @@ CREATE TABLE [RDS].[DimComprehensiveAndTargetedSupports] (
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for additional targeted support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Additional Targeted Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001925' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22902' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for additional targeted support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Additional Targeted Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001925' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22902' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusEDFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for additional targeted support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusEDFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Additional Targeted Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusEDFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001925' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusEDFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22902' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'AdditionalTargetedSupportAndImprovementStatusEDFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for comprehensive support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Comprehensive Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001923' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22904' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for comprehensive support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Comprehensive Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001923' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22904' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for comprehensive support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Comprehensive Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001923' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22904' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'ComprehensiveSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for targeted support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Targeted Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001924' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22910' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for targeted support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Targeted Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001924' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22910' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation given to a school by the state for targeted support and improvement as part of its statewide system of annual meaningful differentiation.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Targeted Support and Improvement Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001924' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22910' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimComprehensiveAndTargetedSupports', @level2type=N'COLUMN',@level2name=N'TargetedSupportAndImprovementStatusEdFactsCode';
+GO

@@ -47,3 +47,203 @@ CREATE TABLE [RDS].[FactAeStudentEnrollments] (
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AePostsecondaryTransitionDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person previously enrolled in adult education entered and began to receive instructional services or training at a postsecondary institution.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AePostsecondaryTransitionDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Adult Education Postsecondary Transition Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AePostsecondaryTransitionDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001081' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AePostsecondaryTransitionDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21769' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AePostsecondaryTransitionDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AeProgramTypeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The system outlining instructional or non-instructional activities and procedures designed to accomplish a predetermined educational objective or set of objectives or to provide support services to a person and/or the community.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AeProgramTypeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AeProgramTypeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000225' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AeProgramTypeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21225' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AeProgramTypeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'ApplicationDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which an individual  application is received by the organization.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'ApplicationDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Application Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'ApplicationDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000323' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'ApplicationDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21323' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'ApplicationDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The month, day, and year on which a person enters and begins to receive instructional services in a school, institution, program, or class-section during a given session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Enrollment Entry Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000097' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21097' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentExitDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which the student officially withdrew or graduated, i.e. the date on which the student''s enrollment ended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentExitDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Enrollment Exit Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentExitDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000107' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentExitDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21107' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'EnrollmentExitDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompleted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of credit hours and/or contact hours successfully completed by a person during a term.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompleted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Instructional Activity Hours Completed' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompleted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000362' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompleted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21361' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompleted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'K12DiplomaOrCredentialAwardDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The month and year on which the diploma/credential is awarded to a student in recognition of his/her completion of the curricular requirements.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'K12DiplomaOrCredentialAwardDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Diploma or Credential Award Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'K12DiplomaOrCredentialAwardDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000081' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'K12DiplomaOrCredentialAwardDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21081' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'K12DiplomaOrCredentialAwardDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ1';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ1';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ1';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ1';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ1';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ10';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ10';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ10';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ10';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ10';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ11';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ11';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ11';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ11';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ11';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ12';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ12';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ12';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ12';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ12';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ13';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ13';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ13';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ13';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ13';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ2';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ2';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ2';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ2';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ2';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ3';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ3';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ3';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ3';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ3';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ4';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ4';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ4';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ4';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ4';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ5';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ5';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ5';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ5';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ5';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ6';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ6';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ6';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ6';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ6';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ7';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ7';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ7';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ7';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ7';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ8';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ8';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ8';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ8';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ8';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ9';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The quarterly amount paid to individuals found employed during the reference period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ9';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Quarterly Earnings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ9';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000989' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ9';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21991' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'QuarterlyEarningsAfterExitQ9';
+GO

@@ -52,228 +52,93 @@ CREATE NONCLUSTERED INDEX [IX_DimAssessments_AssessmentIdentifier]
 
 GO
 
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Academic Subject', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectEdFactsCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Short Name', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The description of the academic content or subject area (e.g., arts, mathematics, reading, or a foreign language) being evaluated.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19934', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentFamilyShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Academic Subject' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000029', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000021' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectEdFactsCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21021' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The description of the academic content or subject area (e.g., arts, mathematics, reading, or a foreign language) being evaluated.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The description of the academic content or subject area (e.g., arts, mathematics, reading, or a foreign language) being evaluated.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19152', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentIdentifierState';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Academic Subject' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Title', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTitle';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000021' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19021', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21021' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000029', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectEdFactsCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Family Short Name', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentFamilyShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The description of the academic content or subject area (e.g., arts, mathematics, reading, or a foreign language) being evaluated.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectEdFactsCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Academic Subject', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Academic Subject' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectEdFactsCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTitle';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000021' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectEdFactsCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The category of an assessment based on format and content.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21021' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentAcademicSubjectEdFactsCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentFamilyShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Identifier', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentIdentifierState';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The abbreviated title of the Assessment Family. An Assessment Family is a set of assessments with a common name, jurisdiction, or focus.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentFamilyShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000021', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectEdFactsCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Family Short Name' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentFamilyShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000931', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000933' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentFamilyShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19029', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21934' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentFamilyShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentFamilyShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentIdentifierState';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Academic Subject', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to an assessment by a school, school system, a state, or other agency or entity.  This may be the publisher identifier.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentIdentifierState';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentIdentifierState';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentIdentifierState';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The category of an assessment based on format and content.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001067' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentIdentifierState';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000028', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTitle';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21152' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentIdentifierState';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19029', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An abbreviated title for an assessment.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000021', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Short Name' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000933', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentFamilyShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000931' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'An abbreviated title for an assessment.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21932' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentShortName';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The description of the academic content or subject area (e.g., arts, mathematics, reading, or a foreign language) being evaluated.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectEdFactsCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTitle';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Type', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The title or name of the assessment.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTitle';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19021', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectEdFactsCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Title' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTitle';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'001067', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentIdentifierState';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000028' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTitle';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19932', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21028' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTitle';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The title or name of the assessment.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTitle';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The category of an assessment based on format and content.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'000021', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Type', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000029' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The abbreviated title of the Assessment Family. An Assessment Family is a set of assessments with a common name, jurisdiction, or focus.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentFamilyShortName';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21029' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeCode';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The description of the academic content or subject area (e.g., arts, mathematics, reading, or a foreign language) being evaluated.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19028', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTitle';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The category of an assessment based on format and content.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentTypeCode';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'A unique number or alphanumeric code assigned to an assessment by a school, school system, a state, or other agency or entity.  This may be the publisher identifier.', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentIdentifierState';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000029' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeDescription';
 GO
-
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19021', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimAssessments', @level2type = N'COLUMN', @level2name = N'AssessmentAcademicSubjectDescription';
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21029' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessments', @level2type=N'COLUMN',@level2name=N'AssessmentTypeDescription';
 GO
-
