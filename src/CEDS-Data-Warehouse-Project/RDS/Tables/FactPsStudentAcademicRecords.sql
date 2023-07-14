@@ -101,3 +101,73 @@ CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_PsStudentId]
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'AcademicTermDesignatorId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The academic term for which the data apply.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'AcademicTermDesignatorId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Academic Term Designator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'AcademicTermDesignatorId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000727' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'AcademicTermDesignatorId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21703' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'AcademicTermDesignatorId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CourseTotal';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The total number of courses listed on a transcript. Used as a check digit for integrity purposes.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CourseTotal';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Course Total' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CourseTotal';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001316' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CourseTotal';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22282' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CourseTotal';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'DualCreditDualEnrollmentCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of credits awarded a student by the postsecondary institution based on successful completion of dual credit/dual enrollment courses. ' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'DualCreditDualEnrollmentCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Dual Credit Dual Enrollment Credits Awarded' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'DualCreditDualEnrollmentCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000085' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'DualCreditDualEnrollmentCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21085' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'DualCreditDualEnrollmentCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverage';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The value of the total quality points divided by the Credit Hours for Grade Point Average. ' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverage';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Grade Point Average' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverage';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000127' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverage';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21127' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverage';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverageCumulative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The value of the total quality points divided by the Credit Hours for Grade Point Average. ' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverageCumulative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Grade Point Average' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverageCumulative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000127' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverageCumulative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21127' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'GradePointAverageCumulative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'PsEnrollmentStatusId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication as to whether a student''s name was, is, or will be officially registered on the roll of a school or schools.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'PsEnrollmentStatusId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Enrollment Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'PsEnrollmentStatusId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000094' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'PsEnrollmentStatusId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21094' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'PsEnrollmentStatusId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year for a reported school session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Year' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000243' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21243' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO

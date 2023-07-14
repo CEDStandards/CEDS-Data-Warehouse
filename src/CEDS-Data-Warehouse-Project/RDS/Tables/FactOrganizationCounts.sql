@@ -40,3 +40,43 @@ CREATE TABLE [RDS].[FactOrganizationCounts] (
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The unique five-digit number assigned to each federal program as listed in the Assistance Listings. See https://sam.gov/content/assistance-listings' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Federal Program Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000547' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21538' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocation';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The amount of federal dollars distributed to local education agencies (LEAs), retained by the state education agency (SEA) for program administration or other approved state-level activities (including unallocated, transferred to another state agency, or distributed to entities other than LEAs).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocation';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Federal Programs Funding Allocation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocation';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000549' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocation';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21540' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocation';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocationType';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of federal program funding allocation or distribution made.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocationType';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Federal Programs Funding Allocation Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocationType';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000548' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocationType';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21539' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'FederalProgramsFundingAllocationType';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year for a reported school session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Year' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000243' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21243' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactOrganizationCounts', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
