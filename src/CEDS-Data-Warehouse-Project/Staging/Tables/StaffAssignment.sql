@@ -8,6 +8,7 @@ CREATE TABLE [Staging].[StaffAssignment] (
     [MiddleName]                             VARCHAR (100)  NULL,
     [BirthDate]                              DATETIME2 (7)  NULL,
     [Sex]                                    VARCHAR (30)   NULL,
+    [Race]                                   VARCHAR (100)   NULL,
     [PositionTitle]                          NVARCHAR (50)  NULL,
     [FullTimeEquivalency]                    DECIMAL (5, 4) NULL,
     [SpecialEducationStaffCategory]          VARCHAR (100)  NULL,
