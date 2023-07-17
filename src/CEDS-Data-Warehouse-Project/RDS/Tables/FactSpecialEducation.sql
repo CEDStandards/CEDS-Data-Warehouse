@@ -10,6 +10,7 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     [LeaFundingId]                                       INT            CONSTRAINT [DF_FactSpecialEducation_LeaFundingId] DEFAULT ((-1)) NOT NULL,
     [LeaGraduationId]                                    INT            CONSTRAINT [DF_FactSpecialEducation_LeaGraduationId] DEFAULT ((-1)) NOT NULL,
     [LeaIndividualizedEducationProgramId]                INT            CONSTRAINT [DF_FactSpecialEducation_LeaIndividualizedEducationProgramId] DEFAULT ((-1)) NOT NULL,
+    [LeaIEPServiceProviderId]                            INT            CONSTRAINT [DF_FactSpecialEducation_LeaIEPServiceProviderId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                                        INT            CONSTRAINT [DF_FactSpecialEducation_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [ResponsibleSchoolTypeId]                            INT            CONSTRAINT [DF_FactSpecialEducation_ResponsibleSchoolTypeId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                                       BIGINT         CONSTRAINT [DF_FactSpecialEducation_K12StudentId] DEFAULT ((-1)) NOT NULL,
@@ -83,6 +84,7 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     CONSTRAINT [FK_FactSpecialEducation_LeaFundingId] FOREIGN KEY ([LeaFundingId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
     CONSTRAINT [FK_FactSpecialEducation_LeaGraduationId] FOREIGN KEY ([LeaGraduationId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
     CONSTRAINT [FK_FactSpecialEducation_LeaIndividualizedEducationProgramId] FOREIGN KEY ([LeaIndividualizedEducationProgramId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
+    CONSTRAINT [FK_FactSpecialEducation_LeaIEPServiceProviderId] FOREIGN KEY ([LeaIEPServiceProviderId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
     CONSTRAINT [FK_FactSpecialEducation_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_MilitaryStatusId] FOREIGN KEY ([MilitaryStatusId]) REFERENCES [RDS].[DimMilitaryStatuses] ([DimMilitaryStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_NOrDStatusId] FOREIGN KEY ([NOrDStatusId]) REFERENCES [RDS].[DimNOrDStatuses] ([DimNOrDStatusId]),
@@ -324,6 +326,12 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactSpecialEducation_LeaIndividualizedEducationProgramId]
     ON [RDS].[FactSpecialEducation]([LeaIndividualizedEducationProgramId] ASC);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactSpecialEducation_LeaIEPServiceProviderId]
+    ON [RDS].[FactSpecialEducation]([LeaIEPServiceProviderId] ASC);
 
 
 GO
