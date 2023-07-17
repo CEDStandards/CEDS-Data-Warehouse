@@ -305,7 +305,7 @@ BEGIN
 		-- Get Charter School Authorizer data
 		-- Primary
 		SELECT CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
-			, CharterSchoolAuthorizingOrganizationTypeCode
+			, CharterSchoolAuthorizerTypeCode
 			, sko.SchoolIdentifierSea
 			, min(dimCharterSchoolAuthorizerId) 'MinId'
 			, max(dimCharterSchoolAuthorizerId) 'MaxId'
@@ -317,13 +317,13 @@ BEGIN
 		WHERE rcsa.RecordStartDateTime >= '7/1/' + convert(varchar, @SchoolYear-1) 
 		AND isnull(rcsa.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) <= '6/30/' + convert(varchar, @SchoolYear)
 		GROUP BY rcsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
-			, CharterSchoolAuthorizingOrganizationTypeCode
+			, CharterSchoolAuthorizerTypeCode
 			, sko.SchoolIdentifierSea
 		ORDER BY sko.SchoolIdentifierSea
 
 		-- Secondary
 		SELECT CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
-			, CharterSchoolAuthorizingOrganizationTypeCode
+			, CharterSchoolAuthorizerTypeCode
 			, sko.SchoolIdentifierSea
 			, min(dimCharterSchoolAuthorizerId) 'MinId'
 			, max(dimCharterSchoolAuthorizerId) 'MaxId'
@@ -335,7 +335,7 @@ BEGIN
 		WHERE rcsa.RecordStartDateTime >= '7/1/' + convert(varchar, @SchoolYear-1) 
 		AND isnull(rcsa.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) <= '6/30/' + convert(varchar, @SchoolYear)
 		GROUP BY rcsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
-			, CharterSchoolAuthorizingOrganizationTypeCode
+			, CharterSchoolAuthorizerTypeCode
 			, sko.SchoolIdentifierSea
 		ORDER BY sko.SchoolIdentifierSea
 

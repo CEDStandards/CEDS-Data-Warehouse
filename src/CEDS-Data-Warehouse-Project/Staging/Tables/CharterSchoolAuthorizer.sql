@@ -1,7 +1,7 @@
 CREATE TABLE [Staging].[CharterSchoolAuthorizer] (
     [Id]                                                            INT            IDENTITY (1, 1) NOT NULL,
     [CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea] NVARCHAR (50)  NULL,
-    [CharterSchoolAuthorizingOrganizationType]                      VARCHAR (100)  NULL,
+    [CharterSchoolAuthorizerType]                                   VARCHAR (100)  NULL,
     [CharterSchoolAuthorizingOrganizationOrganizationName]          VARCHAR (100)  NULL,
     [SchoolYear]                                                    SMALLINT       NULL,
     [RecordStartDateTime]                                           DATETIME       NULL,
