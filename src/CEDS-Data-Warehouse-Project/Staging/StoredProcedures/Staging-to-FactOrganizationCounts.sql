@@ -93,7 +93,7 @@ BEGIN
 		FROM RDS.DimPeople rdp
 		JOIN Staging.StateDetail ssd
 			ON rdp.K12StaffStaffMemberIdentifierState = ssd.SeaContact_Identifier
-			AND rdp.IsActiveK12StaffMember = 1
+			AND rdp.IsActiveK12Staff = 1
 			AND (ssd.RecordStartDateTime >= Staging.GetFiscalYearStartDate(@SchoolYear)
 				AND ISNULL(ssd.RecordEndDateTime, Staging.GetFiscalYearEndDate(@SchoolYear)) <= Staging.GetFiscalYearEndDate(@SchoolYear))
 
