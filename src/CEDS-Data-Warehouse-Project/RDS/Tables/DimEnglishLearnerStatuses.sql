@@ -42,3 +42,33 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000180' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21180' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'EnglishLearnerStatusEdFactsCode';
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A secondary student, an adult, or an out-of-school youth, who has limited ability in speaking, reading, writing, or understanding English language, and (a) whose native language is a language other than English, or (b) who lives in a family or community environment in which a language other than English is the dominant language.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Perkins English Learner Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000581' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21574' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A secondary student, an adult, or an out-of-school youth, who has limited ability in speaking, reading, writing, or understanding English language, and (a) whose native language is a language other than English, or (b) who lives in a family or community environment in which a language other than English is the dominant language.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Perkins English Learner Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000581' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21574' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A secondary student, an adult, or an out-of-school youth, who has limited ability in speaking, reading, writing, or understanding English language, and (a) whose native language is a language other than English, or (b) who lives in a family or community environment in which a language other than English is the dominant language.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Perkins English Learner Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000581' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21574' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimEnglishLearnerStatuses', @level2type=N'COLUMN',@level2name=N'PerkinsEnglishLearnerStatusEdfactsCode';
+GO

@@ -384,3 +384,23 @@ CREATE NONCLUSTERED INDEX [IXFK_FactSpecialEducation_SecondaryDisabilityTypeId]
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'FullTimeEquivalency';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The time a person is enrolled, employed, involved, or participates in the organization, divided by the time the organization defines as full-time for that role.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'FullTimeEquivalency';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Full Time Equivalency' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'FullTimeEquivalency';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001921' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'FullTimeEquivalency';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22906' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'FullTimeEquivalency';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'SpecialEducationFTE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Calculated ratio of time the student is in a special education setting. Values range from 0.00 to 1.00. If the student is in a special education setting 25% of the time, the value is .25; if 100% of the time, the value is 1.00.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'SpecialEducationFTE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Special Education Full Time Equivalency' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'SpecialEducationFTE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001242' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'SpecialEducationFTE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22208' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'SpecialEducationFTE';
+GO

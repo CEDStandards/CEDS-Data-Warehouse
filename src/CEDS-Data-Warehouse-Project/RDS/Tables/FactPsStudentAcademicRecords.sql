@@ -171,3 +171,23 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000243' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21243' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'APCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of credits awarded a student by the postsecondary institution based on successful completion of advanced placement courses and/or advanced placement tests. ' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'APCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Advanced Placement Credits Awarded' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'APCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000018' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'APCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21018' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'APCreditsAwarded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompletedCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of credit hours and/or contact hours successfully completed by a person during a term.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompletedCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Instructional Activity Hours Completed' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompletedCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000362' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompletedCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21361' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompletedCredit';
+GO

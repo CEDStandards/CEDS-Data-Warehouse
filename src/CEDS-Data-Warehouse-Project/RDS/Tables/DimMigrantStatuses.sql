@@ -215,3 +215,33 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000189' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21189' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MigrantStatusEdFactsCode';
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that migrant children are receiving instructional or support services under the continuation of services authority ESEA Title III Section 1304(e)(2)-(3).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Migrant Education Program Continuation of Services Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000563' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21555' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that migrant children are receiving instructional or support services under the continuation of services authority ESEA Title III Section 1304(e)(2)-(3).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Migrant Education Program Continuation of Services Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000563' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21555' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that migrant children are receiving instructional or support services under the continuation of services authority ESEA Title III Section 1304(e)(2)-(3).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Migrant Education Program Continuation of Services Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000563' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusEdFactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21555' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMigrantStatuses', @level2type=N'COLUMN',@level2name=N'MEPContinuationOfServicesStatusEdFactsCode';
+GO

@@ -577,3 +577,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000704' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21300' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'WebSiteAddress';
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolOperationalStatusEffectiveDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The current status of the school operations, exclusive of scheduled breaks, holidays, or other temporary interruptions.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolOperationalStatusEffectiveDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Operational Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolOperationalStatusEffectiveDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000533' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolOperationalStatusEffectiveDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21524' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolOperationalStatusEffectiveDate';
+GO

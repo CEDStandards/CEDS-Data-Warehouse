@@ -261,3 +261,23 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_LeaId]
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IncidentIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A locally assigned unique identifier (within the school or school district) to identify each specific incident or occurrence. The same identifier should be used to document the entire incident even if it included multiple offenses and multiple offenders.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IncidentIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Incident Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IncidentIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000501' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IncidentIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21492' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IncidentIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DurationOfDisciplinaryAction';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The length, in school days, of the disciplinary action.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DurationOfDisciplinaryAction';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Duration of Disciplinary Action' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DurationOfDisciplinaryAction';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000511' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DurationOfDisciplinaryAction';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21502' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DurationOfDisciplinaryAction';
+GO

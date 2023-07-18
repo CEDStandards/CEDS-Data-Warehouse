@@ -241,3 +241,33 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000704' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21300' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'WebSiteAddress';
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of agency that authorized the establishment or continuation of a charter school.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Charter School Authorizer Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001292' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22258' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of agency that authorized the establishment or continuation of a charter school.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Charter School Authorizer Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001292' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22258' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of agency that authorized the establishment or continuation of a charter school.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Charter School Authorizer Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001292' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeEdfactsCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22258' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolAuthorizers', @level2type=N'COLUMN',@level2name=N'CharterSchoolAuthorizerTypeEdfactsCode';
+GO

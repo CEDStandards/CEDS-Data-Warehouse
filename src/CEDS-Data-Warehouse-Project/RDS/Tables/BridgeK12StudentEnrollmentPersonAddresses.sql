@@ -24,3 +24,23 @@ CREATE NONCLUSTERED INDEX [IXFK_BridgeK12StudentEnrollmentPersonAddresses_FactK1
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of address listed for a learner or a parent, guardian, family member or related person.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Type for Learner or Family' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000010' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21358' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of address listed for a learner or a parent, guardian, family member or related person.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Type for Learner or Family' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000010' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21358' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'BridgeK12StudentEnrollmentPersonAddresses', @level2type=N'COLUMN',@level2name=N'AddressTypeForLearnerOrFamilyDescription';
+GO

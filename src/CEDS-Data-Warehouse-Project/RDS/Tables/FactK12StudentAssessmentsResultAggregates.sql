@@ -159,3 +159,23 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessmentsResultAggregates_IeuId]
 
 GO
 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMaximumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The maximum value for the measurement.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMaximumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Subtest Maximum Value' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMaximumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000396' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMaximumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21388' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMaximumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMinimumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The minimum value possible for the measurement.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMinimumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assessment Subtest Minimum Value' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMinimumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000395' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMinimumValueScaleScore';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21387' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentAssessmentsResultAggregates', @level2type=N'COLUMN',@level2name=N'AssessmentSubtestMinimumValueScaleScore';
+GO

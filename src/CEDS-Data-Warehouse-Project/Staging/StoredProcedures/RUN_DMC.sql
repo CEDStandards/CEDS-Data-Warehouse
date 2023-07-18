@@ -676,7 +676,7 @@ BEGIN
 		;WITH Assessments AS (
 		SELECT DISTINCT 
 			  AssessmentTitle
-			, AssessmentTypeAdministeredToChildrenWithDisabilities
+			, AssessmentTypeAdministered
 			, AssessmentAcademicSubject
 			, AssessmentPerformanceLevelLabel
 		FROM Staging.Assessment sa
@@ -684,14 +684,14 @@ BEGIN
 		INSERT INTO App.ToggleAssessments
 		SELECT
 			  sa.AssessmentTitle
-			, CASE sa.AssessmentTypeAdministeredToChildrenWithDisabilities
+			, CASE sa.AssessmentTypeAdministered
 				WHEN 'ALTASSALTACH'		THEN 'Alternate assessments based on alternate achievement standards'
 				WHEN 'ALTASSGRADELVL'	THEN 'Alternate assessments based on grade-level achievement standards'
 				WHEN 'ALTASSMODACH'		THEN 'Alternate assessments based on modified achievement standards'
 				WHEN 'REGASSWACC'		THEN 'Regular assessments based on grade-level achievement standards with accommodations'
 				WHEN 'REGASSWOACC'		THEN 'Regular assessments based on grade-level achievement standards without accommodations'
 			  END
-			, sa.AssessmentTypeAdministeredToChildrenWithDisabilities
+			, sa.AssessmentTypeAdministered
 			, 'End of Grade'
 			, sar.GradeLevelWhenAssessed
 			, COUNT(DISTINCT sar.AssessmentPerformanceLevelLabel)
@@ -710,7 +710,7 @@ BEGIN
 			AND sa.AssessmentPerformanceLevelLabel = sar.AssessmentPerformanceLevelLabel
 		LEFT JOIN App.ToggleAssessments ata
 			ON sa.AssessmentTitle = ata.AssessmentName
-			AND sa.AssessmentTypeAdministeredToChildrenWithDisabilities = ata.AssessmentTypeCode
+			AND sa.AssessmentTypeAdministered = ata.AssessmentTypeCode
 			AND sar.GradeLevelWhenAssessed = ata.Grade
 			AND CASE sa.AssessmentAcademicSubject
 				WHEN '01166' THEN 'MATH'
@@ -724,7 +724,7 @@ BEGIN
 			AND GradeLevelWhenAssessed <> 'abe'
 		GROUP BY 
 			  sa.AssessmentTitle
-			, sa.AssessmentTypeAdministeredToChildrenWithDisabilities
+			, sa.AssessmentTypeAdministered
 			, sar.GradeLevelWhenAssessed
 			, sa.AssessmentAcademicSubject
 

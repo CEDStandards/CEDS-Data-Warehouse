@@ -380,3 +380,133 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000290' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21290' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTPARTICIPATIONSTATUS';
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTECONCENTRATOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of a student who has met the state-defined threshold of career and technical education concentrators, as defined in the State''s approved Perkins IV State Plan.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTECONCENTRATOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career and Technical Education Concentrator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTECONCENTRATOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000037' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTECONCENTRATOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21037' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTECONCENTRATOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEPARTICIPANT';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication a student has met the state-defined threshold of Career and Technical Education participation as defined in the State''s approved Perkins IV State Plan.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEPARTICIPANT';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career and Technical Education Participant' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEPARTICIPANT';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000592' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEPARTICIPANT';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21585' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEPARTICIPANT';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEREASON';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The reason why the student was disciplined.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEREASON';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Discipline Reason' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEREASON';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000545' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEREASON';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21536' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEREASON';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'ELIGIBILITYSTATUSFORSCHOOLFOODSERVICEPROGRAMS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of a student''s level of eligibility to participate in the National School Lunch Program for breakfast, lunch, snack, supper, and milk programs.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'ELIGIBILITYSTATUSFORSCHOOLFOODSERVICEPROGRAMS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Eligibility Status for School Food Service Programs' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'ELIGIBILITYSTATUSFORSCHOOLFOODSERVICEPROGRAMS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000092' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'ELIGIBILITYSTATUSFORSCHOOLFOODSERVICEPROGRAMS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21092' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'ELIGIBILITYSTATUSFORSCHOOLFOODSERVICEPROGRAMS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A category of disability that describes a person’s impairment defined by the Individuals with Disabilities Education Act.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Disability Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001733' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22714' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The program in which children ages 3 through 5 attend and in which these children receive special education and related services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Educational Environment for Early Childhood' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000559' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21550' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFORSCHOOLAGE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The setting in which children ages 6 through 21, receive special education and related services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFORSCHOOLAGE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Educational Environment for School Age' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFORSCHOOLAGE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000535' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFORSCHOOLAGE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21526' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IDEAEDUCATIONALENVIRONMENTFORSCHOOLAGE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTBEHAVIOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Categories of behavior coded for use in describing an incident.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTBEHAVIOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Incident Behavior' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTBEHAVIOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000509' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTBEHAVIOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21500' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTBEHAVIOR';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTINJURYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the occurrence of physical injury to participants involved in the incident and, if so, the level of injury sustained.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTINJURYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Incident Injury Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTINJURYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000510' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTINJURYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21501' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'INCIDENTINJURYTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'PERKINSENGLISHLEARNERSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A secondary student, an adult, or an out-of-school youth, who has limited ability in speaking, reading, writing, or understanding English language, and (a) whose native language is a language other than English, or (b) who lives in a family or community environment in which a language other than English is the dominant language.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'PERKINSENGLISHLEARNERSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Perkins English Learner Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'PERKINSENGLISHLEARNERSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000581' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'PERKINSENGLISHLEARNERSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21574' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'PERKINSENGLISHLEARNERSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'RACE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The origins of a person.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'RACE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Race' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'RACE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001943' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'RACE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22955' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'RACE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'SINGLEPARENTORSINGLEPREGNANTWOMANSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A student who, at some time during the school year, is either a pregnant female student who is unmarried; or a male or female student who is unmarried or legally separated from a spouse and has a minor child or children.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'SINGLEPARENTORSINGLEPREGNANTWOMANSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Single Parent or Single Pregnant Woman Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'SINGLEPARENTORSINGLEPREGNANTWOMANSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000580' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'SINGLEPARENTORSINGLEPREGNANTWOMANSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21573' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'SINGLEPARENTORSINGLEPREGNANTWOMANSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the child is an immigrant according to the Title III of ESEA definition, meaning children who are aged 3 through 21; were not born in any state; and have not been attending one or more schools in any one or more States for more than 3 full academic years.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title III Immigrant Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000291' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21291' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
+GO
