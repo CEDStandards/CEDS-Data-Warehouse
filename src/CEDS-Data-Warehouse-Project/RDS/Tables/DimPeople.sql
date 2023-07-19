@@ -4,14 +4,14 @@ CREATE TABLE [RDS].[DimPeople] (
     [MiddleName]                                       NVARCHAR (50)  NULL,
     [LastOrSurname]                                    NVARCHAR (50)  NULL,
     [BirthDate]                                        DATE           NULL,
-    [EarlyLearningChildChildIdentifierState]           NVARCHAR (40)  NULL,
+    [ELChildChildIdentifierState]                      NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierState]                 NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierDistrict]              NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierNationalMigrant]       NVARCHAR (40)  NULL,
     [PsStudentStudentIdentifierState]                  NVARCHAR (40)  NULL,
     [AeStudentStudentIdentifierState]                  NVARCHAR (40)  NULL,
     [WorkforceProgramParticipantPersonIdentifierState] NVARCHAR (40)  NULL,
-    [EarlyLearningStaffStaffMemberIdentifierState]     NVARCHAR (40)  NULL,
+    [ELStaffStaffMemberIdentifierState]                NVARCHAR (40)  NULL,
     [K12StaffStaffMemberIdentifierState]               NVARCHAR (40)  NULL,
     [K12StaffStaffMemberIdentifierDistrict]            NVARCHAR (40)  NULL,
     [PsStaffStaffMemberIdentifierState]                NVARCHAR (40)  NULL,
@@ -316,25 +316,25 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001946' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22959' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'IsActivePsStaff';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningChildChildIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELChildChildIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a child by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningChildChildIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a child by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELChildChildIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningChildChildIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELChildChildIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001080' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningChildChildIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001080' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELChildChildIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21781' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningChildChildIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21781' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELChildChildIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningStaffStaffMemberIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELStaffStaffMemberIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a staff member by a school, school system, a state, registry, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningStaffStaffMemberIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a staff member by a school, school system, a state, registry, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELStaffStaffMemberIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Staff Member Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningStaffStaffMemberIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Staff Member Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELStaffStaffMemberIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001070' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningStaffStaffMemberIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001070' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELStaffStaffMemberIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21156' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'EarlyLearningStaffStaffMemberIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21156' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ELStaffStaffMemberIdentifierState';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'ElectronicMailAddressHome';
 GO
