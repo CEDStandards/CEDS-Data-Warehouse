@@ -47,15 +47,6 @@ BEGIN
 		ORDER BY RecordStartDateTime)
 					
 
-	--Set the Child Count date
-		SELECT @ChildCountDate = tr.ResponseValue
-		FROM App.ToggleQuestions tq
-		JOIN App.ToggleResponses tr ON tq.ToggleQuestionId = tr.ToggleQuestionId
-		WHERE tq.EmapsQuestionAbbrv = 'CHDCTDTE'
-
-		SELECT @ChildCountDate = CAST(CAST(@SchoolYear - 1 AS CHAR(4)) + '-' + CAST(MONTH(@ChildCountDate) AS VARCHAR(2)) + '-' + CAST(DAY(@ChildCountDate) AS VARCHAR(2)) AS DATE)
-	
-	
 	-- Creating temp tables to be used in the select statement joins 
 		SELECT *
 		INTO #vwGradeLevels
@@ -175,7 +166,7 @@ BEGIN
 		INSERT INTO #Facts
 		SELECT 
 			sd.Id                                         			StagingId
-			, rda.DimAgeId                                     	 	AgeId
+			, -1                                     	 			AgeId
 			, rsy.DimSchoolYearId                                   SchoolYearId
 			, ISNULL(rdkd.DimK12DemographicId, -1)                  K12DemographicId
 			, ISNULL(rddisc.DimDisciplineStatusId, -1)              DisciplineId
@@ -245,10 +236,6 @@ BEGIN
 
 			JOIN RDS.DimSchoolYears rsy
 				ON ske.SchoolYear = rsy.SchoolYear
-
-		--age
-			JOIN RDS.DimAges rda
-				ON RDS.Get_Age(ske.Birthdate, @ChildCountDate) = rda.AgeValue
 
 		--dimpeople (rds)
 			JOIN RDS.DimPeople rdp
