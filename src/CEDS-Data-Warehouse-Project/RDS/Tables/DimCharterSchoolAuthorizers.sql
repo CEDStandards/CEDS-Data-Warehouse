@@ -4,7 +4,7 @@ CREATE TABLE [RDS].[DimCharterSchoolAuthorizers] (
     [CharterSchoolAuthorizingOrganizationOrganizationName]          NVARCHAR (MAX) NULL,
     [CharterSchoolAuthorizerTypeCode]                  NVARCHAR (50)  NULL,
     [CharterSchoolAuthorizerTypeDescription]           NVARCHAR (100) NULL,
-    [CharterSchoolAuthorizerTypeEdfactsCode]           NVARCHAR (50)  NULL,
+    [CharterSchoolAuthorizerTypeEdFactsCode]           NVARCHAR (50)  NULL,
     [StateAbbreviationCode]                                         NVARCHAR (MAX) NULL,
     [StateANSICode]                                                 NVARCHAR (MAX) NULL,
     [StateAbbreviationDescription]                                  NVARCHAR (MAX) NULL,

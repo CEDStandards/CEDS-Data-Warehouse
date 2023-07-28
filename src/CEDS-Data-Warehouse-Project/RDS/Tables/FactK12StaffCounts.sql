@@ -23,8 +23,8 @@ CREATE TABLE [RDS].[FactK12StaffCounts] (
     CONSTRAINT [FK_FactK12StaffCounts_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StaffCounts_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
     CONSTRAINT [FK_FactK12StaffCounts_TitleIIIStatuses] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
-    CONSTRAINT [FK_FactK12StaffCounts_CredentialIssuanceDateId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
-    CONSTRAINT [FK_FactK12StaffCounts_CredentialExpirationDateId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimDates] ([DimDateId])
+    CONSTRAINT [FK_FactK12StaffCounts_CredentialIssuanceDateId] FOREIGN KEY ([CredentialExpirationDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
+    CONSTRAINT [FK_FactK12StaffCounts_CredentialExpirationDateId] FOREIGN KEY ([CredentialIssuanceDateId]) REFERENCES [RDS].[DimDates] ([DimDateId])
 );
 
 

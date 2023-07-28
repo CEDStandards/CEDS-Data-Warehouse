@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimPeople] (
     [DimPersonId]                                      BIGINT         IDENTITY (1, 1) NOT NULL,
-    [FirstName]                                        NVARCHAR (50)  NULL,
-    [MiddleName]                                       NVARCHAR (50)  NULL,
-    [LastOrSurname]                                    NVARCHAR (50)  NULL,
+    [FirstName]                                        NVARCHAR (75)  NULL,
+    [MiddleName]                                       NVARCHAR (75)  NULL,
+    [LastOrSurname]                                    NVARCHAR (75)  NULL,
     [BirthDate]                                        DATE           NULL,
     [ELChildChildIdentifierState]                      NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierState]                 NVARCHAR (40)  NULL,

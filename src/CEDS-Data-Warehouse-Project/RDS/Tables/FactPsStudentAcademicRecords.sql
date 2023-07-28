@@ -1,6 +1,7 @@
 CREATE TABLE [RDS].[FactPsStudentAcademicRecords] (
     [FactPsStudentAcademicRecordId]             BIGINT          IDENTITY (1, 1) NOT NULL,
     [SchoolYearId]                              INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_SchoolYearId] DEFAULT ((-1)) NOT NULL,
+    [CountDateId]                               INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_CountDateId] DEFAULT ((-1)) NOT NULL,
     [SeaId]                                     INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_SeaId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionID]                           INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
     [PsStudentId]                               BIGINT          CONSTRAINT [DF_FactPsStudentAcademicRecords_PsStudentId] DEFAULT ((-1)) NOT NULL,
@@ -29,6 +30,7 @@ CREATE TABLE [RDS].[FactPsStudentAcademicRecords] (
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsInstitutionStatusId] FOREIGN KEY ([PsInstitutionStatusId]) REFERENCES [RDS].[DimPsInstitutionStatuses] ([DimPsInstitutionStatusId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsStudentId] FOREIGN KEY ([PsStudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
+    CONSTRAINT [FK_FactPsStudentAcademicRecords_CountDateId] FOREIGN KEY ([CountDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId])
 );
 
@@ -55,6 +57,12 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_SchoolYearId]
     ON [RDS].[FactPsStudentAcademicRecords]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_CountDateId]
+    ON [RDS].[FactPsStudentAcademicRecords]([CountDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
@@ -170,6 +178,16 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000243' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21243' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CountDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The effective month, day, and year on which the data was counted.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CountDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Count Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CountDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001760' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CountDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22741' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'CountDateId';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'APCreditsAwarded';
 GO

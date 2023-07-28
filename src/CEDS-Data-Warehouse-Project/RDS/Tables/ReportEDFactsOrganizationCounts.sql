@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[ReportEDFactsOrganizationCounts] (
     [ReportEDFactsOrganizationCountId]            INT             IDENTITY (1, 1) NOT NULL,
-    [CSSOEmail]                                   NVARCHAR (100)  NULL,
-    [CSSOFirstName]                               NVARCHAR (100)  NULL,
-    [CSSOLastOrSurname]                           NVARCHAR (100)  NULL,
+    [CSSOEmail]                                   NVARCHAR (75)   NULL,
+    [CSSOFirstName]                               NVARCHAR (75)   NULL,
+    [CSSOLastOrSurname]                           NVARCHAR (75)   NULL,
     [CSSOTelephone]                               NVARCHAR (24)   NULL,
     [CSSOTitle]                                   NVARCHAR (100)  NULL,
     [Categories]                                  NVARCHAR (300)  NULL,
