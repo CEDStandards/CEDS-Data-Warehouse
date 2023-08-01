@@ -13,7 +13,6 @@ CREATE TABLE [RDS].[FactK12StudentAssessments] (
     [AssessmentAdministrationId]              INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentAdministrationId] DEFAULT ((-1)) NOT NULL,
     [AssessmentRegistrationId]                INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentRegistrationId] DEFAULT ((-1)) NOT NULL,
     [AssessmentParticipationSessionId]        INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentParticipationSessionId] DEFAULT ((-1)) NOT NULL,
-    [AssessmentResultId]                      INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentResultId] DEFAULT ((-1)) NOT NULL,
     [AssessmentPerformanceLevelId]            INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentPerformanceLevelId] DEFAULT ((-1)) NOT NULL,
     [CompetencyDefinitionId]                  INT           CONSTRAINT [DF_FactK12StudentAssessments_CompetencyDefinitionId] DEFAULT ((-1)) NOT NULL,
     [CteStatusId]                             INT           CONSTRAINT [DF_FactK12StudentAssessments_CteStatusId] DEFAULT ((-1)) NOT NULL,
@@ -37,7 +36,6 @@ CREATE TABLE [RDS].[FactK12StudentAssessments] (
     CONSTRAINT [FK_FactK12StudentAssessments_AssessmentParticipationSessionId] FOREIGN KEY ([AssessmentParticipationSessionId]) REFERENCES [RDS].[DimAssessmentParticipationSessions] ([DimAssessmentParticipationSessionId]),
     CONSTRAINT [FK_FactK12StudentAssessments_AssessmentPerformanceLevelId] FOREIGN KEY ([AssessmentPerformanceLevelId]) REFERENCES [RDS].[DimAssessmentPerformanceLevels] ([DimAssessmentPerformanceLevelId]),
     CONSTRAINT [FK_FactK12StudentAssessments_AssessmentRegistrationId] FOREIGN KEY ([AssessmentRegistrationId]) REFERENCES [RDS].[DimAssessmentRegistrations] ([DimAssessmentRegistrationId]),
-    CONSTRAINT [FK_FactK12StudentAssessments_AssessmentResultId] FOREIGN KEY ([AssessmentResultId]) REFERENCES [RDS].[DimAssessmentResults] ([DimAssessmentResultId]),
     CONSTRAINT [FK_FactK12StudentAssessments_AssessmentSubtestId] FOREIGN KEY ([AssessmentSubtestId]) REFERENCES [RDS].[DimAssessmentSubtests] ([DimAssessmentSubtestId]),
     CONSTRAINT [FK_FactK12StudentAssessments_CompetencyDefinitionId] FOREIGN KEY ([CompetencyDefinitionId]) REFERENCES [RDS].[DimCompetencyDefinitions] ([DimCompetencyDefinitionId]),
     CONSTRAINT [FK_FactK12StudentAssessments_CountDateId] FOREIGN KEY ([CountDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
@@ -124,11 +122,6 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_CompetencyDefinitionId
 
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_AssessmentResultId]
-    ON [RDS].[FactK12StudentAssessments]([AssessmentResultId] ASC);
-
-
-GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_AssessmentSubtestId]
     ON [RDS].[FactK12StudentAssessments]([AssessmentSubtestId] ASC);
