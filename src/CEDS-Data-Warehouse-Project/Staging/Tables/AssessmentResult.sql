@@ -200,7 +200,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'LEAFullAcademicYear';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student was in membership in the LEA education unit for a full academic year, according to the state’s definition of Full Academic Year.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'LEAFullAcademicYear';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student was in membership in the LEA education unit for a full academic year, according to the state''s definition of Full Academic Year.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'LEAFullAcademicYear';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'LEA Full Academic Year' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'LEAFullAcademicYear';
 GO
@@ -260,7 +260,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'SchoolFullAcademicYear';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student was in membership in the school education unit for a full academic year, according to the state’s definition of Full Academic Year.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'SchoolFullAcademicYear';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student was in membership in the school education unit for a full academic year, according to the state''s definition of Full Academic Year.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'SchoolFullAcademicYear';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Full Academic Year' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'SchoolFullAcademicYear';
 GO
@@ -290,7 +290,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'StateFullAcademicYear';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student was in membership in the state education unit for a full academic year, according to the state’s definition of Full Academic Year.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'StateFullAcademicYear';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student was in membership in the state education unit for a full academic year, according to the state''s definition of Full Academic Year.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'StateFullAcademicYear';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State Full Academic Year' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AssessmentResult', @level2type=N'COLUMN',@level2name=N'StateFullAcademicYear';
 GO

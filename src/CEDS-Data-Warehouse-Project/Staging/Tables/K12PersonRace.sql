@@ -31,13 +31,30 @@ CREATE TABLE [Staging].[K12PersonRace] (
     CONSTRAINT [PK_K12PersonRace] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80)
 );
 
+GO
 
+CREATE NONCLUSTERED INDEX [IX_Staging_K12PersonRace_SchoolYear_RecordStartDateTime]
+    ON [Staging].[K12PersonRace]([SchoolYear] ASC, [RecordStartDateTime] ASC)
+    INCLUDE([RaceType], [RecordEndDateTime]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_Staging_K12PersonRace_SchoolYear_WithIncludes]
+    ON [Staging].[K12PersonRace]([SchoolYear] ASC)
+    INCLUDE([RaceType], [RecordStartDateTime], [RecordEndDateTime]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_Staging_K12PersonRace_SchoolYear_WithIncludes2]
+    ON [Staging].[K12PersonRace]([SchoolYear] ASC)
+    INCLUDE([StudentIdentifierState], [LeaIdentifierSeaAccountability], [SchoolIdentifierSea], [RaceType]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_Staging_K12PersonRace_StudentIdentifierState_SchoolYear]
     ON [Staging].[K12PersonRace]([StudentIdentifierState] ASC, [SchoolYear] ASC);
 
+GO
 
+CREATE NONCLUSTERED INDEX [ix_K12PersonRace_StudentLEASCH]
+    ON [Staging].[K12PersonRace]([StudentIdentifierState] ASC, [LeaIdentifierSeaAccountability] ASC, [SchoolIdentifierSea] ASC);
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12PersonRace', @level2type=N'COLUMN',@level2name=N'DataCollectionName';

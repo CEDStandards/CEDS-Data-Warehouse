@@ -1,8 +1,5 @@
 CREATE TABLE [RDS].[DimComprehensiveAndTargetedSupports] (
     [DimComprehensiveAndTargetedSupportId]                     INT           IDENTITY (1, 1) NOT NULL,
-    [ComprehensiveSupportIdentificationTypeCode]               VARCHAR (50)  NULL,
-    [ComprehensiveSupportIdentificationTypeDescription]        VARCHAR (200) NULL,
-    [ComprehensiveSupportIdentificationTypeEdFactsCode]        VARCHAR (50)  NULL,
     [AdditionalTargetedSupportAndImprovementStatusCode]        VARCHAR (50)  NULL,
     [AdditionalTargetedSupportAndImprovementStatusDescription] VARCHAR (200) NULL,
     [AdditionalTargetedSupportAndImprovementStatusEDFactsCode] VARCHAR (50)  NULL,

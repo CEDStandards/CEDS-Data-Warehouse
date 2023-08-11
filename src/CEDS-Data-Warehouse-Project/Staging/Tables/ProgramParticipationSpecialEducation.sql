@@ -43,7 +43,16 @@ CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationSpecialEducation_WithI
     ON [Staging].[ProgramParticipationSpecialEducation]([DataCollectionName] ASC, [StudentIdentifierState] ASC, [LeaIdentifierSeaAccountability] ASC, [LeaIdentifierSeaAttendance] ASC, [LeaIdentifierSeaFunding] ASC, [LeaIdentifierSeaGraduation] ASC, [LeaIdentifierSeaIndividualizedEducationProgram] ASC, [SchoolIdentifierSea] ASC)
     INCLUDE([ProgramParticipationBeginDate], [ProgramParticipationEndDate], [SpecialEducationFTE]);
 
+GO
 
+CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationSpecialEducation_StudentIdentifierState_LeaIdentifierSeaAccountability]
+    ON [Staging].[ProgramParticipationSpecialEducation]([StudentIdentifierState] ASC, [LeaIdentifierSeaAccountability] ASC)
+    INCLUDE([ProgramParticipationEndDate]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationSpecialEducation_ProgramParticipationEndDate]
+    ON [Staging].[ProgramParticipationSpecialEducation]([ProgramParticipationEndDate] ASC)
+    INCLUDE([StudentIdentifierState], [LeaIdentifierSeaAccountability], [SchoolIdentifierSea]);
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'DataCollectionName';

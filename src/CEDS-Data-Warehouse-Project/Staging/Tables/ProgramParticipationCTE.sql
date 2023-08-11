@@ -50,6 +50,12 @@ CREATE TABLE [Staging].[ProgramParticipationCTE] (
 
 GO
 
+
+CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipation_StudentIdentifierState_SingleParent_StatusStartDate]
+    ON [Staging].[ProgramParticipationCTE]([StudentIdentifierState] ASC, [SingleParent_StatusStartDate] ASC);
+GO
+
+
 CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationCTE_RecordId]
     ON [Staging].[ProgramParticipationCTE]([RecordId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 

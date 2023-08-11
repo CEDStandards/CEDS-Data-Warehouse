@@ -48,6 +48,43 @@ BEGIN
 		END
 
 
+--Check if Grade 13, Ungraded, and/or Adult Education should be included based on Toggle responses
+	declare @toggleGrade13 as bit
+ 	declare @toggleUngraded as bit
+	declare @toggleAdultEd as bit
+
+	select @toggleGrade13 = ISNULL( case when r.ResponseValue = 'true' then 1 else 0 end, 0 ) 
+	from app.ToggleQuestions q 
+	left outer join app.ToggleResponses r on r.ToggleQuestionId = q.ToggleQuestionId
+	where q.EmapsQuestionAbbrv = 'CCDGRADE13'
+
+	select @toggleUngraded = ISNULL( case when r.ResponseValue = 'true' then 1 else 0 end, 0 ) 
+	from app.ToggleQuestions q 
+	left outer join app.ToggleResponses r on r.ToggleQuestionId = q.ToggleQuestionId
+	where q.EmapsQuestionAbbrv = 'CCDUNGRADED'
+
+	select @toggleAdultEd = ISNULL( case when r.ResponseValue = 'true' then 1 else 0 end, 0 )  
+	from app.ToggleQuestions q 
+	left outer join app.ToggleResponses r on r.ToggleQuestionId = q.ToggleQuestionId
+	where q.EmapsQuestionAbbrv = 'ADULTEDU'
+
+	--temp table to hold valid grades to be included 
+	DECLARE @GradesList TABLE (GradeLevel varchar(3)) 
+	INSERT INTO @GradesList VALUES ('PK'),('KG'),('01'),('02'),('03'),('04'),('05'),('06'),('07'),('08'),('09'),('10'),('11'),('12')
+
+	--Add the 3 additional grade levels if they should be included
+	IF @toggleGrade13 = 1
+	INSERT INTO @GradesList VALUES ('13')
+
+	IF @toggleUngraded = 1
+	INSERT INTO @GradesList VALUES ('UG')
+
+	IF @toggleAdultEd = 1
+	INSERT INTO @GradesList VALUES ('ABE')
+
+
+
+
 	--Create the temp tables (and any relevant indexes) needed for this domain
 		SELECT *
 		INTO #vwGradeLevels
@@ -217,6 +254,7 @@ BEGIN
 			AND @MembershipDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, GETDATE())
 
 		WHERE @MembershipDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, GETDATE())
+		AND GradeLevel IN (SELECT GradeLevel FROM @GradesList)
 
 
 	--Final insert into RDS.FactK12StudentCounts table
@@ -295,6 +333,3 @@ BEGIN
 	END CATCH
 
 END
-
-GO
-

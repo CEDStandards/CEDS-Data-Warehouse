@@ -14,7 +14,5 @@ CREATE TABLE [Staging].[StagingValidationRules] (
     [CreateDateTime]          AS             (getdate()),
     CONSTRAINT [PK_StagingValidationConfig] PRIMARY KEY CLUSTERED ([StagingValidationRuleId] ASC)
 );
-
-
 GO
 

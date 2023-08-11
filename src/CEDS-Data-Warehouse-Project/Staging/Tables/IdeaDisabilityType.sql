@@ -23,7 +23,11 @@ CREATE TABLE [Staging].[IdeaDisabilityType] (
     [DataCollectionName]                                  NVARCHAR (100) NULL,
     CONSTRAINT [PK_IdeaDisabilityType] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
+GO
 
+CREATE NONCLUSTERED INDEX [IX_Staging_IdeaDisabilityType_StudentIdentifierState_IsPrimaryDisability_RecordStartDateTime]
+    ON [Staging].[IdeaDisabilityType]([StudentIdentifierState] ASC, [IsPrimaryDisability] ASC, [RecordStartDateTime] ASC)
+    INCLUDE([LeaIdentifierSeaAccountability], [SchoolIdentifierSea], [IdeaDisabilityTypeCode], [SchoolYear], [RecordEndDateTime]);
 
 GO
 
@@ -39,7 +43,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'IdeaDisabilityType', @level2type=N'COLUMN',@level2name=N'IdeaDisabilityTypeCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A category of disability that describes a person’s impairment defined by the Individuals with Disabilities Education Act.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'IdeaDisabilityType', @level2type=N'COLUMN',@level2name=N'IdeaDisabilityTypeCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A category of disability that describes a person''s impairment defined by the Individuals with Disabilities Education Act.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'IdeaDisabilityType', @level2type=N'COLUMN',@level2name=N'IdeaDisabilityTypeCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Disability Type' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'IdeaDisabilityType', @level2type=N'COLUMN',@level2name=N'IdeaDisabilityTypeCode';
 GO

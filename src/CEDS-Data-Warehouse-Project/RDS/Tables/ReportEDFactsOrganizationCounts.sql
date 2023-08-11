@@ -1,6 +1,6 @@
 CREATE TABLE [RDS].[ReportEDFactsOrganizationCounts] (
     [ReportEDFactsOrganizationCountId]            INT             IDENTITY (1, 1) NOT NULL,
-    [CSSOEmail]                                   NVARCHAR (75)   NULL,
+    [CSSOEmail]                                   NVARCHAR (100)   NULL,
     [CSSOFirstName]                               NVARCHAR (75)   NULL,
     [CSSOLastOrSurname]                           NVARCHAR (75)   NULL,
     [CSSOTelephone]                               NVARCHAR (24)   NULL,
@@ -239,7 +239,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'ReconstitutedStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the school was restructured, transformed or otherwise changed as a consequence of the state’s accountability system under ESEA or as a result of School Improvement Grants (SIG).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'ReconstitutedStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the school was restructured, transformed or otherwise changed as a consequence of the state''s accountability system under ESEA or as a result of School Improvement Grants (SIG).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'ReconstitutedStatus';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Reconstituted Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'ReconstitutedStatus';
 GO
@@ -269,7 +269,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'STATEPOVERTYDESIGNATION';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school’s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state’s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'STATEPOVERTYDESIGNATION';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school''s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state''s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'STATEPOVERTYDESIGNATION';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State Poverty Designation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'STATEPOVERTYDESIGNATION';
 GO

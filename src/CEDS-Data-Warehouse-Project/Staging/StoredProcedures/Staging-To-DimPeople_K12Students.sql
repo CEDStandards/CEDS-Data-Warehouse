@@ -6,7 +6,6 @@ BEGIN
 	SET NOCOUNT ON;
 
 	BEGIN TRY
-		BEGIN TRANSACTION
 
 		IF NOT EXISTS (SELECT 1 FROM RDS.DimPeople WHERE DimPersonId = -1)
 		BEGIN
@@ -104,16 +103,9 @@ BEGIN
 			AND student.RecordStartDateTime = upd.RecordStartDateTime
 		WHERE upd.RecordEndDateTime <> '1900-01-01 00:00:00.000'
 			AND student.RecordEndDateTime IS NULL
-				
-		COMMIT TRANSACTION
 
 	END TRY
 	BEGIN CATCH
-
-		IF @@TRANCOUNT > 0
-		BEGIN
-			ROLLBACK TRANSACTION
-		END
 
 		DECLARE @msg AS NVARCHAR(MAX)
 		SET @msg = ERROR_MESSAGE()
@@ -128,6 +120,3 @@ BEGIN
 	SET NOCOUNT OFF;
 
 END
-
-GO
-

@@ -23,8 +23,8 @@ CREATE TABLE [RDS].[FactK12StaffCounts] (
     CONSTRAINT [FK_FactK12StaffCounts_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StaffCounts_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
     CONSTRAINT [FK_FactK12StaffCounts_TitleIIIStatuses] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
-    CONSTRAINT [FK_FactK12StaffCounts_CredentialIssuanceDateId] FOREIGN KEY ([CredentialExpirationDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
-    CONSTRAINT [FK_FactK12StaffCounts_CredentialExpirationDateId] FOREIGN KEY ([CredentialIssuanceDateId]) REFERENCES [RDS].[DimDates] ([DimDateId])
+    CONSTRAINT [FK_FactK12StaffCounts_CredentialIssuanceDateId] FOREIGN KEY ([CredentialIssuanceDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
+    CONSTRAINT [FK_FactK12StaffCounts_CredentialExpirationDateId] FOREIGN KEY ([CredentialExpirationDateId]) REFERENCES [RDS].[DimDates] ([DimDateId])
 );
 
 
@@ -85,13 +85,13 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCounts_SchoolYearId]
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCounts_CredentialIssuanceDateId]
-    ON [RDS].[FactK12StaffCounts]([CredentialIssuanceDateId] ASC);
+    ON [RDS].[FactK12StaffCounts]([CredentialIssuanceDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCounts_CredentialExpirationDateId]
-    ON [RDS].[FactK12StaffCounts]([CredentialExpirationDateId] ASC);
+    ON [RDS].[FactK12StaffCounts]([CredentialExpirationDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO

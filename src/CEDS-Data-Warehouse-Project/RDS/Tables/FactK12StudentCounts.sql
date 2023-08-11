@@ -263,6 +263,16 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_LanguageId]
 
 GO
 
+CREATE NONCLUSTERED INDEX [IX_RDS_FactK12StudentCounts_SchoolYearId_FactTypeId_AgeId]
+    ON [RDS].[FactK12StudentCounts]([SchoolYearId] ASC, [FactTypeId] ASC, [AgeId] ASC)
+    INCLUDE([SeaId], [LeaId], [K12StudentId], [IdeaStatusId], [PrimaryDisabilityTypeId], [SpecialEducationServicesExitDateId], [StudentCount]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RDS_FactK12StudentCounts_SchoolYearId_FactTypeId_SeaId_WithIncludes]
+    ON [RDS].[FactK12StudentCounts]([SchoolYearId] ASC, [FactTypeId] ASC, [SeaId] ASC)
+    INCLUDE([LeaId], [K12StudentId], [AgeId], [IdeaStatusId], [PrimaryDisabilityTypeId], [SpecialEducationServicesExitDateId], [StudentCount]);
+GO
+
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCounts', @level2type=N'COLUMN',@level2name=N'SchoolYearId';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year for a reported school session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCounts', @level2type=N'COLUMN',@level2name=N'SchoolYearId';

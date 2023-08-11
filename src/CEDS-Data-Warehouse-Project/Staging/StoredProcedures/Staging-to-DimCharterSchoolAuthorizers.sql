@@ -1,5 +1,6 @@
-CREATE PROCEDURE Staging.[Staging-to-DimCharterSchoolAuthorizers]
- 
+CREATE PROCEDURE [Staging].[Staging-to-DimCharterSchoolAuthorizers]
+	@dataCollectionName AS VARCHAR(50) = NULL,
+	@runAsTest AS BIT = 0
 AS   
 
 BEGIN
@@ -57,7 +58,7 @@ BEGIN
 		, @StateANSICode 											'StateANSICode'
 		, scsa.CharterSchoolAuthorizerType				'CharterSchoolAuthorizerTypeCode'
 		, refcsat.[Definition] 										'CharterSchoolAuthorizerTypeDescription'
-		, ssrd.OutputCode				 							'CharterSchoolAuthorizerTypeEdfactsCode'
+		, ssrd.OutputCode				 							'CharterSchoolAuthorizerTypeEdFactsCode'
 		, smam.AddressStreetNumberAndName				 			'MailingAddressStreetNumberAndName'
 		, smam.AddressApartmentRoomOrSuiteNumber					'MailingAddressApartmentRoomOrSuiteNumber'
 		, smam.AddressCity 											'MailingAddressCity'

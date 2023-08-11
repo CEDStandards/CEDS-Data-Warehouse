@@ -62,13 +62,16 @@ CREATE TABLE [Staging].[PersonStatus] (
     CONSTRAINT [PK_PersonStatus] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
-
 GO
 
 CREATE NONCLUSTERED INDEX [Staging_PersonStatus_WithIdentifiers]
     ON [Staging].[PersonStatus]([DataCollectionName] ASC, [LeaIdentifierSeaAccountability] ASC, [LeaIdentifierSeaAttendance] ASC, [LeaIdentifierSeaFunding] ASC, [LeaIdentifierSeaGraduation] ASC, [LeaIdentifierSeaIndividualizedEducationProgram] ASC, [SchoolIdentifierSea] ASC, [StudentIdentifierState] ASC);
 
+GO
 
+CREATE NONCLUSTERED INDEX [IX_Staging_PersonStatus_StudentIdentifierState_EnglishLearner_StatusStartDate]
+    ON [Staging].[PersonStatus]([StudentIdentifierState] ASC, [EnglishLearner_StatusStartDate] ASC)
+    INCLUDE([LeaIdentifierSeaAccountability], [SchoolIdentifierSea], [EnglishLearnerStatus], [EnglishLearner_StatusEndDate]);
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PersonStatus', @level2type=N'COLUMN',@level2name=N'DataCollectionName';
@@ -353,7 +356,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PersonStatus', @level2type=N'COLUMN',@level2name=N'MilitaryConnectedStudentIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student’s parent or guardian is on Active Duty, in the National Guard, or in the Reserve components of the United States military services' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PersonStatus', @level2type=N'COLUMN',@level2name=N'MilitaryConnectedStudentIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student''s parent or guardian is on Active Duty, in the National Guard, or in the Reserve components of the United States military services' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PersonStatus', @level2type=N'COLUMN',@level2name=N'MilitaryConnectedStudentIndicator';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Military Connected Student Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PersonStatus', @level2type=N'COLUMN',@level2name=N'MilitaryConnectedStudentIndicator';
 GO

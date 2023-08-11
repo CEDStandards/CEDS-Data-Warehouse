@@ -10,9 +10,11 @@ AS
 		, IdeaEducationalEnvironmentForSchoolAgeCode
 		, IdeaEducationalEnvironmentForSchoolAgeCode AS IdeaEducationalEnvironmentForSchoolAgeMap
 		, IdeaIndicatorCode
-		, IdeaIndicatorCode AS IdeaIndicatorMap
+		, CASE IdeaIndicatorCode
+			WHEN 'Yes' THEN 1
+			WHEN 'No' THEN 0
+			ELSE 0
+		END AS IdeaIndicatorMap
 	FROM rds.DimIdeaStatuses rdis
 	CROSS JOIN RDS.DimSchoolYears rdsy
-
-GO
 

@@ -261,6 +261,23 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_LeaId]
 
 GO
 
+
+CREATE NONCLUSTERED INDEX [IX_RDS_FactK12StudentDisciplines_SchoolYearId_FactTypeId_DisciplineStatusId_IdeaStatusId]
+    ON [RDS].[FactK12StudentDisciplines]([SchoolYearId] ASC, [FactTypeId] ASC, [DisciplineStatusId] ASC, [IdeaStatusId] ASC)
+    INCLUDE([SeaId], [LeaId], [K12SchoolId], [K12StudentId], [AgeId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RDS_FactK12StudentDisciplines_SchoolYearId_FactTypeId_PrimaryDisabilityTypeId]
+    ON [RDS].[FactK12StudentDisciplines]([SchoolYearId] ASC, [FactTypeId] ASC, [PrimaryDisabilityTypeId] ASC)
+    INCLUDE([SeaId], [K12StudentId], [DisciplineStatusId], [IdeaStatusId], [DurationOfDisciplinaryAction], [DisciplineCount]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RDS_FactK12StudentDisciplines_SchoolYearId_FactTypeId_WithIncludes]
+    ON [RDS].[FactK12StudentDisciplines]([SchoolYearId] ASC, [FactTypeId] ASC)
+    INCLUDE([K12StudentId], [DisciplineStatusId], [IdeaStatusId], [DurationOfDisciplinaryAction]);
+GO
+
+
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IncidentIdentifier';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A locally assigned unique identifier (within the school or school district) to identify each specific incident or occurrence. The same identifier should be used to document the entire incident even if it included multiple offenses and multiple offenders.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'IncidentIdentifier';

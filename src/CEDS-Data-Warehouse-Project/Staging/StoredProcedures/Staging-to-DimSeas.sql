@@ -330,7 +330,7 @@ BEGIN
 		, LastOrSurname							NVARCHAR(50) NULL
 		, MiddleName							NVARCHAR(50) NULL
 		, K12StaffStaffMemberIdentifierState	NVARCHAR(50) NULL
-		, IsActiveK12StaffMember				BIT NULL
+		, IsActiveK12Staff				BIT NULL
 		, RecordStartDateTime					DATETIME	
 		, RecordEndDateTime						DATETIME	NULL
 	)
@@ -341,7 +341,7 @@ BEGIN
 		, LastOrSurname
 		, MiddleName
 		, K12StaffStaffMemberIdentifierState
-		, IsActiveK12StaffMember
+		, IsActiveK12Staff
 		, RecordStartDateTime
 		, RecordEndDateTime
 	)		
@@ -351,7 +351,7 @@ BEGIN
 		, ISNULL(SeaContact_LastOrSurname, 'MISSING') 	AS LastOrSurname
 		, NULL 											AS MiddleName
 		, SeaContact_Identifier							AS K12StaffStaffMemberIdentifierState
-		, 1 											AS IsActiveK12StaffMember
+		, 1 											AS IsActiveK12Staff
 		, RecordStartDateTime							AS RecordStartDateTime
 		, RecordEndDateTime								AS RecordEndDateTime
 	FROM Staging.StateDetail
@@ -364,7 +364,7 @@ BEGIN
 			AND ISNULL(trgt.MiddleName, '') 			= ISNULL(src.MiddleName, '')
 			AND ISNULL(trgt.BirthDate, '1900-01-01') 	= ISNULL(src.BirthDate, '1900-01-01')
 			AND trgt.RecordStartDateTime 				= src.RecordStartDateTime
-			AND src.IsActiveK12StaffMember = 1
+			AND src.IsActiveK12Staff = 1
 	WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but NOT in Target
 	INSERT (
 		BirthDate
@@ -372,7 +372,7 @@ BEGIN
 		, LastOrSurname
 		, MiddleName
 		, K12StaffStaffMemberIdentifierState
-		, IsActiveK12StaffMember
+		, IsActiveK12Staff
 		, RecordStartDateTime
 	)
 	VALUES (
@@ -413,7 +413,4 @@ BEGIN
 	--cleanup
 	DROP TABLE #People
 
-END
-
-GO
-
+END 	

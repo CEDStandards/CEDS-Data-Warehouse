@@ -242,7 +242,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school’s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state’s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school''s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state''s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State Poverty Designation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationCode';
 GO
@@ -252,7 +252,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school’s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state’s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationDescription';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school''s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state''s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationDescription';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State Poverty Designation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationDescription';
 GO
@@ -262,7 +262,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school’s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state’s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationEdFactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The designation of a school''s poverty quartile for purposes of determining classes taught by highly qualified teachers in high and low poverty schools, according to state''s indicator of poverty.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationEdFactsCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State Poverty Designation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12SchoolStatuses', @level2type=N'COLUMN',@level2name=N'StatePovertyDesignationEdFactsCode';
 GO

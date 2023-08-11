@@ -6,7 +6,6 @@ BEGIN
 	SET NOCOUNT ON;
 
 	BEGIN TRY
-		BEGIN TRANSACTION
 
 		IF NOT EXISTS (SELECT 1 FROM RDS.DimPeople WHERE DimPersonId = -1)
 		BEGIN
@@ -27,7 +26,8 @@ BEGIN
 			, LastOrSurname									NVARCHAR(50) NULL
 			, BirthDate										DATE NULL
 			, K12StaffStaffMemberIdentifierState			NVARCHAR(40) NULL
-			, IsActiveK12StaffMember						BIT NULL
+			, IsActiveK12Staff 								BIT NULL
+			, PositionTitle									NVARCHAR(200) NULL
 			, RecordStartDateTime							DATE NULL
 			, RecordEndDateTime								DATE NULL
 		)
@@ -38,7 +38,8 @@ BEGIN
 			, LastOrSurname
 			, BirthDate
 			, K12StaffStaffMemberIdentifierState
-			, IsActiveK12StaffMember
+			, IsActiveK12Staff
+			, PositionTitle
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)		
@@ -49,9 +50,10 @@ BEGIN
 			, BirthDate
 			, StaffMemberIdentifierState
 			, 1
+			, PositionTitle
 			, RecordStartDateTime
 			, RecordEndDateTime
-		FROM Staging.StaffAssignment sa
+		FROM Staging.K12StaffAssignment sa
 
 		MERGE rds.DimPeople AS trgt
 		USING #K12Staff AS src
@@ -60,7 +62,7 @@ BEGIN
 				AND ISNULL(trgt.LastOrSurname, '') = ISNULL(src.LastOrSurname, '')
 				AND ISNULL(trgt.MiddleName, '') = ISNULL(src.MiddleName, '')
 				AND ISNULL(trgt.BirthDate, '1900-01-01') = ISNULL(src.BirthDate, '1900-01-01')
-				AND trgt.IsActiveK12StaffMember = 1
+				AND trgt.IsActiveK12Staff = 1
 				AND trgt.RecordStartDateTime = src.RecordStartDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but NOT in Target
 		INSERT (
@@ -69,7 +71,8 @@ BEGIN
 			, LastOrSurname
 			, BirthDate
 			, K12StaffStaffMemberIdentifierState
-			, IsActiveK12StaffMember
+			, IsActiveK12Staff
+			, PositionTitle
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)
@@ -79,7 +82,8 @@ BEGIN
 			, src.LastOrSurname
 			, src.Birthdate
 			, src.K12StaffStaffMemberIdentifierState
-			, src.IsActiveK12StaffMember
+			, src.IsActiveK12Staff
+			, src.PositionTitle
 			, src.RecordStartDateTime
 			, src.RecordEndDateTime
 		);
@@ -105,15 +109,9 @@ BEGIN
 		WHERE upd.RecordEndDateTime <> '1900-01-01 00:00:00.000'
 			AND staff.RecordEndDateTime IS NULL
 				
-		COMMIT TRANSACTION
-
 	END TRY
 	BEGIN CATCH
 
-		IF @@TRANCOUNT > 0
-		BEGIN
-			ROLLBACK TRANSACTION
-		END
 
 		DECLARE @msg AS NVARCHAR(MAX)
 		SET @msg = ERROR_MESSAGE()
@@ -129,6 +127,3 @@ BEGIN
 	SET NOCOUNT OFF;
 
 END
-
-GO
-

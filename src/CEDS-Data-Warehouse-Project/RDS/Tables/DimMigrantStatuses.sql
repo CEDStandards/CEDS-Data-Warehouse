@@ -7,12 +7,12 @@ CREATE TABLE [RDS].[DimMigrantStatuses] (
     [MigrantEducationProgramEnrollmentTypeDescription] NVARCHAR (300) NOT NULL,
     [ContinuationOfServicesReasonCode]                 NVARCHAR (100) NOT NULL,
     [ContinuationOfServicesReasonDescription]          NVARCHAR (300) NOT NULL,
-    [ConsolidatedMepFundsStatusCode]                   NVARCHAR (100) NOT NULL,
     [MEPContinuationOfServicesStatusCode]              NVARCHAR (100) NOT NULL,
     [MEPContinuationOfServicesStatusDescription]       NVARCHAR (300) NOT NULL,
     [MEPContinuationOfServicesStatusEdFactsCode]       NVARCHAR (50)  NOT NULL,
-    [ConsolidatedMepFundsStatusDescription]            NVARCHAR (300) NOT NULL,
-    [ConsolidatedMepFundsStatusEdFactsCode]            NVARCHAR (50)  NOT NULL,
+    [ConsolidatedMEPFundsStatusCode]                   NVARCHAR (100) NOT NULL,
+    [ConsolidatedMEPFundsStatusDescription]            NVARCHAR (300) NOT NULL,
+    [ConsolidatedMEPFundsStatusEdFactsCode]            NVARCHAR (50)  NOT NULL,
     [MigrantEducationProgramServicesTypeCode]          NVARCHAR (100) NOT NULL,
     [MigrantEducationProgramServicesTypeDescription]   NVARCHAR (300) NOT NULL,
     [MigrantEducationProgramServicesTypeEdFactsCode]   NVARCHAR (50)  NOT NULL,
@@ -25,13 +25,13 @@ CREATE TABLE [RDS].[DimMigrantStatuses] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimMigrantStatuses_MepFundsStatusEdFactsCode]
+CREATE NONCLUSTERED INDEX [IX_DimMigrantStatuses_MEPFundsStatusEdFactsCode]
     ON [RDS].[DimMigrantStatuses]([ConsolidatedMepFundsStatusEdFactsCode] ASC) WITH (FILLFACTOR = 80);
 
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimMigrantStatuses_MepServicesEdFactsCode]
+CREATE NONCLUSTERED INDEX [IX_DimMigrantStatuses_MigrantEducationProgramServicesEdFactsCode]
     ON [RDS].[DimMigrantStatuses]([MigrantEducationProgramServicesTypeEdFactsCode] ASC) WITH (FILLFACTOR = 80);
 
 

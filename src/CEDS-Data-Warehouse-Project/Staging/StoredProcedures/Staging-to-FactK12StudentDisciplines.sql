@@ -10,7 +10,6 @@ CREATE PROCEDURE  [Staging].[Staging-to-FactK12StudentDisciplines]
 AS
 BEGIN
 	--SET NOCOUNT ON added to prevent extra result sets from interfering with SELECT statements.
-	SET NOCOUNT ON;
 
 	-- Drop temp tables.  This allows for running the procedure as a script while debugging
 		IF OBJECT_ID(N'tempdb..#vwGradeLevels') IS NOT NULL DROP TABLE #vwGradeLevels
@@ -20,6 +19,8 @@ BEGIN
 		IF OBJECT_ID(N'tempdb..#vwEnglishLearnerStatuses') IS NOT NULL DROP TABLE #vwEnglishLearnerStatuses                             
 		IF OBJECT_ID(N'tempdb..#vwDisciplineStatuses') IS NOT NULL DROP TABLE #vwDisciplineStatuses
 		IF OBJECT_ID(N'tempdb..#tempELStatus') IS NOT NULL DROP TABLE #tempELStatus
+		IF OBJECT_ID(N'tempdb..#tempIdeaStatus') IS NOT NULL DROP TABLE #tempIdeaStatus
+		IF OBJECT_ID(N'tempdb..#tempIdeaDisability') IS NOT NULL DROP TABLE #tempIdeaDisability
 		IF OBJECT_ID(N'tempdb..#Facts') IS NOT NULL DROP TABLE #Facts
                
 	BEGIN TRY
@@ -47,6 +48,15 @@ BEGIN
 		ORDER BY RecordStartDateTime)
 					
 
+	--Set the Child Count date
+		SELECT @ChildCountDate = tr.ResponseValue
+		FROM App.ToggleQuestions tq
+		JOIN App.ToggleResponses tr ON tq.ToggleQuestionId = tr.ToggleQuestionId
+		WHERE tq.EmapsQuestionAbbrv = 'CHDCTDTE'
+
+		SELECT @ChildCountDate = CAST(CAST(@SchoolYear - 1 AS CHAR(4)) + '-' + CAST(MONTH(@ChildCountDate) AS VARCHAR(2)) + '-' + CAST(DAY(@ChildCountDate) AS VARCHAR(2)) AS DATE)
+	
+	
 	-- Creating temp tables to be used in the select statement joins 
 		SELECT *
 		INTO #vwGradeLevels
@@ -91,31 +101,62 @@ BEGIN
 		CREATE INDEX IX_vwDimDisciplines ON #vwDisciplineStatuses(SchoolYear, IdeaInterimRemovalMap, IdeaInterimRemovalReasonMap) INCLUDE (IdeaInterimRemovalCode, IdeaInterimRemovalReasonCode)
 
 
+	--Pull the EL Status into a temp table
+		SELECT DISTINCT 
+			StudentIdentifierState
+			, LeaIdentifierSeaAccountability
+			, SchoolIdentifierSea
+			, EnglishLearnerStatus
+			, EnglishLearner_StatusStartDate
+			, EnglishLearner_StatusEndDate
+		INTO #tempELStatus
+		FROM Staging.PersonStatus
+
+	-- Create Index for #tempELStatus 
+		CREATE INDEX IX_tempELStatus ON #tempELStatus(StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, Englishlearner_StatusStartDate, EnglishLearner_StatusEndDate)
+			-- INCLUDE (IdeaInterimRemovalCode, IdeaInterimRemovalReasonCode, DisciplineELStatusCode)
+
+	--Pull the IDEA Disability into a temp table
+		SELECT DISTINCT 
+			sidt.StudentIdentifierState
+			, sidt.LeaIdentifierSeaAccountability
+			, sidt.SchoolIdentifierSea
+			, sidt.IdeaDisabilityTypeCode
+			, sidt.RecordStartDateTime
+			, sidt.RecordEndDateTime
+		INTO #tempIdeaDisability
+		FROM Staging.IdeaDisabilityType sidt         
+			INNER JOIN Staging.ProgramParticipationSpecialEducation sppse
+				ON sidt.StudentIdentifierState 						= sppse.StudentIdentifierState
+				AND ISNULL(sidt.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '')
+				AND ISNULL(sidt.SchoolIdentifierSea, '') 			= ISNULL(sppse.SchoolIdentifierSea, '')
+				AND sidt.IsPrimaryDisability = 1
+				AND sppse.ProgramParticipationBeginDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
+
+	-- Create Index for #tempIdeaStatus 
+		CREATE INDEX IX_ideaDisability ON #tempIdeaDisability(StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, RecordStartDateTime, RecordEndDateTime, IdeaDisabilityTypeCode)
+
+	--Pull the IDEA Status into a temp table
+		SELECT DISTINCT 
+			StudentIdentifierState
+			, LeaIdentifierSeaAccountability
+			, SchoolIdentifierSea
+			, ProgramParticipationBeginDate
+			, ProgramParticipationEndDate
+			, IdeaIndicator
+			, IDEAEducationalEnvironmentForEarlyChildhood
+			, IDEAEducationalEnvironmentForSchoolAge
+		INTO #tempIdeaStatus
+		FROM Staging.ProgramParticipationSpecialEducation
+		WHERE IDEAIndicator = 1
+		
+	-- Create Index for #tempIdeaStatus 
+		CREATE INDEX IX_ideaStatus ON #tempIdeaStatus (StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, ProgramParticipationBeginDate, ProgramParticipationEndDate, IDEAEducationalEnvironmentForEarlyChildhood, IDEAEducationalEnvironmentForSchoolAge)
+
 	--Set the Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
 		FROM rds.DimFactTypes
 		WHERE FactTypeCode = 'submission'
-
-	--Pull the EL Status into the temp table
-		CREATE TABLE #tempELStatus (
-			StudentIdentifierState 				nvarchar(40)
-			, LeaIdentifierSeaAccountability 	nvarchar(50)
-			, SchoolIdentifierSea 				nvarchar(50)
-			, EnglishLearnerStatus 				bit
-			, EnglishLearner_StatusStartDate 	date
-			, EnglishLearner_StatusEndDate 		date
-		)
-		INSERT INTO #tempELStatus
-		SELECT DISTINCT 
-			StudentIdentifierState
-			, LeaIdentifierSeaAccountability
-			, SchoolIdentifierSea 
-			, EnglishLearnerStatus
-			, EnglishLearner_StatusStartDate
-			, EnglishLearner_StatusEndDate
-		FROM Staging.PersonStatus
-
-		CREATE INDEX IX_tempELStatus ON #tempELStatus(StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, englishlearner_statusstartdate, englishlearner_statusenddate)-- INCLUDE (IdeaInterimRemovalCode, IdeaInterimRemovalReasonCode, DisciplineELStatusCode)
 
 	-- Clear the Fact table for the SY being migrated
 		DELETE RDS.FactK12StudentDisciplines
@@ -166,7 +207,7 @@ BEGIN
 		INSERT INTO #Facts
 		SELECT 
 			sd.Id                                         			StagingId
-			, -1                                     	 			AgeId
+			, rda.DimAgeId                                     	 	AgeId
 			, rsy.DimSchoolYearId                                   SchoolYearId
 			, ISNULL(rdkd.DimK12DemographicId, -1)                  K12DemographicId
 			, ISNULL(rddisc.DimDisciplineStatusId, -1)              DisciplineId
@@ -204,6 +245,7 @@ BEGIN
 			, -1                                                    TitleIStatusId
 			, -1                                                    TitleIIIStatusId
 			, ISNULL(sd.DurationOfDisciplinaryAction, 0)            DurationOfDisciplinaryAction
+
 		FROM Staging.Discipline sd 
 			JOIN Staging.K12Enrollment ske
 				ON sd.StudentIdentifierState 						= ske.StudentIdentifierState
@@ -211,32 +253,22 @@ BEGIN
 				AND ISNULL(sd.SchoolIdentifierSea, '') 				= ISNULL(ske.SchoolIdentifierSea, '')
 				AND sd.DisciplinaryActionStartDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, @EndDate)
 
-		--program participation special education              
-			JOIN Staging.ProgramParticipationSpecialEducation sppse
-				ON ske.StudentIdentifierState 						= sppse.StudentIdentifierState
-				AND ISNULL(ske.LEAIdentifierSeaAccountability,'') 	= ISNULL(sppse.LeaIdentifierSeaAccountability,'')
-				AND ISNULL(ske.SchoolIdentifierSea,'') 				= ISNULL(sppse.SchoolIdentifierSea,'')
-				AND sd.DisciplinaryActionStartDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, @EndDate)
-			
-		--idea disability type
-			JOIN Staging.IdeaDisabilityType sidt         
-				ON ske.SchoolYear = sidt.SchoolYear
-				AND sidt.StudentIdentifierState 					= sppse.StudentIdentifierState
-				AND ISNULL(sidt.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '')
-				AND ISNULL(sidt.SchoolIdentifierSea, '') 			= ISNULL(sppse.SchoolIdentifierSea, '')
-				AND sidt.IsPrimaryDisability = 1
-				AND sd.DisciplinaryActionStartDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
-			
-		--person status                 
-			LEFT JOIN #tempELStatus el
-				ON sd.StudentIdentifierState 						= el.StudentIdentifierState
-				AND ISNULL(sd.LeaIdentifierSeaAccountability, '') 	= ISNULL(el.LeaIdentifierSeaAccountability, '')
-				AND ISNULL(sd.SchoolIdentifierSea, '') 				= ISNULL(el.SchoolIdentifierSea, '')
-				AND sd.DisciplinaryActionStartDate BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, @EndDate)
-
 			JOIN RDS.DimSchoolYears rsy
 				ON ske.SchoolYear = rsy.SchoolYear
 
+		--seas (rds)                                        
+			JOIN RDS.DimSeas rds
+				ON sd.DisciplinaryActionStartDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())           
+
+		--age
+			JOIN RDS.DimAges rda
+				ON RDS.Get_Age(ske.Birthdate, @ChildCountDate) = rda.AgeValue
+
+		--demographics                                
+			JOIN RDS.vwDimK12Demographics rdkd
+				ON rsy.SchoolYear = rdkd.SchoolYear
+				AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
+			
 		--dimpeople (rds)
 			JOIN RDS.DimPeople rdp
 				ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
@@ -246,11 +278,27 @@ BEGIN
 				AND ISNULL(ske.LastOrSurname, 'MISSING')	= rdp.LastOrSurname
 				AND ISNULL(ske.Birthdate, '1/1/1900') 		= ISNULL(rdp.BirthDate, '1/1/1900')
 				AND sd.DisciplinaryActionStartDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @EndDate)
-				AND IsActiveK12Student = 1
 
-		--seas (rds)                                        
-			JOIN RDS.DimSeas rds
-				ON sd.DisciplinaryActionStartDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())           
+		--program participation special education              
+			LEFT JOIN #tempIdeaStatus sppse
+				ON sd.StudentIdentifierState 						= sppse.StudentIdentifierState
+				AND ISNULL(sd.LEAIdentifierSeaAccountability,'') 	= ISNULL(sppse.LeaIdentifierSeaAccountability,'')
+				AND ISNULL(sd.SchoolIdentifierSea,'') 				= ISNULL(sppse.SchoolIdentifierSea,'')
+				AND sd.DisciplinaryActionStartDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, @EndDate)
+			
+		--idea disability type
+			LEFT JOIN #tempIdeaDisability sidt
+				ON sidt.StudentIdentifierState 						= sd.StudentIdentifierState
+				AND ISNULL(sidt.LeaIdentifierSeaAccountability, '') = ISNULL(sd.LeaIdentifierSeaAccountability, '')
+				AND ISNULL(sidt.SchoolIdentifierSea, '') 			= ISNULL(sd.SchoolIdentifierSea, '')
+				AND sd.DisciplinaryActionStartDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
+			
+		--english learner                 
+			LEFT JOIN #tempELStatus el
+				ON sd.StudentIdentifierState = el.StudentIdentifierState
+				AND ISNULL(sd.LeaIdentifierSeaAccountability, '') = ISNULL(el.LeaIdentifierSeaAccountability, '')
+				AND ISNULL(sd.SchoolIdentifierSea, '') = ISNULL(el.SchoolIdentifierSea, '')
+				AND sd.DisciplinaryActionStartDate BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, @EndDate)
 
 		--leas (rds)
 			LEFT JOIN RDS.DimLeas rdl
@@ -262,12 +310,7 @@ BEGIN
 				ON sd.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
 				AND sd.DisciplinaryActionStartDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, @EndDate)
 
-		--demographics                                
-			JOIN RDS.vwDimK12Demographics rdkd
-				ON rsy.SchoolYear = rdkd.SchoolYear
-				AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
-			
-		-- disciplineId
+		-- discipline status (rds)
 			LEFT JOIN #vwDisciplineStatuses rddisc
 				ON rsy.SchoolYear = rddisc.SchoolYear
 				AND ISNULL(sd.DisciplinaryActionTaken, 'MISSING')						= ISNULL(rddisc.DisciplinaryActionTakenMap, rddisc.DisciplinaryActionTakenCode)
@@ -276,17 +319,17 @@ BEGIN
 				AND ISNULL(sd.IdeaInterimRemoval, 'MISSING')                            = ISNULL(rddisc.IdeaInterimRemovalMap, rddisc.IdeaInterimRemovalCode)
 				AND ISNULL(sd.IdeaInterimRemovalReason, 'MISSING')                      = ISNULL(rddisc.IdeaInterimRemovalReasonMap, rddisc.IdeaInterimRemovalReasonCode)
 			
-		--idea status (rds)             
+		--idea status (rds)	
 			LEFT JOIN #vwIdeaStatuses rdis
 				ON rsy.SchoolYear = rdis.SchoolYear
-				AND rdis.IdeaIndicatorCode = 'Yes'
-				AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge, 'MISSING')		= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
-				AND ISNULL(sppse.SpecialEducationExitReason, 'MISSING')                 = ISNULL(rdis.SpecialEducationExitReasonMap, rdis.SpecialEducationExitReasonCode) 
-			
+				AND ISNULL(CAST(sppse.IdeaIndicator AS SMALLINT), -1)   				= ISNULL(rdis.IdeaIndicatorMap, -1)
+				AND rdis.SpecialEducationExitReasonCode = 'MISSING'
+				AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
+				AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge,'MISSING')		= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
+
 		--idea disability type (rds)
 			LEFT JOIN RDS.vwDimIdeaDisabilityTypes rdidt
 				ON ISNULL(sidt.IdeaDisabilityTypeCode, 'MISSING') = ISNULL(rdidt.IdeaDisabilityTypeMap, rdidt.IdeaDisabilityTypeCode)
-				AND sidt.IsPrimaryDisability = 1
 			
 		--grade levels (rds)
 			LEFT JOIN #vwGradeLevels rgls
@@ -313,7 +356,13 @@ BEGIN
 			LEFT JOIN #vwEnglishLearnerStatuses rdels
 				ON rsy.SchoolYear = rdels.SchoolYear
 				AND rdels.PerkinsEnglishLearnerStatusCode = 'MISSING'
-				AND ISNULL(CAST(el.EnglishLearnerStatus AS SMALLINT), -1) = ISNULL(rdels.EnglishLearnerStatusMap, -1)
+				AND (CASE
+					WHEN ISNULL(sd.DisciplinaryActionStartDate, '1900-01-01') 
+						BETWEEN ISNULL(el.EnglishLearner_StatusStartDate, @StartDate) AND ISNULL(el.EnglishLearner_StatusEndDate, @EndDate) 
+							THEN ISNULL(EnglishLearnerStatus, 0)
+					ELSE 0
+					END) = ISNULL(rdels.EnglishLearnerStatusMap, -1)
+--				AND ISNULL(CAST(sps.EnglishLearnerStatus AS SMALLINT), -1) = ISNULL(rdels.EnglishLearnerStatusMap, -1)
 
 		--firearm disciplines (rds)
 			LEFT JOIN RDS.vwDimFirearmDisciplineStatuses rdfds
@@ -471,6 +520,3 @@ BEGIN
 	END CATCH
 
 END
-
-GO
-

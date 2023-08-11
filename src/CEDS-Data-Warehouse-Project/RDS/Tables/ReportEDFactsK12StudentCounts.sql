@@ -34,7 +34,7 @@ CREATE TABLE [RDS].[ReportEDFactsK12StudentCounts] (
     [TotalIndicator]                                     NVARCHAR (5)    NULL,
     [CONTINUATIONOFSERVICESREASON]                       NVARCHAR (50)   NULL,
     [HIGHSCHOOLDIPLOMATYPE]                              NVARCHAR (50)   NULL,
-    [ISO6392LANGUAGE]                                    NVARCHAR (50)   NULL,
+    [ISO6392LANGUAGECODE]                                NVARCHAR (50)   NULL,
     [CONSOLIDATEDMEPFUNDSSTATUS]                         NVARCHAR (50)   NULL,
     [MIGRANTEDUCATIONPROGRAMSERVICESTYPE]                NVARCHAR (50)   NULL,
     [MIGRANTPRIORITIZEDFORSERVICES]                      NVARCHAR (50)   NULL,
@@ -225,15 +225,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000151' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21151' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'IDEAINDICATOR';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGE';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGECODE';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The code for the specific language or dialect that a person uses to communicate.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGE';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The code for the specific language or dialect that a person uses to communicate.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGECODE';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'ISO 639-2 Language Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGE';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'ISO 639-2 Language Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGECODE';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000317' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGE';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000317' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGECODE';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21317' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGE';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21317' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'ISO6392LANGUAGECODE';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'MIGRANTPRIORITIZEDFORSERVICES';
 GO
@@ -257,7 +257,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'MILITARYCONNECTEDSTUDENTINDICATOR';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student’s parent or guardian is on Active Duty, in the National Guard, or in the Reserve components of the United States military services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'MILITARYCONNECTEDSTUDENTINDICATOR';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student''s parent or guardian is on Active Duty, in the National Guard, or in the Reserve components of the United States military services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'MILITARYCONNECTEDSTUDENTINDICATOR';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Military Connected Student Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'MILITARYCONNECTEDSTUDENTINDICATOR';
 GO
@@ -527,7 +527,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A category of disability that describes a person’s impairment defined by the Individuals with Disabilities Education Act.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A category of disability that describes a person''s impairment defined by the Individuals with Disabilities Education Act.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Disability Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'IDEADISABILITYTYPE';
 GO

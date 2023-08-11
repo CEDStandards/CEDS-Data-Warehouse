@@ -3,8 +3,6 @@ AS
 	SELECT
 		cts.DimComprehensiveAndTargetedSupportId,
 		sy.SchoolYear,
-		cts.ComprehensiveSupportIdentificationTypeCode,
-		[ComprehensiveSupportIdentificationTypeMap] = ISNULL(ssrd1.InputCode,'MISSING'),
 		cts.AdditionalTargetedSupportAndImprovementStatusCode,
 		[AdditionalTargetedSupportAndImprovementStatusMap] = ISNULL(ssrd2.InputCode,'MISSING'),
 		cts.ComprehensiveSupportAndImprovementStatusCode,
@@ -13,10 +11,6 @@ AS
 		[TargetedSupportAndImprovementStatusMap] = ISNULL(ssrd4.InputCode,'MISSING')
 	FROM RDS.DimComprehensiveAndTargetedSupports cts
 	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) sy
-	LEFT JOIN Staging.SourceSystemReferenceData ssrd1
-		ON cts.ComprehensiveSupportIdentificationTypeCode = ssrd1.OutputCode
-		AND ssrd1.TableName = 'RefComprehensiveSupport'
-		AND sy.SchoolYear = ssrd1.SchoolYear
 	LEFT JOIN Staging.SourceSystemReferenceData ssrd2
 		ON cts.AdditionalTargetedSupportAndImprovementStatusCode = ssrd2.OutputCode
 		AND ssrd2.TableName = 'RefAdditionalTargetedSupportAndImprovementStatus'
