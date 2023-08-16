@@ -24,6 +24,40 @@ CREATE TABLE [RDS].[FactFinancialAccountBalances](
 ) ON [PRIMARY]
 GO
 
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_SeaId] ON [RDS].[FactFinancialAccountBalances]([SeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_IeuId] ON [RDS].[FactFinancialAccountBalances]([IeuId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_LeaId] ON [RDS].[FactFinancialAccountBalances]([LeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_K12SchoolId] ON [RDS].[FactFinancialAccountBalances]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_FinancialAccountingDateId] ON [RDS].[FactFinancialAccountBalances]([FinancialAccountingDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_FiscalYearId] ON [RDS].[FactFinancialAccountBalances]([FiscalYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_FederalFinancialAccountBalanceId] ON [RDS].[FactFinancialAccountBalances]([FederalFinancialAccountBalanceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_SeaFinancialAccountBalanceId] ON [RDS].[FactFinancialAccountBalances]([SeaFinancialAccountBalanceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_LeaFinancialAccountBalanceId] ON [RDS].[FactFinancialAccountBalances]([LeaFinancialAccountBalanceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_FederalFinancialAccountClassificationId] ON [RDS].[FactFinancialAccountBalances]([FederalFinancialAccountClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_SeaFinancialAccountClassificationId] ON [RDS].[FactFinancialAccountBalances]([SeaFinancialAccountClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_LeaFinancialAccountClassificationId] ON [RDS].[FactFinancialAccountBalances]([LeaFinancialAccountClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_FederalFinancialAccountId] ON [RDS].[FactFinancialAccountBalances]([FederalFinancialAccountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_SeaFinancialAccountId] ON [RDS].[FactFinancialAccountBalances]([SeaFinancialAccountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_LeaFinancialAccountId] ON [RDS].[FactFinancialAccountBalances]([LeaFinancialAccountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountBalances_FederalProgramCodeId] ON [RDS].[FactFinancialAccountBalances]([FederalProgramCodeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
 ALTER TABLE [RDS].[FactFinancialAccountBalances] ADD  CONSTRAINT [DF_FactFinancialAccountBalances_SeaId]  DEFAULT ((-1)) FOR [SeaId]
 GO
 
