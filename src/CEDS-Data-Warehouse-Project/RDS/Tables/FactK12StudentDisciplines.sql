@@ -77,200 +77,73 @@ CREATE TABLE [RDS].[FactK12StudentDisciplines] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FirearmDisciplineStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([FirearmDisciplineStatusId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_SchoolYearId] ON [RDS].[FactK12StudentDisciplines]([SchoolYearId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_TitleIStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([TitleIStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FactTypeId] ON [RDS].[FactK12StudentDisciplines]([FactTypeId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12SchoolId]
-    ON [RDS].[FactK12StudentDisciplines]([K12SchoolId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DataCollectionId] ON [RDS].[FactK12StudentDisciplines]([DataCollectionId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IdeaStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([IdeaStatusId] ASC) WITH (FILLFACTOR = 80);
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_SeaId] ON [RDS].[FactK12StudentDisciplines]([SeaId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_RaceId]
-    ON [RDS].[FactK12StudentDisciplines]([RaceId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IeuId] ON [RDS].[FactK12StudentDisciplines]([IeuId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_PrimaryDisabilityTypes]
-    ON [RDS].[FactK12StudentDisciplines]([PrimaryDisabilityTypeId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_LeaId] ON [RDS].[FactK12StudentDisciplines]([LeaId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisciplinaryActionStartDateId]
-    ON [RDS].[FactK12StudentDisciplines]([DisciplinaryActionStartDateId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12SchoolId] ON [RDS].[FactK12StudentDisciplines]([K12SchoolId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisabilityStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([DisabilityStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12StudentId] ON [RDS].[FactK12StudentDisciplines]([K12StudentId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_MigrantStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([MigrantStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_AgeId] ON [RDS].[FactK12StudentDisciplines]([AgeId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IncidentStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([IncidentStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_CteStatusId] ON [RDS].[FactK12StudentDisciplines]([CteStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_EnglishLearnerStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([EnglishLearnerStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisabilityStatusId] ON [RDS].[FactK12StudentDisciplines]([DisabilityStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_GradeLevelId]
-    ON [RDS].[FactK12StudentDisciplines]([GradeLevelId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisciplinaryActionStartDateId] ON [RDS].[FactK12StudentDisciplines]([DisciplinaryActionStartDateId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_SecondaryDisabilityTypes]
-    ON [RDS].[FactK12StudentDisciplines]([SecondaryDisabilityTypeId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisciplinaryActionEndDateId] ON [RDS].[FactK12StudentDisciplines]([DisciplinaryActionEndDateId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisciplineStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([DisciplineStatusId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisciplineStatusId] ON [RDS].[FactK12StudentDisciplines]([DisciplineStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FirearmId]
-    ON [RDS].[FactK12StudentDisciplines]([FirearmId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_EconomicallyDisadvantagedStatusId] ON [RDS].[FactK12StudentDisciplines]([EconomicallyDisadvantagedStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_SchoolYearId]
-    ON [RDS].[FactK12StudentDisciplines]([SchoolYearId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_EnglishLearnerStatusId] ON [RDS].[FactK12StudentDisciplines]([EnglishLearnerStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_AgeId]
-    ON [RDS].[FactK12StudentDisciplines]([AgeId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FirearmId] ON [RDS].[FactK12StudentDisciplines]([FirearmId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_ImmigrantStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([ImmigrantStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FirearmDisciplineStatusId] ON [RDS].[FactK12StudentDisciplines]([FirearmDisciplineStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12StudentId]
-    ON [RDS].[FactK12StudentDisciplines]([K12StudentId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FosterCareStatusId] ON [RDS].[FactK12StudentDisciplines]([FosterCareStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_NOrDStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([NOrDStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_GradeLevelId] ON [RDS].[FactK12StudentDisciplines]([GradeLevelId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_HomelessnessStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([HomelessnessStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_HomelessnessStatusId] ON [RDS].[FactK12StudentDisciplines]([HomelessnessStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12DemographicId]
-    ON [RDS].[FactK12StudentDisciplines]([K12DemographicId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IdeaStatusId] ON [RDS].[FactK12StudentDisciplines]([IdeaStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DisciplinaryActionEndDateId]
-    ON [RDS].[FactK12StudentDisciplines]([DisciplinaryActionEndDateId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_ImmigrantStatusId] ON [RDS].[FactK12StudentDisciplines]([ImmigrantStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_TitleIIIStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([TitleIIIStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IncidentStatusId] ON [RDS].[FactK12StudentDisciplines]([IncidentStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FactTypeId]
-    ON [RDS].[FactK12StudentDisciplines]([FactTypeId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IncidentDateId] ON [RDS].[FactK12StudentDisciplines]([IncidentDateId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_EconomicallyDisadvantagedStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([EconomicallyDisadvantagedStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12DemographicId] ON [RDS].[FactK12StudentDisciplines]([K12DemographicId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_CteStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([CteStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_MigrantStatusId] ON [RDS].[FactK12StudentDisciplines]([MigrantStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_DataCollectionId]
-    ON [RDS].[FactK12StudentDisciplines]([DataCollectionId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_MilitaryStatusId] ON [RDS].[FactK12StudentDisciplines]([MilitaryStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_FosterCareStatusId]
-    ON [RDS].[FactK12StudentDisciplines]([FosterCareStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_NOrDStatusId] ON [RDS].[FactK12StudentDisciplines]([NOrDStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_SeaId]
-    ON [RDS].[FactK12StudentDisciplines]([SeaId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_RaceId] ON [RDS].[FactK12StudentDisciplines]([RaceId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IncidentDateId]
-    ON [RDS].[FactK12StudentDisciplines]([IncidentDateId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_PrimaryDisabilityTypeId] ON [RDS].[FactK12StudentDisciplines]([PrimaryDisabilityTypeId] ASC) WITH (FILLFACTOR = 80);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_LeaId]
-    ON [RDS].[FactK12StudentDisciplines]([LeaId] ASC) WITH (FILLFACTOR = 80);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_SecondaryDisabilityTypeId] ON [RDS].[FactK12StudentDisciplines]([SecondaryDisabilityTypeId] ASC) WITH (FILLFACTOR = 80);
 GO
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IeuId]
-    ON [RDS].[FactK12StudentDisciplines]([IeuId] ASC) WITH (FILLFACTOR = 80);
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_TitleIStatusId] ON [RDS].[FactK12StudentDisciplines]([TitleIStatusId] ASC) WITH (FILLFACTOR = 80);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_TitleIIIStatusId] ON [RDS].[FactK12StudentDisciplines]([TitleIIIStatusId] ASC) WITH (FILLFACTOR = 80);
 
 GO
 

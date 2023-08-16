@@ -19,6 +19,26 @@ CREATE TABLE [RDS].[FactK12StudentDailyAttendances](
 ) ON [PRIMARY]
 GO
 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_SchoolYearId] ON [RDS].[FactK12StudentDailyAttendances]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_AttendanceEventDateId] ON [RDS].[FactK12StudentDailyAttendances]([AttendanceEventDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_DataCollectionId] ON [RDS].[FactK12StudentDailyAttendances]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_SeaId] ON [RDS].[FactK12StudentDailyAttendances]([SeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_IeuId] ON [RDS].[FactK12StudentDailyAttendances]([IeuId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_LeaId] ON [RDS].[FactK12StudentDailyAttendances]([LeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_K12SchoolId] ON [RDS].[FactK12StudentDailyAttendances]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_PersonId] ON [RDS].[FactK12StudentDailyAttendances]([PersonId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_AttendanceId] ON [RDS].[FactK12StudentDailyAttendances]([AttendanceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
 ALTER TABLE [RDS].[FactK12StudentDailyAttendances] ADD  CONSTRAINT [DF_FactK12StudentDailyAttendances_SchoolYearId]  DEFAULT ((-1)) FOR [SchoolYearId]
 GO
 

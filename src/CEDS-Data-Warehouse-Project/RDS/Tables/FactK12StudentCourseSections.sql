@@ -83,87 +83,40 @@ ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12S
 
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12CourseStatusId]
-    ON [RDS].[FactK12StudentCourseSections]([K12CourseStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_SchoolYearId] ON [RDS].[FactK12StudentCourseSections]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_SchoolYearId]
-    ON [RDS].[FactK12StudentCourseSections]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_DataCollectionId] ON [RDS].[FactK12StudentCourseSections]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_DataCollectionId]
-    ON [RDS].[FactK12StudentCourseSections]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_SeaId] ON [RDS].[FactK12StudentCourseSections]([SeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12StudentId]
-    ON [RDS].[FactK12StudentCourseSections]([K12StudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_IeuId] ON [RDS].[FactK12StudentCourseSections]([IeuId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12CourseId]
-    ON [RDS].[FactK12StudentCourseSections]([K12CourseId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LeaAccountabilityId] ON [RDS].[FactK12StudentCourseSections]([LeaAccountabilityId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_CipCodeId]
-    ON [RDS].[FactK12StudentCourseSections]([CipCodeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LeaAttendanceId] ON [RDS].[FactK12StudentCourseSections]([LeaAttendanceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_ScedCodeId]
-    ON [RDS].[FactK12StudentCourseSections]([ScedCodeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LeaFundingId] ON [RDS].[FactK12StudentCourseSections]([LeaFundingId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12SchoolId]
-    ON [RDS].[FactK12StudentCourseSections]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LeaGraduationId] ON [RDS].[FactK12StudentCourseSections]([LeaGraduationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_IeuId]
-    ON [RDS].[FactK12StudentCourseSections]([IeuId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LeaIndividualizedEducationProgramId] ON [RDS].[FactK12StudentCourseSections]([LeaIndividualizedEducationProgramId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LeaIds]
-    ON [RDS].[FactK12StudentCourseSections]([LeaAccountabilityId] ASC, [LeaAttendanceId] ASC, [LeaFundingId] ASC, [LeaGraduationId] ASC, [LeaIndividualizedEducationProgramId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12SchoolId] ON [RDS].[FactK12StudentCourseSections]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12DemographicId]
-    ON [RDS].[FactK12StudentCourseSections]([K12DemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12StudentId] ON [RDS].[FactK12StudentCourseSections]([K12StudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_EntryGradeLevelId]
-    ON [RDS].[FactK12StudentCourseSections]([EntryGradeLevelId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12DemographicId] ON [RDS].[FactK12StudentCourseSections]([K12DemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_SeaId]
-    ON [RDS].[FactK12StudentCourseSections]([SeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12CourseId] ON [RDS].[FactK12StudentCourseSections]([K12CourseId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LanguageId]
-    ON [RDS].[FactK12StudentCourseSections]([LanguageId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12CourseStatusId] ON [RDS].[FactK12StudentCourseSections]([K12CourseStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_ScedCodeId] ON [RDS].[FactK12StudentCourseSections]([ScedCodeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_CipCodeId] ON [RDS].[FactK12StudentCourseSections]([CipCodeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LanguageId] ON [RDS].[FactK12StudentCourseSections]([LanguageId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_EntryGradeLevelId] ON [RDS].[FactK12StudentCourseSections]([EntryGradeLevelId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 

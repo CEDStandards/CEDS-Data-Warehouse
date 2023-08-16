@@ -261,6 +261,21 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_LanguageId]
     ON [RDS].[FactK12StudentCounts]([LanguageId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_IeuId]
+    ON [RDS].[FactK12StudentCounts]([IeuId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_DisabilityStatusId]
+    ON [RDS].[FactK12StudentCounts]([DisabilityStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_LastQualifyingMoveDateId]
+    ON [RDS].[FactK12StudentCounts]([LastQualifyingMoveDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO

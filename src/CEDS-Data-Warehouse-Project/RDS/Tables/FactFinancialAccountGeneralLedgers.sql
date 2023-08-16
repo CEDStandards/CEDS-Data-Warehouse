@@ -27,6 +27,46 @@ CREATE TABLE [RDS].[FactFinancialAccountGeneralLedgers](
 ) ON [PRIMARY]
 GO
 
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_SeaId] ON [RDS].[FactFinancialAccountGeneralLedgers]([SeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_IeuId] ON [RDS].[FactFinancialAccountGeneralLedgers]([IeuId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_LeaId] ON [RDS].[FactFinancialAccountGeneralLedgers]([LeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_K12SchoolId] ON [RDS].[FactFinancialAccountGeneralLedgers]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_FinancialAccountingDateId] ON [RDS].[FactFinancialAccountGeneralLedgers]([FinancialAccountingDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_FiscalYearId] ON [RDS].[FactFinancialAccountGeneralLedgers]([FiscalYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_FederalFinancialAccountId] ON [RDS].[FactFinancialAccountGeneralLedgers]([FederalFinancialAccountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_SeaFinancialAccountId] ON [RDS].[FactFinancialAccountGeneralLedgers]([SeaFinancialAccountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_LeaFinancialAccountId] ON [RDS].[FactFinancialAccountGeneralLedgers]([LeaFinancialAccountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_FederalFinancialAccountClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([FederalFinancialAccountClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_SeaFinancialAccountClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([SeaFinancialAccountClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_LeaFinancialAccountClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([LeaFinancialAccountClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_FederalFinancialExpenditureClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([FederalFinancialExpenditureClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_SeaFinancialExpenditureClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([SeaFinancialExpenditureClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_LeaFinancialExpenditureClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([LeaFinancialExpenditureClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_FederalFinancialRevenueClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([FederalFinancialRevenueClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_SeaFinancialRevenueClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([SeaFinancialRevenueClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_LeaFinancialRevenueClassificationId] ON [RDS].[FactFinancialAccountGeneralLedgers]([LeaFinancialRevenueClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactFinancialAccountGeneralLedgers_FederalProgramCodeId] ON [RDS].[FactFinancialAccountGeneralLedgers]([FederalProgramCodeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
 ALTER TABLE [RDS].[FactFinancialAccountGeneralLedgers] ADD  CONSTRAINT [DF_FactFinancialAccountGeneralLedgers_SeaId]  DEFAULT ((-1)) FOR [SeaId]
 GO
 

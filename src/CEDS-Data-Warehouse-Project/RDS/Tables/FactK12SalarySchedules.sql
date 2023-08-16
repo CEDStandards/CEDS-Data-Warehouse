@@ -18,6 +18,28 @@ CREATE TABLE [RDS].[FactK12SalarySchedules](
 ) ON [PRIMARY]
 GO
 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_SchoolYearId] ON [RDS].[FactK12SalarySchedules]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_CountDateId] ON [RDS].[FactK12SalarySchedules]([CountDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_DataCollectionId] ON [RDS].[FactK12SalarySchedules]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_SeaId] ON [RDS].[FactK12SalarySchedules]([SeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_IeuId] ON [RDS].[FactK12SalarySchedules]([IeuId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_LeaId] ON [RDS].[FactK12SalarySchedules]([LeaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_K12SchoolId] ON [RDS].[FactK12SalarySchedules]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_SalaryScheduleCriteriaId] ON [RDS].[FactK12SalarySchedules]([SalaryScheduleCriteriaId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_StandardOccupationalClassificationId] ON [RDS].[FactK12SalarySchedules]([StandardOccupationalClassificationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12SalarySchedules_OnetSocOccupationTypeId] ON [RDS].[FactK12SalarySchedules]([OnetSocOccupationTypeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
 ALTER TABLE [RDS].[FactK12SalarySchedules] ADD  CONSTRAINT [DF_FactK12SalarySchedules_SchoolYearId]  DEFAULT ((-1)) FOR [SchoolYearId]
 GO
 

@@ -45,6 +45,32 @@ CREATE TABLE [RDS].[FactAeStudentEnrollments] (
 );
 
 
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeDemographicId] ON [RDS].[FactAeStudentEnrollments]([AeDemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AePostsecondaryTransitionDateId] ON [RDS].[FactAeStudentEnrollments]([AePostsecondaryTransitionDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeProgramTypeId] ON [RDS].[FactAeStudentEnrollments]([AeProgramTypeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeProgramYearId] ON [RDS].[FactAeStudentEnrollments]([AeProgramYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeProviderId] ON [RDS].[FactAeStudentEnrollments]([AeProviderId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeStudentId] ON [RDS].[FactAeStudentEnrollments]([AeStudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeStudentStatusId] ON [RDS].[FactAeStudentEnrollments]([AeStudentStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_ApplicationDateId] ON [RDS].[FactAeStudentEnrollments]([ApplicationDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_DataCollectionId] ON [RDS].[FactAeStudentEnrollments]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_EnrollmentEntryDateId] ON [RDS].[FactAeStudentEnrollments]([EnrollmentEntryDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_EnrollmentExitDateId] ON [RDS].[FactAeStudentEnrollments]([EnrollmentExitDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_K12AcademicAwardStatusId] ON [RDS].[FactAeStudentEnrollments]([K12AcademicAwardStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_K12DiplomaOrCredentialAwardDateId] ON [RDS].[FactAeStudentEnrollments]([K12DiplomaOrCredentialAwardDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactAeStudentEnrollments', @level2type=N'COLUMN',@level2name=N'AePostsecondaryTransitionDateId';

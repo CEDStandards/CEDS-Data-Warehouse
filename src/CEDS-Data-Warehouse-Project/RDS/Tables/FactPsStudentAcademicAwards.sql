@@ -1,6 +1,6 @@
 CREATE TABLE [RDS].[FactPsStudentAcademicAwards] (
     [FactPsStudentAcademicAwardId] INT    IDENTITY (1, 1) NOT NULL,
-    [PsInstitutionID]              INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_PsInstitutionID] DEFAULT ((-1)) NOT NULL,
+    [PsInstitutionId]              INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_PsInstitutionID] DEFAULT ((-1)) NOT NULL,
     [PsStudentId]                  BIGINT CONSTRAINT [DF_FactPsStudentAcademicAwards_PsStudentId] DEFAULT ((-1)) NOT NULL,
     [PsAcademicAwardTitleId]       INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_PsAcademicAwardTitleId] DEFAULT ((-1)) NOT NULL,
     [AcademicAwardDateId]          INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_AcademicAwardDateId] DEFAULT ((-1)) NOT NULL,
@@ -47,6 +47,16 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicAwards_PsStudentId]
     ON [RDS].[FactPsStudentAcademicAwards]([PsStudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicAwards_SchoolYearId]
+    ON [RDS].[FactPsStudentAcademicAwards]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicAwards_PsDemographicId]
+    ON [RDS].[FactPsStudentAcademicAwards]([PsDemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO

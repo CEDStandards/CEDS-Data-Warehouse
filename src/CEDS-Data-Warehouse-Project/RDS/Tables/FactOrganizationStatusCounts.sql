@@ -29,57 +29,27 @@ CREATE TABLE [RDS].[FactOrganizationStatusCounts] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimK12Schools]
-    ON [RDS].[FactOrganizationStatusCounts]([K12SchoolId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_FactTypeId] ON [RDS].[FactOrganizationStatusCounts]([FactTypeId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimSchoolQualityOrStudentSuccessIndicators]
-    ON [RDS].[FactOrganizationStatusCounts]([SchoolQualityOrStudentSuccessIndicatorId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_K12SchoolId] ON [RDS].[FactOrganizationStatusCounts]([K12SchoolId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimK12Demographics]
-    ON [RDS].[FactOrganizationStatusCounts]([K12DemographicId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_SchoolYearId] ON [RDS].[FactOrganizationStatusCounts]([SchoolYearId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimSchoolYearId]
-    ON [RDS].[FactOrganizationStatusCounts]([SchoolYearId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_RaceId] ON [RDS].[FactOrganizationStatusCounts]([RaceId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimSchoolPerformanceIndicators]
-    ON [RDS].[FactOrganizationStatusCounts]([SchoolPerformanceIndicatorId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_IdeaStatusId] ON [RDS].[FactOrganizationStatusCounts]([IdeaStatusId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimSchoolPerformanceIndicatorCategories]
-    ON [RDS].[FactOrganizationStatusCounts]([SchoolPerformanceIndicatorCategoryId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_K12DemographicId] ON [RDS].[FactOrganizationStatusCounts]([K12DemographicId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimRace]
-    ON [RDS].[FactOrganizationStatusCounts]([RaceId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_EconomicallyDisadvantagedStatusId] ON [RDS].[FactOrganizationStatusCounts]([EconomicallyDisadvantagedStatusId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimSchoolPerformanceIndicatorStateDefinedStatuses]
-    ON [RDS].[FactOrganizationStatusCounts]([SchoolPerformanceIndicatorStateDefinedStatusId] ASC);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_SchoolPerformanceIndicatorId] ON [RDS].[FactOrganizationStatusCounts]([SchoolPerformanceIndicatorId] ASC);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_DimIdeaStatuses]
-    ON [RDS].[FactOrganizationStatusCounts]([IdeaStatusId] ASC);
-
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_SchoolPerformanceIndicatorStateDefinedStatusId] ON [RDS].[FactOrganizationStatusCounts]([SchoolPerformanceIndicatorStateDefinedStatusId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_SchoolQualityOrStudentSuccessIndicatorId] ON [RDS].[FactOrganizationStatusCounts]([SchoolQualityOrStudentSuccessIndicatorId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationStatusCounts_SchoolPerformanceIndicatorCategoryId] ON [RDS].[FactOrganizationStatusCounts]([SchoolPerformanceIndicatorCategoryId] ASC);
 
 GO
 

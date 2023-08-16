@@ -49,63 +49,27 @@ ALTER TABLE [RDS].[FactPsStudentEnrollments] NOCHECK CONSTRAINT [FK_FactPsStuden
 
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsStudentId]
-    ON [RDS].[FactPsStudentEnrollments]([PsStudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_DataCollectionId] ON [RDS].[FactPsStudentEnrollments]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_AcademicTermDesignatorId]
-    ON [RDS].[FactPsStudentEnrollments]([AcademicTermDesignatorId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_SchoolYearId] ON [RDS].[FactPsStudentEnrollments]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsInstitutionId]
-    ON [RDS].[FactPsStudentEnrollments]([PsInstitutionID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_CountDateId] ON [RDS].[FactPsStudentEnrollments]([CountDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsInstitutionStatusId]
-    ON [RDS].[FactPsStudentEnrollments]([PsInstitutionStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsInstitutionID] ON [RDS].[FactPsStudentEnrollments]([PsInstitutionID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_ExitDateId]
-    ON [RDS].[FactPsStudentEnrollments]([EnrollmentExitDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsStudentId] ON [RDS].[FactPsStudentEnrollments]([PsStudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsEnrollmentStatusId]
-    ON [RDS].[FactPsStudentEnrollments]([PsEnrollmentStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_AcademicTermDesignatorId] ON [RDS].[FactPsStudentEnrollments]([AcademicTermDesignatorId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_SchoolYearId]
-    ON [RDS].[FactPsStudentEnrollments]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_EntryDateIntoPostSecondaryId] ON [RDS].[FactPsStudentEnrollments]([EntryDateIntoPostSecondaryId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_EntryDateIntoPostSecondaryId]
-    ON [RDS].[FactPsStudentEnrollments]([EntryDateIntoPostSecondaryId] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_EnrollmentEntryDateId] ON [RDS].[FactPsStudentEnrollments]([EnrollmentEntryDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_EntryDateId]
-    ON [RDS].[FactPsStudentEnrollments]([EnrollmentEntryDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_EnrollmentExitDateId] ON [RDS].[FactPsStudentEnrollments]([EnrollmentExitDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_DataCollectionId]
-    ON [RDS].[FactPsStudentEnrollments]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsEnrollmentStatusId] ON [RDS].[FactPsStudentEnrollments]([PsEnrollmentStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsInstitutionStatusId] ON [RDS].[FactPsStudentEnrollments]([PsInstitutionStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 GO
 

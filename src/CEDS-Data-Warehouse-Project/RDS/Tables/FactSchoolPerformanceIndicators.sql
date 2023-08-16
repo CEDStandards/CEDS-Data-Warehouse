@@ -27,45 +27,24 @@ CREATE TABLE [RDS].[FactSchoolPerformanceIndicators] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_DimSchoolPerformanceIndicators]
-    ON [RDS].[FactSchoolPerformanceIndicators]([SchoolPerformanceIndicatorId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_FactTypeId] ON [RDS].[FactSchoolPerformanceIndicators]([FactTypeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_DimIdeaStatuses]
-    ON [RDS].[FactSchoolPerformanceIndicators]([IdeaStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_K12SchoolId] ON [RDS].[FactSchoolPerformanceIndicators]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_DimK12Demographics]
-    ON [RDS].[FactSchoolPerformanceIndicators]([K12DemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_CountDateId] ON [RDS].[FactSchoolPerformanceIndicators]([CountDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_DimRace]
-    ON [RDS].[FactSchoolPerformanceIndicators]([RaceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_RaceId] ON [RDS].[FactSchoolPerformanceIndicators]([RaceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_DimK12Schools]
-    ON [RDS].[FactSchoolPerformanceIndicators]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_IdeaStatusId] ON [RDS].[FactSchoolPerformanceIndicators]([IdeaStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_DimSchoolPerformanceIndicatorStateDefinedStatuses]
-    ON [RDS].[FactSchoolPerformanceIndicators]([SchoolPerformanceIndicatorStateDefinedStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_K12DemographicId] ON [RDS].[FactSchoolPerformanceIndicators]([K12DemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_DimDates]
-    ON [RDS].[FactSchoolPerformanceIndicators]([CountDateId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_EconomicallyDisadvantagedStatusId] ON [RDS].[FactSchoolPerformanceIndicators]([EconomicallyDisadvantagedStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_SubgroupId] ON [RDS].[FactSchoolPerformanceIndicators]([SubgroupId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_SchoolPerformanceIndicatorId] ON [RDS].[FactSchoolPerformanceIndicators]([SchoolPerformanceIndicatorId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactSchoolPerformanceIndicators_SchoolPerformanceIndicatorStateDefinedStatusId] ON [RDS].[FactSchoolPerformanceIndicators]([SchoolPerformanceIndicatorStateDefinedStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 
