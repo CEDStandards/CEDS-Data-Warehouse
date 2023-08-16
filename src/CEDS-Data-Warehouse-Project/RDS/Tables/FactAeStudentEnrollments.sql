@@ -43,7 +43,7 @@ CREATE TABLE [RDS].[FactAeStudentEnrollments] (
     CONSTRAINT [FK_FactAeStudentEnrollments_K12AcademicAwardStatusId] FOREIGN KEY ([K12AcademicAwardStatusId]) REFERENCES [RDS].[DimK12AcademicAwardStatuses] ([DimK12AcademicAwardStatusId]),
     CONSTRAINT [FK_FactAeStudentEnrollments_K12DiplomaOrCredentialAwardDateId] FOREIGN KEY ([K12DiplomaOrCredentialAwardDateId]) REFERENCES [RDS].[DimDates] ([DimDateId])
 );
-
+GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeDemographicId] ON [RDS].[FactAeStudentEnrollments]([AeDemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
