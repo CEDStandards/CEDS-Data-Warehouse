@@ -3,7 +3,7 @@ CREATE TABLE [RDS].[FactK12StudentCounts] (
     [SchoolYearId]                          INT    CONSTRAINT [DF_FactK12StudentCounts_SchoolYearId] DEFAULT ((-1)) NOT NULL,
     [FactTypeId]                            INT    CONSTRAINT [DF_FactK12StudentCounts_FactTypeId] DEFAULT ((-1)) NOT NULL,
     [SeaId]                                 INT    CONSTRAINT [DF_FactK12StudentCounts_SeaId] DEFAULT ((-1)) NOT NULL,
-    [IeuId]                                 INT    NOT NULL,
+    [IeuId]                                 INT    CONSTRAINT [DF_FactK12StudentCounts_IeuId] DEFAULT ((-1)) NOT NULL,
     [LeaId]                                 INT    CONSTRAINT [DF_FactK12StudentCounts_LeaId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                           INT    CONSTRAINT [DF_FactK12StudentCounts_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                          BIGINT CONSTRAINT [DF_FactK12StudentCounts_K12StudentId] DEFAULT ((-1)) NOT NULL,
@@ -28,8 +28,8 @@ CREATE TABLE [RDS].[FactK12StudentCounts] (
     [PrimaryDisabilityTypeId]               INT    CONSTRAINT [DF_FactK12StudentCounts_PrimaryDisabilityType] DEFAULT ((-1)) NOT NULL,
     [RaceId]                                INT    CONSTRAINT [DF_FactK12StudentCounts_RaceId] DEFAULT ((-1)) NOT NULL,
     [SpecialEducationServicesExitDateId]    INT    CONSTRAINT [DF_FactK12StudentCounts_SpecialEducationServicesExitDateId] DEFAULT ((-1)) NOT NULL,
-    [MigrantStudentQualifyingArrivalDateId] INT    NOT NULL,
-    [LastQualifyingMoveDateId]              INT    NOT NULL,
+    [MigrantStudentQualifyingArrivalDateId] INT    CONSTRAINT [DF_FactK12StudentCounts_MigrantStudentQualifyingArrivalDateId] DEFAULT ((-1)) NOT NULL,
+    [LastQualifyingMoveDateId]              INT    CONSTRAINT [DF_FactK12StudentCounts_LastQualifyingMoveDateId] DEFAULT ((-1)) NOT NULL,
     [TitleIStatusId]                        INT    CONSTRAINT [DF_FactK12StudentCounts_TitleIStatusId] DEFAULT ((-1)) NOT NULL,
     [TitleIIIStatusId]                      INT    CONSTRAINT [DF_FactK12StudentCounts_TitleIIIStatusId] DEFAULT ((-1)) NOT NULL,
     [StatusStartDateEnglishLearnerId]       INT    CONSTRAINT [DF_FactK12StudentCounts_StatusStartDateEnglishLearnerId] DEFAULT ((-1)) NOT NULL,
@@ -54,6 +54,7 @@ CREATE TABLE [RDS].[FactK12StudentCounts] (
     CONSTRAINT [FK_FactK12StudentCounts_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentCounts_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentCounts_LanguageId] FOREIGN KEY ([LanguageId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]),
+    CONSTRAINT [FK_FactK12StudentCounts_IeuId] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuID]),
     CONSTRAINT [FK_FactK12StudentCounts_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
     CONSTRAINT [FK_FactK12StudentCounts_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]),
     CONSTRAINT [FK_FactK12StudentCounts_MigrantStudentQualifyingArrivalDateId] FOREIGN KEY ([MigrantStudentQualifyingArrivalDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
@@ -62,13 +63,14 @@ CREATE TABLE [RDS].[FactK12StudentCounts] (
     CONSTRAINT [FK_FactK12StudentCounts_RaceId] FOREIGN KEY ([RaceId]) REFERENCES [RDS].[DimRaces] ([DimRaceId]),
     CONSTRAINT [FK_FactK12StudentCounts_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentCounts_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
+    CONSTRAINT [FK_FactK12StudentCounts_DisabilityStatusId] FOREIGN KEY ([DisabilityStatusId]) REFERENCES [RDS].[DimDisabilityStatuses] ([DimDisabilityStatusId]),
     CONSTRAINT [FK_FactK12StudentCounts_SpecialEducationServicesExitDateId] FOREIGN KEY ([SpecialEducationServicesExitDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
+    CONSTRAINT [FK_FactK12StudentCounts_LastQualifyingMoveDateId] FOREIGN KEY ([LastQualifyingMoveDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentCounts_StatusEndDateEnglishLearnerId] FOREIGN KEY ([StatusEndDateEnglishLearnerId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentCounts_StatusStartDateEnglishLearnerId] FOREIGN KEY ([StatusStartDateEnglishLearnerId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentCounts_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
     CONSTRAINT [FK_FactK12StudentCounts_TitleIStatusId] FOREIGN KEY ([TitleIStatusId]) REFERENCES [RDS].[DimTitleIStatuses] ([DimTitleIStatusId])
 );
-
 
 GO
 

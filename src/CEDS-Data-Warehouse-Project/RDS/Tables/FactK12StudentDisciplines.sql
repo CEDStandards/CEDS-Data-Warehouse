@@ -1,40 +1,40 @@
 CREATE TABLE [RDS].[FactK12StudentDisciplines] (
     [FactK12StudentDisciplineId]        INT             IDENTITY (1, 1) NOT NULL,
-    [SchoolYearId]                      INT             NOT NULL,
-    [FactTypeId]                        INT             NOT NULL,
+    [SchoolYearId]                      INT             CONSTRAINT [DF_FactK12StudentDisciplines_SchoolYearId] DEFAULT ((-1)) NOT NULL,
+    [FactTypeId]                        INT             CONSTRAINT [DF_FactK12StudentDisciplines_FactTypeId] DEFAULT ((-1)) NOT NULL,
     [DataCollectionId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_DataCollectionId] DEFAULT ((-1)) NOT NULL,
-    [SeaId]                             INT             NOT NULL,
-    [IeuId]                             INT             NOT NULL,
-    [LeaId]                             INT             NOT NULL,
-    [K12SchoolId]                       INT             NOT NULL,
-    [K12StudentId]                      BIGINT          NOT NULL,
-    [AgeId]                             INT             NOT NULL,
-    [CteStatusId]                       INT             NOT NULL,
-    [DisabilityStatusId]                INT             NOT NULL,
-    [DisciplinaryActionStartDateId]     INT             NOT NULL,
-    [DisciplinaryActionEndDateId]       INT             NOT NULL,
-    [DisciplineStatusId]                INT             NOT NULL,
-    [EconomicallyDisadvantagedStatusId] INT             NOT NULL,
-    [EnglishLearnerStatusId]            INT             NOT NULL,
-    [FirearmId]                         INT             NOT NULL,
-    [FirearmDisciplineStatusId]         INT             NOT NULL,
-    [FosterCareStatusId]                INT             NOT NULL,
-    [GradeLevelId]                      INT             NOT NULL,
-    [HomelessnessStatusId]              INT             NOT NULL,
-    [IdeaStatusId]                      INT             NOT NULL,
-    [ImmigrantStatusId]                 INT             NOT NULL,
+    [SeaId]                             INT             CONSTRAINT [DF_FactK12StudentDisciplines_SeaId] DEFAULT ((-1)) NOT NULL,
+    [IeuId]                             INT             CONSTRAINT [DF_FactK12StudentDisciplines_IeuId] DEFAULT ((-1)) NOT NULL,
+    [LeaId]                             INT             CONSTRAINT [DF_FactK12StudentDisciplines_LeaId] DEFAULT ((-1)) NOT NULL,
+    [K12SchoolId]                       INT             CONSTRAINT [DF_FactK12StudentDisciplines_K12SchoolId] DEFAULT ((-1)) NOT NULL,
+    [K12StudentId]                      BIGINT          CONSTRAINT [DF_FactK12StudentDisciplines_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [AgeId]                             INT             CONSTRAINT [DF_FactK12StudentDisciplines_AgeId] DEFAULT ((-1)) NOT NULL,
+    [CteStatusId]                       INT             CONSTRAINT [DF_FactK12StudentDisciplines_CteStatusId] DEFAULT ((-1)) NOT NULL,
+    [DisabilityStatusId]                INT             CONSTRAINT [DF_FactK12StudentDisciplines_DisabilityStatusId] DEFAULT ((-1)) NOT NULL,
+    [DisciplinaryActionStartDateId]     INT             CONSTRAINT [DF_FactK12StudentDisciplines_DisciplinaryActionStartDateId] DEFAULT ((-1)) NOT NULL,
+    [DisciplinaryActionEndDateId]       INT             CONSTRAINT [DF_FactK12StudentDisciplines_DisciplinaryActionEndDateId] DEFAULT ((-1)) NOT NULL,
+    [DisciplineStatusId]                INT             CONSTRAINT [DF_FactK12StudentDisciplines_DisciplineStatusId] DEFAULT ((-1)) NOT NULL,
+    [EconomicallyDisadvantagedStatusId] INT             CONSTRAINT [DF_FactK12StudentDisciplines_EconomicallyDisadvantagedStatusId] DEFAULT ((-1)) NOT NULL,
+    [EnglishLearnerStatusId]            INT             CONSTRAINT [DF_FactK12StudentDisciplines_EnglishLearnerStatusId] DEFAULT ((-1)) NOT NULL,
+    [FirearmId]                         INT             CONSTRAINT [DF_FactK12StudentDisciplines_FirearmId] DEFAULT ((-1)) NOT NULL,
+    [FirearmDisciplineStatusId]         INT             CONSTRAINT [DF_FactK12StudentDisciplines_FirearmDisciplineStatusId] DEFAULT ((-1)) NOT NULL,
+    [FosterCareStatusId]                INT             CONSTRAINT [DF_FactK12StudentDisciplines_FosterCareStatusId] DEFAULT ((-1)) NOT NULL,
+    [GradeLevelId]                      INT             CONSTRAINT [DF_FactK12StudentDisciplines_GradeLevelId] DEFAULT ((-1)) NOT NULL,
+    [HomelessnessStatusId]              INT             CONSTRAINT [DF_FactK12StudentDisciplines_HomelessnessStatusId] DEFAULT ((-1)) NOT NULL,
+    [IdeaStatusId]                      INT             CONSTRAINT [DF_FactK12StudentDisciplines_IdeaStatusId] DEFAULT ((-1)) NOT NULL,
+    [ImmigrantStatusId]                 INT             CONSTRAINT [DF_FactK12StudentDisciplines_ImmigrantStatusId] DEFAULT ((-1)) NOT NULL,
     [IncidentIdentifier]                NVARCHAR (40)   NULL,
-    [IncidentStatusId]                  INT             NOT NULL,
-    [IncidentDateId]                    INT             NOT NULL,
-    [K12DemographicId]                  INT             NOT NULL,
-    [MigrantStatusId]                   INT             NOT NULL,
-    [MilitaryStatusId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_MilitaryId] DEFAULT ((-1)) NOT NULL,
-    [NOrDStatusId]                      INT             NOT NULL,
+    [IncidentStatusId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_IncidentStatusId] DEFAULT ((-1)) NOT NULL,
+    [IncidentDateId]                    INT             CONSTRAINT [DF_FactK12StudentDisciplines_IncidentDateId] DEFAULT ((-1)) NOT NULL,
+    [K12DemographicId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_K12DemographicId] DEFAULT ((-1)) NOT NULL,
+    [MigrantStatusId]                   INT             CONSTRAINT [DF_FactK12StudentDisciplines_MigrantStatusId] DEFAULT ((-1)) NOT NULL,
+    [MilitaryStatusId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_MilitaryStatusId] DEFAULT ((-1)) NOT NULL,
+    [NOrDStatusId]                      INT             CONSTRAINT [DF_FactK12StudentDisciplines_NOrDStatusId] DEFAULT ((-1)) NOT NULL,
     [RaceId]                            INT             CONSTRAINT [DF_FactK12StudentDisciplines_RaceId] DEFAULT ((-1)) NOT NULL,
-    [PrimaryDisabilityTypeId]           INT             NOT NULL,
-    [SecondaryDisabilityTypeId]         INT             NOT NULL,
-    [TitleIStatusId]                    INT             NOT NULL,
-    [TitleIIIStatusId]                  INT             NOT NULL,
+    [PrimaryDisabilityTypeId]           INT             CONSTRAINT [DF_FactK12StudentDisciplines_PrimaryDisabilityTypeId] DEFAULT ((-1)) NOT NULL,
+    [SecondaryDisabilityTypeId]         INT             CONSTRAINT [DF_FactK12StudentDisciplines_SecondaryDisabilityTypeId] DEFAULT ((-1)) NOT NULL,
+    [TitleIStatusId]                    INT             CONSTRAINT [DF_FactK12StudentDisciplines_TitleIStatusId] DEFAULT ((-1)) NOT NULL,
+    [TitleIIIStatusId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_TitleIIIStatusId] DEFAULT ((-1)) NOT NULL,
     [DurationOfDisciplinaryAction]      DECIMAL (18, 2) NULL,
     [DisciplineCount]                   INT             NULL,
     CONSTRAINT [PK_FactK12StudentDisciplines] PRIMARY KEY CLUSTERED ([FactK12StudentDisciplineId] ASC) WITH (FILLFACTOR = 80),
@@ -61,12 +61,14 @@ CREATE TABLE [RDS].[FactK12StudentDisciplines] (
     CONSTRAINT [FK_FactK12StudentDisciplines_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_LeaID] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
+    CONSTRAINT [FK_FactK12StudentDisciplines_IeuID] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuID]),
     CONSTRAINT [FK_FactK12StudentDisciplines_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_MilitaryStatusId] FOREIGN KEY ([MilitaryStatusId]) REFERENCES [RDS].[DimMilitaryStatuses] ([DimMilitaryStatusId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_NOrDStatusId] FOREIGN KEY ([NOrDStatusId]) REFERENCES [RDS].[DimNOrDStatuses] ([DimNOrDStatusId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_PrimaryDisabilityTypeId] FOREIGN KEY ([PrimaryDisabilityTypeId]) REFERENCES [RDS].[DimIdeaDisabilityTypes] ([DimIdeaDisabilityTypeId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
+    CONSTRAINT [FK_FactK12StudentDisciplines_RaceId] FOREIGN KEY ([RaceId]) REFERENCES [RDS].[DimRaces] ([DimRaceId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_SecondaryDisabilityTypeId] FOREIGN KEY ([SecondaryDisabilityTypeId]) REFERENCES [RDS].[DimIdeaDisabilityTypes] ([DimIdeaDisabilityTypeId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_TitleIStatusId] FOREIGN KEY ([TitleIStatusId]) REFERENCES [RDS].[DimTitleIStatuses] ([DimTitleIStatusId])
@@ -95,6 +97,12 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IdeaStatusId]
     ON [RDS].[FactK12StudentDisciplines]([IdeaStatusId] ASC) WITH (FILLFACTOR = 80);
+
+GO
+
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_RaceId]
+    ON [RDS].[FactK12StudentDisciplines]([RaceId] ASC) WITH (FILLFACTOR = 80);
 
 
 GO
@@ -257,6 +265,11 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_LeaId]
     ON [RDS].[FactK12StudentDisciplines]([LeaId] ASC) WITH (FILLFACTOR = 80);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IeuId]
+    ON [RDS].[FactK12StudentDisciplines]([IeuId] ASC) WITH (FILLFACTOR = 80);
 
 
 GO

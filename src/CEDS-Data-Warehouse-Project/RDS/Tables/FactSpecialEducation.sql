@@ -59,6 +59,7 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     CONSTRAINT [FK_FactSpecialEducation_CountDateId] FOREIGN KEY ([CountDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactSpecialEducation_CteStatusId] FOREIGN KEY ([CteStatusId]) REFERENCES [RDS].[DimCteStatuses] ([DimCteStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]),
+    CONSTRAINT [FK_FactSpecialEducation_EconomicallyDisadvantagedStatusId] FOREIGN KEY ([EconomicallyDisadvantagedStatusId]) REFERENCES [RDS].[DimEconomicallyDisadvantagedStatuses] ([DimEconomicallyDisadvantagedStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_EligibilityEvaluationDateInitialId] FOREIGN KEY ([EligibilityEvaluationDateInitialId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactSpecialEducation_EligibilityEvaluationDateReevaluationId] FOREIGN KEY ([EligibilityEvaluationDateReevaluationId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactSpecialEducation_EnglishLearnerStatusId] FOREIGN KEY ([EnglishLearnerStatusId]) REFERENCES [RDS].[DimEnglishLearnerStatuses] ([DimEnglishLearnerStatusId]),
