@@ -19,14 +19,14 @@
 	CEDS Junk Table Dimension Population Script
 	  
     This script populates multiple Junk Dimension tables in the CEDS Data Warehouse
-	version 11.0.0.0. It does not populate all of the tables. Additional work is underway
-	to fully populate all of the Junk Dimension tables.
+	version 11.0.0.0. It does not populate all of the tables. Additional work continues in
+	Open Source Community to fully populate all of the Junk Dimension tables.
 
 	Script 3 of 3
 	To create the CEDS Data Warehouse including population of the dimension tables, the following 3 scripts are needed:
 
-	Script 1: CEDS-Elements-V11.0.0.0
-	Script 2: CEDS-Data-Warehouse-V11.0.0.0
+	Script 1: CEDS-Data-Warehouse-V11-0-0-0
+	Script 2: CEDS-Elements-V11.0.0.0 (https://github.com/CEDStandards/CEDS-Elements/blob/master/src/CEDS-Elements-V11.0.0.0.sql)
 	Script 3: Junk-Table-Dimension-Population-V11.0.0.0
 
 	You must have the CEDS Data Warehouse version 11.0.0.0 installed first as well as
