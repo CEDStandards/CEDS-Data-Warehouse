@@ -5,3 +5,5 @@
 /res/Thumbs.db
 /res/Thumbs.db
 /.vs
+/src/CEDS-Data-Warehouse-Project/bin
+/src/CEDS-Data-Warehouse-Project/obj/debug

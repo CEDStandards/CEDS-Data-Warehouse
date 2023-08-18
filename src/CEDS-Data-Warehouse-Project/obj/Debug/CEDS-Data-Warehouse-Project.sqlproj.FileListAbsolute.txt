@@ -1,0 +1,12 @@
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\bin\Debug\CEDS-Data-Warehouse-Project.dacpac
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\CEDS-Data-Warehouse-Project.sqlproj.AssemblyReference.cache
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\Model.xml
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\refactor.xml
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\postdeploy.sql
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\predeploy.sql
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\CEDS-Data-Warehouse-Project.dll
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\CEDS-Data-Warehouse-Project.pdb
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\bin\Debug\CEDS-Data-Warehouse-Project.dll
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\bin\Debug\CEDS-Data-Warehouse-Project.pdb
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\bin\Debug\master.dacpac
+c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\CEDS-Data-Warehouse-Project.sqlproj.CopyComplete
