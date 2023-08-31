@@ -1,9 +1,9 @@
 CREATE TABLE [RDS].[DimFederalProgramCodes](
 	[DimFederalProgramCodeId] [int] IDENTITY(1,1) NOT NULL,
-	[FederalProgramCode] [nvarchar](50) NULL,
-	[FederalProgramCodeDescription] [nvarchar](150) NULL,	
-	[FederalProgramSubgrantCode] [nvarchar](50) NULL,
-	[FederalProgramSubgrantCodeDescription] [nvarchar](150) NULL,	
+	[FederalProgramCode] 							[nvarchar] (50) 	CONSTRAINT [DF_DimFederalProgramCodes_FederalProgramCode] DEFAULT ('MISSING') NOT NULL,
+	[FederalProgramCodeDescription] 				[nvarchar] (150) 	CONSTRAINT [DF_DimFederalProgramCodes_FederalProgramCodeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FederalProgramSubgrantCode] 					[nvarchar] (50) 	CONSTRAINT [DF_DimFederalProgramCodes_FederalProgramSubgrantCode] DEFAULT ('MISSING') NOT NULL,
+	[FederalProgramSubgrantCodeDescription] 		[nvarchar] (150) 	CONSTRAINT [DF_DimFederalProgramCodes_FederalProgramSubgrantCodeDescription] DEFAULT ('MISSING') NOT NULL,	
  CONSTRAINT [PK_DimFederalProgramCodes] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFederalProgramCodeId] ASC

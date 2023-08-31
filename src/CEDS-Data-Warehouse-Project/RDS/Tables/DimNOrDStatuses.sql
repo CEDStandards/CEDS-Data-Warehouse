@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimNOrDStatuses] (
     [DimNOrDStatusId]                                INT            IDENTITY (1, 1) NOT NULL,
-    [NeglectedOrDelinquentLongTermStatusCode]        NVARCHAR (50)  NULL,
-    [NeglectedOrDelinquentLongTermStatusDescription] NVARCHAR (100) NULL,
-    [NeglectedOrDelinquentLongTermStatusEdFactsCode] NVARCHAR (50)  NULL,
-    [NeglectedOrDelinquentProgramTypeCode]           NVARCHAR (50)  NULL,
-    [NeglectedOrDelinquentProgramTypeDescription]    NVARCHAR (100) NULL,
-    [NeglectedOrDelinquentProgramTypeEdFactsCode]    NVARCHAR (50)  NULL,
+    [NeglectedOrDelinquentLongTermStatusCode]        NVARCHAR (50)  CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentLongTermStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [NeglectedOrDelinquentLongTermStatusDescription] NVARCHAR (100) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentLongTermStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [NeglectedOrDelinquentLongTermStatusEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentLongTermStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [NeglectedOrDelinquentProgramTypeCode]           NVARCHAR (50)  CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentProgramTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [NeglectedOrDelinquentProgramTypeDescription]    NVARCHAR (100) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentProgramTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [NeglectedOrDelinquentProgramTypeEdFactsCode]    NVARCHAR (50)  CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentProgramTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimNorDStatuses] PRIMARY KEY NONCLUSTERED ([DimNOrDStatusId] ASC) WITH (FILLFACTOR = 80)
 );
 

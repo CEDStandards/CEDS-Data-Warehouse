@@ -1,14 +1,14 @@
 CREATE TABLE [RDS].[DimComprehensiveAndTargetedSupports] (
     [DimComprehensiveAndTargetedSupportId]                     INT           IDENTITY (1, 1) NOT NULL,
-    [AdditionalTargetedSupportAndImprovementStatusCode]        VARCHAR (50)  NULL,
-    [AdditionalTargetedSupportAndImprovementStatusDescription] VARCHAR (200) NULL,
-    [AdditionalTargetedSupportAndImprovementStatusEDFactsCode] VARCHAR (50)  NULL,
-    [ComprehensiveSupportAndImprovementStatusCode]             VARCHAR (50)  NULL,
-    [ComprehensiveSupportAndImprovementStatusDescription]      VARCHAR (200) NULL,
-    [ComprehensiveSupportAndImprovementStatusEdFactsCode]      VARCHAR (50)  NULL,
-    [TargetedSupportAndImprovementStatusCode]                  VARCHAR (50)  NULL,
-    [TargetedSupportAndImprovementStatusDescription]           VARCHAR (200) NULL,
-    [TargetedSupportAndImprovementStatusEdFactsCode]           VARCHAR (50)  NULL,
+    [AdditionalTargetedSupportAndImprovementStatusCode]        VARCHAR (50)  CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_AdditionalTargetedSupportAndImprovementStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [AdditionalTargetedSupportAndImprovementStatusDescription] VARCHAR (200) CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_AdditionalTargetedSupportAndImprovementStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [AdditionalTargetedSupportAndImprovementStatusEDFactsCode] VARCHAR (50)  CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_AdditionalTargetedSupportAndImprovementStatusEDFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [ComprehensiveSupportAndImprovementStatusCode]             VARCHAR (50)  CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_ComprehensiveSupportAndImprovementStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [ComprehensiveSupportAndImprovementStatusDescription]      VARCHAR (200) CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_ComprehensiveSupportAndImprovementStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [ComprehensiveSupportAndImprovementStatusEdFactsCode]      VARCHAR (50)  CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_ComprehensiveSupportAndImprovementStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [TargetedSupportAndImprovementStatusCode]                  VARCHAR (50)  CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_TargetedSupportAndImprovementStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [TargetedSupportAndImprovementStatusDescription]           VARCHAR (200) CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_TargetedSupportAndImprovementStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [TargetedSupportAndImprovementStatusEdFactsCode]           VARCHAR (50)  CONSTRAINT [DF_DimComprehensiveAndTargetedSupports_TargetedSupportAndImprovementStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimComprehensiveAndTargetedSupport] PRIMARY KEY CLUSTERED ([DimComprehensiveAndTargetedSupportId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

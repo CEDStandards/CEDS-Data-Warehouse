@@ -1,15 +1,15 @@
 CREATE TABLE [RDS].[DimSeaFinancialExpenditureClassifications](
-	[DimSeaFinancialExpenditureClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
-	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,	
-	[FinancialExpenditureLocalFunctionCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureLocalFunctionCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureLocalObjectCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureLocalObjectCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureLocalLevelOfInstructionCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureLocalLevelOfInstructionCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureProjectReportingCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureProjectReportingCodeDescription] [nvarchar](150) NULL,
+	[DimSeaFinancialExpenditureClassificationId] 						[int] IDENTITY(1,1) NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeCode] 					[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialAccountCodingSystemOrganizationTypeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeDescription] 			[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialAccountCodingSystemOrganizationTypeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialExpenditureLocalFunctionCodeCode] 						[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureLocalFunctionCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureLocalFunctionCodeDescription] 					[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureLocalFunctionCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureLocalObjectCodeCode] 							[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureLocalObjectCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureLocalObjectCodeDescription] 					[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureLocalObjectCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureLocalLevelOfInstructionCodeCode] 				[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureLocalLevelOfInstructionCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureLocalLevelOfInstructionCodeDescription] 		[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureLocalLevelOfInstructionCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureProjectReportingCodeCode] 						[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureProjectReportingCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureProjectReportingCodeDescription] 				[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialExpenditureClassifications_FinancialExpenditureProjectReportingCodeDescription] DEFAULT ('MISSING') NOT NULL,
  CONSTRAINT [PK_DimSeaFinancialExpenditureClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimSeaFinancialExpenditureClassificationId] ASC

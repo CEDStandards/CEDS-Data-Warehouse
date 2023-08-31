@@ -1,13 +1,13 @@
 CREATE TABLE [RDS].[DimPsCourseStatuses] (
     [DimPsCourseStatusId]              INT            NOT NULL,
-    [CourseLevelTypeCode]              NVARCHAR (50)  NULL,
-    [CourseLevelTypeDescription]       NVARCHAR (200) NULL,
-    [CourseHonorsTypeCode]             NVARCHAR (50)  NULL,
-    [CourseHonorsTypeDescription]      NVARCHAR (200) NULL,
-    [CourseCreditBasisTypeCode]        NVARCHAR (50)  NULL,
-    [CourseCreditBasisTypeDescription] NVARCHAR (200) NULL,
-    [CourseCreditLevelTypeCode]        NVARCHAR (50)  NULL,
-    [CourseCreditLevelTypeDescription] NVARCHAR (200) NULL,
+    [CourseLevelTypeCode]              NVARCHAR (50)  CONSTRAINT [DF_DimPsCourseStatuses_CourseLevelTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [CourseLevelTypeDescription]       NVARCHAR (200) CONSTRAINT [DF_DimPsCourseStatuses_CourseLevelTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [CourseHonorsTypeCode]             NVARCHAR (50)  CONSTRAINT [DF_DimPsCourseStatuses_CourseHonorsTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [CourseHonorsTypeDescription]      NVARCHAR (200) CONSTRAINT [DF_DimPsCourseStatuses_CourseHonorsTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [CourseCreditBasisTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimPsCourseStatuses_CourseCreditBasisTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [CourseCreditBasisTypeDescription] NVARCHAR (200) CONSTRAINT [DF_DimPsCourseStatuses_CourseCreditBasisTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [CourseCreditLevelTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimPsCourseStatuses_CourseCreditLevelTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [CourseCreditLevelTypeDescription] NVARCHAR (200) CONSTRAINT [DF_DimPsCourseStatuses_CourseCreditLevelTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimPsCourse] PRIMARY KEY CLUSTERED ([DimPsCourseStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

@@ -1,9 +1,9 @@
 CREATE TABLE [RDS].[DimSeaFinancialRevenueClassifications](
-	[DimSeaFinancialRevenueClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
-	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,	
-	[FinancialAccountLocalRevenueCodeCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalRevenueCodeDescription] [nvarchar](150) NULL,	
+	[DimSeaFinancialRevenueClassificationId] 					[int] IDENTITY(1,1) NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeCode] 			[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountCodingSystemOrganizationTypeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeDescription] 	[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountCodingSystemOrganizationTypeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueCodeCode] 						[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalRevenueCodeDescription] 				[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeDescription] DEFAULT ('MISSING') NOT NULL,	
  CONSTRAINT [PK_DimSeaFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimSeaFinancialRevenueClassificationId] ASC

@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimFirearmDisciplineStatuses] (
     [DimFirearmDisciplineStatusId]                        INT            IDENTITY (1, 1) NOT NULL,
-    [DisciplineMethodForFirearmsIncidentsCode]            NVARCHAR (50)  NULL,
-    [DisciplineMethodForFirearmsIncidentsDescription]     NVARCHAR (MAX) NULL,
-    [DisciplineMethodForFirearmsIncidentsEdFactsCode]     NVARCHAR (50)  NULL,
-    [IdeaDisciplineMethodForFirearmsIncidentsCode]        NVARCHAR (50)  NULL,
-    [IdeaDisciplineMethodForFirearmsIncidentsDescription] NVARCHAR (MAX) NULL,
-    [IdeaDisciplineMethodForFirearmsIncidentsEdFactsCode] NVARCHAR (50)  NULL,
+    [DisciplineMethodForFirearmsIncidentsCode]            NVARCHAR (50)  CONSTRAINT [DF_DimFirearmDisciplineStatuses_DisciplineMethodForFirearmsIncidentsCode] DEFAULT ('MISSING') NOT NULL,
+    [DisciplineMethodForFirearmsIncidentsDescription]     NVARCHAR (MAX) CONSTRAINT [DF_DimFirearmDisciplineStatuses_DisciplineMethodForFirearmsIncidentsDescription] DEFAULT ('MISSING') NOT NULL,
+    [DisciplineMethodForFirearmsIncidentsEdFactsCode]     NVARCHAR (50)  CONSTRAINT [DF_DimFirearmDisciplineStatuses_DisciplineMethodForFirearmsIncidentsEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [IdeaDisciplineMethodForFirearmsIncidentsCode]        NVARCHAR (50)  CONSTRAINT [DF_DimFirearmDisciplineStatuses_IdeaDisciplineMethodForFirearmsIncidentsCode] DEFAULT ('MISSING') NOT NULL,
+    [IdeaDisciplineMethodForFirearmsIncidentsDescription] NVARCHAR (MAX) CONSTRAINT [DF_DimFirearmDisciplineStatuses_IdeaDisciplineMethodForFirearmsIncidentsDescription] DEFAULT ('MISSING') NOT NULL,
+    [IdeaDisciplineMethodForFirearmsIncidentsEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimFirearmDisciplineStatuses_IdeaDisciplineMethodForFirearmsIncidentsEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimFirearmDisciplineStatuses] PRIMARY KEY CLUSTERED ([DimFirearmDisciplineStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

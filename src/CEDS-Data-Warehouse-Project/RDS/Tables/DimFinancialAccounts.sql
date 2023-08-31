@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimFinancialAccounts](
 	[DimFinancialAccountId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialAccountNumber] [nvarchar](30) NULL,
-	[FinancialAccountName] [nvarchar](100) NULL,	
-	[FinancialAccountDescription] [nvarchar](300) NULL,
+	[FinancialAccountNumber] 						[nvarchar](30)  CONSTRAINT [DF_DimFinancialAccounts_FinancialAccountNumber] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountName] 							[nvarchar](100) CONSTRAINT [DF_DimFinancialAccounts_FinancialAccountName] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountDescription] 					[nvarchar](300) CONSTRAINT [DF_DimFinancialAccounts_FinancialAccountDescription] DEFAULT ('MISSING') NOT NULL,
  CONSTRAINT [PK_DimFinancialAccounts] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFinancialAccountId] ASC
