@@ -3078,10 +3078,10 @@ GO
 		   ,[ReasonNotTestedEdFactsCode]
 )
 	SELECT 
-		arcs.AssessmentRegistrationCompletionStatusCode
-		,arcs.AssessmentRegistrationCompletionStatusDescription
-		,arpi.AssessmentRegistrationParticipationIndicatorCode
+		arpi.AssessmentRegistrationParticipationIndicatorCode
 		,arpi.AssessmentRegistrationParticipationIndicatorDescription
+		,arcs.AssessmentRegistrationCompletionStatusCode
+		,arcs.AssessmentRegistrationCompletionStatusDescription
 		,sfay.StateFullAcademicYearCode
 		,sfay.StateFullAcademicYearDescription
 		,sfay.StateFullAcademicYearEdFactsCode
