@@ -1,4 +1,4 @@
-CREATE TABLE Staging.K12FinancialAccountBalances (
+CREATE TABLE Staging.K12FinancialAccountBalance (
 	  Id																INT IDENTITY (1, 1) NOT NULL
 	, SeaOrganizationIdentifierSea										NVARCHAR(60) NULL
 	, LeaIdentifierSea													NVARCHAR(60) NULL
@@ -7,7 +7,9 @@ CREATE TABLE Staging.K12FinancialAccountBalances (
 	, FiscalYear														SMALLINT NULL
 	, Federal_FinancialAccountBalanceSheetCodeCode						NVARCHAR(50) NULL
 	, Sea_FinancialAccountLocalBalanceSheetCodeCode						NVARCHAR(50) NULL
+	, Sea_FinancialAccountLocalBalanceSheetCodeDescription				NVARCHAR(150) NULL
 	, Lea_FinancialAccountLocalBalanceSheetCodeCode						NVARCHAR(50) NULL
+	, Lea_FinancialAccountLocalBalanceSheetCodeDescription				NVARCHAR(150) NULL
 	, Federal_FinancialAccountCategoryCode								NVARCHAR(50) NULL
 	, Federal_FinancialAccountProgramCodeCode							NVARCHAR(50) NULL
 	, Federal_FinancialAccountFundClassificationCode					NVARCHAR(50) NULL
