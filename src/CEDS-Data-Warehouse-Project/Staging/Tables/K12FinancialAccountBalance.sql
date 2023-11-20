@@ -1,6 +1,7 @@
 CREATE TABLE Staging.K12FinancialAccountBalance (
 	  Id																INT IDENTITY (1, 1) NOT NULL
 	, SeaOrganizationIdentifierSea										NVARCHAR(60) NULL
+	, IeuOrganizationIdentifierSea										NVARCHAR(60) NULL
 	, LeaIdentifierSea													NVARCHAR(60) NULL
 	, SchoolIdentifierSea												NVARCHAR(60) NULL
 	, FiscalAccountingDate												DATE NULL

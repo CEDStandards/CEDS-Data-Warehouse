@@ -1,4 +1,4 @@
-CREATE VIEW rds.vwDimFederalFinancialExpenditureClassifications
+CREATE VIEW RDS.vwDimFederalFinancialExpenditureClassifications
 AS
 	SELECT
 		  [DimFederalFinancialExpenditureClassificationId]
@@ -9,6 +9,8 @@ AS
 		, sssrd2.InputCode AS FinancialExpenditureObjectCodeMap
 		, FinancialExpenditureLevelOfInstructionCodeCode
 		, sssrd3.InputCode AS FinancialExpenditureLevelOfInstructionCodeMap
+		, FinancialExpenditureProjectReportingCodeCode
+		, sssrd4.InputCode AS FinancialExpenditureProjectReportingCodeMap
 	FROM rds.DimFederalFinancialExpenditureClassifications rdfec
 	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
 	LEFT JOIN staging.SourceSystemReferenceData sssrd1
@@ -23,3 +25,7 @@ AS
 		ON rdfec.FinancialExpenditureLevelOfInstructionCodeCode = sssrd3.OutputCode
 		AND sssrd3.TableName = 'RefFinancialExpenditureLevelOfInstructionCode'
 		AND rsy.SchoolYear = sssrd3.SchoolYear
+	LEFT JOIN staging.SourceSystemReferenceData sssrd4
+		ON rdfec.FinancialExpenditureProjectReportingCodeCode = sssrd4.OutputCode
+		AND sssrd4.TableName = 'RefFinancialExpenditureProjectReportingCode'
+		AND rsy.SchoolYear = sssrd4.SchoolYear

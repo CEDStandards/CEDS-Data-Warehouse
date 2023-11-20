@@ -1,6 +1,7 @@
 CREATE TABLE Staging.K12FinancialAccountGeneralLedger (
 	  Id																INT IDENTITY (1, 1) NOT NULL
 	, SeaOrganizationIdentifierSea										NVARCHAR(60) NULL
+	, IeuOrganizationIdentifierSea										NVARCHAR(60) NULL
 	, LeaIdentifierSea													NVARCHAR(60) NULL
 	, SchoolIdentifierSea												NVARCHAR(60) NULL
 	, FiscalAccountingDate												DATE NULL
@@ -48,18 +49,16 @@ CREATE TABLE Staging.K12FinancialAccountGeneralLedger (
 	, Sea_FinancialAccountLocalRevenueCodeDescription					NVARCHAR(150) NULL
 	, lea_FinancialAccountLocalRevenueCodeCode							NVARCHAR(50) NULL
 	, lea_FinancialAccountLocalRevenueCodeDescription					NVARCHAR(150) NULL
-	, Federal_FinancialAccountNumber									NVARCHAR(30) NULL
-	, Federal_FinancialAccountName										NVARCHAR(100) NULL
-	, Federal_FinancialAccountDescription								NVARCHAR(300) NULL
-	, Sea_FinancialAccountNumber										NVARCHAR(30) NULL
-	, Sea_FinancialAccountName											NVARCHAR(100) NULL
-	, Sea_FinancialAccountDescription									NVARCHAR(300) NULL
-	, Lea_FinancialAccountNumber										NVARCHAR(30) NULL
-	, Lea_FinancialAccountName											NVARCHAR(100) NULL
-	, Lea_FinancialAccountDescription									NVARCHAR(300) NULL
+	, Federal_FinancialAccountNumber									NVARCHAR(60) NULL
+	, Federal_FinancialAccountName										NVARCHAR(200) NULL
+	, Federal_FinancialAccountDescription								NVARCHAR(600) NULL
+	, Sea_FinancialAccountNumber										NVARCHAR(60) NULL
+	, Sea_FinancialAccountName											NVARCHAR(200) NULL
+	, Sea_FinancialAccountDescription									NVARCHAR(600) NULL
+	, Lea_FinancialAccountNumber										NVARCHAR(60) NULL
+	, Lea_FinancialAccountName											NVARCHAR(200) NULL
+	, Lea_FinancialAccountDescription									NVARCHAR(600) NULL
 	, FederalProgramCode												NVARCHAR(50) NULL
-	, FederalProgramCodeDescription										NVARCHAR(150) NULL
 	, FederalProgramSubgrantCode										NVARCHAR(50) NULL
-	, FederalProgramSubgrantCodeDescription								NVARCHAR(150) NULL
 	, FinancialAccountingValue											DECIMAL(9,2) NOT NULL
 	)
