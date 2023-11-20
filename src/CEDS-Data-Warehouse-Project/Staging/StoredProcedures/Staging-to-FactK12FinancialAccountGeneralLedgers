@@ -90,7 +90,6 @@ BEGIN
         ON  ISNULL(skfagl.Federal_FinancialExpenditureFunctionCodeCode, 'MISSING') = rvdffec.FinancialExpenditureFunctionCodeMap
 		AND ISNULL(skfagl.Federal_FinancialExpenditureObjectCodeCode, 'MISSING') = rvdffec.FinancialExpenditureObjectCodeMap
 		AND ISNULL(skfagl.Federal_FinancialExpenditureLevelOfInstructionCodeCode, 'MISSING') = rvdffec.FinancialExpenditureLevelOfInstructionCodeMap
-        AND ISNULL(skfagl.Federal_FinancialExpenditureProjectReportingCodeCode, 'MISSING') = rvdffec.FinancialExpenditureProjectReportingCodeMap
     LEFT JOIN RDS.DimSeaFinancialExpenditureClassifications rvdsfec
         ON  ISNULL(skfagl.Sea_FinancialExpenditureLocalFunctionCodeCode, 'MISSING') = rvdsfec.FinancialExpenditureLocalFunctionCodeCode
 		AND ISNULL(skfagl.Sea_FinancialExpenditureLocalObjectCodeCode, 'MISSING') = rvdsfec.FinancialExpenditureLocalObjectCodeCode
