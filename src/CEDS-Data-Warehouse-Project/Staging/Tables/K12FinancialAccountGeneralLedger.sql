@@ -58,6 +58,8 @@ CREATE TABLE Staging.K12FinancialAccountGeneralLedger (
 	, Lea_FinancialAccountName											NVARCHAR(100) NULL
 	, Lea_FinancialAccountDescription									NVARCHAR(300) NULL
 	, FederalProgramCode												NVARCHAR(50) NULL
+	, FederalProgramCodeDescription										NVARCHAR(150) NULL
 	, FederalProgramSubgrantCode										NVARCHAR(50) NULL
+	, FederalProgramSubgrantCodeDescription								NVARCHAR(150) NULL
 	, FinancialAccountingValue											DECIMAL(9,2) NOT NULL
 	)
