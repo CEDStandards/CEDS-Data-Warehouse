@@ -1,4 +1,4 @@
-CREATE VIEW vwDimFederalFinancialRevenueClassifications
+CREATE VIEW RDS.vwDimFederalFinancialRevenueClassifications
 AS
 	SELECT
 		  [DimFederalFinancialRevenueClassificationId]

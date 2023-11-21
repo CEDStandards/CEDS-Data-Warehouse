@@ -48,7 +48,7 @@ BEGIN
         ON  ISNULL(skfab.IeuOrganizationIdentifierSea, 'MISSING') = rdi.IeuOrganizationIdentifierSea
         AND ISNULL(skfab.FiscalAccountingDate, '1/1/1900') BETWEEN rdi.RecordStartDateTime AND ISNULL(rdi.RecordEndDateTime, GETDATE())
     LEFT JOIN RDS.DimK12Schools rdksch
-        ON  ISNULL(skfab.SchoolIdentifierSea, 'MISSIN0G') = rdksch.SchoolIdentifierSea
+        ON  ISNULL(skfab.SchoolIdentifierSea, 'MISSING') = rdksch.SchoolIdentifierSea
         AND ISNULL(skfab.FiscalAccountingDate, '1/1/1900') BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
     LEFT JOIN RDS.DimSeas rds
         ON ISNULL(skfab.FiscalAccountingDate, '1/1/1900') BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
@@ -56,6 +56,8 @@ BEGIN
         ON ISNULL(skfab.FiscalAccountingDate, '1/1/1900') = rdd.DateValue
     LEFT JOIN RDS.DimFiscalYears rdfy
         ON ISNULL(skfab.FiscalYear, -1) = rdfy.FiscalYear
+		AND ISNULL(skfab.FiscalPeriodBeginDate, '1/1/1900') = rdfy.FiscalPeriodBeginDate
+		AND ISNULL(skfab.FiscalPeriodEndDate, '1/1/1900') = rdfy.FiscalPeriodEndDate
     LEFT JOIN RDS.vwDimFederalFinancialAccountBalances dffab 
         ON ISNULL(skfab.Federal_FinancialAccountBalanceSheetCodeCode, 'MISSING') = dffab.FinancialAccountBalanceSheetCodeMap
     LEFT JOIN RDS.DimSeaFinancialAccountBalances dslb 

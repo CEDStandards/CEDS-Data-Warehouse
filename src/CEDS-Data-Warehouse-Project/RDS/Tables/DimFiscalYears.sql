@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimFiscalYears](
 	[DimFiscalYearId] [int] IDENTITY(1,1) NOT NULL,
-	[FiscalPeriodBeginDate] [nvarchar](30) NULL,
-	[FiscalPeriodEndDate] [nvarchar](100) NULL,	
-	[FiscalYear] [nvarchar](300) NULL,
+	[FiscalPeriodBeginDate] DATETIME NOT NULL,
+	[FiscalPeriodEndDate] DATETIME NOT NULL,	
+	[FiscalYear] SMALLINT NOT NULL,
  CONSTRAINT [PK_DimFiscalYears] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFiscalYearId] ASC

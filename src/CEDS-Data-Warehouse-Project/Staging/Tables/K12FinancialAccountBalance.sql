@@ -6,6 +6,8 @@ CREATE TABLE Staging.K12FinancialAccountBalance (
 	, SchoolIdentifierSea												NVARCHAR(60) NULL
 	, FiscalAccountingDate												DATE NULL
 	, FiscalYear														SMALLINT NULL
+	, FiscalPeriodBeginDate									DATE NULL
+	, FiscalPeriodEndDate									DATE NULL
 	, Federal_FinancialAccountBalanceSheetCodeCode						NVARCHAR(50) NULL
 	, Sea_FinancialAccountLocalBalanceSheetCodeCode						NVARCHAR(50) NULL
 	, Sea_FinancialAccountLocalBalanceSheetCodeDescription				NVARCHAR(150) NULL

@@ -6,6 +6,8 @@ CREATE TABLE Staging.K12FinancialAccountGeneralLedger (
 	, SchoolIdentifierSea												NVARCHAR(60) NULL
 	, FiscalAccountingDate												DATE NULL
 	, FiscalYear														SMALLINT NULL
+	, FiscalPeriodBeginDate									DATE NULL
+	, FiscalPeriodEndDate									DATE NULL
 	, Federal_FinancialAccountBalanceSheetCodeCode						NVARCHAR(50) NULL
 	, Sea_FinancialAccountLocalBalanceSheetCodeCode						NVARCHAR(50) NULL
 	, Lea_FinancialAccountLocalBalanceSheetCodeCode						NVARCHAR(50) NULL
@@ -59,6 +61,8 @@ CREATE TABLE Staging.K12FinancialAccountGeneralLedger (
 	, Lea_FinancialAccountName											NVARCHAR(200) NULL
 	, Lea_FinancialAccountDescription									NVARCHAR(600) NULL
 	, FederalProgramCode												NVARCHAR(50) NULL
+	, FederalProgramCodeDescription							NVARCHAR(150) NULL
 	, FederalProgramSubgrantCode										NVARCHAR(50) NULL
+	, FederalProgramSubgrantCodeDescription						NVARCHAR(150) NULL
 	, FinancialAccountingValue											DECIMAL(9,2) NOT NULL
 	)

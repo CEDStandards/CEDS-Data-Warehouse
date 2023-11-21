@@ -1,4 +1,4 @@
-CREATE VIEW vwDimFederalFinancialAccountBalances
+CREATE VIEW RDS.vwDimFederalFinancialAccountBalances
 AS
 	SELECT
 		  [DimFederalFinancialAccountBalanceId]
