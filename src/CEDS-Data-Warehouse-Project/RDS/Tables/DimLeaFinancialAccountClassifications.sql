@@ -2,11 +2,14 @@ CREATE TABLE [RDS].[DimLeaFinancialAccountClassifications](
 	[DimLeaFinancialAccountClassificationId] [int] IDENTITY(1,1) NOT NULL,
 	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,
-	[FinancialAccountCategoryCode] [nvarchar](50) NULL,
+	[FinancialAccountCategoryCode] [nvarchar](50) NULL, 
+	[FinancialAccountCategorySeaCode] [nvarchar](50) NULL, 
 	[FinancialAccountCategoryDescription] [nvarchar](150) NULL,
-	[FinancialAccountLocalProgramCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalProgramCodeCode] [nvarchar](50) NULL, 
+	[FinancialAccountLocalProgramCodeSeaCode] [nvarchar](50) NULL, 
 	[FinancialAccountLocalProgramCodeDescription] [nvarchar](150) NULL,
-	[FinancialAccountLocalFundClassificationCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalFundClassificationCode] [nvarchar](50) NULL, 
+	[FinancialAccountLocalFundClassificationSeaCode] [nvarchar](50) NULL, 
 	[FinancialAccountLocalFundClassificationDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimLeaFinancialAccountClassifications] PRIMARY KEY NONCLUSTERED 
 (

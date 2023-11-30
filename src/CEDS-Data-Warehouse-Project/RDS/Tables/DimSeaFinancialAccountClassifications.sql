@@ -3,10 +3,13 @@ CREATE TABLE [RDS].[DimSeaFinancialAccountClassifications](
 	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,
 	[FinancialAccountCategoryCode] [nvarchar](50) NULL,
+	[FinancialAccountCategoryFederalCode] [nvarchar](50) NULL,
 	[FinancialAccountCategoryDescription] [nvarchar](150) NULL,
 	[FinancialAccountLocalProgramCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalProgramCodeFederalCode] [nvarchar](50) NULL,
 	[FinancialAccountLocalProgramCodeDescription] [nvarchar](150) NULL,
 	[FinancialAccountLocalFundClassificationCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalFundClassificationFederalCode] [nvarchar](50) NULL,
 	[FinancialAccountLocalFundClassificationDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimSeaFinancialAccountClassifications] PRIMARY KEY NONCLUSTERED 
 (

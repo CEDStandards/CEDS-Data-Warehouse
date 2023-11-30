@@ -3,6 +3,7 @@ CREATE TABLE [RDS].[DimSeaFinancialRevenueClassifications](
 	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,	
 	[FinancialAccountLocalRevenueCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalRevenueCodeFederalCode] [nvarchar](50) NULL,
 	[FinancialAccountLocalRevenueCodeDescription] [nvarchar](150) NULL,	
  CONSTRAINT [PK_DimSeaFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
 (
