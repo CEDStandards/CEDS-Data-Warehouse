@@ -9,18 +9,18 @@ Modeled for longitudinal storage and reporting of P-20W data, the Common Educati
 
 To create a new instance of the CEDS Data Warehouse on your SQL Server, perform the following steps.
 
-1. Open the database creation script at /src/ddl/CEDS-Data-Warehouse-V10.0.0.0.sql using your preferred SQL client. 
+1. Open the database creation script at /src/ddl/CEDS-Data-Warehouse-V11.0.0.0.sql using your preferred SQL client. 
 2. Connect to the server on which you want to create the CEDS Data Warehouse instance.
-3. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V10-0-0-0) with the database name of your choice.
-4. Run the script. This will create the CEDS-Data-Warehouse-V10.0.0.0 database.
+3. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V11-0-0-0) with the database name of your choice.
+4. Run the script. This will create the CEDS-Data-Warehouse-V11.0.0.0 database.
 
 The database is empty by default.  Proceed with the following instructions to load CEDS Element metadata and CEDS Option Set values into the Dimension tables.
-1. Open the Create CEDS Elements V10.0.0.0 document at /src/dimension-data/CEDS-Elements-V10.0.0.0
-2. Connect to the server on which you created the CEDS Version 10.0.0.0 instance
-3. Run the script. This will create the CEDS-Elements-V10.0.0.0 Database
-4. Open the Junk-Table-Dimension-Population-V10.0.0.0 document at /src/dimension-data/Junk-Table-Dimension-Population-V10.0.0.0
-5. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V10-0-0-0) with the name of your data warehouse instance.
-6. Run the script. This will populate the dimension tables in the CEDS Data Warehouse Version 10
+1. Open the Create CEDS Elements V11.0.0.0 document at /src/dimension-data/CEDS-Elements-V11.0.0.0
+2. Connect to the server on which you created the CEDS Version 11.0.0.0 instance
+3. Run the script. This will create the CEDS-Elements-V11.0.0.0 Database
+4. Open the Junk-Table-Dimension-Population-V11.0.0.0 document at /src/dimension-data/Junk-Table-Dimension-Population-V11.0.0.0
+5. Find and replace the existing database name in the script (i.e. CEDS-Data-Warehouse-V11-0-0-0) with the name of your data warehouse instance.
+6. Run the script. This will populate the dimension tables in the CEDS Data Warehouse Version 11
 
 ## Contributing
 
