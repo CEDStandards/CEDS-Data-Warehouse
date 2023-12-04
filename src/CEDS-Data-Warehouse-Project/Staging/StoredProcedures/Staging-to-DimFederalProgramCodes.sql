@@ -1,15 +1,15 @@
-CREATE PROCEDURE Staging.[Staging-To-DimFederalProgramCodes]
+
+CREATE PROCEDURE Staging.[Staging-to-DimFederalProgramCodes]
 AS
 BEGIN
-
-    -- Insert distinct record combinations into DimFederalProgramCodes
-
-INSERT INTO RDS.DimFederalProgramCodes (
-            FederalProgramCode
-           ,FederalProgramCodeDescription
-           ,FederalProgramSubgrantCode
-           ,FederalProgramSubgrantCodeDescription
-	)
+    -- Insert new distinct record combinations into DimFederalProgramCodes
+    INSERT INTO RDS.DimFederalProgramCodes 
+        (
+              FederalProgramCode
+            , FederalProgramCodeDescription
+            , FederalProgramSubgrantCode
+            , FederalProgramSubgrantCodeDescription
+        )
     SELECT DISTINCT
           skfab.FederalProgramCode
         , skfab.FederalProgramCodeDescription

@@ -76,32 +76,32 @@ BEGIN
         ON  ISNULL(skfagl.Lea_FinancialAccountNumber, 'MISSING') = dla.FinancialAccountNumber
         AND ISNULL(skfagl.Lea_FinancialAccountName, 'MISSING') = dla.FinancialAccountName
         AND ISNULL(skfagl.Lea_FinancialAccountDescription, 'MISSING') = dla.FinancialAccountDescription
-    LEFT JOIN RDS.vwDimFederalFinancialAccountClassifications dffac
-        ON  ISNULL(skfagl.Federal_FinancialAccountCategoryCode, 'MISSING') = dffac.FinancialAccountCategoryCodeMap
-        AND ISNULL(skfagl.Federal_FinancialAccountProgramCodeCode, 'MISSING') = dffac.FinancialAccountProgramCodeCodeMap
-        AND ISNULL(skfagl.Federal_FinancialAccountFundClassificationCode, 'MISSING') = dffac.FinancialAccountFundClassificationCodeMap
-    LEFT JOIN RDS.DimSeaFinancialAccountClassifications dsfc 
-        ON  ISNULL(skfagl.Sea_FinancialAccountCategoryCode, 'MISSING') = dsfc.FinancialAccountCategoryCode
-        AND ISNULL(skfagl.Sea_FinancialAccountLocalProgramCodeCode, 'MISSING') = dsfc.FinancialAccountLocalProgramCodeCode
-        AND ISNULL(skfagl.Sea_FinancialAccountLocalFundClassificationCode, 'MISSING') = dsfc.FinancialAccountLocalFundClassificationCode
     LEFT JOIN RDS.DimLeaFinancialAccountClassifications dlfc 
-        ON  ISNULL(skfagl.Lea_FinancialAccountCategoryCode, 'MISSING') = dlfc.FinancialAccountCategoryCode
-        AND ISNULL(skfagl.Lea_FinancialAccountLocalProgramCodeCode, 'MISSING') = dlfc.FinancialAccountLocalProgramCodeCode
-        AND ISNULL(skfagl.Lea_FinancialAccountLocalFundClassificationCode, 'MISSING') = dlfc.FinancialAccountLocalFundClassificationCode
-    LEFT JOIN RDS.vwDimFederalFinancialExpenditureClassifications rvdffec
-        ON  ISNULL(skfagl.Federal_FinancialExpenditureFunctionCodeCode, 'MISSING') = rvdffec.FinancialExpenditureFunctionCodeMap
-		AND ISNULL(skfagl.Federal_FinancialExpenditureObjectCodeCode, 'MISSING') = rvdffec.FinancialExpenditureObjectCodeMap
-		AND ISNULL(skfagl.Federal_FinancialExpenditureLevelOfInstructionCodeCode, 'MISSING') = rvdffec.FinancialExpenditureLevelOfInstructionCodeMap
-    LEFT JOIN RDS.DimSeaFinancialExpenditureClassifications rvdsfec
-        ON  ISNULL(skfagl.Sea_FinancialExpenditureLocalFunctionCodeCode, 'MISSING') = rvdsfec.FinancialExpenditureLocalFunctionCodeCode
-		AND ISNULL(skfagl.Sea_FinancialExpenditureLocalObjectCodeCode, 'MISSING') = rvdsfec.FinancialExpenditureLocalObjectCodeCode
-		AND ISNULL(skfagl.Sea_FinancialExpenditureLocalLevelOfInstructionCodeCode, 'MISSING') = rvdsfec.FinancialExpenditureLocalLevelOfInstructionCodeCode
-        AND ISNULL(skfagl.Sea_FinancialExpenditureProjectReportingCodeCode, 'MISSING') = rvdsfec.FinancialExpenditureProjectReportingCodeCode
+        ON  ISNULL(skfab.Lea_FinancialAccountCategoryCode, 'MISSING') = dlfc.FinancialAccountCategoryCode
+        AND ISNULL(skfab.Lea_FinancialAccountLocalProgramCodeCode, 'MISSING') = dlfc.FinancialAccountLocalProgramCodeCode
+        AND ISNULL(skfab.Lea_FinancialAccountLocalFundClassificationCode, 'MISSING') = dlfc.FinancialAccountLocalFundClassificationCode
+    LEFT JOIN RDS.DimSeaFinancialAccountClassifications dsfc 
+        ON  ISNULL(ISNULL(skfab.Sea_FinancialAccountCategoryCode, dlfc.FinancialAccountCategorySeaCode),  'MISSING') = dsfc.FinancialAccountCategoryCode
+        AND ISNULL(ISNULL(skfab.Sea_FinancialAccountLocalProgramCodeCode, dlfc.FinancialAccountLocalProgramCodeSeaCode),  'MISSING') = dsfc.FinancialAccountLocalProgramCodeCode
+        AND ISNULL(ISNULL(skfab.Sea_FinancialAccountLocalFundClassificationCode, dlfc.FinancialAccountLocalFundClassificationSeaCode),  'MISSING') = dsfc.FinancialAccountLocalFundClassificationCode
+    LEFT JOIN RDS.vwDimFederalFinancialAccountClassifications dffac
+        ON  ISNULL(ISNULL(skfab.Federal_FinancialAccountCategoryCode, dsfc.FinancialAccountCategoryFederalCode), 'MISSING') = dffac.FinancialAccountCategoryCodeMap
+        AND ISNULL(ISNULL(skfab.Federal_FinancialAccountProgramCodeCode, dsfc.FinancialAccountLocalProgramCodeFederalCode), 'MISSING') = dffac.FinancialAccountProgramCodeCodeMap
+        AND ISNULL(ISNULL(skfab.Federal_FinancialAccountFundClassificationCode, dsfc.FinancialAccountLocalFundClassificationFederalCode), 'MISSING') = dffac.FinancialAccountFundClassificationCodeMap
     LEFT JOIN RDS.DimLeaFinancialExpenditureClassifications rvdlfec
         ON  ISNULL(skfagl.Lea_FinancialExpenditureLocalFunctionCodeCode, 'MISSING') = rvdlfec.FinancialExpenditureLocalFunctionCodeCode
 		AND ISNULL(skfagl.Lea_FinancialExpenditureLocalObjectCodeCode, 'MISSING') = rvdlfec.FinancialExpenditureLocalObjectCodeCode
 		AND ISNULL(skfagl.Lea_FinancialExpenditureLocalLevelOfInstructionCodeCode, 'MISSING') = rvdlfec.FinancialExpenditureLocalLevelOfInstructionCodeCode
         AND ISNULL(skfagl.Lea_FinancialExpenditureProjectReportingCodeCode, 'MISSING') = rvdlfec.FinancialExpenditureProjectReportingCodeCode
+    LEFT JOIN RDS.DimSeaFinancialExpenditureClassifications rvdsfec
+        ON  ISNULL(ISNULL(skfagl.Sea_FinancialExpenditureLocalFunctionCodeCode, rvdlfec.FinancialExpenditureLocalFunctionCodeSeaCode), 'MISSING') = rvdsfec.FinancialExpenditureLocalFunctionCodeCode
+		AND ISNULL(ISNULL(skfagl.Sea_FinancialExpenditureLocalObjectCodeCode, rvdlfec.FinancialExpenditureLocalObjectCodeSeaCode), 'MISSING') = rvdsfec.FinancialExpenditureLocalObjectCodeCode
+		AND ISNULL(ISNULL(skfagl.Sea_FinancialExpenditureLocalLevelOfInstructionCodeCode, rvdlfec.FinancialExpenditureLocalLevelOfInstructionCodeSeaCode), 'MISSING') = rvdsfec.FinancialExpenditureLocalLevelOfInstructionCodeCode
+        AND ISNULL(ISNULL(skfagl.Sea_FinancialExpenditureProjectReportingCodeCode, rvdlfec.FinancialExpenditureProjectReportingCodeSeaCode), 'MISSING') = rvdsfec.FinancialExpenditureProjectReportingCodeCode
+    LEFT JOIN RDS.vwDimFederalFinancialExpenditureClassifications rvdffec
+        ON  ISNULL(ISNULL(skfagl.Federal_FinancialExpenditureFunctionCodeCode, rvdsfec.FinancialExpenditureLocalFunctionCodeFederalCode), 'MISSING') = rvdffec.FinancialExpenditureFunctionCodeMap
+		AND ISNULL(ISNULL(skfagl.Federal_FinancialExpenditureObjectCodeCode, rvdsfec.FinancialExpenditureLocalObjectCodeFederalCode), 'MISSING') = rvdffec.FinancialExpenditureObjectCodeMap
+		AND ISNULL(ISNULL(skfagl.Federal_FinancialExpenditureLevelOfInstructionCodeCode, rvdsfec.FinancialExpenditureLocalLevelOfInstructionCodeFederalCode), 'MISSING') = rvdffec.FinancialExpenditureLevelOfInstructionCodeMap
     LEFT JOIN RDS.vwDimFederalFinancialRevenueClassifications rvdffrc
         ON  ISNULL(skfagl.Federal_FinancialAccountRevenueCodeCode, 'MISSING') = rvdffrc.FinancialAccountRevenueCodeMap
     LEFT JOIN RDS.DimSeaFinancialRevenueClassifications rvdsfrc
