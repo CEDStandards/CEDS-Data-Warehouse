@@ -1,6 +1,7 @@
 CREATE TABLE [Staging].[K12StudentDailyAttendance] (
     [Id]                                             INT            IDENTITY (1, 1) NOT NULL,
     [StudentIdentifierState]                         NVARCHAR (40)  NULL,
+    [IeuOrganizationIdentifierSea]                   NVARCHAR (50)  NULL,
     [LeaIdentifierSea]                               NVARCHAR (50)  NULL,
     [SchoolIdentifierSea]                            NVARCHAR (50)  NULL,
     [AttendanceEventDate]                            DATETIME       NULL,
@@ -80,7 +81,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Identifie
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001069' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21155' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentCourseK12StudentDailyAttendanceSection', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21155' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierSea';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'SchoolYear';
 GO
@@ -181,4 +182,14 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000599' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'AbsentAttendanceCategory';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000599' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'AbsentAttendanceCategory';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to an organization by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Organization Identifier' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000826' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000826' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StudentDailyAttendance', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
 GO
