@@ -3301,37 +3301,6 @@ GO
 	DROP TABLE #DisciplineReason
 	DROP TABLE #IncidentInjuryType
 
-/* NOTE */
---This needs to be removed when the full population of this table is completed
-		--Insert temporary rows into this dimension for IDEA Interim Removal Reason
-
-		INSERT INTO [RDS].[DimIncidentStatuses] (
-			[IncidentBehaviorCode]
-			, [IncidentBehaviorDescription]
-			, [IdeaInterimRemovalReasonCode]
-			, [IdeaInterimRemovalReasonDescription]
-			, [IdeaInterimRemovalReasonEdFactsCode]
-			, [DisciplineReasonCode]
-			, [DisciplineReasonDescription]
-			, [IncidentInjuryTypeCode]
-			, [IncidentInjuryTypeDescription]		
-		)
-		SELECT 
-			  IncidentBehaviorCode
-			, IncidentBehaviorDescription
-			, IdeaInterimRemovalReasonCode
-			, IdeaInterimRemovalReasonDescription
-			, IdeaInterimRemovalReasonEdFactsCode
-			, DisciplineReasonCode
-			, DisciplineReasonDescription
-			, IncidentInjuryTypeCode
-			, IncidentInjuryTypeDescription
-		FROM 
-		VALUES ('MISSING', 'D', 'Drugs', 'D', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING'),
-			('MISSING', 'W', 'Weapons', 'W', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING'),
-			('MISSING', 'SBI', 'Serious Bodily Injury', 'SBI', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING')
-
-
 	-----------------------------------------------------
 	-- Populate DimFirearmDisciplineStatuses           --
 	-----------------------------------------------------
