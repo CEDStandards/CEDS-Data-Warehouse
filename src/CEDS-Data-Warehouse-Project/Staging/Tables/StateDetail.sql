@@ -17,9 +17,6 @@ CREATE TABLE [Staging].[StateDetail] (
     [RecordStartDateTime]              DATETIME       NULL,
     [RecordEndDateTime]                DATETIME       NULL,
     [DataCollectionName]               NVARCHAR (100) NULL,
-    [DataCollectionId]                 INT            NULL,
-    [PersonId]                         INT            NULL,
-    [OrganizationId]                   INT            NULL,
     [RunDateTime]                      DATETIME       NULL,
     CONSTRAINT [PK_StateDetail] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
