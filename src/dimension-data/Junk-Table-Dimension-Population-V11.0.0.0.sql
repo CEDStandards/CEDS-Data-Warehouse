@@ -4229,14 +4229,29 @@ GO
 	IF NOT EXISTS (SELECT 1 FROM RDS.DimAttendances d WHERE d.DimAttendanceId = -1) BEGIN
 		SET IDENTITY_INSERT RDS.DimAttendances ON
 
-		INSERT INTO [RDS].[DimAttendances]
-           ([DimAttendanceId]
-           ,[AbsenteeismCode]
-           ,[AbsenteeismDescription]
-		   ,[AbsenteeismEdFactsCode]
+INSERT INTO [RDS].[DimAttendances]
+           ([ChronicStudentAbsenteeismIndicatorCode]
+           ,[ChronicStudentAbsenteeismIndicatorDescription]
+           ,[ChronicStudentAbsenteeismIndicatorEdFactsCode]
+           ,[AttendanceEventTypeCode]
+           ,[AttendanceEventTypeDescription]
+           ,[AttendanceStatusCode]
+           ,[AttendanceStatusDescription]
+           ,[PresentAttendanceCategoryCode]
+           ,[PresentAttendanceCategoryDescription]
+           ,[AbsentAttendanceCategoryCode]
+           ,[AbsentAttendanceCategoryDescription]
 		   )
 			VALUES (
 				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
@@ -4247,33 +4262,100 @@ GO
 	END
 
 
-		CREATE TABLE #AbsenteeismCode (AbsenteeismCode VARCHAR(50), AbsenteeismDescription VARCHAR(200), AbsenteeismEdFactsCode VARCHAR(50))
+		CREATE TABLE #ChronicStudentAbsenteeismIndicator (ChronicStudentAbsenteeismIndicatorCode VARCHAR(50), ChronicStudentAbsenteeismIndicatorDescription VARCHAR(200), ChronicStudentAbsenteeismIndicatorEdFactsCode VARCHAR(50))
 
-		INSERT INTO #AbsenteeismCode VALUES ('MISSING', 'MISSING', 'MISSING')
-		INSERT INTO #AbsenteeismCode 
+		INSERT INTO #ChronicStudentAbsenteeismIndicator VALUES ('MISSING', 'MISSING', 'MISSING')
+		INSERT INTO #ChronicStudentAbsenteeismIndicator 
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, EdFactsOptionSetCode
 		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
-		WHERE CedsElementTechnicalName = 'AbsenteeismCode'
+		WHERE CedsElementTechnicalName = 'ChronicStudentAbsenteeismIndicator'
 
+		CREATE TABLE #AttendanceEventType (AttendanceEventTypeCode VARCHAR(50), AttendanceEventTypeDescription VARCHAR(200))
 
-		INSERT INTO [RDS].[DimAttendances]
-           ([AbsenteeismCode]
-           ,[AbsenteeismDescription]
-		   ,[AbsenteeismEdFactsCode]
+		INSERT INTO #AttendanceEventType VALUES ('MISSING', 'MISSING')
+		INSERT INTO #AttendanceEventType 
+		SELECT 
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'AttendanceEventType'
+
+		CREATE TABLE #AttendanceStatus (AttendanceStatusCode VARCHAR(50), AttendanceStatusDescription VARCHAR(200))
+
+		INSERT INTO #AttendanceStatus VALUES ('MISSING', 'MISSING')
+		INSERT INTO #AttendanceStatus 
+		SELECT 
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'AttendanceStatus'
+
+		CREATE TABLE #PresentAttendanceCategory (PresentAttendanceCategoryCode VARCHAR(50), PresentAttendanceCategoryDescription VARCHAR(200))
+
+		INSERT INTO #PresentAttendanceCategory VALUES ('MISSING', 'MISSING')
+		INSERT INTO #PresentAttendanceCategory 
+		SELECT 
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'PresentAttendanceCategory'
+
+		CREATE TABLE #AbsentAttendanceCategory (AbsentAttendanceCategoryCode VARCHAR(50), AbsentAttendanceCategoryDescription VARCHAR(200))
+
+		INSERT INTO #AbsentAttendanceCategory VALUES ('MISSING', 'MISSING')
+		INSERT INTO #AbsentAttendanceCategory 
+		SELECT 
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'AbsentAttendanceCategory'
+
+INSERT INTO [RDS].[DimAttendances]
+           ([ChronicStudentAbsenteeismIndicatorCode]
+           ,[ChronicStudentAbsenteeismIndicatorDescription]
+           ,[ChronicStudentAbsenteeismIndicatorEdFactsCode]
+           ,[AttendanceEventTypeCode]
+           ,[AttendanceEventTypeDescription]
+           ,[AttendanceStatusCode]
+           ,[AttendanceStatusDescription]
+           ,[PresentAttendanceCategoryCode]
+           ,[PresentAttendanceCategoryDescription]
+           ,[AbsentAttendanceCategoryCode]
+           ,[AbsentAttendanceCategoryDescription]
 		   )
-		SELECT DISTINCT
-			  h.AbsenteeismCode
-			, h.AbsenteeismDescription
-			, h.AbsenteeismEdFactsCode
-		FROM #AbsenteeismCode h
-		LEFT JOIN rds.DimAttendances main
-			ON  h.AbsenteeismCode = main.AbsenteeismCode
-		WHERE main.DimAttendanceId IS NULL
+	SELECT 
+            csai.[ChronicStudentAbsenteeismIndicatorCode]
+           ,csai.[ChronicStudentAbsenteeismIndicatorDescription]
+           ,csai.[ChronicStudentAbsenteeismIndicatorEdFactsCode]
+           ,aet.[AttendanceEventTypeCode]
+           ,aet.[AttendanceEventTypeDescription]
+           ,atts.[AttendanceStatusCode]
+           ,atts.[AttendanceStatusDescription]
+           ,pac.[PresentAttendanceCategoryCode]
+           ,pac.[PresentAttendanceCategoryDescription]
+           ,aac.[AbsentAttendanceCategoryCode]
+           ,aac.[AbsentAttendanceCategoryDescription]
+	FROM #ChronicStudentAbsenteeismIndicator csai
+	CROSS JOIN #AttendanceEventType aet
+	CROSS JOIN #AttendanceStatus atts
+	CROSS JOIN #PresentAttendanceCategory pac
+	CROSS JOIN #AbsentAttendanceCategory aac
+	LEFT JOIN rds.DimAttendances main
+		ON csai.ChronicStudentAbsenteeismIndicatorCode = main.ChronicStudentAbsenteeismIndicatorCode
+		AND aet.AttendanceEventTypeCode = main.AttendanceEventTypeCode
+		AND atts.AttendanceStatusCode = main.AttendanceStatusCode
+		AND pac.PresentAttendanceCategoryCode = main.PresentAttendanceCategoryCode
+		AND aac.AbsentAttendanceCategoryCode = main.AbsentAttendanceCategoryCode
+	WHERE main.DimAttendanceId IS NULL
 
-	DROP TABLE #AbsenteeismCode
+	DROP TABLE #ChronicStudentAbsenteeismIndicator
+	DROP TABLE #AttendanceEventType
+	DROP TABLE #AttendanceStatus
+	DROP TABLE #PresentAttendanceCategory
+	DROP TABLE #AbsentAttendanceCategory
 
 	------------------------------------------------
 	-- Populate DimCteStatuses			 ---
