@@ -30,5 +30,3 @@ GO
 
 ALTER TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards] CHECK CONSTRAINT [FK_BridgeFactCredentialAwardRelatedCredentialAwards_RelatedFactCredentialAwardId]
 GO
-
-

@@ -38,5 +38,3 @@ GO
 
 ALTER TABLE [RDS].[DimCredentialAwardStatuses] ADD  DEFAULT ('MISSING') FOR [CredentialSuspensionIndicatorDescription]
 GO
-
-

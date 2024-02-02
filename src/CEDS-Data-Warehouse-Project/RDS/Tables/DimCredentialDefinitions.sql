@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 CREATE TABLE [RDS].[DimCredentialDefinitions](
 	[DimCredentialDefinitionId] [int] IDENTITY(1,1) NOT NULL,
 	[CredentialDefinitionIdentifierCtid] [nvarchar](512) NULL,
@@ -79,3 +80,37 @@ ALTER TABLE [RDS].[DimCredentialDefinitions] ADD  DEFAULT ('MISSING') FOR [Crede
 GO
 
 
+=======
+CREATE TABLE [RDS].[DimCredentialDefinitions]
+(
+	[DimCredentialDefinitionId] int NOT NULL IDENTITY (1, 1),
+	[CredentialDefinitionIdentifierCtid] nvarchar(512) NULL,
+	[CredentialDefinitionTitle] nvarchar(300) NULL,
+	[CredentialDefinitionDescription] nvarchar(300) NULL,
+	[CredentialTypeCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CredentialTypeDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionCategorySystem] nvarchar(30) NULL,
+	[CredentialDefinitionCategoryType] nvarchar(60) NULL,
+	[CredentialDefinitionStatusTypeCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionStatusTypeDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionIntendedPurposeTypeCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionIntendedPurposeTypeDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionAssessmentMethodTypeCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionAssessmentMethodTypeDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionCriteria] nvarchar(300) NULL,
+	[CredentialDefinitionCriteriaURL] nvarchar(512) NULL,
+	[CredentialDefinitionKeywords] nvarchar(max) NULL,
+	[CredentialDefinitionValidationMethodDescription] nvarchar(max) NULL,
+	[CredentialImageURL] nvarchar(512) NULL,
+	[CredentialDefinitionDateEffective] date NULL,
+	[CTDLAudienceLevelTypeCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CTDLAudienceLevelTypeDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionTerminalDegreeIndicatorCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionTerminalDegreeIndicatorDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionScedCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionLowGradeLevelCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[CredentialDefinitionHighGradeLevelCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	CONSTRAINT [PK_DimCredentialDefinitions] PRIMARY KEY CLUSTERED ([DimCredentialDefinitionId] ASC)
+)
+GO
+>>>>>>> Stashed changes

@@ -22,5 +22,3 @@ GO
 
 ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions] CHECK CONSTRAINT [FK_FactCredentialAwardCompetencyDefinitions_FactCredentialAwards]
 GO
-
-
