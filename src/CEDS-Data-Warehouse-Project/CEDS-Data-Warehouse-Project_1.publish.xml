@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetDatabaseName>CEDS-Data-Warehouse-Project</TargetDatabaseName>
+    <TargetConnectionString>Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Password=******;Connect Timeout=30;Application Name=sqltools;Command Timeout=30</TargetConnectionString>
+    <AllowIncompatiblePlatform>True</AllowIncompatiblePlatform>
+    <DropPermissionsNotInSource>True</DropPermissionsNotInSource>
+    <DropObjectsNotInSource>True</DropObjectsNotInSource>
+    <DropRoleMembersNotInSource>True</DropRoleMembersNotInSource>
+    <IgnoreKeywordCasing>False</IgnoreKeywordCasing>
+    <IgnoreSemicolonBetweenStatements>False</IgnoreSemicolonBetweenStatements>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <AllowDropBlockingAssemblies>True</AllowDropBlockingAssemblies>
+    <ExcludeAudits>True</ExcludeAudits>
+    <ExcludeCredentials>True</ExcludeCredentials>
+    <ExcludeDatabaseScopedCredentials>True</ExcludeDatabaseScopedCredentials>
+    <ExcludeCryptographicProviders>True</ExcludeCryptographicProviders>
+    <ExcludeDatabaseAuditSpecifications>True</ExcludeDatabaseAuditSpecifications>
+    <ExcludeEndpoints>True</ExcludeEndpoints>
+    <ExcludeErrorMessages>True</ExcludeErrorMessages>
+    <ExcludeEventNotifications>True</ExcludeEventNotifications>
+    <ExcludeEventSessions>True</ExcludeEventSessions>
+    <ExcludeFiles>True</ExcludeFiles>
+    <ExcludeLinkedServerLogins>True</ExcludeLinkedServerLogins>
+    <ExcludeLinkedServers>True</ExcludeLinkedServers>
+    <ExcludeLogins>True</ExcludeLogins>
+    <ExcludeRoutes>True</ExcludeRoutes>
+    <ExcludeServerAuditSpecifications>True</ExcludeServerAuditSpecifications>
+    <ExcludeServerRoleMembership>True</ExcludeServerRoleMembership>
+    <ExcludeServerRoles>True</ExcludeServerRoles>
+    <ExcludeServerTriggers>True</ExcludeServerTriggers>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+  </PropertyGroup>
+</Project>

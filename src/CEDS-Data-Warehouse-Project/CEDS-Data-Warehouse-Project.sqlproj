@@ -20,6 +20,9 @@
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </ArtifactReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CEDS-Data-Warehouse-Project_1.publish.xml" />
+  </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
   </Target>

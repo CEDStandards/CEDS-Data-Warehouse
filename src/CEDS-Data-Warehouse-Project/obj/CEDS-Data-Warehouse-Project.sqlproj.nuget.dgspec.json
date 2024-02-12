@@ -1,22 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj": {}
+    "c:\\repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj": {}
   },
   "projects": {
-    "c:\\Repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj": {
+    "c:\\repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj",
+        "projectUniqueName": "c:\\repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj",
         "projectName": "CEDS-Data-Warehouse-Project",
-        "projectPath": "c:\\Repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj",
-        "packagesPath": "C:\\Users\\nclinton\\.nuget\\packages\\",
-        "outputPath": "c:\\Repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\obj\\",
+        "projectPath": "c:\\repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj",
+        "packagesPath": "C:\\Users\\svuyuru\\.nuget\\packages\\",
+        "outputPath": "c:\\repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nclinton\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\svuyuru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net46"

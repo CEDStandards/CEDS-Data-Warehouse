@@ -5053,3 +5053,122 @@ GO
 	DROP TABLE #FinancialExpenditureFunctionCode
 	DROP TABLE #FinancialExpenditureObjectCode
 	DROP TABLE #FinancialExpenditureLevelOfInstructionCode
+
+-- Create DimAccessibleEducationMaterialStatuses table
+CREATE TABLE [RDS].[DimAccessibleEducationMaterialStatuses]
+(
+	[DimAccessibleEducationMaterialStatusesId] int NOT NULL IDENTITY (1, 1),
+	[AccessibleFormatIndicatorCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatIndicatorDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatRequiredIndicatorCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatRequiredIndicatorDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatTypeCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatTypeDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	CONSTRAINT [PK_DimAccessibleEducationMaterialStatuses] PRIMARY KEY CLUSTERED ([DimAccessibleEducationMaterialStatusesId] ASC)
+)
+
+-- Create temp tables and insert values
+IF OBJECT_ID('tempdb..#AccessibleFormatIndicatorCode') IS NOT NULL
+	DROP TABLE #AccessibleFormatIndicatorCode
+
+CREATE TABLE #AccessibleFormatIndicatorCode (AccessibleFormatIndicatorCodeCode VARCHAR(50), AccessibleFormatIndicatorCodeDescription VARCHAR(200))
+
+INSERT INTO #AccessibleFormatIndicatorCode VALUES ('MISSING', 'MISSING')
+-- Add more INSERT statements for other values
+
+IF OBJECT_ID('tempdb..#AccessibleFormatRequiredIndicatorCode') IS NOT NULL
+	DROP TABLE #AccessibleFormatRequiredIndicatorCode
+
+CREATE TABLE #AccessibleFormatRequiredIndicatorCode (AccessibleFormatRequiredIndicatorCodeCode VARCHAR(50), AccessibleFormatRequiredIndicatorCodeDescription VARCHAR(200))
+
+INSERT INTO #AccessibleFormatRequiredIndicatorCode VALUES ('MISSING', 'MISSING')
+-- INSERT INTO #AccessibleFormatRequiredIndicatorCode 
+-- SELECT 
+-- 		CedsOptionSetCode
+-- 		, CedsOptionSetDescription
+-- FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+-- WHERE CedsElementTechnicalName = 'FinancialExpenditureFunctionCode'
+-- ORDER BY CedsOptionSetCode
+
+IF OBJECT_ID('tempdb..#AccessibleFormatTypeCode') IS NOT NULL
+	DROP TABLE #AccessibleFormatTypeCode
+
+CREATE TABLE #AccessibleFormatTypeCode (AccessibleFormatTypeCodeCode VARCHAR(50), AccessibleFormatTypeCodeDescription VARCHAR(200))
+
+INSERT INTO #AccessibleFormatTypeCode VALUES ('MISSING', 'MISSING')
+-- Add more INSERT statements for other values
+
+-- Insert into DimAccessibleEducationMaterialStatuses table
+INSERT INTO [RDS].[DimAccessibleEducationMaterialStatuses] (
+	[AccessibleFormatIndicatorCode],
+	[AccessibleFormatIndicatorDescription],
+	[AccessibleFormatRequiredIndicatorCode],
+	[AccessibleFormatRequiredIndicatorDescription],
+	[AccessibleFormatTypeCode],
+	[AccessibleFormatTypeDescription]
+)
+SELECT
+	afi.AccessibleFormatIndicatorCodeCode,
+	afi.AccessibleFormatIndicatorCodeDescription,
+	afri.AccessibleFormatRequiredIndicatorCodeCode,
+	afri.AccessibleFormatRequiredIndicatorCodeDescription,
+	aftc.AccessibleFormatTypeCodeCode,
+	aftc.AccessibleFormatTypeCodeDescription
+FROM
+	#AccessibleFormatIndicatorCode afi
+	CROSS JOIN #AccessibleFormatRequiredIndicatorCode afri
+	CROSS JOIN #AccessibleFormatTypeCode aftc
+
+-- Drop temp tables
+DROP TABLE #AccessibleFormatIndicatorCode
+DROP TABLE #AccessibleFormatRequiredIndicatorCode
+DROP TABLE #AccessibleFormatTypeCode
+	
+-- Create DimAccessibleFormatStatuses table
+CREATE TABLE [RDS].[DimAccessibleFormatStatuses]
+(
+	[DimAccessibleFormatStatusId] int NOT NULL IDENTITY (1, 1),
+	[AccessibleFormatRequiredIndicatorCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatRequiredIndicatorDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatTypeCode] nvarchar(50) NOT NULL DEFAULT 'MISSING',
+	[AccessibleFormatTypeDescription] nvarchar(200) NOT NULL DEFAULT 'MISSING',
+	CONSTRAINT [PK_DimAccessibleFormatStatuses] PRIMARY KEY CLUSTERED ([DimAccessibleFormatStatusId] ASC)
+)
+
+-- Create temp tables and insert values
+IF OBJECT_ID('tempdb..#AccessibleFormatRequiredIndicatorCode') IS NOT NULL
+	DROP TABLE #AccessibleFormatRequiredIndicatorCode
+
+CREATE TABLE #AccessibleFormatRequiredIndicatorCode (AccessibleFormatRequiredIndicatorCodeCode VARCHAR(50), AccessibleFormatRequiredIndicatorCodeDescription VARCHAR(200))
+
+INSERT INTO #AccessibleFormatRequiredIndicatorCode VALUES ('MISSING', 'MISSING')
+-- Add more INSERT statements for other values
+
+
+IF OBJECT_ID('tempdb..#AccessibleFormatTypeCode') IS NOT NULL
+	DROP TABLE #AccessibleFormatTypeCode
+
+CREATE TABLE #AccessibleFormatTypeCode (AccessibleFormatTypeCodeCode VARCHAR(50), AccessibleFormatTypeCodeDescription VARCHAR(200))
+
+INSERT INTO #AccessibleFormatTypeCode VALUES ('MISSING', 'MISSING')
+-- Add more INSERT statements for other values
+
+-- Insert into DimAccessibleFormatStatuses table
+INSERT INTO [RDS].[DimAccessibleFormatStatuses] (
+	[AccessibleFormatRequiredIndicatorCode],
+	[AccessibleFormatRequiredIndicatorDescription],
+	[AccessibleFormatTypeCode],
+	[AccessibleFormatTypeDescription]
+)
+SELECT
+	[AccessibleFormatRequiredIndicatorCodeCode],
+	[AccessibleFormatRequiredIndicatorCodeDescription],
+	[AccessibleFormatTypeCodeCode],
+	[AccessibleFormatTypeCodeDescription]
+FROM
+	#AccessibleFormatRequiredIndicatorCode afri
+	CROSS JOIN #AccessibleFormatTypeCode aftc
+
+-- Drop temp tables
+DROP TABLE #AccessibleFormatRequiredIndicatorCode
+DROP TABLE #AccessibleFormatTypeCode
