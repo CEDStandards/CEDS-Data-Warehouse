@@ -5074,7 +5074,13 @@ IF OBJECT_ID('tempdb..#AccessibleFormatIndicatorCode') IS NOT NULL
 CREATE TABLE #AccessibleFormatIndicatorCode (AccessibleFormatIndicatorCodeCode VARCHAR(50), AccessibleFormatIndicatorCodeDescription VARCHAR(200))
 
 INSERT INTO #AccessibleFormatIndicatorCode VALUES ('MISSING', 'MISSING')
--- Add more INSERT statements for other values
+INSERT INTO #AccessibleFormatIndicatorCode 
+SELECT 
+		CedsOptionSetCode
+		, CedsOptionSetDescription
+FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'AccessibleFormatIssuedIndicator'
+ORDER BY CedsOptionSetCode
 
 IF OBJECT_ID('tempdb..#AccessibleFormatRequiredIndicatorCode') IS NOT NULL
 	DROP TABLE #AccessibleFormatRequiredIndicatorCode
@@ -5082,13 +5088,13 @@ IF OBJECT_ID('tempdb..#AccessibleFormatRequiredIndicatorCode') IS NOT NULL
 CREATE TABLE #AccessibleFormatRequiredIndicatorCode (AccessibleFormatRequiredIndicatorCodeCode VARCHAR(50), AccessibleFormatRequiredIndicatorCodeDescription VARCHAR(200))
 
 INSERT INTO #AccessibleFormatRequiredIndicatorCode VALUES ('MISSING', 'MISSING')
--- INSERT INTO #AccessibleFormatRequiredIndicatorCode 
--- SELECT 
--- 		CedsOptionSetCode
--- 		, CedsOptionSetDescription
--- FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
--- WHERE CedsElementTechnicalName = 'FinancialExpenditureFunctionCode'
--- ORDER BY CedsOptionSetCode
+INSERT INTO #AccessibleFormatRequiredIndicatorCode 
+SELECT 
+		CedsOptionSetCode
+		, CedsOptionSetDescription
+FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'AccessibleFormatRequiredIndicator'
+ORDER BY CedsOptionSetCode
 
 IF OBJECT_ID('tempdb..#AccessibleFormatTypeCode') IS NOT NULL
 	DROP TABLE #AccessibleFormatTypeCode
@@ -5096,7 +5102,13 @@ IF OBJECT_ID('tempdb..#AccessibleFormatTypeCode') IS NOT NULL
 CREATE TABLE #AccessibleFormatTypeCode (AccessibleFormatTypeCodeCode VARCHAR(50), AccessibleFormatTypeCodeDescription VARCHAR(200))
 
 INSERT INTO #AccessibleFormatTypeCode VALUES ('MISSING', 'MISSING')
--- Add more INSERT statements for other values
+INSERT INTO #AccessibleFormatTypeCode 
+SELECT 
+		CedsOptionSetCode
+		, CedsOptionSetDescription
+FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'AccessibleFormatType'
+ORDER BY CedsOptionSetCode
 
 -- Insert into DimAccessibleEducationMaterialStatuses table
 INSERT INTO [RDS].[DimAccessibleEducationMaterialStatuses] (
@@ -5142,7 +5154,13 @@ IF OBJECT_ID('tempdb..#AccessibleFormatRequiredIndicatorCode') IS NOT NULL
 CREATE TABLE #AccessibleFormatRequiredIndicatorCode (AccessibleFormatRequiredIndicatorCodeCode VARCHAR(50), AccessibleFormatRequiredIndicatorCodeDescription VARCHAR(200))
 
 INSERT INTO #AccessibleFormatRequiredIndicatorCode VALUES ('MISSING', 'MISSING')
--- Add more INSERT statements for other values
+INSERT INTO #AccessibleFormatIndicatorCode
+SELECT 
+		CedsOptionSetCode
+		, CedsOptionSetDescription
+FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'AccessibleFormatRequiredIndicator'
+ORDER BY CedsOptionSetCode
 
 
 IF OBJECT_ID('tempdb..#AccessibleFormatTypeCode') IS NOT NULL
@@ -5151,7 +5169,13 @@ IF OBJECT_ID('tempdb..#AccessibleFormatTypeCode') IS NOT NULL
 CREATE TABLE #AccessibleFormatTypeCode (AccessibleFormatTypeCodeCode VARCHAR(50), AccessibleFormatTypeCodeDescription VARCHAR(200))
 
 INSERT INTO #AccessibleFormatTypeCode VALUES ('MISSING', 'MISSING')
--- Add more INSERT statements for other values
+INSERT INTO #AccessibleFormatTypeCode 
+SELECT 
+		CedsOptionSetCode
+		, CedsOptionSetDescription
+FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'AccessibleFormatType'
+ORDER BY CedsOptionSetCode
 
 -- Insert into DimAccessibleFormatStatuses table
 INSERT INTO [RDS].[DimAccessibleFormatStatuses] (
