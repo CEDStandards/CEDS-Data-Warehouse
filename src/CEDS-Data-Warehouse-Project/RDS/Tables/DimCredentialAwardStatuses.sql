@@ -21,12 +21,6 @@ GO
 ALTER TABLE [RDS].[DimCredentialAwardStatuses] ADD  DEFAULT ('MISSING') FOR [CredentialRevokedIndicatorDescription]
 GO
 
-ALTER TABLE [RDS].[DimCredentialAwardStatuses] ADD  DEFAULT ('MISSING') FOR [CredentialRevokedReasonCode]
-GO
-
-ALTER TABLE [RDS].[DimCredentialAwardStatuses] ADD  DEFAULT ('MISSING') FOR [CredentialRevokedReasonDescription]
-GO
-
 ALTER TABLE [RDS].[DimCredentialAwardStatuses] ADD  DEFAULT ('MISSING') FOR [AdultEducationCertificationTypeCode]
 GO
 

@@ -1,14 +1,18 @@
 CREATE TABLE [RDS].[DimK12StaffCategories] (
-    [DimK12StaffCategoryId]                              INT            IDENTITY (1, 1) NOT NULL,
-    [K12StaffClassificationCode]                         NVARCHAR (50)  NULL,
-    [K12StaffClassificationDescription]                  NVARCHAR (100) NULL,
-    [K12StaffClassificationEdFactsCode]                  NVARCHAR (50)  NULL,
-    [SpecialEducationSupportServicesCategoryCode]        NVARCHAR (50)  NULL,
-    [SpecialEducationSupportServicesCategoryDescription] NVARCHAR (200) NULL,
-    [SpecialEducationSupportServicesCategoryEdFactsCode] NVARCHAR (50)  NULL,
-    [TitleIProgramStaffCategoryCode]                     NVARCHAR (50)  NULL,
-    [TitleIProgramStaffCategoryDescription]              NVARCHAR (100) NULL,
-    [TitleIProgramStaffCategoryEdFactsCode]              NVARCHAR (50)  NULL,
+    [DimK12StaffCategoryId]                                 INT            IDENTITY (1, 1) NOT NULL,
+    [K12StaffClassificationCode]                            NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [K12StaffClassificationDescription]                     NVARCHAR (100) NULL DEFAULT 'MISSING',
+    [K12StaffClassificationEdFactsCode]                     NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [SpecialEducationSupportServicesCategoryCode]           NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [SpecialEducationSupportServicesCategoryDescription]    NVARCHAR (200) NULL DEFAULT 'MISSING',
+    [SpecialEducationSupportServicesCategoryEdFactsCode]    NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [TitleIProgramStaffCategoryCode]                        NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [TitleIProgramStaffCategoryDescription]                 NVARCHAR (100) NULL DEFAULT 'MISSING',
+    [TitleIProgramStaffCategoryEdFactsCode]                 NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [MigrantEducationProgramStaffCategoryCode]              NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [MigrantEducationProgramStaffCategoryDescription]       NVARCHAR (200) NULL DEFAULT 'MISSING',
+    [ProfessionalEducationalJobClassificationCode]          NVARCHAR (50)  NULL DEFAULT 'MISSING',
+    [ProfessionalEducationalJobClassificationDescription]   NVARCHAR (200) NULL DEFAULT 'MISSING',
     CONSTRAINT [PK_DimK12StaffCategories] PRIMARY KEY CLUSTERED ([DimK12StaffCategoryId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

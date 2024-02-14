@@ -25,7 +25,6 @@ CREATE TABLE [RDS].[FactK12StaffAssessments]
 	[OnetSocOccupationTypeId] int NULL,
 	[K12PositionId] int NULL,
 	[K12StaffAssignmentStatusId] int NULL,
-	[K12PositionStatusId] int NULL,
 	[K12JobId] int NULL,
 	[AssessmentResultScoreValueRawScore] nvarchar(70) NULL,
 	[CredentialAwardId] int NULL,
@@ -53,7 +52,6 @@ CREATE TABLE [RDS].[FactK12StaffAssessments]
 	CONSTRAINT [FK_FactK12StaffAssessments_K12EmploymentStatusId] FOREIGN KEY ([K12EmploymentStatusId]) REFERENCES [RDS].[DimK12EmploymentStatuses] ([DimK12EmploymentStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12JobId]	FOREIGN KEY ([K12JobId]) REFERENCES [RDS].[DimK12Jobs] ([DimK12JobId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12PositionId] FOREIGN KEY ([K12PositionId]) REFERENCES [RDS].[DimK12Positions] ([DimK12PositionId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffAssessments_K12PositionStatusId] FOREIGN KEY ([K12PositionStatusId]) REFERENCES [RDS].[DimK12PositionStatuses] ([DimK12PositionStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffAssignmentStatusId] FOREIGN KEY ([K12StaffAssignmentStatusId]) REFERENCES [RDS].[DimK12StaffAssignmentStatuses] ([DimK12StaffAssignmentStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffPersonId]	FOREIGN KEY ([K12StaffPersonId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
@@ -135,10 +133,6 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimK12Positions] 
  ON [RDS].[FactK12StaffAssessments] ([K12PositionId] ASC)
-GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimK12PositionStatuses] 
- ON [RDS].[FactK12StaffAssessments] ([K12PositionStatusId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimK12StaffAssignmentStatuses] 

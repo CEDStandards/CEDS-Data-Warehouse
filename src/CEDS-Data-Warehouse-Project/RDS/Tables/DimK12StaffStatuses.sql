@@ -24,6 +24,16 @@ CREATE TABLE [RDS].[DimK12StaffStatuses] (
     [ParaprofessionalQualificationStatusCode]               NVARCHAR (50)  NULL,
     [ParaprofessionalQualificationStatusDescription]        NVARCHAR (50)  NULL,
     [ParaprofessionalQualificationStatusEdFactsCode]        NVARCHAR (50)  NULL,
+    [SpecialEducationRelatedServicesPersonnelCode]          NVARCHAR (50)  NULL,                
+    [SpecialEducationRelatedServicesPersonnelDescription]   NVARCHAR (200) NULL,                        
+    [TeachingCredentialBasisCode]                           NVARCHAR (50)  NULL,
+    [TeachingCredentialBasisDescription]                    NVARCHAR (200) NULL,        
+    [CTEInstructorIndustryCertificationCode]                NVARCHAR (50)  NULL,            
+    [CTEInstructorIndustryCertificationDescription]         NVARCHAR (200) NULL,                
+    [SpecialEducationParaprofessionalCode]                  NVARCHAR (50)  NULL,        
+    [SpecialEducationParaprofessionalDescription]           NVARCHAR (200) NULL,                
+    [SpecialEducationTeacherCode]                           NVARCHAR (50)  NULL,
+    [SpecialEducationTeacherDescription]                    NVARCHAR (200) NULL,        
     CONSTRAINT [PK_DimK12StaffStatuses] PRIMARY KEY CLUSTERED ([DimK12StaffStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
