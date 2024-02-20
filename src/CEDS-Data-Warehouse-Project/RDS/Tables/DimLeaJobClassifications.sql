@@ -3,6 +3,8 @@ CREATE TABLE [RDS].[DimLeaJobClassifications](
 	[LeaIdentifierSea] [nvarchar](60) NOT NULL,
 	[CodingSystemOranizationTypeCode] [nvarchar](50) NOT NULL,
 	[CodingSystemOrganizationTypeDescription] [nvarchar](200) NOT NULL,
+	[EducationJobTypeCode] [nvarchar](40) NOT NULL,
+	[EducationJobTypeDescription] [nvarchar](200) NOT NULL,
 	[LocalJobFunctionCode] [nvarchar](50) NOT NULL,
 	[LocalJobFunctionDescription] [nvarchar](200) NOT NULL,
 	[LocalJobCategoryCode] [nvarchar](50) NOT NULL,

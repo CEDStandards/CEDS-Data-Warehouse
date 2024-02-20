@@ -2,10 +2,14 @@ CREATE TABLE [RDS].[DimSeaJobClassifications](
 	[DimSeaJobClassificationId] [int] IDENTITY(1,1) NOT NULL,
 	[CodingSystemOrganizationTypeCode] [nvarchar](50) NOT NULL,
 	[CodingSystemOrganizationTypeDescription] [nvarchar](200) NOT NULL,
+	[EducationJobTypeCode] [nvarchar](40) NOT NULL,
+	[EducationJobTypeDescription] [nvarchar](200) NOT NULL,
 	[LocalJobFunctionCode] [nvarchar](50) NOT NULL,
 	[LocalJobFunctionDescription] [nvarchar](200) NOT NULL,
 	[LocalJobCategoryCode] [nvarchar](50) NOT NULL,
 	[LocalJobCategoryDescription] [nvarchar](200) NOT NULL,
+	[RecordStartDateTime] [datetime] NOT NULL,
+	[RecordEndDateTime] [datetime] NULL,
  CONSTRAINT [PK_DimSeaJobClassifications] PRIMARY KEY CLUSTERED 
 (
 	[DimSeaJobClassificationId] ASC
