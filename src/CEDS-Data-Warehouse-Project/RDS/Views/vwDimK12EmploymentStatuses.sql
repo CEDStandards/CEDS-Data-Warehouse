@@ -1,15 +1,16 @@
-CREATE VIEW [dbo].[vwDimK12EmploymentStatuses]
+CREATE VIEW [RDS].[vwDimK12EmploymentStatuses]
 AS
   SELECT
     DimK12EmploymentStatusId,
+    rsy.SchoolYear,
     EmploymentStatusCode,
-    sssrd1.InputCode AS EmploymentStatusCodeMap,
+    sssrd1.InputCode AS EmploymentStatusMap,
     EmploymentSeparationReasonCode,
-    sssrd2.InputCode AS EmploymentSeparationReasonCodeMap,
+    sssrd2.InputCode AS EmploymentSeparationReasonMap,
     TitleITargetedAssistanceStaffFundedCode,
-    sssrd3.InputCode AS TitleITargetedAssistanceStaffFundedCodeMap,
+    sssrd3.InputCode AS TitleITargetedAssistanceStaffFundedMap,
     MEPPersonnelIndicatorCode,
-    sssrd4.InputCode AS MEPPersonnelIndicatorCodeMap
+    sssrd4.InputCode AS MEPPersonnelIndicatorMap
   FROM RDS.DimK12EmploymentStatuses rdkes
   CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
   LEFT JOIN staging.SourceSystemReferenceData sssrd1

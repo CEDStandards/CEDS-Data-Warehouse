@@ -37,6 +37,23 @@ CREATE TABLE [RDS].[DimK12StaffStatuses] (
     CONSTRAINT [PK_DimK12StaffStatuses] PRIMARY KEY CLUSTERED ([DimK12StaffStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
+GO
+CREATE NONCLUSTERED COLUMNSTORE INDEX CSI_DimK12StaffStatuses ON RDS.DimK12StaffStatuses (
+  [SpecialEducationAgeGroupTaughtCode]
+, [EdFactsCertificationStatusCode]
+, [HighlyQualifiedTeacherIndicatorCode]
+, [EdFactsTeacherInexperiencedStatusCode]
+, [TeachingCredentialTypeCode]
+, [EdFactsTeacherOutOfFieldStatusCode]
+, [SpecialEducationTeacherQualificationStatusCode]
+, [ParaprofessionalQualificationStatusCode]
+, [SpecialEducationRelatedServicesPersonnelCode]
+, [TeachingCredentialBasisCode]
+, [CTEInstructorIndustryCertificationCode]
+, [SpecialEducationParaprofessionalCode]
+, [SpecialEducationTeacherCode]
+)
+
 
 GO
 

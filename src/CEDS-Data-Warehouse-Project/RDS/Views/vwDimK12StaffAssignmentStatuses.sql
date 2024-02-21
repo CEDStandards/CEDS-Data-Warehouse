@@ -2,12 +2,13 @@ CREATE VIEW [RDS].[vwDimK12StaffAssignmentStatuses]
 AS
   SELECT
     DimK12StaffAssignmentStatusId,
+    rsy.SchoolYear,
     ItinerantTeacherCode,
-    sssrd1.InputCode AS ItinerantTeacherCodeMap,
+    sssrd1.InputCode AS ItinerantTeacherMap,
     ClassroomPositionTypeCode,
-    sssrd2.InputCode AS ClassroomPositionTypeCodeMap,
+    sssrd2.InputCode AS ClassroomPositionTypeMap,
     PrimaryAssignmentIndicatorCode,
-    sssrd3.InputCode AS PrimaryAssignmentIndicatorCodeMap
+    sssrd3.InputCode AS PrimaryAssignmentIndicatorMap
   FROM RDS.DimK12StaffAssignmentStatuses dka
   CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
   LEFT JOIN Staging.SourceSystemReferenceData sssrd1
