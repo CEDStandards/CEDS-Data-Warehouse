@@ -3,7 +3,13 @@ CREATE TABLE [RDS].[DimLeaFinancialRevenueClassifications](
 	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,	
 	[FinancialAccountLocalRevenueCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalRevenueCodeSeaCode] [nvarchar](50) NULL,
 	[FinancialAccountLocalRevenueCodeDescription] [nvarchar](150) NULL,	
+	[FinancialAccountLocalRevenueObjectCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalRevenueObjectCodeSeaCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalRevenueObjectCodeDescription] [nvarchar](150) NULL,	
+	[FinancialAccountRevenueObjectCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountRevenueObjectCodeDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimLeaFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimLeaFinancialRevenueClassificationId] ASC

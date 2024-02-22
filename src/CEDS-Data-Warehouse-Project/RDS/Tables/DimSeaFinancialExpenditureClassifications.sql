@@ -3,12 +3,16 @@ CREATE TABLE [RDS].[DimSeaFinancialExpenditureClassifications](
 	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,	
 	[FinancialExpenditureLocalFunctionCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureLocalFunctionCodeFederalCode] [nvarchar](50) NULL,
 	[FinancialExpenditureLocalFunctionCodeDescription] [nvarchar](150) NULL,
 	[FinancialExpenditureLocalObjectCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureLocalObjectCodeFederalCode] [nvarchar](50) NULL,
 	[FinancialExpenditureLocalObjectCodeDescription] [nvarchar](150) NULL,
 	[FinancialExpenditureLocalLevelOfInstructionCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureLocalLevelOfInstructionCodeFederalCode] [nvarchar](50) NULL,
 	[FinancialExpenditureLocalLevelOfInstructionCodeDescription] [nvarchar](150) NULL,
 	[FinancialExpenditureProjectReportingCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureProjectReportingCodeFederalCode] [nvarchar](50) NULL,
 	[FinancialExpenditureProjectReportingCodeDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimSeaFinancialExpenditureClassifications] PRIMARY KEY NONCLUSTERED 
 (

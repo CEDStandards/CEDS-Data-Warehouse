@@ -4,7 +4,7 @@ CREATE TABLE [RDS].[DimK12Courses] (
     [CourseCodeSystemCode]           NVARCHAR (50)  NOT NULL,
     [CourseCodeSystemDescription]    NVARCHAR (200) NOT NULL,
     [CourseTitle]                    NVARCHAR (60)  NOT NULL,
-    [CourseDescription]              NVARCHAR (60)  NOT NULL,
+    [CourseDescription]              NVARCHAR (1024)  NOT NULL,
     [CourseDepartmentName]           NVARCHAR (60)  NOT NULL,
     [CourseCreditUnitsCode]          NVARCHAR (50)  NOT NULL,
     [CourseCreditUnitsDescription]   NVARCHAR (200) NOT NULL,

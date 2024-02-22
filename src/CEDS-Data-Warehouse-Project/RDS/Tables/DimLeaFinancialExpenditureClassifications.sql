@@ -1,14 +1,18 @@
 CREATE TABLE [RDS].[DimLeaFinancialExpenditureClassifications](
 	[DimLeaFinancialExpenditureClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
+	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL, 
 	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,	
-	[FinancialExpenditureLocalFunctionCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureLocalFunctionCodeCode] [nvarchar](50) NULL, 
+	[FinancialExpenditureLocalFunctionCodeSeaCode] [nvarchar](50) NULL, 
 	[FinancialExpenditureLocalFunctionCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureLocalObjectCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureLocalObjectCodeCode] [nvarchar](50) NULL, 
+	[FinancialExpenditureLocalObjectCodeSeaCode] [nvarchar](50) NULL, 
 	[FinancialExpenditureLocalObjectCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureLocalLevelOfInstructionCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureLocalLevelOfInstructionCodeCode] [nvarchar](50) NULL, 
+	[FinancialExpenditureLocalLevelOfInstructionCodeSeaCode] [nvarchar](50) NULL, 
 	[FinancialExpenditureLocalLevelOfInstructionCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureProjectReportingCodeCode] [nvarchar](50) NULL,
+	[FinancialExpenditureProjectReportingCodeCode] [nvarchar](50) NULL, 
+	[FinancialExpenditureProjectReportingCodeSeaCode] [nvarchar](50) NULL, 
 	[FinancialExpenditureProjectReportingCodeDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimLeaFinancialExpenditureClassifications] PRIMARY KEY NONCLUSTERED 
 (

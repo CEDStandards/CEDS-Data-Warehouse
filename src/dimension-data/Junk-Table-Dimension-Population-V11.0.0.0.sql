@@ -3234,24 +3234,71 @@ GO
 	-- Populate DimIncidentStatuses 		           --
 	-----------------------------------------------------
 
+	CREATE TABLE #IncidentBehavior (IncidentBehaviorCode VARCHAR(50), IncidentBehaviorDescription VARCHAR(200))
+
+	INSERT INTO #IncidentBehavior VALUES ('MISSING', 'MISSING')
+	INSERT INTO #IncidentBehavior 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'IncidentBehavior'
+
+	CREATE TABLE #IdeaInterimRemovalReason (IdeaInterimRemovalReasonCode VARCHAR(50), IdeaInterimRemovalReasonDescription VARCHAR(200), IdeaInterimRemovalReasonEdFactsCode VARCHAR(50))
+
+	INSERT INTO #IdeaInterimRemovalReason VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #IdeaInterimRemovalReason 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode 
+			WHEN 'Drugs' THEN 'D'
+			WHEN 'Weapons' THEN 'W'
+			WHEN 'SeriousBodilyInjury' THEN 'SBI'
+			ELSE 'MISSING'
+		  END
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'IncidentBehavior'
+
+	CREATE TABLE #DisciplineReason (DisciplineReasonCode VARCHAR(50), DisciplineReasonDescription VARCHAR(200))
+
+	INSERT INTO #DisciplineReason VALUES ('MISSING', 'MISSING')
+	INSERT INTO #DisciplineReason 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'DisciplineReason'
+
+	CREATE TABLE #IncidentInjuryType (IncidentInjuryTypeCode VARCHAR(50), IncidentInjuryTypeDescription VARCHAR(200))
+
+	INSERT INTO #IncidentInjuryType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #IncidentInjuryType 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'IncidentInjuryType'
+
+
 	IF NOT EXISTS (SELECT 1 FROM RDS.DimIncidentStatuses d WHERE d.DimIncidentStatusId = -1) 
 	BEGIN
 		SET IDENTITY_INSERT RDS.DimIncidentStatuses ON
 
-		INSERT INTO [RDS].[DimIncidentStatuses] (
-			[DimIncidentStatusId]
-			, [IncidentBehaviorCode]
-			, [IncidentBehaviorDescription]
-			, [IdeaInterimRemovalReasonCode]
-			, [IdeaInterimRemovalReasonDescription]
-			, [IdeaInterimRemovalReasonEdFactsCode]
-			, [DisciplineReasonCode]
-			, [DisciplineReasonDescription]
-			, [IncidentInjuryTypeCode]
-			, [IncidentInjuryTypeDescription]		
+		INSERT INTO RDS.DimIncidentStatuses (
+			  DimIncidentStatusId
+			, IncidentBehaviorCode
+			, IncidentBehaviorDescription
+			, IdeaInterimRemovalReasonCode
+			, IdeaInterimRemovalReasonDescription
+			, IdeaInterimRemovalReasonEdFactsCode
+			, DisciplineReasonCode
+			, DisciplineReasonDescription
+			, IncidentInjuryTypeCode
+			, IncidentInjuryTypeDescription
 		)
 		VALUES (
-			-1
+			  -1
 			, 'MISSING'
 			, 'MISSING'
 			, 'MISSING'
@@ -3261,31 +3308,48 @@ GO
 			, 'MISSING'
 			, 'MISSING'
 			, 'MISSING'
-		)
+			)
 
 		SET IDENTITY_INSERT RDS.DimIncidentStatuses OFF
 
 	END
 
-/* NOTE */
---This needs to be removed when the full population of this table is completed
-		--Insert temporary rows into this dimension for IDEA Interim Removal Reason
+	INSERT INTO [RDS].[DimIncidentStatuses] (
+		  [IncidentBehaviorCode]
+		, [IncidentBehaviorDescription]
+		, [IdeaInterimRemovalReasonCode]
+		, [IdeaInterimRemovalReasonDescription]
+		, [IdeaInterimRemovalReasonEdFactsCode]
+		, [DisciplineReasonCode]
+		, [DisciplineReasonDescription]
+		, [IncidentInjuryTypeCode]
+		, [IncidentInjuryTypeDescription]		
+	)
+	SELECT 
+			ib.IncidentBehaviorCode
+		, ib.IncidentBehaviorDescription
+		, iirr.IdeaInterimRemovalReasonCode
+		, iirr.IdeaInterimRemovalReasonDescription
+		, iirr.IdeaInterimRemovalReasonEdFactsCode
+		, dr.DisciplineReasonCode
+		, dr.DisciplineReasonDescription
+		, iit.IncidentInjuryTypeCode
+		, iit.IncidentInjuryTypeDescription
+	FROM #IncidentBehavior ib
+	CROSS JOIN #IdeaInterimRemovalReason iirr
+	CROSS JOIN #DisciplineReason dr
+	CROSS JOIN #IncidentInjuryType iit
+	LEFT JOIN rds.DimIncidentStatuses rdi
+		ON  ib.[IncidentBehaviorCode] = rdi.[IncidentBehaviorCode]
+		AND iirr.[IdeaInterimRemovalReasonCode] = rdi.[IdeaInterimRemovalReasonCode]
+		AND dr.[DisciplineReasonCode] = rdi.[DisciplineReasonCode]
+		AND iit.[IncidentInjuryTypeCode] = rdi.[IncidentInjuryTypeCode]
+	WHERE rdi.DimIncidentStatusId IS NULL
 
-		INSERT INTO [RDS].[DimIncidentStatuses] (
-			[IncidentBehaviorCode]
-			, [IncidentBehaviorDescription]
-			, [IdeaInterimRemovalReasonCode]
-			, [IdeaInterimRemovalReasonDescription]
-			, [IdeaInterimRemovalReasonEdFactsCode]
-			, [DisciplineReasonCode]
-			, [DisciplineReasonDescription]
-			, [IncidentInjuryTypeCode]
-			, [IncidentInjuryTypeDescription]		
-		)
-		VALUES ('MISSING', 'D', 'Drugs', 'D', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING'),
-			('MISSING', 'W', 'Weapons', 'W', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING'),
-			('MISSING', 'SBI', 'Serious Bodily Injury', 'SBI', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING')
-
+	DROP TABLE #IncidentBehavior
+	DROP TABLE #IdeaInterimRemovalReason
+	DROP TABLE #DisciplineReason
+	DROP TABLE #IncidentInjuryType
 
 	PRINT 'Populate DimFirearmDisciplineStatuses'
 	-----------------------------------------------------
