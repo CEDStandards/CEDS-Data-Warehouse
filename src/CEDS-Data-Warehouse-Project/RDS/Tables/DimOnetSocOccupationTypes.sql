@@ -1,6 +1,6 @@
 CREATE TABLE [RDS].[DimOnetSocOccupationTypes](
 	[DimOnetSocOccupationTypeId] [int] IDENTITY(1,1) NOT NULL,
-	[OnetSocOccupationTypeCode] [nvarchar](100) NULL,
+	[OnetSocOccupationTypeCode] [nvarchar](10) NULL,
 	[OnetSocOccupationTypeDescription] [nvarchar](4000) NULL,	
  CONSTRAINT [PK_DimOnetSocOccupationTypes] PRIMARY KEY NONCLUSTERED 
 (

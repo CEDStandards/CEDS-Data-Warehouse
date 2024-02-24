@@ -9,6 +9,10 @@ CREATE VIEW RDS.vwDimK12StaffCategories AS
 		, sssrd2.InputCode AS SpecialEducationSupportServicesCategoryMap
 		, TitleIProgramStaffCategoryCode 
 		, sssrd3.InputCode AS TitleIProgramStaffCategoryMap
+		, MigrantEducationProgramStaffCategoryCode
+		, sssrd4.InputCode AS MigrantEducationProgramStaffCategoryMap
+		, ProfessionalEducationalJobClassificationCode
+		, sssrd5.InputCode AS ProfessionalEducationalJobClassificationMap
 	FROM rds.DimK12StaffCategories rdksc
 	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
 	LEFT JOIN staging.SourceSystemReferenceData sssrd1
@@ -23,6 +27,14 @@ CREATE VIEW RDS.vwDimK12StaffCategories AS
 		ON rdksc.TitleIProgramStaffCategoryCode = sssrd3.OutputCode
 		AND sssrd3.TableName = 'RefTitleIProgramStaffCategory'
 		AND rsy.SchoolYear = sssrd3.SchoolYear
+	LEFT JOIN staging.SourceSystemReferenceData sssrd4
+		ON rdksc.TitleIProgramStaffCategoryCode = sssrd4.OutputCode
+		AND sssrd4.TableName = 'RefMigrantEducationProgramStaffCategory'
+		AND rsy.SchoolYear = sssrd4.SchoolYear
+	LEFT JOIN staging.SourceSystemReferenceData sssrd5
+		ON rdksc.TitleIProgramStaffCategoryCode = sssrd5.OutputCode
+		AND sssrd5.TableName = 'RefProfessionalEducationalJobClassification'
+		AND rsy.SchoolYear = sssrd5.SchoolYear
 
 GO
 

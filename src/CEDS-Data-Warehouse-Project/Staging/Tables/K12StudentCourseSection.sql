@@ -9,6 +9,8 @@ CREATE TABLE [Staging].[K12StudentCourseSection] (
     [SchoolIdentifierSea]                            NVARCHAR (50)  NULL,
     [CourseGradeLevel]                               VARCHAR (100)  NULL,
     [ScedCourseCode]                                 NVARCHAR (50)  NULL,
+    [CourseIdentifier]                               NVARCHAR (40) NOT NULL,
+    [CourseCodeSystemCode]                           NVARCHAR (50) NOT NULL,
     [CourseRecordStartDateTime]                      DATETIME       NULL,
     [CourseLevelCharacteristic]                      NVARCHAR (50)  NULL,
     [EntryDate]                                      DATETIME       NULL,

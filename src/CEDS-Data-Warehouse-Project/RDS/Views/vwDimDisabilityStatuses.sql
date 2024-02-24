@@ -11,7 +11,7 @@ AS
 		  END AS DisabilityStatusMap
 		, rdds.Section504StatusCode
 		, CASE rdds.Section504StatusCode 
-			WHEN 'Yes' THEN 1 
+			WHEN 'Yes' THEN 1
 			WHEN 'No' THEN 0
 			ELSE -1
 		  END AS Section504StatusMap

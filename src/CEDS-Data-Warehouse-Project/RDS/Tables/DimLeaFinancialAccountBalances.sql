@@ -2,7 +2,8 @@ CREATE TABLE [RDS].[DimLeaFinancialAccountBalances](
 	[DimLeaFinancialAccountBalanceId] [int] IDENTITY(1,1) NOT NULL,
 	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,
-	[FinancialAccountLocalBalanceSheetCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountLocalBalanceSheetCodeCode] [nvarchar](50) NULL, 
+	[FinancialAccountLocalBalanceSheetCodeSeaCode] [nvarchar](50) NULL, 
 	[FinancialAccountLocalBalanceSheetCodeDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimLeaFinancialAccountBalances] PRIMARY KEY NONCLUSTERED 
 (
