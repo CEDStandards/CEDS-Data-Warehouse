@@ -5345,7 +5345,6 @@ GO
 	DROP TABLE #FinancialExpenditureObjectCode
 	DROP TABLE #FinancialExpenditureLevelOfInstructionCode
 
-<<<<<<< HEAD
 -- Create DimAccessibleEducationMaterialStatuses table
 CREATE TABLE [RDS].[DimAccessibleEducationMaterialStatuses]
 (
@@ -5488,7 +5487,7 @@ FROM
 -- Drop temp tables
 DROP TABLE #AccessibleFormatRequiredIndicatorCode
 DROP TABLE #AccessibleFormatTypeCode
-=======
+
 	PRINT 'Populate DimCredentialAwardStatuses'
 	------------------------------------------------------------------------------
 	-- Populate DimCredentialAwardStatuses --
@@ -6017,4 +6016,3 @@ DROP TABLE #CourseInteractionMode
 DROP TABLE #CourseSectionAssessmentReportingMethod
 DROP TABLE #CourseSectionInstructionalDeliveryMode
 DROP TABLE #ReceivingLocationOfInstruction
->>>>>>> feature/Issue-57
