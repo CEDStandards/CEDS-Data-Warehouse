@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimScedCodes] (
     [DimScedCodeId]                    INT             IDENTITY (1, 1) NOT NULL,
     [ScedCourseCode]                   NCHAR (5)       NOT NULL,
-    [ScedCourseTitle]                  NVARCHAR (50)   NOT NULL,
+    [ScedCourseTitle]                  NVARCHAR (100)   NOT NULL,
     [ScedCourseCodeDescription]        NVARCHAR (2000) NOT NULL,
     [ScedCourseLevelCode]              NVARCHAR (50)   NOT NULL,
     [ScedCourseLevelDescription]       NVARCHAR (200)  NOT NULL,

@@ -11,7 +11,7 @@ CREATE TABLE [Staging].[AccessibleEducationMaterialAssignment]
   [CourseIdentifier]                                                    NVARCHAR (40) NOT NULL,
   [CourseCodeSystemCode]                                                NVARCHAR (50) NOT NULL,
   [AccessibleEducationMaterialProviderOrganizationIdentifierSea]        NVARCHAR(60) NULL,
-	[AccessibleFormatIndicatorCode]                                       NVARCHAR(50) NULL,
+	[AccessibleFormatIssuedIndicatorCode]                                 NVARCHAR(50) NULL,
 	[AccessibleFormatRequiredIndicatorCode]                               NVARCHAR(50) NULL,
 	[AccessibleFormatTypeCode]                                            NVARCHAR(50) NULL,
   [LearningResourceIssuedDate]                                          DATE NULL,

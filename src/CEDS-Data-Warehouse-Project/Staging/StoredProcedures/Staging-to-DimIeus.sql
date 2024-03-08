@@ -12,8 +12,6 @@ BEGIN
 		SET IDENTITY_INSERT RDS.DimIeus off
 	END
 	
-	ALTER INDEX ALL ON RDS.DimIeus DISABLE
-
 	CREATE TABLE #IeuOrganizationTypes (
 		IeuOrganizationType				VARCHAR(20)
 	)
@@ -223,5 +221,4 @@ BEGIN
 	DROP TABLE #organizationLocationTypes
 	DROP TABLE #Ieus
 
-	ALTER INDEX ALL ON RDS.DimIeus REBUILD
 END

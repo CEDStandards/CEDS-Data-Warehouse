@@ -1,6 +1,6 @@
 CREATE TABLE [Staging].[AccessibleEducationMaterialProvider]
 (
-  [Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
 	[AccessibleEducationMaterialProviderOrganizationIdentifierSea] nvarchar(60) NOT NULL,
 	[AccessibleEducationMaterialProviderName] nvarchar(1000) NULL,
 	[StateAbbreviationCode] nvarchar(2) NULL,
@@ -20,5 +20,7 @@ CREATE TABLE [Staging].[AccessibleEducationMaterialProvider]
 	[PhysicalAddressCountyAnsiCodeCode] nvarchar(2) NULL,
 	[TelephoneNumber] nvarchar(48) NULL,
 	[WebSiteAddress] nvarchar(600) NULL,
-	[OutOfStateIndicator] bit NULL
+	[OutOfStateIndicator] bit NULL,
+	[RecordStartDateTime] datetime NOT NULL,
+	[RecordEndDateTime] datetime NULL
 )
