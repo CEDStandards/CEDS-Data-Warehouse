@@ -2,6 +2,8 @@ CREATE TABLE [RDS].[DimFederalFinancialRevenueClassifications](
 	[DimFederalFinancialRevenueClassificationId] 				[int] IDENTITY(1,1) NOT NULL,
 	[FinancialAccountRevenueCodeCode] 							[nvarchar](50) 		CONSTRAINT [DF_DimFederalFinancialRevenueClassifications_FinancialAccountRevenueCodeCode] DEFAULT ('MISSING') NOT NULL,
 	[FinancialAccountRevenueCodeDescription] 					[nvarchar](150) 	CONSTRAINT [DF_DimFederalFinancialRevenueClassifications_FinancialAccountRevenueCodeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountRevenueObjectCodeCode] 					[nvarchar](50) 		CONSTRAINT [DF_DimFederalFinancialRevenueClassifications_FinancialAccountRevenueObjectCodeCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountRevenueObjectCodeDescription] 				[nvarchar](150) 	CONSTRAINT [DF_DimFederalFinancialRevenueClassifications_FinancialAccountRevenueObjectCodeDescription] DEFAULT ('MISSING') NOT NULL,	
  CONSTRAINT [PK_DimFederalFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFederalFinancialRevenueClassificationId] ASC

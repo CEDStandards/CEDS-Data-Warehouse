@@ -3,7 +3,13 @@ CREATE TABLE [RDS].[DimLeaFinancialRevenueClassifications](
 	[FinancialAccountCodingSystemOrganizationTypeCode] 				[nvarchar](50) 		CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountCodingSystemOrganizationTypeCode] DEFAULT ('MISSING') NOT NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] 		[nvarchar](150) 	CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountCodingSystemOrganizationTypeDescription] DEFAULT ('MISSING') NOT NULL,	
 	[FinancialAccountLocalRevenueCodeCode] 							[nvarchar](50) 		CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalRevenueCodeSeaCode] 						[nvarchar](50) 	 	CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeSeaCode] DEFAULT ('MISSING') NOT NULL,	
 	[FinancialAccountLocalRevenueCodeDescription] 					[nvarchar](150) 	CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueObjectCodeCode] 					[nvarchar](50)		CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountLocalRevenueObjectCodeCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueObjectCodeSeaCode] 				[nvarchar](50)		CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountLocalRevenueObjectCodeSeaCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueObjectCodeDescription] 			[nvarchar](150) 	CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountLocalRevenueObjectCodeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountRevenueObjectCodeCode] 						[nvarchar](50)		CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountRevenueObjectCodeCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountRevenueObjectCodeDescription] 					[nvarchar](150)		CONSTRAINT [DF_DimLeaFinancialRevenueClassifications_FinancialAccountRevenueObjectCodeDescription] DEFAULT ('MISSING') NOT NULL,	
  CONSTRAINT [PK_DimLeaFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimLeaFinancialRevenueClassificationId] ASC

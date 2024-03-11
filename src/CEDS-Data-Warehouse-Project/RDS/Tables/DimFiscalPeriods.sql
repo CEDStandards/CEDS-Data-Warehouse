@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimFiscalPeriods](
 	[DimFiscalPeriodId] [int] IDENTITY(1,1) NOT NULL,
-	[FiscalPeriodBeginDate] [nvarchar](30) 	NOT NULL,
-	[FiscalPeriodEndDate] [nvarchar](100) 	NOT NULL,	
+	[FiscalPeriodBeginDate] DATETIME NOT NULL,
+	[FiscalPeriodEndDate] DATETIME NULL,	
  CONSTRAINT [PK_DimFiscalPeriods] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFiscalPeriodId] ASC

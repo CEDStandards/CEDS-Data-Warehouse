@@ -24,8 +24,35 @@ CREATE TABLE [RDS].[DimK12StaffStatuses] (
     [ParaprofessionalQualificationStatusCode]               NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_ParaprofessionalQualificationStatusCode] DEFAULT ('MISSING') NOT NULL,
     [ParaprofessionalQualificationStatusDescription]        NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_ParaprofessionalQualificationStatusDescription] DEFAULT ('MISSING') NOT NULL,
     [ParaprofessionalQualificationStatusEdFactsCode]        NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_ParaprofessionalQualificationStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [SpecialEducationRelatedServicesPersonnelCode]          NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationRelatedServicesPersonnelCode] DEFAULT ('MISSING') NOT NULL,                
+    [SpecialEducationRelatedServicesPersonnelDescription]   NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationRelatedServicesPersonnelDescription] DEFAULT ('MISSING') NOT NULL,                        
+    [TeachingCredentialBasisCode]                           NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_TeachingCredentialBasisCode] DEFAULT ('MISSING') NOT NULL,
+    [TeachingCredentialBasisDescription]                    NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_TeachingCredentialBasisDescription] DEFAULT ('MISSING') NOT NULL,        
+    [CTEInstructorIndustryCertificationCode]                NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_CTEInstructorIndustryCertificationCode] DEFAULT ('MISSING') NOT NULL,            
+    [CTEInstructorIndustryCertificationDescription]         NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_CTEInstructorIndustryCertificationDescription] DEFAULT ('MISSING') NOT NULL,                
+    [SpecialEducationParaprofessionalCode]                  NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationParaprofessionalCode] DEFAULT ('MISSING') NOT NULL,        
+    [SpecialEducationParaprofessionalDescription]           NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationParaprofessionalDescription] DEFAULT ('MISSING') NOT NULL,                
+    [SpecialEducationTeacherCode]                           NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationTeacherCode] DEFAULT ('MISSING') NOT NULL,
+    [SpecialEducationTeacherDescription]                    NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationTeacherDescription] DEFAULT ('MISSING') NOT NULL,        
     CONSTRAINT [PK_DimK12StaffStatuses] PRIMARY KEY CLUSTERED ([DimK12StaffStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
+
+GO
+CREATE NONCLUSTERED COLUMNSTORE INDEX CSI_DimK12StaffStatuses ON RDS.DimK12StaffStatuses (
+  [SpecialEducationAgeGroupTaughtCode]
+, [EdFactsCertificationStatusCode]
+, [HighlyQualifiedTeacherIndicatorCode]
+, [EdFactsTeacherInexperiencedStatusCode]
+, [TeachingCredentialTypeCode]
+, [EdFactsTeacherOutOfFieldStatusCode]
+, [SpecialEducationTeacherQualificationStatusCode]
+, [ParaprofessionalQualificationStatusCode]
+, [SpecialEducationRelatedServicesPersonnelCode]
+, [TeachingCredentialBasisCode]
+, [CTEInstructorIndustryCertificationCode]
+, [SpecialEducationParaprofessionalCode]
+, [SpecialEducationTeacherCode]
+)
 
 
 GO

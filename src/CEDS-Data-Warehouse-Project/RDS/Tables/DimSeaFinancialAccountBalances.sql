@@ -3,6 +3,7 @@ CREATE TABLE [RDS].[DimSeaFinancialAccountBalances](
 	[FinancialAccountCodingSystemOrganizationTypeCode] 			[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountBalances_FinancialAccountCodingSystemOrganizationTypeCode] DEFAULT ('MISSING') NOT NULL,
 	[FinancialAccountCodingSystemOrganizationTypeDescription] 	[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialAccountBalances_FinancialAccountCodingSystemOrganizationTypeDescription] DEFAULT ('MISSING') NOT NULL,
 	[FinancialAccountLocalBalanceSheetCodeCode] 				[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountBalances_FinancialAccountLocalBalanceSheetCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalBalanceSheetCodeFederalCode] 			[nvarchar](50)  CONSTRAINT [DF_DimSeaFinancialAccountBalances_FinancialAccountLocalBalanceSheetCodeFederalCode] DEFAULT ('MISSING') NOT NULL,
 	[FinancialAccountLocalBalanceSheetCodeDescription] 			[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialAccountBalances_FinancialAccountLocalBalanceSheetCodeDescription] DEFAULT ('MISSING') NOT NULL,
  CONSTRAINT [PK_DimSeaFinancialAccountBalances] PRIMARY KEY NONCLUSTERED 
 (

@@ -1,0 +1,7 @@
+CREATE TABLE [RDS].[DimK12Jobs]
+(
+	[DimK12JobId] int NOT NULL IDENTITY (1, 1),
+	[JobTitle] nvarchar(200) NULL,
+	CONSTRAINT [PK_DimK12Jobs] PRIMARY KEY CLUSTERED ([DimK12JobId] ASC)
+)
+GO

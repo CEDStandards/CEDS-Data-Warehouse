@@ -9,7 +9,6 @@ CREATE TABLE [Staging].[OrganizationFederalFunding] (
     [FederalProgramFundingAllocationType] VARCHAR (100)   NULL,
     [SchoolYear]                          SMALLINT        NULL,
     [DataCollectionName]                  NVARCHAR (100)  NULL,
-    [DataCollectionId]                    INT             NULL,
     [RunDateTime]                         DATETIME        NULL,
     CONSTRAINT [PK_OrganizationFederalFunding] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
