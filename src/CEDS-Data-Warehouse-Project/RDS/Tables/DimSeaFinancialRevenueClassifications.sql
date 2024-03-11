@@ -1,14 +1,14 @@
 CREATE TABLE [RDS].[DimSeaFinancialRevenueClassifications](
-	[DimSeaFinancialRevenueClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
-	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,	
-	[FinancialAccountLocalRevenueCodeCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalRevenueCodeFederalCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalRevenueCodeDescription] [nvarchar](150) NULL,	
-	[FinancialAccountLocalRevenueObjectCodeCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalRevenueObjectCodeSeaCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalRevenueObjectCodeDescription] [nvarchar](150) NULL,
-	CONSTRAINT [PK_DimSeaFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
+	[DimSeaFinancialRevenueClassificationId] 					[int] IDENTITY(1,1) NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeCode] 			[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountCodingSystemOrganizationTypeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeDescription] 	[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountCodingSystemOrganizationTypeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueCodeCode] 						[nvarchar](50) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueCodeFederalCode] 				[nvarchar](50) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeFederalCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueCodeDescription] 				[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueCodeDescription] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueObjectCodeCode] 				[nvarchar](50) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueObjectCodeCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueObjectCodeSeaCode] 			[nvarchar](50) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueObjectCodeSeaCode] DEFAULT ('MISSING') NOT NULL,	
+	[FinancialAccountLocalRevenueObjectCodeDescription] 		[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialRevenueClassifications_FinancialAccountLocalRevenueObjectCodeDescription] DEFAULT ('MISSING') NOT NULL,	
+ CONSTRAINT [PK_DimSeaFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimSeaFinancialRevenueClassificationId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]

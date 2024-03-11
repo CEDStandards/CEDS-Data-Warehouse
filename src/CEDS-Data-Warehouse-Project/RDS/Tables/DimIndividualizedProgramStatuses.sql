@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimIndividualizedProgramStatuses] (
     [DimIndividualizedProgramStatusId]        INT            IDENTITY (1, 1) NOT NULL,
-    [IndividualizedProgramTypeCode]           NVARCHAR (100) NOT NULL,
-    [IndividualizedProgramTypeDescription]    NVARCHAR (300) NOT NULL,
-    [StudentSupportServiceTypeCode]           NVARCHAR (100) NOT NULL,
-    [StudentSupportServiceTypeDescription]    NVARCHAR (300) NOT NULL,
-    [ConsentToEvaluationIndicatorCode]        NVARCHAR (100) NOT NULL,
-    [ConsentToEvaluationIndicatorDescription] NVARCHAR (300) NOT NULL,
+    [IndividualizedProgramTypeCode]           NVARCHAR (100) CONSTRAINT [DF_DimIndividualizedProgramStatuses_IndividualizedProgramTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [IndividualizedProgramTypeDescription]    NVARCHAR (300) CONSTRAINT [DF_DimIndividualizedProgramStatuses_IndividualizedProgramTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [StudentSupportServiceTypeCode]           NVARCHAR (100) CONSTRAINT [DF_DimIndividualizedProgramStatuses_StudentSupportServiceTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [StudentSupportServiceTypeDescription]    NVARCHAR (300) CONSTRAINT [DF_DimIndividualizedProgramStatuses_StudentSupportServiceTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [ConsentToEvaluationIndicatorCode]        NVARCHAR (100) CONSTRAINT [DF_DimIndividualizedProgramStatuses_ConsentToEvaluationIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [ConsentToEvaluationIndicatorDescription] NVARCHAR (300) CONSTRAINT [DF_DimIndividualizedProgramStatuses_ConsentToEvaluationIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimIndividualizedProgramStatusId] PRIMARY KEY CLUSTERED ([DimIndividualizedProgramStatusId] ASC)
 );
 

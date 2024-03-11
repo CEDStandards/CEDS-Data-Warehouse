@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimK12Demographics] (
     [DimK12DemographicId] INT            IDENTITY (1, 1) NOT NULL,
-    [SexCode]             NVARCHAR (50)  NULL,
-    [SexDescription]      NVARCHAR (200) NULL,
-    [SexEdFactsCode]      NVARCHAR (50)  NULL,
+    [SexCode]             NVARCHAR (50)  CONSTRAINT [DF_DimK12Demographics_SexCode] DEFAULT ('MISSING') NOT NULL,
+    [SexDescription]      NVARCHAR (200) CONSTRAINT [DF_DimK12Demographics_SexDescription] DEFAULT ('MISSING') NOT NULL,
+    [SexEdFactsCode]      NVARCHAR (50)  CONSTRAINT [DF_DimK12Demographics_SexEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimK12Demographics] PRIMARY KEY CLUSTERED ([DimK12DemographicId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

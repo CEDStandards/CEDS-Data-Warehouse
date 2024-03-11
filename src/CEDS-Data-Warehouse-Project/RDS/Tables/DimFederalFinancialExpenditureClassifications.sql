@@ -1,11 +1,13 @@
 CREATE TABLE [RDS].[DimFederalFinancialExpenditureClassifications](
-	[DimFederalFinancialExpenditureClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialExpenditureFunctionCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureFunctionCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureObjectCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureObjectCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureLevelOfInstructionCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureLevelOfInstructionCodeDescription] [nvarchar](150) NULL,
+	[DimFederalFinancialExpenditureClassificationId] 					[int] IDENTITY(1,1) NOT NULL,
+	[FinancialExpenditureFunctionCodeCode] 								[nvarchar](50) 		CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureFunctionCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureFunctionCodeDescription] 						[nvarchar](150) 	CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureFunctionCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureObjectCodeCode] 								[nvarchar](50) 		CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureObjectCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureObjectCodeDescription] 						[nvarchar](150) 	CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureObjectCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureLevelOfInstructionCodeCode] 					[nvarchar](50) 		CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureLevelOfInstructionCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureLevelOfInstructionCodeDescription] 			[nvarchar](150) 	CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureLevelOfInstructionCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureProjectReportingCodeCode] 						[nvarchar](50) 		CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureProjectReportingCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialExpenditureProjectReportingCodeDescription] 				[nvarchar](150) 	CONSTRAINT [DF_DimFederalFinancialExpenditureClassifications_FinancialExpenditureProjectReportingCodeDescription] DEFAULT ('MISSING') NOT NULL,
  CONSTRAINT [PK_DimFederalFinancialExpenditureClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFederalFinancialExpenditureClassificationId] ASC

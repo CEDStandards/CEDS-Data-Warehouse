@@ -1,9 +1,9 @@
 CREATE TABLE [RDS].[DimAssessmentAccommodations] (
     [DimAssessmentAccommodationId]               INT            IDENTITY (1, 1) NOT NULL,
-    [AssessmentAccommodationCategoryCode]        NVARCHAR (100) NOT NULL,
-    [AssessmentAccommodationCategoryDescription] NVARCHAR (300) NOT NULL,
-    [AccommodationTypeCode]                      NVARCHAR (100) NOT NULL,
-    [AccommodationTypeDescription]               NVARCHAR (300) NOT NULL,
+    [AssessmentAccommodationCategoryCode]        NVARCHAR (100) CONSTRAINT [DF_DimAssessmentAccommodations_AssessmentAccommodationCategoryCode] DEFAULT ('MISSING') NOT NULL,
+    [AssessmentAccommodationCategoryDescription] NVARCHAR (300) CONSTRAINT [DF_DimAssessmentAccommodations_AssessmentAccommodationCategoryDescription] DEFAULT ('MISSING') NOT NULL,
+    [AccommodationTypeCode]                      NVARCHAR (100) CONSTRAINT [DF_DimAssessmentAccommodations_AccommodationTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [AccommodationTypeDescription]               NVARCHAR (300) CONSTRAINT [DF_DimAssessmentAccommodations_AccommodationTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimAssessmentAccommodationId] PRIMARY KEY CLUSTERED ([DimAssessmentAccommodationId] ASC)
 );
 

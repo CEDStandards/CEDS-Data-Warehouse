@@ -1,14 +1,14 @@
 CREATE TABLE [RDS].[DimPsFamilyStatuses] (
     [DimPsFamilyStatusId]                     BIGINT         IDENTITY (1, 1) NOT NULL,
-    [DependencyStatusCode]                    NVARCHAR (50)  NULL,
-    [DependencyStatusDescription]             NVARCHAR (200) NULL,
-    [NumberOfDependentsTypeCode]              NVARCHAR (50)  NULL,
-    [NumberOfDependentsTypeDescription]       NVARCHAR (200) NULL,
-    [SingleParentOrSinglePregnantWomanStatus] BIT            NULL,
-    [MaternalGuardianEducationCode]           NVARCHAR (50)  NULL,
-    [MaternalGuardianEducationDescription]    NVARCHAR (200) NULL,
-    [PaternalGuardianEducationCode]           NVARCHAR (50)  NULL,
-    [PaternalGuardianEducationDescription]    NVARCHAR (200) NULL,
+    [DependencyStatusCode]                    NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_DependencyStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [DependencyStatusDescription]             NVARCHAR (200) CONSTRAINT [DF_DimPsFamilyStatuses_DependencyStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [NumberOfDependentsTypeCode]              NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_NumberOfDependentsTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [NumberOfDependentsTypeDescription]       NVARCHAR (200) CONSTRAINT [DF_DimPsFamilyStatuses_NumberOfDependentsTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [SingleParentOrSinglePregnantWomanStatus] BIT            CONSTRAINT [DF_DimPsFamilyStatuses_SingleParentOrSinglePregnantWomanStatus] DEFAULT ((0)) NOT NULL,
+    [MaternalGuardianEducationCode]           NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_MaternalGuardianEducationCode] DEFAULT ('MISSING') NOT NULL,
+    [MaternalGuardianEducationDescription]    NVARCHAR (200) CONSTRAINT [DF_DimPsFamilyStatuses_MaternalGuardianEducationDescription] DEFAULT ('MISSING') NOT NULL,
+    [PaternalGuardianEducationCode]           NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_PaternalGuardianEducationCode] DEFAULT ('MISSING') NOT NULL,
+    [PaternalGuardianEducationDescription]    NVARCHAR (200) CONSTRAINT [DF_DimPsFamilyStatuses_PaternalGuardianEducationDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimPsFamilyStatuses] PRIMARY KEY CLUSTERED ([DimPsFamilyStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

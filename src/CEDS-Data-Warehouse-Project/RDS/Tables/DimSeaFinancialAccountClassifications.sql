@@ -1,16 +1,16 @@
 CREATE TABLE [RDS].[DimSeaFinancialAccountClassifications](
-	[DimSeaFinancialAccountClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialAccountCodingSystemOrganizationTypeCode] [nvarchar](50) NULL,
-	[FinancialAccountCodingSystemOrganizationTypeDescription] [nvarchar](150) NULL,
-	[FinancialAccountCategoryCode] [nvarchar](50) NULL,
-	[FinancialAccountCategoryFederalCode] [nvarchar](50) NULL,
-	[FinancialAccountCategoryDescription] [nvarchar](150) NULL,
-	[FinancialAccountLocalProgramCodeCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalProgramCodeFederalCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalProgramCodeDescription] [nvarchar](150) NULL,
-	[FinancialAccountLocalFundClassificationCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalFundClassificationFederalCode] [nvarchar](50) NULL,
-	[FinancialAccountLocalFundClassificationDescription] [nvarchar](150) NULL,
+	[DimSeaFinancialAccountClassificationId] 					[int] IDENTITY(1,1) NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeCode] 			[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountCodingSystemOrganizationTypeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCodingSystemOrganizationTypeDescription] 	[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountCodingSystemOrganizationTypeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCategoryCode] 								[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountCategoryCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCategoryFederalCode] 						[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountCategoryFederalCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCategoryDescription] 						[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountCategoryDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalProgramCodeCode] 						[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountLocalProgramCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalProgramCodeFederalCode] 				[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountLocalProgramCodeFederalCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalProgramCodeDescription] 				[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountLocalProgramCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalFundClassificationCode] 				[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountLocalFundClassificationCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalFundClassificationFederalCode] 		[nvarchar](50) 	CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountLocalFundClassificationFederalCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountLocalFundClassificationDescription] 		[nvarchar](150) CONSTRAINT [DF_DimSeaFinancialAccountClassifications_FinancialAccountLocalFundClassificationDescription] DEFAULT ('MISSING') NOT NULL,
  CONSTRAINT [PK_DimSeaFinancialAccountClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimSeaFinancialAccountClassificationId] ASC

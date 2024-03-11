@@ -1,16 +1,16 @@
 CREATE TABLE [RDS].[DimHomelessnessStatuses] (
     [DimHomelessnessStatusId]                      INT            IDENTITY (1, 1) NOT NULL,
-    [HomelessnessStatusCode]                       NVARCHAR (100) NOT NULL,
-    [HomelessnessStatusDescription]                NVARCHAR (300) NOT NULL,
-    [HomelessnessStatusEdFactsCode]                NVARCHAR (50)  NULL,
-    [HomelessPrimaryNighttimeResidenceCode]        NVARCHAR (100) NOT NULL,
-    [HomelessPrimaryNighttimeResidenceDescription] NVARCHAR (300) NOT NULL,
-    [HomelessPrimaryNighttimeResidenceEdfactsCode] NVARCHAR (50)  NOT NULL,
-    [HomelessServicedIndicatorCode]                NVARCHAR (100) NOT NULL,
-    [HomelessServicedIndicatorDescription]         NVARCHAR (300) NOT NULL,
-    [HomelessUnaccompaniedYouthStatusCode]         NVARCHAR (100) NOT NULL,
-    [HomelessUnaccompaniedYouthStatusDescription]  NVARCHAR (300) NOT NULL,
-    [HomelessUnaccompaniedYouthStatusEdfactsCode]  NVARCHAR (50)  NOT NULL,
+    [HomelessnessStatusCode]                       NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessnessStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessnessStatusDescription]                NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessnessStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessnessStatusEdFactsCode]                NVARCHAR (50)  CONSTRAINT [DF_DimHomelessnessStatuses_HomelessnessStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessPrimaryNighttimeResidenceCode]        NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessPrimaryNighttimeResidenceCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessPrimaryNighttimeResidenceDescription] NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessPrimaryNighttimeResidenceDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessPrimaryNighttimeResidenceEdfactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimHomelessnessStatuses_HomelessPrimaryNighttimeResidenceEdfactsCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessServicedIndicatorCode]                NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessServicedIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessServicedIndicatorDescription]         NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessServicedIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessUnaccompaniedYouthStatusCode]         NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessUnaccompaniedYouthStatusDescription]  NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessUnaccompaniedYouthStatusEdfactsCode]  NVARCHAR (50)  CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusEdfactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimHomelessnessStatusId] PRIMARY KEY CLUSTERED ([DimHomelessnessStatusId] ASC)
 );
 

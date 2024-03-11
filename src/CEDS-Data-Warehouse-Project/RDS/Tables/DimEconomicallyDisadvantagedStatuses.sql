@@ -1,13 +1,13 @@
 CREATE TABLE [RDS].[DimEconomicallyDisadvantagedStatuses] (
     [DimEconomicallyDisadvantagedStatusId]                              INT            IDENTITY (1, 1) NOT NULL,
-    [EconomicDisadvantageStatusCode]                                    NVARCHAR (100) NOT NULL,
-    [EconomicDisadvantageStatusDescription]                             NVARCHAR (300) NOT NULL,
-    [EconomicDisadvantageStatusEdFactsCode]                             NVARCHAR (50)  NOT NULL,
-    [EligibilityStatusForSchoolFoodServiceProgramsCode]                 NVARCHAR (100) NOT NULL,
-    [EligibilityStatusForSchoolFoodServiceProgramsDescription]          NVARCHAR (300) NOT NULL,
-    [EligibilityStatusForSchoolFoodServiceProgramsEdFactsCode]          NVARCHAR (50)  NOT NULL,
-    [NationalSchoolLunchProgramDirectCertificationIndicatorCode]        NVARCHAR (100) NOT NULL,
-    [NationalSchoolLunchProgramDirectCertificationIndicatorDescription] NVARCHAR (300) NOT NULL,
+    [EconomicDisadvantageStatusCode]                                    NVARCHAR (100) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_EconomicDisadvantageStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [EconomicDisadvantageStatusDescription]                             NVARCHAR (300) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_EconomicDisadvantageStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [EconomicDisadvantageStatusEdFactsCode]                             NVARCHAR (50)  CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_EconomicDisadvantageStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [EligibilityStatusForSchoolFoodServiceProgramsCode]                 NVARCHAR (100) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_EligibilityStatusForSchoolFoodServiceProgramsCode] DEFAULT ('MISSING') NOT NULL,
+    [EligibilityStatusForSchoolFoodServiceProgramsDescription]          NVARCHAR (300) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_EligibilityStatusForSchoolFoodServiceProgramsDescription] DEFAULT ('MISSING') NOT NULL,
+    [EligibilityStatusForSchoolFoodServiceProgramsEdFactsCode]          NVARCHAR (50)  CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_EligibilityStatusForSchoolFoodServiceProgramsEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [NationalSchoolLunchProgramDirectCertificationIndicatorCode]        NVARCHAR (100) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_NationalSchoolLunchProgramDirectCertificationIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [NationalSchoolLunchProgramDirectCertificationIndicatorDescription] NVARCHAR (300) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_NationalSchoolLunchProgramDirectCertificationIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimEconomicallyDisadvantagedStatusId] PRIMARY KEY CLUSTERED ([DimEconomicallyDisadvantagedStatusId] ASC)
 );
 
