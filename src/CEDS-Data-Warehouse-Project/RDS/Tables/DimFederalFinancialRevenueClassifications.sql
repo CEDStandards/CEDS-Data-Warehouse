@@ -2,6 +2,8 @@ CREATE TABLE [RDS].[DimFederalFinancialRevenueClassifications](
 	[DimFederalFinancialRevenueClassificationId] [int] IDENTITY(1,1) NOT NULL,
 	[FinancialAccountRevenueCodeCode] [nvarchar](50) NULL,
 	[FinancialAccountRevenueCodeDescription] [nvarchar](150) NULL,	
+	[FinancialAccountRevenueObjectCodeCode] [nvarchar](50) NULL,
+	[FinancialAccountRevenueObjectCodeDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimFederalFinancialRevenueClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFederalFinancialRevenueClassificationId] ASC

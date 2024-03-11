@@ -6,8 +6,6 @@ CREATE TABLE [RDS].[DimFederalFinancialExpenditureClassifications](
 	[FinancialExpenditureObjectCodeDescription] [nvarchar](150) NULL,
 	[FinancialExpenditureLevelOfInstructionCodeCode] [nvarchar](50) NULL,
 	[FinancialExpenditureLevelOfInstructionCodeDescription] [nvarchar](150) NULL,
-	[FinancialExpenditureProjectReportingCodeCode] [nvarchar](50) NULL,
-	[FinancialExpenditureProjectReportingCodeDescription] [nvarchar](150) NULL,
  CONSTRAINT [PK_DimFederalFinancialExpenditureClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFederalFinancialExpenditureClassificationId] ASC
@@ -103,34 +101,4 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureLevelOfInstructionCodeDescription'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The project/reporting code permits organizations to accumulate expenditures to meet a variety of specialized reporting requirements at the local, state, and federal levels. It is a three-digit code with the format 00X. The first two digits identify the particular funding source, authority, or expenditure purpose for which a special record or report is required. The third digit is available to identify particular projects and the fiscal year of the appropriation within that funding source. Each classification is presented by a code range followed by a description.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeCode'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Financial Expenditure Project Reporting Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeCode'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001556' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeCode'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22532' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeCode'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeCode'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The project/reporting code permits organizations to accumulate expenditures to meet a variety of specialized reporting requirements at the local, state, and federal levels. It is a three-digit code with the format 00X. The first two digits identify the particular funding source, authority, or expenditure purpose for which a special record or report is required. The third digit is available to identify particular projects and the fiscal year of the appropriation within that funding source. Each classification is presented by a code range followed by a description.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeDescription'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Financial Expenditure Project Reporting Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeDescription'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001556' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeDescription'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22532' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeDescription'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimFederalFinancialExpenditureClassifications', @level2type=N'COLUMN',@level2name=N'FinancialExpenditureProjectReportingCodeDescription'
 GO
