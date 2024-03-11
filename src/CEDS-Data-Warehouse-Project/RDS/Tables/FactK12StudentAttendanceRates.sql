@@ -1,17 +1,19 @@
 CREATE TABLE [RDS].[FactK12StudentAttendanceRates] (
-    [FactK12StudentAttendanceRateId] INT             IDENTITY (1, 1) NOT NULL,
-    [SchoolYearId]                   INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_SchoolYearId] DEFAULT ((-1)) NOT NULL,
-    [FactTypeId]                     INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_FactTypeId] DEFAULT ((-1)) NOT NULL,
-    [SeaId]                          INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_SeaId] DEFAULT ((-1)) NOT NULL,
-    [LeaId]                          INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_LeaId] DEFAULT ((-1)) NOT NULL,
-    [K12SchoolId]                    INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_K12SchoolId] DEFAULT ((-1)) NOT NULL,
-    [K12StudentId]                   BIGINT          CONSTRAINT [DF_FactK12StudentAttendanceRates_K12StudentId] DEFAULT ((-1)) NOT NULL,
-    [AttendanceId]                   INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_AttendanceId] DEFAULT ((-1)) NOT NULL,
-    [K12DemographicId]               INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_K12DemographicId] DEFAULT ((-1)) NOT NULL,
-    [StudentAttendanceRate]          DECIMAL (18, 3) NULL,
+    [FactK12StudentAttendanceRateId]	INT             IDENTITY (1, 1) NOT NULL,
+    [SchoolYearId]						INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_SchoolYearId] DEFAULT ((-1)) NOT NULL,
+    [FactTypeId]						INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_FactTypeId] DEFAULT ((-1)) NOT NULL,
+    [SeaId]								INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_SeaId] DEFAULT ((-1)) NOT NULL,
+    [LeaId]								INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_LeaId] DEFAULT ((-1)) NOT NULL,
+    [K12SchoolId]						INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_K12SchoolId] DEFAULT ((-1)) NOT NULL,
+    [K12StudentId]						BIGINT          CONSTRAINT [DF_FactK12StudentAttendanceRates_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [AttendanceId]						INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_AttendanceId] DEFAULT ((-1)) NOT NULL,
+    [K12DemographicId]					INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_K12DemographicId] DEFAULT ((-1)) NOT NULL,
+    [GradeLevelId]						INT             CONSTRAINT [DF_FactK12StudentAttendanceRates_GradeLevelId] DEFAULT ((-1)) NOT NULL,
+    [StudentAttendanceRate]				DECIMAL (18, 3) NULL,
     CONSTRAINT [FK_FactK12StudentAttendanceRates_AttendanceId] FOREIGN KEY ([AttendanceId]) REFERENCES [RDS].[DimAttendances] ([DimAttendanceId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_FactTypeId] FOREIGN KEY ([FactTypeId]) REFERENCES [RDS].[DimFactTypes] ([DimFactTypeId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
+    CONSTRAINT [FK_FactK12StudentAttendanceRates_GradeLevelId] FOREIGN KEY ([GradeLevelId]) REFERENCES [RDS].[DimGradeLevels] ([DimGradeLevelId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
@@ -66,6 +68,12 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAttendanceRates_K12DemographicId]
     ON [RDS].[FactK12StudentAttendanceRates]([K12DemographicId] ASC);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAttendanceRates_GradeLevelId]
+    ON [RDS].[FactK12StudentAttendanceRates]([GradeLevelId] ASC);
 
 
 GO
