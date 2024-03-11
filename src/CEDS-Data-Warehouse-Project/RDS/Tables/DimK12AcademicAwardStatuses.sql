@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimK12AcademicAwardStatuses] (
     [DimK12AcademicAwardStatusId]      INT            IDENTITY (1, 1) NOT NULL,
-    [HighSchoolDiplomaTypeCode]        NVARCHAR (100) NULL,
-    [HighSchoolDiplomaTypeDescription] NVARCHAR (300) NULL,
-    [HighSchoolDiplomaTypeEdFactsCode] NVARCHAR (50)  NULL,
+    [HighSchoolDiplomaTypeCode]        NVARCHAR (100) CONSTRAINT [DF_DimK12AcademicAwardStatuses_HighSchoolDiplomaTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [HighSchoolDiplomaTypeDescription] NVARCHAR (300) CONSTRAINT [DF_DimK12AcademicAwardStatuses_HighSchoolDiplomaTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [HighSchoolDiplomaTypeEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimK12AcademicAwardStatuses_HighSchoolDiplomaTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimK12AcademicAwardStatuses] PRIMARY KEY CLUSTERED ([DimK12AcademicAwardStatusId] ASC)
 );
 

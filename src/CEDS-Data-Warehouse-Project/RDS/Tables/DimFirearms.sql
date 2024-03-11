@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimFirearms] (
     [DimFirearmId]           INT           IDENTITY (1, 1) NOT NULL,
-    [FirearmTypeCode]        VARCHAR (50)  NULL,
-    [FirearmTypeDescription] VARCHAR (200) NULL,
-    [FirearmTypeEdFactsCode] VARCHAR (50)  NULL,
+    [FirearmTypeCode]        VARCHAR (50)  CONSTRAINT [DF_DimFirearms_FirearmTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [FirearmTypeDescription] VARCHAR (200) CONSTRAINT [DF_DimFirearms_FirearmTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [FirearmTypeEdFactsCode] VARCHAR (50)  CONSTRAINT [DF_DimFirearms_FirearmTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimFirearms] PRIMARY KEY CLUSTERED ([DimFirearmId] ASC)
 );
 

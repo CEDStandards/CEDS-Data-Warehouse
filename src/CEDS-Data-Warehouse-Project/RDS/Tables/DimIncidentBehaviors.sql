@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimIncidentBehaviors] (
     [DimIncidentBehaviorId]       INT            IDENTITY (1, 1) NOT NULL,
-    [IncidentBehaviorCode]        NVARCHAR (100) NOT NULL,
-    [IncidentBehaviorDescription] NVARCHAR (200) NOT NULL,
+    [IncidentBehaviorCode]        NVARCHAR (100) CONSTRAINT [DF_DimIncidentBehaviorss_IncidentBehaviorCode] DEFAULT ('MISSING') NOT NULL,
+    [IncidentBehaviorDescription] NVARCHAR (200) CONSTRAINT [DF_DimIncidentBehaviorss_IncidentBehaviorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimIncidentBehaviorId] PRIMARY KEY CLUSTERED ([DimIncidentBehaviorId] ASC)
 );
 

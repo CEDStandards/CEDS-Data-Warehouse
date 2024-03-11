@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimOnetSocOccupationTypes](
-	[DimOnetSocOccupationTypeId] [int] IDENTITY(1,1) NOT NULL,
-	[OnetSocOccupationTypeCode] [nvarchar](10) NULL,
-	[OnetSocOccupationTypeDescription] [nvarchar](4000) NULL,	
+	[DimOnetSocOccupationTypeId] 					[int] IDENTITY(1,1) NOT NULL,
+	[OnetSocOccupationTypeCode] 					[nvarchar](10) CONSTRAINT [DF_DimOnetSocOccupationTypes_OnetSocOccupationTypeCode] DEFAULT ('MISSING') NOT NULL,
+	[OnetSocOccupationTypeDescription] 				[nvarchar](4000) CONSTRAINT [DF_DimOnetSocOccupationTypes_OnetSocOccupationTypeDescription] DEFAULT ('MISSING') NOT NULL,	
  CONSTRAINT [PK_DimOnetSocOccupationTypes] PRIMARY KEY NONCLUSTERED 
 (
 	[DimOnetSocOccupationTypeId] ASC

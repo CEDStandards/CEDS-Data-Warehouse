@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimEnglishLearnerStatuses] (
     [DimEnglishLearnerStatusId]              INT            IDENTITY (1, 1) NOT NULL,
-    [EnglishLearnerStatusCode]               NVARCHAR (100) NOT NULL,
-    [EnglishLearnerStatusDescription]        NVARCHAR (300) NOT NULL,
-    [EnglishLearnerStatusEdFactsCode]        NVARCHAR (50)  NOT NULL,
-    [PerkinsEnglishLearnerStatusCode]        NVARCHAR (100) NOT NULL,
-    [PerkinsEnglishLearnerStatusDescription] NVARCHAR (300) NOT NULL,
-    [PerkinsEnglishLearnerStatusEdfactsCode] VARCHAR (50)   NOT NULL,
+    [EnglishLearnerStatusCode]               NVARCHAR (100) CONSTRAINT [DF_DimEnglishLearnerStatuses_EnglishLearnerStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [EnglishLearnerStatusDescription]        NVARCHAR (300) CONSTRAINT [DF_DimEnglishLearnerStatuses_EnglishLearnerStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [EnglishLearnerStatusEdFactsCode]        NVARCHAR (50)  CONSTRAINT [DF_DimEnglishLearnerStatuses_EnglishLearnerStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [PerkinsEnglishLearnerStatusCode]        NVARCHAR (100) CONSTRAINT [DF_DimEnglishLearnerStatuses_PerkinsEnglishLearnerStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [PerkinsEnglishLearnerStatusDescription] NVARCHAR (300) CONSTRAINT [DF_DimEnglishLearnerStatuses_PerkinsEnglishLearnerStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [PerkinsEnglishLearnerStatusEdfactsCode] VARCHAR (50)   CONSTRAINT [DF_DimEnglishLearnerStatuses_PerkinsEnglishLearnerStatusEdfactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimEnglistLearnerStatuses] PRIMARY KEY CLUSTERED ([DimEnglishLearnerStatusId] ASC)
 );
 

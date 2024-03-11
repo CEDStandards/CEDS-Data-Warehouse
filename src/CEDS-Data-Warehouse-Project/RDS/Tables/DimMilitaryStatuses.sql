@@ -1,14 +1,14 @@
 CREATE TABLE [RDS].[DimMilitaryStatuses] (
     [DimMilitaryStatusId]                          INT            IDENTITY (1, 1) NOT NULL,
-    [MilitaryConnectedStudentIndicatorCode]        NVARCHAR (50)  NULL,
-    [MilitaryConnectedStudentIndicatorDescription] NVARCHAR (200) NULL,
-    [MilitaryConnectedStudentIndicatorEdFactsCode] NVARCHAR (50)  NULL,
-    [MilitaryActiveStudentIndicatorCode]           NVARCHAR (50)  NULL,
-    [MilitaryActiveStudentIndicatorDescription]    NVARCHAR (200) NULL,
-    [MilitaryBranchCode]                           NVARCHAR (50)  NULL,
-    [MilitaryBranchDescription]                    NVARCHAR (200) NULL,
-    [MilitaryVeteranStudentIndicatorCode]          NVARCHAR (50)  NULL,
-    [MilitaryVeteranStudentIndicatorDescription]   NVARCHAR (200) NULL,
+    [MilitaryConnectedStudentIndicatorCode]        NVARCHAR (50)  CONSTRAINT [DF_DimMilitaryStatuses_MilitaryConnectedStudentIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryConnectedStudentIndicatorDescription] NVARCHAR (200) CONSTRAINT [DF_DimMilitaryStatuses_MilitaryConnectedStudentIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryConnectedStudentIndicatorEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimMilitaryStatuses_MilitaryConnectedStudentIndicatorEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryActiveStudentIndicatorCode]           NVARCHAR (50)  CONSTRAINT [DF_DimMilitaryStatuses_MilitaryActiveStudentIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryActiveStudentIndicatorDescription]    NVARCHAR (200) CONSTRAINT [DF_DimMilitaryStatuses_MilitaryActiveStudentIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryBranchCode]                           NVARCHAR (50)  CONSTRAINT [DF_DimMilitaryStatuses_MilitaryBranchCode] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryBranchDescription]                    NVARCHAR (200) CONSTRAINT [DF_DimMilitaryStatuses_MilitaryBranchDescription] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryVeteranStudentIndicatorCode]          NVARCHAR (50)  CONSTRAINT [DF_DimMilitaryStatuses_MilitaryVeteranStudentIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [MilitaryVeteranStudentIndicatorDescription]   NVARCHAR (200) CONSTRAINT [DF_DimMilitaryStatuses_MilitaryVeteranStudentIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimMilitaryStatuses] PRIMARY KEY CLUSTERED ([DimMilitaryStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

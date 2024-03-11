@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimPsEnrollmentStatuses] (
     [DimPsEnrollmentStatusId]                      BIGINT         IDENTITY (1, 1) NOT NULL,
-    [PostsecondaryExitOrWithdrawalTypeCode]        NVARCHAR (50)  NULL,
-    [PostsecondaryExitOrWithdrawalTypeDescription] NVARCHAR (200) NULL,
+    [PostsecondaryExitOrWithdrawalTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimPsEnrollmentStatuses_PostsecondaryExitOrWithdrawalTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [PostsecondaryExitOrWithdrawalTypeDescription] NVARCHAR (200) CONSTRAINT [DF_DimPsEnrollmentStatuses_PostsecondaryExitOrWithdrawalTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimPsEnrollmentStatuses] PRIMARY KEY CLUSTERED ([DimPsEnrollmentStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimAcademicTermDesignators] (
     [DimAcademicTermDesignatorId]       INT            IDENTITY (1, 1) NOT NULL,
-    [AcademicTermDesignatorCode]        NVARCHAR (50)  NULL,
-    [AcademicTermDesignatorDescription] NVARCHAR (MAX) NULL,
+    [AcademicTermDesignatorCode]        NVARCHAR (50)  CONSTRAINT [DF_DimAcademicTermDesignators_AcademicTermDesignatorCode] DEFAULT ('MISSING') NOT NULL,
+    [AcademicTermDesignatorDescription] NVARCHAR (MAX) CONSTRAINT [DF_DimAcademicTermDesignators_AcademicTermDesignatorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimAcademicTermDesignators] PRIMARY KEY CLUSTERED ([DimAcademicTermDesignatorId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

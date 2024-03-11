@@ -1,14 +1,14 @@
 CREATE TABLE [RDS].[DimIncidentStatuses] (
     [DimIncidentStatusId]                 INT            IDENTITY (1, 1) NOT NULL,
-    [IncidentBehaviorCode]                NVARCHAR (100) NOT NULL,
-    [IncidentBehaviorDescription]         NVARCHAR (300) NOT NULL,
-    [IdeaInterimRemovalReasonCode]        NVARCHAR (100) NOT NULL,
-    [IdeaInterimRemovalReasonDescription] NVARCHAR (300) NOT NULL,
-    [IdeaInterimRemovalReasonEdFactsCode] NVARCHAR (50)  NOT NULL,
-    [DisciplineReasonCode]                NVARCHAR (100) NOT NULL,
-    [DisciplineReasonDescription]         NVARCHAR (300) NOT NULL,
-    [IncidentInjuryTypeCode]              NVARCHAR (100) NOT NULL,
-    [IncidentInjuryTypeDescription]       NVARCHAR (300) NOT NULL,
+    [IncidentBehaviorCode]                NVARCHAR (100) CONSTRAINT [DF_DimIncidentStatuses_IncidentBehaviorCode] DEFAULT ('MISSING') NOT NULL,
+    [IncidentBehaviorDescription]         NVARCHAR (300) CONSTRAINT [DF_DimIncidentStatuses_IncidentBehaviorDescription] DEFAULT ('MISSING') NOT NULL,
+    [IdeaInterimRemovalReasonCode]        NVARCHAR (100) CONSTRAINT [DF_DimIncidentStatuses_IdeaInterimRemovalReasonCode] DEFAULT ('MISSING') NOT NULL,
+    [IdeaInterimRemovalReasonDescription] NVARCHAR (300) CONSTRAINT [DF_DimIncidentStatuses_IdeaInterimRemovalReasonDescription] DEFAULT ('MISSING') NOT NULL,
+    [IdeaInterimRemovalReasonEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimIncidentStatuses_IdeaInterimRemovalReasonEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [DisciplineReasonCode]                NVARCHAR (100) CONSTRAINT [DF_DimIncidentStatuses_DisciplineReasonCode] DEFAULT ('MISSING') NOT NULL,
+    [DisciplineReasonDescription]         NVARCHAR (300) CONSTRAINT [DF_DimIncidentStatuses_DisciplineReasonDescription] DEFAULT ('MISSING') NOT NULL,
+    [IncidentInjuryTypeCode]              NVARCHAR (100) CONSTRAINT [DF_DimIncidentStatuses_IncidentInjuryTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [IncidentInjuryTypeDescription]       NVARCHAR (300) CONSTRAINT [DF_DimIncidentStatuses_IncidentInjuryTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimIncidentStatuses] PRIMARY KEY CLUSTERED ([DimIncidentStatusId] ASC)
 );
 

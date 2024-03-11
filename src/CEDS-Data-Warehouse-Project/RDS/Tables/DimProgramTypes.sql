@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimProgramTypes] (
     [DimProgramTypeId]       INT            IDENTITY (1, 1) NOT NULL,
-    [ProgramTypeCode]        NVARCHAR (50)  NULL,
-    [ProgramTypeDescription] NVARCHAR (200) NULL,
+    [ProgramTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimProgramTypes_ProgramTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [ProgramTypeDescription] NVARCHAR (200) CONSTRAINT [DF_DimProgramTypes_ProgramTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimProgramType] PRIMARY KEY CLUSTERED ([DimProgramTypeId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 
