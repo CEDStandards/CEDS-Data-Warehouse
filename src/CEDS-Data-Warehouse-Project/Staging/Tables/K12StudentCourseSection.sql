@@ -17,15 +17,6 @@ CREATE TABLE [Staging].[K12StudentCourseSection] (
     [RecordStartDateTime]                            DATETIME       NULL,
     [RecordEndDateTime]                              DATETIME       NULL,
     [DataCollectionName]                             NVARCHAR (100) NULL,
-    [DataCollectionId]                               INT            NULL,
-    [PersonId]                                       INT            NULL,
-    [OrganizationID_LEA]                             INT            NULL,
-    [OrganizationPersonRoleId_LEA]                   INT            NULL,
-    [OrganizationID_School]                          INT            NULL,
-    [OrganizationPersonRoleId_School]                INT            NULL,
-    [OrganizationID_Course]                          INT            NULL,
-    [OrganizationID_CourseSection]                   INT            NULL,
-    [OrganizationPersonRoleId_CourseSection]         INT            NULL,
     [RunDateTime]                                    DATETIME       NULL,
     CONSTRAINT [PK_K12StudentCourseSection] PRIMARY KEY CLUSTERED ([Id] ASC)
 );

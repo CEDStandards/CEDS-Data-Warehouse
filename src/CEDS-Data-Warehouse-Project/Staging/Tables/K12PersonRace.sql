@@ -21,12 +21,6 @@ CREATE TABLE [Staging].[K12PersonRace] (
     [RecordStartDateTime]                                 DATETIME       NULL,
     [RecordEndDateTime]                                   DATETIME       NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [DataCollectionId]                                    INT            NULL,
-    [PersonId]                                            INT            NULL,
-    [PersonDemographicRaceId]                             INT            NULL,
-    [OrganizationID_LEA]                                  INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [RefRaceId]                                           INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_K12PersonRace] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80)
 );

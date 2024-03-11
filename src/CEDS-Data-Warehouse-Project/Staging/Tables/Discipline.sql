@@ -28,13 +28,6 @@ CREATE TABLE [Staging].[Discipline] (
     [WeaponType]                                     NVARCHAR (100) NULL,
     [FirearmType]                                    NVARCHAR (100) NULL,
     [DataCollectionName]                             NVARCHAR (100) NULL,
-    [PersonId]                                       INT            NULL,
-    [OrganizationID_LEA]                             INT            NULL,
-    [OrganizationPersonRoleId_LEA]                   INT            NULL,
-    [OrganizationID_School]                          INT            NULL,
-    [OrganizationPersonRoleId_School]                INT            NULL,
-    [IncidentId_LEA]                                 INT            NULL,
-    [IncidentId_School]                              INT            NULL,
     [RunDateTime]                                    DATETIME       NULL,
     CONSTRAINT [PK_Discipline] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );

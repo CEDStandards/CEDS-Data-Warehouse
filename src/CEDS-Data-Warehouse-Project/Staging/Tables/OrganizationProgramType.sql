@@ -7,11 +7,6 @@ CREATE TABLE [Staging].[OrganizationProgramType] (
     [RecordEndDateTime]         DATETIME       NULL,
     [SchoolYear]                SMALLINT       NULL,
     [DataCollectionName]        VARCHAR (50)   NULL,
-    [DataCollectionId]          INT            NULL,
-    [OrganizationId]            INT            NULL,
-    [ProgramOrganizationId]     INT            NULL,
-    [ProgramTypeId]             INT            NULL,
-    [OrganizationProgramTypeId] INT            NULL,
     CONSTRAINT [PK_OrganizationProgramType] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
@@ -20,29 +15,24 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_ProgramType]
     ON [Staging].[OrganizationProgramType]([ProgramType] ASC)
-    INCLUDE([SchoolYear], [ProgramTypeId]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+    INCLUDE([SchoolYear], [ProgramType]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_OrganizationType]
     ON [Staging].[OrganizationProgramType]([OrganizationType] ASC)
-    INCLUDE([OrganizationIdentifier], [OrganizationId]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+    INCLUDE([OrganizationIdentifier], [OrganizationType]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_OrganizationId_ProgramTypeId]
-    ON [Staging].[OrganizationProgramType]([OrganizationId] ASC, [ProgramTypeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_OrganizationIdentifier_ProgramType]
+    ON [Staging].[OrganizationProgramType]([OrganizationIdentifier] ASC, [ProgramType] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_OrganizationId_ProgramOrganizationId]
-    ON [Staging].[OrganizationProgramType]([OrganizationId] ASC, [ProgramOrganizationId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
-GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationProgramType', @level2type=N'COLUMN',@level2name=N'DataCollectionName';
 GO

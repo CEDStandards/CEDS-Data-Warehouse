@@ -22,15 +22,6 @@ CREATE TABLE [Staging].[ProgramParticipationNorD] (
     [NeglectedOrDelinquentAcademicOutcomeIndicator]       NVARCHAR (100) NULL,
     [DiplomaCredentialAwardDate]                          DATE           NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [DataCollectionID]                                    INT            NULL,
-    [PersonID]                                            INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [OrganizationID_LEA]                                  INT            NULL,
-    [LEAOrganizationID_Program]                           INT            NULL,
-    [SchoolOrganizationID_Program]                        INT            NULL,
-    [LEAOrganizationPersonRoleId_Program]                 INT            NULL,
-    [SchoolOrganizationPersonRoleId_Program]              INT            NULL,
-    [PersonProgramParticipationID]                        INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_ProgramParticipationNorD] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );

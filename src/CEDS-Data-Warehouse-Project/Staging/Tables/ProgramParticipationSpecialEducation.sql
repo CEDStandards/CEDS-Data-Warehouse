@@ -22,16 +22,6 @@ CREATE TABLE [Staging].[ProgramParticipationSpecialEducation] (
     [IDEAEducationalEnvironmentForSchoolAge]              NVARCHAR (100) NULL,
     [SpecialEducationFTE]                                 DECIMAL (5, 2) NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [DataCollectionID]                                    INT            NULL,
-    [PersonID]                                            INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [OrganizationID_LEA]                                  INT            NULL,
-    [LEAOrganizationID_Program]                           INT            NULL,
-    [SchoolOrganizationID_Program]                        INT            NULL,
-    [LEAOrganizationPersonRoleId_Program]                 INT            NULL,
-    [SchoolOrganizationPersonRoleId_Program]              INT            NULL,
-    [PersonProgramParticipationID_LEA]                    INT            NULL,
-    [PersonProgramParticipationID_School]                 INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_ProgramParticipationSpecialEducation] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
