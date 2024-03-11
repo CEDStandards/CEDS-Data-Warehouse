@@ -25,6 +25,7 @@ CREATE TABLE [RDS].[FactK12AccessibleEducationMaterialAssignments]
 	[K12EnrollmentStatusId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_K12EnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
 	[MigrantStatusId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_MigrantStatusId] DEFAULT ((-1)) NOT NULL,
 	[MilitaryStatusId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_MilitaryStatusId] DEFAULT ((-1)) NOT NULL,
+	[RaceId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_RaceId] DEFAULT ((-1)) NOT NULL,
 	[PrimaryIdeaDisabilityTypeId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_PrimaryIdeaDisabilityTypeId] DEFAULT ((-1)) NOT NULL,
 	[SecondaryIdeaDisabilityTypeId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_SecondaryIdeaDisabilityTypeId] DEFAULT ((-1)) NOT NULL,
 	[ScedCodeId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_ScedCodeId] DEFAULT ((-1)) NOT NULL,
@@ -80,6 +81,7 @@ CREATE TABLE [RDS].[FactK12AccessibleEducationMaterialAssignments]
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_LearningResourceReceivedDateId] FOREIGN KEY ([LearningResourceReceivedDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_MilitaryStatusId] FOREIGN KEY ([MilitaryStatusId]) REFERENCES [RDS].[DimMilitaryStatuses] ([DimMilitaryStatusId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_RaceId] FOREIGN KEY ([RaceId]) REFERENCES [RDS].[DimRaces] ([DimRaceId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_PrimaryIdeaDisabilityTypeId] FOREIGN KEY ([PrimaryIdeaDisabilityTypeId]) REFERENCES [RDS].[DimIdeaDisabilityTypes] ([DimIdeaDisabilityTypeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_ScedCodeId] FOREIGN KEY ([ScedCodeId]) REFERENCES [RDS].[DimScedCodes] ([DimScedCodeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]) ON DELETE No Action ON UPDATE No Action,
@@ -113,91 +115,91 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_Di
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([DataCollectionId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_CountDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([CountDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_02] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_EnrollmentEntryDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([EnrollmentEntryDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_03] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_EnrollmentExitDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([EnrollmentExitDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_04] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateEconomicallyDisadvantagedId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateEconomicallyDisadvantagedId(*)] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_05] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateEconomicallyDisadvantagedId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusEndDateEconomicallyDisadvantagedId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_06] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateEnglishLearnerId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateEnglishLearnerId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_07] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateEnglishLearnerId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusEndDateEnglishLearnerId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_08] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateHomelessnessId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateHomelessnessId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_09] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateHomelessnessId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusEndDateHomelessnessId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_10] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateIdeaId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateIdeaId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_11] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateIdeaId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusEndDateIdeaId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_12] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateMigrantId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateMigrantId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_13] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateMigrantId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusEndDateMigrantId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_14] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateMilitaryId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateMilitaryId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_15] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateMilitaryId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusEndDateMilitaryId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_16] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDatePerkinsEnglishLearnerId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDatePerkinsEnglishLearnerId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_17] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDatePerkinsEnglishLearnerId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusEndDatePerkinsEnglishLearnerId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_18] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_LearningResourceIssuedDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([LearningResourceIssuedDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_19] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_LearningResourceOrderedDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([LearningResourceOrderedDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_20] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_LearningResourceReceivedDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([LearningResourceReceivedDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_21] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_CourseSectionStartDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([CourseSectionStartDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimDates_22] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_CourseSectionEndDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([CourseSectionEndDateId] ASC)
 GO
 
@@ -225,16 +227,20 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_Di
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([HomelessnessStatusId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimIdeaDisabilityTypes] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_PrimaryIdeaDisabilityTypeId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([PrimaryIdeaDisabilityTypeId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimIdeaDisabilityTypes_02] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_SecondaryIdeaDisabilityTypeId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([SecondaryIdeaDisabilityTypeId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimIdeaStatuses] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([IdeaStatusId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimRaces] 
+ ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([RaceId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimIeus] 
