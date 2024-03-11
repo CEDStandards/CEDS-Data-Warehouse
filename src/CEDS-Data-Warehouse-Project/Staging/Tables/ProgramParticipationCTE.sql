@@ -36,13 +36,6 @@ CREATE TABLE [Staging].[ProgramParticipationCTE] (
     [CTENontraditionalCompletion]                         BIT            NULL,
     [CteExitReason]                                       VARCHAR (100)  NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [DataCollectionID]                                    INT            NULL,
-    [PersonID]                                            INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [OrganizationPersonRoleID_School]                     INT            NULL,
-    [OrganizationPersonRoleID_CTEProgram]                 INT            NULL,
-    [OrganizationID_CTEProgram]                           INT            NULL,
-    [PersonProgramParticipationId]                        INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_ProgramParticipationCTE] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );

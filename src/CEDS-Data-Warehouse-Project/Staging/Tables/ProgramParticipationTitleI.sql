@@ -18,17 +18,6 @@ CREATE TABLE [Staging].[ProgramParticipationTitleI] (
     [ProgramParticipationEndDate]                         DATE           NULL,
     [TitleIIndicator]                                     NVARCHAR (100) NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [DataCollectionID]                                    INT            NULL,
-    [PersonID]                                            INT            NULL,
-    [OrganizationID_LEA]                                  INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [LEAOrganizationPersonRoleID_TitleIProgram]           INT            NULL,
-    [LEAOrganizationID_TitleIProgram]                     INT            NULL,
-    [LEAPersonProgramParticipationId]                     INT            NULL,
-    [SchoolOrganizationID_TitleIProgram]                  INT            NULL,
-    [SchoolOrganizationPersonRoleID_TitleIProgram]        INT            NULL,
-    [SchoolPersonProgramParticipationId]                  INT            NULL,
-    [RefTitleIIndicatorId]                                INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_ProgramParticipationTitleI] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
@@ -36,29 +25,6 @@ CREATE TABLE [Staging].[ProgramParticipationTitleI] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_Staging_LEAProgramParticipationTitleI_PersonTitleI]
-    ON [Staging].[ProgramParticipationTitleI]([LEAOrganizationPersonRoleID_TitleIProgram] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_Staging_SchoolProgramParticipationTitleI_PersonSchool]
-    ON [Staging].[ProgramParticipationTitleI]([PersonID] ASC, [SchoolOrganizationID_TitleIProgram] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_Staging_SchoolProgramParticipationTitleI_PersonTitleI]
-    ON [Staging].[ProgramParticipationTitleI]([SchoolOrganizationPersonRoleID_TitleIProgram] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_Staging_LEAProgramParticipationTitleI_PersonSchool]
-    ON [Staging].[ProgramParticipationTitleI]([PersonID] ASC, [LEAOrganizationID_TitleIProgram] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
-GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationTitleI', @level2type=N'COLUMN',@level2name=N'DataCollectionName';
 GO

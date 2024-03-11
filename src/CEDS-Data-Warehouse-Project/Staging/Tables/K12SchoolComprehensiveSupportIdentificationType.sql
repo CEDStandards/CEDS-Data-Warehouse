@@ -1,15 +1,14 @@
 CREATE TABLE [Staging].[K12SchoolComprehensiveSupportIdentificationType] (
-    [Id]                                      INT           IDENTITY (1, 1) NOT NULL,
-    [SchoolYear]                              VARCHAR (4)   NULL,
-    [LEAIdentifierSea]                        VARCHAR (100) NULL,
-    [SchoolIdentifierSea]                     VARCHAR (100) NULL,
-    [ComprehensiveSupport]                    VARCHAR (20)  NULL,
-    [ComprehensiveSupportReasonApplicability] VARCHAR (20)  NULL,
-    [RecordStartDateTime]                     DATETIME      NULL,
-    [RecordEndDateTime]                       DATETIME      NULL,
-    [OrganizationId]                          INT           NULL,
-    [K12SchoolId]                             INT           NULL,
-    [RunDateTime]                             DATETIME      NULL,
+    [Id]                                      INT				IDENTITY (1, 1) NOT NULL,
+    [SchoolYear]                              NVARCHAR (4)		NULL,
+    [LEAIdentifierSea]                        NVARCHAR (100)	NULL,
+    [SchoolIdentifierSea]                     NVARCHAR (100)	NULL,
+    [ComprehensiveSupport]                    NVARCHAR (20)		NULL,
+    [ComprehensiveSupportReasonApplicability] NVARCHAR (20)		NULL,
+    [RecordStartDateTime]                     DATETIME			NULL,
+    [RecordEndDateTime]                       DATETIME			NULL,
+    [DataCollectionName]                      NVARCHAR (100)	NULL,
+    [RunDateTime]                             DATETIME			NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

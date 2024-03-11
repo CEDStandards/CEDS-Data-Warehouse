@@ -20,15 +20,6 @@ CREATE TABLE [Staging].[Migrant] (
     [ProgramParticipationStartDate]                       DATE           NULL,
     [ProgramParticipationExitDate]                        DATE           NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [PersonID]                                            INT            NULL,
-    [OrganizationID_LEA]                                  INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [LEAOrganizationPersonRoleID_MigrantProgram]          INT            NULL,
-    [LEAOrganizationID_MigrantProgram]                    INT            NULL,
-    [SchoolOrganizationPersonRoleID_MigrantProgram]       INT            NULL,
-    [SchoolOrganizationID_MigrantProgram]                 INT            NULL,
-    [PersonProgramParticipationId]                        INT            NULL,
-    [ProgramParticipationMigrantId]                       INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_Migrant] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );

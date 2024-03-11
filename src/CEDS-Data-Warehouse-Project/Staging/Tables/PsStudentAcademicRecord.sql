@@ -10,11 +10,6 @@ CREATE TABLE [Staging].[PsStudentAcademicRecord] (
     [EntryDate]                                  DATETIME        NULL,
     [ExitDate]                                   DATETIME        NULL,
     [DataCollectionName]                         NVARCHAR (50)   NULL,
-    [DataCollectionID]                           INT             NULL,
-    [PersonId]                                   INT             NULL,
-    [OrganizationId]                             INT             NULL,
-    [OrganizationPersonRoleId]                   INT             NULL,
-    [PsStudentAcademicRecordId]                  INT             NULL,
     CONSTRAINT [PK_PsStudentAcademicRecord] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
@@ -30,7 +25,7 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_PsStudentAcademicRecord_AcademicTermDesignator]
     ON [Staging].[PsStudentAcademicRecord]([AcademicTermDesignator] ASC)
-    INCLUDE([StudentIdentifierState], [SchoolYear], [EntryDate], [OrganizationId], [DataCollectionID]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+    INCLUDE([StudentIdentifierState], [SchoolYear], [EntryDate]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO

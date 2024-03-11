@@ -10,10 +10,6 @@ CREATE TABLE [Staging].[PsStudentAcademicAward] (
     [ExitDate]                                   DATETIME       NULL,
     [SchoolYear]                                 SMALLINT       NULL,
     [DataCollectionName]                         NVARCHAR (50)  NULL,
-    [OrganizationId]                             INT            NULL,
-    [PersonId]                                   INT            NULL,
-    [OrganizationPersonRoleId]                   INT            NULL,
-    [PsStudentAcademicAwardId]                   INT            NULL,
     CONSTRAINT [PK_PsStudentAcademicAward] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

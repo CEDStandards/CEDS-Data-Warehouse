@@ -4,7 +4,7 @@ AS
 		  DimK12AcademicAwardStatusId
 		, rsy.SchoolYear
 		, HighSchoolDiplomaTypeCode
-		, ISNULL(sssrd1.InputCode, 'MISSING') AS SexMap
+		, ISNULL(sssrd1.InputCode, 'MISSING') AS HighSchoolDiplomaTypeMap
 	FROM rds.DimK12AcademicAwardStatuses rdkaas
 	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
 	LEFT JOIN staging.SourceSystemReferenceData sssrd1

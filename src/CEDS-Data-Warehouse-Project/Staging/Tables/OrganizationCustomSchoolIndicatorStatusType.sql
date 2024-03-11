@@ -11,7 +11,6 @@ CREATE TABLE [Staging].[OrganizationCustomSchoolIndicatorStatusType] (
     [RecordStartDateTime]                    DATETIME       NULL,
     [RecordEndDateTime]                      DATETIME       NULL,
     [DataCollectionName]                     NVARCHAR (100) NULL,
-    [DataCollectionId]                       INT            NULL,
     CONSTRAINT [PK_OrganizationCustomSchoolIndicatorStatusType] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

@@ -9,6 +9,8 @@ CREATE TABLE [RDS].[DimK12Positions]
 	[PositionExpirationDate] date NULL,
 	[PositionExpirationReasonCode] nvarchar(50) NULL,
 	[PositionExpirationReasonDescription] nvarchar(200) NULL,
+	[HourlyWage] [decimal](10, 2) NULL,
+	[StaffCompensationBaseSalary] [decimal](10, 2) NULL,
 	CONSTRAINT [PK_Position] PRIMARY KEY CLUSTERED ([DimK12PositionId] ASC)
 )
 GO
