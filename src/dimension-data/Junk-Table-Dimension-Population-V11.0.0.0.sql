@@ -3078,10 +3078,10 @@ GO
 		   ,[ReasonNotTestedEdFactsCode]
 )
 	SELECT 
-		arcs.AssessmentRegistrationCompletionStatusCode
-		,arcs.AssessmentRegistrationCompletionStatusDescription
-		,arpi.AssessmentRegistrationParticipationIndicatorCode
+		arpi.AssessmentRegistrationParticipationIndicatorCode
 		,arpi.AssessmentRegistrationParticipationIndicatorDescription
+		,arcs.AssessmentRegistrationCompletionStatusCode
+		,arcs.AssessmentRegistrationCompletionStatusDescription
 		,sfay.StateFullAcademicYearCode
 		,sfay.StateFullAcademicYearDescription
 		,sfay.StateFullAcademicYearEdFactsCode
@@ -4758,3 +4758,298 @@ GO
 		SET IDENTITY_INSERT RDS.DimFactTypes OFF
 	END
 
+		------------------------------------------------------------------
+	-- Populate DimFederalFinancialAccountBalances  --
+	------------------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimFederalFinancialAccountBalances d WHERE d.DimFederalFinancialAccountBalanceId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimFederalFinancialAccountBalances ON
+
+		INSERT INTO [RDS].[DimFederalFinancialAccountBalances]
+           ([DimFederalFinancialAccountBalanceId]
+           ,[FinancialAccountBalanceSheetCodeCode]
+           ,[FinancialAccountBalanceSheetCodeDescription]
+		   )
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimFederalFinancialAccountBalances OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#FinancialAccountBalanceCode') IS NOT NULL
+		DROP TABLE #FinancialAccountBalanceCode
+
+		CREATE TABLE #FinancialAccountBalanceCode (FinancialAccountBalanceSheetCodeCode VARCHAR(50), FinancialAccountBalanceSheetCodeDescription VARCHAR(200))
+
+		INSERT INTO #FinancialAccountBalanceCode VALUES ('MISSING', 'MISSING')
+		INSERT INTO #FinancialAccountBalanceCode 
+		SELECT 
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'FinancialAccountBalanceSheetCode'
+
+
+		INSERT INTO [RDS].[DimFederalFinancialAccountBalances]
+           ([FinancialAccountBalanceSheetCodeCode]
+           ,[FinancialAccountBalanceSheetCodeDescription]
+		   )
+		SELECT DISTINCT
+			  h.FinancialAccountBalanceSheetCodeCode
+			, h.FinancialAccountBalanceSheetCodeDescription
+		FROM #FinancialAccountBalanceCode h
+		LEFT JOIN rds.DimFederalFinancialAccountBalances main
+			ON  h.FinancialAccountBalanceSheetCodeCode = main.FinancialAccountBalanceSheetCodeCode
+		WHERE main.DimFederalFinancialAccountBalanceId IS NULL
+
+	DROP TABLE #FinancialAccountBalanceCode
+
+
+	-------------------------------------------------------------------------
+	-- Populate DimFederalFinancialAccountClassifications   --
+	-------------------------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimFederalFinancialAccountClassifications d WHERE d.DimFederalFinancialAccountClassificationId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimFederalFinancialAccountClassifications ON
+
+			INSERT INTO rds.DimFederalFinancialAccountClassifications (
+						  DimFederalFinancialAccountClassificationId
+						, FinancialAccountCategoryCode
+						, FinancialAccountCategoryDescription
+						, FinancialAccountProgramCodeCode
+						, FinancialAccountProgramCodeDescription
+						, FinancialAccountFundClassificationCode
+						, FinancialAccountFundClassificationDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING')
+
+		SET IDENTITY_INSERT rds.DimFederalFinancialAccountClassifications OFF
+	END
+
+	IF OBJECT_ID('tempdb..#FinancialAccountCategory') IS NOT NULL
+		DROP TABLE #FinancialAccountCategory
+
+	CREATE TABLE #FinancialAccountCategory (FinancialAccountCategoryCode VARCHAR(50), FinancialAccountCategoryDescription VARCHAR(200))
+
+	INSERT INTO #FinancialAccountCategory VALUES ('MISSING', 'MISSING')
+	INSERT INTO #FinancialAccountCategory 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'FinancialAccountCategory'
+	
+	IF OBJECT_ID('tempdb..#FinancialAccountProgramCode') IS NOT NULL
+		DROP TABLE #FinancialAccountProgramCode
+
+	CREATE TABLE #FinancialAccountProgramCode (FinancialAccountProgramCodeCode VARCHAR(50), FinancialAccountProgramCodeDescription VARCHAR(200))
+
+	INSERT INTO #FinancialAccountProgramCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #FinancialAccountProgramCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'FinancialAccountProgramCode'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#FinancialAccountFundClassification') IS NOT NULL
+		DROP TABLE #FinancialAccountFundClassification
+
+	CREATE TABLE #FinancialAccountFundClassification (FinancialAccountFundClassificationCode VARCHAR(50), FinancialAccountFundClassificationDescription VARCHAR(200))
+
+	INSERT INTO #FinancialAccountFundClassification VALUES ('MISSING', 'MISSING')
+	INSERT INTO #FinancialAccountFundClassification 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'FinancialAccountFundClassification'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimFederalFinancialAccountClassifications (
+				  FinancialAccountCategoryCode
+				, FinancialAccountCategoryDescription
+				, FinancialAccountProgramCodeCode
+				, FinancialAccountProgramCodeDescription
+				, FinancialAccountFundClassificationCode
+				, FinancialAccountFundClassificationDescription
+			)
+	SELECT 
+		fac.FinancialAccountCategoryCode
+		,fac.FinancialAccountCategoryDescription
+		,fap.FinancialAccountProgramCodeCode
+		,fap.FinancialAccountProgramCodeDescription
+		,faf.FinancialAccountFundClassificationCode
+		,faf.FinancialAccountFundClassificationDescription
+	FROM #FinancialAccountCategory fac
+	CROSS JOIN #FinancialAccountProgramCode fap
+	CROSS JOIN #FinancialAccountFundClassification faf
+	LEFT JOIN rds.DimFederalFinancialAccountClassifications ffac
+		ON	fac.FinancialAccountCategoryCode								 = ffac.FinancialAccountCategoryCode								
+		AND fap.FinancialAccountProgramCodeCode		 = ffac.FinancialAccountProgramCodeCode			
+		AND faf.FinancialAccountFundClassificationCode = ffac.FinancialAccountFundClassificationCode
+	WHERE ffac.DimFederalFinancialAccountClassificationId IS NULL
+
+	DROP TABLE #FinancialAccountCategory
+	DROP TABLE #FinancialAccountProgramCode
+	DROP TABLE #FinancialAccountFundClassification
+
+
+		----------------------------------------------------------------------
+	-- Populate DimFederalFinancialRevenueClassifications  --
+	-------------------------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimFederalFinancialRevenueClassifications d WHERE d.DimFederalFinancialRevenueClassificationId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimFederalFinancialRevenueClassifications ON
+
+		INSERT INTO [RDS].[DimFederalFinancialRevenueClassifications]
+           ([DimFederalFinancialRevenueClassificationId]
+           ,[FinancialAccountRevenueCodeCode]
+           ,[FinancialAccountRevenueCodeDescription]
+		   )
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimFederalFinancialRevenueClassifications OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#FinancialAccountRevenueCode') IS NOT NULL
+		DROP TABLE #FinancialAccountRevenueCode
+
+		CREATE TABLE #FinancialAccountRevenueCode (FinancialAccountRevenueCodeCode VARCHAR(50), FinancialAccountRevenueCodeDescription VARCHAR(200))
+
+		INSERT INTO #FinancialAccountRevenueCode VALUES ('MISSING', 'MISSING')
+		INSERT INTO #FinancialAccountRevenueCode 
+		SELECT 
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'FinancialAccountRevenueCode'
+
+
+		INSERT INTO [RDS].[DimFederalFinancialRevenueClassifications]
+           ([FinancialAccountRevenueCodeCode]
+           ,[FinancialAccountRevenueCodeDescription]
+		   )
+		SELECT DISTINCT
+			  h.FinancialAccountRevenueCodeCode
+			, h.FinancialAccountRevenueCodeDescription
+		FROM #FinancialAccountRevenueCode h
+		LEFT JOIN rds.DimFederalFinancialRevenueClassifications main
+			ON  h.FinancialAccountRevenueCodeCode = main.FinancialAccountRevenueCodeCode
+		WHERE main.DimFederalFinancialRevenueClassificationId IS NULL
+
+	DROP TABLE #FinancialAccountRevenueCode
+
+	------------------------------------------------------------------------------
+	-- Populate DimFederalFinancialExpenditureClassifications   --
+	------------------------------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimFederalFinancialExpenditureClassifications d WHERE d.DimFederalFinancialExpenditureClassificationId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimFederalFinancialExpenditureClassifications ON
+
+			INSERT INTO rds.DimFederalFinancialExpenditureClassifications(
+						  DimFederalFinancialExpenditureClassificationId
+						, FinancialExpenditureFunctionCodeCode
+						, FinancialExpenditureFunctionCodeDescription
+						, FinancialExpenditureObjectCodeCode
+						, FinancialExpenditureObjectCodeDescription
+						, FinancialExpenditureLevelOfInstructionCodeCode
+						, FinancialExpenditureLevelOfInstructionCodeDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING')
+
+		SET IDENTITY_INSERT rds.DimFederalFinancialExpenditureClassifications OFF
+	END
+
+	IF OBJECT_ID('tempdb..#FinancialExpenditureFunctionCode') IS NOT NULL
+		DROP TABLE #FinancialExpenditureFunctionCode
+
+	CREATE TABLE #FinancialExpenditureFunctionCode (FinancialExpenditureFunctionCodeCode VARCHAR(50), FinancialExpenditureFunctionCodeDescription VARCHAR(200))
+
+	INSERT INTO #FinancialExpenditureFunctionCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #FinancialExpenditureFunctionCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'FinancialExpenditureFunctionCode'
+	ORDER BY CedsOptionSetCode
+	
+	IF OBJECT_ID('tempdb..#FinancialExpenditureObjectCode') IS NOT NULL
+		DROP TABLE #FinancialExpenditureObjectCode
+
+	CREATE TABLE #FinancialExpenditureObjectCode (FinancialExpenditureObjectCodeCode VARCHAR(50), FinancialExpenditureObjectCodeDescription VARCHAR(200))
+
+	INSERT INTO #FinancialExpenditureObjectCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #FinancialExpenditureObjectCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'FinancialExpenditureObjectCode'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#FinancialExpenditureLevelOfInstructionCode') IS NOT NULL
+		DROP TABLE #FinancialExpenditureLevelOfInstructionCode
+
+	CREATE TABLE #FinancialExpenditureLevelOfInstructionCode (FinancialExpenditureLevelOfInstructionCodeCode VARCHAR(50), FinancialExpenditureLevelOfInstructionCodeDescription VARCHAR(200))
+
+	INSERT INTO #FinancialExpenditureLevelOfInstructionCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #FinancialExpenditureLevelOfInstructionCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'FinancialExpenditureLevelOfInstructionCode'
+	ORDER BY CedsOptionSetCode
+
+
+	INSERT INTO rds.DimFederalFinancialExpenditureClassifications(
+				  FinancialExpenditureFunctionCodeCode
+				, FinancialExpenditureFunctionCodeDescription
+				, FinancialExpenditureObjectCodeCode
+				, FinancialExpenditureObjectCodeDescription
+				, FinancialExpenditureLevelOfInstructionCodeCode
+				, FinancialExpenditureLevelOfInstructionCodeDescription
+			)
+	SELECT 
+			fefc.FinancialExpenditureFunctionCodeCode
+			,fefc.FinancialExpenditureFunctionCodeDescription
+			,feoc.FinancialExpenditureObjectCodeCode
+			,feoc.FinancialExpenditureObjectCodeDescription
+			,feloc.FinancialExpenditureLevelOfInstructionCodeCode
+			,feloc.FinancialExpenditureLevelOfInstructionCodeDescription
+	FROM #FinancialExpenditureFunctionCode fefc
+	CROSS JOIN #FinancialExpenditureObjectCode feoc
+	CROSS JOIN #FinancialExpenditureLevelOfInstructionCode feloc
+	LEFT JOIN rds.DimFederalFinancialExpenditureClassifications ffec
+		ON	fefc.FinancialExpenditureFunctionCodeCode = ffec.FinancialExpenditureFunctionCodeCode								
+		AND feoc.FinancialExpenditureObjectCodeCode = ffec.FinancialExpenditureObjectCodeCode			
+		AND feloc.FinancialExpenditureLevelOfInstructionCodeCode = ffec.FinancialExpenditureLevelOfInstructionCodeCode
+	WHERE ffec.DimFederalFinancialExpenditureClassificationId IS NULL
+
+	DROP TABLE #FinancialExpenditureFunctionCode
+	DROP TABLE #FinancialExpenditureObjectCode
+	DROP TABLE #FinancialExpenditureLevelOfInstructionCode
