@@ -26,6 +26,7 @@ CREATE TABLE [RDS].[FactK12AccessibleEducationMaterialAssignments]
 	[MigrantStatusId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_MigrantStatusId] DEFAULT ((-1)) NOT NULL,
 	[MilitaryStatusId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_MilitaryStatusId] DEFAULT ((-1)) NOT NULL,
 	[RaceId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_RaceId] DEFAULT ((-1)) NOT NULL,
+	[RuralStatusId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_RuralStatusId] DEFAULT ((-1)) NOT NULL,
 	[PrimaryIdeaDisabilityTypeId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_PrimaryIdeaDisabilityTypeId] DEFAULT ((-1)) NOT NULL,
 	[SecondaryIdeaDisabilityTypeId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_SecondaryIdeaDisabilityTypeId] DEFAULT ((-1)) NOT NULL,
 	[ScedCodeId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_ScedCodeId] DEFAULT ((-1)) NOT NULL,
@@ -82,6 +83,7 @@ CREATE TABLE [RDS].[FactK12AccessibleEducationMaterialAssignments]
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_MilitaryStatusId] FOREIGN KEY ([MilitaryStatusId]) REFERENCES [RDS].[DimMilitaryStatuses] ([DimMilitaryStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_RaceId] FOREIGN KEY ([RaceId]) REFERENCES [RDS].[DimRaces] ([DimRaceId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_RuralStatusId] FOREIGN KEY ([RuralStatusId]) REFERENCES [RDS].[DimRuralStatuses] ([DimRuralStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_PrimaryIdeaDisabilityTypeId] FOREIGN KEY ([PrimaryIdeaDisabilityTypeId]) REFERENCES [RDS].[DimIdeaDisabilityTypes] ([DimIdeaDisabilityTypeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_ScedCodeId] FOREIGN KEY ([ScedCodeId]) REFERENCES [RDS].[DimScedCodes] ([DimScedCodeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]) ON DELETE No Action ON UPDATE No Action,
@@ -94,7 +96,7 @@ CREATE TABLE [RDS].[FactK12AccessibleEducationMaterialAssignments]
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateMigrantId] FOREIGN KEY ([StatusEndDateMigrantId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateMilitaryId] FOREIGN KEY ([StatusEndDateMilitaryId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusEndDatePerkinsEnglishLearnerId] FOREIGN KEY ([StatusEndDatePerkinsEnglishLearnerId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateEconomicallyDisadvantagedId] FOREIGN KEY ([StatusStartDateEconomicallyDisadvantagedId(*)]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateEconomicallyDisadvantagedId] FOREIGN KEY ([StatusStartDateEconomicallyDisadvantagedId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateEnglishLearnerId] FOREIGN KEY ([StatusStartDateEnglishLearnerId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateHomelessnessId] FOREIGN KEY ([StatusStartDateHomelessnessId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateIdeaId] FOREIGN KEY ([StatusStartDateIdeaId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
@@ -128,7 +130,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_En
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusStartDateEconomicallyDisadvantagedId] 
- ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateEconomicallyDisadvantagedId(*)] ASC)
+ ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([StatusStartDateEconomicallyDisadvantagedId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_StatusEndDateEconomicallyDisadvantagedId] 
@@ -241,6 +243,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimRaces] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([RaceId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimRuralStatuses] 
+ ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([RuralStatusId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_DimIeus] 

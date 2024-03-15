@@ -8803,3 +8803,68 @@ INSERT INTO #ScedCodes VALUES
 	LEFT JOIN RDS.DimScedCodes rdsc
 		ON sc.ScedCourseCode = rdsc.ScedCourseCode
 	WHERE rdsc.ScedCourseCode IS NULL 
+
+PRINT 'Populate DimRuralStatuses'
+------------------------------------------------
+-- Populate DimRuralStatuses
+------------------------------------------------
+
+IF NOT EXISTS (SELECT 1 FROM RDS.DimRuralStatuses d WHERE d.DimRuralStatusId = -1) BEGIN
+    SET IDENTITY_INSERT RDS.DimRuralStatuses ON
+
+    INSERT INTO [RDS].[DimRuralStatuses]
+       ([DimRuralStatusId]
+       ,[ERSRuralUrbanContinuumCodeCode]
+       ,[ERSRuralUrbanContinuumCodeDescription]
+       ,[RuralResidencyStatusCode]
+       ,[RuralResidencyStatusDescription])
+    VALUES (
+          -1
+        , 'MISSING'
+        , 'MISSING'
+        , 'MISSING'
+        , 'MISSING'
+        )
+
+    SET IDENTITY_INSERT RDS.DimRuralStatuses OFF
+END
+
+CREATE TABLE #ERSRuralUrbanContinuumCode (ERSRuralUrbanContinuumCodeCode NVARCHAR(50), ERSRuralUrbanContinuumCodeDescription NVARCHAR(200))
+
+INSERT INTO #ERSRuralUrbanContinuumCode VALUES ('MISSING', 'MISSING')
+INSERT INTO #ERSRuralUrbanContinuumCode 
+SELECT 
+      CedsOptionSetCode
+    , CedsOptionSetDescription
+FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'ERSRuralUrbanContinuumCode'
+
+CREATE TABLE #RuralResidencyStatusCode (RuralResidencyStatusCode NVARCHAR(50), RuralResidencyStatusDescription NVARCHAR(200))
+
+INSERT INTO #RuralResidencyStatusCode VALUES ('MISSING', 'MISSING')
+INSERT INTO #RuralResidencyStatusCode 
+SELECT 
+      CedsOptionSetCode
+    , CedsOptionSetDescription
+FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'RuralResidencyStatus'
+
+INSERT INTO [RDS].[DimRuralStatuses]
+    ([ERSRuralUrbanContinuumCodeCode]
+    ,[ERSRuralUrbanContinuumCodeDescription]
+    ,[RuralResidencyStatusCode]
+    ,[RuralResidencyStatusDescription])
+SELECT DISTINCT
+     a.[ERSRuralUrbanContinuumCodeCode]
+    ,a.[ERSRuralUrbanContinuumCodeDescription]
+    ,b.[RuralResidencyStatusCode]
+    ,b.[RuralResidencyStatusDescription]
+FROM #ERSRuralUrbanContinuumCode a
+CROSS JOIN #RuralResidencyStatusCode b
+LEFT JOIN RDS.DimRuralStatuses main
+    ON a.ERSRuralUrbanContinuumCodeCode = main.ERSRuralUrbanContinuumCodeCode
+    AND b.RuralResidencyStatusCode = main.RuralResidencyStatusCode
+WHERE main.DimRuralStatusId IS NULL
+
+DROP TABLE #ERSRuralUrbanContinuumCode
+DROP TABLE #RuralResidencyStatusCode

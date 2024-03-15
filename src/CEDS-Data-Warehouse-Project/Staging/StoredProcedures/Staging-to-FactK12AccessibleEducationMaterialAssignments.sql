@@ -1,4 +1,5 @@
 CREATE PROCEDURE [Staging].[Staging-to-FactK12AccessibleEducationMaterialAssignments]
+	@CountDate DATETIME
 AS
 
 BEGIN
@@ -28,6 +29,7 @@ BEGIN
 		,[K12EnrollmentStatusId]
 		,[MigrantStatusId]
 		,[MilitaryStatusId]
+		,[RaceId]
 		,[PrimaryIdeaDisabilityTypeId]
 		,[SecondaryIdeaDisabilityTypeId]
 		,[ScedCodeId]
@@ -78,13 +80,14 @@ BEGIN
 		, -1																K12EnrollmentStatusId
 		, -1																MigrantStatusId
 		, -1																MilitaryStatusId
+		, ISNULL(rdr.DimRaceId, -1)											RaceId
 		, ISNULL(rdidtPrimary.DimIdeaDisabilityTypeId, -1)					PrimaryIdeaDisabilityTypeId
 		, ISNULL(rdidtSecondary.DimIdeaDisabilityTypeId, -1)				SecondaryIdeaDisabilityTypeId
 		, ISNULL(rdsc.DimScedCodeId, -1)									ScedCodeId
 		, ISNULL(rddEnrollmentEntryDate.DimDateId, -1)						EnrollmentEntryDateId
 		, ISNULL(rddEnrollmentExitDate.DimDateId, -1)						EnrollmentExitDateId
-		, -1																StatusStartDateEconomicallyDisadvantagedId
-		, -1																StatusEndDateEconomicallyDisadvantagedId
+		, ISNULL(rddEconolicallyDisadvantagedStatusStartDateTime.DimDateId, -1)			StatusStartDateEconomicallyDisadvantagedId
+		, ISNULL(rddEconolicallyDisadvantagedStatusEndDateTime.DimDateId, -1)			StatusEndDateEconomicallyDisadvantagedId
 		, -1																StatusStartDateEnglishLearnerId
 		, -1																StatusEndDateEnglishLearnerId
 		, -1																StatusStartDateHomelessnessId
@@ -102,12 +105,12 @@ BEGIN
 		, ISNULL(rddReceivedDate.DimDateId, -1)								LearningResourceReceivedDateId
 		, ISNULL(rddCourseEntryDate.DimDateId, -1)							CourseSectionStartDateId
 		, ISNULL(rddCourseExitDate.DimDateId, -1)							CourseSectionEndDateId
-	FROM Staging.AccessibleEducationMaterialAssignment saema
-	JOIN Staging.K12Enrollment ske
+	FROM Staging.K12Enrollment ske
+	LEFT JOIN Staging.AccessibleEducationMaterialAssignment saema
 		ON saema.K12StudentStudentIdentifierState = ske.StudentIdentifierState
 		AND ISNULL(saema.LeaIdentifierSea,'') = ISNULL(ske.LEAIdentifierSeaAccountability,'')
 		AND ISNULL(saema.SchoolIdentifierSea,'') = ISNULL(ske.SchoolIdentifierSea,'')
-		AND saema.LearningResourceIssuedDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, GETDATE())
+		AND ske.SchoolYear = saema.SchoolYear
 	JOIN RDS.DimSchoolYears rsy
 		ON ske.SchoolYear = rsy.SchoolYear
 	JOIN RDS.vwDimK12Demographics rdkd
@@ -115,18 +118,19 @@ BEGIN
 		AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
 	LEFT JOIN RDS.DimLeas rdl
 		ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
-		AND saema.LearningResourceIssuedDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, GETDATE())
+		and rdl.RecordEndDateTime IS NULL
 	LEFT JOIN RDS.DimSeas rds
-		ON saema.LearningResourceIssuedDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
+		ON rds.RecordEndDateTime IS NULL
+		AND rds.DimSeaId > -1
 	LEFT JOIN RDS.DimAccessibleEducationMaterialProviders rdaemp
 		ON saema.AccessibleEducationMaterialProviderOrganizationIdentifierSea = rdaemp.AccessibleEducationMaterialProviderOrganizationIdentifierSea
 		AND saema.LearningResourceIssuedDate BETWEEN rdaemp.RecordStartDateTime AND ISNULL(rdaemp.RecordEndDateTime, GETDATE())
 	LEFT JOIN RDS.vwDimAccessibleEducationMaterialStatuses rdaems
 		ON ISNULL(saema.AccessibleFormatIssuedIndicatorCode, 'MISSING') = ISNULL(rdaems.AccessibleFormatIssuedIndicatorMap, rdaems.AccessibleFormatIssuedIndicatorCode)
-		AND ISNULL(saema.AccessibleFormatRequiredIndicatorCode, 'MISSING') = ISNULL(rdaems.AccessibleFormatRequiredIndicatorMap, rdaems.AccessibleFormatRequiredIndicatorCode)
+		AND ISNULL(saema.AccessibleFormatRequiredIndicatorCode, 'No') = ISNULL(rdaems.AccessibleFormatRequiredIndicatorMap, rdaems.AccessibleFormatRequiredIndicatorCode)
 		and ISNULL(saema.AccessibleFormatTypeCode, 'MISSING') = ISNULL(rdaems.AccessibleFormatTypeMap, rdaems.AccessibleFormatTypeCode)
 	LEFT JOIN RDS.DimAges rda
-		ON RDS.Get_Age(ske.Birthdate, saema.LearningResourceIssuedDate) = rda.AgeValue
+		ON RDS.Get_Age(ske.Birthdate, @CountDate) = rda.AgeValue
 	LEFT JOIN RDS.vwDimGradeLevels rgls
 		ON ske.GradeLevel = ISNULL(rgls.GradeLevelMap, rgls.GradeLevelCode)
 		AND rgls.GradeLevelTypeDescription = 'Entry Grade Level'
@@ -134,7 +138,7 @@ BEGIN
 		ON ske.StudentIdentifierState = sd.StudentIdentifierState
 		AND ISNULL(ske.LEAIdentifierSeaAccountability,'') = ISNULL(sd.LeaIdentifierSeaAccountability,'')
 		AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(sd.SchoolIdentifierSea,'')
-		AND saema.LearningResourceIssuedDate BETWEEN sd.Disability_StatusStartDate AND ISNULL(sd.Disability_StatusEndDate, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN sd.Disability_StatusStartDate AND ISNULL(sd.Disability_StatusEndDate, GETDATE())
 	LEFT JOIN RDS.vwDimDisabilityStatuses rdds
 		ON ISNULL(CAST(sd.DisabilityStatus AS INT), -1) = ISNULL(rdds.DisabilityStatusMap, rdds.DisabilityStatusCode)
 		AND ISNULL(CAST(sd.Section504Status AS INT), -1) = ISNULL(rdds.Section504StatusMap, rdds.Section504StatusCode)
@@ -144,13 +148,13 @@ BEGIN
 		ON ske.StudentIdentifierState = sppse.StudentIdentifierState
 		AND ISNULL(ske.LEAIdentifierSeaAccountability,'') = ISNULL(sppse.LeaIdentifierSeaAccountability,'')
 		AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(sppse.SchoolIdentifierSea,'')
-		AND saema.LearningResourceIssuedDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, GETDATE())
 	LEFT JOIN Staging.IdeaDisabilityType sidt	
 		ON ske.SchoolYear = sidt.SchoolYear
 		AND sidt.StudentIdentifierState = sppse.StudentIdentifierState
 		AND ISNULL(sidt.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '')
 		AND ISNULL(sidt.SchoolIdentifierSea, '') = ISNULL(sppse.SchoolIdentifierSea, '')
-		AND saema.LearningResourceIssuedDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
 	LEFT JOIN RDS.DimDates rddCountDate
 		ON saema.CountDate = rddCountDate.DateValue
 	LEFT JOIN RDS.DimDates rddEnrollmentEntryDate
@@ -181,17 +185,21 @@ BEGIN
 		AND saema.CourseCodeSystemCode = rdkc.CourseCodeSystemCode
 	LEFT JOIN RDS.DimK12Schools rdksch
 		ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
-		AND saema.LearningResourceIssuedDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
 	LEFT JOIN Staging.PersonStatus el 
 		ON ske.StudentIdentifierState = el.StudentIdentifierState
 		AND ISNULL(ske.LEAIdentifierSeaAccountability,'') = ISNULL(el.LeaIdentifierSeaAccountability,'')
 		AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(el.SchoolIdentifierSea,'')
-		AND saema.LearningResourceIssuedDate BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, GETDATE())
 	LEFT JOIN Staging.PersonStatus ed 
 		ON ske.StudentIdentifierState = ed.StudentIdentifierState
 		AND ISNULL(ske.LEAIdentifierSeaAccountability,'') = ISNULL(ed.LeaIdentifierSeaAccountability,'')
 		AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(ed.SchoolIdentifierSea,'')
-		AND saema.LearningResourceIssuedDate BETWEEN ed.EconomicDisadvantage_StatusStartDate AND ISNULL(ed.EconomicDisadvantage_StatusEndDate, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN ed.EconomicDisadvantage_StatusStartDate AND ISNULL(ed.EconomicDisadvantage_StatusEndDate, GETDATE())
+	LEFT JOIN RDS.DimDates rddEconolicallyDisadvantagedStatusStartDateTime
+		ON ed.EconomicDisadvantage_StatusStartDate = rddEconolicallyDisadvantagedStatusStartDateTime.DateValue
+	LEFT JOIN RDS.DimDates rddEconolicallyDisadvantagedStatusEndDateTime
+		ON ed.EconomicDisadvantage_StatusEndDate = rddEconolicallyDisadvantagedStatusEndDateTime.DateValue
 	LEFT JOIN RDS.vwDimEnglishLearnerStatuses rdels
 		ON rsy.SchoolYear = rdels.SchoolYear
 		AND ISNULL(CAST(el.PerkinsEnglishLearnerStatus AS SMALLINT), -1) = ISNULL(rdels.PerkinsEnglishLearnerStatusMap, rdels.PerkinsEnglishLearnerStatusCode)
@@ -208,7 +216,7 @@ BEGIN
 		AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 		AND ISNULL(ske.LastOrSurname, 'MISSING') = rdp.LastOrSurname
 		AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
-		AND saema.LearningResourceIssuedDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 	LEFT JOIN RDS.vwDimIdeaStatuses rdis
 		ON rdis.IdeaIndicatorCode = 'Yes'
 		AND rdis.SpecialEducationExitReasonCode = 'MISSING'
@@ -222,5 +230,22 @@ BEGIN
 		ON sidt.SchoolYear = rdidtSecondary.SchoolYear
 		AND ISNULL(sidt.IdeaDisabilityTypeCode, 'MISSING') = ISNULL(rdidtSecondary.IdeaDisabilityTypeMap, rdidtSecondary.IdeaDisabilityTypeCode)
 		AND sidt.IsSecondaryDisability = 1
-
+	LEFT JOIN rds.vwUnduplicatedRaceMap spr
+		ON ske.StudentIdentifierState = spr.StudentIdentifierState
+		AND ISNULL(ske.LEAIdentifierSeaAccountability,'') = ISNULL(spr.LeaIdentifierSeaAccountability,'')
+		AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(spr.SchoolIdentifierSea,'')
+		AND ske.SchoolYear = spr.SchoolYear
+	LEFT JOIN rds.vwDimRaces rdr
+		ON ISNULL(rdr.RaceMap, rdr.RaceCode) =
+			CASE
+				when ske.HispanicLatinoEthnicity = 1 then 'HispanicorLatinoEthnicity'
+				WHEN spr.RaceMap IS NOT NULL THEN spr.RaceMap
+				ELSE 'Missing'
+			END
+	LEFT JOIN rds.vwDimRuralStatuses rrs
+		ON ske.SchoolYear = rrs.SchoolYear
+		AND ISNULL(ske.ERSRuralUrbanContinuumCode, 'MISSING') = ISNULL(rrs.ERSRuralUrbanContinuumCodeMap, rrs.ERSRuralUrbanContinuumCodeCode)
+		AND ISNULL(ske.RuralResidencyStatus, 'MISSING') = ISNULL(rrs.RuralResidencyStatusMap, rrs.RuralResidencyStatusCode)
+	WHERE sd.Section504Status = 1 
+		OR sppse.IdeaIndicator = 1 
 END

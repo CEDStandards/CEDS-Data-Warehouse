@@ -42,6 +42,8 @@ CREATE TABLE [Staging].[K12Enrollment] (
     [PostSecondaryEnrollmentStatus]                       NVARCHAR (100) NULL,
     [DiplomaOrCredentialAwardDate]                        DATE           NULL,
     [FoodServiceEligibility]                              NVARCHAR (100) NULL,
+    [ERSRuralUrbanContinuumCode]                          NVARCHAR (50)  NULL,
+    [RuralResidencyStatus]                                NVARCHAR (50)  NULL,
     [SchoolYear]                                          SMALLINT       NULL,
     [RecordStartDateTime]                                 DATETIME       NULL,
     [RecordEndDateTime]                                   DATETIME       NULL,
