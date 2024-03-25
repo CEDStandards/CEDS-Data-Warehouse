@@ -20,8 +20,8 @@ CREATE TABLE [RDS].[FactK12StaffProfessionalDevelopmentSessions]
 	[DataCollectionId] int NULL,
 	[EmployerId] int NULL,
 	[K12DemographicId] int NULL,
-	[ProfessionalDevelopmentSessionStartDate] int NULL,
-	[ProfessionalDevelopmentSessionEndDate] int NULL
+	[ProfessionalDevelopmentSessionStartDateId] int NULL,
+	[ProfessionalDevelopmentSessionEndDateId] int NULL
 	CONSTRAINT [PK_FactK12StaffProfessionalDevelopmentSessionId] PRIMARY KEY CLUSTERED ([FactK12StaffProfessionalDevelopmentSessionId] ASC)
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_EmployerId] FOREIGN KEY ([EmployerId]) REFERENCES [RDS].[DimEmployers] ([DimEmployerId]) ON DELETE No Action ON UPDATE No Action,

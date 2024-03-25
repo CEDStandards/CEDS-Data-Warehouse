@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Kv1zcX5fggtLLaIuFc8x08VqkPxeSKqyn/kRVAcGKZTSyAEkw1U/gv0m0uloRMQgnEEE5EO9MDW8gDaATC0eZg==",
+  "dgSpecHash": "mTtYPsWk/RhtDVbRjiejDt6FvdJr132LFodsZt9yI3H9YU/3DYymwJu3M6562J4QItqB4YmpZ/paZeNbSWE7LA==",
   "success": true,
-  "projectFilePath": "c:\\Repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj",
+  "projectFilePath": "c:\\repos\\CEDS-Data-Warehouse\\src\\CEDS-Data-Warehouse-Project\\CEDS-Data-Warehouse-Project.sqlproj",
   "expectedPackageFiles": [
-    "C:\\Users\\nclinton\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
-    "C:\\Users\\nclinton\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
+    "C:\\Users\\svuyuru\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\svuyuru\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

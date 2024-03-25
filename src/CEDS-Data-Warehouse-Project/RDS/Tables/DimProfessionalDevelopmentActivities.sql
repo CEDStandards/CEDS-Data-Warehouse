@@ -3,6 +3,7 @@ CREATE TABLE [RDS].[DimProfessionalDevelopmentActivities]
 	[DimProfessionalDevelopmentActivityId] int NOT NULL IDENTITY (1, 1),
 	[ProfessionalDevelopmentActivityIdentifier] nvarchar(40) NULL,
 	[ProfessionalDevelopmentActivityTitle] nvarchar(60) NULL,
+	[SponsoringAgencyName] nvarchar(60) NULL,
 	[ProfessionalDevelopmentActivityTypeCode] nvarchar(50) NOT NULL,
 	[ProfessionalDevelopmentActivityTypeDescription] nvarchar(200) NOT NULL,
 	[ProfessionalDevelopmentActivityDescription] nvarchar(max) NULL,

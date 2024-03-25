@@ -31,6 +31,8 @@ CREATE TABLE [RDS].[DimCredentialIssuers](
 	[OrganizationRegionGeoJson]                                     [nvarchar](max) NULL,
 	[Latitude]                                                      [nvarchar](20) NULL,
 	[Longitude]                                                     [nvarchar](20) NULL,
+	[ProgramSponosorTypeCode]										[nvarchar](60) NULL,
+	[ProgramSponosorTypeDescription]								[nvarchar](200) NULL,
 	[RecordStartDateTime]                                           [datetime] NOT NULL,
 	[RecordEndDateTime]                                             [datetime] NULL,
  	CONSTRAINT [PK_DimCredentialIssuers] PRIMARY KEY CLUSTERED 
