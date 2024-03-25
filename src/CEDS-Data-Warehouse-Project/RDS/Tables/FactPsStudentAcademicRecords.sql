@@ -6,6 +6,7 @@ CREATE TABLE [RDS].[FactPsStudentAcademicRecords] (
     [PsInstitutionID]                           INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
     [PsStudentId]                               BIGINT          CONSTRAINT [DF_FactPsStudentAcademicRecords_PsStudentId] DEFAULT ((-1)) NOT NULL,
     [AcademicTermDesignatorId]                  INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_AcademicTermDesignatorId] DEFAULT ((-1)) NOT NULL,
+    [PsCourseId]                                INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsCourseId] DEFAULT ((-1)) NOT NULL,
     [PsDemographicId]                           INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsDemographicId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionStatusId]                     INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsInstitutionStatusId] DEFAULT ((-1)) NOT NULL,
     [PsEnrollmentStatusId]                      BIGINT          CONSTRAINT [DF_FactPsStudentAcademicRecords_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
@@ -24,6 +25,7 @@ CREATE TABLE [RDS].[FactPsStudentAcademicRecords] (
     CONSTRAINT [FK_FactPsStudentAcademicRecords_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_EnrollmentEntryDateId] FOREIGN KEY ([EnrollmentEntryDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_EnrollmentExitDateId] FOREIGN KEY ([EnrollmentExitDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
+    CONSTRAINT [FK_FactPsStudentAcademicRecords_PsCourseId] FOREIGN KEY ([PsCourseId]) REFERENCES [RDS].[DimPsCourses] ([DimPsCourseId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsDemographicId] FOREIGN KEY ([PsDemographicId]) REFERENCES [RDS].[DimPsDemographics] ([DimPsDemographicId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsEnrollmentStatusId] FOREIGN KEY ([PsEnrollmentStatusId]) REFERENCES [RDS].[DimPsEnrollmentStatuses] ([DimPsEnrollmentStatusId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsInstitutionId] FOREIGN KEY ([PsInstitutionID]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionID]),
@@ -74,7 +76,13 @@ CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_AcademicTermDesigna
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_PsInstitutionId]
-    ON [RDS].[FactPsStudentAcademicRecords]([PsInstitutionID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+    ON [RDS].[FactPsStudentAcademicRecords]([PsInstitutionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_PsCourseId]
+    ON [RDS].[FactPsStudentAcademicRecords]([PsCourseId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
