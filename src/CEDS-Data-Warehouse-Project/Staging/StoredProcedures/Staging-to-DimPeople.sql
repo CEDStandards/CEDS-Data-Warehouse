@@ -34,10 +34,10 @@ BEGIN
 			, TelephoneNumberWork			  NVARCHAR(24) NULL
 			, K12StudentStudentIdentifierState		  NVARCHAR(40) NULL
 			, PsStudentStudentIdentifierState		  NVARCHAR(40) NULL
-			, K12StaffMemberIdentiferState	  NVARCHAR(40) NULL
+			, K12StaffMemberIdentifierState	  NVARCHAR(40) NULL
 			, IsActiveK12Student			  BIT
 			, IsActivePsStudent				  BIT
-			, IsActiveK12StaffMember		  BIT
+			, IsActiveK12Staff		  BIT
 			, RecordStartDateTime			  DATETIME
 		)
 		
@@ -56,10 +56,10 @@ BEGIN
 			, TelephoneNumberWork
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentiferState
+			, K12StaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent
-			, IsActiveK12StaffMember
+			, IsActiveK12Staff
 			, RecordStartDateTime
 			)		
 		SELECT DISTINCT
@@ -73,7 +73,7 @@ BEGIN
 			, NULL AS TelephoneNumberWork
 			, ke.StudentIdentifierState AS K12StudentStudentIdentifierState
 			, pe.StudentIdentifierState AS PsStudentStudentIdentifierState
-			, NULL AS K12StaffMemberIdentiferState
+			, NULL AS K12StaffMemberIdentifierState
 			, 1
 			, CASE WHEN pe.StudentIdentifierState IS NOT NULL THEN 1 ELSE 0 END
 			, 0
@@ -102,10 +102,10 @@ BEGIN
 			, TelephoneNumberWork
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentiferState
+			, K12StaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent
-			, IsActiveK12StaffMember
+			, IsActiveK12Staff
 			, RecordStartDateTime
 			)	
 		SELECT DISTINCT
@@ -119,7 +119,7 @@ BEGIN
 			, NULL AS TelephoneNumberWork
 			, NULL AS K12StudentStudentIdentifierState
 			, spe.StudentIdentifierState AS PsStudentStudentIdentifierState
-			, NULL AS K12StaffMemberIdentiferState
+			, NULL AS K12StaffMemberIdentifierState
 			, 0
 			, 1
 			, 0
@@ -146,10 +146,10 @@ BEGIN
 			, TelephoneNumberWork
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentiferState
+			, K12StaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent
-			, IsActiveK12StaffMember
+			, IsActiveK12Staff
 			, RecordStartDateTime
 		)	
 		-- State Chief School Officer/State Superintendent
@@ -164,7 +164,7 @@ BEGIN
 			, SeaContact_PhoneNumber				AS TelephoneNumberWork
 			, NULL									AS K12StudentStudentIdentifierState
 			, NULL									AS PsStudentStudentIdentifierState
-			, SeaContact_Identifier					AS K12StaffMemberIdentiferState
+			, SeaContact_Identifier					AS K12StaffMemberIdentifierState
 			, 0
 			, 0
 			, 1
@@ -176,7 +176,7 @@ BEGIN
 		USING #People AS src
 				ON  ISNULL(trgt.K12StudentStudentIdentifierState, '') = ISNULL(src.K12StudentStudentIdentifierState, '')
 				AND ISNULL(trgt.PsStudentStudentIdentifierState, '') = ISNULL(src.PsStudentStudentIdentifierState, '')
-				AND ISNULL(trgt.K12StaffMemberIdentiferState, '') = ISNULL(src.K12StaffMemberIdentiferState, '')
+				AND ISNULL(trgt.K12StaffMemberIdentifierState, '') = ISNULL(src.K12StaffMemberIdentifierState, '')
 				AND ISNULL(trgt.FirstName, '') = ISNULL(src.FirstName, '')
 				AND ISNULL(trgt.LastOrSurname, '') = ISNULL(src.LastOrSurname, '')
 				AND ISNULL(trgt.MiddleName, '') = ISNULL(src.MiddleName, '')
@@ -190,10 +190,10 @@ BEGIN
 			, MiddleName
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentiferState
+			, K12StaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent	
-			, IsActiveK12StaffMember	
+			, IsActiveK12Staff	
 			, RecordStartDateTime
 			)
 		VALUES (
@@ -203,10 +203,10 @@ BEGIN
 			, src.MiddleName
 			, src.K12StudentStudentIdentifierState
 			, src.PsStudentStudentIdentifierState
-			, src.K12StaffMemberIdentiferState
+			, src.K12StaffMemberIdentifierState
 			, src.IsActiveK12Student
 			, src.IsActivePsStudent	
-			, src.IsActiveK12StaffMember	
+			, src.IsActiveK12Staff	
 			, src.RecordStartDateTime
 			);
 
