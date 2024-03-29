@@ -10,6 +10,7 @@ CREATE TABLE [RDS].[FactK12ParentOrGuardians]
 	[K12SchoolId] INT NOT NULL,
 	[K12StudentId] INT NOT NULL,
 	[ParentOrGuardianId] INT NOT NULL,
+    [ParentOrGuardianPersonAddressId] INT NOT NULL,
     [PersonRelationshipToLearnerContactInformationId] INT NOT NULL,
     [ContactIndicatorId] INT NOT NULL,
     [PersonRelationshipId] INT NOT NULL,
@@ -27,6 +28,7 @@ CREATE TABLE [RDS].[FactK12ParentOrGuardians]
     CONSTRAINT [FK_FactK12ParentOrGuardians_PersonRelationshipToLearnerContactInformation] FOREIGN KEY ([PersonRelationshipToLearnerContactInformationId]) REFERENCES [RDS].[DimPersonRelationshipToLearnerContactInformations] ([DimPersonRelationshipToLearnerContactInformationId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_ContactIndicators] FOREIGN KEY ([ContactIndicatorId]) REFERENCES [RDS].[DimContactIndicators] ([DimContactIndicatorId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_PersonRelationships] FOREIGN KEY ([PersonRelationshipId]) REFERENCES [RDS].[DimPersonRelationships] ([DimPersonRelationshipId]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_FactK12ParentOrGuardians_PersonOrGuardianPersonAddress] FOREIGN KEY ([ParentOrGuardianPersonAddressId]) REFERENCES [RDS].[DimPersonAddresses] ([DimPersonAddressId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_ParentOrGuardianIndicators] FOREIGN KEY ([ParentOrGuardianIndicatorId]) REFERENCES [RDS].[DimParentOrGuardianIndicators] ([DimParentOrGuardianIndicatorId]) ON DELETE No Action ON UPDATE No Action)
 GO
 

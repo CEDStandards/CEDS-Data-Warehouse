@@ -8,7 +8,25 @@ CREATE TABLE [Staging].[K12ParentOrGuardian] (
     [ParentGuardianFirstName]                NVARCHAR (100) NULL,
     [ParentGuardianLastOrSurname]            NVARCHAR (100) NULL,
     [ParentGuardianMiddleName]               NVARCHAR (100) NULL,
+    [ParentGuardianGenerationCodeOrSuffix]   NVARCHAR (75)  NULL,
     [ParentGuardianBirthDate]                DATE           NULL,
+    [ParentGuardianElectronicMailAddressHome]    NVARCHAR (252) NULL,
+    [ParentGuardianElectronicMailAddressWork]    NVARCHAR (252) NULL,
+    [ParentGuardianElectronicMailAddressOrganizational]    NVARCHAR (252) NULL,
+    [ParentGuardianTelephoneNumberHome]      NVARCHAR (48)  NULL,
+    [ParentGuardianTelephoneNumberWork]      NVARCHAR (48)  NULL,
+    [ParentGuardianTelephoneNumberMobile]    NVARCHAR (48)  NULL,
+    [ParentGuardianTelephoneNumberFax]       NVARCHAR (48)  NULL,
+    [ParentGuardianAddressStreetNumberAndNameMailing] NVARCHAR (150) NULL,
+    [ParentGuardianAddressApartmentRoomOrSuiteNumberMailing] NVARCHAR (60)  NULL,
+    [ParentGuardianAddressCityMailing]       NVARCHAR (30)  NULL,
+    [ParentGuardianAddressStateAbbreviationMailing]      NVARCHAR (50)   NULL,
+    [ParentGuardianAddressPostalCodeMailing] NVARCHAR (17)  NULL,
+    [ParentGuardianAddressStreetNumberAndNamePhysical] NVARCHAR (150) NULL,
+    [ParentGuardianAddressApartmentRoomOrSuiteNumberPhysical] NVARCHAR (60)  NULL,
+    [ParentGuardianAddressCityPhysical]      NVARCHAR (30)  NULL,
+    [ParentGuardianAddressStateAbbreviationPhysical]     NVARCHAR (50)   NULL,
+    [ParentGuardianAddressPostalCodePhysical] NVARCHAR (17)  NULL,
     [CustodialParentOrGuardianIndicator]     NVARCHAR (50)  NULL,
     [PrimaryContactIndicator]                NVARCHAR (50)  NULL,
     [EmergencyContactIndicator]              NVARCHAR (50)  NULL,
@@ -235,4 +253,184 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000826' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000826' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An appendage, if any, used to denote a person''s generation in his family (e.g., Jr., Sr., III).' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Generation Code or Suffix' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000121' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000121' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the person or organization belongs.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Electronic Mail Address' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000088' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000088' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the person or organization belongs.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Electronic Mail Address' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000088' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000088' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressOrganizational';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the person or organization belongs.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressOrganizational';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Electronic Mail Address' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressOrganizational';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000088' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressOrganizational';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000088' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressOrganizational';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The telephone number including the area code, and extension, if applicable.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Telephone Number' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberHome';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The telephone number including the area code, and extension, if applicable.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Telephone Number' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberMobile';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The telephone number including the area code, and extension, if applicable.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberMobile';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Telephone Number' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberMobile';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberMobile';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberMobile';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberFax';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The telephone number including the area code, and extension, if applicable.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberFax';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Telephone Number' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberFax';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberFax';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000279' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianTelephoneNumberFax';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNameMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The street number and street name or post office box number of an address.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNameMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Street Number and Name' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNameMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000269' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNameMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000269' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNameMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The apartment, room, or suite number of an address.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Apartment Room or Suite Number' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000019' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000019' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The name of the city in which an address is located.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address City' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000040' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000040' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodeMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A number that identifies each postal delivery area in the United States used as a portion of an address.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodeMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Postal Code' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodeMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000214' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodeMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000214' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodeMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The abbreviation for the state (within the United States) or outlying area in which an address is located.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State Abbreviation' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000267' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000267' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationMailing';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNamePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The street number and street name or post office box number of an address.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNamePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Street Number and Name' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNamePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000269' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNamePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000269' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStreetNumberAndNamePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The apartment, room, or suite number of an address.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Apartment Room or Suite Number' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000019' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000019' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressApartmentRoomOrSuiteNumberPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The name of the city in which an address is located.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address City' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000040' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000040' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressCityPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A number that identifies each postal delivery area in the United States used as a portion of an address.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address Postal Code' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000214' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000214' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressPostalCodePhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The abbreviation for the state (within the United States) or outlying area in which an address is located.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State Abbreviation' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000267' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationPhysical';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000267' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianAddressStateAbbreviationPhysical';
 GO
