@@ -45,23 +45,12 @@ EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0typ
 
 GO
 
-EXECUTE sp_addextendedproperty @name = N'Identifier', @value = N'IDS', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'OrganizationId';
-
-
-GO
-
 EXECUTE sp_addextendedproperty @name = N'Lookup', @value = N'RefComprehensiveSupportReasonApplicability', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'ComprehensiveSupportReasonApplicability';
 
 
 GO
 
 EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'LEAIdentifierSea';
-
-
-GO
-
-EXECUTE sp_addextendedproperty @name = N'Identifier', @value = N'IDS', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'K12SchoolId';
-
 
 GO
 

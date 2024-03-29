@@ -38,8 +38,8 @@ CREATE TABLE [RDS].[FactK12StaffProfessionalDevelopmentSessions]
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_LeaJobClassificationId] FOREIGN KEY ([LeaJobClassificationId]) REFERENCES [RDS].[DimLeaJobClassifications] ([DimLeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_ProfessionalDevelopmentActivityId] FOREIGN KEY ([ProfessionalDevelopmentActivityId]) REFERENCES [RDS].[DimProfessionalDevelopmentActivities] ([DimProfessionalDevelopmentActivityId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_ProfessionalDevelopmentSessionEndDate] FOREIGN KEY ([ProfessionalDevelopmentSessionEndDate]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_ProfessionalDevelopmentSessionStartDate] FOREIGN KEY ([ProfessionalDevelopmentSessionStartDate]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_ProfessionalDevelopmentSessionEndDate] FOREIGN KEY ([ProfessionalDevelopmentSessionEndDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_ProfessionalDevelopmentSessionStartDate] FOREIGN KEY ([ProfessionalDevelopmentSessionStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_SeaJobClassificationId] FOREIGN KEY ([SeaJobClassificationId]) REFERENCES [RDS].[DimSeaJobClassifications] ([DimSeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action
@@ -54,12 +54,12 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_DimD
  ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([DataCollectionId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_DimDates] 
- ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([ProfessionalDevelopmentSessionStartDate] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_ProfessionalDevelopmentSessionStartDateId] 
+ ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([ProfessionalDevelopmentSessionStartDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_DimDates_02] 
- ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([ProfessionalDevelopmentSessionEndDate] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_ProfessionalDevelopmentSessionEndDateId] 
+ ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([ProfessionalDevelopmentSessionEndDateId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_DimEmployers] 
