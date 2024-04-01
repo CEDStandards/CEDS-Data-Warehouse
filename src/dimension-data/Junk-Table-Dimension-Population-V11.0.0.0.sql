@@ -4277,55 +4277,71 @@ GO
 	------------------------------------------------
 	-- Populate DimNOrDStatuses			 ---
 	------------------------------------------------
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimNOrDStatuses 
-			WHERE NeglectedOrDelinquentProgramTypeCode = 'MISSING') BEGIN
-		SET IDENTITY_INSERT RDS.DimNOrDStatuses ON
 
-		INSERT INTO RDS.DimNOrDStatuses (
-			  DimNOrDStatusId
-			, NeglectedOrDelinquentProgramTypeCode
-			, NeglectedOrDelinquentProgramTypeDescription
-			, NeglectedOrDelinquentProgramTypeEdFactsCode)
-		VALUES (-1, 'MISSING', 'MISSING', 'MISSING')
+	CREATE TABLE #NeglectedProgramType (NeglectedProgramTypeCode VARCHAR(50), NeglectedProgramTypeDescription VARCHAR(200), NeglectedProgramTypeEdFactsCode VARCHAR(50))
 
-		SET IDENTITY_INSERT RDS.DimNOrDStatuses OFF
-	END
-
-	CREATE TABLE #NeglectedOrDelinquentProgramType (NeglectedOrDelinquentProgramTypeCode VARCHAR(50), NeglectedOrDelinquentProgramTypeDescription VARCHAR(200), NeglectedOrDelinquentProgramTypeEdFactsCode VARCHAR(50))
-
-	INSERT INTO #NeglectedOrDelinquentProgramType VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #NeglectedOrDelinquentProgramType
+	INSERT INTO #NeglectedProgramType VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #NeglectedProgramType
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-		, CASE CedsOptionSetCode
-			WHEN 'AdultCorrection' THEN 'ADLTCORR'
-			WHEN 'AtRiskPrograms' THEN 'ATRISK'
-			WHEN 'JuvenileCorrection' THEN 'JUVCORR'
-			WHEN 'JuvenileDetention' THEN 'JUVDET'
-			WHEN 'NeglectedPrograms' THEN 'NEGLECT'
-			WHEN 'OtherPrograms' THEN 'OTHER'
-		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'NeglectedOrDelinquentProgramType'
+		, CedsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'NeglectedProgramType'
 
+	CREATE TABLE #DelinquentProgramType (DelinquentProgramTypeCode VARCHAR(50), DelinquentProgramTypeDescription VARCHAR(200), DelinquentProgramTypeEdFactsCode VARCHAR(50))
+
+	INSERT INTO #DelinquentProgramType VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #DelinquentProgramType
+	SELECT
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CedsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'DelinquentProgramType'
+
+	CREATE TABLE #NeglectedOrDelinquentLongTermStatus (NeglectedOrDelinquentLongTermStatusCode VARCHAR(50), 
+	NeglectedOrDelinquentLongTermStatusDescription VARCHAR(100), NeglectedOrDelinquentLongTermStatusEdFactsCode VARCHAR(50))
+
+	INSERT INTO #NeglectedOrDelinquentLongTermStatus VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #NeglectedOrDelinquentLongTermStatus VALUES ('NDLONGTERM', 'Long-Term N or D Students', 'NDLONGTERM')
 	   
+
 	INSERT INTO RDS.DimNOrDStatuses
 		(
-			  NeglectedOrDelinquentProgramTypeCode
-			, NeglectedOrDelinquentProgramTypeDescription
-			, NeglectedOrDelinquentProgramTypeEdFactsCode
+			  NeglectedProgramTypeCode
+			, NeglectedProgramTypeDescription
+			, NeglectedProgramTypeEdFactsCode
+			, DelinquentProgramTypeCode
+			, DelinquentProgramTypeDescription
+			, DelinquentProgramTypeEdFactsCode
+			, NeglectedOrDelinquentLongTermStatusCode
+			, NeglectedOrDelinquentLongTermStatusDescription
+			, NeglectedOrDelinquentLongTermStatusEdFactsCode
 		)
 	SELECT 
-		  nodpt.NeglectedOrDelinquentProgramTypeCode
-		, nodpt.NeglectedOrDelinquentProgramTypeDescription
-		, nodpt.NeglectedOrDelinquentProgramTypeEdFactsCode
-	FROM #NeglectedOrDelinquentProgramType nodpt
-	LEFT JOIN rds.DimNOrDStatuses main
-		ON nodpt.NeglectedOrDelinquentProgramTypeCode = main.NeglectedOrDelinquentProgramTypeCode
+		  npt.NeglectedProgramTypeCode
+		, npt.NeglectedProgramTypeDescription
+		, npt.NeglectedProgramTypeEdFactsCode
+		, dpt.DelinquentProgramTypeCode
+		, dpt.DelinquentProgramTypeDescription
+		, dpt.DelinquentProgramTypeEdFactsCode
+		, longterm.NeglectedOrDelinquentLongTermStatusCode
+		, longterm.NeglectedOrDelinquentLongTermStatusDescription
+		, longterm.NeglectedOrDelinquentLongTermStatusEdFactsCode
+	FROM #NeglectedProgramType npt
+	CROSS JOIN #DelinquentProgramType dpt
+	CROSS JOIN #NeglectedOrDelinquentLongTermStatus longterm
+	LEFT JOIN RDS.DimNOrDStatuses main
+		ON npt.NeglectedProgramTypeCode = main.NeglectedProgramTypeCode
+		AND dpt.DelinquentProgramTypeCode = main.DelinquentProgramTypeCode
+		AND longterm.NeglectedOrDelinquentLongTermStatusCode = main.NeglectedOrDelinquentLongTermStatusCode
 	WHERE main.DimNOrDStatusId IS NULL
 
-	DROP TABLE #NeglectedOrDelinquentProgramType
+
+	DROP TABLE #NeglectedProgramType
+	DROP TABLE #DelinquentProgramType
+	DROP TABLE #NeglectedOrDelinquentLongTermStatus
 
 
 	PRINT 'Populate DimTitleIIIStatuses'
