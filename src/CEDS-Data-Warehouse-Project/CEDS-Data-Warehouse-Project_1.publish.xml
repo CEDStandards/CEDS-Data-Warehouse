@@ -2,7 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TargetDatabaseName>CEDS-Data-Warehouse-Project</TargetDatabaseName>
-    <TargetConnectionString>Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Password=******;Connect Timeout=30;Application Name=sqltools;Command Timeout=30</TargetConnectionString>
+    <TargetConnectionString>Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Password=******;Connect Timeout=30;Application Name=sqltools;Command Timeout=30</TargetConnectionString>
     <AllowIncompatiblePlatform>True</AllowIncompatiblePlatform>
     <DropPermissionsNotInSource>True</DropPermissionsNotInSource>
     <DropObjectsNotInSource>True</DropObjectsNotInSource>

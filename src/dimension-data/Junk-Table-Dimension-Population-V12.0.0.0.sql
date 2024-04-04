@@ -15,21 +15,21 @@
 
 
 	Common Education Data Standards (CEDS)
-    Version 11.0.0.0
+    Version 12.0.0.0
 	CEDS Junk Table Dimension Population Script
 	  
     This script populates multiple Junk Dimension tables in the CEDS Data Warehouse
-	version 11.0.0.0. It does not populate all of the tables. Additional work continues in
+	version 12.0.0.0. It does not populate all of the tables. Additional work continues in
 	Open Source Community to fully populate all of the Junk Dimension tables.
 
 	Script 3 of 3
 	To create the CEDS Data Warehouse including population of the dimension tables, the following 3 scripts are needed:
 
-	Script 1: CEDS-Data-Warehouse-V11-0-0-0
-	Script 2: CEDS-Elements-V11.0.0.0 (https://github.com/CEDStandards/CEDS-Elements/blob/master/src/CEDS-Elements-V11.0.0.0.sql)
-	Script 3: Junk-Table-Dimension-Population-V11.0.0.0
+	Script 1: CEDS-Data-Warehouse-V12-0-0-0
+	Script 2: CEDS-Elements-V12.0.0.0 (https://github.com/CEDStandards/CEDS-Elements/blob/master/src/CEDS-Elements-V12.0.0.0.sql)
+	Script 3: Junk-Table-Dimension-Population-V12.0.0.0
 
-	You must have the CEDS Data Warehouse version 11.0.0.0 installed first as well as
+	You must have the CEDS Data Warehouse version 12.0.0.0 installed first as well as
 	the CEDS version 11.0.0.0 elements database. The CEDS schema tables house the element and option set information.
 	These eight tables act as a source for the junk table dimension population.
       
@@ -39,7 +39,7 @@
     http://ceds.ed.gov.
 */    
 
-USE [CEDS-Data-Warehouse-V11-0-0-0]
+USE [CEDS-Data-Warehouse-V12-0-0-0]
 GO
 
 	SET NOCOUNT ON;
@@ -109,7 +109,7 @@ GO
 			WHEN 'Yes' THEN 'ECODIS'
 			ELSE 'MISSING'
 			END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EconomicDisadvantageStatus'
 
 	IF OBJECT_ID('tempdb..#HomelessnessStatus') IS NOT NULL
@@ -125,7 +125,7 @@ GO
 			WHEN 'Yes' THEN 'ECODIS'
 			ELSE 'MISSING'
 			END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'HomelessnessStatus'
 
 	IF OBJECT_ID('tempdb..#EnglishLearnerStatus') IS NOT NULL
@@ -138,7 +138,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EnglishLearnerStatus'
 
 	IF OBJECT_ID('tempdb..#MigrantStatus') IS NOT NULL
@@ -151,7 +151,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'MigrantStatus'
 
 	IF OBJECT_ID('tempdb..#MilitaryConnectedStudentIndicator') IS NOT NULL
@@ -172,7 +172,7 @@ GO
 			WHEN 'Unknown' THEN 'MISSING'
 			ELSE 'MISSING'
 			END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'MilitaryConnectedStudentIndicator'
 
 	IF OBJECT_ID('tempdb..#HomelessPrimaryNighttimeResidence') IS NOT NULL
@@ -185,7 +185,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'HomelessPrimaryNighttimeResidence'
 
 	IF OBJECT_ID('tempdb..#HomelessUnaccompaniedYouthStatus') IS NOT NULL
@@ -198,7 +198,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'HomelessUnaccompaniedYouthStatus'
 
 	IF OBJECT_ID('tempdb..#Sex') IS NOT NULL
@@ -211,7 +211,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'Sex'
 
 
@@ -321,7 +321,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AdultEducationInstructionalProgramType'
 
 		CREATE TABLE #AeSpecialProgramType (AeSpecialProgramTypeCode VARCHAR(50), AeSpecialProgramTypeDescription VARCHAR(200))
@@ -331,7 +331,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AdultEducationSpecialProgramType'
 
 		CREATE TABLE #WioaCareerServiceType (WioaCareerServicesCode VARCHAR(50), WioaCareerServicesDescription VARCHAR(200))
@@ -341,7 +341,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'WioaCareerServices'
 
 		CREATE TABLE #WioaTrainingServiceType (WioaTrainingServicesCode VARCHAR(50), WioaTrainingServicesDescription VARCHAR(200))
@@ -351,7 +351,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'WioaTrainingServices'
 
 
@@ -450,7 +450,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AeFunctioningLevelAtIntake'
 
 		CREATE TABLE #AeFunctioningLevelAtPosttest (AeFunctioningLevelAtPosttestCode VARCHAR(50), AeFunctioningLevelAtPosttestDescription VARCHAR(200))
@@ -460,7 +460,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AeFunctioningLevelAtPosttest'
 
 		CREATE TABLE #AePostsecondaryTransitionAction (AePostsecondaryTransitionActionCode VARCHAR(50), AePostsecondaryTransitionActionDescription VARCHAR(200))
@@ -470,7 +470,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AePostsecondaryTransitionAction'
 
 		CREATE TABLE #EmployedWhileEnrolled (EmployedWhileEnrolledCode VARCHAR(50), EmployedWhileEnrolledDescription VARCHAR(200))
@@ -480,7 +480,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'EmployedWhileEnrolled'
 
 		CREATE TABLE #EmployedAfterExit (EmployedAfterExitCode VARCHAR(50), EmployedAfterExitDescription VARCHAR(200))
@@ -490,7 +490,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'EmployedAfterExit'
 
 		CREATE TABLE #AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator (AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorCode VARCHAR(50), AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorDescription VARCHAR(200))
@@ -500,7 +500,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator'
 
 		CREATE TABLE #AdultEducationCredentialAttainmentEmployedIndicator (AdultEducationCredentialAttainmentEmployedIndicatorCode VARCHAR(50),AdultEducationCredentialAttainmentEmployedIndicatorDescription VARCHAR(200))
@@ -510,7 +510,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AdultEducationCredentialAttainmentEmployedIndicator'
 
 		CREATE TABLE #AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator (AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorCode VARCHAR(50), AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorDescription VARCHAR(200))
@@ -520,7 +520,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator'
 
 		INSERT INTO [RDS].[DimAeStudentStatuses]
@@ -620,7 +620,7 @@ GO
 			WHEN 'HispanicorLatinoEthnicity' THEN 'HI7'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN rds.DimRaces main
 		ON ceds.CedsOptionSetCode = main.RaceCode
 	WHERE main.RaceCode IS NULL
@@ -744,7 +744,7 @@ GO
 				when CedsOptionSetCode = 'None' then 'MAGNO'
 				else 'MISSING'
 			END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'MagnetOrSpecialProgramEmphasisSchool'
 
 
@@ -756,7 +756,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'NationalSchoolLunchProgramStatus'
 
 
@@ -769,7 +769,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'SharedTimeIndicator'
 
 
@@ -785,7 +785,7 @@ GO
 				when CedsOptionSetCode = 'SupplementalVirtual' then 'SUPPVIRTUAL'
 				else CedsOptionSetCode
 			END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'VirtualSchoolStatus'
 
 	-- This is no longer used in EdFacts.  Setting the EdFacts values to MISSING
@@ -797,7 +797,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, 'MISSING' AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'SchoolImprovementStatus'
 
 
@@ -809,7 +809,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'PersistentlyDangerousStatus'
 
 
@@ -827,7 +827,7 @@ GO
 				when CedsOptionSetCode = 'Neither' then 'NEITHER'
 				else 'MISSING'
 			END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'StatePovertyDesignation'
 
 
@@ -839,7 +839,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'ProgressAchievingEnglishLanguageProficiencyIndicatorType'
 
 
@@ -958,7 +958,7 @@ GO
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
 		, ceds.CedsOptionSetDefinition
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimK12ProgramTypes main
 		ON ceds.CedsOptionSetCode = main.ProgramTypeCode
 	WHERE main.ProgramTypeCode IS NULL
@@ -1024,7 +1024,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN rds.DimK12CourseStatuses main
 		ON ceds.CedsOptionSetCode = main.CourseLevelCharacteristicCode
 	WHERE main.DimK12CourseStatusId IS NULL
@@ -1110,7 +1110,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'PescAwardLevelType'
 
 	CREATE TABLE #ProfessionalOrTechnicalCredentialConferred (ProfessionalOrTechnicalCredentialConferredCode VARCHAR(50), ProfessionalOrTechnicalCredentialConferredDescription VARCHAR(200))
@@ -1120,7 +1120,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ProfessionalOrTechnicalCredentialConferred'
 
 	-- Populate RDS.DimPsAcademicAwardStatuses
@@ -1164,7 +1164,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN rds.DimPsEnrollmentStatuses main
 		ON ceds.CedsOptionSetCode = main.PostsecondaryExitOrWithdrawalTypeCode
 	WHERE main.DimPsEnrollmentStatusId IS NULL
@@ -1227,7 +1227,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EnrollmentStatus'
 
 	CREATE TABLE #EntryType (EntryTypeCode VARCHAR(50), EntryTypeDescription VARCHAR(200))
@@ -1237,7 +1237,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EntryType'
 
 	CREATE TABLE #ExitOrWithdrawalType (ExitOrWithdrawalTypeCode VARCHAR(50), ExitOrWithdrawalTypeDescription VARCHAR(200))
@@ -1247,7 +1247,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ExitOrWithdrawalType'
 
 	CREATE TABLE #PostSecondaryEnrollmentStatus (PostSecondaryEnrollmentStatusCode VARCHAR(50), PostSecondaryEnrollmentStatusDescription VARCHAR(200), PostSecondaryEnrollmentStatusEdFactsCode VARCHAR(50))
@@ -1258,7 +1258,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'PostSecondaryEnrollmentStatus'
 
 	CREATE TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeType (EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode VARCHAR(50), EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription VARCHAR(200), EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode VARCHAR(50))
@@ -1269,7 +1269,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeType'
 
 	CREATE TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType (EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode VARCHAR(50), EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription VARCHAR(200), EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode VARCHAR(50))
@@ -1280,7 +1280,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeExitType'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeExitType'
 
 
 	INSERT INTO RDS.DimK12EnrollmentStatuses
@@ -1388,7 +1388,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'LevelOfInstitution'
 
 	CREATE TABLE #ControlOfInstitution (ControlOfInstitutionCode VARCHAR(50), ControlOfInstitutionDescription VARCHAR(200))
@@ -1398,7 +1398,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ControlOfInstitution'
 
 	CREATE TABLE #CarnegieBasicClassification (CarnegieBasicClassificationCode VARCHAR(50), CarnegieBasicClassificationDescription VARCHAR(200))
@@ -1408,7 +1408,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CarnegieBasicClassification'
 
 	CREATE TABLE #VirtualIndicator (VirtualIndicatorCode VARCHAR(50), VirtualIndicatorDescription VARCHAR(200))
@@ -1418,7 +1418,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'VirtualIndicator'
 
 	CREATE TABLE #MostPrevalentLevelOfInstitution (MostPrevalentLevelOfInstitutionStatusCode VARCHAR(50), MostPrevalentLevelOfInstitutionDescription VARCHAR(200))
@@ -1428,7 +1428,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'MostPrevalentLevelOfInstitution'
 	
 	CREATE TABLE #PredominantCalendarSystem (PredominantCalendarSystemCode VARCHAR(50), PredominantCalendarSystemDescription VARCHAR(200))
@@ -1438,7 +1438,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'PredominantCalendarSystem'
 
 	
@@ -1514,7 +1514,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN rds.DimProgramTypes main
 		ON ceds.CedsOptionSetCode = main.ProgramTypeCode
 	WHERE main.DimProgramTypeId IS NULL
@@ -1543,7 +1543,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimAcademicTermDesignators main
 		ON ceds.CedsOptionSetCode = main.AcademicTermDesignatorCode
 	WHERE main.DimAcademicTermDesignatorId IS NULL
@@ -1590,7 +1590,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'DisabilityConditionType'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'DisabilityConditionType'
 
 	CREATE TABLE #DisabilityDeterminationSourceType (DisabilityDeterminationSourceTypeCode VARCHAR(50), DisabilityDeterminationSourceTypeDescription VARCHAR(200))
 
@@ -1599,7 +1599,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'DisabilityDeterminationSourceType'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'DisabilityDeterminationSourceType'
 
 	INSERT INTO rds.DimDisabilityStatuses 
 		(
@@ -1770,7 +1770,7 @@ GO
 			WHEN 'SheltersTransitionalHousing' THEN 'STH'
 			WHEN 'TransitionalHousing' THEN 'STH'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'HomelessPrimaryNighttimeResidence'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'HomelessPrimaryNighttimeResidence'
 
 	INSERT INTO RDS.DimHomelessnessStatuses (
 			HomelessnessStatusCode
@@ -1874,7 +1874,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping 
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping 
 	WHERE CedsElementTechnicalName = 'MigrantEducationProgramEnrollmentType' 
 
 	CREATE TABLE #ContinuationOfServices (ContinuationOfServicesReasonCode VARCHAR(50), ContinuationOfServicesReasonDescription VARCHAR(200))
@@ -1884,7 +1884,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'ContinuationOfServicesReason'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'ContinuationOfServicesReason'
 
 	CREATE TABLE #MepServiceType (MigrantEducationProgramServicesTypeCode VARCHAR(50), MigrantEducationProgramServicesTypeDescription VARCHAR(200), MigrantEducationProgramServicesTypeEdFactsCode VARCHAR(50))
 
@@ -1902,7 +1902,7 @@ GO
 			WHEN 'ReferralServices' THEN 'REFSERV'
 			WHEN 'SupportServices' THEN 'SUPPSERV'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'MigrantEducationProgramServicesType'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'MigrantEducationProgramServicesType'
 
 	INSERT INTO RDS.DimMigrantStatuses
 		(
@@ -2005,7 +2005,7 @@ GO
 				WHEN 'Female' THEN 'F'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'Sex'
 
 
@@ -2065,7 +2065,7 @@ GO
 			WHEN '00819' THEN 'OTHCOM'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping c
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping c
 	LEFT JOIN RDS.DimK12AcademicAwardStatuses main
 		ON c.CedsOptionSetCode = main.HighSchoolDiplomaTypeCode
 	WHERE main.DimK12AcademicAwardStatusId IS NULL
@@ -2212,7 +2212,7 @@ GO
 				WHEN 'Transferred' THEN 'TRAN'			  
 				ELSE 'MISSING'
 			  END 
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'SpecialEducationExitReason'
 
 		CREATE TABLE #IdeaEducationalEnvironmentForSchoolAge (IdeaEducationalEnvironmentForSchoolAgeCode VARCHAR(50), IdeaEducationalEnvironmentForSchoolAgeDescription VARCHAR(200), IdeaEducationalEnvironmentForSchoolAgeEdFactsCode VARCHAR(200))
@@ -2223,7 +2223,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'IdeaEducationalEnvironmentForSchoolAge'
 
 		CREATE TABLE #IdeaEducationalEnvironmentForEarlyChildhood (IdeaEducationalEnvironmentForEarlyChildhoodCode VARCHAR(50), IdeaEducationalEnvironmentForEarlyChildhoodDescription VARCHAR(200), IdeaEducationalEnvironmentForEarlyChildhoodEdFactsCode VARCHAR(200))
@@ -2234,7 +2234,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'IdeaEducationalEnvironmentForEarlyChildhood'
 
 		CREATE TABLE #IdeaIndicator (IdeaIndicatorCode VARCHAR(50), IdeaIndicatorDescription VARCHAR(200), IdeaIndicatorEdFactsCode VARCHAR(200))
@@ -2248,7 +2248,7 @@ GO
 				WHEN 'Yes' THEN 'IDEA'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'IdeaIndicator'
 
 
@@ -2322,7 +2322,7 @@ GO
 			WHEN 'ABE' THEN 'AE'
 			ELSE CedsOptionSetCode
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimGradeLevels main
 		ON ceds.CedsOptionSetCode = main.GradeLevelCode
 	WHERE main.DimGradeLevelId IS NULL
@@ -2383,7 +2383,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'COSRatingA'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'COSRatingA'
 
 	INSERT INTO rds.DimChildOutcomeSummaries 
 		(
@@ -2465,7 +2465,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'IndividualizedProgramType'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'IndividualizedProgramType'
 
 	CREATE TABLE #StudentSupportServiceType (StudentSupportServiceTypeCode VARCHAR(50), StudentSupportServiceTypeDescription VARCHAR(200))
 
@@ -2474,7 +2474,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'StudentSupportServiceType'
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'StudentSupportServiceType'
 
 	INSERT INTO rds.DimIndividualizedProgramStatuses 
 		(
@@ -2544,7 +2544,7 @@ GO
             ELSE 'MISSING'
           END
            
-    FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+    FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
     LEFT JOIN RDS.DimIdeaDisabilityTypes main
         ON ceds.CedsOptionSetCode = main.IdeaDisabilityTypeCode
     WHERE main.DimIdeaDisabilityTypeId IS NULL
@@ -2647,7 +2647,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'MilitaryActiveStudentIndicator'
 
 	IF OBJECT_ID('tempdb..#MilitaryBranch') IS NOT NULL
@@ -2660,7 +2660,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'MilitaryBranch'
 	
 	IF OBJECT_ID('tempdb..#MilitaryVeteranStudentIndicator') IS NOT NULL
@@ -2673,7 +2673,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'MilitaryVeteranStudentIndicator'
 
 	INSERT INTO rds.DimMilitaryStatuses 
@@ -2764,7 +2764,7 @@ GO
 			WHEN 'ReducedPrice' THEN 'RPL'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EligibilityStatusForSchoolFoodServicePrograms'
 	
 	IF OBJECT_ID('tempdb..#NationalSchoolLunchProgramDirectCertificationIndicator') IS NOT NULL
@@ -2777,7 +2777,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'NationalSchoolLunchProgramDirectCertificationIndicator'
 
 	INSERT INTO rds.DimEconomicallyDisadvantagedStatuses 
@@ -2851,7 +2851,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AssessmentAccommodationCategory'
 
 		IF OBJECT_ID('tempdb..#AccommodationType') IS NOT NULL
@@ -2864,7 +2864,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AccommodationType'
 
 
@@ -2915,7 +2915,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimAssessmentParticipationSessions main
 		ON ceds.CedsOptionSetCode = main.DimAssessmentParticipationSessionId
 	WHERE main.DimAssessmentParticipationSessionId IS NULL
@@ -2989,7 +2989,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AssessmentRegistrationParticipationIndicator'
 
 
@@ -3003,7 +3003,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AssessmentRegistrationCompletionStatus'
 
 
@@ -3022,7 +3022,7 @@ GO
 				WHEN 'No' THEN 'NFULLYR'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'StateFullAcademicYear'
 
 
@@ -3041,7 +3041,7 @@ GO
 				WHEN 'No' THEN 'NFULLYR'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'LeaFullAcademicYear'
 
 		IF OBJECT_ID('tempdb..#SchoolFullAcademicYear') IS NOT NULL
@@ -3059,7 +3059,7 @@ GO
 				WHEN 'No' THEN 'NFULLYR'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'SchoolFullAcademicYear'
 
 		IF OBJECT_ID('tempdb..#AssessmentRegistrationReasonNotCompleting') IS NOT NULL
@@ -3076,7 +3076,7 @@ GO
 				WHEN CedsOptionSetCode <> 'MISSING' THEN 'NPART'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AssessmentRegistrationReasonNotCompleting'
 
 		IF OBJECT_ID('tempdb..#ReasonNotTested') IS NOT NULL
@@ -3099,7 +3099,7 @@ GO
 				WHEN '09999' THEN 'NPART'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'ReasonNotTested'
 
 
@@ -3192,7 +3192,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimAssessmentResults main
 		ON ceds.CedsOptionSetCode = main.DimAssessmentResultId
 	WHERE main.DimAssessmentResultId IS NULL
@@ -3222,7 +3222,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimBuildingSpaceDesignTypes main
 		ON ceds.CedsOptionSetCode = main.DimBuildingSpaceDesignTypeId
 	WHERE main.DimBuildingSpaceDesignTypeId IS NULL
@@ -3241,7 +3241,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'IncidentBehavior'
 
 	CREATE TABLE #IdeaInterimRemovalReason (IdeaInterimRemovalReasonCode VARCHAR(50), IdeaInterimRemovalReasonDescription VARCHAR(200), IdeaInterimRemovalReasonEdFactsCode VARCHAR(50))
@@ -3257,7 +3257,7 @@ GO
 			WHEN 'SeriousBodilyInjury' THEN 'SBI'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'IncidentBehavior'
 
 	CREATE TABLE #DisciplineReason (DisciplineReasonCode VARCHAR(50), DisciplineReasonDescription VARCHAR(200))
@@ -3267,7 +3267,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'DisciplineReason'
 
 	CREATE TABLE #IncidentInjuryType (IncidentInjuryTypeCode VARCHAR(50), IncidentInjuryTypeDescription VARCHAR(200))
@@ -3277,7 +3277,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'IncidentInjuryType'
 
 
@@ -3392,7 +3392,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'DisciplineMethodForFirearmsIncidents'
 
 
@@ -3407,7 +3407,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'IdeaDisciplineMethodForFirearmsIncidents'
 
 
@@ -3463,7 +3463,7 @@ GO
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimFirearms main
 		ON ceds.CedsOptionSetCode = main.FirearmTypeCode
 	WHERE main.DimFirearmId IS NULL
@@ -3527,7 +3527,7 @@ GO
 				WHEN 'UngradedTeachers' THEN 'UGTCH'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'K12StaffClassification'
 
 		IF OBJECT_ID('tempdb..#SpecialEducationSupportServicesCategory') IS NOT NULL
@@ -3540,7 +3540,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, CedsOptionSetCode AS EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'SpecialEducationSupportServicesCategory'
 
 		IF OBJECT_ID('tempdb..#TitleIProgramStaffCategory') IS NOT NULL
@@ -3561,7 +3561,7 @@ GO
 				WHEN 'TitleIAdministrator' THEN 'TITADM'
 				ELSE 'MISSING'
 			  END
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'TitleIProgramStaffCategory'
 		
 		IF OBJECT_ID('tempdb..#MigrantEducationProgramStaffCategory') IS NOT NULL
@@ -3574,7 +3574,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'MigrantEducationProgramStaffCategory'
 
 		
@@ -3588,7 +3588,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'ProfessionalEducationalJobClassification'
 
 
@@ -3663,7 +3663,7 @@ GO
 	SELECT 
 		  ceds.CedsOptionSetCode
 		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping ceds
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
 	LEFT JOIN RDS.DimAcademicTermDesignators main
 		ON ceds.CedsOptionSetCode = main.AcademicTermDesignatorCode
 	WHERE main.DimAcademicTermDesignatorId IS NULL
@@ -3701,7 +3701,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'Sex'
 
 
@@ -3765,7 +3765,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'DisciplinaryActionTaken'
 
 	IF OBJECT_ID('tempdb..#DisciplineMethodOfChildrenWithDisabilities') IS NOT NULL BEGIN
@@ -3780,7 +3780,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, UPPER(CedsOptionSetCode) AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'DisciplineMethodOfChildrenWithDisabilities'
 
 	IF OBJECT_ID('tempdb..#EducationalServicesAfterRemoval') IS NOT NULL BEGIN
@@ -3795,7 +3795,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EducationalServicesAfterRemoval'
 	
 --EDFacts Code is incorrectly populated with the CEDS Code
@@ -3820,7 +3820,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'IdeaInterimRemovalReason'
 
 --EDFacts Code is incorrectly populated with the CEDS Code
@@ -3848,7 +3848,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'IdeaInterimRemoval'
 
 	   
@@ -3970,7 +3970,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SpecialEducationAgeGroupTaught'
 
 	IF OBJECT_ID('tempdb..#EdFactsCertificationStatus') IS NOT NULL BEGIN
@@ -3989,7 +3989,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EdFactsCertificationStatus'
 
 	IF OBJECT_ID('tempdb..#HighlyQualifiedTeacherIndicator') IS NOT NULL BEGIN
@@ -4004,7 +4004,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'HighlyQualifiedTeacherIndicator'
 
 	IF OBJECT_ID('tempdb..#EdFactsTeacherInexperiencedStatus') IS NOT NULL BEGIN
@@ -4018,7 +4018,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EdFactsTeacherInexperiencedStatus'
 
 	IF OBJECT_ID('tempdb..#TeachingCredentialType') IS NOT NULL BEGIN
@@ -4040,7 +4040,7 @@ GO
 			WHEN 'Specialist' THEN 'TCHWOEMRPRVCRD'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'TeachingCredentialType'
 
 	IF OBJECT_ID('tempdb..#EdFactsTeacherOutOfFieldStatus') IS NOT NULL BEGIN
@@ -4054,7 +4054,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EdFactsTeacherOutOfFieldStatus'
 
 	IF OBJECT_ID('tempdb..#SpecialEducationTeacherQualificationStatus') IS NOT NULL BEGIN
@@ -4068,7 +4068,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SpecialEducationTeacherQualificationStatus'
 
 	IF OBJECT_ID('tempdb..#ParaprofessionalQualificationStatus') IS NOT NULL BEGIN
@@ -4085,7 +4085,7 @@ GO
 			WHEN 'Qualified' THEN 'Q'
 			WHEN 'NotQualified' THEN 'NQ'
 		  END AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ParaprofessionalQualificationStatus'
 
 	IF OBJECT_ID('tempdb..#SpecialEducationRelatedServicesPersonnel') IS NOT NULL BEGIN
@@ -4098,7 +4098,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SpecialEducationRelatedServicesPersonnel'
 
 
@@ -4112,7 +4112,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'TeachingCredentialBasis'
 
 
@@ -4126,7 +4126,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CTEInstructorIndustryCertification'
 
 	IF OBJECT_ID('tempdb..#SpecialEducationParaprofessional') IS NOT NULL BEGIN
@@ -4139,7 +4139,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SpecialEducationParaprofessional'
 
 	IF OBJECT_ID('tempdb..#SpecialEducationTeacher') IS NOT NULL BEGIN
@@ -4152,7 +4152,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SpecialEducationTeacher'
 
 
@@ -4277,19 +4277,6 @@ GO
 	------------------------------------------------
 	-- Populate DimNOrDStatuses			 ---
 	------------------------------------------------
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimNOrDStatuses 
-			WHERE NeglectedOrDelinquentProgramTypeCode = 'MISSING') BEGIN
-		SET IDENTITY_INSERT RDS.DimNOrDStatuses ON
-
-		INSERT INTO RDS.DimNOrDStatuses (
-			  DimNOrDStatusId
-			, NeglectedOrDelinquentProgramTypeCode
-			, NeglectedOrDelinquentProgramTypeDescription
-			, NeglectedOrDelinquentProgramTypeEdFactsCode)
-		VALUES (-1, 'MISSING', 'MISSING', 'MISSING')
-
-		SET IDENTITY_INSERT RDS.DimNOrDStatuses OFF
-	END
 
 	CREATE TABLE #NeglectedOrDelinquentProgramType (NeglectedOrDelinquentProgramTypeCode VARCHAR(50), NeglectedOrDelinquentProgramTypeDescription VARCHAR(200), NeglectedOrDelinquentProgramTypeEdFactsCode VARCHAR(50))
 
@@ -4305,27 +4292,81 @@ GO
 			WHEN 'JuvenileDetention' THEN 'JUVDET'
 			WHEN 'NeglectedPrograms' THEN 'NEGLECT'
 			WHEN 'OtherPrograms' THEN 'OTHER'
-		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		END
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'NeglectedOrDelinquentProgramType'
 
+
+	CREATE TABLE #NeglectedProgramType (NeglectedProgramTypeCode VARCHAR(50), NeglectedProgramTypeDescription VARCHAR(200), NeglectedProgramTypeEdFactsCode VARCHAR(50))
+
+	INSERT INTO #NeglectedProgramType VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #NeglectedProgramType
+	SELECT
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CedsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'NeglectedProgramType'
+
+	CREATE TABLE #DelinquentProgramType (DelinquentProgramTypeCode VARCHAR(50), DelinquentProgramTypeDescription VARCHAR(200), DelinquentProgramTypeEdFactsCode VARCHAR(50))
+
+	INSERT INTO #DelinquentProgramType VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #DelinquentProgramType
+	SELECT
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CedsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'DelinquentProgramType'
+
+	CREATE TABLE #NeglectedOrDelinquentLongTermStatus (NeglectedOrDelinquentLongTermStatusCode VARCHAR(50), 
+	NeglectedOrDelinquentLongTermStatusDescription VARCHAR(100), NeglectedOrDelinquentLongTermStatusEdFactsCode VARCHAR(50))
+
+	INSERT INTO #NeglectedOrDelinquentLongTermStatus VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #NeglectedOrDelinquentLongTermStatus VALUES ('NDLONGTERM', 'Long-Term N or D Students', 'NDLONGTERM')
 	   
+
 	INSERT INTO RDS.DimNOrDStatuses
 		(
 			  NeglectedOrDelinquentProgramTypeCode
 			, NeglectedOrDelinquentProgramTypeDescription
 			, NeglectedOrDelinquentProgramTypeEdFactsCode
+			, NeglectedProgramTypeCode
+			, NeglectedProgramTypeDescription
+			, NeglectedProgramTypeEdFactsCode
+			, DelinquentProgramTypeCode
+			, DelinquentProgramTypeDescription
+			, DelinquentProgramTypeEdFactsCode
+			, NeglectedOrDelinquentLongTermStatusCode
+			, NeglectedOrDelinquentLongTermStatusDescription
+			, NeglectedOrDelinquentLongTermStatusEdFactsCode
 		)
-	SELECT 
-		  nodpt.NeglectedOrDelinquentProgramTypeCode
-		, nodpt.NeglectedOrDelinquentProgramTypeDescription
-		, nodpt.NeglectedOrDelinquentProgramTypeEdFactsCode
-	FROM #NeglectedOrDelinquentProgramType nodpt
-	LEFT JOIN rds.DimNOrDStatuses main
-		ON nodpt.NeglectedOrDelinquentProgramTypeCode = main.NeglectedOrDelinquentProgramTypeCode
+	SELECT ndpt.NeglectedOrDelinquentProgramTypeCode
+		, ndpt.NeglectedOrDelinquentProgramTypeDescription
+		, ndpt.NeglectedOrDelinquentProgramTypeEdFactsCode
+		, npt.NeglectedProgramTypeCode
+		, npt.NeglectedProgramTypeDescription
+		, npt.NeglectedProgramTypeEdFactsCode
+		, dpt.DelinquentProgramTypeCode
+		, dpt.DelinquentProgramTypeDescription
+		, dpt.DelinquentProgramTypeEdFactsCode
+		, longterm.NeglectedOrDelinquentLongTermStatusCode
+		, longterm.NeglectedOrDelinquentLongTermStatusDescription
+		, longterm.NeglectedOrDelinquentLongTermStatusEdFactsCode
+	FROM #NeglectedOrDelinquentProgramType ndpt
+	CROSS JOIN #NeglectedProgramType npt
+	CROSS JOIN #DelinquentProgramType dpt
+	CROSS JOIN #NeglectedOrDelinquentLongTermStatus longterm
+	LEFT JOIN RDS.DimNOrDStatuses main
+		ON npt.NeglectedProgramTypeCode = main.NeglectedProgramTypeCode
+		AND dpt.DelinquentProgramTypeCode = main.DelinquentProgramTypeCode
+		AND longterm.NeglectedOrDelinquentLongTermStatusCode = main.NeglectedOrDelinquentLongTermStatusCode
 	WHERE main.DimNOrDStatusId IS NULL
 
 	DROP TABLE #NeglectedOrDelinquentProgramType
+	DROP TABLE #NeglectedProgramType
+	DROP TABLE #DelinquentProgramType
+	DROP TABLE #NeglectedOrDelinquentLongTermStatus
 
 
 	PRINT 'Populate DimTitleIIIStatuses'
@@ -4372,7 +4413,7 @@ GO
 	SELECT
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = ''
 
 	IF OBJECT_ID('tempdb..#TitleIIIImmigrantParticipationStatus') IS NOT NULL BEGIN
@@ -4391,7 +4432,7 @@ GO
 			WHEN 'No' THEN 'NONIMMIGNTTTLIII'
 			ELSE 'MISSING'
 		  END 
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'TitleIIIImmigrantParticipationStatus'
 
 	IF OBJECT_ID('tempdb..#ProficiencyStatus') IS NOT NULL BEGIN
@@ -4406,7 +4447,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, UPPER(CedsOptionSetCode) AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ProficiencyStatus'
 
 	IF OBJECT_ID('tempdb..#TitleIIIAccountabilityProgressStatus') IS NOT NULL BEGIN
@@ -4421,7 +4462,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'TitleIIIAccountabilityProgressStatus'
 
 	IF OBJECT_ID('tempdb..#TitleIIILanguageInstructionProgramType') IS NOT NULL BEGIN
@@ -4445,7 +4486,7 @@ GO
 			WHEN 'TwoWayImmersion' THEN 'LNGPRGDU'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'TitleIIILanguageInstructionProgramType'
 
 	   
@@ -4533,7 +4574,7 @@ GO
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
 			, EdFactsOptionSetCode
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AbsenteeismCode'
 
 
@@ -4611,7 +4652,7 @@ GO
 			WHEN 'Yes' THEN 'DH'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CteAeDisplacedHomemakerIndicator'
 
 	IF OBJECT_ID('tempdb..#CteNontraditionalGenderStatus') IS NOT NULL BEGIN
@@ -4630,7 +4671,7 @@ GO
 			WHEN 'Underrepresented' THEN 'MEM'
 			ELSE 'MISSING'
 		  END 
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CteNontraditionalGenderStatus'
 
 	IF OBJECT_ID('tempdb..#CteNontraditionalCompletion') IS NOT NULL BEGIN
@@ -4649,7 +4690,7 @@ GO
 			WHEN 'Yes' THEN 'MEM'
 			ELSE 'MISSING'
 		  END 
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CteNontraditionalCompletion'
 
 	IF OBJECT_ID('tempdb..#SingleParentOrSinglePregnantWomanStatus') IS NOT NULL BEGIN
@@ -4667,7 +4708,7 @@ GO
 			WHEN 'Yes' THEN 'SPPT'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SingleParentOrSinglePregnantWomanStatus'
 
 	IF OBJECT_ID('tempdb..#CteGraduationRateInclusion') IS NOT NULL BEGIN
@@ -4686,7 +4727,7 @@ GO
 			WHEN 'NotIncludedAsGraduated' THEN 'NOTG'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CteGraduationRateInclusion'
 
 	IF OBJECT_ID('tempdb..#CteParticipant') IS NOT NULL BEGIN
@@ -4705,7 +4746,7 @@ GO
 			WHEN 'No' THEN 'NONCTEPART'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CteParticipant' 
 
 	IF OBJECT_ID('tempdb..#CteConcentrator') IS NOT NULL BEGIN
@@ -4724,7 +4765,7 @@ GO
 			WHEN 'No' THEN 'NONCTEPART'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CteConcentrator'
 
 	   
@@ -4825,8 +4866,8 @@ GO
 		iso2.CedsOptionSetCode as Iso6392LanguageCodeEdFactsCode,
 		iso3.CedsOptionSetCode as Iso6393LanguageCodeCode, 
 		iso3.CedsOptionSetDescription as Iso6393LanguageCodeDescription
-	From [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping iso2
-		full outer join [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping iso3
+	From [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping iso2
+		full outer join [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping iso3
 			on iso2.CedsOptionSetCode = iso3.CedsOptionSetCode
 		left outer join rds.DimLanguages dl
 			on isnull(dl.Iso6392LanguageCodeCode,'') = isnull(iso2.CedsOptionSetCode,'')
@@ -4878,7 +4919,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'AdditionalTargetedSupportAndImprovementStatus'
 
 
@@ -4895,7 +4936,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ComprehensiveSupportAndImprovementStatus'
 
 
@@ -4912,7 +4953,7 @@ GO
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 		, CedsOptionSetCode
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'TargetedSupportAndImprovementStatus'
 
    
@@ -4983,7 +5024,7 @@ GO
 	-- 	  CedsOptionSetCode
 	-- 	, CedsOptionSetDescription
 	-- 	, CedsOptionSetCode
-	-- FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	-- WHERE CedsElementTechnicalName = 'AppropriationMethod'
 
    
@@ -5078,7 +5119,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'FinancialAccountBalanceSheetCode'
 
 
@@ -5135,7 +5176,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'FinancialAccountCategory'
 	
 	IF OBJECT_ID('tempdb..#FinancialAccountProgramCode') IS NOT NULL
@@ -5148,7 +5189,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'FinancialAccountProgramCode'
 	ORDER BY CedsOptionSetCode
 
@@ -5162,7 +5203,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'FinancialAccountFundClassification'
 	ORDER BY CedsOptionSetCode
 
@@ -5228,7 +5269,7 @@ GO
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'FinancialAccountRevenueCode'
 
 
@@ -5284,7 +5325,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'FinancialExpenditureFunctionCode'
 	ORDER BY CedsOptionSetCode
 	
@@ -5298,7 +5339,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'FinancialExpenditureObjectCode'
 	ORDER BY CedsOptionSetCode
 
@@ -5312,7 +5353,7 @@ GO
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'FinancialExpenditureLevelOfInstructionCode'
 	ORDER BY CedsOptionSetCode
 
@@ -5386,7 +5427,7 @@ GO
 	-- SELECT 
 	-- 		CedsOptionSetCode
 	-- 		, CedsOptionSetDescription
-	-- FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	-- WHERE CedsElementTechnicalName = 'AccessibleFormatIssuedIndicator'
 	-- ORDER BY CedsOptionSetCode
 	VALUES ('Yes', 'Yes'), ('No', 'No')
@@ -5402,7 +5443,7 @@ GO
 	-- SELECT 
 	-- 		CedsOptionSetCode
 	-- 		, CedsOptionSetDescription
-	-- FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	-- WHERE CedsElementTechnicalName = 'AccessibleFormatRequiredIndicator'
 	-- ORDER BY CedsOptionSetCode
 	VALUES ('Yes', 'Yes'), ('No', 'No'), ('Unknown', 'Unknown')
@@ -5418,7 +5459,7 @@ GO
 	-- SELECT 
 	-- 		CedsOptionSetCode
 	-- 		, CedsOptionSetDescription
-	-- FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	-- WHERE CedsElementTechnicalName = 'AccessibleFormatType'
 	-- ORDER BY CedsOptionSetCode
 	VALUES ('Video with Synchronized American Sign Language', 'Video with Synchronized American Sign Language'),
@@ -5500,7 +5541,7 @@ GO
 	SELECT 
 		CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CredentialRevokedIndicator'
 	ORDER BY CedsOptionSetCode
 
@@ -5514,7 +5555,7 @@ GO
 	SELECT 
 		CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'CredentialRevokedReason'
 	ORDER BY CedsOptionSetCode
 
@@ -5528,7 +5569,7 @@ GO
 	SELECT 
 		CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'AdultEducationCertificationType'
 	ORDER BY CedsOptionSetCode
 
@@ -5545,7 +5586,7 @@ GO
 	-- SELECT 
 	-- 	  CedsOptionSetCode
 	-- 	, CedsOptionSetDescription
-	-- FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	-- WHERE CedsElementTechnicalName = 'CredentialSuspensionIndicator'
 	-- ORDER BY CedsOptionSetCode
 
@@ -5605,7 +5646,7 @@ GO
 	SELECT 
 		CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'OnetSocOccupationType'
 	ORDER BY CedsOptionSetCode
 
@@ -5642,7 +5683,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EmploymentStatus'
 	ORDER BY CedsOptionSetCode
 
@@ -5656,7 +5697,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EmploymentSeparationReason'
 	ORDER BY CedsOptionSetCode
 
@@ -5670,7 +5711,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'TitleITargetedAssistanceStaffFunded'
 	ORDER BY CedsOptionSetCode
 
@@ -5684,7 +5725,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'MEPPersonnelIndicatorCode'
 	ORDER BY CedsOptionSetCode
 
@@ -5767,7 +5808,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ItinerantTeacher'
 	ORDER BY CedsOptionSetCode
 
@@ -5782,7 +5823,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ClassroomPositionType'
 	ORDER BY CedsOptionSetCode
 
@@ -5797,7 +5838,7 @@ GO
 	SELECT 
 			CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'PrimaryAssignmentIndicator'
 	ORDER BY CedsOptionSetCode
 
@@ -5879,7 +5920,7 @@ INSERT INTO #BlendedLearningModelType
 SELECT 
 		CedsOptionSetCode
 	, CedsOptionSetDescription
-FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'BlendedLearningModelType'
 ORDER BY CedsOptionSetCode
 
@@ -5894,7 +5935,7 @@ INSERT INTO #CourseInteractionMode
 SELECT 
 		CedsOptionSetCode
 	, CedsOptionSetDescription
-FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'CourseInteractionMode'
 ORDER BY CedsOptionSetCode
 
@@ -5909,7 +5950,7 @@ INSERT INTO #CourseSectionAssessmentReportingMethod
 SELECT 
 		CedsOptionSetCode
 	, CedsOptionSetDescription
-FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'CourseSectionAssessmentReportingMethod'
 ORDER BY CedsOptionSetCode
 
@@ -5924,7 +5965,7 @@ INSERT INTO #CourseSectionInstructionalDeliveryMode
 SELECT 
 		CedsOptionSetCode
 	, CedsOptionSetDescription
-FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'CourseSectionInstructionalDeliveryMode'
 ORDER BY CedsOptionSetCode
 
@@ -5939,7 +5980,7 @@ INSERT INTO #ReceivingLocationOfInstruction
 SELECT 
 		CedsOptionSetCode
 	, CedsOptionSetDescription
-FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'ReceivingLocationOfInstruction'
 ORDER BY CedsOptionSetCode
 
@@ -8836,7 +8877,7 @@ INSERT INTO #ERSRuralUrbanContinuumCode
 SELECT 
       CedsOptionSetCode
     , CedsOptionSetDescription
-FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'ERSRuralUrbanContinuumCode'
 
 CREATE TABLE #RuralResidencyStatusCode (RuralResidencyStatusCode NVARCHAR(50), RuralResidencyStatusDescription NVARCHAR(200))
@@ -8846,7 +8887,7 @@ INSERT INTO #RuralResidencyStatusCode
 SELECT 
       CedsOptionSetCode
     , CedsOptionSetDescription
-FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'RuralResidencyStatus'
 
 INSERT INTO [RDS].[DimRuralStatuses]

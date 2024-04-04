@@ -66,6 +66,8 @@ CREATE TABLE [RDS].[ReportEDFactsK12StudentCounts] (
     [COHORTSTATUS]                                       VARCHAR (50)    NULL,
     [EDFACTSACADEMICORCAREERANDTECHNICALOUTCOMETYPE]     NVARCHAR (50)   NULL,
     [NEGLECTEDORDELINQUENTPROGRAMTYPE]                   NVARCHAR (50)   NULL,
+    [NEGLECTEDPROGRAMTYPE]                               NVARCHAR (50)   NULL,
+    [DELINQUENTPROGRAMTYPE]                              NVARCHAR (50)   NULL,
     [YEAR]                                               NVARCHAR (20)   NULL,
     [NEGLECTEDORDELINQUENTLONGTERMSTATUS]                NVARCHAR (50)   NULL,
     [PROGRESSLEVEL]                                      NVARCHAR (50)   NULL,
@@ -269,11 +271,31 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_G
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDORDELINQUENTPROGRAMTYPE';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Neglected or Delinquent Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDORDELINQUENTPROGRAMTYPE';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Neglected Or Delinquent Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDORDELINQUENTPROGRAMTYPE';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000194' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDORDELINQUENTPROGRAMTYPE';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21194' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDORDELINQUENTPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Neglected Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002084' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=25073' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'NEGLECTEDPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'DELINQUENTPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'DELINQUENTPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Delinquent Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'DELINQUENTPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002085' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'DELINQUENTPROGRAMTYPE';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=25012' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'DELINQUENTPROGRAMTYPE';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentCounts', @level2type=N'COLUMN',@level2name=N'OrganizationIdentifierNces';
 GO

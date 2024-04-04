@@ -13,19 +13,19 @@ CREATE TABLE [Staging].[OrganizationProgramType] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_ProgramType]
-    ON [Staging].[OrganizationProgramType]([ProgramType] ASC)
-    INCLUDE([SchoolYear], [ProgramType]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+-- CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_ProgramType]
+--     ON [Staging].[OrganizationProgramType]([ProgramType] ASC)
+--     INCLUDE([SchoolYear], [ProgramType]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
-GO
+-- GO
 
-CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_OrganizationType]
-    ON [Staging].[OrganizationProgramType]([OrganizationType] ASC)
-    INCLUDE([OrganizationIdentifier], [OrganizationType]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+-- CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_OrganizationType]
+--     ON [Staging].[OrganizationProgramType]([OrganizationType] ASC)
+--     INCLUDE([OrganizationIdentifier], [OrganizationType]) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
-GO
+-- GO
 
 CREATE NONCLUSTERED INDEX [IX_OrganizationProgramType_OrganizationIdentifier_ProgramType]
     ON [Staging].[OrganizationProgramType]([OrganizationIdentifier] ASC, [ProgramType] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
