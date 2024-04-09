@@ -1,4 +1,4 @@
-CREATE TABLE [RDS].[DimCalencarCrises] (
+CREATE TABLE [RDS].[DimCalendarCrises] (
     [DimCalendarCrisisId]        INT            IDENTITY (1, 1) NOT NULL,
     [CrisisCode]        NVARCHAR (200)  NULL,
     [CrisisName]        NVARCHAR (200)  NULL,

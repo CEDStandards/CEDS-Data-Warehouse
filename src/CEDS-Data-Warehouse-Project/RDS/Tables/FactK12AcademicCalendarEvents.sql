@@ -169,7 +169,7 @@ ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] CHECK CONSTRAINT [FK_FactK12Ac
 GO
 
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents]  WITH CHECK ADD  CONSTRAINT [FK_FactK12AcademicCalendarEvents_CalendarCrisisId] FOREIGN KEY([CalendarCrisisId])
-REFERENCES [RDS].[DimCrises] ([DimCalencarCrisisId])
+REFERENCES [RDS].[DimCalendarCrises] ([DimCalendarCrisisId])
 GO
 
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] CHECK CONSTRAINT [FK_FactK12AcademicCalendarEvents_CalendarCrisisId]
