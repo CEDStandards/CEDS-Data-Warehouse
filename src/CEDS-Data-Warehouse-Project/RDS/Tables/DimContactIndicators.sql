@@ -1,6 +1,6 @@
 CREATE TABLE [RDS].[DimContactIndicators] (
     [DimContactIndicatorId]                      INT IDENTITY (1, 1) NOT NULL,
-    [PrimarContactIndicatorCode]                 NVARCHAR (50)  NOT NULL,
+    [PrimaryContactIndicatorCode]                 NVARCHAR (50)  NOT NULL,
     [PrimaryContactIndicatorDescription]         NVARCHAR (200) NOT NULL,
     [EmergencyContactIndicatorCode]              NVARCHAR (50) NOT NULL,
     [EmergencyContactIndicatorDescription]       NVARCHAR (200)  NOT NULL,
