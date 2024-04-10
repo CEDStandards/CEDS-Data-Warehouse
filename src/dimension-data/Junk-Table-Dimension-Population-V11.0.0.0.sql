@@ -5239,21 +5239,21 @@ GO
 		SET IDENTITY_INSERT RDS.DimTimes OFF
 	END
 
-	DECLARE @start TIME = '00:00:00'
+	DECLARE @starttime TIME = '00:00:00'
 
-	WHILE @start < '23:59:00'
+	WHILE @starttime < '23:59:00'
 	BEGIN
 		INSERT INTO RDS.DimTimes(
 				TimeTime
 			  ,TimeHour
 			  ,TimeMinute)
 		SELECT 
-			  @start
+			  @starttime
 			  ,NULL
 			  ,NULL
-		WHERE NOT EXISTS (SELECT 1 FROM RDS.DimTimes WHERE TimeTime = @start)
+		WHERE NOT EXISTS (SELECT 1 FROM RDS.DimTimes WHERE TimeTime = @starttime)
 	
-		SET @start = DATEADD(mi,1,@start)
+		SET @starttime = DATEADD(mi,1,@starttime)
 	  END
 
 		INSERT INTO RDS.DimTimes (TimeTime, TimeHour, TimeMinute)
