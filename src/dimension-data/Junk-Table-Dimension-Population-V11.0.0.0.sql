@@ -5226,6 +5226,50 @@ GO
 	DROP TABLE #CalendarEventTypeCode
 
 
+	------------------------------------------------
+	-- Populate DimTimes					    ---
+	------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimTimes d WHERE d.DimTimeId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimTimes ON
+
+		INSERT INTO RDS.DimTimes (DimTimeId, TimeTime, TimeHour, TimeMinute)
+			VALUES (-1, NULL, -1, -1)
+
+		SET IDENTITY_INSERT RDS.DimTimes OFF
+	END
+
+	DECLARE @start TIME = '00:00:00'
+
+	WHILE @start < '23:59:00'
+	BEGIN
+		INSERT INTO RDS.DimTimes(
+				TimeTime
+			  ,TimeHour
+			  ,TimeMinute)
+		SELECT 
+			  @start
+			  ,NULL
+			  ,NULL
+		WHERE NOT EXISTS (SELECT 1 FROM RDS.DimTimes WHERE TimeTime = @start)
+	
+		SET @start = DATEADD(mi,1,@start)
+	  END
+
+		INSERT INTO RDS.DimTimes (TimeTime, TimeHour, TimeMinute)
+			VALUES ('23:59', NULL, NULL)
+
+		UPDATE RDS.DimTimes
+		SET TimeHour = CONVERT(INT, LEFT(REPLACE(CONVERT(VARCHAR(8), TimeTime), ':', ''), 2))
+		WHERE DimTimeId <> '-1'
+
+		UPDATE RDS.DimTimes
+		SET TimeMinute = CONVERT(INT, SUBSTRING(REPLACE(CONVERT(VARCHAR(8), TimeTime), ':', ''), 3, 2))
+		WHERE DimTimeId <> '-1'
+
+		UPDATE RDS.DimTimes
+		SET TimeTime = '00:00:00'
+		WHERE DimTimeId = '-1'
 
 
 
