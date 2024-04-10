@@ -4545,29 +4545,30 @@ GO
 	-- Populate DimAttendances                     --
 	-----------------------------------------------------
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimAttendances d WHERE d.DimAttendanceId = -1) BEGIN
-		SET IDENTITY_INSERT RDS.DimAttendances ON
+	--IF NOT EXISTS (SELECT 1 FROM RDS.DimAttendances d WHERE d.DimAttendanceId = -1) BEGIN
+	--	SET IDENTITY_INSERT RDS.DimAttendances ON
 
-		INSERT INTO [RDS].[DimAttendances]
-           ([DimAttendanceId]
-           ,[AbsenteeismCode]
-           ,[AbsenteeismDescription]
-		   ,[AbsenteeismEdFactsCode]
-		   )
-			VALUES (
-				  -1
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				)
+	--	INSERT INTO [RDS].[DimAttendances]
+ --          ([DimAttendanceId]
+ --          ,[AbsenteeismCode]
+ --          ,[AbsenteeismDescription]
+	--	   ,[AbsenteeismEdFactsCode]
+	--	   )
+	--		VALUES (
+	--			  -1
+	--			, 'MISSING'
+	--			, 'MISSING'
+	--			, 'MISSING'
+	--			)
 
-		SET IDENTITY_INSERT RDS.DimAttendances OFF
+	--	SET IDENTITY_INSERT RDS.DimAttendances OFF
 
-	END
+	--END
 
 
-		CREATE TABLE #AbsenteeismCode (AbsenteeismCode VARCHAR(50), AbsenteeismDescription VARCHAR(200), AbsenteeismEdFactsCode VARCHAR(50))
+	--	CREATE TABLE #AbsenteeismCode (AbsenteeismCode VARCHAR(50), AbsenteeismDescription VARCHAR(200), AbsenteeismEdFactsCode VARCHAR(50))
 
+<<<<<<< HEAD:src/dimension-data/Junk-Table-Dimension-Population-V12.0.0.0.sql
 		INSERT INTO #AbsenteeismCode VALUES ('MISSING', 'MISSING', 'MISSING')
 		INSERT INTO #AbsenteeismCode 
 		SELECT 
@@ -4576,23 +4577,33 @@ GO
 			, EdFactsOptionSetCode
 		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'AbsenteeismCode'
+=======
+	--	INSERT INTO #AbsenteeismCode VALUES ('MISSING', 'MISSING', 'MISSING')
+	--	INSERT INTO #AbsenteeismCode 
+	--	SELECT 
+	--		  CedsOptionSetCode
+	--		, CedsOptionSetDescription
+	--		, EdFactsOptionSetCode
+	--	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	--	WHERE CedsElementTechnicalName = 'AbsenteeismCode'
+>>>>>>> feature/Issue-68:src/dimension-data/Junk-Table-Dimension-Population-V11.0.0.0.sql
 
 
-		INSERT INTO [RDS].[DimAttendances]
-           ([AbsenteeismCode]
-           ,[AbsenteeismDescription]
-		   ,[AbsenteeismEdFactsCode]
-		   )
-		SELECT DISTINCT
-			  h.AbsenteeismCode
-			, h.AbsenteeismDescription
-			, h.AbsenteeismEdFactsCode
-		FROM #AbsenteeismCode h
-		LEFT JOIN rds.DimAttendances main
-			ON  h.AbsenteeismCode = main.AbsenteeismCode
-		WHERE main.DimAttendanceId IS NULL
+	--	INSERT INTO [RDS].[DimAttendances]
+ --          ([AbsenteeismCode]
+ --          ,[AbsenteeismDescription]
+	--	   ,[AbsenteeismEdFactsCode]
+	--	   )
+	--	SELECT DISTINCT
+	--		  h.AbsenteeismCode
+	--		, h.AbsenteeismDescription
+	--		, h.AbsenteeismEdFactsCode
+	--	FROM #AbsenteeismCode h
+	--	LEFT JOIN rds.DimAttendances main
+	--		ON  h.AbsenteeismCode = main.AbsenteeismCode
+	--	WHERE main.DimAttendanceId IS NULL
 
-	DROP TABLE #AbsenteeismCode
+	--DROP TABLE #AbsenteeismCode
 
 	PRINT 'Populate DimCteStatuses'
 	------------------------------------------------
@@ -5386,6 +5397,7 @@ GO
 	DROP TABLE #FinancialExpenditureObjectCode
 	DROP TABLE #FinancialExpenditureLevelOfInstructionCode
 
+<<<<<<< HEAD:src/dimension-data/Junk-Table-Dimension-Population-V12.0.0.0.sql
 
 	PRINT 'Populate DimAccessibleEducationMaterialStatuses'
 	------------------------------------------------------------------------------
@@ -5516,6 +5528,24 @@ GO
 						, AdultEducationCertificationTypeDescription
 						, CredentialSuspensionIndicatorCode
 						, CredentialSuspensionIndicatorDescription
+=======
+	------------------------------------------------------------------------------
+	-- Populate DimCalendarSessionIndicators   --
+	------------------------------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimCalendarSessionIndicators d WHERE d.DimCalendarSessionIndicatorId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimCalendarSessionIndicators ON
+
+			INSERT INTO rds.DimCalendarSessionIndicators(
+						  DimCalendarSessionIndicatorId
+						 ,SessionTypeCode
+						 ,SessionTypeDescription
+						 ,SessionMarkingTermIndicatorCode
+					     ,SessionMarkingTermIndicatorDescription
+						 ,SessionSchedulingTermIndicatorCode
+						 ,SessionSchedulingTermIndicatorDescription
+						 ,SessionAttendanceTermIndicatorCode
+						 ,SessionAttendanceTermIndicatorDescription
+>>>>>>> feature/Issue-68:src/dimension-data/Junk-Table-Dimension-Population-V11.0.0.0.sql
 					)
 			VALUES (
 					-1
@@ -5528,6 +5558,7 @@ GO
 					, 'MISSING'
 					, 'MISSING')
 
+<<<<<<< HEAD:src/dimension-data/Junk-Table-Dimension-Population-V12.0.0.0.sql
 		SET IDENTITY_INSERT rds.DimCredentialAwardStatuses OFF
 	END
 
@@ -8909,3 +8940,201 @@ WHERE main.DimRuralStatusId IS NULL
 
 DROP TABLE #ERSRuralUrbanContinuumCode
 DROP TABLE #RuralResidencyStatusCode
+=======
+		SET IDENTITY_INSERT rds.DimCalendarSessionIndicators OFF
+	END
+
+	IF OBJECT_ID('tempdb..#SessionTypeCode') IS NOT NULL
+		DROP TABLE #SessionTypeCode
+
+	CREATE TABLE #SessionTypeCode (SessionTypeCode VARCHAR(50), SessionTypeDescription VARCHAR(200))
+
+	INSERT INTO #SessionTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #SessionTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'SessionType'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#SessionMarkingTermIndicatorCode') IS NOT NULL
+		DROP TABLE #SessionMarkingTermIndicatorCode
+
+	CREATE TABLE #SessionMarkingTermIndicatorCode (SessionMarkingTermIndicatorCode VARCHAR(50), SessionMarkingTermIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #SessionMarkingTermIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #SessionMarkingTermIndicatorCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'SessionMarkingTermIndicator'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#SessionSchedulingTermIndicatorCode') IS NOT NULL
+		DROP TABLE #SessionSchedulingTermIndicatorCode
+
+	CREATE TABLE #SessionSchedulingTermIndicatorCode (SessionSchedulingTermIndicatorCode VARCHAR(50), SessionSchedulingTermIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #SessionSchedulingTermIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #SessionSchedulingTermIndicatorCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'SessionSchedulingTermIndicator'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#SessionAttendanceTermIndicatorCode') IS NOT NULL
+		DROP TABLE #SessionAttendanceTermIndicatorCode
+
+	CREATE TABLE #SessionAttendanceTermIndicatorCode (SessionAttendanceTermIndicatorCode VARCHAR(50), SessionAttendanceTermIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #SessionAttendanceTermIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #SessionAttendanceTermIndicatorCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'SessionAttendanceTermIndicator'
+	ORDER BY CedsOptionSetCode
+	
+
+	INSERT INTO rds.DimCalendarSessionIndicators(
+			 SessionTypeCode
+			,SessionTypeDescription
+			,SessionMarkingTermIndicatorCode
+			,SessionMarkingTermIndicatorDescription
+			,SessionSchedulingTermIndicatorCode
+			,SessionSchedulingTermIndicatorDescription
+			,SessionAttendanceTermIndicatorCode
+			,SessionAttendanceTermIndicatorDescription
+			)
+	SELECT 
+			stc.SessionTypeCode
+			,stc.SessionTypeDescription
+			,smtc.SessionMarkingTermIndicatorCode
+			,smtc.SessionMarkingTermIndicatorDescription
+			,sstc.SessionSchedulingTermIndicatorCode
+			,sstc.SessionSchedulingTermIndicatorDescription
+			,satc.SessionAttendanceTermIndicatorCode
+			,satc.SessionAttendanceTermIndicatorDescription
+	FROM #SessionTypeCode stc
+	CROSS JOIN #SessionMarkingTermIndicatorCode smtc
+	CROSS JOIN #SessionSchedulingTermIndicatorCode sstc
+	CROSS JOIN #SessionAttendanceTermIndicatorCode satc
+	LEFT JOIN rds.DimCalendarSessionIndicators dcs
+		ON	stc.SessionTypeCode = dcs.SessionTypeCode								
+		AND smtc.SessionMarkingTermIndicatorCode = dcs.SessionMarkingTermIndicatorCode			
+		AND sstc.SessionSchedulingTermIndicatorCode = dcs.SessionSchedulingTermIndicatorCode
+		AND satc.SessionAttendanceTermIndicatorCode = dcs.SessionAttendanceTermIndicatorCode
+	WHERE dcs.DimCalendarSessionIndicatorId IS NULL
+
+	DROP TABLE #SessionAttendanceTermIndicatorCode
+	DROP TABLE #SessionMarkingTermIndicatorCode
+	DROP TABLE #SessionSchedulingTermIndicatorCode
+	DROP TABLE #SessionTypeCode
+
+	-----------------------------------------------------
+	-- Populate DimCalendarEventIndicators--
+	-----------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimCalendarEventIndicators d WHERE d.DimCalendarEventIndicatorId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimCalendarEventIndicators ON
+
+		INSERT INTO [RDS].[DimCalendarEventIndicators]
+           ([DimCalendarEventIndicatorId]
+           ,[CalendarEventTypeCode]
+           ,[CalendarEventTypeDescription]
+		   )
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimCalendarEventIndicators OFF
+
+	END
+
+
+		CREATE TABLE #CalendarEventTypeCode (CalendarEventTypeCode VARCHAR(50), CalendarEventTypeDescription VARCHAR(200))
+
+		INSERT INTO #CalendarEventTypeCode VALUES ('MISSING', 'MISSING')
+		INSERT INTO #CalendarEventTypeCode 
+		SELECT 
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'CalendarEventType'
+
+
+		INSERT INTO [RDS].[DimCalendarEventIndicators]
+           ([CalendarEventTypeCode]
+           ,[CalendarEventTypeDescription]
+		   )
+		SELECT DISTINCT
+			  h.CalendarEventTypeCode
+			, h.CalendarEventTypeDescription
+		FROM #CalendarEventTypeCode h
+		LEFT JOIN rds.DimCalendarEventIndicators main
+			ON  h.CalendarEventTypeCode = main.CalendarEventTypeCode
+		WHERE main.DimCalendarEventIndicatorId IS NULL
+
+	DROP TABLE #CalendarEventTypeCode
+
+
+	------------------------------------------------
+	-- Populate DimTimes					    ---
+	------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimTimes d WHERE d.DimTimeId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimTimes ON
+
+		INSERT INTO RDS.DimTimes (DimTimeId, TimeTime, TimeHour, TimeMinute)
+			VALUES (-1, NULL, -1, -1)
+
+		SET IDENTITY_INSERT RDS.DimTimes OFF
+	END
+
+	DECLARE @starttime TIME = '00:00:00'
+
+	WHILE @starttime < '23:59:00'
+	BEGIN
+		INSERT INTO RDS.DimTimes(
+				TimeTime
+			  ,TimeHour
+			  ,TimeMinute)
+		SELECT 
+			  @starttime
+			  ,NULL
+			  ,NULL
+		WHERE NOT EXISTS (SELECT 1 FROM RDS.DimTimes WHERE TimeTime = @starttime)
+	
+		SET @starttime = DATEADD(mi,1,@starttime)
+	  END
+
+		INSERT INTO RDS.DimTimes (TimeTime, TimeHour, TimeMinute)
+			VALUES ('23:59', NULL, NULL)
+
+		UPDATE RDS.DimTimes
+		SET TimeHour = CONVERT(INT, LEFT(REPLACE(CONVERT(VARCHAR(8), TimeTime), ':', ''), 2))
+		WHERE DimTimeId <> '-1'
+
+		UPDATE RDS.DimTimes
+		SET TimeMinute = CONVERT(INT, SUBSTRING(REPLACE(CONVERT(VARCHAR(8), TimeTime), ':', ''), 3, 2))
+		WHERE DimTimeId <> '-1'
+
+		UPDATE RDS.DimTimes
+		SET TimeTime = '00:00:00'
+		WHERE DimTimeId = '-1'
+
+
+
+
+
+
+
+
+>>>>>>> feature/Issue-68:src/dimension-data/Junk-Table-Dimension-Population-V11.0.0.0.sql
