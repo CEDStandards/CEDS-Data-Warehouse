@@ -144,16 +144,6 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000243' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21243' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'SchoolYear';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'Sex';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The concept describing the biological traits that distinguish the males and females of a species.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'Sex';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Sex' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'Sex';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000255' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'Sex';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21255' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'Sex';
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'PrimaryContactIndicator';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicates that a person is a primary contact within the specified context, such as a primary parental contact specified in Person Relationship to Learner or a primary administrative contact for an organization.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'PrimaryContactIndicator';
@@ -254,15 +244,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000826' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000826' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'IeuOrganizationIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianGenerationCodeOrSuffix';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An appendage, if any, used to denote a person''s generation in his family (e.g., Jr., Sr., III).' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An appendage, if any, used to denote a person''s generation in his family (e.g., Jr., Sr., III).' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianGenerationCodeOrSuffix';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Generation Code or Suffix' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Generation Code or Suffix' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianGenerationCodeOrSuffix';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000121' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000121' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianGenerationCodeOrSuffix';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000121' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000121' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianGenerationCodeOrSuffix';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12ParentOrGuardian', @level2type=N'COLUMN',@level2name=N'ParentGuardianElectronicMailAddressHome';
 GO
