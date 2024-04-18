@@ -4568,26 +4568,14 @@ GO
 
 	--	CREATE TABLE #AbsenteeismCode (AbsenteeismCode VARCHAR(50), AbsenteeismDescription VARCHAR(200), AbsenteeismEdFactsCode VARCHAR(50))
 
-<<<<<<< HEAD:src/dimension-data/Junk-Table-Dimension-Population-V12.0.0.0.sql
-		INSERT INTO #AbsenteeismCode VALUES ('MISSING', 'MISSING', 'MISSING')
-		INSERT INTO #AbsenteeismCode 
-		SELECT 
-			  CedsOptionSetCode
-			, CedsOptionSetDescription
-			, EdFactsOptionSetCode
-		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-		WHERE CedsElementTechnicalName = 'AbsenteeismCode'
-=======
-	--	INSERT INTO #AbsenteeismCode VALUES ('MISSING', 'MISSING', 'MISSING')
-	--	INSERT INTO #AbsenteeismCode 
-	--	SELECT 
-	--		  CedsOptionSetCode
-	--		, CedsOptionSetDescription
-	--		, EdFactsOptionSetCode
-	--	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
-	--	WHERE CedsElementTechnicalName = 'AbsenteeismCode'
->>>>>>> feature/Issue-68:src/dimension-data/Junk-Table-Dimension-Population-V11.0.0.0.sql
-
+		--INSERT INTO #AbsenteeismCode VALUES ('MISSING', 'MISSING', 'MISSING')
+		--INSERT INTO #AbsenteeismCode 
+		--SELECT 
+		--	  CedsOptionSetCode
+		--	, CedsOptionSetDescription
+		--	, EdFactsOptionSetCode
+		--FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+		--WHERE CedsElementTechnicalName = 'AbsenteeismCode'
 
 	--	INSERT INTO [RDS].[DimAttendances]
  --          ([AbsenteeismCode]
@@ -5397,8 +5385,6 @@ GO
 	DROP TABLE #FinancialExpenditureObjectCode
 	DROP TABLE #FinancialExpenditureLevelOfInstructionCode
 
-<<<<<<< HEAD:src/dimension-data/Junk-Table-Dimension-Population-V12.0.0.0.sql
-
 	PRINT 'Populate DimAccessibleEducationMaterialStatuses'
 	------------------------------------------------------------------------------
 	-- Populate DimAccessibleEducationMaterialStatuses   --
@@ -5452,13 +5438,12 @@ GO
 	INSERT INTO #AccessibleFormatRequiredIndicatorCode VALUES ('MISSING', 'MISSING')
 	INSERT INTO #AccessibleFormatRequiredIndicatorCode 
 	-- Temprary until we get the correct data
-	-- SELECT 
-	-- 		CedsOptionSetCode
-	-- 		, CedsOptionSetDescription
-	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	-- WHERE CedsElementTechnicalName = 'AccessibleFormatRequiredIndicator'
-	-- ORDER BY CedsOptionSetCode
-	VALUES ('Yes', 'Yes'), ('No', 'No'), ('Unknown', 'Unknown')
+	 SELECT 
+	 		CedsOptionSetCode
+	 		, CedsOptionSetDescription
+	 FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	 WHERE CedsElementTechnicalName = 'AccessibleFormatRequiredIndicator'
+	 ORDER BY CedsOptionSetCode
 
 	IF OBJECT_ID('tempdb..#AccessibleFormatTypeCode') IS NOT NULL
 		DROP TABLE #AccessibleFormatTypeCode
@@ -5468,21 +5453,12 @@ GO
 	INSERT INTO #AccessibleFormatTypeCode VALUES ('MISSING', 'MISSING')
 	INSERT INTO #AccessibleFormatTypeCode 
 	-- Temprary until we get the correct data
-	-- SELECT 
-	-- 		CedsOptionSetCode
-	-- 		, CedsOptionSetDescription
-	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	-- WHERE CedsElementTechnicalName = 'AccessibleFormatType'
-	-- ORDER BY CedsOptionSetCode
-	VALUES ('Video with Synchronized American Sign Language', 'Video with Synchronized American Sign Language'),
-		   ('Text Transcripts of Audio', 'Text Transcripts of Audio'),
-		   ('Tactile Graphics', 'Tactile Graphics'),
-		   ('Large Print', 'Large Print'),
-		   ('Audio', 'Audio'),
-		   ('Audio Described Video', 'Audio Described Video'),
-		   ('Braille', 'Braille'),
-		   ('Digital Text', 'Digital Text'),
-		   ('Captioned Video', 'Captioned Video')
+	 SELECT 
+	 		CedsOptionSetCode
+	 		, CedsOptionSetDescription
+	 FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	 WHERE CedsElementTechnicalName = 'AccessibleFormatType'
+	 ORDER BY CedsOptionSetCode
 
 	-- Insert into DimAccessibleEducationMaterialStatuses table
 	INSERT INTO [RDS].[DimAccessibleEducationMaterialStatuses] (
@@ -5528,24 +5504,6 @@ GO
 						, AdultEducationCertificationTypeDescription
 						, CredentialSuspensionIndicatorCode
 						, CredentialSuspensionIndicatorDescription
-=======
-	------------------------------------------------------------------------------
-	-- Populate DimCalendarSessionIndicators   --
-	------------------------------------------------------------------------------
-	IF NOT EXISTS (SELECT 1 FROM rds.DimCalendarSessionIndicators d WHERE d.DimCalendarSessionIndicatorId = -1) BEGIN
-		SET IDENTITY_INSERT rds.DimCalendarSessionIndicators ON
-
-			INSERT INTO rds.DimCalendarSessionIndicators(
-						  DimCalendarSessionIndicatorId
-						 ,SessionTypeCode
-						 ,SessionTypeDescription
-						 ,SessionMarkingTermIndicatorCode
-					     ,SessionMarkingTermIndicatorDescription
-						 ,SessionSchedulingTermIndicatorCode
-						 ,SessionSchedulingTermIndicatorDescription
-						 ,SessionAttendanceTermIndicatorCode
-						 ,SessionAttendanceTermIndicatorDescription
->>>>>>> feature/Issue-68:src/dimension-data/Junk-Table-Dimension-Population-V11.0.0.0.sql
 					)
 			VALUES (
 					-1
@@ -5558,7 +5516,6 @@ GO
 					, 'MISSING'
 					, 'MISSING')
 
-<<<<<<< HEAD:src/dimension-data/Junk-Table-Dimension-Population-V12.0.0.0.sql
 		SET IDENTITY_INSERT rds.DimCredentialAwardStatuses OFF
 	END
 
@@ -5614,12 +5571,12 @@ GO
 	VALUES ('Yes', 'Yes'), ('No', 'No')
 
 	-- Uncomment when Credential Suspension Indicator is officially available in the CEDS-Elements database
-	-- SELECT 
-	-- 	  CedsOptionSetCode
-	-- 	, CedsOptionSetDescription
-	-- FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	-- WHERE CedsElementTechnicalName = 'CredentialSuspensionIndicator'
-	-- ORDER BY CedsOptionSetCode
+	 --SELECT 
+	 --	  CedsOptionSetCode
+	 --	, CedsOptionSetDescription
+	 --FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	 --WHERE CedsElementTechnicalName = 'CredentialSuspensionIndicator'
+	 --ORDER BY CedsOptionSetCode
 
 
 	INSERT INTO rds.DimCredentialAwardStatuses(
@@ -6058,10 +6015,6 @@ DROP TABLE #CourseInteractionMode
 DROP TABLE #CourseSectionAssessmentReportingMethod
 DROP TABLE #CourseSectionInstructionalDeliveryMode
 DROP TABLE #ReceivingLocationOfInstruction
-
-
-
-
 
 	------------------------------------------------
 	-- Populate DimScedCodes					  --
@@ -8940,7 +8893,38 @@ WHERE main.DimRuralStatusId IS NULL
 
 DROP TABLE #ERSRuralUrbanContinuumCode
 DROP TABLE #RuralResidencyStatusCode
-=======
+
+	-------------------------------------------------------
+	-- Populate DimCalendarSessionIndicators--
+	-------------------------------------------------------
+	------------------------------------------------------------------------------
+	-- Populate DimCalendarSessionIndicators   --
+	------------------------------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimCalendarSessionIndicators d WHERE d.DimCalendarSessionIndicatorId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimCalendarSessionIndicators ON
+
+			INSERT INTO rds.DimCalendarSessionIndicators(
+						  DimCalendarSessionIndicatorId
+						 ,SessionTypeCode
+						 ,SessionTypeDescription
+						 ,SessionMarkingTermIndicatorCode
+					     ,SessionMarkingTermIndicatorDescription
+						 ,SessionSchedulingTermIndicatorCode
+						 ,SessionSchedulingTermIndicatorDescription
+						 ,SessionAttendanceTermIndicatorCode
+						 ,SessionAttendanceTermIndicatorDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING')
+
 		SET IDENTITY_INSERT rds.DimCalendarSessionIndicators OFF
 	END
 
@@ -8954,7 +8938,7 @@ DROP TABLE #RuralResidencyStatusCode
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SessionType'
 	ORDER BY CedsOptionSetCode
 
@@ -8968,7 +8952,7 @@ DROP TABLE #RuralResidencyStatusCode
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SessionMarkingTermIndicator'
 	ORDER BY CedsOptionSetCode
 
@@ -8982,7 +8966,7 @@ DROP TABLE #RuralResidencyStatusCode
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SessionSchedulingTermIndicator'
 	ORDER BY CedsOptionSetCode
 
@@ -8996,7 +8980,7 @@ DROP TABLE #RuralResidencyStatusCode
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'SessionAttendanceTermIndicator'
 	ORDER BY CedsOptionSetCode
 	
@@ -9066,7 +9050,7 @@ DROP TABLE #RuralResidencyStatusCode
 		SELECT 
 			  CedsOptionSetCode
 			, CedsOptionSetDescription
-		FROM [CEDS-Elements-V11.0.0.0].[CEDS].CedsOptionSetMapping
+		FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 		WHERE CedsElementTechnicalName = 'CalendarEventType'
 
 
@@ -9131,10 +9115,195 @@ DROP TABLE #RuralResidencyStatusCode
 		WHERE DimTimeId = '-1'
 
 
+	-------------------------------------------------------
+	-- Populate DimContactIndicators --
+	-------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimContactIndicators d WHERE d.DimContactIndicatorId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimContactIndicators ON
+
+			INSERT INTO rds.DimContactIndicators (
+						  DimContactIndicatorId
+						, PrimaryContactIndicatorCode
+						, PrimaryContactIndicatorDescription
+						, EmergencyContactIndicatorCode
+						, EmergencyContactIndicatorDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimContactIndicators OFF
+	END
+
+	IF OBJECT_ID('tempdb..#PrimaryContactIndicatorCode') IS NOT NULL
+		DROP TABLE #PrimaryContactIndicatorCode
+
+	CREATE TABLE #PrimaryContactIndicatorCode (PrimaryContactIndicatorCode VARCHAR(50), PrimaryContactIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #PrimaryContactIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #PrimaryContactIndicatorCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'PrimaryContactIndicator'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#EmergencyContactIndicatorCode') IS NOT NULL
+		DROP TABLE #EmergencyContactIndicatorCode
+
+	CREATE TABLE #EmergencyContactIndicatorCode (EmergencyContactIndicatorCode VARCHAR(50), EmergencyContactIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #EmergencyContactIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #EmergencyContactIndicatorCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EmergencyContactIndicator'
+	ORDER BY CedsOptionSetCode	
+
+	INSERT INTO rds.DimContactIndicators(
+			 PrimaryContactIndicatorCode
+			,PrimaryContactIndicatorDescription
+			,EmergencyContactIndicatorCode
+			,EmergencyContactIndicatorDescription
+			)
+	SELECT 
+			a.PrimaryContactIndicatorCode
+			,a.PrimaryContactIndicatorDescription
+			,b.EmergencyContactIndicatorCode
+			,b.EmergencyContactIndicatorDescription
+	FROM #PrimaryContactIndicatorCode a
+	CROSS JOIN #EmergencyContactIndicatorCode b
+	LEFT JOIN rds.DimContactIndicators main
+		ON	a.PrimaryContactIndicatorCode = main.PrimaryContactIndicatorCode								
+		AND b.EmergencyContactIndicatorCode = main.EmergencyContactIndicatorCode			
+	WHERE main.DimContactIndicatorId IS NULL
+
+	DROP TABLE #PrimaryContactIndicatorCode
+	DROP TABLE #EmergencyContactIndicatorCode
+
+
+	----------------------------------------------------------
+	-- Populate DimParentOrGuardianIndicators --
+	----------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimParentOrGuardianIndicators d WHERE d.DimParentOrGuardianIndicatorId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimParentOrGuardianIndicators ON
+
+			INSERT INTO rds.DimParentOrGuardianIndicators (
+						  DimParentOrGuardianIndicatorId
+						, CustodialParentOrGuardianIndicatorCode
+						, CustodialParentOrGuardianIndicatorDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimParentOrGuardianIndicators OFF
+	END
+
+	IF OBJECT_ID('tempdb..#CustodialParentOrGuardianIndicatorCode') IS NOT NULL
+		DROP TABLE #CustodialParentOrGuardianIndicatorCode
+
+	CREATE TABLE #CustodialParentOrGuardianIndicatorCode (CustodialParentOrGuardianIndicatorCode VARCHAR(50), CustodialParentOrGuardianIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #CustodialParentOrGuardianIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #CustodialParentOrGuardianIndicatorCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'CustodialParentOrGuardianIndicator'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimParentOrGuardianIndicators(
+			 CustodialParentOrGuardianIndicatorCode
+			,CustodialParentOrGuardianIndicatorDescription
+			)
+	SELECT 
+			a.CustodialParentOrGuardianIndicatorCode
+			,a.CustodialParentOrGuardianIndicatorDescription
+	FROM #CustodialParentOrGuardianIndicatorCode a
+	LEFT JOIN rds.DimParentOrGuardianIndicators main
+		ON	a.CustodialParentOrGuardianIndicatorCode = main.CustodialParentOrGuardianIndicatorCode								
+	WHERE main.DimParentOrGuardianIndicatorId IS NULL
+
+	DROP TABLE #CustodialParentOrGuardianIndicatorCode
 
 
 
+	----------------------------------------------------------
+	-- Populate DimPersonRelationships --
+	----------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimPersonRelationships d WHERE d.DimPersonRelationshipId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimPersonRelationships ON
 
+			INSERT INTO rds.DimPersonRelationships (
+						  DimPersonRelationshipId
+						,PersonRelationshipTypeCode
+						,PersonRelationshipTypeDescription
+						,LivesWithIndicatorCode
+						,LivesWithIndicatorCodeDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimPersonRelationships OFF
+	END
 
+	IF OBJECT_ID('tempdb..#PersonRelationshipTypeCode') IS NOT NULL
+		DROP TABLE #PersonRelationshipTypeCode
 
->>>>>>> feature/Issue-68:src/dimension-data/Junk-Table-Dimension-Population-V11.0.0.0.sql
+	CREATE TABLE #PersonRelationshipTypeCode (PersonRelationshipTypeCode VARCHAR(50), PersonRelationshipTypeDescription VARCHAR(200))
+
+	INSERT INTO #PersonRelationshipTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #PersonRelationshipTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'PersonRelationshipType'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#LivesWithIndicatorCode') IS NOT NULL
+		DROP TABLE #LivesWithIndicatorCode
+
+	CREATE TABLE #LivesWithIndicatorCode (LivesWithIndicatorCode VARCHAR(50), LivesWithIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #LivesWithIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #LivesWithIndicatorCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'PersonRelationshipToLearnerLivesWithIndicator'
+	ORDER BY CedsOptionSetCode
+	----Version 13 - need to change the above from "PersonRelationshipToLearnerLivesWithIndicator" to "LivesWithIndicator"
+
+	INSERT INTO rds.DimPersonRelationships(
+			 PersonRelationshipTypeCode
+			,PersonRelationshipTypeDescription
+			,LivesWithIndicatorCode
+			,LivesWithIndicatorCodeDescription
+			)
+	SELECT 
+			a.PersonRelationshipTypeCode
+			,a.PersonRelationshipTypeDescription
+			,b.LivesWithIndicatorCode
+			,b.LivesWithIndicatorDescription
+	FROM #PersonRelationshipTypeCode a
+	CROSS JOIN #LivesWithIndicatorCode b
+	LEFT JOIN rds.DimPersonRelationships main
+		ON	a.PersonRelationshipTypeCode = main.PersonRelationshipTypeCode								
+		AND b.LivesWithIndicatorCode = main.LivesWithIndicatorCode			
+	WHERE main.DimPersonRelationshipId IS NULL
+
+	DROP TABLE #PersonRelationshipTypeCode
+	DROP TABLE #LivesWithIndicatorCode
+
