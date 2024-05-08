@@ -18,7 +18,17 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     [CipCodeId]                           INT    CONSTRAINT [DF_FactK12StudentCourseSections_CipCodeId] DEFAULT ((-1)) NOT NULL,
     [LanguageId]                          INT    CONSTRAINT [DF_FactK12StudentCourseSections_LanguageId] DEFAULT ((-1)) NOT NULL,
     [EntryGradeLevelId]                   INT    CONSTRAINT [DF_FactK12StudentCourseSections_EntryGradeLevelId] DEFAULT ((-1)) NOT NULL,
+    [K12CourseSectionEnrollmentStatusId]  INT    CONSTRAINT [DF_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] DEFAULT ((1)) NOT NULL,
+    [WorkBasedLearningOpportunityStatusId]  INT    CONSTRAINT [DF_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId] DEFAULT ((1)) NOT NULL,
+    [EnrollmentEntryDateId]                 INT   CONSTRAINT [DF_FactK12StudentCourseSections_EnrollmentEntryDateId] DEFAULT ((1)) NOT NULL,
+    [CourseSectionExitWithdrawalDateId]     INT   CONSTRAINT [DF_FactK12StudentCourseSections_CourseSectionExitWithdrawalDateId] DEFAULT ((1)) NOT NULL,
+    [MidTermMark]                           NVARCHAR(15) NULL,
+    [NumberOfCreditsAttempted]              DECIMAL(9,2) NULL,
+    [NumberOfCreditsEarned]                 DECIMAL(9,2) NULL,
+    [StudentCourseSectionGradeEarned]       NVARCHAR(15) NULL,
+    [StudentCourseSectionGradeNarrative]    NVARCHAR(300) NULL,
     [StudentCourseSectionCount]           INT    CONSTRAINT [DF_FactK12StudentCourseSections_StudentCourseSectionCount] DEFAULT ((1)) NOT NULL,
+
     CONSTRAINT [PK_FactK12StudentCourseSections] PRIMARY KEY CLUSTERED ([FactK12StudentCourseSectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE),
     CONSTRAINT [FK_FactK12StudentCourseSections_CipCodeId] FOREIGN KEY ([CipCodeId]) REFERENCES [RDS].[DimCipCodes] ([DimCipCodeId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]),
@@ -37,7 +47,9 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     CONSTRAINT [FK_FactK12StudentCourseSections_LeaIndividualizedEducationProgramId] FOREIGN KEY ([LeaIndividualizedEducationProgramId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
     CONSTRAINT [FK_FactK12StudentCourseSections_ScedCodeId] FOREIGN KEY ([ScedCodeId]) REFERENCES [RDS].[DimScedCodes] ([DimScedCodeId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
-    CONSTRAINT [FK_FactK12StudentCourseSections_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId])
+    CONSTRAINT [FK_FactK12StudentCourseSections_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] FOREIGN KEY ([K12CourseSectionEnrollmentStatusId]) REFERENCES [RDS].[DimK12CourseSectionEnrollmentStatuses] ([DimK12CourseSectionEnrollmentStatusId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId] FOREIGN KEY ([WorkBasedLearningOpportunityStatusId]) REFERENCES [RDS].[WorkBasedLearningOpportunityStatuses] ([WorkBasedLearningOpportunityStatusId])
 );
 
 
@@ -80,6 +92,12 @@ ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12S
 GO
 ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_SeaId];
 
+GO
+ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId];
+
+GO
+ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId];
+
 
 GO
 
@@ -118,5 +136,81 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LanguageId] ON [RDS].[FactK12StudentCourseSections]([LanguageId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_EntryGradeLevelId] ON [RDS].[FactK12StudentCourseSections]([EntryGradeLevelId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] ON [RDS].[FactK12StudentCourseSections]([K12CourseSectionEnrollmentStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId] ON [RDS].[FactK12StudentCourseSections]([WorkBasedLearningOpportunityStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The month, day, and year on which a person enters and begins to receive instructional services in a school, institution, program, or class-section during a given session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Enrollment Entry Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000097' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000097' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'EnrollmentEntryDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'CourseSectionExitWithdrawalDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day of the first day after the date of a person''s last enrollment in a course section.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'CourseSectionExitWithdrawalDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Course Section Exit Withdrawal Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'CourseSectionExitWithdrawalDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000651' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'CourseSectionExitWithdrawalDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000651' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'CourseSectionExitWithdrawalDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'MidTermMark';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicator of student performance at the mid-point of the marking period.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'MidTermMark';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Mid Term Mark' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'MidTermMark';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000183' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'MidTermMark';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000183' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'MidTermMark';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsAttempted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of credits that a student can earn for enrolling in and completing a given course.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsAttempted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Number of Credits Attempted' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsAttempted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000199' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsAttempted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000199' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsAttempted';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of credits an individual earns by the successful completion of a course.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Number of Credits Earned' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000200' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000200' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'NumberOfCreditsEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A final indicator of student performance in a course section as submitted by the instructor.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Course Section Grade Earned' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000124' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000124' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeEarned';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeNarrative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The narrative of the student performance in a course section as submitted by the instructor.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeNarrative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Course Section Grade Narrative' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeNarrative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001573' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeNarrative';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001573' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StudentCourseSections', @level2type=N'COLUMN',@level2name=N'StudentCourseSectionGradeNarrative';
 GO
 
