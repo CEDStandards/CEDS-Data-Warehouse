@@ -19,7 +19,7 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     [LanguageId]                          INT    CONSTRAINT [DF_FactK12StudentCourseSections_LanguageId] DEFAULT ((-1)) NOT NULL,
     [EntryGradeLevelId]                   INT    CONSTRAINT [DF_FactK12StudentCourseSections_EntryGradeLevelId] DEFAULT ((-1)) NOT NULL,
     [K12CourseSectionEnrollmentStatusId]  INT    CONSTRAINT [DF_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] DEFAULT ((1)) NOT NULL,
-    [WorkBasedLearningOpportunityStatusId]  INT    CONSTRAINT [DF_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId] DEFAULT ((1)) NOT NULL,
+    [WorkBasedLearningStatusId]  INT    CONSTRAINT [DF_FactK12StudentCourseSections_WorkBasedLearningStatusId] DEFAULT ((1)) NOT NULL,
     [EnrollmentEntryDateId]                 INT   CONSTRAINT [DF_FactK12StudentCourseSections_EnrollmentEntryDateId] DEFAULT ((1)) NOT NULL,
     [CourseSectionExitWithdrawalDateId]     INT   CONSTRAINT [DF_FactK12StudentCourseSections_CourseSectionExitWithdrawalDateId] DEFAULT ((1)) NOT NULL,
     [MidTermMark]                           NVARCHAR(15) NULL,
@@ -49,7 +49,7 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     CONSTRAINT [FK_FactK12StudentCourseSections_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] FOREIGN KEY ([K12CourseSectionEnrollmentStatusId]) REFERENCES [RDS].[DimK12CourseSectionEnrollmentStatuses] ([DimK12CourseSectionEnrollmentStatusId]),
-    CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId] FOREIGN KEY ([WorkBasedLearningOpportunityStatusId]) REFERENCES [RDS].[WorkBasedLearningOpportunityStatuses] ([WorkBasedLearningOpportunityStatusId])
+    CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningStatusId] FOREIGN KEY ([WorkBasedLearningStatusId]) REFERENCES [RDS].[WorkBasedLearningStatuses] ([WorkBasedLearningStatusId])
 );
 
 
@@ -96,7 +96,7 @@ GO
 ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId];
 
 GO
-ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId];
+ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningStatusId];
 
 
 GO
@@ -139,7 +139,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_EntryGradeLevelId] 
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] ON [RDS].[FactK12StudentCourseSections]([K12CourseSectionEnrollmentStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_WorkBasedLearningOpportunityStatusId] ON [RDS].[FactK12StudentCourseSections]([WorkBasedLearningOpportunityStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_WorkBasedLearningStatusId] ON [RDS].[FactK12StudentCourseSections]([WorkBasedLearningStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 
 
