@@ -5,15 +5,22 @@ CREATE TABLE [RDS].[FactK12StaffCourseSections]
 	[SeaId] int NOT NULL DEFAULT -1,
 	[IeuId] int NOT NULL DEFAULT -1,
 	[LeaId] int NOT NULL DEFAULT -1,
+	[LeaInstructionId] int NOT NULL DEFAULT -1,
 	[K12SchoolId] int NOT NULL DEFAULT -1,
+	[K12SchoolInstructionId] int NOT NULL DEFAULT -1,
 	[CipCodeId] int NOT NULL DEFAULT -1,
 	[CourseApplicableEducationLevelId] int NOT NULL DEFAULT -1,
 	[K12CourseStatusId] int NOT NULL DEFAULT -1,
 	[K12CourseId] int NOT NULL DEFAULT -1,
+	[K12CourseSectionid] int NOT NULL DEFAULT -1,
+	[ClassBeginningTimeId] int NOT NULL DEFAULT -1,
+	[ClassEndingTimeId]	int NOT NULL DEFAULT -1,
 	[K12EmploymentStatusId] int NOT NULL DEFAULT -1,
 	[K12JobId] int NOT NULL DEFAULT -1,
-	[K12PositionId] int NOT NULL DEFAULT -1,
+	[K12JobPositionId] int NOT NULL DEFAULT -1,
 	[K12StaffAssignmentStatusId] int NOT NULL DEFAULT -1,
+	[K12StaffAssignmentStartDateId] int NOT NULL DEFAULT -1,
+	[K12StaffAssignmentEndDateId] int NOT NULL DEFAULT -1,
 	[K12StaffCategoryId] int NOT NULL DEFAULT -1,
 	[K12StaffMemberId] bigint NOT NULL DEFAULT -1,
 	[K12StaffStatusId] int NOT NULL DEFAULT -1,
@@ -29,6 +36,8 @@ CREATE TABLE [RDS].[FactK12StaffCourseSections]
 	[DataCollectionId] int NULL,
 	[SeaJobClassificationId] int NULL,
 	[LeaJobClassificationId] int NULL,
+	[AvailableCarnegieUnitCredit] decimal(9,2) NULL,
+	[InstructionalMinutes] int NULL,
 	CONSTRAINT [PK_FactK12StaffCourseSections] PRIMARY KEY CLUSTERED ([FactK12StaffCourseSections] ASC),
 	CONSTRAINT [FK_FactK12StaffCourseSections_CipCodeId] FOREIGN KEY ([CipCodeId]) REFERENCES [RDS].[DimCipCodes] ([DimCipCodeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_CountDateId] FOREIGN KEY ([CountDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
@@ -38,23 +47,29 @@ CREATE TABLE [RDS].[FactK12StaffCourseSections]
 	CONSTRAINT [FK_FactK12StaffCourseSections_IeuId] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_InstructionLanguageId] FOREIGN KEY ([InstructionLanguageId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12CourseId] FOREIGN KEY ([K12CourseId]) REFERENCES [RDS].[DimK12Courses] ([DimK12CourseId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCourseSections_ClassBeginningTimeId] FOREIGN KEY ([ClassBeginningTimeId]) REFERENCES [RDS].[DimTimes] ([DimTimeId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCourseSections_ClassEndingTimeId] FOREIGN KEY ([ClassEndingTimeId]) REFERENCES [RDS].[DimTimes] ([DimTimeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12CourseSectionStatusId] FOREIGN KEY ([K12CourseSectionStatusId]) REFERENCES [RDS].[DimK12CourseSectionStatuses] ([DimK12CourseSectionStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12CourseStatusId] FOREIGN KEY ([K12CourseStatusId]) REFERENCES [RDS].[DimK12CourseStatuses] ([DimK12CourseStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12EmploymentStatusId] FOREIGN KEY ([K12EmploymentStatusId]) REFERENCES [RDS].[DimK12EmploymentStatuses] ([DimK12EmploymentStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12JobId] FOREIGN KEY ([K12JobId]) REFERENCES [RDS].[DimK12Jobs] ([DimK12JobId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffCourseSections_K12PositionId]	FOREIGN KEY ([K12PositionId]) REFERENCES [RDS].[DimK12Positions] ([DimK12PositionId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCourseSections_K12JobPositionId]	FOREIGN KEY ([K12JobPositionId]) REFERENCES [RDS].[DimK12JobPositions] ([DimK12JobPositionId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCourseSections_K12SchoolInstructionId] FOREIGN KEY ([K12SchoolInstructionId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffMemberId] FOREIGN KEY ([K12StaffMemberId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCourseSections_LeaInstructionId] FOREIGN KEY ([LeaInstructionId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_LeaJobClassificationId] FOREIGN KEY ([LeaJobClassificationId]) REFERENCES [RDS].[DimLeaJobClassifications] ([DimLeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_OrganizationCalendarSessionId] FOREIGN KEY ([OrganizationCalendarSessionId]) REFERENCES [RDS].[DimOrganizationCalendarSessions] ([DimOrganizationCalendarSessionId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_ScedCodeId] FOREIGN KEY ([ScedCodeId]) REFERENCES [RDS].[DimScedCodes] ([DimScedCodeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_SeaJobClassificationId] FOREIGN KEY ([SeaJobClassificationId]) REFERENCES [RDS].[DimSeaJobClassifications] ([DimSeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StffCourseSections_K12StaffAssignmentStartDateId] FOREIGN KEY ([K12StaffAssignmentStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StffCourseSections_K12StaffAssignmentEndDateId] FOREIGN KEY ([K12StaffAssignmentEndDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StffCourseSections_K12StaffAssignmentStatusId] FOREIGN KEY ([K12StaffAssignmentStatusId]) REFERENCES [RDS].[DimK12StaffAssignmentStatuses] ([DimK12StaffAssignmentStatusId]) ON DELETE No Action ON UPDATE No Action
 )
 GO
@@ -107,12 +122,16 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimK12Jobs]
  ON [RDS].[FactK12StaffCourseSections] ([K12JobId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimK12Positions] 
- ON [RDS].[FactK12StaffCourseSections] ([K12PositionId] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimK12JobPositions] 
+ ON [RDS].[FactK12StaffCourseSections] ([K12JobPositionId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimK12Schools] 
  ON [RDS].[FactK12StaffCourseSections] ([K12SchoolId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_K12SchoolInstructionId] 
+ ON [RDS].[FactK12StaffCourseSections] ([K12SchoolInstructionId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimK12StaffAssignmentStatuses] 
@@ -139,6 +158,10 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimLeas]
  ON [RDS].[FactK12StaffCourseSections] ([LeaId] ASC)
 GO
 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_LeaInstructionId] 
+ ON [RDS].[FactK12StaffCourseSections] ([LeaInstructionId] ASC)
+GO
+
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimOrganizationCalendarSessions] 
  ON [RDS].[FactK12StaffCourseSections] ([OrganizationCalendarSessionId] ASC)
 GO
@@ -162,3 +185,91 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimSeas] 
  ON [RDS].[FactK12StaffCourseSections] ([SeaId] ASC)
 GO
+
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassBeginningTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the time of day the class begins.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassBeginningTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Class Beginning Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassBeginningTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000519' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassBeginningTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000519' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassBeginningTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassEndingTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the time of day the class ends.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassEndingTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Class Ending Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassEndingTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000520' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassEndingTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000520' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'ClassEndingTimeId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'AvailableCarnegieUnitCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Measured in Carnegie units, the amount of credit available to a student who successfully meets the objectives of the course. A course meeting every day for one period of the school day over the span of a school year offers one Carnegie unit. A Carnegie unit is thus a measure of "seat time" rather than a measure of attainment of the course objectives.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'AvailableCarnegieUnitCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Available Carnegie Unit Credit' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'AvailableCarnegieUnitCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000030' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'AvailableCarnegieUnitCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000030' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'AvailableCarnegieUnitCredit';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'LeaInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of responsibility the district has for the student.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'LeaInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Responsible District Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'LeaInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatendateOptionCode', @value=N'Instruction' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'LeaInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000594' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'LeaInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000594' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'LeaInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12SchoolInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of services/instruction the school is responsible for providing to the student.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12SchoolInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Responsible School Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12SchoolInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatendatedOptionCode', @value=N'Instruction' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12SchoolInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000595' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12SchoolInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000595' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12SchoolInstructionId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentStartDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day from which the assignment is valid.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentStartDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assignment Start Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentStartDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000526' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentStartDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000526' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentStartDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentEndDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The last year, month and day on which the assignment is valid.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentEndDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Assignment End Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentEndDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000527' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentEndDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000527' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'K12StaffAssignmentEndDateId';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'InstructionalMinutes';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The total number of instruction minutes in a given session, as determined by time in class, time on task (e.g., engaged in a class), or as estimated by a qualified course designer.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'InstructionalMinutes';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'AssigInstructional Minutes' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'InstructionalMinutes';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000499' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'InstructionalMinutes';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000499' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffCourseSections', @level2type=N'COLUMN',@level2name=N'InstructionalMinutes';
+GO
+
+

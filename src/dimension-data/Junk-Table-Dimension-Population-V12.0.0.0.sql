@@ -1,5 +1,5 @@
 /*    
-	Copyright 2023 Common Education Data Standards
+	Copyright 2024 Common Education Data Standards
 	----------------------------------------------
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@
 	Script 3: Junk-Table-Dimension-Population-V12.0.0.0
 
 	You must have the CEDS Data Warehouse version 12.0.0.0 installed first as well as
-	the CEDS version 11.0.0.0 elements database. The CEDS schema tables house the element and option set information.
+	the CEDS version 12.0.0.0 elements database. The CEDS schema tables house the element and option set information.
 	These eight tables act as a source for the junk table dimension population.
       
     Questions on this script can be sent to https://ceds.ed.gov/ContactUs.aspx
@@ -8897,9 +8897,6 @@ DROP TABLE #RuralResidencyStatusCode
 	-------------------------------------------------------
 	-- Populate DimCalendarSessionIndicators--
 	-------------------------------------------------------
-	------------------------------------------------------------------------------
-	-- Populate DimCalendarSessionIndicators   --
-	------------------------------------------------------------------------------
 	IF NOT EXISTS (SELECT 1 FROM rds.DimCalendarSessionIndicators d WHERE d.DimCalendarSessionIndicatorId = -1) BEGIN
 		SET IDENTITY_INSERT rds.DimCalendarSessionIndicators ON
 
@@ -9307,3 +9304,295 @@ DROP TABLE #RuralResidencyStatusCode
 	DROP TABLE #PersonRelationshipTypeCode
 	DROP TABLE #LivesWithIndicatorCode
 
+	----------------------------------------------------------------------
+	-- Populate DimK12CourseSectionEnrollmentStatuses --
+	----------------------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimK12CourseSectionEnrollmentStatuses d WHERE d.DimK12CourseSectionEnrollmentStatusId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimK12CourseSectionEnrollmentStatuses ON
+
+			INSERT INTO rds.DimK12CourseSectionEnrollmentStatuses (
+						  DimK12CourseSectionEnrollmentStatusId
+						,CourseSectionEnrollmentStatusTypeCode
+						,CourseSectionEnrollmentStatusTypeDescription
+						,CourseSectionEntryTypeCode
+						,CourseSectionEntryTypeDescription
+						,CourseSectionExitTypeCode
+						,CourseSectionExitTypeDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimK12CourseSectionEnrollmentStatuses OFF
+	END
+
+	IF OBJECT_ID('tempdb..#CourseSectionEnrollmentStatusTypeCode') IS NOT NULL
+		DROP TABLE #CourseSectionEnrollmentStatusTypeCode
+
+	CREATE TABLE #CourseSectionEnrollmentStatusTypeCode (CourseSectionEnrollmentStatusTypeCode VARCHAR(50), CourseSectionEnrollmentStatusTypeDescription VARCHAR(200))
+
+	INSERT INTO #CourseSectionEnrollmentStatusTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #CourseSectionEnrollmentStatusTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'CourseSectionEnrollmentStatusType'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#CourseSectionEntryTypeCode') IS NOT NULL
+		DROP TABLE #CourseSectionEntryTypeCode
+
+	CREATE TABLE #CourseSectionEntryTypeCode (CourseSectionEntryTypeCode VARCHAR(50), CourseSectionEntryTypeDescription VARCHAR(200))
+
+	INSERT INTO #CourseSectionEntryTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #CourseSectionEntryTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'CourseSectionEntryType'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#CourseSectionExitTypeCode') IS NOT NULL
+		DROP TABLE #CourseSectionExitTypeCode
+
+	CREATE TABLE #CourseSectionExitTypeCode (CourseSectionExitTypeCode VARCHAR(50), CourseSectionExitTypeDescription VARCHAR(200))
+
+	INSERT INTO #CourseSectionExitTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #CourseSectionExitTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'CourseSectionExitType'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimK12CourseSectionEnrollmentStatuses(
+			 CourseSectionEnrollmentStatusTypeCode
+			,CourseSectionEnrollmentStatusTypeDescription
+			,CourseSectionEntryTypeCode
+			,CourseSectionEntryTypeDescription
+			,CourseSectionExitTypeCode
+			,CourseSectionExitTypeDescription
+			)
+	SELECT 
+			a.CourseSectionEnrollmentStatusTypeCode
+			,a.CourseSectionEnrollmentStatusTypeDescription
+			,b.CourseSectionEntryTypeCode
+			,b.CourseSectionEntryTypeDescription
+			,c.CourseSectionExitTypeCode
+			,c.CourseSectionExitTypeDescription
+	FROM #CourseSectionEnrollmentStatusTypeCode a
+	CROSS JOIN #CourseSectionEntryTypeCode b
+	CROSS JOIN #CourseSectionExitTypeCode c
+	LEFT JOIN rds.DimK12CourseSectionEnrollmentStatuses main
+		ON	a.CourseSectionEnrollmentStatusTypeCode = main.CourseSectionEnrollmentStatusTypeCode								
+		AND b.CourseSectionEntryTypeCode = main.CourseSectionEntryTypeCode
+		AND c.CourseSectionExitTypeCode = main.CourseSectionExitTypeCode
+	WHERE main.DimK12CourseSectionEnrollmentStatusId IS NULL
+
+	DROP TABLE #CourseSectionEnrollmentStatusTypeCode
+	DROP TABLE #CourseSectionEntryTypeCode
+	DROP TABLE #CourseSectionExitTypeCode
+
+
+	-----------------------------------------------------------------
+	-- Populate WorkDimWorkBasedLearningStatuses --
+	-----------------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimWorkBasedLearningStatuses d WHERE d.DimWorkBasedLearningStatusId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimWorkBasedLearningStatuses ON
+
+			INSERT INTO rds.DimWorkBasedLearningStatuses(
+						  DimWorkBasedLearningStatusId
+						, WorkBasedLearningOpportunityTypeCode
+						, WorkBasedLearningOpportunityTypeDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimWorkBasedLearningStatuses OFF
+	END
+
+	IF OBJECT_ID('tempdb..#WorkBasedLearningOpportunityTypeCode') IS NOT NULL
+		DROP TABLE #WorkBasedLearningOpportunityTypeCode
+
+	CREATE TABLE #WorkBasedLearningOpportunityTypeCode (WorkBasedLearningOpportunityTypeCode VARCHAR(50), WorkBasedLearningOpportunityTypeDescription VARCHAR(200))
+
+	INSERT INTO #WorkBasedLearningOpportunityTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #WorkBasedLearningOpportunityTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'WorkBasedLearningOpportunityType'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimWorkBasedLearningStatuses(
+			 WorkBasedLearningOpportunityTypeCode
+			,WorkBasedLearningOpportunityTypeDescription
+			)
+	SELECT 
+			a.WorkBasedLearningOpportunityTypeCode
+			,a.WorkBasedLearningOpportunityTypeDescription
+	FROM #WorkBasedLearningOpportunityTypeCode a
+	LEFT JOIN rds.DimWorkBasedLearningStatuses main
+		ON	a.WorkBasedLearningOpportunityTypeCode = main.WorkBasedLearningOpportunityTypeCode								
+	WHERE main.DimWorkBasedLearningStatusId IS NULL
+
+	DROP TABLE #WorkBasedLearningOpportunityTypeCode
+
+
+	--------------------------------------------------------
+	-- Populate DimK12OrganizationStatuses   --
+	--------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimK12OrganizationStatuses d WHERE d.DimK12OrganizationStatusId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimK12OrganizationStatuses ON
+
+			INSERT INTO rds.DimK12OrganizationStatuses(
+						  DimK12OrganizationStatusId
+						 ,ReapAlternativeFundingStatusCode
+					     ,ReapAlternativeFundingStatusDescription
+					     ,ReapAlternativeFundingStatusEdFactsCode
+					     ,GunFreeSchoolsActReportingStatusCode
+					     ,GunFreeSchoolsActReportingStatusDescription
+					     ,GunFreeSchoolsActReportingStatusEdFactsCode
+					     ,HighSchoolGraduationRateIndicatorStatusCode
+					     ,HighSchoolGraduationRateIndicatorStatusDescription
+					     ,HighSchoolGraduationRateIndicatorStatusEdFactsCode
+					     ,McKinneyVentoSubgrantRecipientCode
+					     ,McKinneyVentoSubgrantRecipientDescription
+				  	     ,McKinneyVentoSubgrantRecipientEdFactsCode
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					)
+
+		SET IDENTITY_INSERT rds.DimK12OrganizationStatuses OFF
+	END
+
+	IF OBJECT_ID('tempdb..#ReapAlternativeFundingStatusCode') IS NOT NULL
+		DROP TABLE #ReapAlternativeFundingStatusCode
+
+	CREATE TABLE #ReapAlternativeFundingStatusCode (ReapAlternativeFundingStatusCode VARCHAR(50), ReapAlternativeFundingStatusDescription VARCHAR(200), ReapAlternativeFundingStatusEdFactsCode VARCHAR(50))
+
+	INSERT INTO #ReapAlternativeFundingStatusCode VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #ReapAlternativeFundingStatusCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, EdFactsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'ReapAlternativeFundingStatus'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#GunFreeSchoolsActReportingStatusCode') IS NOT NULL
+		DROP TABLE #GunFreeSchoolsActReportingStatusCode
+
+	CREATE TABLE #GunFreeSchoolsActReportingStatusCode (GunFreeSchoolsActReportingStatusCode VARCHAR(50), GunFreeSchoolsActReportingStatusDescription VARCHAR(200), GunFreeSchoolsActReportingStatusEdFactsCode VARCHAR(50))
+
+	INSERT INTO #GunFreeSchoolsActReportingStatusCode VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #GunFreeSchoolsActReportingStatusCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, EdFactsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'GunFreeSchoolsActReportingStatus'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#HighSchoolGraduationRateIndicatorStatusCode') IS NOT NULL
+		DROP TABLE #HighSchoolGraduationRateIndicatorStatusCode
+
+	CREATE TABLE #HighSchoolGraduationRateIndicatorStatusCode (HighSchoolGraduationRateIndicatorStatusCode VARCHAR(50), HighSchoolGraduationRateIndicatorStatusDescription VARCHAR(200), HighSchoolGraduationRateIndicatorStatusEdFactsCode VARCHAR(50))
+
+	INSERT INTO #HighSchoolGraduationRateIndicatorStatusCode VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #HighSchoolGraduationRateIndicatorStatusCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, EdFactsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'HighSchoolGraduationRateIndicatorStatus'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#McKinneyVentoSubgrantRecipientCode') IS NOT NULL
+		DROP TABLE #McKinneyVentoSubgrantRecipientCode
+
+	CREATE TABLE #McKinneyVentoSubgrantRecipientCode (McKinneyVentoSubgrantRecipientCode VARCHAR(50), McKinneyVentoSubgrantRecipientDescription VARCHAR(200), McKinneyVentoSubgrantRecipientEdFactsCode VARCHAR(50))
+
+	INSERT INTO #McKinneyVentoSubgrantRecipientCode VALUES ('MISSING', 'MISSING', 'MISSING')
+
+	--Remove this code when this element has been added to CEDS (V13)
+	INSERT INTO #McKinneyVentoSubgrantRecipientCode VALUES ('Yes', 'Yes', 'MISSING')
+	INSERT INTO #McKinneyVentoSubgrantRecipientCode VALUES ('No', 'No', 'MISSING')
+
+	--Uncomment when this element has been added to CEDS (V13)
+	--INSERT INTO #McKinneyVentoSubgrantRecipientCode
+	--SELECT 
+	--	  CedsOptionSetCode
+	--	, CedsOptionSetDescription
+	--	, EdFactsOptionSetCode
+	--FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	--WHERE CedsElementTechnicalName = 'McKinneyVentoSubgrantRecipient'
+	--ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimK12OrganizationStatuses(
+			 ReapAlternativeFundingStatusCode
+			,ReapAlternativeFundingStatusDescription
+			,ReapAlternativeFundingStatusEdFactsCode
+			,GunFreeSchoolsActReportingStatusCode
+			,GunFreeSchoolsActReportingStatusDescription
+			,GunFreeSchoolsActReportingStatusEdFactsCode
+			,HighSchoolGraduationRateIndicatorStatusCode
+			,HighSchoolGraduationRateIndicatorStatusDescription
+			,HighSchoolGraduationRateIndicatorStatusEdFactsCode
+			,McKinneyVentoSubgrantRecipientCode
+			,McKinneyVentoSubgrantRecipientDescription
+			,McKinneyVentoSubgrantRecipientEdFactsCode
+			)
+	SELECT 
+			 a.ReapAlternativeFundingStatusCode
+			,a.ReapAlternativeFundingStatusDescription
+			,a.ReapAlternativeFundingStatusEdFactsCode
+			,b.GunFreeSchoolsActReportingStatusCode
+			,b.GunFreeSchoolsActReportingStatusDescription
+			,b.GunFreeSchoolsActReportingStatusEdFactsCode
+			,c.HighSchoolGraduationRateIndicatorStatusCode
+			,c.HighSchoolGraduationRateIndicatorStatusDescription
+			,c.HighSchoolGraduationRateIndicatorStatusEdFactsCode
+			,d.McKinneyVentoSubgrantRecipientCode
+			,d.McKinneyVentoSubgrantRecipientDescription
+			,d.McKinneyVentoSubgrantRecipientEdFactsCode
+	FROM #ReapAlternativeFundingStatusCode a
+	CROSS JOIN #GunFreeSchoolsActReportingStatusCode b
+	CROSS JOIN #HighSchoolGraduationRateIndicatorStatusCode c
+	CROSS JOIN #McKinneyVentoSubgrantRecipientCode d
+	LEFT JOIN rds.DimK12OrganizationStatuses main
+		ON	a.ReapAlternativeFundingStatusCode = main.ReapAlternativeFundingStatusCode								
+		AND b.GunFreeSchoolsActReportingStatusCode = main.GunFreeSchoolsActReportingStatusCode			
+		AND c.HighSchoolGraduationRateIndicatorStatusCode = main.HighSchoolGraduationRateIndicatorStatusCode
+		AND d.McKinneyVentoSubgrantRecipientCode = main.McKinneyVentoSubgrantRecipientCode
+	WHERE main.DimK12OrganizationStatusId IS NULL
+
+	DROP TABLE #ReapAlternativeFundingStatusCode
+	DROP TABLE #GunFreeSchoolsActReportingStatusCode
+	DROP TABLE #HighSchoolGraduationRateIndicatorStatusCode
+	DROP TABLE #McKinneyVentoSubgrantRecipientCode
