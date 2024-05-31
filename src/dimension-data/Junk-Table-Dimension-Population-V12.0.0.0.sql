@@ -2027,29 +2027,30 @@ GO
 
 
 	PRINT 'Populate DimK12AcademicAwardStatuses'
-	------------------------------------------------
+	----------------------------------------------------------------
 	-- Populate DimK12AcademicAwardStatuses		 ---
-	------------------------------------------------
+	----------------------------------------------------------------
 
 	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12AcademicAwardStatuses d WHERE d.HighSchoolDiplomaTypeCode = 'MISSING') BEGIN
 		SET IDENTITY_INSERT RDS.DimK12AcademicAwardStatuses ON
 
-		INSERT INTO RDS.DimK12AcademicAwardStatuses (DimK12AcademicAwardStatusId, HighSchoolDiplomaTypeCode, HighSchoolDiplomaTypeDescription, HighSchoolDiplomaTypeEdFactsCode)
-			VALUES (-1, 'MISSING', 'MISSING', 'MISSING')
+		INSERT INTO RDS.DimK12AcademicAwardStatuses (DimK12AcademicAwardStatusId, HighSchoolDiplomaTypeCode, HighSchoolDiplomaTypeDescription, HighSchoolDiplomaTypeEdFactsCode, ProjectedHighSchoolDiplomaTypeCode, ProjectedHighSchoolDiplomaTypeDescription)
+			VALUES (-1, 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING')
 
 		SET IDENTITY_INSERT RDS.DimK12AcademicAwardStatuses OFF
 	END
 
-	INSERT INTO RDS.DimK12AcademicAwardStatuses
-		(
-			  HighSchoolDiplomaTypeCode
-			, HighSchoolDiplomaTypeDescription		
-			, HighSchoolDiplomaTypeEdFactsCode
-		)
+	IF OBJECT_ID('tempdb..#HighSchoolDiplomaTypeCode') IS NOT NULL
+		DROP TABLE #HighSchoolDiplomaTypeCode
+
+	CREATE TABLE #HighSchoolDiplomaTypeCode (HighSchoolDiplomaTypeCode VARCHAR(50), HighSchoolDiplomaTypeDescription VARCHAR(200), HighSchoolDiplomaTypeEdFactsCode VARCHAR(50))
+
+	INSERT INTO #HighSchoolDiplomaTypeCode VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #HighSchoolDiplomaTypeCode 
 	SELECT 
-		  c.CedsOptionSetCode
-		, c.CedsOptionSetDescription
-		, CASE c.CedsOptionSetCode
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, CASE CedsOptionSetCode
 			WHEN '00806' THEN 'REGDIP'
 			WHEN '00807' THEN 'REGDIP'
 			WHEN '00808' THEN 'REGDIP'
@@ -2065,11 +2066,49 @@ GO
 			WHEN '00819' THEN 'OTHCOM'
 			ELSE 'MISSING'
 		  END
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping c
-	LEFT JOIN RDS.DimK12AcademicAwardStatuses main
-		ON c.CedsOptionSetCode = main.HighSchoolDiplomaTypeCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'HighSchoolDiplomaType'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#ProjectedHighSchoolDiplomaTypeCode') IS NOT NULL
+		DROP TABLE #ProjectedHighSchoolDiplomaTypeCode
+
+	CREATE TABLE #ProjectedHighSchoolDiplomaTypeCode (ProjectedHighSchoolDiplomaTypeCode VARCHAR(50), ProjectedHighSchoolDiplomaTypeDescription VARCHAR(200))
+
+	INSERT INTO #ProjectedHighSchoolDiplomaTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #ProjectedHighSchoolDiplomaTypeCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'ProjectedHighSchoolDiplomaType'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimK12AcademicAwardStatuses(
+			 HighSchoolDiplomaTypeCode
+			,HighSchoolDiplomaTypeDescription
+			,HighSchoolDiplomaTypeEdFactsCode
+			,ProjectedHighSchoolDiplomaTypeCode
+			,ProjectedHighSchoolDiplomaTypeDescription
+			)
+	SELECT 
+			 a.HighSchoolDiplomaTypeCode
+			,a.HighSchoolDiplomaTypeDescription
+			,a.HighSchoolDiplomaTypeEdFactsCode
+			,b.ProjectedHighSchoolDiplomaTypeCode
+			,b.ProjectedHighSchoolDiplomaTypeDescription
+	FROM #HighSchoolDiplomaTypeCode a
+	CROSS JOIN #ProjectedHighSchoolDiplomaTypeCode b
+	LEFT JOIN rds.DimK12AcademicAwardStatuses main
+		ON	a.HighSchoolDiplomaTypeCode = main.HighSchoolDiplomaTypeCode								
+		AND b.ProjectedHighSchoolDiplomaTypeCode = main.ProjectedHighSchoolDiplomaTypeCode			
 	WHERE main.DimK12AcademicAwardStatusId IS NULL
-		AND c.CedsElementTechnicalName = 'HighSchoolDiplomaType'
+
+	DROP TABLE #HighSchoolDiplomaTypeCode
+	DROP TABLE #ProjectedHighSchoolDiplomaTypeCode
+
+
+
 
 	PRINT 'Populate DimResponsibleSchoolTypes'
 	------------------------------------------------
@@ -9596,3 +9635,76 @@ DROP TABLE #RuralResidencyStatusCode
 	DROP TABLE #GunFreeSchoolsActReportingStatusCode
 	DROP TABLE #HighSchoolGraduationRateIndicatorStatusCode
 	DROP TABLE #McKinneyVentoSubgrantRecipientCode
+
+	--------------------------------------------------------
+	-- Populate DimRecordStatuses   ---------------
+	--------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimRecordStatuses d WHERE d.DimRecordStatusId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimRecordStatuses ON
+
+			INSERT INTO rds.DimRecordStatuses(
+						  DimRecordStatusId
+						 ,RecordStatusTypeCode
+					     ,RecordStatusTypeDescription
+					     ,RecordStatusCreatorEntityCode
+					     ,RecordStatusCreatorEntityDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					)
+
+		SET IDENTITY_INSERT rds.DimRecordStatuses OFF
+	END
+
+	IF OBJECT_ID('tempdb..#RecordStatusTypeCode') IS NOT NULL
+		DROP TABLE #RecordStatusTypeCode
+
+	CREATE TABLE #RecordStatusTypeCode (RecordStatusTypeCode VARCHAR(50), RecordStatusTypeDescription VARCHAR(200))
+
+	INSERT INTO #RecordStatusTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #RecordStatusTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'RecordStatusType'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#RecordStatusCreatorEntityCode') IS NOT NULL
+		DROP TABLE #RecordStatusCreatorEntityCode
+
+	CREATE TABLE #RecordStatusCreatorEntityCode (RecordStatusCreatorEntityCode VARCHAR(50), RecordStatusCreatorEntityDescription VARCHAR(200))
+
+	INSERT INTO #RecordStatusCreatorEntityCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #RecordStatusCreatorEntityCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'RecordStatusCreatorEntity'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimRecordStatuses(
+			 RecordStatusTypeCode
+			,RecordStatusTypeDescription
+			,RecordStatusCreatorEntityCode
+			,RecordStatusCreatorEntityDescription
+			)
+	SELECT 
+			 a.RecordStatusTypeCode
+			,a.RecordStatusTypeDescription
+			,b.RecordStatusCreatorEntityCode
+			,b.RecordStatusCreatorEntityDescription
+	FROM #RecordStatusTypeCode a
+	CROSS JOIN #RecordStatusCreatorEntityCode b
+	LEFT JOIN rds.DimRecordStatuses main
+		ON	a.RecordStatusTypeCode = main.RecordStatusTypeCode								
+		AND b.RecordStatusCreatorEntityCode = main.RecordStatusCreatorEntityCode			
+	WHERE main.DimRecordStatusId IS NULL
+
+	DROP TABLE #RecordStatusTypeCode
+	DROP TABLE #RecordStatusCreatorEntityCode
