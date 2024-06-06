@@ -2,6 +2,8 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     [FactK12StudentEnrollmentId]                 BIGINT         IDENTITY (1, 1) NOT NULL,
     [SchoolYearId]                               INT            CONSTRAINT [DF_FactK12StudentEnrollments_SchoolYearId] DEFAULT ((-1)) NOT NULL,
     [CountDateId]                                INT            CONSTRAINT [DF_FactK12StudentEnrollments_CountDateId] DEFAULT ((-1)) NOT NULL,
+    [RecordStartDateTime]                        DATETIME       NULL,      
+    [RecordEndDateTime]                          DATETIME       NULL,
     [DataCollectionId]                           INT            CONSTRAINT [DF_FactK12StudentEnrollments_DataCollectionId] DEFAULT ((-1)) NOT NULL,
     [SeaId]                                      INT            CONSTRAINT [DF_FactK12StudentEnrollments_SeaId] DEFAULT ((-1)) NOT NULL,
     [IeuId]                                      INT            CONSTRAINT [DF_FactK12StudentEnrollments_IeuId] DEFAULT ((-1)) NOT NULL,
@@ -22,6 +24,10 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     [EnrollmentExitDateId]                       INT            CONSTRAINT [DF_FactK12StudentEnrollments_EnrollmentExitDateId] DEFAULT ((-1)) NOT NULL,
     [EnglishLearnerStatusId]                     INT            CONSTRAINT [DF_FactK12StudentEnrollments_EnglishLearnerStatusId] DEFAULT ((-1)) NOT NULL,
     [K12EnrollmentStatusId]                      INT            CONSTRAINT [DF_FactK12StudentEnrollments_K12EnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
+    [K12RetentionStatusId]                       INT            CONSTRAINT [DF_FactK12StudentEnrollments_K12RetentionStatusId] DEFAULT ((-1)) NOT NULL,
+    [K12DropoutStatusId]                         INT            CONSTRAINT [DF_FactK12StudentEnrollments_K12DropoutStatusId] DEFAULT ((-1)) NOT NULL,
+    [CteOutcomeIndicatorId]                      INT            CONSTRAINT [DF_FactK12StudentEnrollments_CteOutcomeIndicatorId] DEFAULT ((-1)) NOT NULL,
+    [PsEnrollmentStatusId]                       INT            CONSTRAINT [DF_FactK12StudentEnrollments_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
     [K12DemographicId]                           INT            CONSTRAINT [DF_FactK12StudentEnrollments_K12DemographicId] DEFAULT ((-1)) NOT NULL,
     [IdeaStatusId]                               INT            CONSTRAINT [DF_FactK12StudentEnrollments_IdeaStatusId] DEFAULT ((-1)) NOT NULL,
     [HomelessnessStatusId]                       INT            CONSTRAINT [DF_FactK12StudentEnrollments_HomelessnessStatusId] DEFAULT ((-1)) NOT NULL,
@@ -57,6 +63,7 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     [StudentCount]                               INT            NOT NULL,
     [ResponsibleSchoolTypeId]                    INT            CONSTRAINT [DF_FactK12StudentEnrollments_ResponsibleSchoolTypeId] DEFAULT ((-1)) NOT NULL,
     [LeaMembershipResidentId]                    INT            CONSTRAINT [DF_FactK12StudentEnrollments_LeaMembershipResidentId] DEFAULT ((-1)) NOT NULL,
+    [RecordStatusId]                             INT            CONSTRAINT [DF_FactK12StudentEnrollments_RecordStatusId] DEFAULT ((-1)) NOT NULL,
     CONSTRAINT [PK_FactK12StudentEnrollments] PRIMARY KEY NONCLUSTERED ([FactK12StudentEnrollmentId] ASC),
     CONSTRAINT [FK_FactK12StudentEnrollments_CohortGraduationYearId] FOREIGN KEY ([CohortGraduationYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_CohortYearId] FOREIGN KEY ([CohortYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
@@ -80,6 +87,10 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     CONSTRAINT [FK_FactK12StudentEnrollments_ImmigrantStatusId] FOREIGN KEY ([ImmigrantStatusId]) REFERENCES [RDS].[DimImmigrantStatuses] ([DimImmigrantStatusId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_K12EnrollmentStatusId] FOREIGN KEY ([K12EnrollmentStatusId]) REFERENCES [RDS].[DimK12EnrollmentStatuses] ([DimK12EnrollmentStatusId]),
+    CONSTRAINT [FK_FactK12StudentEnrollments_K12DropoutStatusId] FOREIGN KEY ([K12DropoutStatusId]) REFERENCES [RDS].[DimK12DropoutStatuses] ([DimK12DropoutStatusId]),
+    CONSTRAINT [FK_FactK12StudentEnrollments_K12RetentionStatusId] FOREIGN KEY ([K12RetentionStatusId]) REFERENCES [RDS].[DimK12RetentionStatuses] ([DimK12RetentionStatusId]),
+    CONSTRAINT [FK_FactK12StudentEnrollments_PsEnrollmentStatusId] FOREIGN KEY ([PsEnrollmentStatusId]) REFERENCES [RDS].[DimPsEnrollmentStatuses] ([DimPsEnrollmentStatusId]),
+    CONSTRAINT [FK_FactK12StudentEnrollments_CteOutcomeIndicatorId] FOREIGN KEY ([CteOutcomeIndicatorId]) REFERENCES [RDS].[DimCteOutcomeIndicators] ([DimCteOutcomeIndicatorId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_LanguageHomeId] FOREIGN KEY ([LanguageHomeId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]),
@@ -112,7 +123,8 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     CONSTRAINT [FK_FactK12StudentEnrollments_StatusStartDateMilitaryConnectedStudentId] FOREIGN KEY ([StatusStartDateMilitaryConnectedStudentId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_StatusStartDatePerkinsEnglishLearnerId] FOREIGN KEY ([StatusStartDatePerkinsEnglishLearnerId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_StatusStartDateTitleIIIImmigrantId] FOREIGN KEY ([StatusStartDateTitleIIIImmigrantId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
-    CONSTRAINT [FK_FactK12StudentEnrollments_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId])
+    CONSTRAINT [FK_FactK12StudentEnrollments_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
+    CONSTRAINT [FK_FactK12StudentEnrollments_RecordStatusId] FOREIGN KEY ([RecordStatusId]) REFERENCES [RDS].[DimRecordStatuses] ([DimRecordStatusId]),
 );
 
 
@@ -223,6 +235,17 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentEnrollments_StatusStartDateTitleIIIImmigrantId] ON [RDS].[FactK12StudentEnrollments]([StatusStartDateTitleIIIImmigrantId] ASC);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentEnrollments_TitleIIIStatusId] ON [RDS].[FactK12StudentEnrollments]([TitleIIIStatusId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_K12DropoutStatusId] ON [RDS].[FactK12StudentEnrollments]([K12DropoutStatusId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_K12RetentionStatusId] ON [RDS].[FactK12StudentEnrollments]([K12RetentionStatusId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_PsEnrollmentStatusId] ON [RDS].[FactK12StudentEnrollments]([PsEnrollmentStatusId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_CteOutcomeIndicatorId] ON [RDS].[FactK12StudentEnrollments]([CteOutcomeIndicatorId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_RecordStatusId] ON [RDS].[FactK12StudentEnrollments]([RecordStatusId] ASC);
+
 
 GO
 
