@@ -1,12 +1,15 @@
 CREATE TABLE [RDS].[DimAeProviders] (
     [DimAeProviderId]                           INT             IDENTITY (1, 1) NOT NULL,
-    [AeServiceProviderIdentifierSea]            NVARCHAR (50)   NULL,
+    [AdultEducationServiceProviderIdentifierSea]            NVARCHAR (50)   NULL,
     [NameOfInstitution]                         NVARCHAR (1000) NULL,
     [ShortNameOfInstitution]                    NVARCHAR (30)   NULL,
     [AdultEducationProviderTypeCode]            NVARCHAR (50)   NULL,
     [AdultEducationProviderTypeDescription]     NVARCHAR (150)  NULL,
     [LevelOfInstitutionCode]                    NVARCHAR (50)   NULL,
     [LevelOfInstitutionDescription]             NVARCHAR (150)  NULL,
+    [OrganizationOperationalStatusCode]         NVARCHAR (50)   NULL,
+    [OrganizationOperationalStatusDescription]  NVARCHAR (150)  NULL,
+    [OperationalStatusEffectiveDate]            DATETIME        NULL,
     [TelephoneNumber]                           NVARCHAR (24)   NULL,
     [WebSiteAddress]                            NVARCHAR (300)  NULL,
     [MailingAddressStreetNumberAndName]         NVARCHAR (150)  NULL,
@@ -51,15 +54,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001078' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21779' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AdultEducationProviderTypeDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AeServiceProviderIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AdultEducationServiceProviderIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AeServiceProviderIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AdultEducationServiceProviderIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Adult Education Service Provider Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AeServiceProviderIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Adult Education Service Provider Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AdultEducationServiceProviderIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001076' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AeServiceProviderIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001076' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AdultEducationServiceProviderIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21777' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AeServiceProviderIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21777' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'AdultEducationServiceProviderIdentifierSea';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAeProviders', @level2type=N'COLUMN',@level2name=N'Latitude';
 GO
