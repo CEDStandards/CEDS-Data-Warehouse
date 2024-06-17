@@ -15,6 +15,7 @@ CREATE TABLE [RDS].[DimK12Courses] (
     [CourseCertificationDescription] NVARCHAR (300) NOT NULL,
     [TuitionFunded]                  BIT            NOT NULL,
     [CourseFundingProgram]           NVARCHAR (30)  NULL,
+    [CourseFundingProgramAllowed]    NVARCHAR (30)  NULL,
     [CoreAcademicCourseCode]         NVARCHAR (50)  NULL,
     [CoreAcademicCourseDescription]  NVARCHAR (200) NULL,
     CONSTRAINT [PK_DimK12Courses] PRIMARY KEY CLUSTERED ([DimK12CourseId] ASC) WITH (DATA_COMPRESSION = PAGE)
@@ -178,4 +179,14 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001575' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Courses', @level2type=N'COLUMN',@level2name=N'TuitionFunded';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22554' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Courses', @level2type=N'COLUMN',@level2name=N'TuitionFunded';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Courses', @level2type=N'COLUMN',@level2name=N'CourseFundingProgramAllowed';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of permission for allocation of a course funding program''s funds for the support of a course.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Courses', @level2type=N'COLUMN',@level2name=N'CourseFundingProgramAllowed';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Course Funding Program Allowed' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Courses', @level2type=N'COLUMN',@level2name=N'CourseFundingProgramAllowed';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002065' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Courses', @level2type=N'COLUMN',@level2name=N'CourseFundingProgramAllowed';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002065' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Courses', @level2type=N'COLUMN',@level2name=N'CourseFundingProgramAllowed';
 GO

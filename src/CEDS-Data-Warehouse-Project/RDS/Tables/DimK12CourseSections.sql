@@ -6,6 +6,7 @@ CREATE TABLE [RDS].[DimK12CourseSections] (
     [ClassroomIdentifier]            NVARCHAR (40) NULL,
     [GradeValueQualifier]            NVARCHAR (100) NULL,
     [CourseDescription]              NVARCHAR (1024)  NOT NULL,
+    [TimetableDayIdentifier]         NVARCHAR (40) NULL,
     CONSTRAINT [PK_DimK12CourseSections] PRIMARY KEY CLUSTERED ([DimK12CourseSectionId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 
@@ -76,6 +77,16 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000517' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12CourseSections', @level2type=N'COLUMN',@level2name=N'CourseDescription';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000517' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12CourseSections', @level2type=N'COLUMN',@level2name=N'CourseDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12CourseSections', @level2type=N'COLUMN',@level2name=N'TimetableDayIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A description of the course content and/or goals. Reference may be made to state or national content standards.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12CourseSections', @level2type=N'COLUMN',@level2name=N'TimetableDayIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Timetable Day Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12CourseSections', @level2type=N'COLUMN',@level2name=N'TimetableDayIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000523' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12CourseSections', @level2type=N'COLUMN',@level2name=N'TimetableDayIdentifier';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000523' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12CourseSections', @level2type=N'COLUMN',@level2name=N'TimetableDayIdentifier';
 GO
 
 
