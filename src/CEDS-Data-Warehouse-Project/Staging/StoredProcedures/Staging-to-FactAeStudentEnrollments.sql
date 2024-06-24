@@ -14,8 +14,10 @@ BEGIN
            ,Birthdate
            ,Sex
            ,HispanicLatinoEthnicity
+		   ,ApplicationDate
            ,EnrollmentEntryDate
            ,EnrollmentExitDate
+		   ,AdultEducationPostsecondaryTransitionDate
            ,HighSchoolDiplomaDiplomaOrCredentialAwardDate
            ,HighSchoolDiplomaType
            ,ProjectedHighSchoolDiplomaType
@@ -212,7 +214,7 @@ INSERT INTO [RDS].[FactAeStudentEnrollments](
 		ON ISNULL(sae.DisabilityStatus, 'MISSING') = ISNULL(rdds.DisabilityStatusMap, 'MISSING')
 		AND ISNULL(sae.DisabilityConditionType, 'MISSING') = ISNULL(rdds.DisabilityConditionTypeMap, 'MISSING')
 		AND ISNULL(sae.DisabilityDeterminationSourceType, 'MISSING') = ISNULL(rdds.DisabilityDeterminationSourceTypeMap, 'MISSING')
-		AND rdds.Section504StatusMap = 'MISSING'
+		AND rdds.Section504StatusMap = '-1'
 	LEFT JOIN RDS.DimDates rddHighSchoolDiplomaDiplomaOrCredentialAwardDate
 		ON ISNULL(sae.HighSchoolDiplomaDiplomaOrCredentialAwardDate, '1900-01-01') = ISNULL(rddHighSchoolDiplomaDiplomaOrCredentialAwardDate.DateValue, '1900-01-01')
 	LEFT JOIN RDS.vwDimK12AcademicAwardStatuses rdkaas

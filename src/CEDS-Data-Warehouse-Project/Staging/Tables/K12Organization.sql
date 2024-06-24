@@ -31,6 +31,7 @@ CREATE TABLE [Staging].[K12Organization] (
     [PriorSchoolIdentifierSea]                                             NVARCHAR (50)  NULL,
     [School_PriorLeaIdentifierSea]                                         NVARCHAR (50)  NULL,
     [SchoolIdentifierNCES]                                                 NVARCHAR (50)  NULL,
+    [SchoolIdentifierAct]                                                  NVARCHAR (50)  NULL,
     [SchoolOrganizationName]                                               VARCHAR (256)  NULL,
     [School_WebSiteAddress]                                                VARCHAR (300)  NULL,
     [School_OperationalStatus]                                             VARCHAR (100)  NULL,

@@ -16,9 +16,9 @@ AS
 			ELSE -1
 		  END AS Section504StatusMap
 		, rdds.DisabilityConditionTypeCode
-		, sssrd1.OutputCode AS DisabilityConditionTypeMap
+		, sssrd1.InputCode AS DisabilityConditionTypeMap
 		, rdds.DisabilityDeterminationSourceTypeCode
-		, sssrd2.OutputCode AS DisabilityDeterminationSourceTypeMap
+		, sssrd2.InputCode AS DisabilityDeterminationSourceTypeMap
 	FROM rds.DimDisabilityStatuses rdds
 	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
 	LEFT JOIN staging.SourceSystemReferenceData sssrd1

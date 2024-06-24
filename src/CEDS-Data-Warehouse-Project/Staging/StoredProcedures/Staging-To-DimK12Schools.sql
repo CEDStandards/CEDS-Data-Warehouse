@@ -63,6 +63,7 @@ BEGIN
 		, LeaTypeEdfactsCode						VARCHAR(50)
 		, SchoolIdentifierNces						VARCHAR(50)
 		, SchoolIdentifierSea						VARCHAR(50)
+		, SchoolIdentifierAct						VARCHAR(50)
 		, PriorSchoolIdentifierSea					VARCHAR(50)
 		, NameOfInstitution							VARCHAR(200)
 		, SchoolOperationalStatus					VARCHAR(50)
@@ -144,6 +145,7 @@ BEGIN
 
 		, sko.SchoolIdentifierNCES
 		, sko.SchoolIdentifierSea
+		, sko.SchoolIdentifierAct
 		, sko.PriorSchoolIdentifierSea
 		, sko.SchoolOrganizationName
 		, sssrd1.OutputCode -- SchoolOperationalStatus
@@ -279,6 +281,7 @@ BEGIN
 			trgt.LeaTypeDescription 						= src.LeaTypeDescription,
 			trgt.LeaTypeEdFactsCode 						= src.LeaTypeEdFactsCode,
 			trgt.SchoolIdentifierNces 						= src.SchoolIdentifierNces,
+			trgt.SchoolIdentifierAct						= src.SchoolIdentifierAct,
 			trgt.PriorSchoolIdentifierSea 					= src.PriorSchoolIdentifierSea,
 			trgt.SchoolTypeCode 							= src.SchoolTypeCode,
 			trgt.SchoolTypeDescription 						= src.SchoolTypeDescription,
@@ -332,7 +335,8 @@ BEGIN
 		, LeaTypeDescription						
 		, LeaTypeEdfactsCode						
 		, SchoolIdentifierNces						
-		, SchoolIdentifierSea						
+		, SchoolIdentifierSea
+		, SchoolIdentifierAct						
 		, PriorSchoolIdentifierSea					
 		, NameOfInstitution							
 		, SchoolOperationalStatus					
@@ -387,7 +391,8 @@ BEGIN
 		, LeaTypeDescription						
 		, LeaTypeEdfactsCode						
 		, SchoolIdentifierNces						
-		, SchoolIdentifierSea						
+		, SchoolIdentifierSea
+		, SchoolIdentifierAct						
 		, PriorSchoolIdentifierSea					
 		, NameOfInstitution							
 		, SchoolOperationalStatus					
