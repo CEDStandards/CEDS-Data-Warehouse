@@ -9487,33 +9487,38 @@ DROP TABLE #RuralResidencyStatusCode
 	DROP TABLE #WorkBasedLearningOpportunityTypeCode
 
 
-	--------------------------------------------------------
-	-- Populate DimGiftedAndTalentedStatuses   --
-	--------------------------------------------------------
-	IF NOT EXISTS (SELECT 1 FROM rds.DimGiftedAndTalentedStatuses d WHERE d.DimGiftedAndTalentedStatusId = -1) BEGIN
-		SET IDENTITY_INSERT rds.DimGiftedAndTalentedStatuses ON
+	-----------------------------------------------------------------
+	-- Populate DimGiftedAndTalentedStatuses --
+	-----------------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM [RDS].[DimGiftedAndTalentedStatuses] d WHERE d.DimGiftedAndTalentedStatusId = -1) BEGIN
+		SET IDENTITY_INSERT [RDS].[DimGiftedAndTalentedStatuses] ON
 
-			INSERT INTO rds.DimGiftedAndTalentedStatuses(
+			INSERT INTO [RDS].[DimGiftedAndTalentedStatuses] (
 						  DimGiftedAndTalentedStatusId
-						 ,GiftedAndTalentedIndicatorCode
-						 ,GiftedAndTalentedIndicatorDescription
+						, GiftedAndTalentedIndicatorCode
+						, GiftedAndTalentedIndicatorDescription
+						, ProgramGiftedEligibilityCriteriaCode
+						, ProgramGiftedEligibilityCriteriaDescription
 					)
 			VALUES (
 					-1
 					, 'MISSING'
 					, 'MISSING'
-					)
-
-		SET IDENTITY_INSERT rds.DimGiftedAndTalentedStatuses OFF
+					, 'MISSING'
+					, 'MISSING')
+		SET IDENTITY_INSERT [RDS].[DimGiftedAndTalentedStatuses] OFF
 	END
 
-	IF OBJECT_ID('tempdb..#GiftedAndTalentedIndicatorCode') IS NOT NULL
-		DROP TABLE #GiftedAndTalentedIndicatorCode
+	IF OBJECT_ID('tempdb..#GiftedAndTalentedIndicator') IS NOT NULL
+		DROP TABLE #GiftedAndTalentedIndicator
 
-	CREATE TABLE #GiftedAndTalentedIndicatorCode (GiftedAndTalentedIndicatorCode NVARCHAR(50), GiftedAndTalentedIndicatorDescription NVARCHAR(200))
+	CREATE TABLE #GiftedAndTalentedIndicator (
+		GiftedAndTalentedIndicatorCode NVARCHAR(50),
+		GiftedAndTalentedIndicatorDescription NVARCHAR(200)
+	)
 
-	INSERT INTO #GiftedAndTalentedIndicatorCode VALUES ('MISSING', 'MISSING')
-	INSERT INTO #GiftedAndTalentedIndicatorCode 
+	INSERT INTO #GiftedAndTalentedIndicator VALUES ('MISSING', 'MISSING')
+	INSERT INTO #GiftedAndTalentedIndicator 
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
@@ -9521,16 +9526,40 @@ DROP TABLE #RuralResidencyStatusCode
 	WHERE CedsElementTechnicalName = 'GiftedAndTalentedIndicator'
 	ORDER BY CedsOptionSetCode
 
-	INSERT INTO rds.DimGiftedAndTalentedStatuses(
-			 GiftedAndTalentedIndicatorCode
-			,GiftedAndTalentedIndicatorDescription
-			)
+	IF OBJECT_ID('tempdb..#ProgramGiftedEligibilityCriteria') IS NOT NULL
+		DROP TABLE #ProgramGiftedEligibilityCriteria
+
+	CREATE TABLE #ProgramGiftedEligibilityCriteria (
+		ProgramGiftedEligibilityCriteriaCode NVARCHAR(50),
+		ProgramGiftedEligibilityCriteriaDescription NVARCHAR(200)
+	)
+
+	INSERT INTO #ProgramGiftedEligibilityCriteria VALUES ('MISSING', 'MISSING')
+	INSERT INTO #ProgramGiftedEligibilityCriteria 
 	SELECT 
-			 a.GiftedAndTalentedIndicatorCode
-			,a.GiftedAndTalentedIndicatorDescription
-	FROM #GiftedAndTalentedIndicatorCode a
-	LEFT JOIN rds.DimGiftedAndTalentedStatuses main
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'ProgramGiftedEligibilityCriteria'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO [RDS].[DimGiftedAndTalentedStatuses] (
+		GiftedAndTalentedIndicatorCode,
+		GiftedAndTalentedIndicatorDescription,
+		ProgramGiftedEligibilityCriteriaCode,
+		ProgramGiftedEligibilityCriteriaDescription
+	)
+	SELECT 
+		a.GiftedAndTalentedIndicatorCode,
+		a.GiftedAndTalentedIndicatorDescription,
+		b.ProgramGiftedEligibilityCriteriaCode,
+		b.ProgramGiftedEligibilityCriteriaDescription
+	FROM #GiftedAndTalentedIndicator a
+	CROSS JOIN #ProgramGiftedEligibilityCriteria b
+	LEFT JOIN [RDS].[DimGiftedAndTalentedStatuses] main
 		ON a.GiftedAndTalentedIndicatorCode = main.GiftedAndTalentedIndicatorCode
+		AND b.ProgramGiftedEligibilityCriteriaCode = main.ProgramGiftedEligibilityCriteriaCode
 	WHERE main.DimGiftedAndTalentedStatusId IS NULL
 
-	DROP TABLE #GiftedAndTalentedIndicatorCode
+	DROP TABLE #GiftedAndTalentedIndicator
+	DROP TABLE #ProgramGiftedEligibilityCriteria
