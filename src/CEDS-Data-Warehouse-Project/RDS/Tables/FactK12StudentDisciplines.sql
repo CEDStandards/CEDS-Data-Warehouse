@@ -24,6 +24,7 @@ CREATE TABLE [RDS].[FactK12StudentDisciplines] (
     [IdeaStatusId]                      INT             CONSTRAINT [DF_FactK12StudentDisciplines_IdeaStatusId] DEFAULT ((-1)) NOT NULL,
     [ImmigrantStatusId]                 INT             CONSTRAINT [DF_FactK12StudentDisciplines_ImmigrantStatusId] DEFAULT ((-1)) NOT NULL,
     [IncidentIdentifier]                NVARCHAR (40)   NULL,
+    [IncidentId]                        INT             NULL,
     [IncidentStatusId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_IncidentStatusId] DEFAULT ((-1)) NOT NULL,
     [IncidentDateId]                    INT             CONSTRAINT [DF_FactK12StudentDisciplines_IncidentDateId] DEFAULT ((-1)) NOT NULL,
     [K12DemographicId]                  INT             CONSTRAINT [DF_FactK12StudentDisciplines_K12DemographicId] DEFAULT ((-1)) NOT NULL,
@@ -55,6 +56,7 @@ CREATE TABLE [RDS].[FactK12StudentDisciplines] (
     CONSTRAINT [FK_FactK12StudentDisciplines_HomelessnessStatusId] FOREIGN KEY ([HomelessnessStatusId]) REFERENCES [RDS].[DimHomelessnessStatuses] ([DimHomelessnessStatusId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_IdeaStatusId] FOREIGN KEY ([IdeaStatusId]) REFERENCES [RDS].[DimIdeaStatuses] ([DimIdeaStatusId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_ImmigrantStatusId] FOREIGN KEY ([ImmigrantStatusId]) REFERENCES [RDS].[DimImmigrantStatuses] ([DimImmigrantStatusId]),
+    CONSTRAINT [FK_FactK12StudentDisciplines_IncidentId] FOREIGN KEY ([IncidentId]) REFERENCES [RDS].[DimIncidents] ([DimIncidentId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_IncidentDateId] FOREIGN KEY ([IncidentDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_IncidentStatusId] FOREIGN KEY ([IncidentStatusId]) REFERENCES [RDS].[DimIncidentStatuses] ([DimIncidentStatusId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
@@ -144,6 +146,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_TitleIStatusId] ON [RDS].[FactK12StudentDisciplines]([TitleIStatusId] ASC) WITH (FILLFACTOR = 80);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_TitleIIIStatusId] ON [RDS].[FactK12StudentDisciplines]([TitleIIIStatusId] ASC) WITH (FILLFACTOR = 80);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_IncidentId] ON [RDS].[FactK12StudentDisciplines]([IncidentId] ASC) WITH (FILLFACTOR = 80);
 
 GO
 
