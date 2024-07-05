@@ -12,6 +12,8 @@ CREATE TABLE [RDS].[DimCalendarSessions] (
     [DaysInSession]                     INT            NULL,
     [SchoolYearMinutes]                 INT            NULL,
     [InstructionalMinutes]              INT            NULL,
+    [RecordStartDateTime]               DATETIME       NULL,
+    [RecordEndDateTime]                 DATETIME       NULL,
     CONSTRAINT [PK_DimCalendarSessions] PRIMARY KEY CLUSTERED ([DimCalendarSessionId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 
@@ -137,4 +139,24 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000499' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'InstructionalMinutes';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000499' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'InstructionalMinutes';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The start date and, optionally, time that a record is active as used to support version control.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Record Start Date Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001917' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001917' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The end date and, optionally, time that a record is active as used to support version control.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Record End Date Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001918' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001918' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCalendarSessions', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
 GO
