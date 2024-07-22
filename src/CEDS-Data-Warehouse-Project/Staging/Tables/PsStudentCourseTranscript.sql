@@ -63,13 +63,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001071' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElement', @value=N'Student Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElement', @value=N'Student Identification System' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementGlobalId', @value=N'001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementGlobalId', @value=N'001075' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionCode', @value=N'State' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionCode', @value=N'State' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
 GO
@@ -81,13 +81,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000055' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000055' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElement', @value=N'Course Code System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElement', @value=N'Course Code System' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementGlobalId', @value=N'000056' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementGlobalId', @value=N'000056' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionCode', @value=N'State' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionCode', @value=N'State' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/000056' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/000056' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'StateCourseIdentifier';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
 GO
@@ -99,13 +99,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000055' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000055' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElement', @value=N'Course Code System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElement', @value=N'Course Code System' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementGlobalId', @value=N'000056' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementGlobalId', @value=N'000056' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionCode', @value=N'University' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionCode', @value=N'University' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/000056' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_PrefixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/000056' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'UniversityCourseIdentifier';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'AcademicTermDesignator';
 GO

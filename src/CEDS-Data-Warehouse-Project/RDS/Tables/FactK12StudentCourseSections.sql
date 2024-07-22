@@ -27,8 +27,8 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     [EnrollmentEntryDateId]                 INT   CONSTRAINT [DF_FactK12StudentCourseSections_EnrollmentEntryDateId] DEFAULT ((-1)) NOT NULL,
     [CourseSectionExitWithdrawalDateId]     INT   CONSTRAINT [DF_FactK12StudentCourseSections_CourseSectionExitWithdrawalDateId] DEFAULT ((-1)) NOT NULL,
     [CalendarSessionId]                   INT    CONSTRAINT [DF_FactK12StudentCourseSections_CalendarSessionId] DEFAULT ((-1)) NOT NULL,
-    [ClassBeginningTimeId]              INT    CONSTRAINT [FK_FactK12StudentCourseSections_ClassBeginningTimeId] DEFAULT ((-1)) NOT NULL,
-    [ClassEndingTimeId]                 INT    CONSTRAINT [FK_FactK12StudentCourseSections_ClassEndingTimeId] DEFAULT ((-1)) NOT NULL,
+    [ClassBeginningTimeId]              INT    CONSTRAINT [DK_FactK12StudentCourseSections_ClassBeginningTimeId] DEFAULT ((-1)) NOT NULL,
+    [ClassEndingTimeId]                 INT    CONSTRAINT [DK_FactK12StudentCourseSections_ClassEndingTimeId] DEFAULT ((-1)) NOT NULL,
     [MidTermMark]                           NVARCHAR(15) NULL,
     [NumberOfCreditsAttempted]              DECIMAL(9,2) NULL,
     [NumberOfCreditsEarned]                 DECIMAL(9,2) NULL,
@@ -62,14 +62,14 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     CONSTRAINT [FK_FactK12StudentCourseSections_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] FOREIGN KEY ([K12CourseSectionEnrollmentStatusId]) REFERENCES [RDS].[DimK12CourseSectionEnrollmentStatuses] ([DimK12CourseSectionEnrollmentStatusId]),
-    CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningStatusId] FOREIGN KEY ([WorkBasedLearningStatusId]) REFERENCES [RDS].[WorkBasedLearningStatuses] ([WorkBasedLearningStatusId]),
-    CONSTRAINT [DF_FactK12StudentCourseSections_K12CourseSectionId] FOREIGN KEY ([K12CourseSectionId]) REFERENCES [RDS].[DimK12CourseSections] ([DimK12CourseSectionId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningStatusId] FOREIGN KEY ([WorkBasedLearningStatusId]) REFERENCES [RDS].[DimWorkBasedLearningStatuses] ([DimWorkBasedLearningStatusId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionId] FOREIGN KEY ([K12CourseSectionId]) REFERENCES [RDS].[DimK12CourseSections] ([DimK12CourseSectionId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_EnrollmentEntryDateId] FOREIGN KEY ([EnrollmentEntryDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_CourseSectionExitWithdrawalDateId] FOREIGN KEY ([CourseSectionExitWithdrawalDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_CalendarSessionId] FOREIGN KEY ([CalendarSessionId]) REFERENCES [RDS].[DimCalendarSessions] ([DimCalendarSessionId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_ClassBeginningTimeId] FOREIGN KEY ([ClassBeginningTimeId]) REFERENCES [RDS].[DimTimes] ([DimTimeId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_ClassEndingTimeId] FOREIGN KEY ([ClassEndingTimeId]) REFERENCES [RDS].[DimTimes] ([DimTimeId]),
-    CONSTRAINT [DF_FactK12StudentCourseSections_RecordStatusId] FOREIGN KEY ([RecordStatusId]) REFERENCES [RDS].[DimRecordStatuses] ([DimRecordStatusId])
+    CONSTRAINT [FF_FactK12StudentCourseSections_RecordStatusId] FOREIGN KEY ([RecordStatusId]) REFERENCES [RDS].[DimRecordStatuses] ([DimRecordStatusId])
 );
 
 

@@ -19,12 +19,6 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_SourceSystemReferenceData_Unique]
 
 GO
 
-CREATE UNIQUE NONCLUSTERED INDEX [IX_SourceSystemReferenceData_Unique]
-    ON [Staging].[SourceSystemReferenceData]([SchoolYear] DESC, [OutputCode] DESC, [GlobalId] ASC, [InputCode] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
-GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'SourceSystemReferenceData', @level2type=N'COLUMN',@level2name=N'SchoolYear';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year for a reported school session.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'SourceSystemReferenceData', @level2type=N'COLUMN',@level2name=N'SchoolYear';

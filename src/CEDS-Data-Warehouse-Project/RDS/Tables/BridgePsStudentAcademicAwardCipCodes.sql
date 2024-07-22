@@ -6,7 +6,7 @@ CREATE TABLE [RDS].[BridgePsStudentAcademicAwardCipCodes](
 	[PostsecondaryProgramLevelDescription] [nvarchar](200) NOT NULL,
     CONSTRAINT [PK_BridgePsStudentAcademicAwardCipCodes] PRIMARY KEY CLUSTERED ([BridgePsStudentAcademicAwardCipCodeId] ASC),
     CONSTRAINT [FK_BridgePsStudentAcademicAwardCipCodes_FactPsStudentAcademicAwardId] FOREIGN KEY ([FactPsStudentAcademicAwardId]) REFERENCES [RDS].[FactPsStudentAcademicAwards] ([FactPsStudentAcademicAwardId]) ON DELETE No Action ON UPDATE No Action,
-    CONSTRAINT [FK_BridgePsStudentAcademicAwardCipCodes_CipCodeId] FOREIGN KEY ([CipCodeId]) REFERENCES [RDS].[DimCipCodes] ([CipCodeId]) ON DELETE No Action ON UPDATE No Action
+    CONSTRAINT [FK_BridgePsStudentAcademicAwardCipCodes_CipCodeId] FOREIGN KEY ([CipCodeId]) REFERENCES [RDS].[DimCipCodes] ([DimCipCodeId]) ON DELETE No Action ON UPDATE No Action
 )
 GO
 
