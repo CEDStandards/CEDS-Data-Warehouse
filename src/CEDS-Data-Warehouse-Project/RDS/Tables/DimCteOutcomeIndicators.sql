@@ -6,6 +6,8 @@ CREATE TABLE [RDS].[DimCteOutcomeIndicators] (
     [EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode]        NVARCHAR (100) CONSTRAINT [DF_DimCteOutcomeIndicators_EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode] DEFAULT ('MISSING') NOT NULL,
     [EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription] NVARCHAR (300) CONSTRAINT [DF_DimCteOutcomeIndicators_EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode] VARCHAR (50)   CONSTRAINT [DF_DimCteOutcomeIndicators_EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [PerkinsPostProgramPlacementIndicatorCode]                     NVARCHAR (100) CONSTRAINT [DF_DimCteOutcomeIndicators_PerkinsPostProgramPlacementIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [PerkinsPostProgramPlacementIndicatorDescription]              NVARCHAR (300) CONSTRAINT [DF_DimCteOutcomeIndicators_PerkinsPostProgramPlacementIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimCteOutcomeIndicators] PRIMARY KEY CLUSTERED ([DimCteOutcomeIndicatorId] ASC)
 );
 
@@ -51,6 +53,26 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001979' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001979' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the post-program status of a CTE Concentrator in the second quarter after exiting from secondary education.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Perkins Post-Program Placement Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002087' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002087' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the post-program status of a CTE Concentrator in the second quarter after exiting from secondary education.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Perkins Post-Program Placement Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002087' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002087' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCteOutcomeIndicators', @level2type=N'COLUMN',@level2name=N'PerkinsPostProgramPlacementIndicatorDescription';
 GO
 
 
