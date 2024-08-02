@@ -11,7 +11,7 @@ AS
 
 	DROP TABLE IF EXISTS #vwDimK12EnrollmentStatuses
 	SELECT v.* INTO #vwDimK12EnrollmentStatuses FROM RDS.vwDimK12EnrollmentStatuses v JOIN #SchoolYears t on v.SchoolYear = t.SchoolYear
-	CREATE INDEX IX_vwDimK12EnrollmentStatuses ON #vwDimK12EnrollmentStatuses(SchoolYear, EnrollmentStatusMap, EntryTypeMap, ExitOrWithdrawalTypeMap, PostSecondaryEnrollmentStatusMap) INCLUDE (EnrollmentStatusCode, EntryTypeCode, ExitOrWithdrawalTypeCode, PostSecondaryEnrollmentStatusCode)
+	CREATE INDEX IX_vwDimK12EnrollmentStatuses ON #vwDimK12EnrollmentStatuses(SchoolYear, EnrollmentStatusMap, EntryTypeMap, ExitOrWithdrawalTypeMap, PostSecondaryEnrollmentStatusMap) INCLUDE (EnrollmentStatusCode, EntryTypeCode, ExitOrWithdrawalTypeCode)
 
 	DROP TABLE IF EXISTS #vwDimIdeaStatuses
 	SELECT v.* INTO #vwDimIdeaStatuses FROM RDS.vwDimIdeaStatuses v JOIN #SchoolYears t on v.SchoolYear = t.SchoolYear
@@ -343,7 +343,6 @@ AS
 		AND ISNULL(ske.EnrollmentStatus, 'MISSING')																= ISNULL(rdkes.EnrollmentStatusMap, rdkes.EnrollmentStatusCode)
 		AND ISNULL(ske.EntryType, 'MISSING')																	= ISNULL(rdkes.EntryTypeMap, rdkes.EntryTypeCode)
 		AND ISNULL(ske.ExitOrWithdrawalType, 'MISSING')															= ISNULL(rdkes.ExitOrWithdrawalTypeMap, rdkes.ExitOrWithdrawalTypeCode)
-		AND ISNULL(ske.PostSecondaryEnrollmentStatus, 'MISSING')												= ISNULL(rdkes.PostSecondaryEnrollmentStatusMap, rdkes.PostSecondaryEnrollmentStatusCode)
 		AND rdkes.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode											= 'MISSING'
 		AND rdkes.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode										= 'MISSING'
 	LEFT JOIN #vwDimHomelessnessStatuses rdhs

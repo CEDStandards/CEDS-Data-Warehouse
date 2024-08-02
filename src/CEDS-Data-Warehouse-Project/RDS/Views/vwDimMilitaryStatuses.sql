@@ -6,7 +6,7 @@ AS
 		, rdms.MilitaryConnectedStudentIndicatorCode
 		, sssrd1.OutputCode AS MilitaryConnectedStudentIndicatorMap
 		, rdms.ActiveMilitaryStatusIndicatorCode
-		, sssrd2.OutputCode AS ActiveMilitaryStatusndicatorMap
+		, sssrd2.OutputCode AS ActiveMilitaryStatusIndicatorMap
 		, rdms.MilitaryBranchCode
 		, sssrd3.OutputCode AS MilitaryBranchMap
 		, rdms.MilitaryVeteranStatusIndicatorCode
