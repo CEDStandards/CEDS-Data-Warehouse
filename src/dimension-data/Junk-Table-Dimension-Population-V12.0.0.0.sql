@@ -9602,228 +9602,83 @@ DROP TABLE #RuralResidencyStatusCode
 	DROP TABLE #WorkBasedLearningOpportunityTypeCode
 
 
-	--------------------------------------------------------
-	-- Populate DimK12OrganizationStatuses   --
-	--------------------------------------------------------
-	IF NOT EXISTS (SELECT 1 FROM rds.DimK12OrganizationStatuses d WHERE d.DimK12OrganizationStatusId = -1) BEGIN
-		SET IDENTITY_INSERT rds.DimK12OrganizationStatuses ON
+	-----------------------------------------------------------------
+	-- Populate DimGiftedAndTalentedStatuses --
+	-----------------------------------------------------------------
+	
+	IF NOT EXISTS (SELECT 1 FROM [RDS].[DimGiftedAndTalentedStatuses] d WHERE d.DimGiftedAndTalentedStatusId = -1) BEGIN
+		SET IDENTITY_INSERT [RDS].[DimGiftedAndTalentedStatuses] ON
 
-			INSERT INTO rds.DimK12OrganizationStatuses(
-						  DimK12OrganizationStatusId
-						 ,ReapAlternativeFundingStatusCode
-					     ,ReapAlternativeFundingStatusDescription
-					     ,ReapAlternativeFundingStatusEdFactsCode
-					     ,GunFreeSchoolsActReportingStatusCode
-					     ,GunFreeSchoolsActReportingStatusDescription
-					     ,GunFreeSchoolsActReportingStatusEdFactsCode
-					     ,HighSchoolGraduationRateIndicatorStatusCode
-					     ,HighSchoolGraduationRateIndicatorStatusDescription
-					     ,HighSchoolGraduationRateIndicatorStatusEdFactsCode
-					     ,McKinneyVentoSubgrantRecipientCode
-					     ,McKinneyVentoSubgrantRecipientDescription
-				  	     ,McKinneyVentoSubgrantRecipientEdFactsCode
+			INSERT INTO [RDS].[DimGiftedAndTalentedStatuses] (
+						  DimGiftedAndTalentedStatusId
+						, GiftedAndTalentedIndicatorCode
+						, GiftedAndTalentedIndicatorDescription
+						, ProgramGiftedEligibilityCriteriaCode
+						, ProgramGiftedEligibilityCriteriaDescription
 					)
 			VALUES (
 					-1
 					, 'MISSING'
 					, 'MISSING'
 					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					)
-
-		SET IDENTITY_INSERT rds.DimK12OrganizationStatuses OFF
+					, 'MISSING')
+		SET IDENTITY_INSERT [RDS].[DimGiftedAndTalentedStatuses] OFF
 	END
 
-	IF OBJECT_ID('tempdb..#ReapAlternativeFundingStatusCode') IS NOT NULL
-		DROP TABLE #ReapAlternativeFundingStatusCode
+	IF OBJECT_ID('tempdb..#GiftedAndTalentedIndicator') IS NOT NULL
+		DROP TABLE #GiftedAndTalentedIndicator
 
-	CREATE TABLE #ReapAlternativeFundingStatusCode (ReapAlternativeFundingStatusCode VARCHAR(50), ReapAlternativeFundingStatusDescription VARCHAR(200), ReapAlternativeFundingStatusEdFactsCode VARCHAR(50))
+	CREATE TABLE #GiftedAndTalentedIndicator (
+		GiftedAndTalentedIndicatorCode NVARCHAR(50),
+		GiftedAndTalentedIndicatorDescription NVARCHAR(200)
+	)
 
-	INSERT INTO #ReapAlternativeFundingStatusCode VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #ReapAlternativeFundingStatusCode 
-	SELECT 
-		  CedsOptionSetCode
-		, CedsOptionSetDescription
-		, EdFactsOptionSetCode
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'ReapAlternativeFundingStatus'
-	ORDER BY CedsOptionSetCode
-
-	IF OBJECT_ID('tempdb..#GunFreeSchoolsActReportingStatusCode') IS NOT NULL
-		DROP TABLE #GunFreeSchoolsActReportingStatusCode
-
-	CREATE TABLE #GunFreeSchoolsActReportingStatusCode (GunFreeSchoolsActReportingStatusCode VARCHAR(50), GunFreeSchoolsActReportingStatusDescription VARCHAR(200), GunFreeSchoolsActReportingStatusEdFactsCode VARCHAR(50))
-
-	INSERT INTO #GunFreeSchoolsActReportingStatusCode VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #GunFreeSchoolsActReportingStatusCode
-	SELECT 
-		  CedsOptionSetCode
-		, CedsOptionSetDescription
-		, EdFactsOptionSetCode
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'GunFreeSchoolsActReportingStatus'
-	ORDER BY CedsOptionSetCode
-
-	IF OBJECT_ID('tempdb..#HighSchoolGraduationRateIndicatorStatusCode') IS NOT NULL
-		DROP TABLE #HighSchoolGraduationRateIndicatorStatusCode
-
-	CREATE TABLE #HighSchoolGraduationRateIndicatorStatusCode (HighSchoolGraduationRateIndicatorStatusCode VARCHAR(50), HighSchoolGraduationRateIndicatorStatusDescription VARCHAR(200), HighSchoolGraduationRateIndicatorStatusEdFactsCode VARCHAR(50))
-
-	INSERT INTO #HighSchoolGraduationRateIndicatorStatusCode VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #HighSchoolGraduationRateIndicatorStatusCode
-	SELECT 
-		  CedsOptionSetCode
-		, CedsOptionSetDescription
-		, EdFactsOptionSetCode
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'HighSchoolGraduationRateIndicatorStatus'
-	ORDER BY CedsOptionSetCode
-
-	IF OBJECT_ID('tempdb..#McKinneyVentoSubgrantRecipientCode') IS NOT NULL
-		DROP TABLE #McKinneyVentoSubgrantRecipientCode
-
-	CREATE TABLE #McKinneyVentoSubgrantRecipientCode (McKinneyVentoSubgrantRecipientCode VARCHAR(50), McKinneyVentoSubgrantRecipientDescription VARCHAR(200), McKinneyVentoSubgrantRecipientEdFactsCode VARCHAR(50))
-
-	INSERT INTO #McKinneyVentoSubgrantRecipientCode VALUES ('MISSING', 'MISSING', 'MISSING')
-
-	--Remove this code when this element has been added to CEDS (V13)
-	INSERT INTO #McKinneyVentoSubgrantRecipientCode VALUES ('Yes', 'Yes', 'MISSING')
-	INSERT INTO #McKinneyVentoSubgrantRecipientCode VALUES ('No', 'No', 'MISSING')
-
-	--Uncomment when this element has been added to CEDS (V13)
-	--INSERT INTO #McKinneyVentoSubgrantRecipientCode
-	--SELECT 
-	--	  CedsOptionSetCode
-	--	, CedsOptionSetDescription
-	--	, EdFactsOptionSetCode
-	--FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	--WHERE CedsElementTechnicalName = 'McKinneyVentoSubgrantRecipient'
-	--ORDER BY CedsOptionSetCode
-
-	INSERT INTO rds.DimK12OrganizationStatuses(
-			 ReapAlternativeFundingStatusCode
-			,ReapAlternativeFundingStatusDescription
-			,ReapAlternativeFundingStatusEdFactsCode
-			,GunFreeSchoolsActReportingStatusCode
-			,GunFreeSchoolsActReportingStatusDescription
-			,GunFreeSchoolsActReportingStatusEdFactsCode
-			,HighSchoolGraduationRateIndicatorStatusCode
-			,HighSchoolGraduationRateIndicatorStatusDescription
-			,HighSchoolGraduationRateIndicatorStatusEdFactsCode
-			,McKinneyVentoSubgrantRecipientCode
-			,McKinneyVentoSubgrantRecipientDescription
-			,McKinneyVentoSubgrantRecipientEdFactsCode
-			)
-	SELECT 
-			 a.ReapAlternativeFundingStatusCode
-			,a.ReapAlternativeFundingStatusDescription
-			,a.ReapAlternativeFundingStatusEdFactsCode
-			,b.GunFreeSchoolsActReportingStatusCode
-			,b.GunFreeSchoolsActReportingStatusDescription
-			,b.GunFreeSchoolsActReportingStatusEdFactsCode
-			,c.HighSchoolGraduationRateIndicatorStatusCode
-			,c.HighSchoolGraduationRateIndicatorStatusDescription
-			,c.HighSchoolGraduationRateIndicatorStatusEdFactsCode
-			,d.McKinneyVentoSubgrantRecipientCode
-			,d.McKinneyVentoSubgrantRecipientDescription
-			,d.McKinneyVentoSubgrantRecipientEdFactsCode
-	FROM #ReapAlternativeFundingStatusCode a
-	CROSS JOIN #GunFreeSchoolsActReportingStatusCode b
-	CROSS JOIN #HighSchoolGraduationRateIndicatorStatusCode c
-	CROSS JOIN #McKinneyVentoSubgrantRecipientCode d
-	LEFT JOIN rds.DimK12OrganizationStatuses main
-		ON	a.ReapAlternativeFundingStatusCode = main.ReapAlternativeFundingStatusCode								
-		AND b.GunFreeSchoolsActReportingStatusCode = main.GunFreeSchoolsActReportingStatusCode			
-		AND c.HighSchoolGraduationRateIndicatorStatusCode = main.HighSchoolGraduationRateIndicatorStatusCode
-		AND d.McKinneyVentoSubgrantRecipientCode = main.McKinneyVentoSubgrantRecipientCode
-	WHERE main.DimK12OrganizationStatusId IS NULL
-
-	DROP TABLE #ReapAlternativeFundingStatusCode
-	DROP TABLE #GunFreeSchoolsActReportingStatusCode
-	DROP TABLE #HighSchoolGraduationRateIndicatorStatusCode
-	DROP TABLE #McKinneyVentoSubgrantRecipientCode
-
-	--------------------------------------------------------
-	-- Populate DimRecordStatuses   ---------------
-	--------------------------------------------------------
-	IF NOT EXISTS (SELECT 1 FROM rds.DimRecordStatuses d WHERE d.DimRecordStatusId = -1) BEGIN
-		SET IDENTITY_INSERT rds.DimRecordStatuses ON
-
-			INSERT INTO rds.DimRecordStatuses(
-						  DimRecordStatusId
-						 ,RecordStatusTypeCode
-					     ,RecordStatusTypeDescription
-					     ,RecordStatusCreatorEntityCode
-					     ,RecordStatusCreatorEntityDescription
-					)
-			VALUES (
-					-1
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					, 'MISSING'
-					)
-
-		SET IDENTITY_INSERT rds.DimRecordStatuses OFF
-	END
-
-	IF OBJECT_ID('tempdb..#RecordStatusTypeCode') IS NOT NULL
-		DROP TABLE #RecordStatusTypeCode
-
-	CREATE TABLE #RecordStatusTypeCode (RecordStatusTypeCode VARCHAR(50), RecordStatusTypeDescription VARCHAR(200))
-
-	INSERT INTO #RecordStatusTypeCode VALUES ('MISSING', 'MISSING')
-	INSERT INTO #RecordStatusTypeCode 
+	INSERT INTO #GiftedAndTalentedIndicator VALUES ('MISSING', 'MISSING')
+	INSERT INTO #GiftedAndTalentedIndicator 
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'RecordStatusType'
+	WHERE CedsElementTechnicalName = 'GiftedAndTalentedIndicator'
 	ORDER BY CedsOptionSetCode
 
-	IF OBJECT_ID('tempdb..#RecordStatusCreatorEntityCode') IS NOT NULL
-		DROP TABLE #RecordStatusCreatorEntityCode
+	IF OBJECT_ID('tempdb..#ProgramGiftedEligibilityCriteria') IS NOT NULL
+		DROP TABLE #ProgramGiftedEligibilityCriteria
 
-	CREATE TABLE #RecordStatusCreatorEntityCode (RecordStatusCreatorEntityCode VARCHAR(50), RecordStatusCreatorEntityDescription VARCHAR(200))
+	CREATE TABLE #ProgramGiftedEligibilityCriteria (
+		ProgramGiftedEligibilityCriteriaCode NVARCHAR(50),
+		ProgramGiftedEligibilityCriteriaDescription NVARCHAR(200)
+	)
 
-	INSERT INTO #RecordStatusCreatorEntityCode VALUES ('MISSING', 'MISSING')
-	INSERT INTO #RecordStatusCreatorEntityCode
+	INSERT INTO #ProgramGiftedEligibilityCriteria VALUES ('MISSING', 'MISSING')
+	INSERT INTO #ProgramGiftedEligibilityCriteria 
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
 	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'RecordStatusCreatorEntity'
+	WHERE CedsElementTechnicalName = 'ProgramGiftedEligibilityCriteria'
 	ORDER BY CedsOptionSetCode
 
-	INSERT INTO rds.DimRecordStatuses(
-			 RecordStatusTypeCode
-			,RecordStatusTypeDescription
-			,RecordStatusCreatorEntityCode
-			,RecordStatusCreatorEntityDescription
-			)
+	INSERT INTO [RDS].[DimGiftedAndTalentedStatuses] (
+		GiftedAndTalentedIndicatorCode,
+		GiftedAndTalentedIndicatorDescription,
+		ProgramGiftedEligibilityCriteriaCode,
+		ProgramGiftedEligibilityCriteriaDescription
+	)
 	SELECT 
-			 a.RecordStatusTypeCode
-			,a.RecordStatusTypeDescription
-			,b.RecordStatusCreatorEntityCode
-			,b.RecordStatusCreatorEntityDescription
-	FROM #RecordStatusTypeCode a
-	CROSS JOIN #RecordStatusCreatorEntityCode b
-	LEFT JOIN rds.DimRecordStatuses main
-		ON	a.RecordStatusTypeCode = main.RecordStatusTypeCode								
-		AND b.RecordStatusCreatorEntityCode = main.RecordStatusCreatorEntityCode			
-	WHERE main.DimRecordStatusId IS NULL
+		a.GiftedAndTalentedIndicatorCode,
+		a.GiftedAndTalentedIndicatorDescription,
+		b.ProgramGiftedEligibilityCriteriaCode,
+		b.ProgramGiftedEligibilityCriteriaDescription
+	FROM #GiftedAndTalentedIndicator a
+	CROSS JOIN #ProgramGiftedEligibilityCriteria b
+	LEFT JOIN [RDS].[DimGiftedAndTalentedStatuses] main
+		ON a.GiftedAndTalentedIndicatorCode = main.GiftedAndTalentedIndicatorCode
+		AND b.ProgramGiftedEligibilityCriteriaCode = main.ProgramGiftedEligibilityCriteriaCode
+	WHERE main.DimGiftedAndTalentedStatusId IS NULL
 
-	DROP TABLE #RecordStatusTypeCode
-	DROP TABLE #RecordStatusCreatorEntityCode
-
+	DROP TABLE #GiftedAndTalentedIndicator
+	DROP TABLE #ProgramGiftedEligibilityCriteria
 
 	-------------------------------------------------
 	-- Populate DimK12DropoutStatuses ---
