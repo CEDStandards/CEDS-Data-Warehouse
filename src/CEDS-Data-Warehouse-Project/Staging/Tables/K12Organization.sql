@@ -63,7 +63,7 @@ CREATE TABLE [Staging].[K12Organization] (
     [School_TargetedSupport]                                               VARCHAR (100)  NULL,
     [School_ConsolidatedMigrantEducationProgramFundsStatus]                BIT            NULL,
     [School_MigrantEducationProgramProjectType]                            VARCHAR (100)  NULL,
-    [School_TitleIPartASchoolDesignation]                                  VARCHAR (100)  NULL,
+    [School_TitelISchoolStatus]                                            VARCHAR (100)  NULL,
     [School_AdministrativeFundingControl]                                  NVARCHAR (100) NULL,
     [School_IsReportedFederally]                                           BIT            NULL,
     [School_RecordStartDateTime]                                           DATETIME       NULL,
