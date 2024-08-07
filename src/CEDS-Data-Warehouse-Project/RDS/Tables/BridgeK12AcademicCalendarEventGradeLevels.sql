@@ -1,6 +1,6 @@
 CREATE TABLE [RDS].[BridgeK12AcademicCalendarEventGradeLevels] (
     [BridgeK12AcademicCalendarEventGradeLevelId] INT IDENTITY (1, 1) NOT NULL,
-    [FactK12AcademicCalendarEventId]           INT NOT NULL,
+    [FactK12AcademicCalendarEventId]           BIGINT NOT NULL,
     [GradeLevelId]                              INT NOT NULL,
     CONSTRAINT [PK_BridgeK12AcademicCalendarEventGradeLevels] PRIMARY KEY CLUSTERED ([BridgeK12AcademicCalendarEventGradeLevelId] ASC),
     CONSTRAINT [FK_BridgeK12AcademicCalendarEventGradeLevels_FactK12AcademicCalendarEventId] FOREIGN KEY ([FactK12AcademicCalendarEventId]) REFERENCES [RDS].[FactK12AcademicCalendarEvents] ([FactK12AcademicCalendarEventId]),

@@ -207,9 +207,9 @@ INSERT INTO [RDS].[FactAeStudentEnrollments](
 		AND rdms.MigrantPrioritizedForServicesMap = 'MISSING'
 	LEFT JOIN RDS.vwDimMilitaryStatuses rdms2
 		ON ISNULL(sae.MilitaryBranch, 'MISSING') = ISNULL(rdms2.MilitaryBranchMap, 'MISSING')
-		AND ISNULL(sae.ActiveMilitaryStatusIndicator, 'MISSING') = ISNULL(rdms2.MilitaryActiveStudentIndicatorMap, 'MISSING')
-		AND ISNULL(sae.MilitaryConnectedStudentIndicator, 'MISSING') = ISNULL(rdms2.MilitaryConnectedStudentIndicatorMap, 'MISSING')
-		AND ISNULL(sae.MilitaryVeteranStatusIndicator, 'MISSING') = ISNULL(rdms2.MilitaryVeteranStudentIndicatorMap, 'MISSING')
+		AND ISNULL(sae.ActiveMilitaryStatusIndicator, 'MISSING') = ISNULL(rdms2.ActiveMilitaryStudentIndicatorMap, rdms2.ActiveMilitaryStudentIndicatorCode)
+		AND ISNULL(sae.MilitaryConnectedStudentIndicator, 'MISSING') = ISNULL(rdms2.MilitaryConnectedStudentIndicatorMap, MilitaryConnectedStudentIndicatorCode)
+		AND ISNULL(sae.MilitaryVeteranStatusIndicator, 'MISSING') = ISNULL(rdms2.MilitaryVeteranStatusIndicatorMap, MilitaryVeteranStatusIndicatorCode)
 	LEFT JOIN RDS.vwDimDisabilityStatuses rdds
 		ON ISNULL(sae.DisabilityStatus, 'MISSING') = ISNULL(rdds.DisabilityStatusMap, 'MISSING')
 		AND ISNULL(sae.DisabilityConditionType, 'MISSING') = ISNULL(rdds.DisabilityConditionTypeMap, 'MISSING')
@@ -219,7 +219,7 @@ INSERT INTO [RDS].[FactAeStudentEnrollments](
 		ON ISNULL(sae.HighSchoolDiplomaDiplomaOrCredentialAwardDate, '1900-01-01') = ISNULL(rddHighSchoolDiplomaDiplomaOrCredentialAwardDate.DateValue, '1900-01-01')
 	LEFT JOIN RDS.vwDimK12AcademicAwardStatuses rdkaas
 		ON ISNULL(sae.HighSchoolDiplomaType, 'MISSING') = ISNULL(rdkaas.HighSchoolDiplomaTypeCode, 'MISSING')
-		AND ISNULL(sae.ProjectedHighSchoolDiplomaType, 'MISSING') = ISNULL(rdkaas.ProjectedHighSchoolDiplomaType, 'MISSING')
+		AND ISNULL(sae.ProjectedHighSchoolDiplomaType, 'MISSING') = ISNULL(rdkaas.ProjectedHighSchoolDiplomaTypeCode, 'MISSING')
 	LEFT JOIN RDS.DimDataCollections rddc
 		ON sae.DataCollectionName = rddc.DataCollectionName
 

@@ -81,3 +81,145 @@ GO
 
 ALTER TABLE [RDS].[DimCredentialDefinitions] ADD  DEFAULT ('MISSING') FOR [CredentialDefinitionHighGradeLevelCode]
 GO
+
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The course meets the state definition of a core academic course.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Core Academic Course' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000518' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000518' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The course meets the state definition of a core academic course.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Core Academic Course' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000518' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000518' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The method used to conduct the assessment being referenced.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Assessment Method Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001738' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001738' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The method used to conduct the assessment being referenced.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Assessment Method Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001738' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001738' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionAssessmentMethodTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The intended type of application of the credential by the holder.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Intended Purpose Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001749' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001749' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The intended type of application of the credential by the holder.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Intended Purpose Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001749' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001749' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionIntendedPurposeTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The status of the credential offered by a credentialing organization.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Status Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001740' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001740' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The status of the credential offered by a credentialing organization.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Status Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001740' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001740' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionStatusTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'This degree is the highest degree that can be awarded in this classification of instructional programs field or program area.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Terminal Degree Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001953' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001953' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'This degree is the highest degree that can be awarded in this classification of instructional programs field or program area.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Definition Terminal Degree Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001953' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001953' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialDefinitionTerminalDegreeIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the category of credential a person holds.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the category of credential a person holds.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Type of level indicating a point in a progression through an educational or training context, for which the credential is intended; select from an existing enumeration of such types.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'CTDL Audience Level Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001913' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001913' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Type of level indicating a point in a progression through an educational or training context, for which the credential is intended; select from an existing enumeration of such types.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'CTDL Audience Level Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001913' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001913' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CTDLAudienceLevelTypeDescription';
+GO

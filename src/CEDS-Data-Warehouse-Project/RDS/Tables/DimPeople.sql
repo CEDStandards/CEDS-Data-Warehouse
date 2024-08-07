@@ -36,7 +36,7 @@ CREATE TABLE [RDS].[DimPeople] (
     [TelephoneNumberWork]                              NVARCHAR (48)  NULL,
     [PersonalTitleOrPrefix]                            NVARCHAR (200) NULL,
     [PositionTitle]                                    NVARCHAR (200) NULL,
-    [GenerationCodeOrSuffix]                           NVARHAR (75)   NULL,
+    [GenerationCodeOrSuffix]                           NVARCHAR (75)   NULL,
     CONSTRAINT [PK_DimPersonId] PRIMARY KEY CLUSTERED ([DimPersonId] ASC)
 );
 

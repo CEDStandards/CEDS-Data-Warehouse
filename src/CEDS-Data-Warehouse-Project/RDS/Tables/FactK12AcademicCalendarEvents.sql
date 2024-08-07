@@ -19,6 +19,9 @@ CREATE TABLE [RDS].[FactK12AcademicCalendarEvents](
 	[AcademicTermDesignatorId] [int] NOT NULL,
     [CalendarCrisisId] [int] NOT NULL,
     [DataCollectionId] [int] NOT NULL,
+    [RecordStartDateTime] DATETIME NULL,
+    [RecordEndDateTime] DATETIME NULL,
+    [RecordStatusId] [int] NOT NULL,
  CONSTRAINT [PK_FactK12AcademicCalendarEvents] PRIMARY KEY NONCLUSTERED 
 (
 	[FactK12AcademicCalendarEventId] ASC
@@ -54,6 +57,8 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12AcademicCalendarEvents_CalendarCrisisId] 
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AcademicCalendarEvents_DataCollectionId] ON [RDS].[FactK12AcademicCalendarEvents]([DataCollectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AcademicCalendarEvents_RecordStatusId] ON [RDS].[FactK12AcademicCalendarEvents]([RecordStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
 
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_SchoolYearId]  DEFAULT ((-1)) FOR [SchoolYearId]
 GO
@@ -82,6 +87,8 @@ GO
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_CalendarCrisisId]  DEFAULT ((-1)) FOR [CalendarCrisisId]
 GO
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_DataCollectionId]  DEFAULT ((-1)) FOR [DataCollectionId]
+GO
+ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_RecordStatusId]  DEFAULT ((-1)) FOR [RecordStatusId]
 GO
 
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents]  WITH CHECK ADD  CONSTRAINT [FK_FactK12AcademicCalendarEvents_SchoolYearId] FOREIGN KEY([SchoolYearId])
@@ -182,115 +189,101 @@ GO
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] CHECK CONSTRAINT [FK_FactK12AcademicCalendarEvents_DataCollectionId]
 GO
 
+ALTER TABLE [RDS].[FactK12AcademicCalendarEvents]  WITH CHECK ADD  CONSTRAINT [FK_FactK12AcademicCalendarEvents_RecordStatusId] FOREIGN KEY([RecordStatusId])
+REFERENCES [RDS].[DimRecordStatuses] ([DimRecordStatusId])
+GO
+
 -- Extended Properties
 
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The date of the scheduled or unscheduled calendar event.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'CalendarEventDateId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Calendar Event Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'CalendarEventDateId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001275' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'CalendarEventDateId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001275' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'CalendarEventDateId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'CalendarEventDateId'
 GO
-
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The starting hour, minute and second.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'StartTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Start Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'StartTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001919' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'StartTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001919' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'StartTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'StartTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The ending hour, minute and second.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'EndTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'End Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'EndTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001920' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'EndTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001920' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'EndTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'EndTimeId'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of minutes in the day in which the school is normally in session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'MinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Minutes Per Day' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'MinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000500' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'MinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000500' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'MinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'MinutesPerDay'
 GO
-
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of instructional minutes in the day in which the school is normally in session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'InstructionalMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Instructional Minutes Per Day' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'InstructionalMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002099' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'InstructionalMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002099' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'InstructionalMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'InstructionalMinutesPerDay'
 GO
-
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of lunch minutes in the day in which the school is normally in session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'LunchMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Lunch Minutes Per Day' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'LunchMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002100' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'LunchMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002100' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'LunchMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'LunchMinutesPerDay'
 GO
-
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The number of recess minutes in the day in which the school is normally in session.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecessMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Recess Minutes Per Day' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecessMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002101' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecessMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002101' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecessMinutesPerDay'
 GO
-
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecessMinutesPerDay'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The start date and, optionally, time that a record is active as used to support version control.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Record Start Date Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001917' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001917' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The end date and, optionally, time that a record is active as used to support version control.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Record End Date Time' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001918' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001918' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12AcademicCalendarEvents', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime'
 GO
 
 

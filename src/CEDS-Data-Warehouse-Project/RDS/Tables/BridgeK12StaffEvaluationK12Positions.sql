@@ -5,7 +5,7 @@ CREATE TABLE [RDS].[BridgeK12StaffEvaluationK12Positions]
 	[K12PositionId] int NULL,
 	CONSTRAINT [PK_BridgeFactK12StaffEvaluationK12Positions] PRIMARY KEY CLUSTERED ([BridgeK12StaffEvaluationK12PositionId] ASC),
 	CONSTRAINT [FK_BridgeFactK12StaffEvaluationK12Positions_FactK12StaffEvaluations] FOREIGN KEY ([FactK12StaffEvaluationId]) REFERENCES [RDS].[FactK12StaffEvaluationParts] ([FactK12StaffEvaluationPartId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_BridgeFactK12StaffEvaluationK12Positions_K12PositionId] FOREIGN KEY ([K12PositionId]) REFERENCES [RDS].[DimK12Positions] ([DimK12PositionId]) ON DELETE No Action ON UPDATE No Action
+	CONSTRAINT [FK_BridgeFactK12StaffEvaluationK12Positions_K12JobPositionId] FOREIGN KEY ([K12PositionId]) REFERENCES [RDS].[DimK12JobPositions] ([DimK12JobPositionId]) ON DELETE No Action ON UPDATE No Action
 )
 GO
 

@@ -91,23 +91,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001576' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22555' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryConnectedStudentIndicatorEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorCode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStatusIndicatorDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a person is a veteran who served on Active Duty, in the National Guard, or in the Reserve components of the United States military services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a person is a veteran who served on Active Duty, in the National Guard, or in the Reserve components of the United States military services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStatusIndicatorDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Military Veteran Status Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Military Veteran Status Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStatusIndicatorDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001578' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001578' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStatusIndicatorDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001578' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a person is a veteran who served on Active Duty, in the National Guard, or in the Reserve components of the United States military services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Military Veteran Status Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001578' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001578' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStudentIndicatorDescription';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001578' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimMilitaryStatuses', @level2type=N'COLUMN',@level2name=N'MilitaryVeteranStatusIndicatorDescription';
 GO

@@ -34,7 +34,7 @@ BEGIN
 			, TelephoneNumberWork			  NVARCHAR(24) NULL
 			, K12StudentStudentIdentifierState		  NVARCHAR(40) NULL
 			, PsStudentStudentIdentifierState		  NVARCHAR(40) NULL
-			, K12StaffMemberIdentifierState	  NVARCHAR(40) NULL
+			, K12StaffStaffMemberIdentifierState	  NVARCHAR(40) NULL
 			, IsActiveK12Student			  BIT
 			, IsActivePsStudent				  BIT
 			, IsActiveK12Staff		  BIT
@@ -235,7 +235,6 @@ BEGIN
 		ALTER INDEX IX_DimPeople_All ON RDS.DimPeople DISABLE
 		ALTER INDEX IX_DimPeople_IsActiveK12Student ON RDS.DimPeople DISABLE
 		ALTER INDEX IX_DimPeople_IsActiveK12Student_IsActivePsStudent_WithIncludes ON RDS.DimPeople DISABLE
-		ALTER INDEX IX_DimPeople_RecordEndDateTime_WithIncludes ON RDS.DimPeople DISABLE
 		
 		UPDATE person --25 minutes
 		SET RecordEndDateTime = NULL
@@ -276,7 +275,6 @@ BEGIN
 		DECLARE @index SMALLINT = 0
 
 		ALTER INDEX IX_DimPeople_RecordStartDateTime_K12ID_PSID_RecordEndDateTime ON RDS.DimPeople DISABLE
-		ALTER INDEX IX_DimPeople_RecordEndDateTime_WithIncludes ON RDS.DimPeople DISABLE
 		ALTER INDEX IX_DimPeople_K12Students ON RDS.DimPeople DISABLE
 
 		WHILE @index <= 9

@@ -5,8 +5,8 @@ AS
 		, rsy.SchoolYear
 		, rdms.MilitaryConnectedStudentIndicatorCode
 		, sssrd1.OutputCode AS MilitaryConnectedStudentIndicatorMap
-		, rdms.ActiveMilitaryStatusndicatorCode
-		, sssrd2.OutputCode AS ActiveMilitaryStatusndicatorMap
+		, rdms.ActiveMilitaryStatusIndicatorCode
+		, sssrd2.OutputCode AS ActiveMilitaryStatusIndicatorMap
 		, rdms.MilitaryBranchCode
 		, sssrd3.OutputCode AS MilitaryBranchMap
 		, rdms.MilitaryVeteranStatusIndicatorCode
@@ -18,7 +18,7 @@ AS
 		AND sssrd1.TableName = 'RefMilitaryConnectedStudentIndicator'
 		AND rsy.SchoolYear = sssrd1.SchoolYear
 	LEFT JOIN staging.SourceSystemReferenceData sssrd2
-		ON rdms.ActiveMilitaryStatusndicatorCode = sssrd2.OutputCode
+		ON rdms.ActiveMilitaryStatusIndicatorCode = sssrd2.OutputCode
 		AND sssrd2.TableName = 'RefActiveMilitaryStatusndicator'
 		AND rsy.SchoolYear = sssrd2.SchoolYear
 	LEFT JOIN staging.SourceSystemReferenceData sssrd3

@@ -1143,32 +1143,79 @@ GO
 
 	PRINT 'Populate DimPsEnrollmentStatuses'
 
-	------------------------------------------------
-	-- Populate DimPsEnrollmentStatuses			 ---
-	------------------------------------------------
+	---------------------------------------------------
+	-- Populate DimPsEnrollmentStatuses ---
+	---------------------------------------------------
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimPsEnrollmentStatuses d WHERE d.PostsecondaryExitOrWithdrawalTypeCode = 'MISSING') BEGIN
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimPsEnrollmentStatuses WHERE DimPsEnrollmentStatusId = -1) BEGIN
 		SET IDENTITY_INSERT RDS.DimPsEnrollmentStatuses ON
 
-		INSERT INTO RDS.DimPsEnrollmentStatuses (DimPsEnrollmentStatusId, PostsecondaryExitOrWithdrawalTypeCode, PostsecondaryExitOrWithdrawalTypeDescription)
-			VALUES (-1, 'MISSING', 'MISSING')
+		INSERT INTO [RDS].DimPsEnrollmentStatuses
+           ([DimPsEnrollmentStatusId]
+		   ,[PostsecondaryExitOrWithdrawalTypeCode]
+		   ,[PostsecondaryExitOrWithdrawalTypeDescription]
+		   ,[PostsecondaryEnrollmentStatusCode]
+		   ,[PostsecondaryEnrollmentStatusDescription]
+		   ,[PostSecondaryEnrollmentStatusEdFactsCode])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
 
 		SET IDENTITY_INSERT RDS.DimPsEnrollmentStatuses OFF
 	END
 
-	INSERT INTO RDS.DimPsEnrollmentStatuses
-		(
-			  PostsecondaryExitOrWithdrawalTypeCode
-			, PostsecondaryExitOrWithdrawalTypeDescription
-		)
+
+	CREATE TABLE #PostsecondaryExitOrWithdrawalType (PostsecondaryExitOrWithdrawalTypeCode VARCHAR(50), PostsecondaryExitOrWithdrawalTypeDescription VARCHAR(200))
+
+	INSERT INTO #PostsecondaryExitOrWithdrawalType VALUES ('MISSING', 'MISSING')
+
+	INSERT INTO #PostsecondaryExitOrWithdrawalType
 	SELECT 
-		  ceds.CedsOptionSetCode
-		, ceds.CedsOptionSetDescription
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping ceds
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'PostsecondaryExitOrWithdrawalType'
+
+
+	CREATE TABLE #PostsecondaryEnrollmentStatus (PostsecondaryEnrollmentStatusCode VARCHAR(50), PostsecondaryEnrollmentStatusDescription VARCHAR(200), PostSecondaryEnrollmentStatusEdFactsCode VARCHAR(200))
+
+	INSERT INTO #PostsecondaryEnrollmentStatus VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #PostsecondaryEnrollmentStatus
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, EdFactsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'PostsecondaryEnrollmentStatus'
+
+
+	INSERT INTO RDS.DimPsEnrollmentStatuses
+		  ([PostsecondaryExitOrWithdrawalTypeCode]
+		   ,[PostsecondaryExitOrWithdrawalTypeDescription]
+		   ,[PostsecondaryEnrollmentStatusCode]
+		   ,[PostsecondaryEnrollmentStatusDescription]
+		   ,[PostSecondaryEnrollmentStatusEdFactsCode])
+	SELECT DISTINCT
+		  a.PostsecondaryExitOrWithdrawalTypeCode
+		, a.PostsecondaryExitOrWithdrawalTypeDescription
+		, b.PostsecondaryEnrollmentStatusCode
+		, b.PostsecondaryEnrollmentStatusDescription
+		, b.PostSecondaryEnrollmentStatusEdFactsCode
+	FROM #PostsecondaryExitOrWithdrawalType a
+	CROSS JOIN #PostsecondaryEnrollmentStatus b
 	LEFT JOIN rds.DimPsEnrollmentStatuses main
-		ON ceds.CedsOptionSetCode = main.PostsecondaryExitOrWithdrawalTypeCode
+		ON a.PostsecondaryExitOrWithdrawalTypeCode = main.PostsecondaryEnrollmentStatusCode
+		AND b.PostsecondaryEnrollmentStatusCode = main.PostsecondaryEnrollmentStatusCode
 	WHERE main.DimPsEnrollmentStatusId IS NULL
-		AND ceds.CedsElementTechnicalName = 'PostsecondaryExitOrWithdrawalType'
+
+	DROP TABLE #PostsecondaryExitOrWithdrawalType
+	DROP TABLE #PostsecondaryEnrollmentStatus
 
 
 	PRINT 'Populate DimK12EnrollmentStatuses'
@@ -1189,22 +1236,12 @@ GO
            ,[EntryTypeDescription]
            ,[ExitOrWithdrawalTypeCode]
            ,[ExitOrWithdrawalTypeDescription]
-           ,[PostSecondaryEnrollmentStatusCode]
-           ,[PostSecondaryEnrollmentStatusDescription]
-           ,[PostSecondaryEnrollmentStatusEdFactsCode]
-           ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode]
-           ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription]
-           ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode]
-           ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode]
-           ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription]
-           ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode])
+		   ,[AdjustedExitOrWithdrawalTypeCode]
+		   ,[AdjustedExitOrWithdrawalTypeDescription]
+		   ,[ExitOrWithdrawalStatusCode]
+		   ,[ExitOrWithdrawalStatusDescription])
 			VALUES (
 				  -1
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
@@ -1250,37 +1287,27 @@ GO
 	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'ExitOrWithdrawalType'
 
-	CREATE TABLE #PostSecondaryEnrollmentStatus (PostSecondaryEnrollmentStatusCode VARCHAR(50), PostSecondaryEnrollmentStatusDescription VARCHAR(200), PostSecondaryEnrollmentStatusEdFactsCode VARCHAR(50))
 
-	INSERT INTO #PostSecondaryEnrollmentStatus VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #PostSecondaryEnrollmentStatus 
+	CREATE TABLE #AdjustedExitOrWithdrawalType (AdjustedExitOrWithdrawalTypeCode VARCHAR(50), AdjustedExitOrWithdrawalTypeDescription VARCHAR(200))
+
+	INSERT INTO #AdjustedExitOrWithdrawalType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AdjustedExitOrWithdrawalType 
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-		, CedsOptionSetCode AS EdFactsOptionSetCode
 	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'PostSecondaryEnrollmentStatus'
+	WHERE CedsElementTechnicalName = 'AdjustedExitOrWithdrawalType'
 
-	CREATE TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeType (EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode VARCHAR(50), EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription VARCHAR(200), EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode VARCHAR(50))
 
-	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeType VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeType 
+	CREATE TABLE #ExitOrWithdrawalStatus (ExitOrWithdrawalStatusCode VARCHAR(50), ExitOrWithdrawalStatusDescription VARCHAR(200))
+
+	INSERT INTO #ExitOrWithdrawalStatus VALUES ('MISSING', 'MISSING')
+	INSERT INTO #ExitOrWithdrawalStatus
 	SELECT 
 		  CedsOptionSetCode
 		, CedsOptionSetDescription
-		, CedsOptionSetCode AS EdFactsOptionSetCode
 	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeType'
-
-	CREATE TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType (EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode VARCHAR(50), EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription VARCHAR(200), EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode VARCHAR(50))
-
-	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType 
-	SELECT 
-		  CedsOptionSetCode
-		, CedsOptionSetDescription
-		, CedsOptionSetCode AS EdFactsOptionSetCode
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeExitType'
+	WHERE CedsElementTechnicalName = 'ExitOrWithdrawalStatus'
 
 
 	INSERT INTO RDS.DimK12EnrollmentStatuses
@@ -1290,15 +1317,10 @@ GO
 		,[EntryTypeDescription]
 		,[ExitOrWithdrawalTypeCode]
 		,[ExitOrWithdrawalTypeDescription]
-		,[PostSecondaryEnrollmentStatusCode]
-		,[PostSecondaryEnrollmentStatusDescription]
-		,[PostSecondaryEnrollmentStatusEdFactsCode]
-        ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode]
-        ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription]
-        ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode]
-        ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode]
-        ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription]
-        ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode])
+		,[AdjustedExitOrWithdrawalTypeCode]
+		,[AdjustedExitOrWithdrawalTypeDescription]
+		,[ExitOrWithdrawalStatusCode]
+		,[ExitOrWithdrawalStatusDescription])
 	SELECT DISTINCT
 		  a.EnrollmentStatusCode
 		, a.EnrollmentStatusDescription
@@ -1306,37 +1328,28 @@ GO
 		, b.EntryTypeDescription
 		, c.ExitOrWithdrawalTypeCode
 		, c.ExitOrWithdrawalTypeDescription
-		, d.PostSecondaryEnrollmentStatusCode
-		, d.PostSecondaryEnrollmentStatusDescription
-		, d.PostSecondaryEnrollmentStatusEdFactsCode
-		, e.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode
-		, e.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription
-		, e.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode
-		, f.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
-		, f.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription
-		, f.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode
+		, d.AdjustedExitOrWithdrawalTypeCode
+		, d.AdjustedExitOrWithdrawalTypeDescription
+		, e.ExitOrWithdrawalStatusCode
+		, e.ExitOrWithdrawalStatusDescription
 	FROM #EnrollmentStatus a
 	CROSS JOIN #EntryType b
 	CROSS JOIN #ExitOrWithdrawalType c
-	CROSS JOIN #PostSecondaryEnrollmentStatus d
-	CROSS JOIN #EdFactsAcademicOrCareerAndTechnicalOutcomeType e
-	CROSS JOIN #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType f
+	CROSS JOIN #AdjustedExitOrWithdrawalType d
+	CROSS JOIN #ExitOrWithdrawalStatus e
 	LEFT JOIN rds.DimK12EnrollmentStatuses main
 		ON a.EnrollmentStatusCode = main.EnrollmentStatusCode
 		AND b.EntryTypeCode = main.EntryTypeCode
 		AND c.ExitOrWithdrawalTypeCode = main.ExitOrWithdrawalTypeCode
-		AND d.PostSecondaryEnrollmentStatusCode = main.PostSecondaryEnrollmentStatusCode
-		AND e.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode = main.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode
-		AND f.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode = main.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
+		AND d.AdjustedExitOrWithdrawalTypeCode = main.AdjustedExitOrWithdrawalTypeCode
+		AND e.ExitOrWithdrawalStatusCode = main.ExitOrWithdrawalStatusCode
 	WHERE main.DimK12EnrollmentStatusId IS NULL
 
 	DROP TABLE #EnrollmentStatus
 	DROP TABLE #EntryType
 	DROP TABLE #ExitOrWithdrawalType
-	DROP TABLE #PostSecondaryEnrollmentStatus
-	DROP TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeType
-	DROP TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType
-
+	DROP TABLE #AdjustedExitOrWithdrawalType
+	DROP TABLE #ExitOrWithdrawalStatus
 
 
 	PRINT 'Populate DimPsInstitutionStatuses'
@@ -5699,6 +5712,41 @@ GO
 	-- Populate DimK12EmploymentStatuses --
 	------------------------------------------------------------------------------
 
+	IF NOT EXISTS (SELECT 1 FROM rds.DimK12EmploymentStatuses d WHERE d.DimK12EmploymentStatusId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimK12EmploymentStatuses ON
+
+			INSERT INTO rds.DimK12EmploymentStatuses (
+						  DimK12EmploymentStatusId
+						, EmploymentStatusCode
+						, EmploymentStatusDescription
+						, EmploymentSeparationReasonCode
+						, EmploymentSeparationReasonDescription
+						, EmploymentSeparationTypeCode
+						, EmploymentSeparationTypeDescription
+						, TitleITargetedAssistanceStaffFundedCode
+						, TitleITargetedAssistanceStaffFundedDescription
+						, MEPPersonnelIndicatorCode
+						, MEPPersonnelIndicatorDescription
+						, SalaryForTeachingAssignmentOnlyIndicatorCode
+						, SalaryForTeachingAssignmentOnlyIndicatorDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimK12EmploymentStatuses OFF
+	END
+
 	-- Create temp tables for all elements
 	IF OBJECT_ID('tempdb..#EmploymentStatusCode') IS NOT NULL
 		DROP TABLE #EmploymentStatusCode
@@ -5726,6 +5774,20 @@ GO
 		, CedsOptionSetDescription
 	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EmploymentSeparationReason'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#EmploymentSeparationTypeCode') IS NOT NULL
+		DROP TABLE #EmploymentSeparationTypeCode
+
+	CREATE TABLE #EmploymentSeparationTypeCode (EmploymentSeparationTypeCode VARCHAR(50), EmploymentSeparationTypeDescription VARCHAR(200))
+
+	INSERT INTO #EmploymentSeparationTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #EmploymentSeparationTypeCode
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EmploymentSeparationType'
 	ORDER BY CedsOptionSetCode
 
 	IF OBJECT_ID('tempdb..#TitleITargetedAssistanceStaffFundedCode') IS NOT NULL
@@ -5756,42 +5818,70 @@ GO
 	WHERE CedsElementTechnicalName = 'MEPPersonnelIndicatorCode'
 	ORDER BY CedsOptionSetCode
 
+	IF OBJECT_ID('tempdb..#SalaryForTeachingAssignmentOnlyIndicatorCode') IS NOT NULL
+		DROP TABLE #SalaryForTeachingAssignmentOnlyIndicatorCode
+
+	CREATE TABLE #SalaryForTeachingAssignmentOnlyIndicatorCode (SalaryForTeachingAssignmentOnlyIndicatorCode VARCHAR(50), SalaryForTeachingAssignmentOnlyIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #SalaryForTeachingAssignmentOnlyIndicatorCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #SalaryForTeachingAssignmentOnlyIndicatorCode
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'SalaryForTeachingAssignmentOnlyIndicator'
+	ORDER BY CedsOptionSetCode
+
 	-- Insert into DimK12EmploymentStatuses table
 	INSERT INTO [RDS].[DimK12EmploymentStatuses](
-		[EmploymentStatusCode]
+		  [EmploymentStatusCode]
 		, [EmploymentStatusDescription]
 		, [EmploymentSeparationReasonCode]
 		, [EmploymentSeparationReasonDescription]
+		, [EmploymentSeparationTypeCode]
+		, EmploymentSeparationTypeDescription
 		, [TitleITargetedAssistanceStaffFundedCode]
 		, [TitleITargetedAssistanceStaffFundedDescription]
 		, [MEPPersonnelIndicatorCode]
 		, [MEPPersonnelIndicatorDescription]
+		, [SalaryForTeachingAssignmentOnlyIndicatorCode]
+		, [SalaryForTeachingAssignmentOnlyIndicatorDescription]
 	)
 	SELECT 
-		esc.EmploymentStatusCode
-		, esc.EmploymentStatusDescription
-		, esrc.EmploymentSeparationReasonCode
-		, esrc.EmploymentSeparationReasonDescription
-		, tiasfc.TitleITargetedAssistanceStaffFundedCode
-		, tiasfc.TitleITargetedAssistanceStaffFundedDescription
-		, mic.MEPPersonnelIndicatorCode
-		, mic.MEPPersonnelIndicatorDescription
-	FROM #EmploymentStatusCode esc
-	CROSS JOIN #EmploymentSeparationReasonCode esrc
-	CROSS JOIN #TitleITargetedAssistanceStaffFundedCode tiasfc
-	CROSS JOIN #MEPPersonnelIndicatorCode mic
-	LEFT JOIN [RDS].[DimK12EmploymentStatuses] kes
-		ON esc.EmploymentStatusCode = kes.EmploymentStatusCode
-		AND esrc.EmploymentSeparationReasonCode = kes.EmploymentSeparationReasonCode
-		AND tiasfc.TitleITargetedAssistanceStaffFundedCode = kes.TitleITargetedAssistanceStaffFundedCode
-		AND mic.MEPPersonnelIndicatorCode = kes.MEPPersonnelIndicatorCode
-	WHERE kes.DimK12EmploymentStatusId IS NULL
+		a.EmploymentStatusCode
+		, a.EmploymentStatusDescription
+		, b.EmploymentSeparationReasonCode
+		, b.EmploymentSeparationReasonDescription
+		, c.EmploymentSeparationTypeCode
+		, c.EmploymentSeparationTypeDescription
+		, d.TitleITargetedAssistanceStaffFundedCode
+		, d.TitleITargetedAssistanceStaffFundedDescription
+		, e.MEPPersonnelIndicatorCode
+		, e.MEPPersonnelIndicatorDescription
+		, f.SalaryForTeachingAssignmentOnlyIndicatorCode
+		, f.SalaryForTeachingAssignmentOnlyIndicatorDescription
+	FROM #EmploymentStatusCode a
+	CROSS JOIN #EmploymentSeparationReasonCode b
+	CROSS JOIN #EmploymentSeparationTypeCode c
+	CROSS JOIN #TitleITargetedAssistanceStaffFundedCode d
+	CROSS JOIN #MEPPersonnelIndicatorCode e
+	CROSS JOIN #SalaryForTeachingAssignmentOnlyIndicatorCode f
+	LEFT JOIN [RDS].[DimK12EmploymentStatuses] main
+		ON a.EmploymentStatusCode = main.EmploymentStatusCode
+		AND b.EmploymentSeparationReasonCode = main.EmploymentSeparationReasonCode
+		AND c.EmploymentSeparationTypeCode = main.EmploymentSeparationTypeCode
+		AND d.TitleITargetedAssistanceStaffFundedCode = main.TitleITargetedAssistanceStaffFundedCode
+		AND e.MEPPersonnelIndicatorCode = main.MEPPersonnelIndicatorCode
+		AND f.SalaryForTeachingAssignmentOnlyIndicatorCode = main.SalaryForTeachingAssignmentOnlyIndicatorCode
+	WHERE main.DimK12EmploymentStatusId IS NULL
 
 	-- Drop temp tables
 	DROP TABLE #EmploymentStatusCode
 	DROP TABLE #EmploymentSeparationReasonCode
+	DROP TABLE #EmploymentSeparationTypeCode
 	DROP TABLE #TitleITargetedAssistanceStaffFundedCode
 	DROP TABLE #MEPPersonnelIndicatorCode
+	DROP TABLE #SalaryForTeachingAssignmentOnlyIndicatorCode
 
 
 	PRINT 'Populate DimK12StaffAssignmentStatuses'
@@ -5899,7 +5989,6 @@ GO
 	DROP TABLE #ClassroomPositionType
 	DROP TABLE #PrimaryAssignmentIndicator
 
-
 ------------------------------------------------------------------------------
 -- Populate DimK12CourseSectionStatuses --
 ------------------------------------------------------------------------------
@@ -5919,9 +6008,13 @@ IF NOT EXISTS (SELECT 1 FROM rds.DimK12CourseSectionStatuses d WHERE d.DimK12Cou
 					, CourseSectionInstructionalDeliveryModeDescription
 					, ReceivingLocationOfInstructionCode
 					, ReceivingLocationOfInstructionDescription
+					, VirtualIndicatorCode
+					, VirtualIndicatorDescription
 				)
 		VALUES (
 				-1
+				, 'MISSING'
+				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
@@ -6011,6 +6104,21 @@ FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 WHERE CedsElementTechnicalName = 'ReceivingLocationOfInstruction'
 ORDER BY CedsOptionSetCode
 
+-- Create temp tables for all elements
+IF OBJECT_ID('tempdb..#VirtualIndicator') IS NOT NULL
+	DROP TABLE #VirtualIndicator
+
+CREATE TABLE #VirtualIndicator (VirtualIndicatorCode VARCHAR(50), VirtualIndicatorDescription VARCHAR(200))
+
+INSERT INTO #VirtualIndicator VALUES ('MISSING', 'MISSING')
+INSERT INTO #VirtualIndicator
+SELECT 
+		CedsOptionSetCode
+	, CedsOptionSetDescription
+FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+WHERE CedsElementTechnicalName = 'VirtualIndicator'
+ORDER BY CedsOptionSetCode
+
 -- Insert into DimK12CourseSectionStatuses table
 INSERT INTO [RDS].[DimK12CourseSectionStatuses](
 	[BlendedLearningModelTypeCode]
@@ -6023,30 +6131,36 @@ INSERT INTO [RDS].[DimK12CourseSectionStatuses](
 	, [CourseSectionInstructionalDeliveryModeDescription]
 	, [ReceivingLocationOfInstructionCode]
 	, [ReceivingLocationOfInstructionDescription]
+	, [VirtualIndicatorCode]
+	, [VirtualIndicatorDescription]
 )
 SELECT 
-	blmt.BlendedLearningModelTypeCode
-	, blmt.BlendedLearningModelTypeDescription
-	, cim.CourseInteractionModeCode
-	, cim.CourseInteractionModeDescription
-	, csarm.CourseSectionAssessmentReportingMethodCode
-	, csarm.CourseSectionAssessmentReportingMethodDescription
-	, csidm.CourseSectionInstructionalDeliveryModeCode
-	, csidm.CourseSectionInstructionalDeliveryModeDescription
-	, rloi.ReceivingLocationOfInstructionCode
-	, rloi.ReceivingLocationOfInstructionDescription
-FROM #BlendedLearningModelType blmt
-CROSS JOIN #CourseInteractionMode cim
-CROSS JOIN #CourseSectionAssessmentReportingMethod csarm
-CROSS JOIN #CourseSectionInstructionalDeliveryMode csidm
-CROSS JOIN #ReceivingLocationOfInstruction rloi
-LEFT JOIN [RDS].[DimK12CourseSectionStatuses] kcs
-	ON blmt.BlendedLearningModelTypeCode = kcs.BlendedLearningModelTypeCode
-	AND cim.CourseInteractionModeCode = kcs.CourseInteractionModeCode
-	AND csarm.CourseSectionAssessmentReportingMethodCode = kcs.CourseSectionAssessmentReportingMethodCode
-	AND csidm.CourseSectionInstructionalDeliveryModeCode = kcs.CourseSectionInstructionalDeliveryModeCode
-	AND rloi.ReceivingLocationOfInstructionCode = kcs.ReceivingLocationOfInstructionCode
-WHERE kcs.DimK12CourseSectionStatusId IS NULL
+	a.BlendedLearningModelTypeCode
+	, a.BlendedLearningModelTypeDescription
+	, b.CourseInteractionModeCode
+	, b.CourseInteractionModeDescription
+	, c.CourseSectionAssessmentReportingMethodCode
+	, c.CourseSectionAssessmentReportingMethodDescription
+	, d.CourseSectionInstructionalDeliveryModeCode
+	, d.CourseSectionInstructionalDeliveryModeDescription
+	, e.ReceivingLocationOfInstructionCode
+	, e.ReceivingLocationOfInstructionDescription
+	, f.VirtualIndicatorCode
+	, f.VirtualIndicatorDescription
+FROM #BlendedLearningModelType a
+CROSS JOIN #CourseInteractionMode b
+CROSS JOIN #CourseSectionAssessmentReportingMethod c
+CROSS JOIN #CourseSectionInstructionalDeliveryMode d
+CROSS JOIN #ReceivingLocationOfInstruction e
+CROSS JOIN #VirtualIndicator f
+LEFT JOIN [RDS].[DimK12CourseSectionStatuses] main
+	ON a.BlendedLearningModelTypeCode = main.BlendedLearningModelTypeCode
+	AND b.CourseInteractionModeCode = main.CourseInteractionModeCode
+	AND c.CourseSectionAssessmentReportingMethodCode = main.CourseSectionAssessmentReportingMethodCode
+	AND d.CourseSectionInstructionalDeliveryModeCode = main.CourseSectionInstructionalDeliveryModeCode
+	AND e.ReceivingLocationOfInstructionCode = main.ReceivingLocationOfInstructionCode
+	AND f.VirtualIndicatorCode = main.VirtualIndicatorCode
+WHERE main.DimK12CourseSectionStatusId IS NULL
 
 -- Drop temp tables
 DROP TABLE #BlendedLearningModelType
@@ -6054,6 +6168,7 @@ DROP TABLE #CourseInteractionMode
 DROP TABLE #CourseSectionAssessmentReportingMethod
 DROP TABLE #CourseSectionInstructionalDeliveryMode
 DROP TABLE #ReceivingLocationOfInstruction
+DROP TABLE #VirtualIndicator
 
 	------------------------------------------------
 	-- Populate DimScedCodes					  --
@@ -9490,6 +9605,7 @@ DROP TABLE #RuralResidencyStatusCode
 	-----------------------------------------------------------------
 	-- Populate DimGiftedAndTalentedStatuses --
 	-----------------------------------------------------------------
+	
 	IF NOT EXISTS (SELECT 1 FROM [RDS].[DimGiftedAndTalentedStatuses] d WHERE d.DimGiftedAndTalentedStatusId = -1) BEGIN
 		SET IDENTITY_INSERT [RDS].[DimGiftedAndTalentedStatuses] ON
 
@@ -9563,3 +9679,295 @@ DROP TABLE #RuralResidencyStatusCode
 
 	DROP TABLE #GiftedAndTalentedIndicator
 	DROP TABLE #ProgramGiftedEligibilityCriteria
+
+	-------------------------------------------------
+	-- Populate DimK12DropoutStatuses ---
+	-------------------------------------------------
+
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12DropoutStatuses d WHERE d.DimK12DropoutStatusId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimK12DropoutStatuses ON
+
+		INSERT INTO [RDS].DimK12DropoutStatuses
+           ([DimK12DropoutStatusId]
+		   ,[StudentDropoutStatusCode]
+		   ,[StudentDropoutStatusDescription]
+		   ,[DropoutReasonTypeCode]
+		   ,[DropoutReasonTypeDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimK12DropoutStatuses OFF
+	END
+
+	CREATE TABLE #StudentDropoutStatus (StudentDropoutStatusCode VARCHAR(50), StudentDropoutStatusDescription VARCHAR(200))
+
+	INSERT INTO #StudentDropoutStatus VALUES ('MISSING', 'MISSING')
+	INSERT INTO #StudentDropoutStatus 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'StudentDropoutStatus'
+
+	CREATE TABLE #DropoutReasonType (DropoutReasonTypeCode VARCHAR(50), DropoutReasonTypeDescription VARCHAR(200))
+
+	INSERT INTO #DropoutReasonType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #DropoutReasonType
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'DropoutReasonType'
+
+
+	INSERT INTO RDS.DimK12DropoutStatuses
+		  ([StudentDropoutStatusCode]
+		   ,[StudentDropoutStatusDescription]
+		   ,[DropoutReasonTypeCode]
+		   ,[DropoutReasonTypeDescription])
+	SELECT DISTINCT
+		  a.StudentDropoutStatusCode
+		, a.StudentDropoutStatusDescription
+		, b.DropoutReasonTypeCode
+		, b.DropoutReasonTypeDescription
+	FROM #StudentDropoutStatus a
+	CROSS JOIN #DropoutReasonType b
+	LEFT JOIN rds.DimK12DropoutStatuses main
+		ON a.StudentDropoutStatusCode = main.StudentDropoutStatusCode
+		AND b.DropoutReasonTypeCode = main.DropoutReasonTypeCode
+	WHERE main.DimK12DropoutStatusId IS NULL
+
+	DROP TABLE #StudentDropoutStatus
+	DROP TABLE #DropoutReasonType
+
+
+	----------------------------------------------------
+	-- Populate DimCteOutcomeIndicators ---
+	----------------------------------------------------
+
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimCteOutcomeIndicators d WHERE d.DimCteOutcomeIndicatorId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimCteOutcomeIndicators ON
+
+		INSERT INTO [RDS].DimCteOutcomeIndicators
+           ([DimCteOutcomeIndicatorId]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimCteOutcomeIndicators OFF
+	END
+
+	CREATE TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeType (EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode VARCHAR(50), EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription VARCHAR(200), EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode VARCHAR(50))
+
+	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeType VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeType 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, EdFactsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeType'
+
+	CREATE TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType (EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode VARCHAR(50), EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription VARCHAR(200), EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode VARCHAR(50))
+
+	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType VALUES ('MISSING', 'MISSING', 'MISSING')
+	INSERT INTO #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+		, EdFactsOptionSetCode
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeExitType'
+
+
+	INSERT INTO RDS.DimCteOutcomeIndicators
+		   ([EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription]
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode])
+	SELECT DISTINCT
+		  a.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode
+		, a.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription
+		, a.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode
+		, b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
+		, b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription
+		, b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode
+	FROM #EdFactsAcademicOrCareerAndTechnicalOutcomeType a
+	CROSS JOIN #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType b
+	LEFT JOIN rds.DimCteOutcomeIndicators main
+		ON a.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode = main.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
+		AND b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode = main.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
+	WHERE main.DimCteOutcomeIndicatorId IS NULL
+
+	DROP TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeType
+	DROP TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType
+
+
+	---------------------------------------------------
+	-- Populate DimK12RetentionStatuses ---
+	---------------------------------------------------
+
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12RetentionStatuses d WHERE d.DimK12RetentionStatusId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimK12RetentionStatuses ON
+
+		INSERT INTO [RDS].DimK12RetentionStatuses
+           ([DimK12RetentionStatusId]
+		   ,[RetentionExemptionReasonCode]
+		   ,[RetentionExemptionReasonDescription]
+		   ,[EndOfTermStatusCode]
+		   ,[EndOfTermStatusDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimK12RetentionStatuses OFF
+	END
+
+
+	CREATE TABLE #RetentionExemptionReason (RetentionExemptionReasonCode VARCHAR(50), RetentionExemptionReasonDescription VARCHAR(200))
+
+	INSERT INTO #RetentionExemptionReason VALUES ('MISSING', 'MISSING')
+
+	----Uncomment in when Version 13 is released---
+
+	--INSERT INTO #RetentionExemptionReason 
+	--SELECT 
+	--	  CedsOptionSetCode
+	--	, CedsOptionSetDescription
+	--FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	--WHERE CedsElementTechnicalName = 'RetentionExemptionReason'
+
+	----Remove this code related to RetentionExemptionReason when V13 is released
+
+	INSERT INTO #RetentionExemptionReason 
+	VALUES
+		('1000', 'English Learner Less Than 2 Years')
+		,('1001', 'English Learner Less than 3 Years')
+		,('1002', 'Not assessed IEP')
+		,('1003', 'Assessed IEP or Section 504')
+		,('1004', 'Alternative assessment')
+		,('1005', 'Intensive intervention with retention 2 years')
+		,('1006', 'Student Portfolio')
+		,('1007', 'Parent Request')
+		,('9999', 'Other')
+
+
+	CREATE TABLE #EndOfTermStatusType (EndOfTermStatusCode VARCHAR(50), EndOfTermStatusDescription VARCHAR(200))
+
+	INSERT INTO #EndOfTermStatusType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #EndOfTermStatusType
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EndOfTermStatus'
+
+
+	INSERT INTO RDS.DimK12RetentionStatuses
+		  ([RetentionExemptionReasonCode]
+		   ,[RetentionExemptionReasonDescription]
+		   ,[EndOfTermStatusCode]
+		   ,[EndOfTermStatusDescription])
+	SELECT DISTINCT
+		  a.RetentionExemptionReasonCode
+		, a.RetentionExemptionReasonDescription
+		, b.EndOfTermStatusCode
+		, b.EndOfTermStatusDescription
+	FROM #RetentionExemptionReason a
+	CROSS JOIN #EndOfTermStatusType b
+	LEFT JOIN rds.DimK12RetentionStatuses main
+		ON a.RetentionExemptionReasonCode = main.RetentionExemptionReasonCode
+		AND b.EndOfTermStatusCode = main.EndOfTermStatusCode
+	WHERE main.DimK12RetentionStatusId IS NULL
+
+	DROP TABLE #RetentionExemptionReason
+	DROP TABLE #EndOfTermStatusType
+
+
+----------------------------------------------------------
+	-- Populate DimStaffCompensationTypes ---
+	-------------------------------------------------------
+
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimStaffCompensationTypes d WHERE d.DimStaffCompensationTypeId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimStaffCompensationTypes ON
+
+		INSERT INTO [RDS].DimStaffCompensationTypes
+           ([DimStaffCompensationTypeId]
+		   ,[StaffCompensationTypeCode]
+		   ,[StaffCompensationTypeDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimStaffCompensationTypes OFF
+	END
+
+
+	CREATE TABLE #StaffCompensationType (StaffCompensationTypeCode VARCHAR(50), StaffCompensationTypeDescription VARCHAR(200))
+
+	INSERT INTO #StaffCompensationType VALUES ('MISSING', 'MISSING')
+
+	----Uncomment in when Version 13 is released and update CEDS-Elements Database to V13---
+
+	--INSERT INTO #StaffCompensationType 
+	--SELECT 
+	--	  CedsOptionSetCode
+	--	, CedsOptionSetDescription
+	--FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	--WHERE CedsElementTechnicalName = 'StaffCompensationType'
+
+	----Remove this code related to RetentionExemptionReason when V13 is released
+
+	INSERT INTO #StaffCompensationType 
+	VALUES
+		('BaseSalary', 'Base Salary')
+		,('HealthBenefits', 'Health Benefits')
+		,('RetirementBenefits', 'Retirement Benefits')
+		,('OtherBenefits', 'Other Benefits')
+		,('TotalBenefits', 'Total Benefits')
+		,('TotalSalary', 'Total Salary')
+		,('Longevity', 'Longevity')
+		,('AnnualSupplement', 'Annual Supplement')
+		,('9999', 'Other')
+
+	INSERT INTO RDS.DimStaffCompensationTypes
+		  ([StaffCompensationTypeCode]
+		   ,[StaffCompensationTypeDescription])
+	SELECT DISTINCT
+		  a.StaffCompensationTypeCode
+		, a.StaffCompensationTypeDescription
+	FROM #StaffCompensationType a
+	LEFT JOIN rds.DimStaffCompensationTypes main
+		ON a.StaffCompensationTypeCode = main.StaffCompensationTypeCode
+	WHERE main.DimStaffCompensationTypeId IS NULL
+
+	DROP TABLE #StaffCompensationType

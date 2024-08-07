@@ -8,7 +8,7 @@ CREATE TABLE [RDS].[FactPsStudentAcademicRecords] (
     [AcademicTermDesignatorId]                  INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_AcademicTermDesignatorId] DEFAULT ((-1)) NOT NULL,
     [PsDemographicId]                           INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsDemographicId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionStatusId]                     INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsInstitutionStatusId] DEFAULT ((-1)) NOT NULL,
-    [PsEnrollmentStatusId]                      BIGINT          CONSTRAINT [DF_FactPsStudentAcademicRecords_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
+    [PsEnrollmentStatusId]                      INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentEntryDateId]                     INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_EnrollmentEntryDateId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentExitDateId]                      INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_EnrollmentExitDateId] DEFAULT ((-1)) NOT NULL,
     [DataCollectionId]                          INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_DataCollectionId] DEFAULT ((-1)) NOT NULL,

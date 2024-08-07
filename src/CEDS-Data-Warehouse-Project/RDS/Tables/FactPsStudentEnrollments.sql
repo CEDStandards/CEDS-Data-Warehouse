@@ -9,7 +9,7 @@ CREATE TABLE [RDS].[FactPsStudentEnrollments] (
     [EntryDateIntoPostSecondaryId] INT    CONSTRAINT [DF_FactPsStudentEnrollments_EntryDateIntoPostSecondaryId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentEntryDateId]        INT    CONSTRAINT [DF_FactPsStudentEnrollments_EnrollmentEntryDateId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentExitDateId]         INT    CONSTRAINT [DF_FactPsStudentEnrollments_EnrollmentExitDateId] DEFAULT ((-1)) NOT NULL,
-    [PsEnrollmentStatusId]         BIGINT CONSTRAINT [DF_FactPsStudentEnrollments_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
+    [PsEnrollmentStatusId]         INT    CONSTRAINT [DF_FactPsStudentEnrollments_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionStatusId]        INT    CONSTRAINT [DF_FactPsStudentEnrollments_PsInstitutionStatusId] DEFAULT ((-1)) NOT NULL,
     [StudentCount]                 INT    CONSTRAINT [DF_FactPsStudentEnrollments_StudentCount] DEFAULT ((1)) NOT NULL,
     CONSTRAINT [PK_FactPsStudentEnrollments] PRIMARY KEY CLUSTERED ([FactPsStudentEnrollmentId] ASC) WITH (DATA_COMPRESSION = PAGE),

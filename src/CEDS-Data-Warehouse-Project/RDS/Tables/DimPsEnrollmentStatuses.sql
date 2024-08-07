@@ -1,5 +1,5 @@
 CREATE TABLE [RDS].[DimPsEnrollmentStatuses] (
-    [DimPsEnrollmentStatusId]                      BIGINT         IDENTITY (1, 1) NOT NULL,
+    [DimPsEnrollmentStatusId]                      INT         IDENTITY (1, 1) NOT NULL,
     [PostsecondaryExitOrWithdrawalTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimPsEnrollmentStatuses_PostsecondaryExitOrWithdrawalTypeCode] DEFAULT ('MISSING') NOT NULL,
     [PostsecondaryExitOrWithdrawalTypeDescription] NVARCHAR (200) CONSTRAINT [DF_DimPsEnrollmentStatuses_PostsecondaryExitOrWithdrawalTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [PostsecondaryEnrollmentStatusCode]           NVARCHAR (50)  CONSTRAINT [DF_DimPsEnrollmentStatuses_PostsecondaryEnrollmentStatusCode] DEFAULT ('MISSING') NOT NULL,

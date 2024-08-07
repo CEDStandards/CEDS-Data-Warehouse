@@ -77,7 +77,7 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000194' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimNOrDStatuses', @level2type=N'COLUMN',@level2name=N'NeglectedOrDelinquentProgramTypeEdFactsCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21194' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimNOrDStatuses', @level2type=N'COLUMN',@level2name=N'NeglectedOrDelinquentProgramTypeEdFactsCode';
-
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimNOrDStatuses', @level2type=N'COLUMN',@level2name=N'NeglectedProgramTypeCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimNOrDStatuses', @level2type=N'COLUMN',@level2name=N'NeglectedProgramTypeCode';
