@@ -19,7 +19,6 @@ CREATE TABLE [RDS].[FactQuarterlyEmployments]
 	[DataCollectionId] int NULL,
 	[RecordStatusId] int NOT NULL,
 
-	--Need to add in the demographic data as well
 
 	CONSTRAINT [PK_FactQuarterlyEmployments] PRIMARY KEY CLUSTERED ([FactQuarterlyEmploymentId] ASC),
     CONSTRAINT [FK_FactQuarterlyEmployments_EmploymentRecordReferencePeriodStartDateId] FOREIGN KEY ([EmploymentRecordReferencePeriodStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
