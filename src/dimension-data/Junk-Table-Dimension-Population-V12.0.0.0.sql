@@ -9971,3 +9971,1316 @@ DROP TABLE #RuralResidencyStatusCode
 	WHERE main.DimStaffCompensationTypeId IS NULL
 
 	DROP TABLE #StaffCompensationType
+
+	----------------------------------------------------------
+	-- Populate DimEmploymentRecordSources---
+	----------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimEmploymentRecordSources d WHERE d.DimEmploymentRecordSourceId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimEmploymentRecordSources ON
+
+			INSERT INTO rds.DimEmploymentRecordSources (
+						  DimEmploymentRecordSourceId
+						, EmploymentRecordAdministrativeDataSourceCode
+						, EmploymentRecordAdministrativeDataSourceDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimEmploymentRecordSources OFF
+	END
+
+	IF OBJECT_ID('tempdb..#EmploymentRecordAdministrativeDataSource') IS NOT NULL
+		DROP TABLE #EmploymentRecordAdministrativeDataSource
+
+	CREATE TABLE #EmploymentRecordAdministrativeDataSource (EmploymentRecordAdministrativeDataSourceCode VARCHAR(50), EmploymentRecordAdministrativeDataSourceDescription VARCHAR(200))
+
+	INSERT INTO #EmploymentRecordAdministrativeDataSource VALUES ('MISSING', 'MISSING')
+	INSERT INTO #EmploymentRecordAdministrativeDataSource 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EmploymentRecordAdministrativeDataSource'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimEmploymentRecordSources(
+			 EmploymentRecordAdministrativeDataSourceCode
+			,EmploymentRecordAdministrativeDataSourceDescription
+			)
+	SELECT 
+			a.EmploymentRecordAdministrativeDataSourceCode
+			,a.EmploymentRecordAdministrativeDataSourceDescription
+	FROM #EmploymentRecordAdministrativeDataSource a
+	LEFT JOIN rds.DimEmploymentRecordSources main
+		ON	a.EmploymentRecordAdministrativeDataSourceCode = main.EmploymentRecordAdministrativeDataSourceCode								
+	WHERE main.DimEmploymentRecordSourceId IS NULL
+
+	DROP TABLE #EmploymentRecordAdministrativeDataSource
+
+	----------------------------------------------------------
+	-- Populate DimEmploymentLocations  --------
+	----------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimEmploymentLocations d WHERE d.DimEmploymentLocationId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimEmploymentLocations ON
+
+			INSERT INTO rds.DimEmploymentLocations (
+						  DimEmploymentLocationId
+						, EmploymentLocationCode
+						, EmploymentLocationDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING')
+	SET IDENTITY_INSERT rds.DimEmploymentLocations OFF
+	END
+
+	IF OBJECT_ID('tempdb..#EmploymentLocation') IS NOT NULL
+		DROP TABLE #EmploymentLocation
+
+	CREATE TABLE #EmploymentLocation (EmploymentLocationCode VARCHAR(50), EmploymentLocationDescription VARCHAR(200))
+
+	INSERT INTO #EmploymentLocation VALUES ('MISSING', 'MISSING')
+	INSERT INTO #EmploymentLocation 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EmploymentLocation'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimEmploymentLocations(
+			 EmploymentLocationCode
+			,EmploymentLocationDescription
+			)
+	SELECT 
+			a.EmploymentLocationCode
+			,a.EmploymentLocationDescription
+	FROM #EmploymentLocation a
+	LEFT JOIN rds.DimEmploymentLocations main
+		ON	a.EmploymentLocationCode = main.EmploymentLocationCode								
+	WHERE main.DimEmploymentLocationId IS NULL
+
+	DROP TABLE #EmploymentLocation
+
+
+	PRINT 'Populate DimNaicsCodes'
+	---------------------------------------------------------------
+	-- Populate DimNaicsCodes  ---
+	----------------------------------------------------------------
+
+	--All of the NAICS codes relate to each other, to avoid a cross join, the values are directly inserted instead of querying from the elements table.
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimNaicsCodes d WHERE d.DimNaicsCodeId = -1)
+	BEGIN
+		SET IDENTITY_INSERT RDS.DimNaicsCodes ON
+
+		INSERT INTO [RDS].[DimNaicsCodes]
+				   ([DimNaicsCodeId]
+				   ,[NaicsSectorCode]
+				   ,[NaicsSectorDescription]
+				   ,[NaicsSubsectorCode]
+				   ,[NaicsSubsectorDescription]
+				   ,[NaicsIndustryGroupCode]
+				   ,[NaicsIndustryGroupDescription]
+				   ,[NaicsIndustryCode]
+				   ,[NaicsIndustryDescription]
+				   ,[NaicsNationalIndustryCode]
+				   ,[NaicsNationalIndustryDescription]
+				   ,[NaicsVersion])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimNaicsCodes OFF
+
+	END
+
+		INSERT INTO [RDS].[DimNaicsCodes]
+				   ([NaicsSectorCode]
+				   ,[NaicsSectorDescription]
+				   ,[NaicsSubsectorCode]
+				   ,[NaicsSubsectorDescription]
+				   ,[NaicsIndustryGroupCode]
+				   ,[NaicsIndustryGroupDescription]
+				   ,[NaicsIndustryCode]
+				   ,[NaicsIndustryDescription]
+				   ,[NaicsNationalIndustryCode]
+				   ,[NaicsNationalIndustryDescription]
+				   ,[NaicsVersion])
+
+VALUES
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11111', 	'Soybean Farming', 	'111110', 	'Soybean Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11112', 	'Oilseed (except Soybean) Farming', 	'111120', 	'Oilseed (except Soybean) Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11113', 	'Dry Pea and Bean Farming', 	'111130', 	'Dry Pea and Bean Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11114', 	'Wheat Farming', 	'111140', 	'Wheat Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11115', 	'Corn Farming', 	'111150', 	'Corn Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11116', 	'Rice Farming', 	'111160', 	'Rice Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11119', 	'Other Grain Farming', 	'111191', 	'Oilseed and Grain Combination Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1111', 	'Oilseed and Grain Farming', 	'11119', 	'Other Grain Farming', 	'111199', 	'All Other Grain Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1112', 	'Vegetable and Melon Farming', 	'11121', 	'Vegetable and Melon Farming', 	'111211', 	'Potato Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1112', 	'Vegetable and Melon Farming', 	'11121', 	'Vegetable and Melon Farming', 	'111219', 	'Other Vegetable (except Potato) and Melon Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11131', 	'Orange Groves', 	'111310', 	'Orange Groves', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11132', 	'Citrus (except Orange) Groves', 	'111320', 	'Citrus (except Orange) Groves ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11133', 	'Noncitrus Fruit and Tree Nut Farming', 	'111331', 	'Apple Orchards ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11133', 	'Noncitrus Fruit and Tree Nut Farming', 	'111332', 	'Grape Vineyards ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11133', 	'Noncitrus Fruit and Tree Nut Farming', 	'111333', 	'Strawberry Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11133', 	'Noncitrus Fruit and Tree Nut Farming', 	'111334', 	'Berry (except Strawberry) Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11133', 	'Noncitrus Fruit and Tree Nut Farming', 	'111335', 	'Tree Nut Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11133', 	'Noncitrus Fruit and Tree Nut Farming', 	'111336', 	'Fruit and Tree Nut Combination Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1113', 	'Fruit and Tree Nut Farming', 	'11133', 	'Noncitrus Fruit and Tree Nut Farming', 	'111339', 	'Other Noncitrus Fruit Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1114', 	'Greenhouse, Nursery, and Floriculture Production', 	'11141', 	'Food Crops Grown Under Cover', 	'111411', 	'Mushroom Production ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1114', 	'Greenhouse, Nursery, and Floriculture Production', 	'11141', 	'Food Crops Grown Under Cover', 	'111419', 	'Other Food Crops Grown Under Cover ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1114', 	'Greenhouse, Nursery, and Floriculture Production', 	'11142', 	'Nursery and Floriculture Production', 	'111421', 	'Nursery and Tree Production ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1114', 	'Greenhouse, Nursery, and Floriculture Production', 	'11142', 	'Nursery and Floriculture Production', 	'111422', 	'Floriculture Production ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1119', 	'Other Crop Farming', 	'11191', 	'Tobacco Farming', 	'111910', 	'Tobacco Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1119', 	'Other Crop Farming', 	'11192', 	'Cotton Farming', 	'111920', 	'Cotton Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1119', 	'Other Crop Farming', 	'11193', 	'Sugarcane Farming', 	'111930', 	'Sugarcane Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1119', 	'Other Crop Farming', 	'11194', 	'Hay Farming', 	'111940', 	'Hay Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1119', 	'Other Crop Farming', 	'11199', 	'All Other Crop Farming', 	'111991', 	'Sugar Beet Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1119', 	'Other Crop Farming', 	'11199', 	'All Other Crop Farming', 	'111992', 	'Peanut Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'111', 	'Crop Production', 	'1119', 	'Other Crop Farming', 	'11199', 	'All Other Crop Farming', 	'111998', 	'All Other Miscellaneous Crop Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1121', 	'Cattle Ranching and Farming', 	'11211', 	'Beef Cattle Ranching and Farming, including Feedlots', 	'112111', 	'Beef Cattle Ranching and Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1121', 	'Cattle Ranching and Farming', 	'11211', 	'Beef Cattle Ranching and Farming, including Feedlots', 	'112112', 	'Cattle Feedlots ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1121', 	'Cattle Ranching and Farming', 	'11212', 	'Dairy Cattle and Milk Production', 	'112120', 	'Dairy Cattle and Milk Production', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1121', 	'Cattle Ranching and Farming', 	'11213', 	'Dual-Purpose Cattle Ranching and Farming', 	'112130', 	'Dual-Purpose Cattle Ranching and Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1122', 	'Hog and Pig Farming', 	'11221', 	'Hog and Pig Farming', 	'112210', 	'Hog and Pig Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1123', 	'Poultry and Egg Production', 	'11231', 	'Chicken Egg Production', 	'112310', 	'Chicken Egg Production ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1123', 	'Poultry and Egg Production', 	'11232', 	'Broilers and Other Meat Type Chicken Production', 	'112320', 	'Broilers and Other Meat Type Chicken Production ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1123', 	'Poultry and Egg Production', 	'11233', 	'Turkey Production', 	'112330', 	'Turkey Production', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1123', 	'Poultry and Egg Production', 	'11234', 	'Poultry Hatcheries', 	'112340', 	'Poultry Hatcheries', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1123', 	'Poultry and Egg Production', 	'11239', 	'Other Poultry Production', 	'112390', 	'Other Poultry Production ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1124', 	'Sheep and Goat Farming', 	'11241', 	'Sheep Farming', 	'112410', 	'Sheep Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1124', 	'Sheep and Goat Farming', 	'11242', 	'Goat Farming', 	'112420', 	'Goat Farming', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1125', 	'Aquaculture', 	'11251', 	'Aquaculture', 	'112511', 	'Finfish Farming and Fish Hatcheries ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1125', 	'Aquaculture', 	'11251', 	'Aquaculture', 	'112512', 	'Shellfish Farming ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1125', 	'Aquaculture', 	'11251', 	'Aquaculture', 	'112519', 	'Other Aquaculture ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1129', 	'Other Animal Production', 	'11291', 	'Apiculture', 	'112910', 	'Apiculture', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1129', 	'Other Animal Production', 	'11292', 	'Horses and Other Equine Production', 	'112920', 	'Horses and Other Equine Production', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1129', 	'Other Animal Production', 	'11293', 	'Fur-Bearing Animal and Rabbit Production', 	'112930', 	'Fur-Bearing Animal and Rabbit Production', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'112', 	'Animal Production and Aquaculture', 	'1129', 	'Other Animal Production', 	'11299', 	'All Other Animal Production', 	'112990', 	'All Other Animal Production ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'113', 	'Forestry and Logging', 	'1131', 	'Timber Tract Operations', 	'11311', 	'Timber Tract Operations', 	'113110', 	'Timber Tract Operations', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'113', 	'Forestry and Logging', 	'1132', 	'Forest Nurseries and Gathering of Forest Products', 	'11321', 	'Forest Nurseries and Gathering of Forest Products', 	'113210', 	'Forest Nurseries and Gathering of Forest Products ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'113', 	'Forestry and Logging', 	'1133', 	'Logging', 	'11331', 	'Logging', 	'113310', 	'Logging ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'114', 	'Fishing, Hunting and Trapping', 	'1141', 	'Fishing', 	'11411', 	'Fishing', 	'114111', 	'Finfish Fishing ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'114', 	'Fishing, Hunting and Trapping', 	'1141', 	'Fishing', 	'11411', 	'Fishing', 	'114112', 	'Shellfish Fishing ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'114', 	'Fishing, Hunting and Trapping', 	'1141', 	'Fishing', 	'11411', 	'Fishing', 	'114119', 	'Other Marine Fishing ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'114', 	'Fishing, Hunting and Trapping', 	'1142', 	'Hunting and Trapping', 	'11421', 	'Hunting and Trapping', 	'114210', 	'Hunting and Trapping', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1151', 	'Support Activities for Crop Production', 	'11511', 	'Support Activities for Crop Production', 	'115111', 	'Cotton Ginning ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1151', 	'Support Activities for Crop Production', 	'11511', 	'Support Activities for Crop Production', 	'115112', 	'Soil Preparation, Planting, and Cultivating ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1151', 	'Support Activities for Crop Production', 	'11511', 	'Support Activities for Crop Production', 	'115113', 	'Crop Harvesting, Primarily by Machine ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1151', 	'Support Activities for Crop Production', 	'11511', 	'Support Activities for Crop Production', 	'115114', 	'Postharvest Crop Activities (except Cotton Ginning) ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1151', 	'Support Activities for Crop Production', 	'11511', 	'Support Activities for Crop Production', 	'115115', 	'Farm Labor Contractors and Crew Leaders ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1151', 	'Support Activities for Crop Production', 	'11511', 	'Support Activities for Crop Production', 	'115116', 	'Farm Management Services ', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1152', 	'Support Activities for Animal Production', 	'11521', 	'Support Activities for Animal Production', 	'115210', 	'Support Activities for Animal Production', 	'2022'),
+('11', 	'Agriculture, Forestry, Fishing and Hunting', 	'115', 	'Support Activities for Agriculture and Forestry', 	'1153', 	'Support Activities for Forestry', 	'11531', 	'Support Activities for Forestry', 	'115310', 	'Support Activities for Forestry', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'211', 	'Oil and Gas Extraction', 	'2111', 	'Oil and Gas Extraction', 	'21112', 	'Crude Petroleum Extraction ', 	'211120', 	'Crude Petroleum Extraction ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'211', 	'Oil and Gas Extraction', 	'2111', 	'Oil and Gas Extraction', 	'21113', 	'Natural Gas Extraction ', 	'211130', 	'Natural Gas Extraction ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2121', 	'Coal Mining', 	'21211', 	'Coal Mining', 	'212114', 	'Surface Coal Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2121', 	'Coal Mining', 	'21211', 	'Coal Mining', 	'212115', 	'Underground Coal Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2122', 	'Metal Ore Mining', 	'21221', 	'Iron Ore Mining', 	'212210', 	'Iron Ore Mining', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2122', 	'Metal Ore Mining', 	'21222', 	'Gold Ore and Silver Ore Mining', 	'212220', 	'Gold Ore and Silver Ore Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2122', 	'Metal Ore Mining', 	'21223', 	'Copper, Nickel, Lead, and Zinc Mining', 	'212230', 	'Copper, Nickel, Lead, and Zinc Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2122', 	'Metal Ore Mining', 	'21229', 	'Other Metal Ore Mining', 	'212290', 	'Other Metal Ore Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21231', 	'Stone Mining and Quarrying', 	'212311', 	'Dimension Stone Mining and Quarrying ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21231', 	'Stone Mining and Quarrying', 	'212312', 	'Crushed and Broken Limestone Mining and Quarrying ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21231', 	'Stone Mining and Quarrying', 	'212313', 	'Crushed and Broken Granite Mining and Quarrying ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21231', 	'Stone Mining and Quarrying', 	'212319', 	'Other Crushed and Broken Stone Mining and Quarrying ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21232', 	'Sand, Gravel, Clay, and Ceramic and Refractory Minerals Mining and Quarrying', 	'212321', 	'Construction Sand and Gravel Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21232', 	'Sand, Gravel, Clay, and Ceramic and Refractory Minerals Mining and Quarrying', 	'212322', 	'Industrial Sand Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21232', 	'Sand, Gravel, Clay, and Ceramic and Refractory Minerals Mining and Quarrying', 	'212323', 	'Kaolin, Clay, and Ceramic and Refractory Minerals Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'212', 	'Mining (except Oil and Gas)', 	'2123', 	'Nonmetallic Mineral Mining and Quarrying', 	'21239', 	'Other Nonmetallic Mineral Mining and Quarrying', 	'212390', 	'Other Nonmetallic Mineral Mining and Quarrying ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'213', 	'Support Activities for Mining', 	'2131', 	'Support Activities for Mining', 	'21311', 	'Support Activities for Mining', 	'213111', 	'Drilling Oil and Gas Wells', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'213', 	'Support Activities for Mining', 	'2131', 	'Support Activities for Mining', 	'21311', 	'Support Activities for Mining', 	'213112', 	'Support Activities for Oil and Gas Operations ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'213', 	'Support Activities for Mining', 	'2131', 	'Support Activities for Mining', 	'21311', 	'Support Activities for Mining', 	'213113', 	'Support Activities for Coal Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'213', 	'Support Activities for Mining', 	'2131', 	'Support Activities for Mining', 	'21311', 	'Support Activities for Mining', 	'213114', 	'Support Activities for Metal Mining ', 	'2022'),
+('21', 	'Mining, Quarrying, and Oil and Gas Extraction', 	'213', 	'Support Activities for Mining', 	'2131', 	'Support Activities for Mining', 	'21311', 	'Support Activities for Mining', 	'213115', 	'Support Activities for Nonmetallic Minerals (except Fuels) Mining ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221111', 	'Hydroelectric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221112', 	'Fossil Fuel Electric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221113', 	'Nuclear Electric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221114', 	'Solar Electric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221115', 	'Wind Electric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221116', 	'Geothermal Electric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221117', 	'Biomass Electric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22111', 	'Electric Power Generation ', 	'221118', 	'Other Electric Power Generation ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22112', 	'Electric Power Transmission, Control, and Distribution ', 	'221121', 	'Electric Bulk Power Transmission and Control ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2211', 	'Electric Power Generation, Transmission and Distribution', 	'22112', 	'Electric Power Transmission, Control, and Distribution ', 	'221122', 	'Electric Power Distribution ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2212', 	'Natural Gas Distribution ', 	'22121', 	'Natural Gas Distribution ', 	'221210', 	'Natural Gas Distribution ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2213', 	'Water, Sewage and Other Systems ', 	'22131', 	'Water Supply and Irrigation Systems ', 	'221310', 	'Water Supply and Irrigation Systems ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2213', 	'Water, Sewage and Other Systems ', 	'22132', 	'Sewage Treatment Facilities ', 	'221320', 	'Sewage Treatment Facilities ', 	'2022'),
+('22', 	'Utilities', 	'221', 	'Utilities ', 	'2213', 	'Water, Sewage and Other Systems ', 	'22133', 	'Steam and Air-Conditioning Supply ', 	'221330', 	'Steam and Air-Conditioning Supply ', 	'2022'),
+('23', 	'Construction', 	'236', 	'Construction of Buildings', 	'2361', 	'Residential Building Construction', 	'23611', 	'Residential Building Construction', 	'236115', 	'New Single-Family Housing Construction (except For-Sale Builders) ', 	'2022'),
+('23', 	'Construction', 	'236', 	'Construction of Buildings', 	'2361', 	'Residential Building Construction', 	'23611', 	'Residential Building Construction', 	'236116', 	'New Multifamily Housing Construction (except For-Sale Builders) ', 	'2022'),
+('23', 	'Construction', 	'236', 	'Construction of Buildings', 	'2361', 	'Residential Building Construction', 	'23611', 	'Residential Building Construction', 	'236117', 	'New Housing For-Sale Builders ', 	'2022'),
+('23', 	'Construction', 	'236', 	'Construction of Buildings', 	'2361', 	'Residential Building Construction', 	'23611', 	'Residential Building Construction', 	'236118', 	'Residential Remodelers ', 	'2022'),
+('23', 	'Construction', 	'236', 	'Construction of Buildings', 	'2362', 	'Nonresidential Building Construction', 	'23621', 	'Industrial Building Construction', 	'236210', 	'Industrial Building Construction ', 	'2022'),
+('23', 	'Construction', 	'236', 	'Construction of Buildings', 	'2362', 	'Nonresidential Building Construction', 	'23622', 	'Commercial and Institutional Building Construction', 	'236220', 	'Commercial and Institutional Building Construction ', 	'2022'),
+('23', 	'Construction', 	'237', 	'Heavy and Civil Engineering Construction', 	'2371', 	'Utility System Construction', 	'23711', 	'Water and Sewer Line and Related Structures Construction', 	'237110', 	'Water and Sewer Line and Related Structures Construction ', 	'2022'),
+('23', 	'Construction', 	'237', 	'Heavy and Civil Engineering Construction', 	'2371', 	'Utility System Construction', 	'23712', 	'Oil and Gas Pipeline and Related Structures Construction', 	'237120', 	'Oil and Gas Pipeline and Related Structures Construction ', 	'2022'),
+('23', 	'Construction', 	'237', 	'Heavy and Civil Engineering Construction', 	'2371', 	'Utility System Construction', 	'23713', 	'Power and Communication Line and Related Structures Construction', 	'237130', 	'Power and Communication Line and Related Structures Construction ', 	'2022'),
+('23', 	'Construction', 	'237', 	'Heavy and Civil Engineering Construction', 	'2372', 	'Land Subdivision', 	'23721', 	'Land Subdivision', 	'237210', 	'Land Subdivision ', 	'2022'),
+('23', 	'Construction', 	'237', 	'Heavy and Civil Engineering Construction', 	'2373', 	'Highway, Street, and Bridge Construction', 	'23731', 	'Highway, Street, and Bridge Construction', 	'237310', 	'Highway, Street, and Bridge Construction ', 	'2022'),
+('23', 	'Construction', 	'237', 	'Heavy and Civil Engineering Construction', 	'2379', 	'Other Heavy and Civil Engineering Construction', 	'23799', 	'Other Heavy and Civil Engineering Construction', 	'237990', 	'Other Heavy and Civil Engineering Construction ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23811', 	'Poured Concrete Foundation and Structure Contractors ', 	'238110', 	'Poured Concrete Foundation and Structure Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23812', 	'Structural Steel and Precast Concrete Contractors ', 	'238120', 	'Structural Steel and Precast Concrete Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23813', 	'Framing Contractors ', 	'238130', 	'Framing Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23814', 	'Masonry Contractors ', 	'238140', 	'Masonry Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23815', 	'Glass and Glazing Contractors ', 	'238150', 	'Glass and Glazing Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23816', 	'Roofing Contractors ', 	'238160', 	'Roofing Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23817', 	'Siding Contractors ', 	'238170', 	'Siding Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2381', 	'Foundation, Structure, and Building Exterior Contractors', 	'23819', 	'Other Foundation, Structure, and Building Exterior Contractors ', 	'238190', 	'Other Foundation, Structure, and Building Exterior Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2382', 	'Building Equipment Contractors', 	'23821', 	'Electrical Contractors and Other Wiring Installation Contractors', 	'238210', 	'Electrical Contractors and Other Wiring Installation Contractors', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2382', 	'Building Equipment Contractors', 	'23822', 	'Plumbing, Heating, and Air-Conditioning Contractors', 	'238220', 	'Plumbing, Heating, and Air-Conditioning Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2382', 	'Building Equipment Contractors', 	'23829', 	'Other Building Equipment Contractors', 	'238290', 	'Other Building Equipment Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2383', 	'Building Finishing Contractors', 	'23831', 	'Drywall and Insulation Contractors', 	'238310', 	'Drywall and Insulation Contractors ', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2383', 	'Building Finishing Contractors', 	'23832', 	'Painting and Wall Covering Contractors', 	'238320', 	'Painting and Wall Covering Contractors', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2383', 	'Building Finishing Contractors', 	'23833', 	'Flooring Contractors', 	'238330', 	'Flooring Contractors', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2383', 	'Building Finishing Contractors', 	'23834', 	'Tile and Terrazzo Contractors', 	'238340', 	'Tile and Terrazzo Contractors', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2383', 	'Building Finishing Contractors', 	'23835', 	'Finish Carpentry Contractors', 	'238350', 	'Finish Carpentry Contractors', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2383', 	'Building Finishing Contractors', 	'23839', 	'Other Building Finishing Contractors', 	'238390', 	'Other Building Finishing Contractors', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2389', 	'Other Specialty Trade Contractors', 	'23891', 	'Site Preparation Contractors', 	'238910', 	'Site Preparation Contractors', 	'2022'),
+('23', 	'Construction', 	'238', 	'Specialty Trade Contractors', 	'2389', 	'Other Specialty Trade Contractors', 	'23899', 	'All Other Specialty Trade Contractors', 	'238990', 	'All Other Specialty Trade Contractors', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4231', 	'Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers ', 	'42311', 	'Automobile and Other Motor Vehicle Merchant Wholesalers ', 	'423110', 	'Automobile and Other Motor Vehicle Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4231', 	'Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers ', 	'42312', 	'Motor Vehicle Supplies and New Parts Merchant Wholesalers ', 	'423120', 	'Motor Vehicle Supplies and New Parts Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4231', 	'Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers ', 	'42313', 	'Tire and Tube Merchant Wholesalers ', 	'423130', 	'Tire and Tube Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4231', 	'Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers ', 	'42314', 	'Motor Vehicle Parts (Used) Merchant Wholesalers ', 	'423140', 	'Motor Vehicle Parts (Used) Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4232', 	'Furniture and Home Furnishing Merchant Wholesalers ', 	'42321', 	'Furniture Merchant Wholesalers ', 	'423210', 	'Furniture Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4232', 	'Furniture and Home Furnishing Merchant Wholesalers ', 	'42322', 	'Home Furnishing Merchant Wholesalers ', 	'423220', 	'Home Furnishing Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4233', 	'Lumber and Other Construction Materials Merchant Wholesalers ', 	'42331', 	'Lumber, Plywood, Millwork, and Wood Panel Merchant Wholesalers ', 	'423310', 	'Lumber, Plywood, Millwork, and Wood Panel Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4233', 	'Lumber and Other Construction Materials Merchant Wholesalers ', 	'42332', 	'Brick, Stone, and Related Construction Material Merchant Wholesalers ', 	'423320', 	'Brick, Stone, and Related Construction Material Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4233', 	'Lumber and Other Construction Materials Merchant Wholesalers ', 	'42333', 	'Roofing, Siding, and Insulation Material Merchant Wholesalers ', 	'423330', 	'Roofing, Siding, and Insulation Material Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4233', 	'Lumber and Other Construction Materials Merchant Wholesalers ', 	'42339', 	'Other Construction Material Merchant Wholesalers ', 	'423390', 	'Other Construction Material Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4234', 	'Professional and Commercial Equipment and Supplies Merchant Wholesalers ', 	'42341', 	'Photographic Equipment and Supplies Merchant Wholesalers ', 	'423410', 	'Photographic Equipment and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4234', 	'Professional and Commercial Equipment and Supplies Merchant Wholesalers ', 	'42342', 	'Office Equipment Merchant Wholesalers ', 	'423420', 	'Office Equipment Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4234', 	'Professional and Commercial Equipment and Supplies Merchant Wholesalers ', 	'42343', 	'Computer and Computer Peripheral Equipment and Software Merchant Wholesalers ', 	'423430', 	'Computer and Computer Peripheral Equipment and Software Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4234', 	'Professional and Commercial Equipment and Supplies Merchant Wholesalers ', 	'42344', 	'Other Commercial Equipment Merchant Wholesalers ', 	'423440', 	'Other Commercial Equipment Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4234', 	'Professional and Commercial Equipment and Supplies Merchant Wholesalers ', 	'42345', 	'Medical, Dental, and Hospital Equipment and Supplies Merchant Wholesalers ', 	'423450', 	'Medical, Dental, and Hospital Equipment and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4234', 	'Professional and Commercial Equipment and Supplies Merchant Wholesalers ', 	'42346', 	'Ophthalmic Goods Merchant Wholesalers ', 	'423460', 	'Ophthalmic Goods Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4234', 	'Professional and Commercial Equipment and Supplies Merchant Wholesalers ', 	'42349', 	'Other Professional Equipment and Supplies Merchant Wholesalers ', 	'423490', 	'Other Professional Equipment and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4235', 	'Metal and Mineral (except Petroleum) Merchant Wholesalers ', 	'42351', 	'Metal Service Centers and Other Metal Merchant Wholesalers ', 	'423510', 	'Metal Service Centers and Other Metal Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4235', 	'Metal and Mineral (except Petroleum) Merchant Wholesalers ', 	'42352', 	'Coal and Other Mineral and Ore Merchant Wholesalers ', 	'423520', 	'Coal and Other Mineral and Ore Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4236', 	'Household Appliances and Electrical and Electronic Goods Merchant Wholesalers ', 	'42361', 	'Electrical Apparatus and Equipment, Wiring Supplies, and Related Equipment Merchant Wholesalers ', 	'423610', 	'Electrical Apparatus and Equipment, Wiring Supplies, and Related Equipment Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4236', 	'Household Appliances and Electrical and Electronic Goods Merchant Wholesalers ', 	'42362', 	'Household Appliances, Electric Housewares, and Consumer Electronics Merchant Wholesalers ', 	'423620', 	'Household Appliances, Electric Housewares, and Consumer Electronics Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4236', 	'Household Appliances and Electrical and Electronic Goods Merchant Wholesalers ', 	'42369', 	'Other Electronic Parts and Equipment Merchant Wholesalers ', 	'423690', 	'Other Electronic Parts and Equipment Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4237', 	'Hardware, and Plumbing and Heating Equipment and Supplies Merchant Wholesalers ', 	'42371', 	'Hardware Merchant Wholesalers ', 	'423710', 	'Hardware Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4237', 	'Hardware, and Plumbing and Heating Equipment and Supplies Merchant Wholesalers ', 	'42372', 	'Plumbing and Heating Equipment and Supplies (Hydronics) Merchant Wholesalers ', 	'423720', 	'Plumbing and Heating Equipment and Supplies (Hydronics) Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4237', 	'Hardware, and Plumbing and Heating Equipment and Supplies Merchant Wholesalers ', 	'42373', 	'Warm Air Heating and Air-Conditioning Equipment and Supplies Merchant Wholesalers ', 	'423730', 	'Warm Air Heating and Air-Conditioning Equipment and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4237', 	'Hardware, and Plumbing and Heating Equipment and Supplies Merchant Wholesalers ', 	'42374', 	'Refrigeration Equipment and Supplies Merchant Wholesalers ', 	'423740', 	'Refrigeration Equipment and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4238', 	'Machinery, Equipment, and Supplies Merchant Wholesalers ', 	'42381', 	'Construction and Mining (except Oil Well) Machinery and Equipment Merchant Wholesalers ', 	'423810', 	'Construction and Mining (except Oil Well) Machinery and Equipment Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4238', 	'Machinery, Equipment, and Supplies Merchant Wholesalers ', 	'42382', 	'Farm and Garden Machinery and Equipment Merchant Wholesalers ', 	'423820', 	'Farm and Garden Machinery and Equipment Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4238', 	'Machinery, Equipment, and Supplies Merchant Wholesalers ', 	'42383', 	'Industrial Machinery and Equipment Merchant Wholesalers ', 	'423830', 	'Industrial Machinery and Equipment Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4238', 	'Machinery, Equipment, and Supplies Merchant Wholesalers ', 	'42384', 	'Industrial Supplies Merchant Wholesalers ', 	'423840', 	'Industrial Supplies Merchant Wholesalers', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4238', 	'Machinery, Equipment, and Supplies Merchant Wholesalers ', 	'42385', 	'Service Establishment Equipment and Supplies Merchant Wholesalers ', 	'423850', 	'Service Establishment Equipment and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4238', 	'Machinery, Equipment, and Supplies Merchant Wholesalers ', 	'42386', 	'Transportation Equipment and Supplies (except Motor Vehicle) Merchant Wholesalers ', 	'423860', 	'Transportation Equipment and Supplies (except Motor Vehicle) Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4239', 	'Miscellaneous Durable Goods Merchant Wholesalers ', 	'42391', 	'Sporting and Recreational Goods and Supplies Merchant Wholesalers', 	'423910', 	'Sporting and Recreational Goods and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4239', 	'Miscellaneous Durable Goods Merchant Wholesalers ', 	'42392', 	'Toy and Hobby Goods and Supplies Merchant Wholesalers ', 	'423920', 	'Toy and Hobby Goods and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4239', 	'Miscellaneous Durable Goods Merchant Wholesalers ', 	'42393', 	'Recyclable Material Merchant Wholesalers ', 	'423930', 	'Recyclable Material Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4239', 	'Miscellaneous Durable Goods Merchant Wholesalers ', 	'42394', 	'Jewelry, Watch, Precious Stone, and Precious Metal Merchant Wholesalers ', 	'423940', 	'Jewelry, Watch, Precious Stone, and Precious Metal Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'423', 	'Merchant Wholesalers, Durable Goods ', 	'4239', 	'Miscellaneous Durable Goods Merchant Wholesalers ', 	'42399', 	'Other Miscellaneous Durable Goods Merchant Wholesalers ', 	'423990', 	'Other Miscellaneous Durable Goods Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4241', 	'Paper and Paper Product Merchant Wholesalers ', 	'42411', 	'Printing and Writing Paper Merchant Wholesalers ', 	'424110', 	'Printing and Writing Paper Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4241', 	'Paper and Paper Product Merchant Wholesalers ', 	'42412', 	'Stationery and Office Supplies Merchant Wholesalers ', 	'424120', 	'Stationery and Office Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4241', 	'Paper and Paper Product Merchant Wholesalers ', 	'42413', 	'Industrial and Personal Service Paper Merchant Wholesalers ', 	'424130', 	'Industrial and Personal Service Paper Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4242', 	'Drugs and Druggists'' Sundries Merchant Wholesalers ', 	'42421', 	'Drugs and Druggists'' Sundries Merchant Wholesalers ', 	'424210', 	'Drugs and Druggists'' Sundries Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4243', 	'Apparel, Piece Goods, and Notions Merchant Wholesalers ', 	'42431', 	'Piece Goods, Notions, and Other Dry Goods Merchant Wholesalers ', 	'424310', 	'Piece Goods, Notions, and Other Dry Goods Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4243', 	'Apparel, Piece Goods, and Notions Merchant Wholesalers ', 	'42434', 	'Footwear Merchant Wholesalers ', 	'424340', 	'Footwear Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4243', 	'Apparel, Piece Goods, and Notions Merchant Wholesalers ', 	'42435', 	'Clothing and Clothing Accessories Merchant Wholesalers', 	'424350', 	'Clothing and Clothing Accessories Merchant Wholesalers', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42441', 	'General Line Grocery Merchant Wholesalers ', 	'424410', 	'General Line Grocery Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42442', 	'Packaged Frozen Food Merchant Wholesalers ', 	'424420', 	'Packaged Frozen Food Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42443', 	'Dairy Product (except Dried or Canned) Merchant Wholesalers ', 	'424430', 	'Dairy Product (except Dried or Canned) Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42444', 	'Poultry and Poultry Product Merchant Wholesalers ', 	'424440', 	'Poultry and Poultry Product Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42445', 	'Confectionery Merchant Wholesalers ', 	'424450', 	'Confectionery Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42446', 	'Fish and Seafood Merchant Wholesalers ', 	'424460', 	'Fish and Seafood Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42447', 	'Meat and Meat Product Merchant Wholesalers ', 	'424470', 	'Meat and Meat Product Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42448', 	'Fresh Fruit and Vegetable Merchant Wholesalers ', 	'424480', 	'Fresh Fruit and Vegetable Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4244', 	'Grocery and Related Product Merchant Wholesalers ', 	'42449', 	'Other Grocery and Related Products Merchant Wholesalers ', 	'424490', 	'Other Grocery and Related Products Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4245', 	'Farm Product Raw Material Merchant Wholesalers ', 	'42451', 	'Grain and Field Bean Merchant Wholesalers ', 	'424510', 	'Grain and Field Bean Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4245', 	'Farm Product Raw Material Merchant Wholesalers ', 	'42452', 	'Livestock Merchant Wholesalers ', 	'424520', 	'Livestock Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4245', 	'Farm Product Raw Material Merchant Wholesalers ', 	'42459', 	'Other Farm Product Raw Material Merchant Wholesalers ', 	'424590', 	'Other Farm Product Raw Material Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4246', 	'Chemical and Allied Products Merchant Wholesalers ', 	'42461', 	'Plastics Materials and Basic Forms and Shapes Merchant Wholesalers ', 	'424610', 	'Plastics Materials and Basic Forms and Shapes Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4246', 	'Chemical and Allied Products Merchant Wholesalers ', 	'42469', 	'Other Chemical and Allied Products Merchant Wholesalers ', 	'424690', 	'Other Chemical and Allied Products Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4247', 	'Petroleum and Petroleum Products Merchant Wholesalers ', 	'42471', 	'Petroleum Bulk Stations and Terminals ', 	'424710', 	'Petroleum Bulk Stations and Terminals ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4247', 	'Petroleum and Petroleum Products Merchant Wholesalers ', 	'42472', 	'Petroleum and Petroleum Products Merchant Wholesalers (except Bulk Stations and Terminals) ', 	'424720', 	'Petroleum and Petroleum Products Merchant Wholesalers (except Bulk Stations and Terminals) ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4248', 	'Beer, Wine, and Distilled Alcoholic Beverage Merchant Wholesalers ', 	'42481', 	'Beer and Ale Merchant Wholesalers ', 	'424810', 	'Beer and Ale Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4248', 	'Beer, Wine, and Distilled Alcoholic Beverage Merchant Wholesalers ', 	'42482', 	'Wine and Distilled Alcoholic Beverage Merchant Wholesalers ', 	'424820', 	'Wine and Distilled Alcoholic Beverage Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4249', 	'Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'42491', 	'Farm Supplies Merchant Wholesalers ', 	'424910', 	'Farm Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4249', 	'Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'42492', 	'Book, Periodical, and Newspaper Merchant Wholesalers ', 	'424920', 	'Book, Periodical, and Newspaper Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4249', 	'Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'42493', 	'Flower, Nursery Stock, and Florists'' Supplies Merchant Wholesalers ', 	'424930', 	'Flower, Nursery Stock, and Florists'' Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4249', 	'Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'42494', 	'Tobacco Product and Electronic Cigarette Merchant Wholesalers ', 	'424940', 	'Tobacco Product and Electronic Cigarette Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4249', 	'Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'42495', 	'Paint, Varnish, and Supplies Merchant Wholesalers ', 	'424950', 	'Paint, Varnish, and Supplies Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'424', 	'Merchant Wholesalers, Nondurable Goods ', 	'4249', 	'Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'42499', 	'Other Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'424990', 	'Other Miscellaneous Nondurable Goods Merchant Wholesalers ', 	'2022'),
+('42', 	'Wholesale Trade', 	'425', 	'Wholesale Trade Agents and Brokers ', 	'4251', 	'Wholesale Trade Agents and Brokers ', 	'42512', 	'Wholesale Trade Agents and Brokers ', 	'425120', 	'Wholesale Trade Agents and Brokers ', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5121', 	'Motion Picture and Video Industries', 	'51211', 	'Motion Picture and Video Production', 	'512110', 	'Motion Picture and Video Production ', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5121', 	'Motion Picture and Video Industries', 	'51212', 	'Motion Picture and Video Distribution', 	'512120', 	'Motion Picture and Video Distribution', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5121', 	'Motion Picture and Video Industries', 	'51213', 	'Motion Picture and Video Exhibition', 	'512131', 	'Motion Picture Theaters (except Drive-Ins) ', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5121', 	'Motion Picture and Video Industries', 	'51213', 	'Motion Picture and Video Exhibition', 	'512132', 	'Drive-In Motion Picture Theaters ', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5121', 	'Motion Picture and Video Industries', 	'51219', 	'Postproduction Services and Other Motion Picture and Video Industries', 	'512191', 	'Teleproduction and Other Postproduction Services ', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5121', 	'Motion Picture and Video Industries', 	'51219', 	'Postproduction Services and Other Motion Picture and Video Industries', 	'512199', 	'Other Motion Picture and Video Industries ', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5122', 	'Sound Recording Industries', 	'51223', 	'Music Publishers', 	'512230', 	'Music Publishers', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5122', 	'Sound Recording Industries', 	'51224', 	'Sound Recording Studios', 	'512240', 	'Sound Recording Studios', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5122', 	'Sound Recording Industries', 	'51225', 	'Record Production and Distribution', 	'512250', 	'Record Production and Distribution', 	'2022'),
+('51', 	'Information', 	'512', 	'Motion Picture and Sound Recording Industries', 	'5122', 	'Sound Recording Industries', 	'51229', 	'Other Sound Recording Industries', 	'512290', 	'Other Sound Recording Industries', 	'2022'),
+('51', 	'Information', 	'513', 	'Publishing Industries', 	'5131', 	'Newspaper, Periodical, Book, and Directory Publishers', 	'51311', 	'Newspaper Publishers', 	'513110', 	'Newspaper Publishers ', 	'2022'),
+('51', 	'Information', 	'513', 	'Publishing Industries', 	'5131', 	'Newspaper, Periodical, Book, and Directory Publishers', 	'51312', 	'Periodical Publishers', 	'513120', 	'Periodical Publishers ', 	'2022'),
+('51', 	'Information', 	'513', 	'Publishing Industries', 	'5131', 	'Newspaper, Periodical, Book, and Directory Publishers', 	'51313', 	'Book Publishers', 	'513130', 	'Book Publishers ', 	'2022'),
+('51', 	'Information', 	'513', 	'Publishing Industries', 	'5131', 	'Newspaper, Periodical, Book, and Directory Publishers', 	'51314', 	'Directory and Mailing List Publishers', 	'513140', 	'Directory and Mailing List Publishers ', 	'2022'),
+('51', 	'Information', 	'513', 	'Publishing Industries', 	'5131', 	'Newspaper, Periodical, Book, and Directory Publishers', 	'51319', 	'Other Publishers', 	'513191', 	'Greeting Card Publishers ', 	'2022'),
+('51', 	'Information', 	'513', 	'Publishing Industries', 	'5131', 	'Newspaper, Periodical, Book, and Directory Publishers', 	'51319', 	'Other Publishers', 	'513199', 	'All Other Publishers ', 	'2022'),
+('51', 	'Information', 	'513', 	'Publishing Industries', 	'5132', 	'Software Publishers', 	'51321', 	'Software Publishers', 	'513210', 	'Software Publishers', 	'2022'),
+('51', 	'Information', 	'516', 	'Broadcasting and Content Providers', 	'5161', 	'Radio and Television Broadcasting Stations', 	'51611', 	'Radio Broadcasting Stations', 	'516110', 	'Radio Broadcasting Stations ', 	'2022'),
+('51', 	'Information', 	'516', 	'Broadcasting and Content Providers', 	'5161', 	'Radio and Television Broadcasting Stations', 	'51612', 	'Television Broadcasting Stations', 	'516120', 	'Television Broadcasting Stations', 	'2022'),
+('51', 	'Information', 	'516', 	'Broadcasting and Content Providers', 	'5162', 	'Media Streaming Distribution Services, Social Networks, and Other Media Networks and Content Providers', 	'51621', 	'Media Streaming Distribution Services, Social Networks, and Other Media Networks and Content Providers', 	'516210', 	'Media Streaming Distribution Services, Social Networks, and Other Media Networks and Content Providers', 	'2022'),
+('51', 	'Information', 	'517', 	'Telecommunications', 	'5171', 	'Wired and Wireless Telecommunications (except Satellite)', 	'51711', 	'Wired and Wireless Telecommunications Carriers (except Satellite)', 	'517111', 	'Wired Telecommunications Carriers ', 	'2022'),
+('51', 	'Information', 	'517', 	'Telecommunications', 	'5171', 	'Wired and Wireless Telecommunications (except Satellite)', 	'51711', 	'Wired and Wireless Telecommunications Carriers (except Satellite)', 	'517112', 	'Wireless Telecommunications Carriers (except Satellite)', 	'2022'),
+('51', 	'Information', 	'517', 	'Telecommunications', 	'5171', 	'Wired and Wireless Telecommunications (except Satellite)', 	'51712', 	'Telecommunications Resellers and Agents for Wireless Telecommunication Services', 	'517121', 	'Telecommunications Resellers', 	'2022'),
+('51', 	'Information', 	'517', 	'Telecommunications', 	'5171', 	'Wired and Wireless Telecommunications (except Satellite)', 	'51712', 	'Telecommunications Resellers and Agents for Wireless Telecommunication Services', 	'517122', 	'Agents for Wireless Telecommunications Services', 	'2022'),
+('51', 	'Information', 	'517', 	'Telecommunications', 	'5174', 	'Satellite Telecommunications', 	'51741', 	'Satellite Telecommunications', 	'517410', 	'Satellite Telecommunications', 	'2022'),
+('51', 	'Information', 	'517', 	'Telecommunications', 	'5178', 	'All Other Telecommunications', 	'51781', 	'All Other Telecommunications', 	'517810', 	'All Other Telecommunications ', 	'2022'),
+('51', 	'Information', 	'518', 	'Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services', 	'5182', 	'Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services', 	'51821', 	'Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services', 	'518210', 	'Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services', 	'2022'),
+('51', 	'Information', 	'519', 	'Web Search Portals, Libraries, Archives, and Other Information Services', 	'5192', 	'Web Search Portals, Libraries, Archives, and Other Information Services', 	'51921', 	'Libraries and Archives', 	'519210', 	'Libraries and Archives ', 	'2022'),
+('51', 	'Information', 	'519', 	'Web Search Portals, Libraries, Archives, and Other Information Services', 	'5192', 	'Web Search Portals, Libraries, Archives, and Other Information Services', 	'51929', 	'Web Search Portals and All Other Information Services', 	'519290', 	'Web Search Portals and All Other Information Services', 	'2022'),
+('52', 	'Finance and Insurance', 	'521', 	'Monetary Authorities-Central Bank', 	'5211', 	'Monetary Authorities-Central Bank', 	'52111', 	'Monetary Authorities-Central Bank', 	'521110', 	'Monetary Authorities-Central Bank', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5221', 	'Depository Credit Intermediation ', 	'52211', 	'Commercial Banking ', 	'522110', 	'Commercial Banking ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5221', 	'Depository Credit Intermediation ', 	'52213', 	'Credit Unions ', 	'522130', 	'Credit Unions ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5221', 	'Depository Credit Intermediation ', 	'52218', 	'Savings Institutions and Other Depository Credit Intermediation ', 	'522180', 	'Savings Institutions and Other Depository Credit Intermediation ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5222', 	'Nondepository Credit Intermediation ', 	'52221', 	'Credit Card Issuing ', 	'522210', 	'Credit Card Issuing ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5222', 	'Nondepository Credit Intermediation ', 	'52222', 	'Sales Financing ', 	'522220', 	'Sales Financing ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5222', 	'Nondepository Credit Intermediation ', 	'52229', 	'Other Nondepository Credit Intermediation ', 	'522291', 	'Consumer Lending ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5222', 	'Nondepository Credit Intermediation ', 	'52229', 	'Other Nondepository Credit Intermediation ', 	'522292', 	'Real Estate Credit ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5222', 	'Nondepository Credit Intermediation ', 	'52229', 	'Other Nondepository Credit Intermediation ', 	'522299', 	'International, Secondary Market, and All Other Nondepository Credit Intermediation ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5223', 	'Activities Related to Credit Intermediation ', 	'52231', 	'Mortgage and Nonmortgage Loan Brokers ', 	'522310', 	'Mortgage and Nonmortgage Loan Brokers ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5223', 	'Activities Related to Credit Intermediation ', 	'52232', 	'Financial Transactions Processing, Reserve, and Clearinghouse Activities ', 	'522320', 	'Financial Transactions Processing, Reserve, and Clearinghouse Activities ', 	'2022'),
+('52', 	'Finance and Insurance', 	'522', 	'Credit Intermediation and Related Activities', 	'5223', 	'Activities Related to Credit Intermediation ', 	'52239', 	'Other Activities Related to Credit Intermediation ', 	'522390', 	'Other Activities Related to Credit Intermediation ', 	'2022'),
+('52', 	'Finance and Insurance', 	'523', 	'Securities, Commodity Contracts, and Other Financial Investments and Related Activities', 	'5231', 	'Securities and Commodity Contracts Intermediation and Brokerage', 	'52315', 	'Investment Banking and Securities Intermediation ', 	'523150', 	'Investment Banking and Securities Intermediation ', 	'2022'),
+('52', 	'Finance and Insurance', 	'523', 	'Securities, Commodity Contracts, and Other Financial Investments and Related Activities', 	'5231', 	'Securities and Commodity Contracts Intermediation and Brokerage', 	'52316', 	'Commodity Contracts Intermediation ', 	'523160', 	'Commodity Contracts Intermediation ', 	'2022'),
+('52', 	'Finance and Insurance', 	'523', 	'Securities, Commodity Contracts, and Other Financial Investments and Related Activities', 	'5232', 	'Securities and Commodity Exchanges', 	'52321', 	'Securities and Commodity Exchanges', 	'523210', 	'Securities and Commodity Exchanges', 	'2022'),
+('52', 	'Finance and Insurance', 	'523', 	'Securities, Commodity Contracts, and Other Financial Investments and Related Activities', 	'5239', 	'Other Financial Investment Activities', 	'52391', 	'Miscellaneous Intermediation ', 	'523910', 	'Miscellaneous Intermediation ', 	'2022'),
+('52', 	'Finance and Insurance', 	'523', 	'Securities, Commodity Contracts, and Other Financial Investments and Related Activities', 	'5239', 	'Other Financial Investment Activities', 	'52394', 	'Portfolio Management and Investment Advice ', 	'523940', 	'Portfolio Management and Investment Advice ', 	'2022'),
+('52', 	'Finance and Insurance', 	'523', 	'Securities, Commodity Contracts, and Other Financial Investments and Related Activities', 	'5239', 	'Other Financial Investment Activities', 	'52399', 	'All Other Financial Investment Activities ', 	'523991', 	'Trust, Fiduciary, and Custody Activities ', 	'2022'),
+('52', 	'Finance and Insurance', 	'523', 	'Securities, Commodity Contracts, and Other Financial Investments and Related Activities', 	'5239', 	'Other Financial Investment Activities', 	'52399', 	'All Other Financial Investment Activities ', 	'523999', 	'Miscellaneous Financial Investment Activities ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5241', 	'Insurance Carriers', 	'52411', 	'Direct Life, Health, and Medical Insurance Carriers ', 	'524113', 	'Direct Life Insurance Carriers ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5241', 	'Insurance Carriers', 	'52411', 	'Direct Life, Health, and Medical Insurance Carriers ', 	'524114', 	'Direct Health and Medical Insurance Carriers ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5241', 	'Insurance Carriers', 	'52412', 	'Direct Insurance (except Life, Health, and Medical) Carriers ', 	'524126', 	'Direct Property and Casualty Insurance Carriers ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5241', 	'Insurance Carriers', 	'52412', 	'Direct Insurance (except Life, Health, and Medical) Carriers ', 	'524127', 	'Direct Title Insurance Carriers ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5241', 	'Insurance Carriers', 	'52412', 	'Direct Insurance (except Life, Health, and Medical) Carriers ', 	'524128', 	'Other Direct Insurance (except Life, Health, and Medical) Carriers ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5241', 	'Insurance Carriers', 	'52413', 	'Reinsurance Carriers ', 	'524130', 	'Reinsurance Carriers ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5242', 	'Agencies, Brokerages, and Other Insurance Related Activities', 	'52421', 	'Insurance Agencies and Brokerages ', 	'524210', 	'Insurance Agencies and Brokerages ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5242', 	'Agencies, Brokerages, and Other Insurance Related Activities', 	'52429', 	'Other Insurance Related Activities ', 	'524291', 	'Claims Adjusting ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5242', 	'Agencies, Brokerages, and Other Insurance Related Activities', 	'52429', 	'Other Insurance Related Activities ', 	'524292', 	'Pharmacy Benefit Management and Other Third Party Administration of Insurance and Pension Funds ', 	'2022'),
+('52', 	'Finance and Insurance', 	'524', 	'Insurance Carriers and Related Activities', 	'5242', 	'Agencies, Brokerages, and Other Insurance Related Activities', 	'52429', 	'Other Insurance Related Activities ', 	'524298', 	'All Other Insurance Related Activities ', 	'2022'),
+('52', 	'Finance and Insurance', 	'525', 	'Funds, Trusts, and Other Financial Vehicles ', 	'5251', 	'Insurance and Employee Benefit Funds ', 	'52511', 	'Pension Funds ', 	'525110', 	'Pension Funds ', 	'2022'),
+('52', 	'Finance and Insurance', 	'525', 	'Funds, Trusts, and Other Financial Vehicles ', 	'5251', 	'Insurance and Employee Benefit Funds ', 	'52512', 	'Health and Welfare Funds ', 	'525120', 	'Health and Welfare Funds ', 	'2022'),
+('52', 	'Finance and Insurance', 	'525', 	'Funds, Trusts, and Other Financial Vehicles ', 	'5251', 	'Insurance and Employee Benefit Funds ', 	'52519', 	'Other Insurance Funds ', 	'525190', 	'Other Insurance Funds ', 	'2022'),
+('52', 	'Finance and Insurance', 	'525', 	'Funds, Trusts, and Other Financial Vehicles ', 	'5259', 	'Other Investment Pools and Funds', 	'52591', 	'Open-End Investment Funds ', 	'525910', 	'Open-End Investment Funds ', 	'2022'),
+('52', 	'Finance and Insurance', 	'525', 	'Funds, Trusts, and Other Financial Vehicles ', 	'5259', 	'Other Investment Pools and Funds', 	'52592', 	'Trusts, Estates, and Agency Accounts ', 	'525920', 	'Trusts, Estates, and Agency Accounts ', 	'2022'),
+('52', 	'Finance and Insurance', 	'525', 	'Funds, Trusts, and Other Financial Vehicles ', 	'5259', 	'Other Investment Pools and Funds', 	'52599', 	'Other Financial Vehicles ', 	'525990', 	'Other Financial Vehicles ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5311', 	'Lessors of Real Estate', 	'53111', 	'Lessors of Residential Buildings and Dwellings ', 	'531110', 	'Lessors of Residential Buildings and Dwellings ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5311', 	'Lessors of Real Estate', 	'53112', 	'Lessors of Nonresidential Buildings (except Miniwarehouses) ', 	'531120', 	'Lessors of Nonresidential Buildings (except Miniwarehouses) ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5311', 	'Lessors of Real Estate', 	'53113', 	'Lessors of Miniwarehouses and Self-Storage Units ', 	'531130', 	'Lessors of Miniwarehouses and Self-Storage Units ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5311', 	'Lessors of Real Estate', 	'53119', 	'Lessors of Other Real Estate Property ', 	'531190', 	'Lessors of Other Real Estate Property ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5312', 	'Offices of Real Estate Agents and Brokers', 	'53121', 	'Offices of Real Estate Agents and Brokers', 	'531210', 	'Offices of Real Estate Agents and Brokers', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5313', 	'Activities Related to Real Estate', 	'53131', 	'Real Estate Property Managers ', 	'531311', 	'Residential Property Managers ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5313', 	'Activities Related to Real Estate', 	'53131', 	'Real Estate Property Managers ', 	'531312', 	'Nonresidential Property Managers ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5313', 	'Activities Related to Real Estate', 	'53132', 	'Offices of Real Estate Appraisers ', 	'531320', 	'Offices of Real Estate Appraisers ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'531', 	'Real Estate', 	'5313', 	'Activities Related to Real Estate', 	'53139', 	'Other Activities Related to Real Estate ', 	'531390', 	'Other Activities Related to Real Estate ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5321', 	'Automotive Equipment Rental and Leasing', 	'53211', 	'Passenger Car Rental and Leasing', 	'532111', 	'Passenger Car Rental ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5321', 	'Automotive Equipment Rental and Leasing', 	'53211', 	'Passenger Car Rental and Leasing', 	'532112', 	'Passenger Car Leasing ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5321', 	'Automotive Equipment Rental and Leasing', 	'53212', 	'Truck, Utility Trailer, and RV (Recreational Vehicle) Rental and Leasing', 	'532120', 	'Truck, Utility Trailer, and RV (Recreational Vehicle) Rental and Leasing ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5322', 	'Consumer Goods Rental', 	'53221', 	'Consumer Electronics and Appliances Rental', 	'532210', 	'Consumer Electronics and Appliances Rental', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5322', 	'Consumer Goods Rental', 	'53228', 	'Other Consumer Goods Rental ', 	'532281', 	'Formal Wear and Costume Rental', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5322', 	'Consumer Goods Rental', 	'53228', 	'Other Consumer Goods Rental ', 	'532282', 	'Video Tape and Disc Rental', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5322', 	'Consumer Goods Rental', 	'53228', 	'Other Consumer Goods Rental ', 	'532283', 	'Home Health Equipment Rental ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5322', 	'Consumer Goods Rental', 	'53228', 	'Other Consumer Goods Rental ', 	'532284', 	'Recreational Goods Rental ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5322', 	'Consumer Goods Rental', 	'53228', 	'Other Consumer Goods Rental ', 	'532289', 	'All Other Consumer Goods Rental ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5323', 	'General Rental Centers', 	'53231', 	'General Rental Centers', 	'532310', 	'General Rental Centers', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5324', 	'Commercial and Industrial Machinery and Equipment Rental and Leasing', 	'53241', 	'Construction, Transportation, Mining, and Forestry Machinery and Equipment Rental and Leasing', 	'532411', 	'Commercial Air, Rail, and Water Transportation Equipment Rental and Leasing ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5324', 	'Commercial and Industrial Machinery and Equipment Rental and Leasing', 	'53241', 	'Construction, Transportation, Mining, and Forestry Machinery and Equipment Rental and Leasing', 	'532412', 	'Construction, Mining, and Forestry Machinery and Equipment Rental and Leasing ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5324', 	'Commercial and Industrial Machinery and Equipment Rental and Leasing', 	'53242', 	'Office Machinery and Equipment Rental and Leasing', 	'532420', 	'Office Machinery and Equipment Rental and Leasing', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'532', 	'Rental and Leasing Services', 	'5324', 	'Commercial and Industrial Machinery and Equipment Rental and Leasing', 	'53249', 	'Other Commercial and Industrial Machinery and Equipment Rental and Leasing', 	'532490', 	'Other Commercial and Industrial Machinery and Equipment Rental and Leasing ', 	'2022'),
+('53', 	'Real Estate and Rental and Leasing', 	'533', 	'Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)', 	'5331', 	'Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)', 	'53311', 	'Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)', 	'533110', 	'Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5411', 	'Legal Services', 	'54111', 	'Offices of Lawyers', 	'541110', 	'Offices of Lawyers', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5411', 	'Legal Services', 	'54112', 	'Offices of Notaries', 	'541120', 	'Offices of Notaries', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5411', 	'Legal Services', 	'54119', 	'Other Legal Services', 	'541191', 	'Title Abstract and Settlement Offices ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5411', 	'Legal Services', 	'54119', 	'Other Legal Services', 	'541199', 	'All Other Legal Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5412', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'54121', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'541211', 	'Offices of Certified Public Accountants ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5412', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'54121', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'541213', 	'Tax Preparation Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5412', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'54121', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'541214', 	'Payroll Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5412', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'54121', 	'Accounting, Tax Preparation, Bookkeeping, and Payroll Services', 	'541219', 	'Other Accounting Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54131', 	'Architectural Services', 	'541310', 	'Architectural Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54132', 	'Landscape Architectural Services', 	'541320', 	'Landscape Architectural Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54133', 	'Engineering Services', 	'541330', 	'Engineering Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54134', 	'Drafting Services', 	'541340', 	'Drafting Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54135', 	'Building Inspection Services', 	'541350', 	'Building Inspection Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54136', 	'Geophysical Surveying and Mapping Services', 	'541360', 	'Geophysical Surveying and Mapping Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54137', 	'Surveying and Mapping (except Geophysical) Services', 	'541370', 	'Surveying and Mapping (except Geophysical) Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5413', 	'Architectural, Engineering, and Related Services', 	'54138', 	'Testing Laboratories and Services', 	'541380', 	'Testing Laboratories and Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5414', 	'Specialized Design Services', 	'54141', 	'Interior Design Services', 	'541410', 	'Interior Design Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5414', 	'Specialized Design Services', 	'54142', 	'Industrial Design Services', 	'541420', 	'Industrial Design Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5414', 	'Specialized Design Services', 	'54143', 	'Graphic Design Services', 	'541430', 	'Graphic Design Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5414', 	'Specialized Design Services', 	'54149', 	'Other Specialized Design Services', 	'541490', 	'Other Specialized Design Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5415', 	'Computer Systems Design and Related Services', 	'54151', 	'Computer Systems Design and Related Services', 	'541511', 	'Custom Computer Programming Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5415', 	'Computer Systems Design and Related Services', 	'54151', 	'Computer Systems Design and Related Services', 	'541512', 	'Computer Systems Design Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5415', 	'Computer Systems Design and Related Services', 	'54151', 	'Computer Systems Design and Related Services', 	'541513', 	'Computer Facilities Management Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5415', 	'Computer Systems Design and Related Services', 	'54151', 	'Computer Systems Design and Related Services', 	'541519', 	'Other Computer Related Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5416', 	'Management, Scientific, and Technical Consulting Services', 	'54161', 	'Management Consulting Services', 	'541611', 	'Administrative Management and General Management Consulting Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5416', 	'Management, Scientific, and Technical Consulting Services', 	'54161', 	'Management Consulting Services', 	'541612', 	'Human Resources Consulting Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5416', 	'Management, Scientific, and Technical Consulting Services', 	'54161', 	'Management Consulting Services', 	'541613', 	'Marketing Consulting Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5416', 	'Management, Scientific, and Technical Consulting Services', 	'54161', 	'Management Consulting Services', 	'541614', 	'Process, Physical Distribution, and Logistics Consulting Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5416', 	'Management, Scientific, and Technical Consulting Services', 	'54161', 	'Management Consulting Services', 	'541618', 	'Other Management Consulting Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5416', 	'Management, Scientific, and Technical Consulting Services', 	'54162', 	'Environmental Consulting Services', 	'541620', 	'Environmental Consulting Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5416', 	'Management, Scientific, and Technical Consulting Services', 	'54169', 	'Other Scientific and Technical Consulting Services', 	'541690', 	'Other Scientific and Technical Consulting Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5417', 	'Scientific Research and Development Services', 	'54171', 	'Research and Development in the Physical, Engineering, and Life Sciences', 	'541713', 	'Research and Development in Nanotechnology ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5417', 	'Scientific Research and Development Services', 	'54171', 	'Research and Development in the Physical, Engineering, and Life Sciences', 	'541714', 	'Research and Development in Biotechnology (except Nanobiotechnology)', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5417', 	'Scientific Research and Development Services', 	'54171', 	'Research and Development in the Physical, Engineering, and Life Sciences', 	'541715', 	'Research and Development in the Physical, Engineering, and Life Sciences (except Nanotechnology and Biotechnology) ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5417', 	'Scientific Research and Development Services', 	'54172', 	'Research and Development in the Social Sciences and Humanities', 	'541720', 	'Research and Development in the Social Sciences and Humanities ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54181', 	'Advertising Agencies', 	'541810', 	'Advertising Agencies', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54182', 	'Public Relations Agencies', 	'541820', 	'Public Relations Agencies', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54183', 	'Media Buying Agencies', 	'541830', 	'Media Buying Agencies', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54184', 	'Media Representatives', 	'541840', 	'Media Representatives', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54185', 	'Indoor and Outdoor Display Advertising', 	'541850', 	'Indoor and Outdoor Display Advertising', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54186', 	'Direct Mail Advertising', 	'541860', 	'Direct Mail Advertising', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54187', 	'Advertising Material Distribution Services', 	'541870', 	'Advertising Material Distribution Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5418', 	'Advertising, Public Relations, and Related Services', 	'54189', 	'Other Services Related to Advertising', 	'541890', 	'Other Services Related to Advertising ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5419', 	'Other Professional, Scientific, and Technical Services', 	'54191', 	'Marketing Research and Public Opinion Polling', 	'541910', 	'Marketing Research and Public Opinion Polling', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5419', 	'Other Professional, Scientific, and Technical Services', 	'54192', 	'Photographic Services', 	'541921', 	'Photography Studios, Portrait ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5419', 	'Other Professional, Scientific, and Technical Services', 	'54192', 	'Photographic Services', 	'541922', 	'Commercial Photography ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5419', 	'Other Professional, Scientific, and Technical Services', 	'54193', 	'Translation and Interpretation Services', 	'541930', 	'Translation and Interpretation Services', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5419', 	'Other Professional, Scientific, and Technical Services', 	'54194', 	'Veterinary Services', 	'541940', 	'Veterinary Services ', 	'2022'),
+('54', 	'Professional, Scientific, and Technical Services', 	'541', 	'Professional, Scientific, and Technical Services', 	'5419', 	'Other Professional, Scientific, and Technical Services', 	'54199', 	'All Other Professional, Scientific, and Technical Services', 	'541990', 	'All Other Professional, Scientific, and Technical Services', 	'2022'),
+('55', 	'Management of Companies and Enterprises', 	'551', 	'Management of Companies and Enterprises', 	'5511', 	'Management of Companies and Enterprises', 	'55111', 	'Management of Companies and Enterprises', 	'551111', 	'Offices of Bank Holding Companies ', 	'2022'),
+('55', 	'Management of Companies and Enterprises', 	'551', 	'Management of Companies and Enterprises', 	'5511', 	'Management of Companies and Enterprises', 	'55111', 	'Management of Companies and Enterprises', 	'551112', 	'Offices of Other Holding Companies ', 	'2022'),
+('55', 	'Management of Companies and Enterprises', 	'551', 	'Management of Companies and Enterprises', 	'5511', 	'Management of Companies and Enterprises', 	'55111', 	'Management of Companies and Enterprises', 	'551114', 	'Corporate, Subsidiary, and Regional Managing Offices ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5611', 	'Office Administrative Services', 	'56111', 	'Office Administrative Services', 	'561110', 	'Office Administrative Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5612', 	'Facilities Support Services', 	'56121', 	'Facilities Support Services', 	'561210', 	'Facilities Support Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5613', 	'Employment Services', 	'56131', 	'Employment Placement Agencies and Executive Search Services', 	'561311', 	'Employment Placement Agencies ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5613', 	'Employment Services', 	'56131', 	'Employment Placement Agencies and Executive Search Services', 	'561312', 	'Executive Search Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5613', 	'Employment Services', 	'56132', 	'Temporary Help Services', 	'561320', 	'Temporary Help Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5613', 	'Employment Services', 	'56133', 	'Professional Employer Organizations', 	'561330', 	'Professional Employer Organizations', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56141', 	'Document Preparation Services', 	'561410', 	'Document Preparation Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56142', 	'Telephone Call Centers', 	'561421', 	'Telephone Answering Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56142', 	'Telephone Call Centers', 	'561422', 	'Telemarketing Bureaus and Other Contact Centers ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56143', 	'Business Service Centers', 	'561431', 	'Private Mail Centers ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56143', 	'Business Service Centers', 	'561439', 	'Other Business Service Centers (including Copy Shops) ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56144', 	'Collection Agencies', 	'561440', 	'Collection Agencies', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56145', 	'Credit Bureaus', 	'561450', 	'Credit Bureaus', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56149', 	'Other Business Support Services', 	'561491', 	'Repossession Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56149', 	'Other Business Support Services', 	'561492', 	'Court Reporting and Stenotype Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5614', 	'Business Support Services', 	'56149', 	'Other Business Support Services', 	'561499', 	'All Other Business Support Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5615', 	'Travel Arrangement and Reservation Services', 	'56151', 	'Travel Agencies', 	'561510', 	'Travel Agencies', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5615', 	'Travel Arrangement and Reservation Services', 	'56152', 	'Tour Operators', 	'561520', 	'Tour Operators', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5615', 	'Travel Arrangement and Reservation Services', 	'56159', 	'Other Travel Arrangement and Reservation Services', 	'561591', 	'Convention and Visitors Bureaus ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5615', 	'Travel Arrangement and Reservation Services', 	'56159', 	'Other Travel Arrangement and Reservation Services', 	'561599', 	'All Other Travel Arrangement and Reservation Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5616', 	'Investigation and Security Services', 	'56161', 	'Investigation, Guard, and Armored Car Services', 	'561611', 	'Investigation and Personal Background Check Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5616', 	'Investigation and Security Services', 	'56161', 	'Investigation, Guard, and Armored Car Services', 	'561612', 	'Security Guards and Patrol Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5616', 	'Investigation and Security Services', 	'56161', 	'Investigation, Guard, and Armored Car Services', 	'561613', 	'Armored Car Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5616', 	'Investigation and Security Services', 	'56162', 	'Security Systems Services', 	'561621', 	'Security Systems Services (except Locksmiths) ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5616', 	'Investigation and Security Services', 	'56162', 	'Security Systems Services', 	'561622', 	'Locksmiths ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5617', 	'Services to Buildings and Dwellings', 	'56171', 	'Exterminating and Pest Control Services', 	'561710', 	'Exterminating and Pest Control Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5617', 	'Services to Buildings and Dwellings', 	'56172', 	'Janitorial Services', 	'561720', 	'Janitorial Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5617', 	'Services to Buildings and Dwellings', 	'56173', 	'Landscaping Services', 	'561730', 	'Landscaping Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5617', 	'Services to Buildings and Dwellings', 	'56174', 	'Carpet and Upholstery Cleaning Services', 	'561740', 	'Carpet and Upholstery Cleaning Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5617', 	'Services to Buildings and Dwellings', 	'56179', 	'Other Services to Buildings and Dwellings', 	'561790', 	'Other Services to Buildings and Dwellings ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5619', 	'Other Support Services', 	'56191', 	'Packaging and Labeling Services', 	'561910', 	'Packaging and Labeling Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5619', 	'Other Support Services', 	'56192', 	'Convention and Trade Show Organizers', 	'561920', 	'Convention and Trade Show Organizers', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'561', 	'Administrative and Support Services', 	'5619', 	'Other Support Services', 	'56199', 	'All Other Support Services', 	'561990', 	'All Other Support Services', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5621', 	'Waste Collection ', 	'56211', 	'Waste Collection ', 	'562111', 	'Solid Waste Collection ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5621', 	'Waste Collection ', 	'56211', 	'Waste Collection ', 	'562112', 	'Hazardous Waste Collection ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5621', 	'Waste Collection ', 	'56211', 	'Waste Collection ', 	'562119', 	'Other Waste Collection ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5622', 	'Waste Treatment and Disposal ', 	'56221', 	'Waste Treatment and Disposal ', 	'562211', 	'Hazardous Waste Treatment and Disposal ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5622', 	'Waste Treatment and Disposal ', 	'56221', 	'Waste Treatment and Disposal ', 	'562212', 	'Solid Waste Landfill ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5622', 	'Waste Treatment and Disposal ', 	'56221', 	'Waste Treatment and Disposal ', 	'562213', 	'Solid Waste Combustors and Incinerators ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5622', 	'Waste Treatment and Disposal ', 	'56221', 	'Waste Treatment and Disposal ', 	'562219', 	'Other Nonhazardous Waste Treatment and Disposal ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5629', 	'Remediation and Other Waste Management Services ', 	'56291', 	'Remediation Services ', 	'562910', 	'Remediation Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5629', 	'Remediation and Other Waste Management Services ', 	'56292', 	'Materials Recovery Facilities ', 	'562920', 	'Materials Recovery Facilities ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5629', 	'Remediation and Other Waste Management Services ', 	'56299', 	'All Other Waste Management Services ', 	'562991', 	'Septic Tank and Related Services ', 	'2022'),
+('56', 	'Administrative and Support and Waste Management and Remediation Services', 	'562', 	'Waste Management and Remediation Services', 	'5629', 	'Remediation and Other Waste Management Services ', 	'56299', 	'All Other Waste Management Services ', 	'562998', 	'All Other Miscellaneous Waste Management Services ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6111', 	'Elementary and Secondary Schools', 	'61111', 	'Elementary and Secondary Schools ', 	'611110', 	'Elementary and Secondary Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6112', 	'Junior Colleges', 	'61121', 	'Junior Colleges', 	'611210', 	'Junior Colleges ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6113', 	'Colleges, Universities, and Professional Schools', 	'61131', 	'Colleges, Universities, and Professional Schools', 	'611310', 	'Colleges, Universities, and Professional Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6114', 	'Business Schools and Computer and Management Training', 	'61141', 	'Business and Secretarial Schools', 	'611410', 	'Business and Secretarial Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6114', 	'Business Schools and Computer and Management Training', 	'61142', 	'Computer Training', 	'611420', 	'Computer Training ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6114', 	'Business Schools and Computer and Management Training', 	'61143', 	'Professional and Management Development Training', 	'611430', 	'Professional and Management Development Training ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6115', 	'Technical and Trade Schools ', 	'61151', 	'Technical and Trade Schools', 	'611511', 	'Cosmetology and Barber Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6115', 	'Technical and Trade Schools ', 	'61151', 	'Technical and Trade Schools', 	'611512', 	'Flight Training ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6115', 	'Technical and Trade Schools ', 	'61151', 	'Technical and Trade Schools', 	'611513', 	'Apprenticeship Training ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6115', 	'Technical and Trade Schools ', 	'61151', 	'Technical and Trade Schools', 	'611519', 	'Other Technical and Trade Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6116', 	'Other Schools and Instruction', 	'61161', 	'Fine Arts Schools', 	'611610', 	'Fine Arts Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6116', 	'Other Schools and Instruction', 	'61162', 	'Sports and Recreation Instruction', 	'611620', 	'Sports and Recreation Instruction ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6116', 	'Other Schools and Instruction', 	'61163', 	'Language Schools', 	'611630', 	'Language Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6116', 	'Other Schools and Instruction', 	'61169', 	'All Other Schools and Instruction', 	'611691', 	'Exam Preparation and Tutoring ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6116', 	'Other Schools and Instruction', 	'61169', 	'All Other Schools and Instruction', 	'611692', 	'Automobile Driving Schools ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6116', 	'Other Schools and Instruction', 	'61169', 	'All Other Schools and Instruction', 	'611699', 	'All Other Miscellaneous Schools and Instruction ', 	'2022'),
+('61', 	'Educational Services', 	'611', 	'Educational Services', 	'6117', 	'Educational Support Services', 	'61171', 	'Educational Support Services', 	'611710', 	'Educational Support Services', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6211', 	'Offices of Physicians', 	'62111', 	'Offices of Physicians', 	'621111', 	'Offices of Physicians (except Mental Health Specialists) ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6211', 	'Offices of Physicians', 	'62111', 	'Offices of Physicians', 	'621112', 	'Offices of Physicians, Mental Health Specialists ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6212', 	'Offices of Dentists', 	'62121', 	'Offices of Dentists', 	'621210', 	'Offices of Dentists ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6213', 	'Offices of Other Health Practitioners', 	'62131', 	'Offices of Chiropractors', 	'621310', 	'Offices of Chiropractors ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6213', 	'Offices of Other Health Practitioners', 	'62132', 	'Offices of Optometrists', 	'621320', 	'Offices of Optometrists', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6213', 	'Offices of Other Health Practitioners', 	'62133', 	'Offices of Mental Health Practitioners (except Physicians)', 	'621330', 	'Offices of Mental Health Practitioners (except Physicians) ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6213', 	'Offices of Other Health Practitioners', 	'62134', 	'Offices of Physical, Occupational and Speech Therapists, and Audiologists', 	'621340', 	'Offices of Physical, Occupational and Speech Therapists, and Audiologists ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6213', 	'Offices of Other Health Practitioners', 	'62139', 	'Offices of All Other Health Practitioners', 	'621391', 	'Offices of Podiatrists ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6213', 	'Offices of Other Health Practitioners', 	'62139', 	'Offices of All Other Health Practitioners', 	'621399', 	'Offices of All Other Miscellaneous Health Practitioners ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6214', 	'Outpatient Care Centers', 	'62141', 	'Family Planning Centers', 	'621410', 	'Family Planning Centers ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6214', 	'Outpatient Care Centers', 	'62142', 	'Outpatient Mental Health and Substance Abuse Centers', 	'621420', 	'Outpatient Mental Health and Substance Abuse Centers ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6214', 	'Outpatient Care Centers', 	'62149', 	'Other Outpatient Care Centers', 	'621491', 	'HMO Medical Centers ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6214', 	'Outpatient Care Centers', 	'62149', 	'Other Outpatient Care Centers', 	'621492', 	'Kidney Dialysis Centers ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6214', 	'Outpatient Care Centers', 	'62149', 	'Other Outpatient Care Centers', 	'621493', 	'Freestanding Ambulatory Surgical and Emergency Centers ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6214', 	'Outpatient Care Centers', 	'62149', 	'Other Outpatient Care Centers', 	'621498', 	'All Other Outpatient Care Centers ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6215', 	'Medical and Diagnostic Laboratories', 	'62151', 	'Medical and Diagnostic Laboratories', 	'621511', 	'Medical Laboratories ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6215', 	'Medical and Diagnostic Laboratories', 	'62151', 	'Medical and Diagnostic Laboratories', 	'621512', 	'Diagnostic Imaging Centers ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6216', 	'Home Health Care Services', 	'62161', 	'Home Health Care Services', 	'621610', 	'Home Health Care Services', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6219', 	'Other Ambulatory Health Care Services', 	'62191', 	'Ambulance Services', 	'621910', 	'Ambulance Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6219', 	'Other Ambulatory Health Care Services', 	'62199', 	'All Other Ambulatory Health Care Services', 	'621991', 	'Blood and Organ Banks ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'621', 	'Ambulatory Health Care Services', 	'6219', 	'Other Ambulatory Health Care Services', 	'62199', 	'All Other Ambulatory Health Care Services', 	'621999', 	'All Other Miscellaneous Ambulatory Health Care Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'622', 	'Hospitals', 	'6221', 	'General Medical and Surgical Hospitals', 	'62211', 	'General Medical and Surgical Hospitals', 	'622110', 	'General Medical and Surgical Hospitals ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'622', 	'Hospitals', 	'6222', 	'Psychiatric and Substance Abuse Hospitals', 	'62221', 	'Psychiatric and Substance Abuse Hospitals', 	'622210', 	'Psychiatric and Substance Abuse Hospitals ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'622', 	'Hospitals', 	'6223', 	'Specialty (except Psychiatric and Substance Abuse) Hospitals', 	'62231', 	'Specialty (except Psychiatric and Substance Abuse) Hospitals', 	'622310', 	'Specialty (except Psychiatric and Substance Abuse) Hospitals ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'623', 	'Nursing and Residential Care Facilities', 	'6231', 	'Nursing Care Facilities (Skilled Nursing Facilities)', 	'62311', 	'Nursing Care Facilities (Skilled Nursing Facilities)', 	'623110', 	'Nursing Care Facilities (Skilled Nursing Facilities) ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'623', 	'Nursing and Residential Care Facilities', 	'6232', 	'Residential Intellectual and Developmental Disability, Mental Health, and Substance Abuse Facilities', 	'62321', 	'Residential Intellectual and Developmental Disability Facilities', 	'623210', 	'Residential Intellectual and Developmental Disability Facilities ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'623', 	'Nursing and Residential Care Facilities', 	'6232', 	'Residential Intellectual and Developmental Disability, Mental Health, and Substance Abuse Facilities', 	'62322', 	'Residential Mental Health and Substance Abuse Facilities', 	'623220', 	'Residential Mental Health and Substance Abuse Facilities ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'623', 	'Nursing and Residential Care Facilities', 	'6233', 	'Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly', 	'62331', 	'Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly', 	'623311', 	'Continuing Care Retirement Communities ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'623', 	'Nursing and Residential Care Facilities', 	'6233', 	'Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly', 	'62331', 	'Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly', 	'623312', 	'Assisted Living Facilities for the Elderly ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'623', 	'Nursing and Residential Care Facilities', 	'6239', 	'Other Residential Care Facilities', 	'62399', 	'Other Residential Care Facilities', 	'623990', 	'Other Residential Care Facilities ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6241', 	'Individual and Family Services', 	'62411', 	'Child and Youth Services', 	'624110', 	'Child and Youth Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6241', 	'Individual and Family Services', 	'62412', 	'Services for the Elderly and Persons with Disabilities', 	'624120', 	'Services for the Elderly and Persons with Disabilities ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6241', 	'Individual and Family Services', 	'62419', 	'Other Individual and Family Services', 	'624190', 	'Other Individual and Family Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6242', 	'Community Food and Housing, and Emergency and Other Relief Services', 	'62421', 	'Community Food Services', 	'624210', 	'Community Food Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6242', 	'Community Food and Housing, and Emergency and Other Relief Services', 	'62422', 	'Community Housing Services', 	'624221', 	'Temporary Shelters ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6242', 	'Community Food and Housing, and Emergency and Other Relief Services', 	'62422', 	'Community Housing Services', 	'624229', 	'Other Community Housing Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6242', 	'Community Food and Housing, and Emergency and Other Relief Services', 	'62423', 	'Emergency and Other Relief Services', 	'624230', 	'Emergency and Other Relief Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6243', 	'Vocational Rehabilitation Services', 	'62431', 	'Vocational Rehabilitation Services', 	'624310', 	'Vocational Rehabilitation Services ', 	'2022'),
+('62', 	'Health Care and Social Assistance', 	'624', 	'Social Assistance', 	'6244', 	'Child Care Services', 	'62441', 	'Child Care Services', 	'624410', 	'Child Care Services ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7111', 	'Performing Arts Companies', 	'71111', 	'Theater Companies and Dinner Theaters', 	'711110', 	'Theater Companies and Dinner Theaters ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7111', 	'Performing Arts Companies', 	'71112', 	'Dance Companies', 	'711120', 	'Dance Companies ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7111', 	'Performing Arts Companies', 	'71113', 	'Musical Groups and Artists', 	'711130', 	'Musical Groups and Artists ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7111', 	'Performing Arts Companies', 	'71119', 	'Other Performing Arts Companies', 	'711190', 	'Other Performing Arts Companies ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7112', 	'Spectator Sports', 	'71121', 	'Spectator Sports', 	'711211', 	'Sports Teams and Clubs ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7112', 	'Spectator Sports', 	'71121', 	'Spectator Sports', 	'711212', 	'Racetracks ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7112', 	'Spectator Sports', 	'71121', 	'Spectator Sports', 	'711219', 	'Other Spectator Sports ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7113', 	'Promoters of Performing Arts, Sports, and Similar Events', 	'71131', 	'Promoters of Performing Arts, Sports, and Similar Events with Facilities', 	'711310', 	'Promoters of Performing Arts, Sports, and Similar Events with Facilities ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7113', 	'Promoters of Performing Arts, Sports, and Similar Events', 	'71132', 	'Promoters of Performing Arts, Sports, and Similar Events without Facilities', 	'711320', 	'Promoters of Performing Arts, Sports, and Similar Events without Facilities ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7114', 	'Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures', 	'71141', 	'Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures', 	'711410', 	'Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'711', 	'Performing Arts, Spectator Sports, and Related Industries', 	'7115', 	'Independent Artists, Writers, and Performers', 	'71151', 	'Independent Artists, Writers, and Performers', 	'711510', 	'Independent Artists, Writers, and Performers ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'712', 	'Museums, Historical Sites, and Similar Institutions', 	'7121', 	'Museums, Historical Sites, and Similar Institutions', 	'71211', 	'Museums', 	'712110', 	'Museums ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'712', 	'Museums, Historical Sites, and Similar Institutions', 	'7121', 	'Museums, Historical Sites, and Similar Institutions', 	'71212', 	'Historical Sites', 	'712120', 	'Historical Sites', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'712', 	'Museums, Historical Sites, and Similar Institutions', 	'7121', 	'Museums, Historical Sites, and Similar Institutions', 	'71213', 	'Zoos and Botanical Gardens', 	'712130', 	'Zoos and Botanical Gardens ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'712', 	'Museums, Historical Sites, and Similar Institutions', 	'7121', 	'Museums, Historical Sites, and Similar Institutions', 	'71219', 	'Nature Parks and Other Similar Institutions', 	'712190', 	'Nature Parks and Other Similar Institutions', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7131', 	'Amusement Parks and Arcades', 	'71311', 	'Amusement and Theme Parks', 	'713110', 	'Amusement and Theme Parks ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7131', 	'Amusement Parks and Arcades', 	'71312', 	'Amusement Arcades', 	'713120', 	'Amusement Arcades', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7132', 	'Gambling Industries', 	'71321', 	'Casinos (except Casino Hotels)', 	'713210', 	'Casinos (except Casino Hotels)', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7132', 	'Gambling Industries', 	'71329', 	'Other Gambling Industries', 	'713290', 	'Other Gambling Industries ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7139', 	'Other Amusement and Recreation Industries', 	'71391', 	'Golf Courses and Country Clubs', 	'713910', 	'Golf Courses and Country Clubs', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7139', 	'Other Amusement and Recreation Industries', 	'71392', 	'Skiing Facilities', 	'713920', 	'Skiing Facilities', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7139', 	'Other Amusement and Recreation Industries', 	'71393', 	'Marinas', 	'713930', 	'Marinas', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7139', 	'Other Amusement and Recreation Industries', 	'71394', 	'Fitness and Recreational Sports Centers', 	'713940', 	'Fitness and Recreational Sports Centers ', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7139', 	'Other Amusement and Recreation Industries', 	'71395', 	'Bowling Centers', 	'713950', 	'Bowling Centers', 	'2022'),
+('71', 	'Arts, Entertainment, and Recreation', 	'713', 	'Amusement, Gambling, and Recreation Industries', 	'7139', 	'Other Amusement and Recreation Industries', 	'71399', 	'All Other Amusement and Recreation Industries', 	'713990', 	'All Other Amusement and Recreation Industries ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'721', 	'Accommodation', 	'7211', 	'Traveler Accommodation', 	'72111', 	'Hotels (except Casino Hotels) and Motels', 	'721110', 	'Hotels (except Casino Hotels) and Motels ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'721', 	'Accommodation', 	'7211', 	'Traveler Accommodation', 	'72112', 	'Casino Hotels', 	'721120', 	'Casino Hotels', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'721', 	'Accommodation', 	'7211', 	'Traveler Accommodation', 	'72119', 	'Other Traveler Accommodation', 	'721191', 	'Bed-and-Breakfast Inns ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'721', 	'Accommodation', 	'7211', 	'Traveler Accommodation', 	'72119', 	'Other Traveler Accommodation', 	'721199', 	'All Other Traveler Accommodation ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'721', 	'Accommodation', 	'7212', 	'RV (Recreational Vehicle) Parks and Recreational Camps', 	'72121', 	'RV (Recreational Vehicle) Parks and Recreational Camps', 	'721211', 	'RV (Recreational Vehicle) Parks and Campgrounds ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'721', 	'Accommodation', 	'7212', 	'RV (Recreational Vehicle) Parks and Recreational Camps', 	'72121', 	'RV (Recreational Vehicle) Parks and Recreational Camps', 	'721214', 	'Recreational and Vacation Camps (except Campgrounds) ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'721', 	'Accommodation', 	'7213', 	'Rooming and Boarding Houses, Dormitories, and Workers'' Camps', 	'72131', 	'Rooming and Boarding Houses, Dormitories, and Workers'' Camps', 	'721310', 	'Rooming and Boarding Houses, Dormitories, and Workers'' Camps ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7223', 	'Special Food Services', 	'72231', 	'Food Service Contractors', 	'722310', 	'Food Service Contractors', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7223', 	'Special Food Services', 	'72232', 	'Caterers', 	'722320', 	'Caterers', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7223', 	'Special Food Services', 	'72233', 	'Mobile Food Services', 	'722330', 	'Mobile Food Services', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7224', 	'Drinking Places (Alcoholic Beverages)', 	'72241', 	'Drinking Places (Alcoholic Beverages)', 	'722410', 	'Drinking Places (Alcoholic Beverages) ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7225', 	'Restaurants and Other Eating Places', 	'72251', 	'Restaurants and Other Eating Places', 	'722511', 	'Full-Service Restaurants ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7225', 	'Restaurants and Other Eating Places', 	'72251', 	'Restaurants and Other Eating Places', 	'722513', 	'Limited-Service Restaurants ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7225', 	'Restaurants and Other Eating Places', 	'72251', 	'Restaurants and Other Eating Places', 	'722514', 	'Cafeterias, Grill Buffets, and Buffets ', 	'2022'),
+('72', 	'Accommodation and Food Services', 	'722', 	'Food Services and Drinking Places', 	'7225', 	'Restaurants and Other Eating Places', 	'72251', 	'Restaurants and Other Eating Places', 	'722515', 	'Snack and Nonalcoholic Beverage Bars ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8111', 	'Automotive Repair and Maintenance', 	'81111', 	'Automotive Mechanical and Electrical Repair and Maintenance', 	'811111', 	'General Automotive Repair ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8111', 	'Automotive Repair and Maintenance', 	'81111', 	'Automotive Mechanical and Electrical Repair and Maintenance', 	'811114', 	'Specialized Automotive Repair ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8111', 	'Automotive Repair and Maintenance', 	'81112', 	'Automotive Body, Paint, Interior, and Glass Repair', 	'811121', 	'Automotive Body, Paint, and Interior Repair and Maintenance ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8111', 	'Automotive Repair and Maintenance', 	'81112', 	'Automotive Body, Paint, Interior, and Glass Repair', 	'811122', 	'Automotive Glass Replacement Shops ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8111', 	'Automotive Repair and Maintenance', 	'81119', 	'Other Automotive Repair and Maintenance', 	'811191', 	'Automotive Oil Change and Lubrication Shops ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8111', 	'Automotive Repair and Maintenance', 	'81119', 	'Other Automotive Repair and Maintenance', 	'811192', 	'Car Washes ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8111', 	'Automotive Repair and Maintenance', 	'81119', 	'Other Automotive Repair and Maintenance', 	'811198', 	'All Other Automotive Repair and Maintenance ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8112', 	'Electronic and Precision Equipment Repair and Maintenance', 	'81121', 	'Electronic and Precision Equipment Repair and Maintenance', 	'811210', 	'Electronic and Precision Equipment Repair and Maintenance ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8113', 	'Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance', 	'81131', 	'Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance', 	'811310', 	'Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8114', 	'Personal and Household Goods Repair and Maintenance', 	'81141', 	'Home and Garden Equipment and Appliance Repair and Maintenance', 	'811411', 	'Home and Garden Equipment Repair and Maintenance ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8114', 	'Personal and Household Goods Repair and Maintenance', 	'81141', 	'Home and Garden Equipment and Appliance Repair and Maintenance', 	'811412', 	'Appliance Repair and Maintenance ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8114', 	'Personal and Household Goods Repair and Maintenance', 	'81142', 	'Reupholstery and Furniture Repair', 	'811420', 	'Reupholstery and Furniture Repair', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8114', 	'Personal and Household Goods Repair and Maintenance', 	'81143', 	'Footwear and Leather Goods Repair', 	'811430', 	'Footwear and Leather Goods Repair', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'811', 	'Repair and Maintenance', 	'8114', 	'Personal and Household Goods Repair and Maintenance', 	'81149', 	'Other Personal and Household Goods Repair and Maintenance', 	'811490', 	'Other Personal and Household Goods Repair and Maintenance ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8121', 	'Personal Care Services ', 	'81211', 	'Hair, Nail, and Skin Care Services ', 	'812111', 	'Barber Shops ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8121', 	'Personal Care Services ', 	'81211', 	'Hair, Nail, and Skin Care Services ', 	'812112', 	'Beauty Salons ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8121', 	'Personal Care Services ', 	'81211', 	'Hair, Nail, and Skin Care Services ', 	'812113', 	'Nail Salons ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8121', 	'Personal Care Services ', 	'81219', 	'Other Personal Care Services ', 	'812191', 	'Diet and Weight Reducing Centers ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8121', 	'Personal Care Services ', 	'81219', 	'Other Personal Care Services ', 	'812199', 	'Other Personal Care Services ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8122', 	'Death Care Services ', 	'81221', 	'Funeral Homes and Funeral Services ', 	'812210', 	'Funeral Homes and Funeral Services ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8122', 	'Death Care Services ', 	'81222', 	'Cemeteries and Crematories ', 	'812220', 	'Cemeteries and Crematories ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8123', 	'Drycleaning and Laundry Services ', 	'81231', 	'Coin-Operated Laundries and Drycleaners ', 	'812310', 	'Coin-Operated Laundries and Drycleaners ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8123', 	'Drycleaning and Laundry Services ', 	'81232', 	'Drycleaning and Laundry Services (except Coin-Operated) ', 	'812320', 	'Drycleaning and Laundry Services (except Coin-Operated) ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8123', 	'Drycleaning and Laundry Services ', 	'81233', 	'Linen and Uniform Supply ', 	'812331', 	'Linen Supply ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8123', 	'Drycleaning and Laundry Services ', 	'81233', 	'Linen and Uniform Supply ', 	'812332', 	'Industrial Launderers ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8129', 	'Other Personal Services ', 	'81291', 	'Pet Care (except Veterinary) Services ', 	'812910', 	'Pet Care (except Veterinary) Services ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8129', 	'Other Personal Services ', 	'81292', 	'Photofinishing ', 	'812921', 	'Photofinishing Laboratories (except One-Hour) ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8129', 	'Other Personal Services ', 	'81292', 	'Photofinishing ', 	'812922', 	'One-Hour Photofinishing ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8129', 	'Other Personal Services ', 	'81293', 	'Parking Lots and Garages ', 	'812930', 	'Parking Lots and Garages ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'812', 	'Personal and Laundry Services', 	'8129', 	'Other Personal Services ', 	'81299', 	'All Other Personal Services ', 	'812990', 	'All Other Personal Services ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8131', 	'Religious Organizations ', 	'81311', 	'Religious Organizations ', 	'813110', 	'Religious Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8132', 	'Grantmaking and Giving Services ', 	'81321', 	'Grantmaking and Giving Services ', 	'813211', 	'Grantmaking Foundations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8132', 	'Grantmaking and Giving Services ', 	'81321', 	'Grantmaking and Giving Services ', 	'813212', 	'Voluntary Health Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8132', 	'Grantmaking and Giving Services ', 	'81321', 	'Grantmaking and Giving Services ', 	'813219', 	'Other Grantmaking and Giving Services ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8133', 	'Social Advocacy Organizations ', 	'81331', 	'Social Advocacy Organizations ', 	'813311', 	'Human Rights Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8133', 	'Social Advocacy Organizations ', 	'81331', 	'Social Advocacy Organizations ', 	'813312', 	'Environment, Conservation and Wildlife Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8133', 	'Social Advocacy Organizations ', 	'81331', 	'Social Advocacy Organizations ', 	'813319', 	'Other Social Advocacy Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8134', 	'Civic and Social Organizations ', 	'81341', 	'Civic and Social Organizations ', 	'813410', 	'Civic and Social Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8139', 	'Business, Professional, Labor, Political, and Similar Organizations ', 	'81391', 	'Business Associations ', 	'813910', 	'Business Associations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8139', 	'Business, Professional, Labor, Political, and Similar Organizations ', 	'81392', 	'Professional Organizations ', 	'813920', 	'Professional Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8139', 	'Business, Professional, Labor, Political, and Similar Organizations ', 	'81393', 	'Labor Unions and Similar Labor Organizations ', 	'813930', 	'Labor Unions and Similar Labor Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8139', 	'Business, Professional, Labor, Political, and Similar Organizations ', 	'81394', 	'Political Organizations ', 	'813940', 	'Political Organizations ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'813', 	'Religious, Grantmaking, Civic, Professional, and Similar Organizations', 	'8139', 	'Business, Professional, Labor, Political, and Similar Organizations ', 	'81399', 	'Other Similar Organizations (except Business, Professional, Labor, and Political Organizations) ', 	'813990', 	'Other Similar Organizations (except Business, Professional, Labor, and Political Organizations) ', 	'2022'),
+('81', 	'Other Services (except Public Administration)', 	'814', 	'Private Households', 	'8141', 	'Private Households', 	'81411', 	'Private Households', 	'814110', 	'Private Households', 	'2022'),
+('92', 	'Public Administration', 	'921', 	'Executive, Legislative, and Other General Government Support ', 	'9211', 	'Executive, Legislative, and Other General Government Support ', 	'92111', 	'Executive Offices ', 	'921110', 	'Executive Offices ', 	'2022'),
+('92', 	'Public Administration', 	'921', 	'Executive, Legislative, and Other General Government Support ', 	'9211', 	'Executive, Legislative, and Other General Government Support ', 	'92112', 	'Legislative Bodies ', 	'921120', 	'Legislative Bodies ', 	'2022'),
+('92', 	'Public Administration', 	'921', 	'Executive, Legislative, and Other General Government Support ', 	'9211', 	'Executive, Legislative, and Other General Government Support ', 	'92113', 	'Public Finance Activities ', 	'921130', 	'Public Finance Activities ', 	'2022'),
+('92', 	'Public Administration', 	'921', 	'Executive, Legislative, and Other General Government Support ', 	'9211', 	'Executive, Legislative, and Other General Government Support ', 	'92114', 	'Executive and Legislative Offices, Combined ', 	'921140', 	'Executive and Legislative Offices, Combined ', 	'2022'),
+('92', 	'Public Administration', 	'921', 	'Executive, Legislative, and Other General Government Support ', 	'9211', 	'Executive, Legislative, and Other General Government Support ', 	'92115', 	'American Indian and Alaska Native Tribal Governments ', 	'921150', 	'American Indian and Alaska Native Tribal Governments ', 	'2022'),
+('92', 	'Public Administration', 	'921', 	'Executive, Legislative, and Other General Government Support ', 	'9211', 	'Executive, Legislative, and Other General Government Support ', 	'92119', 	'Other General Government Support ', 	'921190', 	'Other General Government Support ', 	'2022'),
+('92', 	'Public Administration', 	'922', 	'Justice, Public Order, and Safety Activities ', 	'9221', 	'Justice, Public Order, and Safety Activities ', 	'92211', 	'Courts ', 	'922110', 	'Courts ', 	'2022'),
+('92', 	'Public Administration', 	'922', 	'Justice, Public Order, and Safety Activities ', 	'9221', 	'Justice, Public Order, and Safety Activities ', 	'92212', 	'Police Protection ', 	'922120', 	'Police Protection ', 	'2022'),
+('92', 	'Public Administration', 	'922', 	'Justice, Public Order, and Safety Activities ', 	'9221', 	'Justice, Public Order, and Safety Activities ', 	'92213', 	'Legal Counsel and Prosecution ', 	'922130', 	'Legal Counsel and Prosecution ', 	'2022'),
+('92', 	'Public Administration', 	'922', 	'Justice, Public Order, and Safety Activities ', 	'9221', 	'Justice, Public Order, and Safety Activities ', 	'92214', 	'Correctional Institutions ', 	'922140', 	'Correctional Institutions ', 	'2022'),
+('92', 	'Public Administration', 	'922', 	'Justice, Public Order, and Safety Activities ', 	'9221', 	'Justice, Public Order, and Safety Activities ', 	'92215', 	'Parole Offices and Probation Offices ', 	'922150', 	'Parole Offices and Probation Offices ', 	'2022'),
+('92', 	'Public Administration', 	'922', 	'Justice, Public Order, and Safety Activities ', 	'9221', 	'Justice, Public Order, and Safety Activities ', 	'92216', 	'Fire Protection ', 	'922160', 	'Fire Protection ', 	'2022'),
+('92', 	'Public Administration', 	'922', 	'Justice, Public Order, and Safety Activities ', 	'9221', 	'Justice, Public Order, and Safety Activities ', 	'92219', 	'Other Justice, Public Order, and Safety Activities ', 	'922190', 	'Other Justice, Public Order, and Safety Activities ', 	'2022'),
+('92', 	'Public Administration', 	'923', 	'Administration of Human Resource Programs ', 	'9231', 	'Administration of Human Resource Programs ', 	'92311', 	'Administration of Education Programs ', 	'923110', 	'Administration of Education Programs ', 	'2022'),
+('92', 	'Public Administration', 	'923', 	'Administration of Human Resource Programs ', 	'9231', 	'Administration of Human Resource Programs ', 	'92312', 	'Administration of Public Health Programs ', 	'923120', 	'Administration of Public Health Programs ', 	'2022'),
+('92', 	'Public Administration', 	'923', 	'Administration of Human Resource Programs ', 	'9231', 	'Administration of Human Resource Programs ', 	'92313', 	'Administration of Human Resource Programs (except Education, Public Health, and Veterans'' Affairs Programs) ', 	'923130', 	'Administration of Human Resource Programs (except Education, Public Health, and Veterans'' Affairs Programs) ', 	'2022'),
+('92', 	'Public Administration', 	'923', 	'Administration of Human Resource Programs ', 	'9231', 	'Administration of Human Resource Programs ', 	'92314', 	'Administration of Veterans'' Affairs ', 	'923140', 	'Administration of Veterans'' Affairs ', 	'2022'),
+('92', 	'Public Administration', 	'924', 	'Administration of Environmental Quality Programs ', 	'9241', 	'Administration of Environmental Quality Programs ', 	'92411', 	'Administration of Air and Water Resource and Solid Waste Management Programs ', 	'924110', 	'Administration of Air and Water Resource and Solid Waste Management Programs ', 	'2022'),
+('92', 	'Public Administration', 	'924', 	'Administration of Environmental Quality Programs ', 	'9241', 	'Administration of Environmental Quality Programs ', 	'92412', 	'Administration of Conservation Programs ', 	'924120', 	'Administration of Conservation Programs ', 	'2022'),
+('92', 	'Public Administration', 	'925', 	'Administration of Housing Programs, Urban Planning, and Community Development ', 	'9251', 	'Administration of Housing Programs, Urban Planning, and Community Development ', 	'92511', 	'Administration of Housing Programs ', 	'925110', 	'Administration of Housing Programs ', 	'2022'),
+('92', 	'Public Administration', 	'925', 	'Administration of Housing Programs, Urban Planning, and Community Development ', 	'9251', 	'Administration of Housing Programs, Urban Planning, and Community Development ', 	'92512', 	'Administration of Urban Planning and Community and Rural Development ', 	'925120', 	'Administration of Urban Planning and Community and Rural Development ', 	'2022'),
+('92', 	'Public Administration', 	'926', 	'Administration of Economic Programs ', 	'9261', 	'Administration of Economic Programs ', 	'92611', 	'Administration of General Economic Programs ', 	'926110', 	'Administration of General Economic Programs ', 	'2022'),
+('92', 	'Public Administration', 	'926', 	'Administration of Economic Programs ', 	'9261', 	'Administration of Economic Programs ', 	'92612', 	'Regulation and Administration of Transportation Programs ', 	'926120', 	'Regulation and Administration of Transportation Programs ', 	'2022'),
+('92', 	'Public Administration', 	'926', 	'Administration of Economic Programs ', 	'9261', 	'Administration of Economic Programs ', 	'92613', 	'Regulation and Administration of Communications, Electric, Gas, and Other Utilities ', 	'926130', 	'Regulation and Administration of Communications, Electric, Gas, and Other Utilities ', 	'2022'),
+('92', 	'Public Administration', 	'926', 	'Administration of Economic Programs ', 	'9261', 	'Administration of Economic Programs ', 	'92614', 	'Regulation of Agricultural Marketing and Commodities ', 	'926140', 	'Regulation of Agricultural Marketing and Commodities ', 	'2022'),
+('92', 	'Public Administration', 	'926', 	'Administration of Economic Programs ', 	'9261', 	'Administration of Economic Programs ', 	'92615', 	'Regulation, Licensing, and Inspection of Miscellaneous Commercial Sectors ', 	'926150', 	'Regulation, Licensing, and Inspection of Miscellaneous Commercial Sectors ', 	'2022'),
+('92', 	'Public Administration', 	'927', 	'Space Research and Technology ', 	'9271', 	'Space Research and Technology ', 	'92711', 	'Space Research and Technology ', 	'927110', 	'Space Research and Technology ', 	'2022'),
+('92', 	'Public Administration', 	'928', 	'National Security and International Affairs ', 	'9281', 	'National Security and International Affairs ', 	'92811', 	'National Security ', 	'928110', 	'National Security ', 	'2022'),
+('92', 	'Public Administration', 	'928', 	'National Security and International Affairs ', 	'9281', 	'National Security and International Affairs ', 	'92812', 	'International Affairs ', 	'928120', 	'International Affairs ', 	'2022')
+
+
+	PRINT 'Populate DimAeEmploymentBarriers'
+	------------------------------------------------------
+	-- Populate DimAeEmploymentBarriers  ---
+	-----------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimAeEmploymentBarriers d WHERE d.DimAeEmploymentBarrierId = -1)
+	BEGIN
+		SET IDENTITY_INSERT RDS.DimAeEmploymentBarriers ON
+
+		INSERT INTO [RDS].[DimAeEmploymentBarriers]
+			   ([DimAeEmploymentBarrierId]
+			   ,[WIOABarrierstoEmploymentCode]
+			   ,[WIOABarrierstoEmploymentDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimAeEmploymentBarriers OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#WIOABarrierstoEmployment') IS NOT NULL
+		DROP TABLE #WIOABarrierstoEmployment
+
+	CREATE TABLE #WIOABarrierstoEmployment (WIOABarrierstoEmploymentCode VARCHAR(50), WIOABarrierstoEmploymentDescription VARCHAR(200))
+
+	INSERT INTO #WIOABarrierstoEmployment VALUES ('MISSING', 'MISSING')
+	INSERT INTO #WIOABarrierstoEmployment 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'WIOABarrierstoEmployment'
+
+
+	INSERT INTO [RDS].[DimAeEmploymentBarriers]
+			([WIOABarrierstoEmploymentCode]
+			,[WIOABarrierstoEmploymentDescription])
+	SELECT DISTINCT
+		  a.WIOABarrierstoEmploymentCode
+		, a.WIOABarrierstoEmploymentDescription
+	FROM #WIOABarrierstoEmployment a
+	LEFT JOIN rds.DimAeEmploymentBarriers main
+		ON a.WIOABarrierstoEmploymentCode = main.WIOABarrierstoEmploymentCode
+	WHERE main.DimAeEmploymentBarrierId IS NULL
+
+	DROP TABLE #WIOABarrierstoEmployment
+
+
+
+	PRINT 'Populate DimAeProgramEmploymentIndicators'
+	-------------------------------------------------------------------
+	-- Populate DimAeProgramEmploymentIndicators  ---
+	-------------------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimAeProgramEmploymentIndicators d WHERE d.DimAeProgramEmploymentIndicatorId = -1)
+	BEGIN
+		SET IDENTITY_INSERT RDS.DimAeProgramEmploymentIndicators ON
+
+		INSERT INTO [RDS].[DimAeProgramEmploymentIndicators]
+			   ([DimAeProgramEmploymentIndicatorId]
+			   ,[EmployedAfterExitCode]
+			   ,[EmployedAfterExitDescription]
+			   ,[EmployedWhileEnrolledCode]
+			   ,[EmployedWhileEnrolledDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimAeProgramEmploymentIndicators OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#EmployedAfterExit') IS NOT NULL
+		DROP TABLE #EmployedAfterExit
+
+	CREATE TABLE #EmployedAfterExit (EmployedAfterExitCode VARCHAR(50), EmployedAfterExitDescription VARCHAR(200))
+
+	INSERT INTO #EmployedAfterExit VALUES ('MISSING', 'MISSING')
+	INSERT INTO #EmployedAfterExit 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EmployedAfterExit'
+
+	IF OBJECT_ID('tempdb..#EmployedWhileEnrolled') IS NOT NULL
+		DROP TABLE #EmployedWhileEnrolled
+
+	CREATE TABLE #EmployedWhileEnrolled (EmployedWhileEnrolledCode VARCHAR(50), EmployedWhileEnrolledDescription VARCHAR(200))
+
+	INSERT INTO #EmployedWhileEnrolled VALUES ('MISSING', 'MISSING')
+	INSERT INTO #EmployedWhileEnrolled 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'EmployedWhileEnrolled'
+
+
+	INSERT INTO [RDS].[DimAeProgramEmploymentIndicators]
+			([EmployedAfterExitCode]
+			,[EmployedAfterExitDescription]
+			,[EmployedWhileEnrolledCode]
+			,[EmployedWhileEnrolledDescription])
+	SELECT DISTINCT
+		  a.EmployedAfterExitCode
+		, a.EmployedAfterExitDescription
+		, b.EmployedWhileEnrolledCode
+		, b.EmployedWhileEnrolledDescription
+	FROM #EmployedAfterExit a
+	CROSS JOIN #EmployedWhileEnrolled b
+	LEFT JOIN rds.DimAeProgramEmploymentIndicators main
+		ON a.EmployedAfterExitCode = main.EmployedAfterExitCode
+		AND b.EmployedWhileEnrolledCode = main.EmployedWhileEnrolledCode
+	WHERE main.DimAeProgramEmploymentIndicatorId IS NULL
+
+	DROP TABLE #EmployedAfterExit
+	DROP TABLE #EmployedWhileEnrolled
+
+
+
+	PRINT 'Populate DimAeProgramParticipantAssessmentIndicators'
+	--------------------------------------------------------------------------------
+	-- Populate DimAeProgramParticipantAssessmentIndicators  ---
+	--------------------------------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimAeProgramParticipantAssessmentIndicators d WHERE d.DimAeProgramParticipantAssessmentIndicatorId = -1)
+	BEGIN
+		SET IDENTITY_INSERT RDS.DimAeProgramParticipantAssessmentIndicators ON
+
+		INSERT INTO [RDS].[DimAeProgramParticipantAssessmentIndicators]
+			   ([DimAeProgramParticipantAssessmentIndicatorId]
+			   ,[AeFunctioningLevelAtIntakeCode]
+			   ,[AeFunctioningLevelAtIntakeDescription]
+			   ,[AeFunctioningLevelAtPosttestCode]
+			   ,[AeFunctioningLevelAtPosttestDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimAeProgramParticipantAssessmentIndicators OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#AeFunctioningLevelAtIntake') IS NOT NULL
+		DROP TABLE #AeFunctioningLevelAtIntake
+
+	CREATE TABLE #AeFunctioningLevelAtIntake (AeFunctioningLevelAtIntakeCode VARCHAR(50), AeFunctioningLevelAtIntakeDescription VARCHAR(200))
+
+	INSERT INTO #AeFunctioningLevelAtIntake VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AeFunctioningLevelAtIntake 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'AeFunctioningLevelAtIntake'
+
+	IF OBJECT_ID('tempdb..#AeFunctioningLevelAtPosttest') IS NOT NULL
+		DROP TABLE #AeFunctioningLevelAtPosttest
+
+	CREATE TABLE #AeFunctioningLevelAtPosttest (AeFunctioningLevelAtPosttestCode VARCHAR(50), AeFunctioningLevelAtPosttestDescription VARCHAR(200))
+
+	INSERT INTO #AeFunctioningLevelAtPosttest VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AeFunctioningLevelAtPosttest 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'AeFunctioningLevelAtPosttest'
+
+
+	INSERT INTO [RDS].[DimAeProgramParticipantAssessmentIndicators]
+			([AeFunctioningLevelAtIntakeCode]
+			,[AeFunctioningLevelAtIntakeDescription]
+			,[AeFunctioningLevelAtPosttestCode]
+			,[AeFunctioningLevelAtPosttestDescription])
+	SELECT DISTINCT
+		  a.AeFunctioningLevelAtIntakeCode
+		, a.AeFunctioningLevelAtIntakeDescription
+		, b.AeFunctioningLevelAtPosttestCode
+		, b.AeFunctioningLevelAtPosttestDescription
+	FROM #AeFunctioningLevelAtIntake a
+	CROSS JOIN #AeFunctioningLevelAtPosttest b
+	LEFT JOIN rds.DimAeProgramParticipantAssessmentIndicators main
+		ON a.AeFunctioningLevelAtIntakeCode = main.AeFunctioningLevelAtIntakeCode
+		AND b.AeFunctioningLevelAtPosttestCode = main.AeFunctioningLevelAtPosttestDescription
+	WHERE main.DimAeProgramParticipantAssessmentIndicatorId IS NULL
+
+	DROP TABLE #AeFunctioningLevelAtIntake
+	DROP TABLE #AeFunctioningLevelAtPosttest
+
+
+	PRINT 'Populate DimAeProgramParticipantGoals'
+	-----------------------------------------------------------
+	-- Populate DimAeProgramParticipantGoals  ---
+	-----------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimAeProgramParticipantGoals d WHERE d.DimAeProgramParticipantGoalId = -1)
+	BEGIN
+		SET IDENTITY_INSERT RDS.DimAeProgramParticipantGoals ON
+
+		INSERT INTO [RDS].[DimAeProgramParticipantGoals]
+			   ([DimAeProgramParticipantGoalId]
+			   ,[GoalsForAttendingAdultEducationCode]
+			   ,[GoalsForAttendingAdultEducationDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimAeProgramParticipantGoals OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#GoalsForAttendingAdultEducation') IS NOT NULL
+		DROP TABLE #GoalsForAttendingAdultEducation
+
+	CREATE TABLE #GoalsForAttendingAdultEducation (GoalsForAttendingAdultEducationCode VARCHAR(50), GoalsForAttendingAdultEducationDescription VARCHAR(200))
+
+	INSERT INTO #GoalsForAttendingAdultEducation VALUES ('MISSING', 'MISSING')
+	INSERT INTO #GoalsForAttendingAdultEducation 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'GoalsForAttendingAdultEducation'
+
+
+	INSERT INTO [RDS].[DimAeProgramParticipantGoals]
+			([GoalsForAttendingAdultEducationCode]
+			,[GoalsForAttendingAdultEducationDescription])
+	SELECT DISTINCT
+		  a.GoalsForAttendingAdultEducationCode
+		, a.GoalsForAttendingAdultEducationDescription
+	FROM #GoalsForAttendingAdultEducation a
+	LEFT JOIN rds.DimAeProgramParticipantGoals main
+		ON a.GoalsForAttendingAdultEducationCode = main.GoalsForAttendingAdultEducationCode
+	WHERE main.DimAeProgramParticipantGoalId IS NULL
+
+	DROP TABLE #GoalsForAttendingAdultEducation
+
+
+	PRINT 'Populate DimAeProgramParticipantIndicators'
+	-----------------------------------------------------------------
+	-- Populate DimAeProgramParticipantIndicators  ---
+	-----------------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimAeProgramParticipantIndicators d WHERE d.DimAeProgramParticipantIndicatorId = -1)
+	BEGIN
+		SET IDENTITY_INSERT RDS.DimAeProgramParticipantIndicators ON
+
+		INSERT INTO [RDS].[DimAeProgramParticipantIndicators]
+			   ([DimAeProgramParticipantIndicatorId]
+			   ,[CorrectionalEducationReentryServicesParticipationIndicatorCode]
+			   ,[CorrectionalEducationReentryServicesParticipationIndicatorDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimAeProgramParticipantIndicators OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#CorrectionalEducationReentryServicesParticipationIndicator') IS NOT NULL
+		DROP TABLE #CorrectionalEducationReentryServicesParticipationIndicator
+
+	CREATE TABLE #CorrectionalEducationReentryServicesParticipationIndicator (CorrectionalEducationReentryServicesParticipationIndicatorCode VARCHAR(50), CorrectionalEducationReentryServicesParticipationIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #CorrectionalEducationReentryServicesParticipationIndicator VALUES ('MISSING', 'MISSING')
+	INSERT INTO #CorrectionalEducationReentryServicesParticipationIndicator 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'CorrectionalEducationReentryServicesParticipationIndicator'
+
+
+	INSERT INTO [RDS].[DimAeProgramParticipantIndicators]
+			([CorrectionalEducationReentryServicesParticipationIndicatorCode]
+			,[CorrectionalEducationReentryServicesParticipationIndicatorDescription])
+	SELECT DISTINCT
+		  a.CorrectionalEducationReentryServicesParticipationIndicatorCode
+		, a.CorrectionalEducationReentryServicesParticipationIndicatorDescription
+	FROM #CorrectionalEducationReentryServicesParticipationIndicator a
+	LEFT JOIN rds.DimAeProgramParticipantIndicators main
+		ON a.CorrectionalEducationReentryServicesParticipationIndicatorCode = main.CorrectionalEducationReentryServicesParticipationIndicatorCode
+	WHERE main.DimAeProgramParticipantIndicatorId IS NULL
+
+	DROP TABLE #CorrectionalEducationReentryServicesParticipationIndicator
+
+
+	PRINT 'Populate DimAeProgramTransitionIndicators'
+	---------------------------------------------------------------
+	-- Populate DimAeProgramTransitionIndicators  ---
+	----------------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimAeProgramTransitionIndicators d WHERE d.DimAeProgramTransitionIndicatorId = -1)
+	BEGIN
+		SET IDENTITY_INSERT RDS.DimAeProgramTransitionIndicators ON
+
+		INSERT INTO [RDS].[DimAeProgramTransitionIndicators]
+			   ([DimAeProgramTransitionIndicatorId]
+			   ,[AePostsecondaryTransitionActionCode]
+			   ,[AePostsecondaryTransitionActionDescription]
+			   ,[AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorCode]
+			   ,[AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorDescription]
+			   ,[AdultEducationCredentialAttainmentEmployedIndicatorCode]
+			   ,[AdultEducationCredentialAttainmentEmployedIndicatorDescription]
+			   ,[AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorCode]
+			   ,[AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorDescription]
+			   ,[AdultEducationProgramExitReasonCode]
+			   ,[AdultEducationProgramExitReasonDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimAeProgramTransitionIndicators OFF
+
+	END
+
+	IF OBJECT_ID('tempdb..#AePostsecondaryTransitionAction') IS NOT NULL
+		DROP TABLE #AePostsecondaryTransitionAction
+
+	CREATE TABLE #AePostsecondaryTransitionAction (AePostsecondaryTransitionActionCode VARCHAR(50), AePostsecondaryTransitionActionDescription VARCHAR(200))
+
+	INSERT INTO #AePostsecondaryTransitionAction VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AePostsecondaryTransitionAction 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'AdultEducationPostsecondaryTransitionAction'
+
+	IF OBJECT_ID('tempdb..#AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator') IS NOT NULL
+		DROP TABLE #AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator
+
+	CREATE TABLE #AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator (AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorCode VARCHAR(50), AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator'
+
+	IF OBJECT_ID('tempdb..#AdultEducationCredentialAttainmentEmployedIndicator') IS NOT NULL
+		DROP TABLE #AdultEducationCredentialAttainmentEmployedIndicator
+
+	CREATE TABLE #AdultEducationCredentialAttainmentEmployedIndicator (AdultEducationCredentialAttainmentEmployedIndicatorCode VARCHAR(50), AdultEducationCredentialAttainmentEmployedIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #AdultEducationCredentialAttainmentEmployedIndicator VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AdultEducationCredentialAttainmentEmployedIndicator 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'AdultEducationCredentialAttainmentEmployedIndicator'
+
+	IF OBJECT_ID('tempdb..#AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator') IS NOT NULL
+		DROP TABLE #AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator
+
+	CREATE TABLE #AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator (AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorCode VARCHAR(50), AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator'
+
+	IF OBJECT_ID('tempdb..#AdultEducationProgramExitReason') IS NOT NULL
+		DROP TABLE #AdultEducationProgramExitReason
+
+	CREATE TABLE #AdultEducationProgramExitReason (AdultEducationProgramExitReasonCode VARCHAR(50), AdultEducationProgramExitReasonDescription VARCHAR(200))
+
+	INSERT INTO #AdultEducationProgramExitReason VALUES ('MISSING', 'MISSING')
+	INSERT INTO #AdultEducationProgramExitReason 
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'AdultEducationProgramExitReason'
+
+
+	INSERT INTO [RDS].[DimAeProgramTransitionIndicators]
+		([AePostsecondaryTransitionActionCode]
+		,[AePostsecondaryTransitionActionDescription]
+		,[AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorCode]
+		,[AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorDescription]
+		,[AdultEducationCredentialAttainmentEmployedIndicatorCode]
+		,[AdultEducationCredentialAttainmentEmployedIndicatorDescription]
+		,[AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorCode]
+		,[AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorDescription]
+		,[AdultEducationProgramExitReasonCode]
+		,[AdultEducationProgramExitReasonDescription])
+	SELECT DISTINCT
+		  a.AePostsecondaryTransitionActionCode
+		, a.AePostsecondaryTransitionActionDescription
+		, b.AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorCode
+		, b.AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorDescription
+		, c.AdultEducationCredentialAttainmentEmployedIndicatorCode
+		, c.AdultEducationCredentialAttainmentEmployedIndicatorDescription
+		, d.AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorCode
+		, d.AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorDescription
+		, e.AdultEducationProgramExitReasonCode
+		, e.AdultEducationProgramExitReasonDescription
+	FROM #AePostsecondaryTransitionAction a
+	CROSS JOIN #AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator b
+	CROSS JOIN #AdultEducationCredentialAttainmentEmployedIndicator c
+	CROSS JOIN #AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator d
+	CROSS JOIN #AdultEducationProgramExitReason e
+	LEFT JOIN rds.DimAeProgramTransitionIndicators main
+		ON a.AePostsecondaryTransitionActionCode = main.AePostsecondaryTransitionActionCode
+		AND b.AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorCode = main.AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicatorCode
+		AND c.AdultEducationCredentialAttainmentEmployedIndicatorCode = main.AdultEducationCredentialAttainmentEmployedIndicatorCode
+		AND d.AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorCode = main.AdultEducationCredentialAttainmentPostsecondaryCredentialIndicatorCode
+		AND e.AdultEducationProgramExitReasonCode = main.AdultEducationProgramExitReasonCode
+	WHERE main.DimAeProgramTransitionIndicatorId IS NULL
+
+	DROP TABLE #AePostsecondaryTransitionAction
+	DROP TABLE #AdultEducationCredentialAttainmentPostsecondaryEnrollmentIndicator
+	DROP TABLE #AdultEducationCredentialAttainmentEmployedIndicator
+	DROP TABLE #AdultEducationCredentialAttainmentPostsecondaryCredentialIndicator
+	DROP TABLE #AdultEducationProgramExitReason
+
+
+
+	PRINT 'Populate DimIncidentBehaviors'
+	------------------------------------------------------
+	-- Populate DimIncidentBehaviors  ---
+	------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimIncidentBehaviors d WHERE d.DimIncidentBehaviorId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimIncidentBehaviors ON
+
+		INSERT INTO [RDS].DimIncidentBehaviors
+           ([DimIncidentBehaviorId]
+		   ,[IncidentBehaviorCode]
+		   ,[IncidentBehaviorDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimIncidentBehaviors OFF
+	END
+
+	CREATE TABLE #IncidentBehavior (IncidentBehaviorCode VARCHAR(50), IncidentBehaviorDescription VARCHAR(200))
+
+	INSERT INTO #IncidentBehavior VALUES ('MISSING', 'MISSING')
+	INSERT INTO #IncidentBehavior
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'IncidentBehavior'
+
+	INSERT INTO RDS.DimIncidentBehaviors
+		   ([IncidentBehaviorCode]
+		   ,[IncidentBehaviorDescription])
+	SELECT DISTINCT
+		  a.IncidentBehaviorCode
+		, a.IncidentBehaviorDescription
+	FROM #IncidentBehavior a
+	LEFT JOIN rds.DimIncidentBehaviors main
+		ON a.IncidentBehaviorCode = main.IncidentBehaviorDescription
+	WHERE main.DimIncidentBehaviorId IS NULL
+
+	DROP TABLE #IncidentBehavior
+
+
+	PRINT 'Populate DimIncidentTimeIndicators'
+	------------------------------------------------------
+	-- Populate DimIncidentTimeIndicators  ---
+	------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimIncidentTimeIndicators d WHERE d.DimIncidentTimeIndicatorId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimIncidentTimeIndicators ON
+
+		INSERT INTO [RDS].DimIncidentTimeIndicators
+           ([DimIncidentTimeIndicatorId]
+		   ,[IncidentTimeDescriptionCodeCode]
+		   ,[IncidentTimeDescriptionCodeDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimIncidentTimeIndicators OFF
+	END
+
+	CREATE TABLE #IncidentTimeDescriptionCode (IncidentTimeDescriptionCodeCode VARCHAR(50), IncidentTimeDescriptionCodeDescription VARCHAR(200))
+
+	INSERT INTO #IncidentTimeDescriptionCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #IncidentTimeDescriptionCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'IncidentTimeDescriptionCode'
+
+	INSERT INTO RDS.DimIncidentTimeIndicators
+		   ([IncidentTimeDescriptionCodeCode]
+		   ,[IncidentTimeDescriptionCodeDescription])
+	SELECT DISTINCT
+		  a.IncidentTimeDescriptionCodeCode
+		, a.IncidentTimeDescriptionCodeDescription
+	FROM #IncidentTimeDescriptionCode a
+	LEFT JOIN rds.DimIncidentTimeIndicators main
+		ON a.IncidentTimeDescriptionCodeCode = main.IncidentTimeDescriptionCodeDescription
+	WHERE main.DimIncidentTimeIndicatorId IS NULL
+
+	DROP TABLE #IncidentTimeDescriptionCode
+
+
+	PRINT 'Populate DimIncidentSettings'
+	-------------------------------------------------
+	-- Populate DimIncidentSettings        ---
+	-------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimIncidentSettings d WHERE d.DimIncidentSettingId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimIncidentSettings ON
+
+		INSERT INTO [RDS].DimIncidentSettings
+           ([DimIncidentSettingId]
+		   ,[IncidentLocationCode]
+		   ,[IncidentLocationDescription]
+		   ,[IncidentActivityCode]
+		   ,[IncidentActivityDescription])
+			VALUES (
+				  -1
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				, 'MISSING'
+				)
+
+		SET IDENTITY_INSERT RDS.DimIncidentSettings OFF
+	END
+
+	CREATE TABLE #IncidentLocation (IncidentLocationCode VARCHAR(50), IncidentLocationDescription VARCHAR(200))
+
+	INSERT INTO #IncidentLocation VALUES ('MISSING', 'MISSING')
+	INSERT INTO #IncidentLocation
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'IncidentLocation'
+
+	CREATE TABLE #IncidentActivity (IncidentActivityCode VARCHAR(50), IncidentActivityDescription VARCHAR(200))
+
+	INSERT INTO #IncidentActivity VALUES ('MISSING', 'MISSING')
+	INSERT INTO #IncidentActivity
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'IncidentActivity'
+
+
+	INSERT INTO RDS.DimIncidentSettings
+		   ([IncidentLocationCode]
+		   ,[IncidentLocationDescription]
+		   ,[IncidentActivityCode]
+		   ,[IncidentActivityDescription])
+	SELECT DISTINCT
+		  a.IncidentLocationCode
+		, a.IncidentLocationDescription
+		, b.IncidentActivityCode
+		, b.IncidentActivityDescription
+	FROM #IncidentLocation a
+	CROSS JOIN #IncidentActivity b
+	LEFT JOIN rds.DimIncidentSettings main
+		ON a.IncidentLocationCode = main.IncidentLocationCode
+		AND b.IncidentActivityCode = main.IncidentActivityCode
+	WHERE main.DimIncidentSettingId IS NULL
+
+	DROP TABLE #IncidentLocation
+	DROP TABLE #IncidentActivity
