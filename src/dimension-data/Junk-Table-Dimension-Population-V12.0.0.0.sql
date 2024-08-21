@@ -55,38 +55,10 @@ GO
 
 		INSERT INTO [RDS].[DimAeDemographics]
 			   ([DimAeDemographicId]
-			   ,[EconomicDisadvantageStatusCode]
-			   ,[EconomicDisadvantageStatusDescription]
-			   ,[HomelessnessStatusCode]
-			   ,[HomelessnessStatusDescription]
-			   ,[EnglishLearnerStatusCode]
-			   ,[EnglishLearnerStatusDescription]
-			   ,[MigrantStatusCode]
-			   ,[MigrantStatusDescription]
-			   ,[MilitaryConnectedStudentIndicatorCode]
-			   ,[MilitaryConnectedStudentIndicatorDescription]
-			   ,[HomelessPrimaryNighttimeResidenceCode]
-			   ,[HomelessPrimaryNighttimeResidenceDescription]
-			   ,[HomelessUnaccompaniedYouthStatusCode]
-			   ,[HomelessUnaccompaniedYouthStatusDescription]
 			   ,[SexCode]
 			   ,[SexDescription])
 			VALUES (
 				  -1
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
-				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
 				)
@@ -94,112 +66,6 @@ GO
 		SET IDENTITY_INSERT RDS.DimAeDemographics OFF
 
 	END
-	
-	IF OBJECT_ID('tempdb..#EconomicDisadvantageStatus') IS NOT NULL
-		DROP TABLE #EconomicDisadvantageStatus
-
-	CREATE TABLE #EconomicDisadvantageStatus (EconomicDisadvantageStatusCode VARCHAR(50), EconomicDisadvantageStatusDescription VARCHAR(200), EconomicDisadvantageStatusEdFactsCode VARCHAR(100))
-
-	INSERT INTO #EconomicDisadvantageStatus VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #EconomicDisadvantageStatus 
-	SELECT 
-			CedsOptionSetCode
-		, CedsOptionSetDescription
-		, CASE CedsOptionSetCode
-			WHEN 'Yes' THEN 'ECODIS'
-			ELSE 'MISSING'
-			END
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'EconomicDisadvantageStatus'
-
-	IF OBJECT_ID('tempdb..#HomelessnessStatus') IS NOT NULL
-		DROP TABLE #HomelessnessStatus
-	CREATE TABLE #HomelessnessStatus (HomelessnessStatusCode VARCHAR(50), HomelessnessStatusDescription VARCHAR(200), HomelessnessStatusEdFactsCode VARCHAR(50))
-
-	INSERT INTO #HomelessnessStatus VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #HomelessnessStatus 
-	SELECT 
-			CedsOptionSetCode
-		, CedsOptionSetDescription
-		, CASE CedsOptionSetCode
-			WHEN 'Yes' THEN 'ECODIS'
-			ELSE 'MISSING'
-			END
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'HomelessnessStatus'
-
-	IF OBJECT_ID('tempdb..#EnglishLearnerStatus') IS NOT NULL
-		DROP TABLE #EnglishLearnerStatus
-
-	CREATE TABLE #EnglishLearnerStatus (EnglishLearnerStatusCode VARCHAR(50), EnglishLearnerStatusDescription VARCHAR(200))
-
-	INSERT INTO #EnglishLearnerStatus VALUES ('MISSING', 'MISSING')
-	INSERT INTO #EnglishLearnerStatus 
-	SELECT 
-			CedsOptionSetCode
-		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'EnglishLearnerStatus'
-
-	IF OBJECT_ID('tempdb..#MigrantStatus') IS NOT NULL
-		DROP TABLE #MigrantStatus
-
-	CREATE TABLE #MigrantStatus (MigrantStatusCode VARCHAR(50), MigrantStatusDescription VARCHAR(200))
-
-	INSERT INTO #MigrantStatus VALUES ('MISSING', 'MISSING')
-	INSERT INTO #MigrantStatus 
-	SELECT 
-			CedsOptionSetCode
-		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'MigrantStatus'
-
-	IF OBJECT_ID('tempdb..#MilitaryConnectedStudentIndicator') IS NOT NULL
-		DROP TABLE #MilitaryConnectedStudentIndicator
-
-	CREATE TABLE #MilitaryConnectedStudentIndicator (MilitaryConnectedStudentIndicatorCode VARCHAR(50), MilitaryConnectedStudentIndicatorDescription VARCHAR(200), MilitaryConnectedStudentIndicatorEdFactsCode VARCHAR(50))
-
-	INSERT INTO #MilitaryConnectedStudentIndicator VALUES ('MISSING', 'MISSING', 'MISSING')
-	INSERT INTO #MilitaryConnectedStudentIndicator 
-	SELECT 
-			CedsOptionSetCode
-		, CedsOptionSetDescription
-		, CASE CedsOptionSetCode
-			WHEN 'NotMilitaryConnected' THEN 'MISSING'
-			WHEN 'NationalGuardOrReserve' THEN 'MILCNCTD'
-			WHEN 'MISSING' THEN 'MISSING'
-			WHEN 'ActiveDuty' THEN 'MILCNCTD'
-			WHEN 'Unknown' THEN 'MISSING'
-			ELSE 'MISSING'
-			END
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'MilitaryConnectedStudentIndicator'
-
-	IF OBJECT_ID('tempdb..#HomelessPrimaryNighttimeResidence') IS NOT NULL
-		DROP TABLE #HomelessPrimaryNighttimeResidence
-
-	CREATE TABLE #HomelessPrimaryNighttimeResidence (HomelessPrimaryNighttimeResidenceCode VARCHAR(50), HomelessPrimaryNighttimeResidenceDescription VARCHAR(200))
-
-	INSERT INTO #HomelessPrimaryNighttimeResidence VALUES ('MISSING', 'MISSING')
-	INSERT INTO #HomelessPrimaryNighttimeResidence 
-	SELECT 
-			CedsOptionSetCode
-		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'HomelessPrimaryNighttimeResidence'
-
-	IF OBJECT_ID('tempdb..#HomelessUnaccompaniedYouthStatus') IS NOT NULL
-		DROP TABLE #HomelessUnaccompaniedYouthStatus
-
-	CREATE TABLE #HomelessUnaccompaniedYouthStatus (HomelessUnaccompaniedYouthStatusCode VARCHAR(50), HomelessUnaccompaniedYouthStatusDescription VARCHAR(200))
-
-	INSERT INTO #HomelessUnaccompaniedYouthStatus VALUES ('MISSING', 'MISSING')
-	INSERT INTO #HomelessUnaccompaniedYouthStatus 
-	SELECT 
-			CedsOptionSetCode
-		, CedsOptionSetDescription
-	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
-	WHERE CedsElementTechnicalName = 'HomelessUnaccompaniedYouthStatus'
 
 	IF OBJECT_ID('tempdb..#Sex') IS NOT NULL
 		DROP TABLE #Sex
@@ -216,64 +82,16 @@ GO
 
 
 	INSERT INTO [RDS].[DimAeDemographics]
-			([EconomicDisadvantageStatusCode]
-			,[EconomicDisadvantageStatusDescription]
-			,[HomelessnessStatusCode]
-			,[HomelessnessStatusDescription]
-			,[EnglishLearnerStatusCode]
-			,[EnglishLearnerStatusDescription]
-			,[MigrantStatusCode]
-			,[MigrantStatusDescription]
-			,[MilitaryConnectedStudentIndicatorCode]
-			,[MilitaryConnectedStudentIndicatorDescription]
-			,[HomelessPrimaryNighttimeResidenceCode]
-			,[HomelessPrimaryNighttimeResidenceDescription]
-			,[HomelessUnaccompaniedYouthStatusCode]
-			,[HomelessUnaccompaniedYouthStatusDescription]
-			,[SexCode]
+			([SexCode]
 			,[SexDescription])
 	SELECT DISTINCT
-			a.EconomicDisadvantageStatusCode
-		, a.EconomicDisadvantageStatusDescription
-		, b.HomelessnessStatusCode
-		, b.HomelessnessStatusDescription
-		, c.EnglishLearnerStatusCode
-		, c.EnglishLearnerStatusDescription
-		, d.MigrantStatusCode
-		, d.MigrantStatusDescription
-		, e.MilitaryConnectedStudentIndicatorCode
-		, e.MilitaryConnectedStudentIndicatorDescription
-		, f.HomelessPrimaryNighttimeResidenceCode
-		, f.HomelessPrimaryNighttimeResidenceDescription
-		, g.HomelessUnaccompaniedYouthStatusCode
-		, g.HomelessUnaccompaniedYouthStatusDescription
-		, h.SexCode
-		, h.SexDescription
-	FROM #EconomicDisadvantageStatus a
-	CROSS JOIN #HomelessnessStatus b
-	CROSS JOIN #EnglishLearnerStatus c
-	CROSS JOIN #MigrantStatus d
-	CROSS JOIN #MilitaryConnectedStudentIndicator e
-	CROSS JOIN #HomelessPrimaryNighttimeResidence f
-	CROSS JOIN #HomelessUnaccompaniedYouthStatus g
-	CROSS JOIN #Sex h
+		  a.SexCode
+		, a.SexDescription
+	FROM #Sex a
 	LEFT JOIN rds.DimAeDemographics main
-		ON a.EconomicDisadvantageStatusCode = main.EconomicDisadvantageStatusCode
-		AND b.HomelessnessStatusCode = main.HomelessnessStatusCode
-		AND c.EnglishLearnerStatusCode = main.EnglishLearnerStatusCode
-		AND d.MigrantStatusCode = main.MigrantStatusCode
-		AND e.MilitaryConnectedStudentIndicatorCode = main.MilitaryConnectedStudentIndicatorCode
-		AND f.HomelessPrimaryNighttimeResidenceCode = main.HomelessPrimaryNighttimeResidenceCode
-		AND g.HomelessUnaccompaniedYouthStatusCode = main.HomelessUnaccompaniedYouthStatusCode
-		AND h.SexCode = main.SexCode
+		ON a.SexCode = main.SexCode
 	WHERE main.DimAeDemographicId IS NULL
 
-
-	DROP TABLE #HomelessnessStatus
-	DROP TABLE #EnglishLearnerStatus
-	DROP TABLE #MigrantStatus
-	DROP TABLE #HomelessUnaccompaniedYouthStatus
-	DROP TABLE #HomelessPrimaryNighttimeResidence
 	DROP TABLE #Sex
 
 
