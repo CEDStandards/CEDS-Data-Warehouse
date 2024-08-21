@@ -5340,16 +5340,21 @@ GO
 		[AccessibleFormatTypeDescription]
 	)
 	SELECT
-		afi.AccessibleFormatIssuedIndicatorCode,
-		afi.AccessibleFormatIssuedIndicatorDescription,
-		afri.AccessibleFormatRequiredIndicatorCodeCode,
-		afri.AccessibleFormatRequiredIndicatorCodeDescription,
-		aftc.AccessibleFormatTypeCodeCode,
-		aftc.AccessibleFormatTypeCodeDescription
+		a.AccessibleFormatIssuedIndicatorCode,
+		a.AccessibleFormatIssuedIndicatorDescription,
+		b.AccessibleFormatRequiredIndicatorCodeCode,
+		b.AccessibleFormatRequiredIndicatorCodeDescription,
+		c.AccessibleFormatTypeCodeCode,
+		c.AccessibleFormatTypeCodeDescription
 	FROM
-		#AccessibleFormatIssuedIndicatorCode afi
-		CROSS JOIN #AccessibleFormatRequiredIndicatorCode afri
-		CROSS JOIN #AccessibleFormatTypeCode aftc
+		#AccessibleFormatIssuedIndicatorCode a
+		CROSS JOIN #AccessibleFormatRequiredIndicatorCode b
+		CROSS JOIN #AccessibleFormatTypeCode c
+		LEFT JOIN [RDS].[DimAccessibleEducationMaterialStatuses] main
+			ON a.AccessibleFormatIssuedIndicatorCode = rdaems.AccessibleFormatIssuedIndicatorCode
+			AND b.AccessibleFormatRequiredIndicatorCodeCode = main.AccessibleFormatRequiredIndicatorCodeCode
+			AND c.AccessibleFormatTypeCodeCode = main.AccessibleFormatTypeCodeCode
+		WHERE main.DimAccessibleEducationMaterialStatusId IS NULL
 
 	-- Drop temp tables
 	DROP TABLE #AccessibleFormatIssuedIndicatorCode
