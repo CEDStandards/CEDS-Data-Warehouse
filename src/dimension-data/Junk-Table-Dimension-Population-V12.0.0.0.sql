@@ -11124,3 +11124,77 @@ VALUES
 
 	DROP TABLE #IncidentLocation
 	DROP TABLE #IncidentActivity
+
+
+	--------------------------------------------------------
+	-- Populate DimRecordStatuses   ---------------
+	--------------------------------------------------------
+	IF NOT EXISTS (SELECT 1 FROM rds.DimRecordStatuses d WHERE d.DimRecordStatusId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimRecordStatuses ON
+
+			INSERT INTO rds.DimRecordStatuses(
+						  DimRecordStatusId
+						 ,RecordStatusTypeCode
+					     ,RecordStatusTypeDescription
+					     ,RecordStatusCreatorEntityCode
+					     ,RecordStatusCreatorEntityDescription
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					)
+
+		SET IDENTITY_INSERT rds.DimRecordStatuses OFF
+	END
+
+	IF OBJECT_ID('tempdb..#RecordStatusTypeCode') IS NOT NULL
+		DROP TABLE #RecordStatusTypeCode
+
+	CREATE TABLE #RecordStatusTypeCode (RecordStatusTypeCode VARCHAR(50), RecordStatusTypeDescription VARCHAR(200))
+
+	INSERT INTO #RecordStatusTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #RecordStatusTypeCode 
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'RecordStatusType'
+	ORDER BY CedsOptionSetCode
+
+	IF OBJECT_ID('tempdb..#RecordStatusCreatorEntityCode') IS NOT NULL
+		DROP TABLE #RecordStatusCreatorEntityCode
+
+	CREATE TABLE #RecordStatusCreatorEntityCode (RecordStatusCreatorEntityCode VARCHAR(50), RecordStatusCreatorEntityDescription VARCHAR(200))
+
+	INSERT INTO #RecordStatusCreatorEntityCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #RecordStatusCreatorEntityCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'RecordStatusCreatorEntity'
+	ORDER BY CedsOptionSetCode
+
+	INSERT INTO rds.DimRecordStatuses(
+			 RecordStatusTypeCode
+			,RecordStatusTypeDescription
+			,RecordStatusCreatorEntityCode
+			,RecordStatusCreatorEntityDescription
+			)
+	SELECT 
+			 a.RecordStatusTypeCode
+			,a.RecordStatusTypeDescription
+			,b.RecordStatusCreatorEntityCode
+			,b.RecordStatusCreatorEntityDescription
+	FROM #RecordStatusTypeCode a
+	CROSS JOIN #RecordStatusCreatorEntityCode b
+	LEFT JOIN rds.DimRecordStatuses main
+		ON	a.RecordStatusTypeCode = main.RecordStatusTypeCode								
+		AND b.RecordStatusCreatorEntityCode = main.RecordStatusCreatorEntityCode			
+	WHERE main.DimRecordStatusId IS NULL
+
+	DROP TABLE #RecordStatusTypeCode
+	DROP TABLE #RecordStatusCreatorEntityCode
