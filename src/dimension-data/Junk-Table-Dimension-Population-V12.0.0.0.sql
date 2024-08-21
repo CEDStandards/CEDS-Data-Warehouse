@@ -9565,6 +9565,7 @@ DROP TABLE #RuralResidencyStatusCode
 	DROP TABLE #DropoutReasonType
 
 
+
 	----------------------------------------------------
 	-- Populate DimCteOutcomeIndicators ---
 	----------------------------------------------------
@@ -9580,9 +9581,13 @@ DROP TABLE #RuralResidencyStatusCode
 		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode]
 		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode]
 		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription]
-		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode])
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode]
+		   ,[PerkinsPostProgramPlacementIndicatorCode]
+		   ,[PerkinsPostProgramPlacementIndicatorDescription])
 			VALUES (
 				  -1
+				, 'MISSING'
+				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
@@ -9616,6 +9621,16 @@ DROP TABLE #RuralResidencyStatusCode
 	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'EdFactsAcademicOrCareerAndTechnicalOutcomeExitType'
 
+	CREATE TABLE #PerkinsPostProgramPlacementIndicator (PerkinsPostProgramPlacementIndicatorCode VARCHAR(50), PerkinsPostProgramPlacementIndicatorDescription VARCHAR(200))
+
+	INSERT INTO #PerkinsPostProgramPlacementIndicator VALUES ('MISSING', 'MISSING')
+	INSERT INTO #PerkinsPostProgramPlacementIndicator
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'PerkinsPostProgramPlacementIndicator'
+
 
 	INSERT INTO RDS.DimCteOutcomeIndicators
 		   ([EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode]
@@ -9623,7 +9638,9 @@ DROP TABLE #RuralResidencyStatusCode
 		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeTypeEdFactsCode]
 		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode]
 		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription]
-		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode])
+		   ,[EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode]
+		   ,[PerkinsPostProgramPlacementIndicatorCode]
+		   ,[PerkinsPostProgramPlacementIndicatorDescription])
 	SELECT DISTINCT
 		  a.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode
 		, a.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeDescription
@@ -9631,15 +9648,20 @@ DROP TABLE #RuralResidencyStatusCode
 		, b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
 		, b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeDescription
 		, b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeEdFactsCode
+		, c.PerkinsPostProgramPlacementIndicatorCode
+		, c.PerkinsPostProgramPlacementIndicatorDescription
 	FROM #EdFactsAcademicOrCareerAndTechnicalOutcomeType a
 	CROSS JOIN #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType b
+	CROSS JOIN #PerkinsPostProgramPlacementIndicator c
 	LEFT JOIN rds.DimCteOutcomeIndicators main
 		ON a.EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode = main.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
 		AND b.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode = main.EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode
+		AND c.PerkinsPostProgramPlacementIndicatorCode = main.PerkinsPostProgramPlacementIndicatorCode
 	WHERE main.DimCteOutcomeIndicatorId IS NULL
 
 	DROP TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeType
 	DROP TABLE #EdFactsAcademicOrCareerAndTechnicalOutcomeExitType
+	DROP TABLE #PerkinsPostProgramPlacementIndicator
 
 
 	---------------------------------------------------
