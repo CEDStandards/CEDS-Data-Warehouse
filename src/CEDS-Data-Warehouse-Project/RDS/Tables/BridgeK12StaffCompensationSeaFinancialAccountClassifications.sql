@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[BridgeK12StaffCompensationSeaFinancialAccountClassifications]
 (
 	[BridgeK12StaffCompensationSeaFinancialAccountClassificationId] int NOT NULL IDENTITY (1, 1),
-	[FactK12StaffCompensationId] BIGINT NULL,
+	[FactK12StaffCompensationId] INT NULL,
 	[SeaFinancialAccountClassificationId] int NULL,
 	CONSTRAINT [PK_BridgeK12StaffCompensationSeaFinancialAccountClassifications] PRIMARY KEY CLUSTERED ([BridgeK12StaffCompensationSeaFinancialAccountClassificationId] ASC),
 	CONSTRAINT [FK_BridgeK12StaffCompensationSeaFinancialAccountClassifications_FactK12StaffCompensationId] FOREIGN KEY ([FactK12StaffCompensationId]) REFERENCES [RDS].[FactK12StaffCompensations] ([FactK12StaffCompensationId]) ON DELETE No Action ON UPDATE No Action,

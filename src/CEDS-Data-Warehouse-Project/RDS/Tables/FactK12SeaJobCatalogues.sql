@@ -36,14 +36,6 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12SeaJobCatalogues_CountDateId]
  ON [RDS].[FactK12SeaJobCatalogues] ([CountDateId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12SeaJobCatalogues_EmploymentEndDateId] 
- ON [RDS].[FactK12SeaJobCatalogues] ([EmploymentEndDateId] ASC)
-GO
-
-CREATE NONCLUSTERED INDEX [IXFK_FactK12SeaJobCatalogues_EmploymentStartDateId] 
- ON [RDS].[FactK12SeaJobCatalogues] ([EmploymentStartDateId] ASC)
-GO
-
 CREATE NONCLUSTERED INDEX [IXFK_FactK12SeaJobCatalogues_K12JobId] 
  ON [RDS].[FactK12SeaJobCatalogues] ([K12JobId] ASC)
 GO

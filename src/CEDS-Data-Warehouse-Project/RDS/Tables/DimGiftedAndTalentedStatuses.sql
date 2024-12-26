@@ -3,8 +3,10 @@ CREATE TABLE [RDS].[DimGiftedAndTalentedStatuses] (
         [GiftedAndTalentedIndicatorCode]                    NVARCHAR (50)   CONSTRAINT [DF_DimGiftedAndTalentedStatuses_GiftedAndTalentedIndicatorCode] DEFAULT ('MISSING')NOT NULL,
         [GiftedAndTalentedIndicatorDescription]             NVARCHAR (200)  CONSTRAINT [DF_DimGiftedAndTalentedStatuses_GiftedAndTalentedIndicatorDescription] DEFAULT ('MISSING')NOT NULL,
         [ProgramGiftedEligibilityCriteriaCode]              NVARCHAR (50)   CONSTRAINT [DF_DimGiftedAndTalentedStatuses_ProgramGiftedEligibilityCriteriaCode] DEFAULT ('MISSING')NOT NULL,
-        [ProgramGiftedEligibilityCriteriaDescription]       NVARCHAR (200)  CONSTRAINT [DF_DimGiftedAndTalentedStatuses_ProgramGiftedEligibilityCriteriaDescription] DEFAULT ('MISSING')NOT NULL
-    );
+        [ProgramGiftedEligibilityCriteriaDescription]       NVARCHAR (200)  CONSTRAINT [DF_DimGiftedAndTalentedStatuses_ProgramGiftedEligibilityCriteriaDescription] DEFAULT ('MISSING')NOT NULL,
+CONSTRAINT [PK_DimGiftedAndTalentedStatuses] PRIMARY KEY CLUSTERED ([DimGiftedAndTalentedStatusId] ASC) );
+GO
+
 
 GO
 CREATE NONCLUSTERED INDEX IX_DimGiftedAndTalentedStatuses_GiftedAndTalentedIndicatorCode ON RDS.DimGiftedAndTalentedStatuses (GiftedAndTalentedIndicatorCode);

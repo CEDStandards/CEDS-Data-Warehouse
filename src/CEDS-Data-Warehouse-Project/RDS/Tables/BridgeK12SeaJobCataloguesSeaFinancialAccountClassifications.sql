@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[BridgeK12SeaJobCatalogueSeaFinancialAccountClassifications]
 (
 	[BridgeK12SeaJobCatalogueSeaFinancialAccountClassificationId] int NOT NULL IDENTITY (1, 1),
-	[FactK12SeaJobCatalogueId] BIGINT NULL,
+	[FactK12SeaJobCatalogueId] INT NULL,
 	[SeaFinancialAccountClassificationId] int NULL,
     [FundingProgramAllowed]    NVARCHAR (50)  NOT NULL,
 	CONSTRAINT [PK_BridgeK12SeaJobCatalogueSeaFinancialAccountClassifications] PRIMARY KEY CLUSTERED ([BridgeK12SeaJobCatalogueSeaFinancialAccountClassificationId] ASC),
