@@ -1865,8 +1865,8 @@ GO
 	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12AcademicAwardStatuses d WHERE d.HighSchoolDiplomaTypeCode = 'MISSING') BEGIN
 		SET IDENTITY_INSERT RDS.DimK12AcademicAwardStatuses ON
 
-		INSERT INTO RDS.DimK12AcademicAwardStatuses (DimK12AcademicAwardStatusId, HighSchoolDiplomaTypeCode, HighSchoolDiplomaTypeDescription, HighSchoolDiplomaTypeEdFactsCode, ProjectedHighSchoolDiplomaTypeCode, ProjectedHighSchoolDiplomaTypeDescription)
-			VALUES (-1, 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING')
+		INSERT INTO RDS.DimK12AcademicAwardStatuses (DimK12AcademicAwardStatusId, HighSchoolDiplomaTypeCode, HighSchoolDiplomaTypeDescription, HighSchoolDiplomaTypeEdFactsCode, HighSchoolDiplomaDistinctionTypeCode, HighSchoolDiplomaDistinctionTypeDescription, ProjectedHighSchoolDiplomaTypeCode, ProjectedHighSchoolDiplomaTypeDescription)
+			VALUES (-1, 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING', 'MISSING')
 
 		SET IDENTITY_INSERT RDS.DimK12AcademicAwardStatuses OFF
 	END
@@ -1901,6 +1901,20 @@ GO
 	WHERE CedsElementTechnicalName = 'HighSchoolDiplomaType'
 	ORDER BY CedsOptionSetCode
 
+	IF OBJECT_ID('tempdb..#HighSchoolDiplomaDistinctionTypeCode') IS NOT NULL
+		DROP TABLE #HighSchoolDiplomaDistinctionTypeCode
+
+	CREATE TABLE #HighSchoolDiplomaDistinctionTypeCode (HighSchoolDiplomaDistinctionTypeCode VARCHAR(50), HighSchoolDiplomaDistinctionTypeDescription VARCHAR(200))
+
+	INSERT INTO #HighSchoolDiplomaDistinctionTypeCode VALUES ('MISSING', 'MISSING')
+	INSERT INTO #HighSchoolDiplomaDistinctionTypeCode
+	SELECT 
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS-Elements-V12.0.0.0].[CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'HighSchoolDiplomaDistinctionType'
+	ORDER BY CedsOptionSetCode
+
 	IF OBJECT_ID('tempdb..#ProjectedHighSchoolDiplomaTypeCode') IS NOT NULL
 		DROP TABLE #ProjectedHighSchoolDiplomaTypeCode
 
@@ -1919,6 +1933,8 @@ GO
 			 HighSchoolDiplomaTypeCode
 			,HighSchoolDiplomaTypeDescription
 			,HighSchoolDiplomaTypeEdFactsCode
+			,HighSchoolDiplomaDistinctionTypeCode
+			,HighSchoolDiplomaDistinctionTypeDescription
 			,ProjectedHighSchoolDiplomaTypeCode
 			,ProjectedHighSchoolDiplomaTypeDescription
 			)
@@ -1926,13 +1942,17 @@ GO
 			 a.HighSchoolDiplomaTypeCode
 			,a.HighSchoolDiplomaTypeDescription
 			,a.HighSchoolDiplomaTypeEdFactsCode
-			,b.ProjectedHighSchoolDiplomaTypeCode
-			,b.ProjectedHighSchoolDiplomaTypeDescription
+			,b.HighSchoolDiplomaDistinctionTypeCode
+			,b.HighSchoolDiplomaDistinctionTypeDescription
+			,c.ProjectedHighSchoolDiplomaTypeCode
+			,c.ProjectedHighSchoolDiplomaTypeDescription
 	FROM #HighSchoolDiplomaTypeCode a
-	CROSS JOIN #ProjectedHighSchoolDiplomaTypeCode b
+	CROSS JOIN #HighSchoolDiplomaDistinctionTypeCode b
+	CROSS JOIN #ProjectedHighSchoolDiplomaTypeCode c
 	LEFT JOIN rds.DimK12AcademicAwardStatuses main
-		ON	a.HighSchoolDiplomaTypeCode = main.HighSchoolDiplomaTypeCode								
-		AND b.ProjectedHighSchoolDiplomaTypeCode = main.ProjectedHighSchoolDiplomaTypeCode			
+		ON	a.HighSchoolDiplomaTypeCode = main.HighSchoolDiplomaTypeCode					
+		AND b.HighSchoolDiplomaDistinctionTypeCode = main.HighSchoolDiplomaDistinctionTypeCode			
+		AND c.ProjectedHighSchoolDiplomaTypeCode = main.ProjectedHighSchoolDiplomaTypeCode			
 	WHERE main.DimK12AcademicAwardStatusId IS NULL
 
 	DROP TABLE #HighSchoolDiplomaTypeCode
