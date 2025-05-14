@@ -207,7 +207,7 @@ INSERT INTO [RDS].[FactAeStudentEnrollments](
 		AND rdms.MigrantPrioritizedForServicesMap = 'MISSING'
 	LEFT JOIN RDS.vwDimMilitaryStatuses rdms2
 		ON ISNULL(sae.MilitaryBranch, 'MISSING') = ISNULL(rdms2.MilitaryBranchMap, 'MISSING')
-		AND ISNULL(sae.ActiveMilitaryStatusIndicator, 'MISSING') = ISNULL(rdms2.ActiveMilitaryStudentIndicatorMap, rdms2.ActiveMilitaryStudentIndicatorCode)
+		AND ISNULL(sae.ActiveMilitaryStatusIndicator, 'MISSING') = ISNULL(rdms2.ActiveMilitaryStatusIndicatorMap, rdms2.ActiveMilitaryStatusIndicatorCode)
 		AND ISNULL(sae.MilitaryConnectedStudentIndicator, 'MISSING') = ISNULL(rdms2.MilitaryConnectedStudentIndicatorMap, MilitaryConnectedStudentIndicatorCode)
 		AND ISNULL(sae.MilitaryVeteranStatusIndicator, 'MISSING') = ISNULL(rdms2.MilitaryVeteranStatusIndicatorMap, MilitaryVeteranStatusIndicatorCode)
 	LEFT JOIN RDS.vwDimDisabilityStatuses rdds
