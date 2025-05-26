@@ -47,7 +47,7 @@ AS
 
 	DROP TABLE IF EXISTS #vwDimMilitaryStatuses
 	SELECT v.* INTO #vwDimMilitaryStatuses FROM RDS.vwDimMilitaryStatuses  v JOIN #SchoolYears t on v.SchoolYear = t.SchoolYear
-	CREATE INDEX IX_vwDimMilitaryStatuses ON #vwDimMilitaryStatuses(SchoolYear, MilitaryConnectedStudentIndicatorMap, MilitaryActiveStudentIndicatorMap, MilitaryBranchMap, MilitaryVeteranStudentIndicatorMap) INCLUDE (MilitaryConnectedStudentIndicatorCode, MilitaryActiveStudentIndicatorCode, MilitaryBranchCode, MilitaryVeteranStudentIndicatorCode)
+	CREATE INDEX IX_vwDimMilitaryStatuses ON #vwDimMilitaryStatuses(SchoolYear, MilitaryConnectedStudentIndicatorMap, MilitaryActiveStatusIndicatorMap, MilitaryBranchMap, MilitaryVeteranStatusIndicatorMap) INCLUDE (MilitaryConnectedStudentIndicatorCode, MilitaryActiveStatusIndicatorCode, MilitaryBranchCode, MilitaryVeteranStatusIndicatorCode)
 
 	DROP TABLE IF EXISTS #vwDimIdeaDisabilityTypes
 	SELECT v.* INTO #vwDimIdeaDisabilityTypes FROM RDS.vwDimIdeaDisabilityTypes  v JOIN #SchoolYears t on v.SchoolYear = t.SchoolYear
@@ -613,10 +613,10 @@ AS
 		AND ISNULL(ske.StudentIdentifierState, '')																= ISNULL(sm.StudentIdentifierState, '')
 	JOIN #vwDimMilitaryStatuses rdmil
 		ON ske.SchoolYear = rdmil.SchoolYear
-		AND ISNULL(sps.MilitaryConnectedStudentIndicator, 'MISSING')											= ISNULL(rdmil.MilitaryConnectedStudentIndicatorMap, rdmil.MilitaryConnectedStudentIndicatorCode)
-		AND ISNULL(sm.MilitaryActiveStudentIndicator, 'MISSING')												= ISNULL(rdmil.MilitaryActiveStudentIndicatorMap, rdmil.MilitaryActiveStudentIndicatorCode)
+		AND ISNULL(sps.MilitaryConnectedStatusIndicator, 'MISSING')											= ISNULL(rdmil.MilitaryConnectedStudentIndicatorMap, rdmil.MilitaryConnectedStudentIndicatorCode)
+		AND ISNULL(sm.MilitaryActiveStatusIndicator, 'MISSING')												= ISNULL(rdmil.MilitaryActiveStatusIndicatorMap, rdmil.MilitaryActiveStatusIndicatorCode)
 		AND ISNULL(sm.MilitaryBranch, 'MISSING')																= ISNULL(rdmil.MilitaryBranchMap, rdmil.MilitaryBranchCode)
-		AND ISNULL(sm.MilitaryVeteranStudentIndicator, 'MISSING')												= ISNULL(rdmil.MilitaryVeteranStudentIndicatorMap, rdmil.MilitaryVeteranStudentIndicatorCode)
+		AND ISNULL(sm.MilitaryVeteranStatusIndicator, 'MISSING')												= ISNULL(rdmil.MilitaryVeteranStatusIndicatorMap, rdmil.MilitaryVeteranStatausIndicatorCode)
 
 	
 	UPDATE #Facts
