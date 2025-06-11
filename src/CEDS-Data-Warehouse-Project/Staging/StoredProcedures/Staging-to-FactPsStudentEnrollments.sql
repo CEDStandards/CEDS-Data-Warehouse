@@ -14,7 +14,7 @@ BEGIN
 			, [AcademicTermDesignatorId]     
 			, [PsEnrollmentStatusId]         
 			, [PsInstitutionStatusId]        
-			, [PsInstitutionID]              
+			, [PsInstitutionId]              
 			, [PsStudentId]                  
 			, [StudentCount]                 
 		)
@@ -22,7 +22,7 @@ BEGIN
 			rsy.DimSchoolYearId
 		, ISNULL(rddc.DimDataCollectionId, -1)				AS DimDataCollectionId
 		, ISNULL(entryDate.DimDateId, -1)					AS EntryDate
-		, ISNULL(exitDate.DimDateId, -1)					AS ExitDate
+		, ISNULL(ExitDate.DimDateId, -1)					AS ExitDate
 		, ISNULL(psEntryDate.DimDateId, -1)					AS EntryDateIntoPostSecondaryId
 		, ISNULL(rdatd.DimAcademicTermDesignatorId, -1)		AS DimAcademicTermDesignatorId
 		, ISNULL(rdpes.DimPsEnrollmentStatusId, -1)			AS DimPsEnrollmentStatusId
@@ -51,8 +51,8 @@ BEGIN
 		AND ISNULL(spse.FirstName, '') = ISNULL(rdp.FirstName, '')
 		AND ISNULL(spse.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 		AND ISNULL(spse.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
-		AND ISNULL(spse.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
-		AND spse.EntryDate BETWEEN rdp.RecordStartDatetime AND ISNULL(rdp.RecordEndDatetime , GETDATE())
+		AND ISNULL(spse.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
+		AND spse.EntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime , GETDATE())
 	LEFT JOIN RDS.vwDimAcademicTermDesignators rdatd
 		ON spse.AcademicTermDesignator = rdatd.AcademicTermDesignatorMap
 		AND spse.SchoolYear = rdatd.SchoolYear
@@ -71,8 +71,8 @@ BEGIN
 		AND spse.[PostsecondaryExitOrWithdrawalType] = rdpes.[PostsecondaryExitOrWithdrawalTypeMap]
 	LEFT JOIN RDS.DimDates entryDate
 		ON spse.EntryDate = entryDate.DateValue
-	LEFT JOIN RDS.DimDates exitDate
-		ON spse.ExitDate = exitDate.DateValue
+	LEFT JOIN RDS.DimDates ExitDate
+		ON spse.ExitDate = ExitDate.DateValue
 	LEFT JOIN RDS.DimDates psEntryDate
 		ON spse.EntryDateIntoPostsecondary = psEntryDate.DateValue
 	WHERE @DataCollectionName IS NULL 
@@ -100,8 +100,8 @@ BEGIN
 		AND rdatd.SchoolYear = rdsy.SchoolYear
 	INNER JOIN RDS.DimDates entryDate
 		ON rfpse.EnrollmentEntryDateId = entryDate.DimDateId
-	INNER JOIN RDS.DimDates exitDate
-		ON rfpse.EnrollmentExitDateId = exitDate.DimDateId
+	INNER JOIN RDS.DimDates ExitDate
+		ON rfpse.EnrollmentExitDateId = ExitDate.DimDateId
 	INNER JOIN RDS.DimDataCollections rddc
 		ON rfpse.DataCollectionId = rddc.DimDataCollectionId
 	LEFT JOIN Staging.PsPersonRace sppp
@@ -111,7 +111,7 @@ BEGIN
 	--	AND rdsy.SchoolYear = sppp.SchoolYear -- Can't join on School Year because it is set to the data collection school year in the RDS
 		AND rddc.DataCollectionName = sppp.DataCollectionName
 		AND entryDate.DateValue = sppp.RecordStartDateTime
-		AND ISNULL(exitDate.DateValue, '1900-01-01') = ISNULL(sppp.RecordEndDateTime, '1900-01-01')
+		AND ISNULL(ExitDate.DateValue, '1900-01-01') = ISNULL(sppp.RecordEndDateTime, '1900-01-01')
 	LEFT JOIN Staging.PsStudentEnrollment spse
 		ON rdps.PsStudentStudentIdentifierState = spse.StudentIdentifierState
 		AND rdpi.IPEDSIdentifier = spse.InstitutionIpedsUnitId
@@ -120,7 +120,7 @@ BEGIN
 	--	AND rdsy.SchoolYear = spse.SchoolYear -- Can't join on School Year because it is set to the data collection school year in the RDS
 		AND rddc.DataCollectionName = spse.DataCollectionName
 		AND entryDate.DateValue = spse.EntryDate
-		AND ISNULL(exitDate.DateValue, '1900-01-01') = ISNULL(spse.ExitDate, '1900-01-01')
+		AND ISNULL(ExitDate.DateValue, '1900-01-01') = ISNULL(spse.ExitDate, '1900-01-01')
 	LEFT JOIN RDS.vwDimRaces rdr
 		ON ((ISNULL(sppp.RaceType, 'Race and Ethnicity Unknown') = rdr.RaceMap
 				AND sppp.SchoolYear = rdr.SchoolYear)

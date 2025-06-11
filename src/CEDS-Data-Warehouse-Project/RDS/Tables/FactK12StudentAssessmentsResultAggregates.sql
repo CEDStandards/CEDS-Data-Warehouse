@@ -66,7 +66,7 @@ CREATE TABLE [RDS].[FactK12StudentAssessmentsResultAggregates] (
     CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_IeuId] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]),
     CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
-    CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
+    CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_RaceId] FOREIGN KEY ([RaceId]) REFERENCES [RDS].[DimRaces] ([DimRaceId]),
     CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentAssessmentsResultAggregates_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId])

@@ -1,6 +1,6 @@
 CREATE TABLE [RDS].[FactPsStudentAcademicAwards] (
     [FactPsStudentAcademicAwardId] INT    IDENTITY (1, 1) NOT NULL,
-    [PsInstitutionId]              INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_PsInstitutionID] DEFAULT ((-1)) NOT NULL,
+    [PsInstitutionId]              INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
     [PsStudentId]                  BIGINT CONSTRAINT [DF_FactPsStudentAcademicAwards_PsStudentId] DEFAULT ((-1)) NOT NULL,
     [PsAcademicAwardTitleId]       INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_PsAcademicAwardTitleId] DEFAULT ((-1)) NOT NULL,
     [AcademicAwardDateId]          INT    CONSTRAINT [DF_FactPsStudentAcademicAwards_AcademicAwardDateId] DEFAULT ((-1)) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE [RDS].[FactPsStudentAcademicAwards] (
     CONSTRAINT [FK_FactPsStudentAcademicAwards_PsAcademicAwardStatuId] FOREIGN KEY ([PsAcademicAwardStatusId]) REFERENCES [RDS].[DimPsAcademicAwardStatuses] ([DimPsAcademicAwardStatusId]),
     CONSTRAINT [FK_FactPsStudentAcademicAwards_PsAcademicAwardTitleId] FOREIGN KEY ([PsAcademicAwardTitleId]) REFERENCES [RDS].[DimPsAcademicAwardTitles] ([DimPsAcademicAwardTitleId]),
     CONSTRAINT [FK_FactPsStudentAcademicAwards_PsDemographicId] FOREIGN KEY ([PsDemographicId]) REFERENCES [RDS].[DimPsDemographics] ([DimPsDemographicId]),
-    CONSTRAINT [FK_FactPsStudentAcademicAwards_PsInstitutionId] FOREIGN KEY ([PsInstitutionID]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionID]),
+    CONSTRAINT [FK_FactPsStudentAcademicAwards_PsInstitutionId] FOREIGN KEY ([PsInstitutionId]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionId]),
     CONSTRAINT [FK_FactPsStudentAcademicAwards_PsStudentId] FOREIGN KEY ([PsStudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactPsStudentAcademicAwards_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId])
 );
@@ -22,7 +22,7 @@ CREATE TABLE [RDS].[FactPsStudentAcademicAwards] (
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicAwards_PsInstitutionId]
-    ON [RDS].[FactPsStudentAcademicAwards]([PsInstitutionID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+    ON [RDS].[FactPsStudentAcademicAwards]([PsInstitutionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO

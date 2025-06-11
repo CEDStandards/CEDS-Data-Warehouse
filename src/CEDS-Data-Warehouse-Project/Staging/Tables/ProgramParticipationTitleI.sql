@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[ProgramParticipationTitleI] (
-    [ID]                                                  INT            IDENTITY (1, 1) NOT NULL,
+    [Id]                                                  INT            IDENTITY (1, 1) NOT NULL,
     [LeaIdentifierSeaAccountability]                      NVARCHAR (50)  NULL,
     [LeaIdentifierSeaAttendance]                          NVARCHAR (50)  NULL,
     [LeaIdentifierSeaFunding]                             NVARCHAR (50)  NULL,
@@ -19,7 +19,7 @@ CREATE TABLE [Staging].[ProgramParticipationTitleI] (
     [TitleIIndicator]                                     NVARCHAR (100) NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
     [RunDateTime]                                         DATETIME       NULL,
-    CONSTRAINT [PK_ProgramParticipationTitleI] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_ProgramParticipationTitleI] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 

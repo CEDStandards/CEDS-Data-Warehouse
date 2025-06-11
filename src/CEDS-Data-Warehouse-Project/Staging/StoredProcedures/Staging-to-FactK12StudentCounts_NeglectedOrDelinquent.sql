@@ -63,17 +63,17 @@ BEGIN
 		FROM RDS.DimSchoolYears
 		WHERE SchoolYear = @SchoolYear
 
-		SET @SYStartDate = staging.GetFiscalYearStartDate(@SchoolYear)
-		SET @SYEndDate = staging.GetFiscalYearEndDate(@SchoolYear)
+		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
+		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 
 	--Get the set of students from DimPeople to be used for the migrated SY
 		select K12StudentStudentIdentifierState
 			, max(DimPersonId)								DimPersonId
 			, min(RecordStartDateTime)						RecordStartDateTime
 			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(birthdate, '1900-01-01'))			BirthDate
+			, max(isnull(Birthdate, '1900-01-01'))			Birthdate
 		into #dimPeople
-		from rds.DimPeople
+		from RDS.DimPeople
 		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
 			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
 		and IsActiveK12Student = 1
@@ -129,7 +129,7 @@ BEGIN
 
 		--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'neglectedordelinquent'	--DimFactTypeId = 15
 
 		IF OBJECT_ID('tempdb..#Facts') IS NOT NULL 
@@ -145,9 +145,9 @@ BEGIN
 			, RaceId									int null
 			, K12DemographicId							int null
 			, StudentCount								int null
-			, SEAId										int null
-			, IEUId										int null
-			, LEAId										int null
+			, SeaId										int null
+			, IeuId										int null
+			, LeaId										int null
 			, K12SchoolId								int null
 			, K12StudentId								int null
 			, IdeaStatusId								int null
@@ -159,7 +159,7 @@ BEGIN
 			, AttendanceId								int null
 			, CohortStatusId							int null
 			, NOrDStatusId								int null
-			, CTEStatusId								int null
+			, CteStatusId								int null
 			, K12EnrollmentStatusId						int null
 			, EnglishLearnerStatusId					int null
 			, HomelessnessStatusId						int null
@@ -176,7 +176,7 @@ BEGIN
 
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.id														StagingId								
+			ske.Id														StagingId								
 			, rsy.DimSchoolYearId										SchoolYearId							
 			, @FactTypeId												FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)							GradeLevelId							
@@ -184,9 +184,9 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId								
 			, -1														K12DemographicId						
 			, 1															StudentCount							
-			, ISNULL(rds.DimSeaId, -1)									SEAId									
-			, -1														IEUId									
-			, ISNULL(rdl.DimLeaID, -1)									LEAId									
+			, ISNULL(RDS.DimSeaId, -1)									SeaId									
+			, -1														IeuId									
+			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId							
 			, ISNULL(rdis.DimIdeaStatusId, -1)							IdeaStatusId							
@@ -198,7 +198,7 @@ BEGIN
 			, -1														AttendanceId							
 			, -1 														CohortStatusId						
 			, ISNULL(rdnds.DimNOrDStatusId, -1)							NOrDStatusId							
-			, -1														CTEStatusId							
+			, -1														CteStatusId							
 			, -1														K12EnrollmentStatusId					
 			, ISNULL(rdels.DimEnglishLearnerStatusId, -1)				EnglishLearnerStatusId				
 			, -1														HomelessnessStatusId					
@@ -215,15 +215,15 @@ BEGIN
 		JOIN Staging.K12Organization sko
 			on isnull(ske.LeaIdentifierSeaAccountability,'') = isnull(sko.LeaIdentifierSea,'')
 			and isnull(ske.SchoolIdentifierSea,'') = isnull(sko.SchoolIdentifierSea,'')
-			and LEA_IsReportedFederally = 1
+			and Lea_IsReportedFederally = 1
 		JOIN RDS.DimSchoolYears rsy
 			ON ske.SchoolYear = rsy.SchoolYear
 			and ske.SchoolYear = @SchoolYear
 		JOIN RDS.DimSeas rds
-			ON ske.EnrollmentEntryDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
+			ON ske.EnrollmentEntryDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, @SYEndDate)
 		JOIN #dimPeople rdp
 			ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 			AND ske.EnrollmentEntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 		LEFT JOIN RDS.DimLeas rdl
 			ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
@@ -232,7 +232,7 @@ BEGIN
 			ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
 			AND ske.EnrollmentEntryDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, @SYEndDate)
 	--negelected or delinquent
-		LEFT JOIN Staging.ProgramParticipationNOrD sppnord
+		LEFT JOIN Staging.ProgramParticipationNorD sppnord
 			ON ske.SchoolYear = sppnord.SchoolYear		
 			AND ske.StudentIdentifierState = sppnord.StudentIdentifierState
 			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(sppnord.LeaIdentifierSeaAccountability, '')
@@ -257,7 +257,7 @@ BEGIN
 			ON spr.SchoolYear = @SchoolYear
 			AND ske.StudentIdentifierState = spr.StudentIdentifierState
 			AND (ske.SchoolIdentifierSea = spr.SchoolIdentifierSea
-				OR ske.LEAIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
+				OR ske.LeaIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
 	--neglected or delinquent (RDS)
 		LEFT JOIN #vwNorDStatuses rdnds
 			ON rdnds.SchoolYear = @SchoolYear
@@ -280,7 +280,7 @@ BEGIN
 	--idea disability (RDS)
 		LEFT JOIN RDS.vwDimIdeaStatuses rdis
 			ON rdis.SchoolYear = @SchoolYear
-			AND ISNULL(CAST(idea.IDEAIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
+			AND ISNULL(CAST(idea.IdeaIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
 			AND rdis.IdeaEducationalEnvironmentForSchoolAgeCode = 'MISSING'
 			AND rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode = 'MISSING'
 			AND rdis.SpecialEducationExitReasonCode = 'MISSING'
@@ -310,8 +310,8 @@ BEGIN
 	--Lea Operational Status	
 		LEFT JOIN Staging.SourceSystemReferenceData sssrd
 			ON sko.SchoolYear = sssrd.SchoolYear
-			AND sko.LEA_OperationalStatus = sssrd.InputCode
-			AND sssrd.Tablename = 'RefOperationalStatus'
+			AND sko.Lea_OperationalStatus = sssrd.InputCode
+			AND sssrd.TableName = 'RefOperationalStatus'
 			AND sssrd.TableFilter = '000174'
 		WHERE sppnord.NeglectedOrDelinquentProgramEnrollmentSubpart is not NULL
 			AND sppnord.NeglectedOrDelinquentStatus = 1 -- Only get NorD students
@@ -331,9 +331,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -345,7 +345,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]
@@ -367,9 +367,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -381,7 +381,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]

@@ -24,7 +24,7 @@ BEGIN
 
 		DROP TABLE IF EXISTS #People
 		CREATE TABLE #People (
-			  BirthDate						  DATE
+			  Birthdate						  DATE
 			, FirstName						  NVARCHAR(50) NULL
 			, LastOrSurname					  NVARCHAR(50) NULL
 			, MiddleName					  NVARCHAR(50) NULL
@@ -41,12 +41,12 @@ BEGIN
 			, RecordStartDateTime			  DATETIME
 		)
 		
-		CREATE CLUSTERED INDEX IX_People_K12Identifiers ON #People (K12StudentStudentIdentifierState, BirthDate, FirstName, MiddleName, LastOrSurname)
-		CREATE NONCLUSTERED INDEX IX_People_PsIdentifiers ON #People (PsStudentStudentIdentifierState, BirthDate, FirstName, MiddleName, LastOrSurname)
+		CREATE CLUSTERED INDEX IX_People_K12Identifiers ON #People (K12StudentStudentIdentifierState, Birthdate, FirstName, MiddleName, LastOrSurname)
+		CREATE NONCLUSTERED INDEX IX_People_PsIdentifiers ON #People (PsStudentStudentIdentifierState, Birthdate, FirstName, MiddleName, LastOrSurname)
 
 		INSERT INTO #People
 		(
-			  BirthDate
+			  Birthdate
 			, FirstName
 			, LastOrSurname
 			, MiddleName
@@ -63,7 +63,7 @@ BEGIN
 			, RecordStartDateTime
 			)		
 		SELECT DISTINCT
-			  ke.BirthDate
+			  ke.Birthdate
 			, ke.FirstName
 			, ISNULL(ke.LastOrSurname, 'MISSING') as LastOrSurname
 			, ke.MiddleName
@@ -81,7 +81,7 @@ BEGIN
 		FROM Staging.K12Enrollment ke
 		LEFT JOIN Staging.PsStudentEnrollment pe
 			ON  ISNULL(ke.StudentIdentifierState, '') = ISNULL(pe.StudentIdentifierState, '')
-			AND ISNULL(ke.BirthDate, '') = ISNULL(pe.BirthDate, '')
+			AND ISNULL(ke.Birthdate, '') = ISNULL(pe.Birthdate, '')
 			AND ISNULL(ke.FirstName, '') = ISNULL(pe.FirstName, '')
 			AND ISNULL(ke.MiddleName, '') = ISNULL(pe.MiddleName, '')
 			AND ISNULL(ke.LastOrSurname, '') = ISNULL(pe.LastOrSurname, '')
@@ -92,7 +92,7 @@ BEGIN
 
 		INSERT INTO #People
 		(
-			  BirthDate
+			  Birthdate
 			, FirstName
 			, LastOrSurname
 			, MiddleName
@@ -109,7 +109,7 @@ BEGIN
 			, RecordStartDateTime
 			)	
 		SELECT DISTINCT
-			  spe.BirthDate
+			  spe.Birthdate
 			, spe.FirstName
 			, ISNULL(spe.LastOrSurname, 'MISSING') as LastOrSurname
 			, spe.MiddleName
@@ -127,7 +127,7 @@ BEGIN
 		FROM Staging.PsStudentEnrollment spe
 		LEFT JOIN #People p
 			ON  ISNULL(spe.StudentIdentifierState, '') = ISNULL(p.PsStudentStudentIdentifierState, '')
-			AND ISNULL(spe.BirthDate, '') = ISNULL(p.BirthDate, '')
+			AND ISNULL(spe.Birthdate, '') = ISNULL(p.Birthdate, '')
 			AND ISNULL(spe.FirstName, '') = ISNULL(p.FirstName, '')
 			AND ISNULL(spe.MiddleName, '') = ISNULL(p.MiddleName, '')
 			AND ISNULL(spe.LastOrSurname, '') = ISNULL(p.LastOrSurname, '')
@@ -136,7 +136,7 @@ BEGIN
 
 		INSERT INTO #People
 		(
-			  BirthDate
+			  Birthdate
 			, FirstName
 			, LastOrSurname
 			, MiddleName
@@ -154,7 +154,7 @@ BEGIN
 		)	
 		-- State Chief School Officer/State Superintendent
 		SELECT DISTINCT
-			  NULL									AS BirthDate
+			  NULL									AS Birthdate
 			, SeaContact_FirstName					AS FirstName
 			, SeaContact_LastOrSurname				AS LastOrSurname
 			, NULL									AS MiddleName
@@ -172,7 +172,7 @@ BEGIN
 		FROM Staging.StateDetail; 
 
 
-		MERGE rds.DimPeople AS trgt
+		MERGE RDS.DimPeople AS trgt
 		USING #People AS src
 				ON  ISNULL(trgt.K12StudentStudentIdentifierState, '') = ISNULL(src.K12StudentStudentIdentifierState, '')
 				AND ISNULL(trgt.PsStudentStudentIdentifierState, '') = ISNULL(src.PsStudentStudentIdentifierState, '')
@@ -180,11 +180,11 @@ BEGIN
 				AND ISNULL(trgt.FirstName, '') = ISNULL(src.FirstName, '')
 				AND ISNULL(trgt.LastOrSurname, '') = ISNULL(src.LastOrSurname, '')
 				AND ISNULL(trgt.MiddleName, '') = ISNULL(src.MiddleName, '')
-				AND ISNULL(trgt.BirthDate, '') = ISNULL(src.BirthDate, '1900-01-01')
+				AND ISNULL(trgt.Birthdate, '') = ISNULL(src.Birthdate, '1900-01-01')
 				AND trgt.RecordStartDateTime = src.RecordStartDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but NOT in Target
 		INSERT (
-			  BirthDate
+			  Birthdate
 			, FirstName
 			, LastOrSurname
 			, MiddleName
@@ -220,7 +220,7 @@ BEGIN
 				ON k12.K12StudentStudentIdentifierState = ps.K12StudentStudentIdentifierState
 				AND K12.K12StudentStudentIdentifierState = ps.PsStudentStudentIdentifierState
 				AND k12.RecordStartDateTime = ps.RecordStartDateTime
-				AND ISNULL(k12.BirthDate, '1900-01-01') = ISNULL(ps.BirthDate, '1900-01-01')
+				AND ISNULL(k12.Birthdate, '1900-01-01') = ISNULL(ps.Birthdate, '1900-01-01')
 				AND K12.DimPersonId <> ps.DimPersonId
 			WHERE k12.IsActiveK12Student = 1 
 				AND K12.IsActivePsStudent = 0
@@ -281,9 +281,9 @@ BEGIN
 		BEGIN
 			print 'STARTING ' + CAST(@index AS VARCHAR) + '%'
 
-			UPDATE rds.DimPeople --27 minutes
+			UPDATE RDS.DimPeople --27 minutes
 			SET RecordEndDateTime = upd.RecordEndDateTime
-			FROM rds.DimPeople rdp
+			FROM RDS.DimPeople rdp
 			INNER JOIN #upd	upd
 				ON  ISNULL(rdp.[K12StudentStudentIdentifierState], -1)	= ISNULL(upd.[K12StudentStudentIdentifierState], -1)
 				AND ISNULL(rdp.[PsStudentStudentIdentifierState], -1)	= ISNULL(upd.[PsStudentStudentIdentifierState], -1)

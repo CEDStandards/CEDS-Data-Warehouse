@@ -9,7 +9,7 @@ CREATE TABLE [RDS].[FactK12StaffEmployments]
 	[K12StaffStatusId] int NOT NULL,
 	[SeaId] int NOT NULL,
 	[IeuId] int NOT NULL,
-	[LeaID] int NOT NULL,
+	[LeaId] int NOT NULL,
 	[EmployerId] int NULL,
 	[K12StaffId] bigint NOT NULL,
 	[OnetSocOccupationTypeId] int NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE [RDS].[FactK12StaffEmployments]
 	CONSTRAINT [FK_FactK12StaffEmployments_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_IeuId] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffEmployments_LeaID] FOREIGN KEY ([LeaID]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffEmployments_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_EmployerId] FOREIGN KEY ([EmployerId]) REFERENCES [RDS].[DimEmployers] ([DimEmployerId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_OnetSocOccupationTypeId] FOREIGN KEY ([OnetSocOccupationTypeId]) REFERENCES [RDS].[DimOnetSocOccupationTypes] ([DimOnetSocOccupationTypeId]) ON DELETE No Action ON UPDATE No Action,
@@ -80,8 +80,8 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_IeuId]
  ON [RDS].[FactK12StaffEmployments] ([IeuId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_LeaID] 
- ON [RDS].[FactK12StaffEmployments] ([LeaID] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_LeaId] 
+ ON [RDS].[FactK12StaffEmployments] ([LeaId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_EmployerId] 

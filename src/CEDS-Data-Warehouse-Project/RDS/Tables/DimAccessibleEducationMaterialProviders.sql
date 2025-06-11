@@ -5,7 +5,7 @@ CREATE TABLE [RDS].[DimAccessibleEducationMaterialProviders]
 	[AccessibleEducationMaterialProviderName] nvarchar(1000) NULL,
 	[StateAbbreviationCode] nvarchar(2) NULL,
 	[StateAbbreviationDescription] nvarchar(50) NULL,
-	[StateANSICode] nvarchar(2) NULL,
+	[StateAnsiCode] nvarchar(2) NULL,
 	[MailingAddressStreetNumberAndName] nvarchar(300) NULL,
 	[MailingAddressApartmentRoomOrSuiteNumber] nvarchar(40) NULL,
 	[MailingAddressCity] nvarchar(60) NULL,
@@ -47,15 +47,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001917' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001917' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibleEducationMaterialProviders', @level2type=N'COLUMN',@level2name=N'TelephoneNumber';
 GO

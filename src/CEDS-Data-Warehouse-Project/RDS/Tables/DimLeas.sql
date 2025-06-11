@@ -1,5 +1,5 @@
 CREATE TABLE [RDS].[DimLeas] (
-    [DimLeaID]                                  INT             IDENTITY (1, 1) NOT NULL,
+    [DimLeaId]                                  INT             IDENTITY (1, 1) NOT NULL,
     [IeuOrganizationName]                       NVARCHAR (1000) NULL,
     [IeuOrganizationIdentifierSea]              NVARCHAR (50)   NULL,
     [StateAnsiCode]                             NVARCHAR (10)   NULL,
@@ -42,7 +42,7 @@ CREATE TABLE [RDS].[DimLeas] (
     [NameOfInstitution]                         NVARCHAR (1000) NULL,
     [RecordStartDateTime]                       DATETIME        NULL,
     [RecordEndDateTime]                         DATETIME        NULL,
-    CONSTRAINT [PK_DimLeas] PRIMARY KEY CLUSTERED ([DimLeaID] ASC)
+    CONSTRAINT [PK_DimLeas] PRIMARY KEY CLUSTERED ([DimLeaId] ASC)
 );
 
 

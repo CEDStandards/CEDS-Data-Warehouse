@@ -1,12 +1,12 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimSeas]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@dataCollectionName AS VARCHAR(50) = NULL,
+	@DataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
 
 	--Insert the default 'missing' row if it doesn't exist
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimSeas WHERE DimSeaID = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimSeas WHERE DimSeaId = -1)
 	BEGIN
 		SET IDENTITY_INSERT RDS.DimSeas ON
 		INSERT INTO RDS.DimSeas (DimSeaId) VALUES (-1)
@@ -173,7 +173,7 @@ BEGIN
 				WHEN 'WV' THEN '54'
 				WHEN 'WY' THEN '56'
 				ELSE NULL
-			END AS StateANSICode
+			END AS StateAnsiCode
 			, ssd.SeaOrganizationName
 			, ssd.SeaOrganizationShortName
 			, ssd.SeaOrganizationIdentifierSea
@@ -213,9 +213,9 @@ BEGIN
 			AND sop.PrimaryTelephoneNumberIndicator = 1
 			AND sop.OrganizationType in (select SeaOrganizationType from #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
 		WHERE @DataCollectionName IS NULL	
-			OR ssd.DataCollectionName = @dataCollectionName
+			OR ssd.DataCollectionName = @DataCollectionName
 	)
-	MERGE rds.DimSeas AS trgt
+	MERGE RDS.DimSeas AS trgt
 	USING CTE AS src
 		ON trgt.SeaOrganizationIdentifierSea = src.SeaOrganizationIdentifierSea
 		AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
@@ -223,7 +223,7 @@ BEGIN
 		UPDATE SET 
 			[SeaOrganizationName]			 				= src.[SeaOrganizationName]							
 			, [SeaOrganizationIdentifierSea] 				= src.[SeaOrganizationIdentifierSea]
-			, [StateAnsiCode]				 				= src.[StateANSICode]
+			, [StateAnsiCode]				 				= src.[StateAnsiCode]
 			, [StateAbbreviationCode]		 				= src.[StateAbbreviationCode]
 			, [StateAbbreviationDescription] 				= src.[StateAbbreviationDescription]
 			, [MailingAddressCity]			 				= src.[MailingAddressCity]
@@ -235,7 +235,7 @@ BEGIN
 			, [PhysicalAddressStateAbbreviation]		 	= src.[PhysicalAddressState]
 			, [PhysicalAddressStreetNumberAndName]		 	= src.[PhysicalAddressStreet]
 			, [TelephoneNumber]				 				= src.[TelephoneNumber]
-			, [WebsiteAddress]				 				= src.[Sea_WebSiteAddress]
+			, [WebSiteAddress]				 				= src.[Sea_WebSiteAddress]
 			, [RecordStartDateTime]			 				= src.[RecordStartDateTime]
 			, [RecordEndDateTime]			 				= src.[RecordEndDateTime]
 			, [MailingAddressApartmentRoomOrSuiteNumber]	= src.[MailingAddressStreet2]
@@ -258,7 +258,7 @@ BEGIN
 		, [PhysicalAddressStateAbbreviation]
 		, [PhysicalAddressStreetNumberAndName]
 		, [TelephoneNumber]
-		, [WebsiteAddress]
+		, [WebSiteAddress]
 		, [RecordStartDateTime]
 		, [RecordEndDateTime]
 		, [MailingAddressApartmentRoomOrSuiteNumber]
@@ -269,7 +269,7 @@ BEGIN
 	VALUES (
 		src.[SeaOrganizationName]						
 		, src.[SeaOrganizationIdentifierSea]
-		, src.[StateANSICode]
+		, src.[StateAnsiCode]
 		, src.[StateAbbreviationCode]
 		, src.[StateAbbreviationDescription]
 		, src.[MailingAddressCity]
@@ -296,14 +296,14 @@ BEGIN
 			  startd.SeaOrganizationIdentifierSea
 			, startd.RecordStartDateTime 
 			, min(endd.RecordStartDateTime) - 1 AS RecordEndDateTime
-		FROM rds.DimSeas startd
-		JOIN rds.DimSeas endd
+		FROM RDS.DimSeas startd
+		JOIN RDS.DimSeas endd
 			ON startd.SeaOrganizationIdentifierSea = endd.SeaOrganizationIdentifierSea
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY  startd.SeaOrganizationIdentifierSea, startd.RecordStartDateTime
 	) 
 	UPDATE sea SET RecordEndDateTime = upd.RecordEndDateTime 
-	FROM rds.DimSeas sea
+	FROM RDS.DimSeas sea
 	JOIN upd	
 		ON sea.SeaOrganizationIdentifierSea = upd.SeaOrganizationIdentifierSea
 		AND sea.RecordStartDateTime = upd.RecordStartDateTime
@@ -325,7 +325,7 @@ BEGIN
 
 	--Create and populate the temp table for staff data	
 	CREATE TABLE #People (
-		BirthDate								DATE NULL
+		Birthdate								DATE NULL
 		, FirstName								NVARCHAR(50) NULL
 		, LastOrSurname							NVARCHAR(50) NULL
 		, MiddleName							NVARCHAR(50) NULL
@@ -336,7 +336,7 @@ BEGIN
 	)
 		
 	INSERT INTO #People (
-		BirthDate
+		Birthdate
 		, FirstName
 		, LastOrSurname
 		, MiddleName
@@ -356,18 +356,18 @@ BEGIN
 		, RecordEndDateTime								AS RecordEndDateTime
 	FROM Staging.StateDetail
 
-	MERGE rds.DimPeople AS trgt
+	MERGE RDS.DimPeople AS trgt
 	USING #People AS src
 			ON  trgt.K12StaffStaffMemberIdentifierState = src.K12StaffStaffMemberIdentifierState
 			AND ISNULL(trgt.FirstName, '') 				= ISNULL(src.FirstName, '')
 			AND ISNULL(trgt.LastOrSurname, '') 			= ISNULL(src.LastOrSurname, '')
 			AND ISNULL(trgt.MiddleName, '') 			= ISNULL(src.MiddleName, '')
-			AND ISNULL(trgt.BirthDate, '1900-01-01') 	= ISNULL(src.BirthDate, '1900-01-01')
+			AND ISNULL(trgt.Birthdate, '1900-01-01') 	= ISNULL(src.Birthdate, '1900-01-01')
 			AND trgt.RecordStartDateTime 				= src.RecordStartDateTime
 			AND src.IsActiveK12Staff = 1
 	WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but NOT in Target
 	INSERT (
-		BirthDate
+		Birthdate
 		, FirstName
 		, LastOrSurname
 		, MiddleName
@@ -387,7 +387,7 @@ BEGIN
 
 	-- UPDATE staff 
 	-- SET RecordEndDateTime = NULL
-	-- FROM rds.DimPeople staff
+	-- FROM RDS.DimPeople staff
 
 	--set the RecordEndDate for previous records (if they exist)
 	;WITH upd AS (
@@ -395,15 +395,15 @@ BEGIN
 			startd.K12StaffStaffMemberIdentifierState
 			, startd.RecordStartDateTime
 			, convert(datetime, min(endd.RecordStartDateTime)) - 1 AS RecordEndDateTime
-		FROM rds.DimPeople startd
-		JOIN rds.DimPeople endd
+		FROM RDS.DimPeople startd
+		JOIN RDS.DimPeople endd
 			ON startd.K12StaffStaffMemberIdentifierState = endd.K12StaffStaffMemberIdentifierState
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY startd.K12StaffStaffMemberIdentifierState, startd.RecordStartDateTime
 	) 
 	UPDATE staff 
 	SET RecordEndDateTime = upd.RecordEndDateTime
-	FROM rds.DimPeople staff
+	FROM RDS.DimPeople staff
 	INNER JOIN upd
 		ON staff.K12StaffStaffMemberIdentifierState = upd.K12StaffStaffMemberIdentifierState
 		AND staff.RecordStartDateTime = upd.RecordStartDateTime

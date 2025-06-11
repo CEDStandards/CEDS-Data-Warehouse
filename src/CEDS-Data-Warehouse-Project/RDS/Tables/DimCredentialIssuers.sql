@@ -6,7 +6,7 @@ CREATE TABLE [RDS].[DimCredentialIssuers](
 	[SeaOrganizationIdentifierSea]                                  [nvarchar](50) NULL,
 	[CTDLOrganizationTypeCode]                                      [nvarchar](50) NOT NULL,
 	[CTDLOrganizationTypeDescription]                               [nvarchar](200) NOT NULL,
-	[StateANSICode]                                                 [nvarchar](10) NULL,
+	[StateAnsiCode]                                                 [nvarchar](10) NULL,
 	[StateAbbreviationCode]                                         [nvarchar](10) NULL,
 	[StateAbbreviationDescription]                                  [nvarchar](1000) NULL,
 	[MailingAddressStreetNumberAndName]                             [nvarchar](150) NULL,
@@ -124,15 +124,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001917' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001917' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'RecordStartDateTime';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialIssuers', @level2type=N'COLUMN',@level2name=N'TelephoneNumber';
 GO

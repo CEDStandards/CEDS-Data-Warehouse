@@ -10,7 +10,7 @@ AS
     PrimaryAssignmentIndicatorCode,
     sssrd3.InputCode AS PrimaryAssignmentIndicatorMap
   FROM RDS.DimK12StaffAssignmentStatuses dka
-  CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
+  CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
   LEFT JOIN Staging.SourceSystemReferenceData sssrd1
     ON dka.ItinerantTeacherCode = sssrd1.OutputCode
     AND sssrd1.TableName = 'RefItinerantTeacher'

@@ -1,4 +1,4 @@
-CREATE VIEW rds.vwDimDisabilityStatuses 
+CREATE VIEW RDS.vwDimDisabilityStatuses 
 AS
 	SELECT
 		  DimDisabilityStatusId
@@ -19,13 +19,13 @@ AS
 		, sssrd1.InputCode AS DisabilityConditionTypeMap
 		, rdds.DisabilityDeterminationSourceTypeCode
 		, sssrd2.InputCode AS DisabilityDeterminationSourceTypeMap
-	FROM rds.DimDisabilityStatuses rdds
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
-	LEFT JOIN staging.SourceSystemReferenceData sssrd1
+	FROM RDS.DimDisabilityStatuses rdds
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 		ON rdds.DisabilityConditionTypeCode = sssrd1.OutputCode
 		AND sssrd1.TableName = 'RefDisabilityConditionType'
 		AND rsy.SchoolYear = sssrd1.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd2
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd2
 		ON rdds.DisabilityDeterminationSourceTypeCode = sssrd2.OutputCode
 		AND sssrd2.TableName = 'RefDisabilityDeterminationSourceType'
 		AND rsy.SchoolYear = sssrd2.SchoolYear

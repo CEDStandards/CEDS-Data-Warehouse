@@ -23,9 +23,9 @@ AS
             WHEN 'No' THEN 0
             ELSE -1
             END AS SessionAttendanceTermIndicatorCodeMap
-	FROM rds.DimCalendarSessionIndicators rdcsi
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
-	LEFT JOIN staging.SourceSystemReferenceData sssrd1
+	FROM RDS.DimCalendarSessionIndicators rdcsi
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 		ON rdcsi.SessionTypeCode = sssrd1.OutputCode
 		AND sssrd1.TableName = 'RefSessionType'
 		AND rsy.SchoolYear = sssrd1.SchoolYear

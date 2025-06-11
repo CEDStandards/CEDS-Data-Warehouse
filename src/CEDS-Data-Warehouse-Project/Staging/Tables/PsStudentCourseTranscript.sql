@@ -20,7 +20,7 @@ CREATE TABLE [Staging].[PsStudentCourseTranscript] (
     [EconomicDisadvantageStatus]            NVARCHAR (50)   NULL,
     [HomelessnessStatus]                    NVARCHAR (50)   NULL,
     [PrimaryDisabilityType]                 NVARCHAR (50)   NULL,
-    [IDEAIndicator]                         BIT   NULL,
+    [IdeaIndicator]                         BIT   NULL,
     [DisabilityStatus]                      BIT   NULL,
     [Section504Status]                      BIT   NULL,
     [DisabilityConditionType]               NVARCHAR (50)   NULL,
@@ -269,15 +269,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000149' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000149' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'HomelessnessStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IDEAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IdeaIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A person having intellectual disability; hearing impairment, including deafness; speech or language impairment; visual impairment, including blindness; serious emotional disturbance (hereafter referred to as emotional disturbance); orthopedic impairment; autism; traumatic brain injury; developmental delay; other health impairment; specific learning disability; deaf-blindness; or multiple disabilities and who, by reason thereof, receive special education and related services under the Individuals with Disabilities Education Act (IDEA) according to an Individualized Education Program (IEP), Individual Family Service Plan (IFSP), or service plan.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IDEAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A person having intellectual disability; hearing impairment, including deafness; speech or language impairment; visual impairment, including blindness; serious emotional disturbance (hereafter referred to as emotional disturbance); orthopedic impairment; autism; traumatic brain injury; developmental delay; other health impairment; specific learning disability; deaf-blindness; or multiple disabilities and who, by reason thereof, receive special education and related services under the Individuals with Disabilities Education Act (IDEA) according to an Individualized Education Program (IEP), Individual Family Service Plan (IFSP), or service plan.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IdeaIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IDEAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IdeaIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000151' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IDEAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000151' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IdeaIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000151' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IDEAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000151' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'IdeaIndicator';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'PsStudentCourseTranscript', @level2type=N'COLUMN',@level2name=N'LastOrSurname';
 GO

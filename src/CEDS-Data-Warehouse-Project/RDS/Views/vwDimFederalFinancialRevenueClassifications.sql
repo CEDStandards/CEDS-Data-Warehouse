@@ -5,7 +5,7 @@ AS
 		, [FinancialAccountRevenueCodeCode]
 		, sssrd1.InputCode AS [FinancialAccountRevenueCodeMap]
 	FROM RDS.DimFederalFinancialRevenueClassifications rffrc
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
 	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 		ON rffrc.FinancialAccountRevenueCodeCode = sssrd1.OutputCode
 		AND sssrd1.TableName = 'RefFinancialAccountRevenueCode'

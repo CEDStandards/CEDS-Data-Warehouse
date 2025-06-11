@@ -1,4 +1,4 @@
-CREATE VIEW rds.vwDimFosterCareStatuses 
+CREATE VIEW RDS.vwDimFosterCareStatuses 
 AS
 	SELECT
 		  DimFosterCareStatusId
@@ -9,8 +9,8 @@ AS
 			WHEN 'No' THEN 0
 			ELSE -1
 		  END AS ProgramParticipationFosterCareMap
-	FROM rds.DimFosterCareStatuses rdfcs
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
+	FROM RDS.DimFosterCareStatuses rdfcs
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
 
 GO
 

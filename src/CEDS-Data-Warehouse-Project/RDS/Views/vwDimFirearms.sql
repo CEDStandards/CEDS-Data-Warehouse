@@ -5,9 +5,9 @@ AS
 		, rsy.SchoolYear
 		, rdf.FirearmTypeCode
 		, sssrd.InputCode AS FirearmTypeMap
-	FROM rds.DimFirearms rdf
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
-	LEFT JOIN staging.SourceSystemReferenceData sssrd
+	FROM RDS.DimFirearms rdf
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd
 		ON rdf.FirearmTypeCode = sssrd.OutputCode
 		AND sssrd.TableName = 'RefFirearmType'
 		AND rsy.SchoolYear = sssrd.SchoolYear

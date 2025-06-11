@@ -23,7 +23,7 @@ CREATE TABLE [RDS].[FactK12StudentEconomicDisadvantages] (
     CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
-    CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
+    CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_NcesSideVintageBeginYearId] FOREIGN KEY ([NcesSideVintageBeginYearDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_NcesSideVintageEndYearId] FOREIGN KEY ([NcesSideVintageEndYearDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentEconomicDisadvantages_PersonAddressId] FOREIGN KEY ([PersonAddressId]) REFERENCES [RDS].[DimPersonAddresses] ([DimPersonAddressId]),

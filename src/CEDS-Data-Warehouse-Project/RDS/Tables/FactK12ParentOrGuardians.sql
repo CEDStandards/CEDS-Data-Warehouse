@@ -6,7 +6,7 @@ CREATE TABLE [RDS].[FactK12ParentOrGuardians]
 	[DataCollectionId] [int] NOT NULL,
     [SeaId] INT NOT NULL,
 	[IeuId] INT NOT NULL,
-	[LeaID] INT NOT NULL,
+	[LeaId] INT NOT NULL,
 	[K12SchoolId] INT NOT NULL,
 	[K12StudentId] BIGINT NOT NULL,
 	[ParentOrGuardianId] BIGINT NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE [RDS].[FactK12ParentOrGuardians]
     CONSTRAINT [FK_FactK12ParentOrGuardians_DataCollections] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_Seas] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_Ieus] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]) ON DELETE No Action ON UPDATE No Action,
-    CONSTRAINT [FK_FactK12ParentOrGuardians_Leas] FOREIGN KEY ([LeaID]) REFERENCES [RDS].[DimLeas] ([DimLeaID]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_FactK12ParentOrGuardians_Leas] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_K12Schools] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_K12Students] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12ParentOrGuardians_ParentOrGuardians] FOREIGN KEY ([ParentOrGuardianId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
@@ -61,7 +61,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_DimSeas]
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_Leas] 
- ON [RDS].[FactK12ParentOrGuardians] ([LeaID] ASC)
+ ON [RDS].[FactK12ParentOrGuardians] ([LeaId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_PersonRelationshipToLearnerContactInformation] 

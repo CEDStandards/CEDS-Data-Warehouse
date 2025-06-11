@@ -24,7 +24,7 @@ BEGIN
 
 		DROP TABLE IF EXISTS #People
 		CREATE TABLE #People (
-			  BirthDate						  DATE
+			  Birthdate						  DATE
 			, FirstName						  NVARCHAR(50) NULL
 			, LastOrSurname					  NVARCHAR(50) NULL
 			, MiddleName					  NVARCHAR(50) NULL
@@ -37,11 +37,11 @@ BEGIN
 			, RecordStartDateTime			  DATETIME
 		)
 		
-		CREATE CLUSTERED INDEX IX_People_K12Identifiers ON #People (AeStudentIdentifierState, BirthDate, FirstName, MiddleName, LastOrSurname)
+		CREATE CLUSTERED INDEX IX_People_K12Identifiers ON #People (AeStudentIdentifierState, Birthdate, FirstName, MiddleName, LastOrSurname)
 
 		INSERT INTO #People
 		(
-			  BirthDate
+			  Birthdate
 			, FirstName
 			, LastOrSurname
 			, MiddleName
@@ -54,7 +54,7 @@ BEGIN
 			, RecordStartDateTime
 			)		
 		SELECT DISTINCT
-			  sae.BirthDate
+			  sae.Birthdate
 			, sae.FirstName
 			, ISNULL(sae.LastOrSurname, 'MISSING') as LastOrSurname
 			, sae.MiddleName
@@ -67,17 +67,17 @@ BEGIN
 			, sae.RecordStartDateTime
 		FROM Staging.AeEnrollment sae;
 
-		MERGE rds.DimPeople AS trgt
+		MERGE RDS.DimPeople AS trgt
 		USING #People AS src
 				ON  ISNULL(trgt.AeStudentStudentIdentifierState, '') = ISNULL(src.AeStudentIdentifierState, '')
 				AND ISNULL(trgt.FirstName, '') = ISNULL(src.FirstName, '')
 				AND ISNULL(trgt.LastOrSurname, '') = ISNULL(src.LastOrSurname, '')
 				AND ISNULL(trgt.MiddleName, '') = ISNULL(src.MiddleName, '')
-				AND ISNULL(trgt.BirthDate, '') = ISNULL(src.BirthDate, '1900-01-01')
+				AND ISNULL(trgt.Birthdate, '') = ISNULL(src.Birthdate, '1900-01-01')
 				AND trgt.RecordStartDateTime = src.RecordStartDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but NOT in Target
 		INSERT (
-			  BirthDate
+			  Birthdate
 			, FirstName
 			, LastOrSurname
 			, MiddleName
@@ -101,15 +101,15 @@ BEGIN
 				  startd.AeStudentStudentIdentifierState
 				, startd.RecordStartDateTime
 				, dateadd(day, -1, min(endd.RecordStartDateTime)) AS RecordEndDateTime
-			FROM rds.DimPeople startd
-			JOIN rds.DimPeople endd
+			FROM RDS.DimPeople startd
+			JOIN RDS.DimPeople endd
 				ON startd.AeStudentStudentIdentifierState = endd.AeStudentStudentIdentifierState
 				AND startd.RecordStartDateTime < endd.RecordStartDateTime
 			GROUP BY  startd.AeStudentStudentIdentifierState, startd.RecordStartDateTime
 		) 
 		UPDATE student 
 		SET RecordEndDateTime = upd.RecordEndDateTime
-		FROM rds.DimPeople student
+		FROM RDS.DimPeople student
 		INNER JOIN upd
 			ON student.AeStudentStudentIdentifierState = upd.AeStudentStudentIdentifierState
 			AND student.RecordStartDateTime = upd.RecordStartDateTime

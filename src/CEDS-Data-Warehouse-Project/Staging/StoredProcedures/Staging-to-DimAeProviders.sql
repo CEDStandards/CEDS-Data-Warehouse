@@ -1,6 +1,6 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimAeProviders]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@dataCollectionName AS VARCHAR(50) = NULL,
+	@DataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
@@ -50,7 +50,7 @@ BEGIN
 			, spi.[AdultEducationServiceProviderIdentifierSea]			AS AdultEducationServiceProviderIdentifierSea
             , sssrd2.[OutputCode]                                   AS AdultEducationProviderTypeCode
             , sssrd3.[OutputCode]                                   AS LevelOfInstitutionCode
-			, spi.[WebsiteAddress]								    AS WebsiteAddress
+			, spi.[WebSiteAddress]								    AS WebSiteAddress
 			, sssrd1.[OutputCode]									AS OrganizationOperationalStatusCode
 			, spi.[OperationalStatusEffectiveDate]      
 			, smam.[AddressStreetNumberAndName]						AS MailingAddressStreetNumberAndName
@@ -89,27 +89,27 @@ BEGIN
 			AND sop.RecordStartDateTime <= ISNULL(spi.RecordEndDateTime, GETDATE())
 			AND ISNULL(sop.RecordEndDateTime, GETDATE()) >= spi.RecordStartDateTime
 			AND ISNULL(spi.DataCollectionName, '') = ISNULL(sop.DataCollectionName, '')
-		LEFT JOIN staging.SourceSystemReferenceData sssrd1
+		LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 			ON spi.[OrganizationOperationalStatus] = sssrd1.InputCode
 			AND sssrd1.TableName = 'RefOperationalStatus'
 			AND sssrd1.TableFilter = '001418'
 			AND spi.ProgramYear = sssrd1.SchoolYear
-        LEFT JOIN staging.SourceSystemReferenceData sssrd2
+        LEFT JOIN Staging.SourceSystemReferenceData sssrd2
             ON spi.[AdultEducationProviderType] = sssrd2.InputCode
             AND sssrd2.TableName = 'RefOrganizationType'
             AND sssrd2.TableFilter = '001078'
             AND spi.ProgramYear = sssrd2.SchoolYear
-        LEFT JOIN staging.SourceSystemReferenceData sssrd3
+        LEFT JOIN Staging.SourceSystemReferenceData sssrd3
             ON spi.[LevelOfInstitution] = sssrd3.InputCode
             AND sssrd3.TableName = 'RefLevelOfInstitution'
             AND spi.ProgramYear = sssrd2.SchoolYear
 		WHERE spi.AdultEducationServiceProviderIdentifierSea IS NOT NULL
-			AND (@dataCollectionName IS NULL
+			AND (@DataCollectionName IS NULL
 				OR (
-						spi.DataCollectionName = @dataCollectionName
-					AND smam.DataCollectionName = @dataCollectionName
-					AND smap.DataCollectionName = @dataCollectionName
-					AND sop.DataCollectionName = @dataCollectionName
+						spi.DataCollectionName = @DataCollectionName
+					AND smam.DataCollectionName = @DataCollectionName
+					AND smap.DataCollectionName = @DataCollectionName
+					AND sop.DataCollectionName = @DataCollectionName
 				)
 			)
 		GROUP BY 
@@ -117,7 +117,7 @@ BEGIN
 			, spi.[NameOfInstitution]
             , spi.[ShortNameOfInstitution]					
 			, spi.[AdultEducationServiceProviderIdentifierSea]					
-			, spi.[WebsiteAddress]									
+			, spi.[WebSiteAddress]									
 			, sssrd1.[OutputCode]
             , sssrd2.[OutputCode]
             , sssrd3.[OutputCode]							
@@ -137,7 +137,7 @@ BEGIN
 			, smap.[Longitude]
 			, smap.[Latitude]
 	)
-	MERGE rds.DimAeProviders AS trgt
+	MERGE RDS.DimAeProviders AS trgt
 	USING CTE AS src
 		ON trgt.[AdultEducationServiceProviderIdentifierSea] = src.[AdultEducationServiceProviderIdentifierSea]
 		AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
@@ -162,7 +162,7 @@ BEGIN
 			, trgt.[PhysicalAddressPostalCode]                  = src.[PhysicalAddressPostalCode]            
 			, trgt.[PhysicalAddressStateAbbreviation]           = src.[PhysicalAddressStateAbbreviation]     
 			, trgt.[PhysicalAddressCountyAnsiCodeCode]          = src.[PhysicalAddressCountyAnsiCodeCode]        
-			, trgt.[WebsiteAddress]                             = src.[WebsiteAddress]                       
+			, trgt.[WebSiteAddress]                             = src.[WebSiteAddress]                       
 			, trgt.[Latitude]                                   = src.[Latitude]                             
 			, trgt.[Longitude]                                  = src.[Longitude]                            
 			, trgt.[RecordStartDateTime]                        = src.[RecordStartDateTime]                  
@@ -188,7 +188,7 @@ BEGIN
 		, [PhysicalAddressPostalCode]            
 		, [PhysicalAddressStateAbbreviation]     
 		, [PhysicalAddressCountyAnsiCodeCode]        
-		, [WebsiteAddress]                       
+		, [WebSiteAddress]                       
 		, [Latitude]                             
 		, [Longitude]                            
 		, [RecordStartDateTime]                  
@@ -213,7 +213,7 @@ BEGIN
 		, src.[PhysicalAddressPostalCode]            
 		, src.[PhysicalAddressStateAbbreviation]     
 		, src.[PhysicalAddressCountyAnsiCodeCode]        
-		, src.[WebsiteAddress]                       
+		, src.[WebSiteAddress]                       
 		, src.[Latitude]                             
 		, src.[Longitude]                            
 		, src.[RecordStartDateTime]                  
@@ -225,14 +225,14 @@ BEGIN
 			  startd.AdultEducationServiceProviderIdentifierSea
 			, startd.RecordStartDateTime 
 			, DATEADD(D, -1, min(endd.RecordStartDateTime)) AS RecordEndDateTime
-		FROM rds.DimAeProviders startd
-		JOIN rds.DimAeProviders endd
+		FROM RDS.DimAeProviders startd
+		JOIN RDS.DimAeProviders endd
 			ON startd.AdultEducationServiceProviderIdentifierSea = endd.AdultEducationServiceProviderIdentifierSea
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY  startd.AdultEducationServiceProviderIdentifierSea, startd.RecordStartDateTime
 	) 
 	UPDATE AeProvider SET RecordEndDateTime = upd.RecordEndDateTime -1 
-	FROM rds.DimAeProviders AeProvider
+	FROM RDS.DimAeProviders AeProvider
 	JOIN upd	
 		ON AeProvider.AdultEducationServiceProviderIdentifierSea = upd.AdultEducationServiceProviderIdentifierSea
 		AND AeProvider.RecordStartDateTime = upd.RecordStartDateTime

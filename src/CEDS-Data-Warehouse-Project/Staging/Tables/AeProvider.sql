@@ -5,7 +5,7 @@ CREATE TABLE [Staging].[AeProvider] (
     [AdultEducationServiceProviderIdentifierSea]              NVARCHAR (50)  NULL,
     [AdultEducationProviderType]            NVARCHAR (50)   NULL,
     [LevelOfInstitution]                    NVARCHAR (50)   NULL,
-    [WebsiteAddress]                             VARCHAR (300)  NULL,
+    [WebSiteAddress]                             VARCHAR (300)  NULL,
     [OrganizationOperationalStatus]       VARCHAR (100)  NULL,
     [OperationalStatusEffectiveDate]      DATETIME       NULL,
     [ProgramYear]                          SMALLINT       NULL,

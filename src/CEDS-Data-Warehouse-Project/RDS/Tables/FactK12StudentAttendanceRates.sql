@@ -16,7 +16,7 @@ CREATE TABLE [RDS].[FactK12StudentAttendanceRates] (
     CONSTRAINT [FK_FactK12StudentAttendanceRates_GradeLevelId] FOREIGN KEY ([GradeLevelId]) REFERENCES [RDS].[DimGradeLevels] ([DimGradeLevelId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
-    CONSTRAINT [FK_FactK12StudentAttendanceRates_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
+    CONSTRAINT [FK_FactK12StudentAttendanceRates_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentAttendanceRates_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId])
 );

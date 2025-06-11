@@ -53,7 +53,7 @@ CREATE TABLE [RDS].[FactK12StaffAssignments]
 	CONSTRAINT [FK_FactK12StaffAssignments_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffAssignments_LeaId] FOREIGN KEY ([LeaID]) REFERENCES [RDS].[DimLeas] ([DimLeaID]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssignments_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_IeuEmployerId] FOREIGN KEY ([IeuEmployerId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]) ON DELETE No Action ON UPDATE No Action,
@@ -165,7 +165,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssignments_SeaId]
  ON [RDS].[FactK12StaffAssignments] ([SeaId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssignments_LeaID] 
- ON [RDS].[FactK12StaffAssignments] ([LeaID] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssignments_LeaId] 
+ ON [RDS].[FactK12StaffAssignments] ([LeaId] ASC)
 GO
 

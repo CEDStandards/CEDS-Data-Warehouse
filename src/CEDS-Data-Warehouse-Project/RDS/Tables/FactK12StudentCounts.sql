@@ -317,7 +317,7 @@ ALTER TABLE [RDS].[FactK12StudentCounts] CHECK CONSTRAINT [FK_FactK12StudentCoun
 GO
 
 ALTER TABLE [RDS].[FactK12StudentCounts]  WITH CHECK ADD  CONSTRAINT [FK_FactK12StudentCounts_LeaId] FOREIGN KEY([LeaId])
-REFERENCES [RDS].[DimLeas] ([DimLeaID])
+REFERENCES [RDS].[DimLeas] ([DimLeaId])
 GO
 
 ALTER TABLE [RDS].[FactK12StudentCounts] CHECK CONSTRAINT [FK_FactK12StudentCounts_LeaId]

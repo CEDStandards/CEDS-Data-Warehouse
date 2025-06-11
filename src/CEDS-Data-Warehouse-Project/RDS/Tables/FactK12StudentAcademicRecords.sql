@@ -36,7 +36,7 @@ CREATE TABLE [RDS].[FactK12StudentAcademicRecords] (
     CONSTRAINT [FK_FactK12StudentAcademicRecords_LeaInstructionId] FOREIGN KEY ([LeaInstructionId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentAcademicRecords_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentAcademicRecords_RecordStatusId] FOREIGN KEY ([RecordStatusId]) REFERENCES [RDS].[DimRecordStatuses] ([DimRecordStatusId]),
-    CONSTRAINT [FK_FactK12StudentAcademicRecords_K12AcademicAwardStatusId] FOREIGN KEY ([K12AcademicAwardStatusId]) REFERENCES [RDS].[DimK12AcademicAwardStatuses] ([Dimk12AcademicAwardStatusId])
+    CONSTRAINT [FK_FactK12StudentAcademicRecords_K12AcademicAwardStatusId] FOREIGN KEY ([K12AcademicAwardStatusId]) REFERENCES [RDS].[DimK12AcademicAwardStatuses] ([DimK12AcademicAwardStatusId])
 );
 
 

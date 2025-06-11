@@ -3,7 +3,7 @@ CREATE TABLE [CEDS].[Code](
 	[Code] [varchar](50) NOT NULL,
 	[Description] [varchar](max) NULL,
 	[NCES] [varchar](10) NULL,
-	[EDFacts] [varchar](20) NULL,
+	[EdFacts] [varchar](20) NULL,
 	[CodeDefinition] [nvarchar](max) NULL,
  CONSTRAINT [PK_Code] PRIMARY KEY CLUSTERED 
 (

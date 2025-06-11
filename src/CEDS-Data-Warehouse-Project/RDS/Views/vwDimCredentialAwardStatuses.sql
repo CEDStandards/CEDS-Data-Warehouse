@@ -11,7 +11,7 @@ AS
     CredentialSuspensionIndicatorCode,
     srd4.InputCode AS CredentialSuspensionIndicatorMap
   FROM RDS.DimCredentialAwardStatuses dca
-  CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
+  CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
   LEFT JOIN Staging.SourceSystemReferenceData srd1
     ON dca.CredentialRevokedIndicatorCode = srd1.OutputCode
     AND srd1.TableName = 'RefCredentialRevokedIndicator'

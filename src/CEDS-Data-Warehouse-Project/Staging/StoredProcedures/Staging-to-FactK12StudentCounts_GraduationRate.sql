@@ -33,17 +33,17 @@ BEGIN
 		FROM RDS.DimSchoolYears
 		WHERE SchoolYear = @SchoolYear
 
-		SET @SYStartDate = staging.GetFiscalYearStartDate(@SchoolYear)
-		SET @SYEndDate = staging.GetFiscalYearEndDate(@SchoolYear)
+		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
+		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 
 	--Get the set of students from DimPeople to be used for the migrated SY
 		select K12StudentStudentIdentifierState
 			, max(DimPersonId)								DimPersonId
 			, min(RecordStartDateTime)						RecordStartDateTime
 			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(birthdate, '1900-01-01'))			BirthDate
+			, max(isnull(Birthdate, '1900-01-01'))			Birthdate
 		into #dimPeople
-		from rds.DimPeople
+		from RDS.DimPeople
 		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
 			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
 		and IsActiveK12Student = 1
@@ -109,7 +109,7 @@ BEGIN
 
 		--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'graduationrate'	--DimFactTypeId = 18
 
 		--Clear the Fact table of the data about to be migrated  
@@ -130,9 +130,9 @@ BEGIN
 			, RaceId								int null
 			, K12DemographicId						int null
 			, StudentCount							int null
-			, SEAId									int null
-			, IEUId									int null
-			, LEAId									int null
+			, SeaId									int null
+			, IeuId									int null
+			, LeaId									int null
 			, K12SchoolId							int null
 			, K12StudentId							int null
 			, IdeaStatusId							int null
@@ -144,7 +144,7 @@ BEGIN
 			, AttendanceId							int null
 			, CohortStatusId						int null
 			, NOrDStatusId							int null
-			, CTEStatusId							int null
+			, CteStatusId							int null
 			, K12EnrollmentStatusId					int null
 			, EnglishLearnerStatusId				int null
 			, HomelessnessStatusId					int null
@@ -161,7 +161,7 @@ BEGIN
 
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.id														StagingId								
+			ske.Id														StagingId								
 			, rsy.DimSchoolYearId										SchoolYearId							
 			, @FactTypeId												FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)							GradeLevelId							
@@ -169,9 +169,9 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId								
 			, -1														K12DemographicId						
 			, 1															StudentCount							
-			, ISNULL(rds.DimSeaId, -1)									SEAId									
-			, -1														IEUId									
-			, ISNULL(rdl.DimLeaID, -1)									LEAId									
+			, ISNULL(RDS.DimSeaId, -1)									SeaId									
+			, -1														IeuId									
+			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId							
 			, ISNULL(rdis.DimIdeaStatusId, -1)							IdeaStatusId							
@@ -183,7 +183,7 @@ BEGIN
 			, -1														AttendanceId							
 			, -1 														CohortStatusId	  --Set this once the mapping  below is complete					
 			, -1														NOrDStatusId							
-			, -1														CTEStatusId							
+			, -1														CteStatusId							
 			, -1														K12EnrollmentStatusId					
 			, ISNULL(rdels.DimEnglishLearnerStatusId, -1)				EnglishLearnerStatusId				
 			, ISNULL(rdhs.DimHomelessnessStatusId, -1)					HomelessnessStatusId					
@@ -200,10 +200,10 @@ BEGIN
 		JOIN RDS.DimSchoolYears rsy
 			ON ske.SchoolYear = rsy.SchoolYear
 		JOIN RDS.DimSeas rds
-			ON ske.EnrollmentEntryDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
+			ON ske.EnrollmentEntryDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, @SYEndDate)
 		JOIN #dimPeople rdp
 			ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 			AND ske.EnrollmentEntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 	--homeless
 		JOIN Staging.PersonStatus hmStatus
@@ -266,7 +266,7 @@ BEGIN
 			ON ske.SchoolYear = spr.SchoolYear
 			AND ske.StudentIdentifierState = spr.StudentIdentifierState
 			AND (ske.SchoolIdentifierSea = spr.SchoolIdentifierSea
-				OR ske.LEAIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
+				OR ske.LeaIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
 	--cohort (RDS)
 		-- LEFT JOIN RDS.DimCohortStatuses rdcs
 		-- 	ON ISNULL(ske.CohortDescription, 'MISSING') = ISNULL(rdcs.NotSureYet , 'MISSING')
@@ -284,7 +284,7 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 	--idea disability (RDS)
 		LEFT JOIN RDS.vwDimIdeaStatuses rdis
 			ON ske.SchoolYear = rdis.SchoolYear
-			AND ISNULL(CAST(idea.IDEAIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
+			AND ISNULL(CAST(idea.IdeaIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
 			AND rdis.IdeaEducationalEnvironmentForSchoolAgeCode = 'MISSING'
 			AND rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode = 'MISSING'
 			AND rdis.SpecialEducationExitReasonCode = 'MISSING'
@@ -332,9 +332,9 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -346,7 +346,7 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]
@@ -368,9 +368,9 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -382,7 +382,7 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]

@@ -48,7 +48,7 @@ AS BEGIN
 		  ske.Id
 		, ISNULL(rddc.DimDataCollectionId, -1) AS DimDataCollectionId
 		, rsy.DimSchoolYearId
-		, ISNULL(rds.DimSeaId, -1) AS DimSeaId
+		, ISNULL(RDS.DimSeaId, -1) AS DimSeaId
 		, ISNULL(rdi.DimIeuId, -1) AS DimIeuId
 		, ISNULL(rdlAcc.DimLeaId, -1) AS DimLeaAccountabilityId
 		, ISNULL(rdlAtt.DimLeaId, -1) AS DimLeaAttendanceId
@@ -61,7 +61,7 @@ AS BEGIN
 		, ISNULL(rdkd.DimK12DemographicId, -1) AS DimK12DemographicId
 		, ISNULL(rdkpt.DimK12ProgramTypeId, -1) AS DimK12ProgramTypeID
 		, ISNULL(entryDate.DimDateId, -1) As EntryDateId
-		, ISNULL(exitDate.DimDateId, -1) AS ExitDateId
+		, ISNULL(ExitDate.DimDateId, -1) AS ExitDateId
 		, 1 AS StudentCount
 	FROM Staging.K12ProgramParticipation skpp
 	JOIN Staging.K12Enrollment ske
@@ -106,7 +106,7 @@ AS BEGIN
 		AND ISNULL(ske.FirstName, '')												= ISNULL(rdp.FirstName, '')
 		AND ISNULL(ske.MiddleName, '')												= ISNULL(rdp.MiddleName, '')
 		AND ISNULL(ske.LastOrSurname, 'MISSING')									= ISNULL(rdp.LastOrSurname, 'MISSING')
-		AND ISNULL(ske.Birthdate, '1/1/1900')										= ISNULL(rdp.BirthDate, '1/1/1900')
+		AND ISNULL(ske.Birthdate, '1/1/1900')										= ISNULL(rdp.Birthdate, '1/1/1900')
 	LEFT JOIN RDS.DimLeas rdlAcc
 		ON ske.LeaIdentifierSeaAccountability = rdlAcc.LeaIdentifierSea
 		AND ske.RecordStartDateTime BETWEEN rdlAcc.RecordStartDateTime AND ISNULL(rdlAcc.RecordEndDateTime, GETDATE())
@@ -131,13 +131,13 @@ AS BEGIN
 			OR ISNULL(rdlAtt.IeuOrganizationIdentifierSea, '') = rdi.IeuOrganizationIdentifierSea)
 		AND ske.RecordStartDateTime BETWEEN rdi.RecordStartDateTime AND ISNULL(rdi.RecordEndDateTime, GETDATE())
 	LEFT JOIN RDS.DimSeas rds
-		ON ske.RecordStartDateTime BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
+		ON ske.RecordStartDateTime BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
 	JOIN RDS.DimDataCollections rddc
 		ON skpp.DataCollectionName = rddc.DataCollectionName 
 	JOIN RDS.DimDates entryDate
 		ON skpp.EntryDate = entryDate.DateValue
-	JOIN RDS.DimDates exitDate
-		ON skpp.exitDate = exitDate.DateValue
+	JOIN RDS.DimDates ExitDate
+		ON skpp.ExitDate = ExitDate.DateValue
 	LEFT JOIN RDS.vwDimK12ProgramTypes rdkpt
 		ON ISNULL(skpp.ProgramType, 'MISSING')										= ISNULL(rdkpt.ProgramTypeMap, rdkpt.ProgramTypeCode)
 		AND skpp.SchoolYear = rdkpt.SchoolYear
@@ -146,14 +146,14 @@ AS BEGIN
 		AND ISNULL(ske.Sex, 'MISSING')												= ISNULL(rdkd.SexMap, rdkd.SexCode)
 	LEFT JOIN RDS.vwDimIdeaStatuses rdis
 		ON skpp.SchoolYear = rdis.SchoolYear
-		AND ISNULL(CAST(sppse.IDEAIndicator AS SMALLINT), -1)						= rdis.IdeaIndicatorMap
+		AND ISNULL(CAST(sppse.IdeaIndicator AS SMALLINT), -1)						= rdis.IdeaIndicatorMap
 		AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood, 'MISSING')	= ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
 		AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge, 'MISSING')			= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)			
 		AND ISNULL(sppse.SpecialEducationExitReason, 'MISSING')						= ISNULL(rdis.SpecialEducationExitReasonMap, rdis.SpecialEducationExitReasonCode)						
 	LEFT JOIN RDS.DimSchoolYears rsy
 		ON skpp.SchoolYear = rsy.SchoolYear
-	WHERE @dataCollectionName IS NULL 
-		OR skpp.DataCollectionName = @dataCollectionName
+	WHERE @DataCollectionName IS NULL 
+		OR skpp.DataCollectionName = @DataCollectionName
 
 
 	
@@ -179,7 +179,7 @@ AS BEGIN
 			AND ISNULL(ske.FirstName, 'MISSING')																	= ISNULL(rdp.FirstName, 'MISSING')
 			AND ISNULL(ske.MiddleName, 'MISSING')																	= ISNULL(rdp.MiddleName, 'MISSING')
 			AND ISNULL(ske.LastOrSurname, 'MISSING')																= ISNULL(rdp.LastOrSurname, 'MISSING')
-			AND ISNULL(ske.Birthdate, '1/1/1900')																	= ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900')																	= ISNULL(rdp.Birthdate, '1/1/1900')
 		WHERE fact.K12StudentId IS NULL
 	) p
 		ON ske.StudentIdentifierState = p.K12StudentStudentIdentifierState
@@ -206,7 +206,7 @@ AS BEGIN
 			AND ISNULL(ske.FirstName, 'MISSING')																	= ISNULL(rdp.FirstName, 'MISSING')
 			AND ISNULL(ske.MiddleName, 'MISSING')																	= ISNULL(rdp.MiddleName, 'MISSING')
 			AND ISNULL(ske.LastOrSurname, 'MISSING')																= ISNULL(rdp.LastOrSurname, 'MISSING')
-			AND ISNULL(ske.Birthdate, '1/1/1900')																	= ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900')																	= ISNULL(rdp.Birthdate, '1/1/1900')
 		WHERE fact.K12StudentId IS NULL
 	) p
 		ON ske.StudentIdentifierState = p.K12StudentStudentIdentifierState
@@ -217,7 +217,7 @@ AS BEGIN
 		SELECT DISTINCT 
 		  ISNULL(DimDataCollectionId, -1) AS DimDataCollectionId
 		, ISNULL(DimSchoolYearId, -1) AS DimSchoolYearId
-		, ISNULL(rds.DimSeaId, -1) AS DimSeaId
+		, ISNULL(RDS.DimSeaId, -1) AS DimSeaId
 		, ISNULL(rdi.DimIeuId, -1) AS DimIeuId
 		, ISNULL(rdlAcc.DimLeaId, -1) AS DimLeaAccountabilityId
 		, ISNULL(rdlAtt.DimLeaId, -1) AS DimLeaAttendanceId
@@ -230,7 +230,7 @@ AS BEGIN
 		, ISNULL(rdkd.DimK12DemographicId, -1) AS DimK12DemographicId
 		, ISNULL(rdkpt.DimK12ProgramTypeId, -1) AS DimK12ProgramTypeID
 		, ISNULL(entryDate.DimDateId, -1) As EntryDateId
-		, ISNULL(exitDate.DimDateId, -1) AS ExitDateId
+		, ISNULL(ExitDate.DimDateId, -1) AS ExitDateId
 		, ISNULL(StudentCount, 1) AS StudentCount
 	FROM #Facts
 
@@ -253,15 +253,15 @@ AS BEGIN
 	JOIN RDS.DimK12Schools rdks
 		ON rfkse.K12SchoolId = rdks.DimK12SchoolId
 	JOIN RDS.DimLeas rdlsAcc
-		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaID
+		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaId
 	JOIN RDS.DimLeas rdlsAtt
-		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaID
+		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaId
 	JOIN RDS.DimLeas rdlsFun
-		ON rfkse.LeaFundingId = rdlsFun.DimLeaID
+		ON rfkse.LeaFundingId = rdlsFun.DimLeaId
 	JOIN RDS.DimLeas rdlsGrad
-		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaID
+		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaId
 	JOIN RDS.DimLeas rdlsIep
-		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaID
+		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaId
 	JOIN RDS.DimSeas rdlsSea
 		ON rfkse.SeaId = rdlsSea.DimSeaId
 	JOIN RDS.DimDataCollections rddc

@@ -202,7 +202,7 @@ INSERT INTO [RDS].[FactAeStudentEnrollments](
 		AND rdms.MigrantEducationProgramEnrollmentTypeMap = 'MISSING'
 		AND rdms.ContinuationOfServicesReasonMap = 'MISSING'
 		AND rdms.MEPContinuationOfServicesStatusMap = 'MISSING'
-		AND rdms.ConsolidatedMEPFundsStatusMap = 'MISSING'
+		AND rdms.ConsolidatedMepFundsStatusMap = 'MISSING'
 		AND rdms.MigrantEducationProgramServicesTypeMap = 'MISSING'
 		AND rdms.MigrantPrioritizedForServicesMap = 'MISSING'
 	LEFT JOIN RDS.vwDimMilitaryStatuses rdms2
@@ -243,7 +243,7 @@ INSERT INTO [RDS].[FactAeStudentEnrollments](
 		AND rdpy.ProgramYear = saeb.ProgramYear
 		AND rdap.AdultEducationServiceProviderIdentifierSea = saeb.AdultEducationServiceProviderIdentifierSea
 	LEFT JOIN RDS.vwDimAeEmploymentBarriers rvdaeb
-		ON saeb.WIOABarriersToEmployment = rvdaeb.WIOABarriersToEmploymentCodeMap
+		ON saeb.WioaBarriersToEmployment = rvdaeb.WioaBarriersToEmploymentCodeMap
 		AND saeb.ProgramYear = rvdaeb.SchoolYear
 
 

@@ -35,8 +35,8 @@ BEGIN
 		FROM RDS.DimSchoolYears
 		WHERE SchoolYear = @SchoolYear
 
-		SET @SYStartDate = staging.GetFiscalYearStartDate(@SchoolYear)
-		SET @SYEndDate = staging.GetFiscalYearEndDate(@SchoolYear)
+		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
+		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 
 
 		/* File Spec as of 2023 change this to be School Year - Any 12-month reporting period 		*/
@@ -64,12 +64,12 @@ BEGIN
 		FROM RDS.vwDimIdeaStatuses
 		WHERE SchoolYear = @SchoolYear
 
-		CREATE CLUSTERED INDEX ix_tempvwIdeaStatuses ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolageMap);
+		CREATE CLUSTERED INDEX ix_tempvwIdeaStatuses ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolAgeMap);
 
 
 		
 		select * into #vwTitleIIIStatuses
-		from rds.vwDimTitleIIIStatuses 
+		from RDS.vwDimTitleIIIStatuses 
 		where SchoolYear = @SchoolYear
 
 		SELECT *
@@ -116,7 +116,7 @@ BEGIN
 
 		--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'TitleIIIELSY' -- DimFactTypeId = 9
 
 
@@ -133,9 +133,9 @@ BEGIN
 			, RaceId								int null
 			, K12DemographicId						int null
 			, StudentCount							int null
-			, SEAId									int null
-			, IEUId									int null
-			, LEAId									int null
+			, SeaId									int null
+			, IeuId									int null
+			, LeaId									int null
 			, K12SchoolId							int null
 			, K12StudentId							int null
 			, IdeaStatusId							int null
@@ -147,7 +147,7 @@ BEGIN
 			, AttendanceId							int null
 			, CohortStatusId						int null
 			, NOrDStatusId							int null
-			, CTEStatusId							int null
+			, CteStatusId							int null
 			, K12EnrollmentStatusId					int null
 			, EnglishLearnerStatusId				int null
 			, HomelessnessStatusId					int null
@@ -162,7 +162,7 @@ BEGIN
 
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.id										StagingId							
+			ske.Id										StagingId							
 			, rsy.DimSchoolYearId						SchoolYearId
 			, @FactTypeId								FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)			GradeLevelId							
@@ -170,9 +170,9 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)					RaceId								
 			, ISNULL(rdkd.DimK12DemographicId, -1)		K12DemographicId						
 			, 1											StudentCount							
-			, ISNULL(rds.DimSeaId, -1)					SEAId									
-			, -1										IEUId									
-			, ISNULL(rdl.DimLeaID, -1)					LEAId									
+			, ISNULL(RDS.DimSeaId, -1)					SeaId									
+			, -1										IeuId									
+			, ISNULL(rdl.DimLeaId, -1)					LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)			K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)				K12StudentId							
 			, -1										IdeaStatusId							
@@ -184,7 +184,7 @@ BEGIN
 			, -1										AttendanceId							
 			, -1										CohortStatusId						
 			, -1 										NOrDStatusId							
-			, -1										CTEStatusId							
+			, -1										CteStatusId							
 			, -1										K12EnrollmentStatusId					
 			, isnull(rdels.DimEnglishLearnerStatusId, -1)	EnglishLearnerStatusId	-- USED FOR FS141, but not FS116			
 			, -1										HomelessnessStatusId					
@@ -202,14 +202,14 @@ BEGIN
 			ON ske.SchoolYear = rsy.SchoolYear
 
 	--demographics
-		JOIN rds.vwDimK12Demographics rdkd -- changed this to INNER JOIN to match Child Count
+		JOIN RDS.vwDimK12Demographics rdkd -- changed this to INNER JOIN to match Child Count
 			ON rsy.SchoolYear = rdkd.SchoolYear
 			AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
 
 	-- seas (rds)
 		JOIN RDS.DimSeas rds
-			ON convert(date, rds.RecordStartDateTime)  <= @SYEndDate
-			AND ISNULL(convert(date, rds.RecordEndDateTime), @SYEndDate) >= @SYStartDate
+			ON convert(date, RDS.RecordStartDateTime)  <= @SYEndDate
+			AND ISNULL(convert(date, RDS.RecordEndDateTime), @SYEndDate) >= @SYStartDate
 
 	-- dimpeople (rds)
 		JOIN RDS.DimPeople rdp
@@ -218,7 +218,7 @@ BEGIN
 			AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
 			AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 			AND ISNULL(ske.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 			AND rdp.RecordStartDateTime  <= @SYEndDate
 			AND ISNULL(rdp.RecordEndDateTime, @SYEndDate) >= @SYStartDate
 
@@ -265,7 +265,7 @@ BEGIN
 			ON ske.SchoolYear = spr.SchoolYear
 			AND ske.StudentIdentifierState = spr.StudentIdentifierState
 			AND (ske.SchoolIdentifierSea = spr.SchoolIdentifierSea
-				OR ske.LEAIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
+				OR ske.LeaIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
 
 		LEFT JOIN #vwRaces rdr
 			ON ISNULL(rdr.RaceMap, rdr.RaceCode) =
@@ -314,9 +314,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -328,7 +328,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]
@@ -348,9 +348,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -362,7 +362,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]

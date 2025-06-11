@@ -49,8 +49,8 @@ CREATE TABLE Staging.K12FinancialAccountGeneralLedger (
 	, Federal_FinancialAccountRevenueCodeCode							NVARCHAR(50) NULL
 	, Sea_FinancialAccountLocalRevenueCodeCode							NVARCHAR(50) NULL
 	, Sea_FinancialAccountLocalRevenueCodeDescription					NVARCHAR(150) NULL
-	, lea_FinancialAccountLocalRevenueCodeCode							NVARCHAR(50) NULL
-	, lea_FinancialAccountLocalRevenueCodeDescription					NVARCHAR(150) NULL
+	, Lea_FinancialAccountLocalRevenueCodeCode							NVARCHAR(50) NULL
+	, Lea_FinancialAccountLocalRevenueCodeDescription					NVARCHAR(150) NULL
 	, Federal_FinancialAccountNumber									NVARCHAR(60) NULL
 	, Federal_FinancialAccountName										NVARCHAR(200) NULL
 	, Federal_FinancialAccountDescription								NVARCHAR(600) NULL

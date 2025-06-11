@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[K12StaffAssignment] (
-    [ID]                                     INT            IDENTITY (1, 1) NOT NULL,
+    [Id]                                     INT            IDENTITY (1, 1) NOT NULL,
     [StaffMemberIdentifierState]             NVARCHAR (40)  NULL,
     [IeuOrganizationIdentifierSea]           NVARCHAR (50)  NULL,
     [LeaIdentifierSea]                       NVARCHAR (50)  NULL,
@@ -8,7 +8,7 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
     [FirstName]                              NVARCHAR (100) NULL,
     [LastOrSurname]                          NVARCHAR (100) NULL,
     [MiddleName]                             NVARCHAR (100) NULL,
-    [BirthDate]                              DATE           NULL,
+    [Birthdate]                              DATE           NULL,
     [Sex]                                    NVARCHAR (30)  NULL,
     [Race]                                   NVARCHAR (100) NULL,
     [PositionTitle]                          NVARCHAR (200) NULL,
@@ -17,9 +17,9 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
 	[SEA_EducationJobTypeCode]               NVARCHAR (40)  NULL,
 	[SEA_LocalJobFunctionCode]               NVARCHAR (50)  NULL,
 	[SEA_LocalJobCategoryCode]               NVARCHAR (50)  NULL,
-	[LEA_EducationJobTypeCode]               NVARCHAR (40)  NULL,
-	[LEA_LocalJobFunctionCode]               NVARCHAR (50)  NULL,
-	[LEA_LocalJobCategoryCode]               NVARCHAR (50)  NULL,
+	[Lea_EducationJobTypeCode]               NVARCHAR (40)  NULL,
+	[Lea_LocalJobFunctionCode]               NVARCHAR (50)  NULL,
+	[Lea_LocalJobCategoryCode]               NVARCHAR (50)  NULL,
     [FullTimeEquivalency]                    DECIMAL (5, 4) NULL,
     [SpecialEducationStaffCategory]          NVARCHAR (100) NULL,
     [K12StaffClassification]                 NVARCHAR (100) NULL,
@@ -41,7 +41,7 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
     [InstructionalLanguage]                  NVARCHAR (50)  NULL,
     [EdFactsTeacherInexperiencedStatus]      NVARCHAR (100)  NULL,
     [SpecialEducationTeacherQualificationStatus] NVARCHAR (100) NULL,
-    [EDFactsTeacherOutOfFieldStatus]         NVARCHAR (100) NULL,
+    [EdFactsTeacherOutOfFieldStatus]         NVARCHAR (100) NULL,
     [ProgramTypeCode]                        NVARCHAR (100) NULL,
     [SpecialEducationRelatedServicesPersonnel]   NVARCHAR (50)  NULL,                
     [TeachingCredentialBasis]                NVARCHAR (50)  NULL,
@@ -64,7 +64,7 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
     [RecordStartDateTime]                    DATETIME       NULL,
     [RecordEndDateTime]                      DATETIME       NULL,
     [RunDateTime]                            DATETIME       NULL,
-    CONSTRAINT [PK_K12StaffAssignment] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_K12StaffAssignment] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 
@@ -145,7 +145,7 @@ EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0typ
 
 GO
 
-EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'BirthDate';
+EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'Birthdate';
 
 
 GO
@@ -185,15 +185,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000526' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21517' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'AssignmentStartDate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'CredentialExpirationDate';
 GO
@@ -229,21 +229,21 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_G
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether teachers have been identified as inexperienced as defined by the state.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherInexperiencedStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EDFacts Teacher Inexperienced Status' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherInexperiencedStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EdFacts Teacher Inexperienced Status' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherInexperiencedStatus';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001961' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherInexperiencedStatus';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22929' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherInexperiencedStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EDFactsTeacherOutOfFieldStatus';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherOutOfFieldStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether teachers have been identified as teaching a subject or field for which they are not certified or licensed as defined by the state.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EDFactsTeacherOutOfFieldStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether teachers have been identified as teaching a subject or field for which they are not certified or licensed as defined by the state.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherOutOfFieldStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EDFacts Teacher Out of Field Status' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EDFactsTeacherOutOfFieldStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EdFacts Teacher Out of Field Status' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherOutOfFieldStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001962' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EDFactsTeacherOutOfFieldStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001962' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherOutOfFieldStatus';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22930' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EDFactsTeacherOutOfFieldStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22930' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'EdFactsTeacherOutOfFieldStatus';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12StaffAssignment', @level2type=N'COLUMN',@level2name=N'FirstName';
 GO

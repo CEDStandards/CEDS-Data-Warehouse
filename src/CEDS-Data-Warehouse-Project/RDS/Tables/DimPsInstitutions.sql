@@ -1,5 +1,5 @@
 CREATE TABLE [RDS].[DimPsInstitutions] (
-    [DimPsInstitutionID]                        INT            IDENTITY (1, 1) NOT NULL,
+    [DimPsInstitutionId]                        INT            IDENTITY (1, 1) NOT NULL,
     [NameOfInstitution]                         NVARCHAR (128) NOT NULL,
     [ShortNameOfInstitution]                    NVARCHAR (30)  NOT NULL,
     [IPEDSIdentifier]                           INT            NOT NULL,
@@ -17,14 +17,14 @@ CREATE TABLE [RDS].[DimPsInstitutions] (
     [PhysicalAddressPostalCode]                 NVARCHAR (17)  NULL,
     [PhysicalAddressStateAbbreviation]          NVARCHAR (50)  NULL,
     [TelephoneNumber]                           NVARCHAR (24)  NULL,
-    [WebsiteAddress]                            NVARCHAR (300) NULL,
+    [WebSiteAddress]                            NVARCHAR (300) NULL,
     [Latitude]                                  NVARCHAR (20)  NULL,
     [Longitude]                                 NVARCHAR (20)  NULL,
     [RecordStartDateTime]                       DATETIME       NOT NULL,
     [RecordEndDateTime]                         DATETIME       NULL,
     [MailingAddressCountyAnsiCodeCode]          NCHAR (5)      NULL,
     [PhysicalAddressCountyAnsiCodeCode]         NCHAR (5)      NULL,
-    CONSTRAINT [PK_DimPsInstitutions] PRIMARY KEY CLUSTERED ([DimPsInstitutionID] ASC) WITH (DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_DimPsInstitutions] PRIMARY KEY CLUSTERED ([DimPsInstitutionId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 
 
@@ -268,13 +268,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000279' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21279' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'TelephoneNumber';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebsiteAddress';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebSiteAddress';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The Uniform Resource Locator (URL) for the unique address of a Web page.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebsiteAddress';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The Uniform Resource Locator (URL) for the unique address of a Web page.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebSiteAddress';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Web Site Address' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebsiteAddress';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Web Site Address' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebSiteAddress';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000704' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebsiteAddress';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000704' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebSiteAddress';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21300' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebsiteAddress';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21300' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsInstitutions', @level2type=N'COLUMN',@level2name=N'WebSiteAddress';
 GO

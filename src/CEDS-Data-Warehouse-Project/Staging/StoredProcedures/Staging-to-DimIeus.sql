@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [Staging].[Staging-to-DimIeus]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@dataCollectionName AS VARCHAR(50) = NULL,
+	@DataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimIeus WHERE DimIeuID = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimIeus WHERE DimIeuId = -1)
 	BEGIN
 		SET IDENTITY_INSERT RDS.DimIeus ON
 		INSERT INTO RDS.DimIeus (DimIeuId, OutOfStateIndicator, RecordStartDateTime) VALUES (-1, 0, '1900-01-01')
@@ -44,9 +44,9 @@ BEGIN
 		, ssd.SeaOrganizationShortName
 		, ssd.SeaOrganizationIdentifierSea
 		, NULL AS StateAbbreviationDescription
-		, sko.IEU_OrganizationName AS IeuOrganizationName
+		, sko.Ieu_OrganizationName AS IeuOrganizationName
 		, sko.IeuIdentifierSea AS IeuOrganizationIdentifierSea
-		, sko.IEU_WebSiteAddress				 AS WebSiteAddress
+		, sko.Ieu_WebSiteAddress				 AS WebSiteAddress
 		, smam.AddressStreetNumberAndName AS MailingAddressStreetNumberAndName
 		, smam.AddressApartmentRoomOrSuiteNumber AS MailingAddressApartmentRoomOrSuiteNumber
 		, smam.AddressCity AS MailingAddressCity
@@ -89,22 +89,22 @@ BEGIN
 		AND ISNULL(sko.DataCollectionName, '') = ISNULL(sop.DataCollectionName, '')
 		AND sop.OrganizationType in (SELECT IeuOrganizationType FROM #IeuOrganizationTypes)
 		AND sko.DataCollectionName = sop.DataCollectionName
-	LEFT JOIN staging.SourceSystemReferenceData sssrd1
-		ON sko.IEU_OrganizationOperationalStatus = sssrd1.OutputCode
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
+		ON sko.Ieu_OrganizationOperationalStatus = sssrd1.OutputCode
 		AND sssrd1.TableName = 'RefOperationalStatus'
 		AND sssrd1.TableFilter = '001418'
 		AND sko.SchoolYear = sssrd1.SchoolYear
 	WHERE sko.IeuIdentifierSea IS NOT NULL
-		AND (@dataCollectionName IS NULL
+		AND (@DataCollectionName IS NULL
 			OR (
-					sko.DataCollectionName = @dataCollectionName
+					sko.DataCollectionName = @DataCollectionName
 			)
 		)
 
 	CREATE INDEX IX_Ieus ON #Ieus (IeuOrganizationIdentifierSea ASC, RecordStartDateTime ASC)
 
 	
-	MERGE rds.DimIeus AS trgt
+	MERGE RDS.DimIeus AS trgt
 	USING #Ieus AS src
 		ON trgt.IeuOrganizationIdentifierSea = src.IeuOrganizationIdentifierSea 
 		AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
@@ -114,7 +114,7 @@ BEGIN
 			, trgt.IeuOrganizationIdentifierSea					 = src.IeuOrganizationIdentifierSea
 			, trgt.SeaOrganizationName							 = src.SeaOrganizationName
 			, trgt.SeaOrganizationIdentifierSea					 = src.SeaOrganizationIdentifierSea
-			, trgt.StateANSICode								 = src.SeaOrganizationIdentifierSea
+			, trgt.StateAnsiCode								 = src.SeaOrganizationIdentifierSea
 			, trgt.StateAbbreviationCode						 = src.StateAbbreviationCode
 			, trgt.StateAbbreviationDescription					 = src.StateAbbreviationDescription
 			, trgt.MailingAddressStreetNumberAndName			 = src.MailingAddressStreetNumberAndName
@@ -143,7 +143,7 @@ BEGIN
 		, IeuOrganizationIdentifierSea
 		, SeaOrganizationName
 		, SeaOrganizationIdentifierSea
-		, StateANSICode
+		, StateAnsiCode
 		, StateAbbreviationCode
 		, StateAbbreviationDescription
 		, MailingAddressStreetNumberAndName
@@ -203,14 +203,14 @@ BEGIN
 			  startd.IeuOrganizationIdentifierSea
 			, startd.RecordStartDateTime 
 			, min(endd.RecordStartDateTime) - 1 AS RecordEndDateTime
-		FROM rds.DimIeus startd
-		JOIN rds.DimIeus endd
+		FROM RDS.DimIeus startd
+		JOIN RDS.DimIeus endd
 			ON startd.IeuOrganizationIdentifierSea = endd.IeuOrganizationIdentifierSea
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY  startd.IeuOrganizationIdentifierSea, startd.RecordStartDateTime
 	) 
 	UPDATE Ieu SET RecordEndDateTime = upd.RecordEndDateTime
-	FROM rds.DimIeus Ieu
+	FROM RDS.DimIeus Ieu
 	JOIN upd	
 		ON Ieu.IeuOrganizationIdentifierSea = upd.IeuOrganizationIdentifierSea
 		AND Ieu.RecordStartDateTime = upd.RecordStartDateTime

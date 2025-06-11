@@ -20,11 +20,11 @@ BEGIN
 			SET IDENTITY_INSERT RDS.DimPeople off
 		END
 
-		CREATE TABLE #k12Staff (
+		CREATE TABLE #K12Staff (
 			FirstName										NVARCHAR(50) NULL
 			, MiddleName									NVARCHAR(50) NULL
 			, LastOrSurname									NVARCHAR(50) NULL
-			, BirthDate										DATE NULL
+			, Birthdate										DATE NULL
 			, K12StaffStaffMemberIdentifierState			NVARCHAR(40) NULL
 			, IsActiveK12Staff 								BIT NULL
 			, PositionTitle									NVARCHAR(200) NULL
@@ -32,11 +32,11 @@ BEGIN
 			, RecordEndDateTime								DATE NULL
 		)
 		
-		INSERT INTO #k12Staff (
+		INSERT INTO #K12Staff (
 			FirstName
 			, MiddleName
 			, LastOrSurname
-			, BirthDate
+			, Birthdate
 			, K12StaffStaffMemberIdentifierState
 			, IsActiveK12Staff
 			, PositionTitle
@@ -47,7 +47,7 @@ BEGIN
 			FirstName
 			, MiddleName
 			, LastOrSurname
-			, BirthDate
+			, Birthdate
 			, StaffMemberIdentifierState
 			, 1
 			, PositionTitle
@@ -55,13 +55,13 @@ BEGIN
 			, RecordEndDateTime
 		FROM Staging.K12StaffAssignment sa
 
-		MERGE rds.DimPeople AS trgt
+		MERGE RDS.DimPeople AS trgt
 		USING #K12Staff AS src
 				ON  trgt.K12StaffStaffMemberIdentifierState = src.K12StaffStaffMemberIdentifierState
 				AND ISNULL(trgt.FirstName, '') = ISNULL(src.FirstName, '')
 				AND ISNULL(trgt.LastOrSurname, '') = ISNULL(src.LastOrSurname, '')
 				AND ISNULL(trgt.MiddleName, '') = ISNULL(src.MiddleName, '')
-				AND ISNULL(trgt.BirthDate, '1900-01-01') = ISNULL(src.BirthDate, '1900-01-01')
+				AND ISNULL(trgt.Birthdate, '1900-01-01') = ISNULL(src.Birthdate, '1900-01-01')
 				AND trgt.IsActiveK12Staff = 1
 				AND trgt.RecordStartDateTime = src.RecordStartDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but NOT in Target
@@ -69,7 +69,7 @@ BEGIN
 			FirstName
 			, MiddleName
 			, LastOrSurname
-			, BirthDate
+			, Birthdate
 			, K12StaffStaffMemberIdentifierState
 			, IsActiveK12Staff
 			, PositionTitle
@@ -94,15 +94,15 @@ BEGIN
 				  startd.K12StaffStaffMemberIdentifierState
 				, startd.RecordStartDateTime
 				, dateadd(day, -1, min(endd.RecordStartDateTime)) AS RecordEndDateTime
-			FROM rds.DimPeople startd
-			JOIN rds.DimPeople endd
+			FROM RDS.DimPeople startd
+			JOIN RDS.DimPeople endd
 				ON startd.K12StaffStaffMemberIdentifierState = endd.K12StaffStaffMemberIdentifierState
 				AND startd.RecordStartDateTime < endd.RecordStartDateTime
 			GROUP BY  startd.K12StaffStaffMemberIdentifierState, startd.RecordStartDateTime
 		) 
 		UPDATE staff 
 		SET RecordEndDateTime = upd.RecordEndDateTime
-		FROM rds.DimPeople staff
+		FROM RDS.DimPeople staff
 		INNER JOIN upd
 			ON staff.K12StaffStaffMemberIdentifierState = upd.K12StaffStaffMemberIdentifierState
 			AND staff.RecordStartDateTime = upd.RecordStartDateTime

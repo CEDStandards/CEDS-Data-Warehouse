@@ -25,7 +25,7 @@ CREATE TABLE [RDS].[FactK12StudentAcademicAwards] (
     CONSTRAINT [FK_FactK12StudentAcademicAwards_LeaInstructionId] FOREIGN KEY ([LeaInstructionId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentAcademicAwards_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentAcademicAwards_RecordStatusId] FOREIGN KEY ([RecordStatusId]) REFERENCES [RDS].[DimRecordStatuses] ([DimRecordStatusId]),
-    CONSTRAINT [FK_FactK12StudentAcademicAwards_K12AcademicAwardStatusId] FOREIGN KEY ([K12AcademicAwardStatusId]) REFERENCES [RDS].[DimK12AcademicAwardStatuses] ([Dimk12AcademicAwardStatusId]),
+    CONSTRAINT [FK_FactK12StudentAcademicAwards_K12AcademicAwardStatusId] FOREIGN KEY ([K12AcademicAwardStatusId]) REFERENCES [RDS].[DimK12AcademicAwardStatuses] ([DimK12AcademicAwardStatusId]),
     CONSTRAINT [FK_FactK12StudentAcademicAwards_AcademicAwardDateId] FOREIGN KEY ([AcademicAwardDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentAcademicAwards_DiplomaOrCredentialAwardDateId] FOREIGN KEY ([DiplomaOrCredentialAwardDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentAcademicAwards_DimK12AcademicAwardId] FOREIGN KEY ([DimK12AcademicAwardId]) REFERENCES [RDS].[DimK12AcademicAwards] ([DimK12AcademicAwardId])

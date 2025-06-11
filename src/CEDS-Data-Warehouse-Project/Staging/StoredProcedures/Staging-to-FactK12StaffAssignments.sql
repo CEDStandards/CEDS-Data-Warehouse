@@ -4,7 +4,7 @@ BEGIN
 
   -- Insert data from Staging.K12StaffAssignment into RDS.FactK12StaffAssignments
   INSERT INTO RDS.FactK12StaffAssignments (
-      [LeaID]
+      [LeaId]
     , [SchoolYearId]
     , [K12SchoolId]
     , [K12StaffStatusId]
@@ -33,12 +33,12 @@ BEGIN
     , [K12StaffAssignmentCount]
   )
   SELECT
-      ISNULL(rdl.[DimLeaID], -1)
+      ISNULL(rdl.[DimLeaId], -1)
     , ISNULL(rsy.[DimSchoolYearId], -1)
     , ISNULL(rdksch.[DimK12SchoolId], -1)
     , ISNULL(rdkss.[DimK12StaffStatusId], -1)
     , ISNULL(rdksc.[DimK12StaffCategoryId], -1)
-    , ISNULL(rds.[DimSeaId], -1)
+    , ISNULL(RDS.[DimSeaId], -1)
     , ISNULL(rdp.[DimPersonId], -1)
     , ISNULL(rdieu.[DimIeuId], -1)
     , ISNULL(rdsc.[DimScedCodeId], -1)
@@ -64,7 +64,7 @@ BEGIN
   JOIN RDS.DimSchoolYears rsy
     ON ska.SchoolYear = rsy.SchoolYear
   JOIN RDS.DimSeas rds
-    ON ISNULL(ska.AssignmentEndDate, ska.AssignmentStartDate) BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())		
+    ON ISNULL(ska.AssignmentEndDate, ska.AssignmentStartDate) BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())		
   LEFT JOIN RDS.DimIeus rdieu
     ON ska.IeuOrganizationIdentifierSea = rdieu.IeuOrganizationIdentifierSea
     AND ISNULL(ska.AssignmentEndDate, ska.AssignmentStartDate) BETWEEN rdieu.RecordStartDateTime AND ISNULL(rdieu.RecordEndDateTime, GETDATE())		
@@ -80,7 +80,7 @@ BEGIN
     AND ISNULL(ska.FirstName, '') = ISNULL(rdp.FirstName, '')
     AND ISNULL(ska.MiddleName, '') = ISNULL(rdp.MiddleName, '')
     AND ISNULL(ska.LastOrSurname, 'MISSING') = rdp.LastOrSurname
-    AND ISNULL(ska.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+    AND ISNULL(ska.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 	LEFT JOIN RDS.vwDimK12StaffCategories rdksc 
 			ON rsy.SchoolYear = rdksc.SchoolYear
 			AND ISNULL(ska.K12StaffClassification, 'MISSING') = ISNULL(rdksc.K12StaffClassificationMap, rdksc.K12StaffClassificationCode)
@@ -91,7 +91,7 @@ BEGIN
   LEFT JOIN RDS.vwDimK12StaffStatuses rdkss
 			ON rsy.SchoolYear = rdkss.SchoolYear
 			AND ISNULL(ska.SpecialEducationAgeGroupTaught, 'MISSING') = ISNULL(rdkss.SpecialEducationAgeGroupTaughtMap, rdkss.SpecialEducationAgeGroupTaughtCode)
-			AND ISNULL(ska.EDFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EDFactsTeacherOutOfFieldStatusMap, rdkss.EDFactsTeacherOutOfFieldStatusCode)
+			AND ISNULL(ska.EdFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherOutOfFieldStatusMap, rdkss.EdFactsTeacherOutOfFieldStatusCode)
 			AND ISNULL(ska.EdFactsTeacherInexperiencedStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherInexperiencedStatusMap, rdkss.EdFactsTeacherInexperiencedStatusCode)
 			AND ISNULL(ska.TeachingCredentialType, 'MISSING') = ISNULL(rdkss.TeachingCredentialTypeMap, rdkss.TeachingCredentialTypeCode)
 			AND ISNULL(ska.ParaprofessionalQualificationStatus, 'MISSING') = ISNULL(rdkss.ParaprofessionalQualificationStatusMap, rdkss.ParaprofessionalQualificationStatusCode)
@@ -143,9 +143,9 @@ BEGIN
   LEFT JOIN RDS.DimDataCollections rddc
 		ON ska.DataCollectionName = rddc.DataCollectionName
   LEFT JOIN RDS.DimLeaJobClassifications rdljc
-    ON ISNULL(ska.LEA_EducationJobTypeCode, 'MISSING') = ISNULL(rdljc.EducationJobTypeCode, 'MISSING')
-    AND ISNULL(ska.LEA_LocalJobFunctionCode, 'MISSING') = ISNULL(rdljc.LocalJobFunctionCode, 'MISSING')
-    AND ISNULL(ska.LEA_LocalJobCategoryCode, 'MISSING') = ISNULL(rdljc.LocalJobCategoryCode, 'MISSING')
+    ON ISNULL(ska.Lea_EducationJobTypeCode, 'MISSING') = ISNULL(rdljc.EducationJobTypeCode, 'MISSING')
+    AND ISNULL(ska.Lea_LocalJobFunctionCode, 'MISSING') = ISNULL(rdljc.LocalJobFunctionCode, 'MISSING')
+    AND ISNULL(ska.Lea_LocalJobCategoryCode, 'MISSING') = ISNULL(rdljc.LocalJobCategoryCode, 'MISSING')
   LEFT JOIN RDS.DimSeaJobClassifications rdsljc
     ON ISNULL(ska.SEA_EducationJobTypeCode, 'MISSING') = ISNULL(rdsljc.EducationJobTypeCode, 'MISSING')
     AND ISNULL(ska.SEA_LocalJobFunctionCode, 'MISSING') = ISNULL(rdsljc.LocalJobFunctionCode, 'MISSING')

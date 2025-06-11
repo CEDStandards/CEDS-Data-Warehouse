@@ -26,7 +26,7 @@ BEGIN
            ,EconomicDisadvantageStatus
            ,HomelessnessStatus
            ,PrimaryDisabilityType
-           ,IDEAIndicator
+           ,IdeaIndicator
            ,DisabilityStatus
            ,Section504Status
            ,DisabilityConditionType
@@ -72,7 +72,7 @@ BEGIN
 	SELECT DISTINCT
              rdsy.DimSchoolYearId SchoolYearId
             ,rddc.DimDataCollectionId DataCollectionId
-            ,rdpi.DimPsInstitutionID PsInstitutionId
+            ,rdpi.DimPsInstitutionId PsInstitutionId
             ,rdp.DimPersonId PsStudentId
             ,rdatd.DimAcademicTermDesignatorId AcademicTermDesignatorId
             ,rdcc.DimCipCodeId CipCodeId
@@ -100,7 +100,7 @@ BEGIN
 		AND ISNULL(sae.FirstName, 'MISSING') = ISNULL(rdp.FirstName, 'MISSING')
 		AND ISNULL(sae.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
 		AND ISNULL(sae.MiddleName, 'MISSING') = ISNULL(rdp.MiddleName, 'MISSING')
-		AND ISNULL(sae.Birthdate, '1900-01-01') = ISNULL(rdp.BirthDate, '1900-01-01')
+		AND ISNULL(sae.Birthdate, '1900-01-01') = ISNULL(rdp.Birthdate, '1900-01-01')
 	JOIN RDS.DimPsInstitutions rdpi
 		ON sae.InstitutionIpedsUnitId = rdpi.IPEDSIdentifier
 		AND rdpi.RecordEndDateTime IS NULL
@@ -122,7 +122,7 @@ BEGIN
 		AND rdms.MigrantEducationProgramEnrollmentTypeCode = 'MISSING'
 		AND rdms.ContinuationOfServicesReasonCode = 'MISSING'
 		AND rdms.MEPContinuationOfServicesStatusCode = 'MISSING'
-		AND rdms.ConsolidatedMEPFundsStatusCode = 'MISSING'
+		AND rdms.ConsolidatedMepFundsStatusCode = 'MISSING'
 		AND rdms.MigrantEducationProgramServicesTypeCode = 'MISSING'
 		AND rdms.MigrantPrioritizedForServicesCode = 'MISSING'
 	LEFT JOIN RDS.vwDimMilitaryStatuses rdms2
@@ -156,7 +156,7 @@ BEGIN
 	LEFT JOIN RDS.vwDimIdeaDisabilityTypes rdidtPrimary
 		ON ISNULL(sae.PrimaryDisabilityType, 'MISSING') = ISNULL(rdidtPrimary.IdeaDisabilityTypeMap, 'MISSING')
 	LEFT JOIN RDS.vwDimIdeaStatuses rdis
-		ON ISNULL(sae.IDEAIndicator, '-1')= ISNULL(rdis.IdeaIndicatorMap, '-1')
+		ON ISNULL(sae.IdeaIndicator, '-1')= ISNULL(rdis.IdeaIndicatorMap, '-1')
 		AND rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode = 'MISSING'
 		AND rdis.IdeaEducationalEnvironmentForSchoolAgeCode = 'MISSING'
 		AND rdis.SpecialEducationExitReasonCode = 'MISSING'
@@ -180,7 +180,7 @@ BEGIN
 	JOIN RDS.DimSchoolYears rdpy
 		ON rfase.SchoolYearId = rdpy.DimSchoolYearId
 	JOIN RDS.DimPsInstitutions rdap
-		ON rfase.PsInstitutionId = rdap.DimPsInstitutionID
+		ON rfase.PsInstitutionId = rdap.DimPsInstitutionId
 	LEFT JOIN Staging.PsStudentRace sasr
 		ON rdp.PsStudentStudentIdentifierState = sasr.StudentIdentifierState
 		AND rdpy.SchoolYear = sasr.SchoolYear
@@ -203,7 +203,7 @@ BEGIN
 	JOIN RDS.DimSchoolYears rdpy
 		ON rfase.SchoolYearId = rdpy.DimSchoolYearId
 	JOIN RDS.DimPsInstitutions rdap
-		ON rfase.PsInstitutionId = rdap.DimPsInstitutionID
+		ON rfase.PsInstitutionId = rdap.DimPsInstitutionId
 	JOIN Staging.PsStudentCourseTranscript sae
 		ON rdp.PsStudentStudentIdentifierState = sae.StudentIdentifierState
 		AND rdpy.SchoolYear = sae.SchoolYear

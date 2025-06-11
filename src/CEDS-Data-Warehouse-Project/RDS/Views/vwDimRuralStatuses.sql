@@ -8,7 +8,7 @@ SELECT
   [RuralResidencyStatusCode],
   ssrd2.OutputCode AS [RuralResidencyStatusMap]
 FROM [RDS].[DimRuralStatuses] drs
-CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
+CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
 LEFT JOIN [Staging].[SourceSystemReferenceData] ssrd
   ON rsy.SchoolYear = ssrd.SchoolYear
   AND drs.[ERSRuralUrbanContinuumCodeCode] = ssrd.InputCode

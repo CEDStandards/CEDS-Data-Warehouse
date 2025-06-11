@@ -13,16 +13,16 @@ AS
             , SchoolIdentifierSea
             , CASE 
                 WHEN COUNT(InputCode) > 1 
-                    THEN (select max(inputcode)
-                                   from staging.SourceSystemReferenceData
+                    THEN (select max(InputCode)
+                                   from Staging.SourceSystemReferenceData
                                    where TableName = 'refRace'
-                                   and schoolyear = spr.SchoolYear
-                                   and outputcode = 'TwoOrMoreRaces'
+                                   and SchoolYear = spr.SchoolYear
+                                   and OutputCode = 'TwoOrMoreRaces'
                             )
                     ELSE max(sssrd.InputCode)
             END as RaceMap
             , spr.SchoolYear
-        FROM staging.K12PersonRace spr
+        FROM Staging.K12PersonRace spr
         JOIN Staging.SourceSystemReferenceData sssrd
             ON spr.RaceType = sssrd.InputCode
             AND spr.SchoolYear = sssrd.SchoolYear

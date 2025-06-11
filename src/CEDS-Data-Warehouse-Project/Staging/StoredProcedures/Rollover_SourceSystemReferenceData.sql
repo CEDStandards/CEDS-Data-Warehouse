@@ -13,9 +13,9 @@ BEGIN
 			select @MaxSchoolYearInSSRD = (select max(SchoolYear) from Staging.SourceSystemReferenceData)
 			select @StagingSchoolYear = (select top 1 SchoolYear from #SchoolYearsInStaging)
 
-				-- Roll the staging.SourceSystemReferenceData OptionSets into the next school year
+				-- Roll the Staging.SourceSystemReferenceData OptionSets into the next school year
 				-- if there are no records in SourceSystemReferenceData for the Staging School Year
-				IF (SELECT COUNT(*) FROM staging.SourceSystemReferenceData WHERE SchoolYear = @StagingSchoolYear) = 0
+				IF (SELECT COUNT(*) FROM Staging.SourceSystemReferenceData WHERE SchoolYear = @StagingSchoolYear) = 0
 					BEGIN
 		
 						-- Verify there are records from the previous year to roll forward
@@ -29,7 +29,7 @@ BEGIN
 									end
 							end
 
-						INSERT INTO staging.SourceSystemReferenceData (
+						INSERT INTO Staging.SourceSystemReferenceData (
 							SchoolYear
 							,TableName
 							,TableFilter
@@ -42,7 +42,7 @@ BEGIN
 							,TableFilter
 							,InputCode
 							,OutputCode
-						FROM staging.SourceSystemReferenceData
+						FROM Staging.SourceSystemReferenceData
 						WHERE SchoolYear = @MaxSchoolYearInSSRD
 					END
 				delete from #SchoolYearsInStaging where SchoolYear = @StagingSchoolYear

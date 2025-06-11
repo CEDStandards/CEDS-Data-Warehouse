@@ -3,7 +3,7 @@ CREATE TABLE [RDS].[DimPeople] (
     [FirstName]                                        NVARCHAR (75)  NULL,
     [MiddleName]                                       NVARCHAR (75)  NULL,
     [LastOrSurname]                                    NVARCHAR (75)  NULL,
-    [BirthDate]                                        DATE           NULL,
+    [Birthdate]                                        DATE           NULL,
     [ELChildChildIdentifierState]                      NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierState]                 NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierDistrict]              NVARCHAR (40)  NULL,
@@ -52,20 +52,20 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_DimPeople_IsActiveK12Student_IsActivePsStudent_WithIncludes]
     ON [RDS].[DimPeople]([IsActiveK12Student] ASC, [IsActivePsStudent] ASC)
-    INCLUDE([BirthDate], [K12StudentStudentIdentifierState], [RecordStartDateTime]);
+    INCLUDE([Birthdate], [K12StudentStudentIdentifierState], [RecordStartDateTime]);
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_DimPeople_K12Students]
-    ON [RDS].[DimPeople]([K12StudentStudentIdentifierState] ASC, [FirstName] ASC, [MiddleName] ASC, [LastOrSurname] ASC, [BirthDate] ASC, [RecordStartDateTime] ASC, [RecordEndDateTime] ASC);
+    ON [RDS].[DimPeople]([K12StudentStudentIdentifierState] ASC, [FirstName] ASC, [MiddleName] ASC, [LastOrSurname] ASC, [Birthdate] ASC, [RecordStartDateTime] ASC, [RecordEndDateTime] ASC);
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_DimPeople_RecordStartDateTime_WithIncludes]
     ON [RDS].[DimPeople]([RecordStartDateTime] ASC)
-    INCLUDE([FirstName], [MiddleName], [LastOrSurname], [BirthDate], [K12StudentStudentIdentifierState], [PsStudentStudentIdentifierState], [K12StaffStaffMemberIdentifierState]);
+    INCLUDE([FirstName], [MiddleName], [LastOrSurname], [Birthdate], [K12StudentStudentIdentifierState], [PsStudentStudentIdentifierState], [K12StaffStaffMemberIdentifierState]);
 
 
 GO
@@ -218,15 +218,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21157' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'AeStudentStudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'FirstName';
 GO

@@ -1,4 +1,4 @@
-CREATE VIEW rds.vwDimHomelessnessStatuses 
+CREATE VIEW RDS.vwDimHomelessnessStatuses 
 AS
 	SELECT
 		  DimHomelessnessStatusId
@@ -23,8 +23,8 @@ AS
 			WHEN 'No' THEN 0
 			ELSE -1
 		  END AS HomelessUnaccompaniedYouthStatusMap
-	FROM rds.DimHomelessnessStatuses rdhs
-	LEFT JOIN staging.SourceSystemReferenceData sssrd
+	FROM RDS.DimHomelessnessStatuses rdhs
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd
 		ON rdhs.HomelessPrimaryNighttimeResidenceCode = sssrd.OutputCode
 		AND sssrd.TableName = 'RefHomelessNighttimeResidence'
 

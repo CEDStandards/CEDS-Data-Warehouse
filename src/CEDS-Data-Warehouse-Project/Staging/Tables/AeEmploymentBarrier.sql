@@ -2,7 +2,7 @@ CREATE TABLE [Staging].[AeEmploymentBarrier] (
     [Id]                          INT            IDENTITY (1, 1) NOT NULL,
     [StudentIdentifierState]      VARCHAR (100)  NULL,
     [AdultEducationServiceProviderIdentifierSea]      VARCHAR (100)  NULL,
-    [WIOABarriersToEmployment]                    VARCHAR (100)  NULL,
+    [WioaBarriersToEmployment]                    VARCHAR (100)  NULL,
     [ProgramYear]                 SMALLINT       NULL,
     [RecordStartDateTime]         DATETIME       NULL,
     [RecordEndDateTime]           DATETIME       NULL,
@@ -14,8 +14,8 @@ CREATE TABLE [Staging].[AeEmploymentBarrier] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_AeEmploymentBarrier_WIOABarriersToEmployment]
-    ON [Staging].[AeEmploymentBarrier]([WIOABarriersToEmployment] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+CREATE NONCLUSTERED INDEX [IX_AeEmploymentBarrier_WioaBarriersToEmployment]
+    ON [Staging].[AeEmploymentBarrier]([WioaBarriersToEmployment] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
@@ -35,7 +35,7 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_AeEmploymentBarrier_DataCollectionName]
     ON [Staging].[AeEmploymentBarrier]([DataCollectionName] ASC)
-    INCLUDE([AdultEducationServiceProviderIdentifierSea], [WIOABarriersToEmployment], [RecordEndDateTime], [RecordStartDateTime], [ProgramYear], [StudentIdentifierState]);
+    INCLUDE([AdultEducationServiceProviderIdentifierSea], [WioaBarriersToEmployment], [RecordEndDateTime], [RecordStartDateTime], [ProgramYear], [StudentIdentifierState]);
 
 
 GO
@@ -50,15 +50,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001966' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001966' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'DataCollectionName';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WIOABarrierstoEmployment';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WioaBarriersToEmployment';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A self-identified barrier as defined by the Workforce Innovation and Opportunity Act (WIOA) that is presumed to affect placement of a participant in unsubsidized employment.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WIOABarrierstoEmployment';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A self-identified barrier as defined by the Workforce Innovation and Opportunity Act (WIOA) that is presumed to affect placement of a participant in unsubsidized employment.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WioaBarriersToEmployment';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'WIOA Barriers to Employment' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WIOABarrierstoEmployment';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'WIOA Barriers to Employment' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WioaBarriersToEmployment';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001940' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WIOABarrierstoEmployment';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001940' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WioaBarriersToEmployment';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001940' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WIOABarrierstoEmployment';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001940' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'WioaBarriersToEmployment';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'AeEmploymentBarrier', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime';
 GO

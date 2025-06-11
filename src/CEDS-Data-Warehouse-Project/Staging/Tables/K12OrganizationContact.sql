@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[K12OrganizationContact] (
-    [ID]                                     INT            IDENTITY (1, 1) NOT NULL,
+    [Id]                                     INT            IDENTITY (1, 1) NOT NULL,
     [PersonIdentifierState]                 NVARCHAR (40)  NULL,
     [IeuOrganizationIdentifierSea]           NVARCHAR (50)  NULL,
     [LeaIdentifierSea]                       NVARCHAR (50)  NULL,
@@ -9,7 +9,7 @@ CREATE TABLE [Staging].[K12OrganizationContact] (
     [ContactLastOrSurname]            NVARCHAR (100) NULL,
     [ContactMiddleName]               NVARCHAR (100) NULL,
     [ContactGenerationCodeOrSuffix]   NVARCHAR (75)  NULL,
-    [ContactBirthDate]                DATE           NULL,
+    [ContactBirthdate]                DATE           NULL,
     [ContactElectronicMailAddressHome]    NVARCHAR (252) NULL,
     [ContactElectronicMailAddressWork]    NVARCHAR (252) NULL,
     [ContactElectronicMailAddressOrganizational]    NVARCHAR (252) NULL,
@@ -34,20 +34,20 @@ CREATE TABLE [Staging].[K12OrganizationContact] (
     [RecordStartDateTime]                    DATETIME       NULL,
     [RecordEndDateTime]                      DATETIME       NULL,
     [RunDateTime]                            DATETIME       NULL,
-    CONSTRAINT [PK_K12OrganizationContact] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_K12OrganizationContact] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthDate';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'ContactBirthdate';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12OrganizationContact', @level2type=N'COLUMN',@level2name=N'DataCollectionName';
 GO

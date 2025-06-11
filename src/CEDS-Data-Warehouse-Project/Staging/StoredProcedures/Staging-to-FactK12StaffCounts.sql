@@ -50,7 +50,7 @@ BEGIN
 
 		
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'Submission'
 
 		DELETE RDS.FactK12StaffCounts
@@ -83,8 +83,8 @@ BEGIN
 			ssa.Id										StagingId
 			, rsy.DimSchoolYearId						SchoolYearId
 			, @FactTypeId								FactTypeId
-			, ISNULL(rds.DimSeaId, -1)					SeaId
-			, ISNULL(rdl.DimLeaID, -1)					LeaId
+			, ISNULL(RDS.DimSeaId, -1)					SeaId
+			, ISNULL(rdl.DimLeaId, -1)					LeaId
 			, ISNULL(rdksch.DimK12SchoolId, -1)			K12SchoolId
 			, ISNULL(rdp.DimPersonId, -1)				K12StaffId
 			, ISNULL(rdkss.DimK12StaffStatusId, -1)		K12StaffStatusId
@@ -107,7 +107,7 @@ BEGIN
 			AND @ChildCountDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
 	--sea (rds)
 		LEFT JOIN RDS.DimSeas rds
-			ON @ChildCountDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
+			ON @ChildCountDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
 	--staff categories (rds)
 		LEFT JOIN #vwK12StaffCategories rdksc 
 			ON rsy.SchoolYear = rdksc.SchoolYear
@@ -118,7 +118,7 @@ BEGIN
 		LEFT JOIN #vwK12StaffStatuses rdkss
 			ON rsy.SchoolYear = rdkss.SchoolYear
 			AND ISNULL(ssa.SpecialEducationAgeGroupTaught, 'MISSING') = ISNULL(rdkss.SpecialEducationAgeGroupTaughtMap, rdkss.SpecialEducationAgeGroupTaughtCode)
-			AND ISNULL(ssa.EDFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EDFactsTeacherOutOfFieldStatusMap, rdkss.EDFactsTeacherOutOfFieldStatusCode)
+			AND ISNULL(ssa.EdFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherOutOfFieldStatusMap, rdkss.EdFactsTeacherOutOfFieldStatusCode)
 			AND ISNULL(ssa.EdFactsTeacherInexperiencedStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherInexperiencedStatusMap, rdkss.EdFactsTeacherInexperiencedStatusCode)
 			AND ISNULL(ssa.TeachingCredentialType, 'MISSING') = ISNULL(rdkss.TeachingCredentialTypeMap, rdkss.TeachingCredentialTypeCode)
 			AND ISNULL(ssa.ParaprofessionalQualificationStatus, 'MISSING') = ISNULL(rdkss.ParaprofessionalQualificationStatusMap, rdkss.ParaprofessionalQualificationStatusCode)

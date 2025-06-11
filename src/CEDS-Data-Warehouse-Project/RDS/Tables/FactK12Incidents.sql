@@ -9,7 +9,7 @@ CREATE TABLE [RDS].[FactK12Incidents]
     [IncidentTimeId] INT NOT NULL,
     [SeaId] INT NOT NULL,
 	[IeuId] INT NOT NULL,
-	[LeaID] INT NOT NULL,
+	[LeaId] INT NOT NULL,
 	[K12SchoolId] INT NOT NULL,
     [IncidentId] INT NOT NULL,
     [IncidentSettingId] INT NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE [RDS].[FactK12Incidents]
     CONSTRAINT [FK_FactK12Incidents_IncidentTimeId] FOREIGN KEY ([IncidentTimeId]) REFERENCES [RDS].[DimTimes] ([DimTimeId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12Incidents_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12Incidents_IeuId] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]) ON DELETE No Action ON UPDATE No Action,
-    CONSTRAINT [FK_FactK12Incidents_LeaId] FOREIGN KEY ([LeaID]) REFERENCES [RDS].[DimLeas] ([DimLeaID]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_FactK12Incidents_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12Incidents_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12Incidents_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12Incidents_IncidentId] FOREIGN KEY ([IncidentId]) REFERENCES [RDS].[DimIncidents] ([DimIncidentId]) ON DELETE No Action ON UPDATE No Action,
@@ -62,7 +62,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12Incidents_DimIncidentTimeId]
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12Incidents_DimLeaId] 
- ON [RDS].[FactK12Incidents] ([LeaID] ASC)
+ ON [RDS].[FactK12Incidents] ([LeaId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12Incidents_DimSchoolYearId] 

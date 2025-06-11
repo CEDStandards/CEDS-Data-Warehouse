@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [Staging].[Staging-to-DimEducationOrganizationNetworks]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@dataCollectionName AS VARCHAR(50) = NULL,
+	@DataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimEducationOrganizationNetworks WHERE DimEducationOrganizationNetworkID = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimEducationOrganizationNetworks WHERE DimEducationOrganizationNetworkId = -1)
 	BEGIN
 		SET IDENTITY_INSERT RDS.DimEducationOrganizationNetworks ON
 		INSERT INTO RDS.DimEducationOrganizationNetworks (DimEducationOrganizationNetworkId, RecordStartDateTime) VALUES (-1, '1900-01-01')
@@ -58,12 +58,12 @@ BEGIN
 			AND ssrd.TableName = 'RefOrganizationType'
 			AND ssrd.TableFilter = '001156'
 		WHERE seon.[EducationOrganizationNetworkIdentifierSea] IS NOT NULL
-			AND (@dataCollectionName IS NULL
-				OR seon.DataCollectionName = @dataCollectionName
+			AND (@DataCollectionName IS NULL
+				OR seon.DataCollectionName = @DataCollectionName
 			)
 
 	)
-	MERGE rds.DimEducationOrganizationNetworks AS trgt
+	MERGE RDS.DimEducationOrganizationNetworks AS trgt
 	USING CTE AS src
 		ON trgt.OrganizationIdentifierSea = src.OrganizationIdentifierSea 
 		AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
@@ -100,14 +100,14 @@ BEGIN
 			  startd.[OrganizationIdentifierSea]
 			, startd.RecordStartDateTime 
 			, min(endd.RecordStartDateTime) - 1 AS RecordEndDateTime
-		FROM rds.DimEducationOrganizationNetworks startd
-		JOIN rds.DimEducationOrganizationNetworks endd
+		FROM RDS.DimEducationOrganizationNetworks startd
+		JOIN RDS.DimEducationOrganizationNetworks endd
 			ON startd.[OrganizationIdentifierSea] = endd.[OrganizationIdentifierSea]
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY  startd.[OrganizationIdentifierSea], startd.RecordStartDateTime
 	) 
 	UPDATE EducationOrganizationNetwork SET RecordEndDateTime = upd.RecordEndDateTime -1 
-	FROM rds.DimEducationOrganizationNetworks EducationOrganizationNetwork
+	FROM RDS.DimEducationOrganizationNetworks EducationOrganizationNetwork
 	JOIN upd	
 		ON EducationOrganizationNetwork.[OrganizationIdentifierSea] = upd.[OrganizationIdentifierSea]
 		AND EducationOrganizationNetwork.RecordStartDateTime = upd.RecordStartDateTime

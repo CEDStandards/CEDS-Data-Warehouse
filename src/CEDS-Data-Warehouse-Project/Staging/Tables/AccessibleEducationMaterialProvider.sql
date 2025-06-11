@@ -5,7 +5,7 @@ CREATE TABLE [Staging].[AccessibleEducationMaterialProvider]
 	[AccessibleEducationMaterialProviderName] nvarchar(1000) NULL,
 	[StateAbbreviationCode] nvarchar(2) NULL,
 	[StateAbbreviationDescription] nvarchar(50) NULL,
-	[StateANSICode] nvarchar(2) NULL,
+	[StateAnsiCode] nvarchar(2) NULL,
 	[MailingAddressStreetNumberAndName] nvarchar(300) NULL,
 	[MailingAddressApartmentRoomOrSuiteNumber] nvarchar(40) NULL,
 	[MailingAddressCity] nvarchar(60) NULL,

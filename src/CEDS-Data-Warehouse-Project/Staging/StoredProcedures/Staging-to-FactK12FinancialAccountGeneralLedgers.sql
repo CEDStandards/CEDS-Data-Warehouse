@@ -2,7 +2,7 @@ CREATE PROCEDURE [Staging].[Staging-to-FactK12FinancialAccountGeneralLedgers]
 AS
 BEGIN
 
-    -- Insert data from staging.K12FinancialAccountGeneralLedger into RDS.FactK12FinancialAccountGeneralLedgers
+    -- Insert data from Staging.K12FinancialAccountGeneralLedger into RDS.FactK12FinancialAccountGeneralLedgers
     INSERT INTO RDS.FactK12FinancialAccountGeneralLedgers (
           SeaId
         , IeuId
@@ -26,7 +26,7 @@ BEGIN
         , FinancialAccountingValue
     )
     SELECT
-          ISNULL(rds.DimSeaId, -1)
+          ISNULL(RDS.DimSeaId, -1)
 		, ISNULL(rdi.DimIeuId, -1)
         , ISNULL(rdl.DimLeaId, -1)
         , ISNULL(rdksch.DimK12SchoolId, -1)
@@ -57,7 +57,7 @@ BEGIN
         ON  ISNULL(skfagl.SchoolIdentifierSea, 'MISSING') = rdksch.SchoolIdentifierSea
         AND ISNULL(skfagl.FiscalAccountingDate, '1/1/1900') BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
     LEFT JOIN RDS.DimSeas rds
-        ON ISNULL(skfagl.FiscalAccountingDate, '1/1/1900') BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
+        ON ISNULL(skfagl.FiscalAccountingDate, '1/1/1900') BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
     LEFT JOIN RDS.DimDates rdd
         ON ISNULL(skfagl.FiscalAccountingDate, '1/1/1900') = rdd.DateValue
     LEFT JOIN RDS.DimFiscalYears rdfy

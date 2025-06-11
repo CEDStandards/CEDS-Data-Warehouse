@@ -1,4 +1,4 @@
-CREATE VIEW rds.vwDimImmigrantStatuses 
+CREATE VIEW RDS.vwDimImmigrantStatuses 
 AS
 	SELECT
 		DimImmigrantStatusId
@@ -15,8 +15,8 @@ AS
 			WHEN 'No' THEN 0
 			ELSE -1
 		END AS TitleIIIImmigrantParticipationStatusMap
-	FROM rds.DimImmigrantStatuses rdis
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
+	FROM RDS.DimImmigrantStatuses rdis
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
 
 GO
 

@@ -1,13 +1,13 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimK12Schools]
-	@dataCollectionName AS VARCHAR(50) = NULL,
+	@DataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
 
-	declare @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5)
+	declare @StateCode varchar(2), @StateName varchar(50), @StateAnsiCode varchar(5)
 	select @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	select @StateName = (select CedsOptionSetDescription from [CEDS].[CEDSOptionSetMapping] where CedsGlobalId = '000267' and CedsOptionSetCode = @StateCode)
-	select @StateANSICode = (select CedsOptionSetCode from [CEDS].[CEDSOptionSetMapping] where CedsGlobalId = '000424' and CedsOptionSetDescription = @StateName)
+	select @StateName = (select CedsOptionSetDescription from [CEDS].[CedsOptionSetMapping] where CedsGlobalId = '000267' and CedsOptionSetCode = @StateCode)
+	select @StateAnsiCode = (select CedsOptionSetCode from [CEDS].[CedsOptionSetMapping] where CedsGlobalId = '000424' and CedsOptionSetDescription = @StateName)
 
 
 
@@ -57,22 +57,22 @@ BEGIN
 		, IeuOrganizationIdentifierSea				VARCHAR(50)
 		, LeaIdentifierNces							VARCHAR(50)
 		, LeaIdentifierSea							VARCHAR(50)
-		, PriorLEAIdentifierSea						VARCHAR(50)
+		, PriorLeaIdentifierSea						VARCHAR(50)
 		, LeaOrganizationName						VARCHAR(200)
 		, LeaTypeCode								VARCHAR(50)
 		, LeaTypeDescription						VARCHAR(200)
-		, LeaTypeEdfactsCode						VARCHAR(50)
+		, LeaTypeEdFactsCode						VARCHAR(50)
 		, SchoolIdentifierNces						VARCHAR(50)
 		, SchoolIdentifierSea						VARCHAR(50)
 		, SchoolIdentifierAct						VARCHAR(50)
 		, PriorSchoolIdentifierSea					VARCHAR(50)
 		, NameOfInstitution							VARCHAR(200)
 		, SchoolOperationalStatus					VARCHAR(50)
-		, SchoolOperationalEdfactsStatus			VARCHAR(50)
+		, SchoolOperationalEdFactsStatus			VARCHAR(50)
 		, SchoolOperationalStatusEffectiveDate		DATETIME
 		, SchoolTypeCode							VARCHAR(50)
 		, SchoolTypeDescription						VARCHAR(200)
-		, SchoolTypeEdfactsCode						VARCHAR(50)
+		, SchoolTypeEdFactsCode						VARCHAR(50)
 		, ReportedFederally							BIT
 		, CharterSchoolIndicator					BIT
 		, CharterSchoolContractApprovalDate			DATETIME
@@ -94,7 +94,7 @@ BEGIN
 		, Longitude									VARCHAR(20)
 		, Latitude									VARCHAR(20)
 		, TelephoneNumber							VARCHAR(20)
-		, WebsiteAddress							VARCHAR(300)
+		, WebSiteAddress							VARCHAR(300)
 		, CharterSchoolStatus						VARCHAR(50)
 		, ReconstitutedStatus						VARCHAR(50)
 		, AdministrativeFundingControlCode			NVARCHAR(50)
@@ -111,14 +111,14 @@ BEGIN
 		, @StateName 'StateAbbreviationDescription'
 		, ssd.SeaOrganizationIdentifierSea
 
-		, sko.IEU_OrganizationName
-		, sko.IEUIdentifierSea
+		, sko.Ieu_OrganizationName
+		, sko.IeuIdentifierSea
 
-		, sko.LEAIdentifierNCES
-		, sko.LEAIdentifierSea
-		, sko.PriorLEAIdentifierSea 
-		, sko.LEAOrganizationName
-		, sssrd2.OutputCode AS LeaTypeCode-- LEA_Type
+		, sko.LeaIdentifierNCES
+		, sko.LeaIdentifierSea
+		, sko.PriorLeaIdentifierSea 
+		, sko.LeaOrganizationName
+		, sssrd2.OutputCode AS LeaTypeCode-- Lea_Type
 		, CASE sssrd2.OutputCode 
 				WHEN 'RegularNotInSupervisoryUnion' THEN 'Regular public school district that is NOT a component of a supervisory union'
 				WHEN 'RegularInSupervisoryUnion' THEN 'Regular public school district that is a component of a supervisory union'
@@ -142,7 +142,7 @@ BEGIN
 				WHEN 'Other' THEN 8
 				WHEN 'IndependentCharterDistrict' THEN 7
 				ELSE -1
-		END AS LeaTypeEdfactsCode
+		END AS LeaTypeEdFactsCode
 
 		, sko.SchoolIdentifierNCES
 		, sko.SchoolIdentifierSea
@@ -160,7 +160,7 @@ BEGIN
 			WHEN 'FutureSchool' THEN 7 
 			WHEN 'Reopened' THEN 8 
 			ELSE -1
-		END AS SchOperationalEdfactsStatus
+		END AS SchOperationalEdFactsStatus
 		, sko.School_OperationalStatusEffectiveDate
 		, sssrd3.OutputCode -- School_Type
 		, CASE sssrd3.OutputCode 
@@ -178,7 +178,7 @@ BEGIN
 			WHEN 'Alternative' THEN 4
 			WHEN 'Reportable' THEN 5
 			ELSE -1
-		END AS SchoolTypeEdfactsCode
+		END AS SchoolTypeEdFactsCode
 		, sko.School_IsReportedFederally
 		, sko.School_CharterSchoolIndicator
 		, sko.School_CharterContractApprovalDate
@@ -234,39 +234,39 @@ BEGIN
 		ON sko.SchoolIdentifierSea = sop.OrganizationIdentifier
 		AND sop.OrganizationType in (select K12SchoolOrganizationType from #organizationTypes ot WHERE ot.SchoolYear = sop.SchoolYear)
 		AND isnull(sko.DataCollectionName,'') = isnull(sop.DataCollectionName,'')
-	LEFT JOIN staging.SourceSystemReferenceData sssrd1
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 		ON sko.School_OperationalStatus = sssrd1.InputCode
 		AND sssrd1.TableName = 'RefOperationalStatus'
 		AND sssrd1.TableFilter = '000533'
 		AND sko.SchoolYear = sssrd1.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd2
-		ON sko.LEA_Type = sssrd2.InputCode
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd2
+		ON sko.Lea_Type = sssrd2.InputCode
 		AND sssrd2.TableName = 'RefLeaType'
 		AND sko.SchoolYear = sssrd2.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd3
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd3
 		ON sko.School_Type = sssrd3.InputCode
 		AND sssrd3.TableName = 'RefSchoolType'
 		AND sko.SchoolYear = sssrd3.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd4
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd4
 		ON sko.School_ReconstitutedStatus = sssrd4.InputCode
 		AND sssrd4.TableName = 'RefReconstitutedStatus'
 		AND sko.SchoolYear = sssrd4.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd5
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd5
 		ON sko.School_AdministrativeFundingControl = sssrd5.InputCode
 		AND sssrd5.TableName = 'RefAdministrativeFundingControl'
 		AND sko.SchoolYear = sssrd5.SchoolYear
 	WHERE @DataCollectionName IS NULL	
 		OR (
-			sko.DataCollectionName = @dataCollectionName
-			AND ssd.DataCollectionName = @dataCollectionName
-			AND smam.DataCollectionName = @dataCollectionName
-			AND smap.DataCollectionName = @dataCollectionName
-			AND sop.DataCollectionName = @dataCollectionName
+			sko.DataCollectionName = @DataCollectionName
+			AND ssd.DataCollectionName = @DataCollectionName
+			AND smam.DataCollectionName = @DataCollectionName
+			AND smap.DataCollectionName = @DataCollectionName
+			AND sop.DataCollectionName = @DataCollectionName
 		)
 
 
 	-- SchoolIdentifierState and RecordStartDateTime must always be unique in Staging.K12Organaization
-	MERGE rds.DimK12Schools AS trgt 
+	MERGE RDS.DimK12Schools AS trgt 
 	USING #K12Schools AS src
 			ON trgt.SchoolIdentifierSea = src.SchoolIdentifierSea
 			AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
@@ -277,7 +277,7 @@ BEGIN
 			trgt.LeaOrganizationName 						= src.LeaOrganizationName,
 			trgt.LeaIdentifierNces 							= src.LeaIdentifierNces,
 			trgt.LeaIdentifierSea 							= src.LeaIdentifierSea,
-			trgt.PriorLEAIdentifierSea 						= src.PriorLEAIdentifierSea,
+			trgt.PriorLeaIdentifierSea 						= src.PriorLeaIdentifierSea,
 			trgt.LeaTypeCode 								= src.LeaTypeCode,
 			trgt.LeaTypeDescription 						= src.LeaTypeDescription,
 			trgt.LeaTypeEdFactsCode 						= src.LeaTypeEdFactsCode,
@@ -289,7 +289,7 @@ BEGIN
 			trgt.SchoolTypeEdFactsCode 						= src.SchoolTypeEdFactsCode,
 			trgt.NameOfInstitution 							= src.NameOfInstitution,
 			trgt.SchoolOperationalStatus 					= src.SchoolOperationalStatus,
-			trgt.SchoolOperationalStatusEdFactsCode 		= src.SchoolOperationalEdfactsStatus,
+			trgt.SchoolOperationalStatusEdFactsCode 		= src.SchoolOperationalEdFactsStatus,
 			trgt.SchoolOperationalStatusEffectiveDate 		= src.SchoolOperationalStatusEffectiveDate,
 			trgt.CharterSchoolIndicator 					= src.CharterSchoolIndicator,
 			trgt.CharterSchoolContractIdNumber 				= src.CharterSchoolContractIdNumber,
@@ -312,7 +312,7 @@ BEGIN
 			trgt.Longitude 									= src.Longitude,
 			trgt.Latitude 									= src.Latitude,
 			trgt.TelephoneNumber 							= src.TelephoneNumber,
-			trgt.WebsiteAddress 							= src.WebsiteAddress,
+			trgt.WebSiteAddress 							= src.WebSiteAddress,
 			trgt.CharterSchoolStatus 						= src.CharterSchoolStatus,
 			trgt.ReconstitutedStatus 						= src.ReconstitutedStatus,
 			trgt.AdministrativeFundingControlCode 			= src.AdministrativeFundingControlCode,
@@ -322,7 +322,7 @@ BEGIN
 	INSERT (
 		StateAbbreviationCode	
 		, StateAbbreviationDescription
-		, StateANSICode					
+		, StateAnsiCode					
 		, SeaOrganizationName						
 		--, SeaOrganizationShortName								
 		, SeaOrganizationIdentifierSea				
@@ -330,11 +330,11 @@ BEGIN
 		, IeuOrganizationIdentifierSea				
 		, LeaIdentifierNces							
 		, LeaIdentifierSea							
-		, PriorLEAIdentifierSea						
+		, PriorLeaIdentifierSea						
 		, LeaOrganizationName						
 		, LeaTypeCode								
 		, LeaTypeDescription						
-		, LeaTypeEdfactsCode						
+		, LeaTypeEdFactsCode						
 		, SchoolIdentifierNces						
 		, SchoolIdentifierSea
 		, SchoolIdentifierAct						
@@ -345,7 +345,7 @@ BEGIN
 		, SchoolOperationalStatusEffectiveDate		
 		, SchoolTypeCode							
 		, SchoolTypeDescription						
-		, SchoolTypeEdfactsCode						
+		, SchoolTypeEdFactsCode						
 		, ReportedFederally							
 		, CharterSchoolIndicator					
 		, CharterSchoolContractApprovalDate			
@@ -367,7 +367,7 @@ BEGIN
 		, Longitude									
 		, Latitude									
 		, TelephoneNumber							
-		, WebsiteAddress							
+		, WebSiteAddress							
 		, CharterSchoolStatus						
 		, ReconstitutedStatus						
 		, AdministrativeFundingControlCode			
@@ -378,7 +378,7 @@ BEGIN
 	VALUES (
 		StateAbbreviationCode						
 		, @StateName
-		, @StateANSICode
+		, @StateAnsiCode
 		, SeaOrganizationName						
 		--, SeaShortName								
 		, SeaOrganizationIdentifierSea				
@@ -386,22 +386,22 @@ BEGIN
 		, IeuOrganizationIdentifierSea				
 		, LeaIdentifierNces							
 		, LeaIdentifierSea							
-		, PriorLEAIdentifierSea						
+		, PriorLeaIdentifierSea						
 		, LeaOrganizationName						
 		, LeaTypeCode								
 		, LeaTypeDescription						
-		, LeaTypeEdfactsCode						
+		, LeaTypeEdFactsCode						
 		, SchoolIdentifierNces						
 		, SchoolIdentifierSea
 		, SchoolIdentifierAct						
 		, PriorSchoolIdentifierSea					
 		, NameOfInstitution							
 		, SchoolOperationalStatus					
-		, SchoolOperationalEdfactsStatus			
+		, SchoolOperationalEdFactsStatus			
 		, SchoolOperationalStatusEffectiveDate		
 		, SchoolTypeCode							
 		, SchoolTypeDescription						
-		, SchoolTypeEdfactsCode						
+		, SchoolTypeEdFactsCode						
 		, ReportedFederally							
 		, CharterSchoolIndicator					
 		, CharterSchoolContractApprovalDate			
@@ -423,7 +423,7 @@ BEGIN
 		, Longitude									
 		, Latitude									
 		, TelephoneNumber							
-		, WebsiteAddress							
+		, WebSiteAddress							
 		, CharterSchoolStatus						
 		, ReconstitutedStatus						
 		, AdministrativeFundingControlCode			
@@ -437,14 +437,14 @@ BEGIN
 			startd.SchoolIdentifierSea
 			, startd.RecordStartDateTime 
 			, min(endd.RecordStartDateTime) - 1 AS RecordEndDateTime
-		FROM rds.DimK12Schools startd
-		JOIN rds.DimK12Schools endd
+		FROM RDS.DimK12Schools startd
+		JOIN RDS.DimK12Schools endd
 			ON startd.SchoolIdentifierSea = endd.SchoolIdentifierSea
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY  startd.SchoolIdentifierSea, startd.RecordStartDateTime
 	) 
 	UPDATE school SET RecordEndDateTime = upd.RecordEndDateTime
-	FROM rds.DimK12Schools school
+	FROM RDS.DimK12Schools school
 	JOIN upd	
 		ON school.SchoolIdentifierSea = upd.SchoolIdentifierSea
 		AND school.RecordStartDateTime = upd.RecordStartDateTime
@@ -461,18 +461,18 @@ BEGIN
 	SELECT distinct 
 		rdks.DimK12SchoolId
 		, rdgl.DimGradeLevelId 
-	FROM rds.DimK12Schools rdks
-	JOIN staging.OrganizationGradeOffered  sogo
+	FROM RDS.DimK12Schools rdks
+	JOIN Staging.OrganizationGradeOffered  sogo
 		ON rdks.SchoolIdentifierSea = sogo.OrganizationIdentifier
 		AND rdks.RecordStartDateTime = sogo.RecordStartDateTime
 		-- Record Start/End Dates must match between Staging.K12Organization and Staging.OrganizationGradesOffered
 		AND ISNULL(rdks.RecordEndDateTime, '01/01/1900') = ISNULL(sogo.RecordEndDateTime, isnull(rdks.RecordEndDateTime, '01/01/1900'))
-	JOIN rds.vwDimGradeLevels rdgl
+	JOIN RDS.vwDimGradeLevels rdgl
 		ON sogo.GradeOffered = rdgl.GradeLevelMap
 		AND rdgl.GradeLevelTypeCode = '000131'
 		and sogo.SchoolYear = rdgl.SchoolYear
 
-	MERGE rds.BridgeK12SchoolGradeLevels AS trgt
+	MERGE RDS.BridgeK12SchoolGradeLevels AS trgt
 	USING #gradeLevels AS src
 			ON trgt.K12SchoolId = src.DimK12SchoolId
 			AND trgt.GradeLevelId = src.DimGradeLevelId
@@ -484,14 +484,14 @@ BEGIN
 -- Need to do this here because if you do it in Staging-to-DimLEAs and that runs before Staging-to-DimK12Schools, there may be no records in RDS.DimK12Schools to join to.
 	;WITH CTE as (
 		SELECT DISTINCT
-			rdl.DimLeaID
+			rdl.DimLeaId
 			, rdgl.DimGradeLevelId 
 		FROM RDS.DimK12Schools rdks
 		JOIN RDS.DimLeas rdl
 			ON rdks.LeaIdentifierSea = rdl.LeaIdentifierSea
 			AND rdks.RecordStartDateTime BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, GETDATE())
 		JOIN Staging.K12Organization sko
-			ON sko.LEAIdentifierSea = rdl.LeaIdentifierSea
+			ON sko.LeaIdentifierSea = rdl.LeaIdentifierSea
 			AND rdks.SchoolIdentifierSea = sko.SchoolIdentifierSea
 		JOIN Staging.OrganizationGradeOffered sogo
 			ON rdks.SchoolIdentifierSea = sogo.OrganizationIdentifier
@@ -501,7 +501,7 @@ BEGIN
 			AND rdgl.SchoolYear = sogo.SchoolYear	
 	)
 
-	MERGE rds.BridgeLeaGradeLevels AS trgt
+	MERGE RDS.BridgeLeaGradeLevels AS trgt
 	USING CTE AS src
 		ON trgt.LeaId = src.DimLeaId
 		AND trgt.GradeLevelId = src.DimGradeLevelId
@@ -511,7 +511,7 @@ BEGIN
 			, GradeLevelId
 		) 
 		VALUES (
-			src.DimLeaID
+			src.DimLeaId
 			, src.DimGradeLevelId
 		);
 

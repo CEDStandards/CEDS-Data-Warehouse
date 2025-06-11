@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [Staging].[Staging-to-DimPsInstitutions]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@dataCollectionName AS VARCHAR(50) = NULL,
+	@DataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimPsInstitutions WHERE DimPsInstitutionid = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimPsInstitutions WHERE DimPsInstitutionId = -1)
 	BEGIN
 		SET IDENTITY_INSERT RDS.DimPsInstitutions ON
 		INSERT INTO RDS.DimPsInstitutions (DimPsInstitutionId, RecordStartDateTime) VALUES (-1, '1900-01-01')
@@ -47,7 +47,7 @@ BEGIN
 			  spi.[DataCollectionName]                 
 			, spi.[OrganizationName]								AS NameOfInstitution
 			, spi.[InstitutionIpedsUnitId]							AS IPEDSIdentifier
-			, spi.[Website]											AS WebsiteAddress
+			, spi.[Website]											AS WebSiteAddress
 			, sssrd1.[OutputCode]									AS OrganizationOperationalStatus
 			, spi.[OperationalStatusEffectiveDate]     
 			, spi.[MostPrevalentLevelOfInstitutionCode]
@@ -88,18 +88,18 @@ BEGIN
 			AND sop.RecordStartDateTime <= ISNULL(spi.RecordEndDateTime, GETDATE())
 			AND ISNULL(sop.RecordEndDateTime, GETDATE()) >= spi.RecordStartDateTime
 			AND ISNULL(spi.DataCollectionName, '') = ISNULL(sop.DataCollectionName, '')
-		LEFT JOIN staging.SourceSystemReferenceData sssrd1
+		LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 			ON spi.[OrganizationOperationalStatus] = sssrd1.OutputCode
 			AND sssrd1.TableName = 'RefOperationalStatus'
 			AND sssrd1.TableFilter = '001418'
 			AND spi.SchoolYear = sssrd1.SchoolYear
 		WHERE spi.InstitutionIpedsUnitId IS NOT NULL
-			AND (@dataCollectionName IS NULL
+			AND (@DataCollectionName IS NULL
 				OR (
-						spi.DataCollectionName = @dataCollectionName
-					AND smam.DataCollectionName = @dataCollectionName
-					AND smap.DataCollectionName = @dataCollectionName
-					AND sop.DataCollectionName = @dataCollectionName
+						spi.DataCollectionName = @DataCollectionName
+					AND smam.DataCollectionName = @DataCollectionName
+					AND smap.DataCollectionName = @DataCollectionName
+					AND sop.DataCollectionName = @DataCollectionName
 				)
 			)
 		GROUP BY 
@@ -126,7 +126,7 @@ BEGIN
 			, smap.[Longitude]
 			, smap.[Latitude]
 	)
-	MERGE rds.DimPsInstitutions AS trgt
+	MERGE RDS.DimPsInstitutions AS trgt
 	USING CTE AS src
 		ON trgt.[IPEDSIdentifier] = src.[IPEDSIdentifier]
 		AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
@@ -148,7 +148,7 @@ BEGIN
 			, trgt.[PhysicalAddressPostalCode]             = src.[PhysicalAddressPostalCode]            
 			, trgt.[PhysicalAddressStateAbbreviation]      = src.[PhysicalAddressStateAbbreviation]     
 			, trgt.[PhysicalAddressCountyAnsiCodeCode]         = src.[PhysicalAddressCountyAnsiCodeCode]        
-			, trgt.[WebsiteAddress]                        = src.[WebsiteAddress]                       
+			, trgt.[WebSiteAddress]                        = src.[WebSiteAddress]                       
 			, trgt.[Latitude]                              = src.[Latitude]                             
 			, trgt.[Longitude]                             = src.[Longitude]                            
 			, trgt.[RecordStartDateTime]                   = src.[RecordStartDateTime]                  
@@ -172,7 +172,7 @@ BEGIN
 		, [PhysicalAddressPostalCode]            
 		, [PhysicalAddressStateAbbreviation]     
 		, [PhysicalAddressCountyAnsiCodeCode]        
-		, [WebsiteAddress]                       
+		, [WebSiteAddress]                       
 		, [Latitude]                             
 		, [Longitude]                            
 		, [RecordStartDateTime]                  
@@ -195,7 +195,7 @@ BEGIN
 		, src.[PhysicalAddressPostalCode]            
 		, src.[PhysicalAddressStateAbbreviation]     
 		, src.[PhysicalAddressCountyAnsiCodeCode]        
-		, src.[WebsiteAddress]                       
+		, src.[WebSiteAddress]                       
 		, src.[Latitude]                             
 		, src.[Longitude]                            
 		, src.[RecordStartDateTime]                  
@@ -207,14 +207,14 @@ BEGIN
 			  startd.IPEDSIdentifier
 			, startd.RecordStartDateTime 
 			, DATEADD(D, -1, min(endd.RecordStartDateTime)) AS RecordEndDateTime
-		FROM rds.DimPsInstitutions startd
-		JOIN rds.DimPsInstitutions endd
+		FROM RDS.DimPsInstitutions startd
+		JOIN RDS.DimPsInstitutions endd
 			ON startd.IPEDSIdentifier = endd.IPEDSIdentifier
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY  startd.IPEDSIdentifier, startd.RecordStartDateTime
 	) 
 	UPDATE PsInstitution SET RecordEndDateTime = upd.RecordEndDateTime -1 
-	FROM rds.DimPsInstitutions PsInstitution
+	FROM RDS.DimPsInstitutions PsInstitution
 	JOIN upd	
 		ON PsInstitution.IPEDSIdentifier = upd.IPEDSIdentifier
 		AND PsInstitution.RecordStartDateTime = upd.RecordStartDateTime

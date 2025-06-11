@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[ProgramParticipationCTE] (
-    [ID]                                                  INT            IDENTITY (1, 1) NOT NULL,
+    [Id]                                                  INT            IDENTITY (1, 1) NOT NULL,
     [RecordId]                                            VARCHAR (100)  NULL,
     [StudentIdentifierState]                              NVARCHAR (40)  NULL,
     [LeaIdentifierSeaAccountability]                      NVARCHAR (50)  NULL,
@@ -37,7 +37,7 @@ CREATE TABLE [Staging].[ProgramParticipationCTE] (
     [CteExitReason]                                       VARCHAR (100)  NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
     [RunDateTime]                                         DATETIME       NULL,
-    CONSTRAINT [PK_ProgramParticipationCTE] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_ProgramParticipationCTE] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 

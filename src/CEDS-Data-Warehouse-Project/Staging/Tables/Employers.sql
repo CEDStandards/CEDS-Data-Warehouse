@@ -5,7 +5,7 @@ CREATE TABLE [Staging].[Employers]
 	[EmployerOrganizationIdentifierSea]                             [nvarchar](50) NULL,
 	[SeaOrganizationName]                                           [nvarchar](1000) NULL,
 	[SeaOrganizationIdentifierSea]                                  [nvarchar](50) NULL,
-	[StateANSICode]                                                 [nvarchar](10) NULL,
+	[StateAnsiCode]                                                 [nvarchar](10) NULL,
 	[StateAbbreviationCode]                                         [nvarchar](10) NULL,
 	[StateAbbreviationDescription]                                  [nvarchar](1000) NULL,
 	[MailingAddressStreetNumberAndName]                             [nvarchar](150) NULL,

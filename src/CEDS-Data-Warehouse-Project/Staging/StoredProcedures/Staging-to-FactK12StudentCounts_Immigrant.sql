@@ -29,8 +29,8 @@ BEGIN
 		FROM RDS.DimSchoolYears
 		WHERE SchoolYear = @SchoolYear
 
-		SET @SYStartDate = staging.GetFiscalYearStartDate(@SchoolYear)
-		SET @SYEndDate = staging.GetFiscalYearEndDate(@SchoolYear)
+		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
+		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 
 	--Create the temp views (and any relevant indexes) needed for this domain
 		SELECT *
@@ -51,7 +51,7 @@ BEGIN
 
 		--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'immigrant'	--DimFactTypeId = 14
 
 		--Clear the Fact table of the data about to be migrated  
@@ -72,9 +72,9 @@ BEGIN
 			, RaceId								int null
 			, K12DemographicId						int null
 			, StudentCount							int null
-			, SEAId									int null
-			, IEUId									int null
-			, LEAId									int null
+			, SeaId									int null
+			, IeuId									int null
+			, LeaId									int null
 			, K12SchoolId							int null
 			, K12StudentId							int null
 			, IdeaStatusId							int null
@@ -86,7 +86,7 @@ BEGIN
 			, AttendanceId							int null
 			, CohortStatusId						int null
 			, NOrDStatusId							int null
-			, CTEStatusId							int null
+			, CteStatusId							int null
 			, K12EnrollmentStatusId					int null
 			, EnglishLearnerStatusId				int null
 			, HomelessnessStatusId					int null
@@ -101,7 +101,7 @@ BEGIN
 
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.id														StagingId								
+			ske.Id														StagingId								
 			, rsy.DimSchoolYearId										SchoolYearId							
 			, @FactTypeId												FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)							GradeLevelId							
@@ -109,9 +109,9 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId								
 			, ISNULL(rdkd.DimK12DemographicId, -1)						K12DemographicId						
 			, 1															StudentCount							
-			, ISNULL(rds.DimSeaId, -1)									SEAId									
-			, -1														IEUId									
-			, ISNULL(rdl.DimLeaID, -1)									LEAId									
+			, ISNULL(RDS.DimSeaId, -1)									SeaId									
+			, -1														IeuId									
+			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId							
 			, -1														IdeaStatusId							
@@ -123,7 +123,7 @@ BEGIN
 			, -1														AttendanceId							
 			, -1 														CohortStatusId						
 			, -1														NOrDStatusId							
-			, -1														CTEStatusId							
+			, -1														CteStatusId							
 			, -1														K12EnrollmentStatusId					
 			, ISNULL(rdels.DimEnglishLearnerStatusId, -1)				EnglishLearnerStatusId				
 			, -1														HomelessnessStatusId					
@@ -145,7 +145,7 @@ BEGIN
 			ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
 			AND ske.EnrollmentEntryDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
 		JOIN RDS.DimSeas rds
-			ON ske.EnrollmentEntryDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
+			ON ske.EnrollmentEntryDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
 	--english learner
 		LEFT JOIN Staging.PersonStatus el 
 			ON ske.StudentIdentifierState = el.StudentIdentifierState
@@ -177,7 +177,7 @@ BEGIN
 			AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
 			AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 			AND ISNULL(ske.LastOrSurname, 'MISSING') = rdp.LastOrSurname
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 			AND ske.EnrollmentEntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 
 
@@ -190,9 +190,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -204,7 +204,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]
@@ -224,9 +224,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -238,7 +238,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]

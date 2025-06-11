@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[ProgramParticipationNorD] (
-    [ID]                                                  INT            IDENTITY (1, 1) NOT NULL,
+    [Id]                                                  INT            IDENTITY (1, 1) NOT NULL,
     [StudentIdentifierState]                              NVARCHAR (40)  NULL,
     [LeaIdentifierSeaAccountability]                      NVARCHAR (50)  NULL,
     [LeaIdentifierSeaAttendance]                          NVARCHAR (50)  NULL,
@@ -25,13 +25,13 @@ CREATE TABLE [Staging].[ProgramParticipationNorD] (
     [DiplomaCredentialAwardDate]                          DATE           NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
     [RunDateTime]                                         DATETIME       NULL,
-    CONSTRAINT [PK_ProgramParticipationNorD] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_ProgramParticipationNorD] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationNOrD_DataCollectionName]
+CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationNorD_DataCollectionName]
     ON [Staging].[ProgramParticipationNorD]([DataCollectionName] ASC)
     INCLUDE([LeaIdentifierSeaAccountability], [LeaIdentifierSeaAttendance], [LeaIdentifierSeaFunding], [LeaIdentifierSeaGraduation], [LeaIdentifierSeaIndividualizedEducationProgram], [SchoolIdentifierSea], [StudentIdentifierState]);
 

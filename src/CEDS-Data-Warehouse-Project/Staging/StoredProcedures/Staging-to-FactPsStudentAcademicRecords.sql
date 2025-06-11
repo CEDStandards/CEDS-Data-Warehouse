@@ -21,7 +21,7 @@ AS
 			, ISNULL(rdpsis.DimPsInstitutionStatusId, -1)		AS PsInstitutionStatusId
 			, ISNULL(rdpes.DimPsEnrollmentStatusId, -1)			AS PsEnrollmentStatusId
 			, ISNULL(entryDate.DimDateId, -1)					AS EnrollmentEntryDateId
-			, ISNULL(exitDate.DimDateId, -1)					AS EnrollmentExitDate
+			, ISNULL(ExitDate.DimDateId, -1)					AS EnrollmentExitDate
 			, ISNULL(rddc.DimDataCollectionId, -1)				AS DataCollectionId
 			, spsar.InstructionalActivityHoursCompletedCredit					AS InstructionalActivityHoursCompletedCredit
 			, -1 AS [GradePointAverage]
@@ -55,8 +55,8 @@ AS
 			AND spse.[PostsecondaryExitOrWithdrawalType] = rdpes.[PostsecondaryExitOrWithdrawalTypeMap]
 		LEFT JOIN RDS.DimDates entryDate
 			ON spsar.EntryDate = entryDate.DateValue
-		LEFT JOIN RDS.DimDates exitDate
-			ON spsar.ExitDate = exitDate.DateValue		
+		LEFT JOIN RDS.DimDates ExitDate
+			ON spsar.ExitDate = ExitDate.DateValue		
 		JOIN Staging.PsInstitution spi
 			ON spsar.InstitutionIpedsUnitId = spi.InstitutionIpedsUnitId
 			AND spsar.SchoolYear = spi.SchoolYear
@@ -79,8 +79,8 @@ AS
 			AND ISNULL(spse.FirstName, '') = ISNULL(rdp.FirstName, '')
 			AND ISNULL(spse.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 			AND ISNULL(spse.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
-			AND ISNULL(spse.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')	
-			AND spsar.EntryDate BETWEEN rdp.RecordStartDatetime AND ISNULL(rdp.RecordEndDatetime , GETDATE())
+			AND ISNULL(spse.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')	
+			AND spsar.EntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime , GETDATE())
 		WHERE spsar.StudentIdentifierState like CAST(@firstDigit AS VARCHAR(1)) + '%'
 
 		CREATE NONCLUSTERED INDEX [IX_temp] ON #Temp 

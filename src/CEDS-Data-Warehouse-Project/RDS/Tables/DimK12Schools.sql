@@ -59,7 +59,7 @@ CREATE TABLE [RDS].[DimK12Schools] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimSchools_StateANSICode]
+CREATE NONCLUSTERED INDEX [IX_DimSchools_StateAnsiCode]
     ON [RDS].[DimK12Schools]([StateAnsiCode] ASC);
 
 
