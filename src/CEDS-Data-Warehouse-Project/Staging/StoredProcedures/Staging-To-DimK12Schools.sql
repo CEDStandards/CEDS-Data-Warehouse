@@ -4,10 +4,11 @@ CREATE PROCEDURE [Staging].[Staging-to-DimK12Schools]
 AS 
 BEGIN
 
-	DECLARE @StateCode VARCHAR(2), @StateName VARCHAR(50), @StateANSICode VARCHAR(5)
-	SELECT @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	SELECT @StateName = (select [Description] from dbo.RefState where Code = @StateCode)
-	SELECT @StateANSICode = (select Code from dbo.RefStateANSICode where [Description] = @StateName)
+	declare @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5)
+	select @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
+	select @StateName = (select CedsOptionSetDescription from [CEDS].[CEDSOptionSetMapping] where CedsGlobalId = '000267' and CedsOptionSetCode = @StateCode)
+	select @StateANSICode = (select CedsOptionSetCode from [CEDS].[CEDSOptionSetMapping] where CedsGlobalId = '000424' and CedsOptionSetDescription = @StateName)
+
 
 
 	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12Schools WHERE DimK12SchoolId = -1)

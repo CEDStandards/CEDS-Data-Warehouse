@@ -127,7 +127,7 @@ BEGIN
 		AND rdms.MigrantPrioritizedForServicesCode = 'MISSING'
 	LEFT JOIN RDS.vwDimMilitaryStatuses rdms2
 		ON ISNULL(sae.MilitaryBranch, 'MISSING') = ISNULL(rdms2.MilitaryBranchMap, 'MISSING')
-		AND ISNULL(sae.ActiveMilitaryStatusIndicator, 'MISSING') = ISNULL(rdms2.MilitaryActiveStatusIndicatorMap, 'MISSING')
+		AND ISNULL(sae.ActiveMilitaryStatusIndicator, 'MISSING') = ISNULL(rdms2.ActiveMilitaryStatusIndicatorMap, 'MISSING')
 		AND ISNULL(sae.MilitaryConnectedStudentIndicator, 'MISSING') = ISNULL(rdms2.MilitaryConnectedStudentIndicatorMap, 'MISSING')
 		AND ISNULL(sae.MilitaryVeteranStatusIndicator, 'MISSING') = ISNULL(rdms2.MilitaryVeteranStatusIndicatorMap, 'MISSING')
 	LEFT JOIN RDS.vwDimDisabilityStatuses rdds

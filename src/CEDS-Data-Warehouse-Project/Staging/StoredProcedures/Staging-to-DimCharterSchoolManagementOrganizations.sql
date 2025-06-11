@@ -8,9 +8,9 @@ BEGIN
 	IF OBJECT_ID(N'tempdb..#CharterSchoolManagementOrganizations') IS NOT NULL DROP TABLE #CharterSchoolManagementOrganizations
 
 	DECLARE @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5), @SchoolYear int
-	SELECT @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	SELECT @StateName = (select [Description] from dbo.RefState where Code = @StateCode)
-	SELECT @StateANSICode = (select Code from dbo.RefStateANSICode where [Description] = @StateName)
+	SELECT @StateCode = (SELECT StateAbbreviationCode FROM Staging.StateDetail)
+	SELECT @StateName = (SELECT CedsOptionSetDescription FROM [CEDS].[CEDSOptionSetMapping] WHERE CedsGlobalId = '000267' AND CedsOptionSetCode = @StateCode)
+	SELECT @StateANSICode = (SELECT CedsOptionSetCode FROM [CEDS].[CEDSOptionSetMapping] WHERE CedsGlobalId = '000424' AND CedsOptionSetDescription = @StateName)
 	SELECT @SchoolYear = (select SchoolYear from Staging.StateDetail)
 
 	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolManagementOrganizations WHERE DimCharterSchoolManagementOrganizationId = -1)
@@ -97,8 +97,9 @@ BEGIN
 	LEFT JOIN Staging.OrganizationPhone sop
 		ON scsmo.CharterSchoolManagementOrganizationOrganizationIdentifierEIN = sop.OrganizationIdentifier
 		AND sop.OrganizationType = orgTypes.CharterSchoolManagementOrganization
-	LEFT JOIN dbo.RefCharterSchoolManagementOrganizationType refcsmot
-		ON refcsmot.Code = ssrd.OutputCode
+	LEFT JOIN CEDS.CedsOptionSetMapping refcsmot
+		ON refcsmot.CEDSOptionSetCode = ssrd.OutputCode
+		AND refcsmot.CedsGlobalId = '001650'  -- Charter School Management Organization Type
 
 -- MERGE INTO DimCharterSchoolManagementOrganizations
 	BEGIN TRY

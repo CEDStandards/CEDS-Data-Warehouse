@@ -10,7 +10,6 @@ AS
 	BEGIN
 		
 		drop table if exists #Temp
-		drop table if exists #MiTemp
 
 		SELECT distinct
 			  rsy.DimSchoolYearId								AS SchoolYearId
@@ -99,63 +98,6 @@ AS
 
 		Insert Into RDS.FactPsStudentAcademicRecords Select * From #Temp 
 
-		SELECT 
-			rfpsar.FactPsStudentAcademicRecordId
-			, rmdptes.MiDimPsTermEnrollmentStatusesId
-		Into #MiTemp
-		FROM RDS.FactPsStudentAcademicRecords rfpsar
-		JOIN RDS.DimSchoolYears rdsy
-			ON rfpsar.SchoolYearId = rdsy.DimSchoolYearId
-		JOIN RDS.DimPeople rdps
-			ON rfpsar.PsStudentId = rdps.DimPersonId
-			AND rdps.PsStudentStudentIdentifierState like CAST(@firstDigit AS VARCHAR(1)) + '%'
-		JOIN RDS.DimPsInstitutions rdpi
-			ON rfpsar.PsInstitutionId = rdpi.DimPsInstitutionId
-		JOIN RDS.vwDimAcademicTermDesignators rdatd
-			ON rfpsar.AcademicTermDesignatorId = rdatd.DimAcademicTermDesignatorId
-			AND rdatd.SchoolYear = rdsy.SchoolYear
-		JOIN RDS.DimDates entryDate
-			ON rfpsar.EnrollmentEntryDateId = entryDate.DimDateId
-		JOIN RDS.DimDates exitDate
-			ON rfpsar.EnrollmentExitDateId = exitDate.DimDateId
-		JOIN Staging.MiPsStudentAcademicRecord smpsar
-			ON rdps.PsStudentStudentIdentifierState = smpsar.StudentIdentifierState
-			AND rdpi.IPEDSIdentifier = smpsar.InstitutionIpedsUnitId
-			AND rdatd.AcademicTermDesignatorMap = smpsar.AcademicTermDesignator
-			AND entryDate.DateValue = smpsar.EntryDate
-			AND exitDate.DateValue = smpsar.ExitDate
-		JOIN RDS.MiDimPsTermEnrollmentStatuses rmdptes
-			ON ISNULL(CAST(smpsar.RemedialEslSession AS SMALLINT), -1) = rmdptes.RemedialEslSession
-			AND ISNULL(CAST(smpsar.RemedialMathSession AS SMALLINT), -1) = rmdptes.RemedialMathSession
-			AND ISNULL(CAST(smpsar.RemedialReadingSession AS SMALLINT), -1) = rmdptes.RemedialReadingSession
-			AND ISNULL(CAST(smpsar.RemedialScienceSession AS SMALLINT), -1) = rmdptes.RemedialScienceSession
-			AND ISNULL(CAST(smpsar.RemedialSession AS SMALLINT), -1) = rmdptes.RemedialSession
-			AND ISNULL(CAST(smpsar.RemedialWritingSession AS SMALLINT), -1) = rmdptes.RemedialWritingSession
-			AND ISNULL(CAST(smpsar.TransferedMidTermWithoutGrades AS SMALLINT), -1) = rmdptes.TransferedMidTermWithoutGrades
-		JOIN #temp temp
-			ON temp.PersonId=rfpsar.PsStudentId
-			AND temp.SchoolYearId=rfpsar.SchoolYearId
-			AND temp.PsInstitutionID=rfpsar.PsInstitutionID
-			AND temp.EnrollmentEntryDateId=rfpsar.EnrollmentEntryDateId
-			AND temp.EnrollmentExitDate=rfpsar.EnrollmentExitDateId
-			AND temp.AcademicTermDesignatorId=rfpsar.AcademicTermDesignatorId
-			AND temp.PsDemographicId=rfpsar.PsDemographicId
-			AND temp.DataCollectionId=rfpsar.DataCollectionId
-			AND temp.PsInstitutionStatusId=rfpsar.PsInstitutionStatusId
-		LEFT JOIN RDS.MiFactPsStudentAcademicRecord m
-			ON rfpsar.FactPsStudentAcademicRecordId=m.FactPsStudentAcademicRecordId
-			AND rmdptes.MiDimPsTermEnrollmentStatusesId=m.MiDimPsTermEnrollmentStatusesId
-		WHERE m.FactPsStudentAcademicRecordId IS NULL
-
-		INSERT INTO RDS.MiFactPsStudentAcademicRecord	
-		(
-			[FactPsStudentAcademicRecordId]  
-			, [MiDimPsTermEnrollmentStatusesId]
-		)
-		SELECT 
-			t.FactPsStudentAcademicRecordId,
-			t.MiDimPsTermEnrollmentStatusesId
-		FROM #MiTemp t 
 		
 		DBCC SHRINKFILE ('CEDS-Data-Warehouse-V9-2-0-0_log', 1)
 		SELECT @Sql = 'USE TempDB

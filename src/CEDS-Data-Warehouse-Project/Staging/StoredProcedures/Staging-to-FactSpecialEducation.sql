@@ -20,7 +20,7 @@ BEGIN
 
 	DROP TABLE IF EXISTS #vwDimEnglishLearnerStatuses
 	SELECT v.* INTO #vwDimEnglishLearnerStatuses FROM RDS.vwDimEnglishLearnerStatuses v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
-	CREATE INDEX IX_vwDimEnglishLearnerStatuses ON #vwDimEnglishLearnerStatuses(SchoolYear, EnglishLearnerStatusMap, PerkinsLEPStatusMap, TitleIIIAccountabilityProgressStatusMap, TitleIIILanguageInstructionProgramTypeMap) INCLUDE (EnglishLearnerStatusCode, PerkinsLEPStatusCode, TitleIIIAccountabilityProgressStatusCode, TitleIIILanguageInstructionProgramTypeCode)
+	CREATE INDEX IX_vwDimEnglishLearnerStatuses ON #vwDimEnglishLearnerStatuses(SchoolYear, EnglishLearnerStatusMap, PerkinsEnglishLearnerStatusMap, TitleIIIAccountabilityProgressStatusMap, TitleIIILanguageInstructionProgramTypeMap) INCLUDE (EnglishLearnerStatusCode, PerkinsEnglishLearnerStatusCode, TitleIIIAccountabilityProgressStatusCode, TitleIIILanguageInstructionProgramTypeCode)
 
 	DROP TABLE IF EXISTS #vwDimGradeLevels
 	SELECT v.* INTO #vwDimGradeLevels FROM RDS.vwDimGradeLevels  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear WHERE GradeLevelTypeDescription = 'Entry Grade Level' 
@@ -48,7 +48,7 @@ BEGIN
 
 	DROP TABLE IF EXISTS #vwDimMilitaryStatuses
 	SELECT v.* INTO #vwDimMilitaryStatuses FROM RDS.vwDimMilitaryStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
-	CREATE INDEX IX_vwDimMilitaryStatuses ON #vwDimMilitaryStatuses(SchoolYear, MilitaryConnectedStudentIndicatorMap, MilitaryActiveStatusIndicatorMap, MilitaryBranchMap, MilitaryVeteranStatusIndicatorMap) INCLUDE (MilitaryConnectedStudentIndicatorCode, MilitaryActiveStatusIndicatorCode, MilitaryBranchCode, MilitaryVeteranStatusIndicatorCode)
+	CREATE INDEX IX_vwDimMilitaryStatuses ON #vwDimMilitaryStatuses(SchoolYear, MilitaryConnectedStudentIndicatorMap, ActiveMilitaryStatusIndicatorMap, MilitaryBranchMap, MilitaryVeteranStatusIndicatorMap) INCLUDE (MilitaryConnectedStudentIndicatorCode, ActiveMilitaryStatusIndicatorCode, MilitaryBranchCode, MilitaryVeteranStatusIndicatorCode)
 
 	DROP TABLE IF EXISTS #vwDimIdeaDisabilityTypes
 	SELECT v.* INTO #vwDimIdeaDisabilityTypes FROM RDS.vwDimIdeaDisabilityTypes  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
@@ -489,14 +489,14 @@ BEGIN
 	LEFT JOIN #vwDimEnglishLearnerStatuses rdels
 		ON ske.SchoolYear														= rdels.SchoolYear
 		AND ISNULL(sps.EnglishLearnerStatus, -1)								= rdels.EnglishLearnerStatusMap
-		AND ISNULL(sps.PerkinsLEPStatus, -1)									= rdels.PerkinsLEPStatusMap
-		AND ISNULL(spptiii.TitleIIIAccountabilityProgressStatus, 'MISSING')		= ISNULL(rdels.TitleIIIAccountabilityProgressStatusMap, rdels.TitleIIIAccountabilityProgressStatusCode)
-		AND ISNULL(spptiii.TitleIIILanguageInstructionProgramType, 'MISSING')	= ISNULL(rdels.TitleIIILanguageInstructionProgramTypeMap, rdels.TitleIIILanguageInstructionProgramTypeCode)
+		AND ISNULL(sps.PerkinsEnglishLearnerStatus, -1)							= rdels.PerkinsEnglishLearnerStatusMap
 	LEFT JOIN #vwDimTitleIIIStatuses rdtiiis
 		ON ske.SchoolYear														= rdtiiis.SchoolYear
 		AND ISNULL(CAST(spptiii.TitleIiiImmigrantStatus AS SMALLINT), -1)		= rdtiiis.TitleIIIProgramParticipationMap 
 		AND 'MISSING'															= rdtiiis.FormerEnglishLearnerYearStatusCode -- Where in Staging?
 		AND ISNULL(spptiii.Proficiency_TitleIII, 'MISSING')						= ISNULL(rdtiiis.ProficiencyStatusMap, rdtiiis.ProficiencyStatusCode)
+		AND ISNULL(spptiii.TitleIIIAccountabilityProgressStatus, 'MISSING')		= ISNULL(rdtiiis.TitleIIIAccountabilityProgressStatusMap, rdtiiis.TitleIIIAccountabilityProgressStatusCode)
+		AND ISNULL(spptiii.TitleIIILanguageInstructionProgramType, 'MISSING')	= ISNULL(rdtiiis.TitleIIILanguageInstructionProgramTypeMap, rdtiiis.TitleIIILanguageInstructionProgramTypeCode)
 	--LEFT JOIN RDS.DimDates rddtiiiStart
 	--	ON spptiii.ProgramParticipationBeginDate								= rddtiiiStart.DateValue
 	--LEFT JOIN RDS.DimDates rddtiiiEnd
@@ -564,7 +564,7 @@ BEGIN
 	JOIN #vwDimMilitaryStatuses rdmil
 		ON ske.SchoolYear = rdmil.SchoolYear
 		AND ISNULL(sps.MilitaryConnectedStudentIndicator, 'MISSING')		= ISNULL(rdmil.MilitaryConnectedStudentIndicatorMap, rdmil.MilitaryConnectedStudentIndicatorCode)
-		AND ISNULL(sm.MilitaryActiveStatusIndicator, 'MISSING')			= ISNULL(rdmil.MilitaryActiveStatusIndicatorMap, rdmil.MilitaryActiveStatusIndicatorCode)
+		AND ISNULL(sm.ActiveMilitaryStatusIndicator, 'MISSING')				= ISNULL(rdmil.ActiveMilitaryStatusIndicatorMap, rdmil.ActiveMilitaryStatusIndicatorCode)
 		AND ISNULL(sm.MilitaryBranch, 'MISSING')							= ISNULL(rdmil.MilitaryBranchMap, rdmil.MilitaryBranchCode)
 		AND ISNULL(sm.MilitaryVeteranStatusIndicator, 'MISSING')			= ISNULL(rdmil.MilitaryVeteranStatusIndicatorMap, rdmil.MilitaryVeteranStatusIndicatorCode)
 

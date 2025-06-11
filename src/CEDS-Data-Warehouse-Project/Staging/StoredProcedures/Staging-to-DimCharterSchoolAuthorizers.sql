@@ -8,10 +8,10 @@ BEGIN
 	IF OBJECT_ID(N'tempdb..#CharterSchoolAuthorizers') IS NOT NULL DROP TABLE #CharterSchoolAuthorizers
 
 	DECLARE @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5), @SchoolYear int
-	SELECT @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	SELECT @StateName = (select [Description] from dbo.RefState where Code = @StateCode)
-	SELECT @StateANSICode = (select Code from dbo.RefStateANSICode where [Description] = @StateName)
-	SELECT @SchoolYear = (select SchoolYear from Staging.StateDetail)
+	SELECT @StateCode = (SELECT StateAbbreviationCode FROM Staging.StateDetail)
+	SELECT @StateName = (SELECT CedsOptionSetDescription FROM [CEDS].[CEDSOptionSetMapping] WHERE CedsGlobalId = '000267' AND CedsOptionSetCode = @StateCode)
+	SELECT @StateANSICode = (SELECT CedsOptionSetCode FROM [CEDS].[CEDSOptionSetMapping] WHERE CedsGlobalId = '000424' AND CedsOptionSetDescription = @StateName)
+	SELECT @SchoolYear = (SELECT SchoolYear FROM Staging.StateDetail)
 
 	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolAuthorizers WHERE DimCharterSchoolAuthorizerId = -1)
 	BEGIN
@@ -101,8 +101,9 @@ BEGIN
 	LEFT JOIN Staging.OrganizationPhone sop
 		ON scsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea = sop.OrganizationIdentifier
 		AND sop.OrganizationType = orgTypes.CharterSchoolAuthorizingOrganization
-	LEFT JOIN dbo.RefCharterSchoolAuthorizerType refcsat
-		ON refcsat.Code = ssrd.OutputCode
+	LEFT JOIN CEDS.CedsOptionSetMapping refcsat
+		ON refcsat.CEDSOptionSetCode = ssrd.OutputCode
+		AND refcsat.CedsGlobalId = '001292' -- Charter School Authorizer Type
 
 -- MERGE INTO DimCharterSchoolAuthorizers
 	BEGIN TRY

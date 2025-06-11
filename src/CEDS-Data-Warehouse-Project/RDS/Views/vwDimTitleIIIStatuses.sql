@@ -15,7 +15,7 @@ CREATE VIEW [RDS].[vwDimTitleIIIStatuses] AS
 			WHEN 'Yes' THEN 1 
 			WHEN 'No' THEN 0
 			ELSE -1
-		  END AS TitleIIIProgramParticipationLiepMap
+		  END AS ProgramParticipationTitleIIILiepMap
 
 		, rdt3s.ProficiencyStatusCode
 		, sssrd3.OutputCode AS ProficiencyStatusMap

@@ -56,7 +56,7 @@ BEGIN
 			, TelephoneNumberWork
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentifierState
+			, K12StaffStaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent
 			, IsActiveK12Staff
@@ -73,7 +73,7 @@ BEGIN
 			, NULL AS TelephoneNumberWork
 			, ke.StudentIdentifierState AS K12StudentStudentIdentifierState
 			, pe.StudentIdentifierState AS PsStudentStudentIdentifierState
-			, NULL AS K12StaffMemberIdentifierState
+			, NULL AS K12StaffStaffMemberIdentifierState
 			, 1
 			, CASE WHEN pe.StudentIdentifierState IS NOT NULL THEN 1 ELSE 0 END
 			, 0
@@ -102,7 +102,7 @@ BEGIN
 			, TelephoneNumberWork
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentifierState
+			, K12StaffStaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent
 			, IsActiveK12Staff
@@ -119,7 +119,7 @@ BEGIN
 			, NULL AS TelephoneNumberWork
 			, NULL AS K12StudentStudentIdentifierState
 			, spe.StudentIdentifierState AS PsStudentStudentIdentifierState
-			, NULL AS K12StaffMemberIdentifierState
+			, NULL AS K12StaffStaffMemberIdentifierState
 			, 0
 			, 1
 			, 0
@@ -146,7 +146,7 @@ BEGIN
 			, TelephoneNumberWork
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentifierState
+			, K12StaffStaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent
 			, IsActiveK12Staff
@@ -164,7 +164,7 @@ BEGIN
 			, SeaContact_PhoneNumber				AS TelephoneNumberWork
 			, NULL									AS K12StudentStudentIdentifierState
 			, NULL									AS PsStudentStudentIdentifierState
-			, SeaContact_Identifier					AS K12StaffMemberIdentifierState
+			, SeaContact_Identifier					AS K12StaffStaffMemberIdentifierState
 			, 0
 			, 0
 			, 1
@@ -176,7 +176,7 @@ BEGIN
 		USING #People AS src
 				ON  ISNULL(trgt.K12StudentStudentIdentifierState, '') = ISNULL(src.K12StudentStudentIdentifierState, '')
 				AND ISNULL(trgt.PsStudentStudentIdentifierState, '') = ISNULL(src.PsStudentStudentIdentifierState, '')
-				AND ISNULL(trgt.K12StaffMemberIdentifierState, '') = ISNULL(src.K12StaffMemberIdentifierState, '')
+				AND ISNULL(trgt.K12StaffStaffMemberIdentifierState, '') = ISNULL(src.K12StaffStaffMemberIdentifierState, '')
 				AND ISNULL(trgt.FirstName, '') = ISNULL(src.FirstName, '')
 				AND ISNULL(trgt.LastOrSurname, '') = ISNULL(src.LastOrSurname, '')
 				AND ISNULL(trgt.MiddleName, '') = ISNULL(src.MiddleName, '')
@@ -190,7 +190,7 @@ BEGIN
 			, MiddleName
 			, K12StudentStudentIdentifierState
 			, PsStudentStudentIdentifierState
-			, K12StaffMemberIdentifierState
+			, K12StaffStaffMemberIdentifierState
 			, IsActiveK12Student
 			, IsActivePsStudent	
 			, IsActiveK12Staff	
@@ -203,7 +203,7 @@ BEGIN
 			, src.MiddleName
 			, src.K12StudentStudentIdentifierState
 			, src.PsStudentStudentIdentifierState
-			, src.K12StaffMemberIdentifierState
+			, src.K12StaffStaffMemberIdentifierState
 			, src.IsActiveK12Student
 			, src.IsActivePsStudent	
 			, src.IsActiveK12Staff	

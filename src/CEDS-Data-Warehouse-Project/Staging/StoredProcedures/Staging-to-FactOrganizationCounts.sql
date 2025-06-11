@@ -76,13 +76,7 @@ BEGIN
 		DECLARE @dimCharterSchoolSecondaryManagerId AS INT
 		DECLARE @dimCharterSchoolAuthorizerId AS INT
 		DECLARE @dimCharterSchoolSecondaryAuthorizerId AS INT
-
-		DECLARE @leaOperationalStatustypeId AS INT, @schOperationalStatustypeId AS INT, @charterLeaCount AS INT
-		SELECT @leaOperationalStatustypeId = RefOperationalStatusTypeId FROM dbo.RefOperationalStatusType WHERE Code = '000174'
-		SELECT @schOperationalStatustypeId = RefOperationalStatusTypeId FROM dbo.RefOperationalStatusType WHERE Code = '000533'
-		
-		SELECT @charterLeaCount = count(OrganizationId) FROM dbo.K12Lea WHERE CharterSchoolIndicator = 1
-	
+			
 
 		-- DELETE RECORDS FOR SCHOOL YEAR FROM FACT TABLE
 		DELETE FROM rds.FactOrganizationCounts 

@@ -44,7 +44,7 @@ BEGIN
     , ISNULL(rdsc.[DimScedCodeId], -1)
     , ISNULL(rdonet.[DimOnetSocOccupationTypeId], -1)
     , ISNULL(rdkes.[DimK12EmploymentStatusId], -1)
-    , ISNULL(rdkp.[DimK12PositionId], -1)
+    , ISNULL(rdkp.[DimK12JobPositionId], -1)
     , ISNULL(rdkj.[DimK12JobId], -1)
     , ISNULL(rda.[DimDateId], -1)
     , ISNULL(rde.[DimDateId], -1)
@@ -113,8 +113,8 @@ BEGIN
     AND ISNULL(ska.EmploymentSeparationReasonCode, 'MISSING') = ISNULL(rdkes.EmploymentSeparationReasonMap, rdkes.EmploymentSeparationReasonCode)
     AND ISNULL(ska.TitleITargetedAssistanceStaffFundedCode, 'MISSING') = ISNULL(rdkes.TitleITargetedAssistanceStaffFundedMap, rdkes.TitleITargetedAssistanceStaffFundedCode)
     AND ISNULL(ska.MEPPersonnelIndicatorCode, 'MISSING') = ISNULL(rdkes.MEPPersonnelIndicatorMap, rdkes.MEPPersonnelIndicatorCode)
-  LEFT JOIN RDS.DimK12Positions rdkp
-    ON ska.PositionIdentifierSea = rdkp.PositionIdentifierSea
+  LEFT JOIN RDS.DimK12JobPositions rdkp
+    ON ska.PositionIdentifierSea = RDS.DimK12JobPositions.PositionIdentifierSea
   LEFT JOIN RDS.DimK12Jobs rdkj
     ON ska.JobTitle = rdkj.JobTitle
   LEFT JOIN RDS.DimDates rda

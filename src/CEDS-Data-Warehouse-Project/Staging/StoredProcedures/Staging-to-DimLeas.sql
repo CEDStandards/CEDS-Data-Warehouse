@@ -8,8 +8,8 @@ BEGIN
 	--Get the correct values for the state 
 	declare @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5)
 	select @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	select @StateName = (select [Description] from dbo.RefState where Code = @StateCode)
-	select @StateANSICode = (select Code from dbo.RefStateANSICode where [Description] = @StateName)
+	select @StateName = (select CedsOptionSetDescription from [CEDS].[CEDSOptionSetMapping] where CedsGlobalId = '000267' and CedsOptionSetCode = @StateCode)
+	select @StateANSICode = (select CedsOptionSetCode from [CEDS].[CEDSOptionSetMapping] where CedsGlobalId = '000424' and CedsOptionSetDescription = @StateName)
 
 	--Get the count of LEAs that are marked as Charter
 	declare @charterLeaCount as int

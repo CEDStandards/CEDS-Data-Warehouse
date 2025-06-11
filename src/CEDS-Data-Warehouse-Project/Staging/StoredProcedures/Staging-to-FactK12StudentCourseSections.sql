@@ -19,7 +19,7 @@ BEGIN
 		, K12SchoolId
 		, K12StudentId
 		, K12DemographicId
-		, K12CourseId
+		, StateK12CourseId
 		, K12CourseStatusId
 		, ScedCodeId
 		, CipCodeId

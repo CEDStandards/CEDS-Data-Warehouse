@@ -48,10 +48,10 @@ BEGIN
 			, spi.[NameOfInstitution]								AS NameOfInstitution
             , spi.[ShortNameOfInstitution]                          AS ShortNameOfInstitution
 			, spi.[AdultEducationServiceProviderIdentifierSea]			AS AdultEducationServiceProviderIdentifierSea
-            , sssrd2.[OutputCode]                                   AS AdultEducationProviderType
-            , sssrd3.[OutputCode]                                   AS LevelOfInstitution
+            , sssrd2.[OutputCode]                                   AS AdultEducationProviderTypeCode
+            , sssrd3.[OutputCode]                                   AS LevelOfInstitutionCode
 			, spi.[WebsiteAddress]								    AS WebsiteAddress
-			, sssrd1.[OutputCode]									AS OrganizationOperationalStatus
+			, sssrd1.[OutputCode]									AS OrganizationOperationalStatusCode
 			, spi.[OperationalStatusEffectiveDate]      
 			, smam.[AddressStreetNumberAndName]						AS MailingAddressStreetNumberAndName
 			, smam.[AddressApartmentRoomOrSuiteNumber]				AS MailingAddressApartmentRoomOrSuiteNumber
@@ -146,9 +146,9 @@ BEGIN
 			  trgt.[NameOfInstitution]                          = src.[NameOfInstitution]
             , trgt.[ShortNameOfInstitution]                     = src.[ShortNameOfInstitution]                    
 			, trgt.[AdultEducationServiceProviderIdentifierSea]    = src.[AdultEducationServiceProviderIdentifierSea]
-            , trgt.[LevelOfInstitution]                         = src.[LevelOfInstitution]
-            , trgt.[AdultEducationProviderType]                 = src.[AdultEducationProviderType]    
-			, trgt.[OrganizationOperationalStatus]              = src.[OrganizationOperationalStatus]        
+            , trgt.[LevelOfInstitutionCode]                         = src.[LevelOfInstitution]
+            , trgt.[AdultEducationProviderTypeCode]                 = src.[AdultEducationProviderType]    
+			, trgt.[OrganizationOperationalStatusCode]              = src.[OrganizationOperationalStatus]        
 			, trgt.[OperationalStatusEffectiveDate]             = src.[OperationalStatusEffectiveDate]       
 			, trgt.[MailingAddressStreetNumberAndName]          = src.[MailingAddressStreetNumberAndName]    
 			, trgt.[MailingAddressApartmentRoomOrSuiteNumber]   = src.[MailingAddressApartmentRoomOrSuiteNumber]   
@@ -172,9 +172,9 @@ BEGIN
 		  [NameOfInstitution]                    
 		, [ShortNameOfInstitution]
 		, [AdultEducationServiceProviderIdentifierSea]
-        , [LevelOfInstitution] 
-        , [AdultEducationProviderType]                    
-		, [OrganizationOperationalStatus]        
+        , [LevelOfInstitutionCode] 
+        , [AdultEducationProviderTypeCode]                    
+		, [OrganizationOperationalStatusCode]        
 		, [OperationalStatusEffectiveDate]       
 		, [MailingAddressStreetNumberAndName]    
 		, [MailingAddressApartmentRoomOrSuiteNumber]   
@@ -197,9 +197,9 @@ BEGIN
 		  src.[NameOfInstitution]        
 		, src.[ShortNameOfInstitution]
 		, src.[AdultEducationServiceProviderIdentifierSea]        
-        , src.[LevelOfInstitution] 
-        , src.[AdultEducationProviderType]          
-		, src.[OrganizationOperationalStatus]        
+        , src.[LevelOfInstitutionCode] 
+        , src.[AdultEducationProviderTypeCode]          
+		, src.[OrganizationOperationalStatusCode]        
 		, src.[OperationalStatusEffectiveDate]       
 		, src.[MailingAddressStreetNumberAndName]    
 		, src.[MailingAddressApartmentRoomOrSuiteNumber]   
