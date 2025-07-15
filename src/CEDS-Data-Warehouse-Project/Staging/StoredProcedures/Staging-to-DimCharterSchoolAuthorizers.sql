@@ -1,5 +1,5 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimCharterSchoolAuthorizers]
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT = 0
 AS   
 
@@ -7,17 +7,31 @@ BEGIN
 
 	IF OBJECT_ID(N'tempdb..#CharterSchoolAuthorizers') IS NOT NULL DROP TABLE #CharterSchoolAuthorizers
 
-	DECLARE @StateCode varchar(2), @StateName varchar(50), @StateAnsiCode varchar(5), @SchoolYear int
-	SELECT @StateCode = (SELECT StateAbbreviationCode FROM Staging.StateDetail)
-	SELECT @StateName = (SELECT CedsOptionSetDescription FROM [CEDS].[CedsOptionSetMapping] WHERE CedsGlobalId = '000267' AND CedsOptionSetCode = @StateCode)
-	SELECT @StateAnsiCode = (SELECT CedsOptionSetCode FROM [CEDS].[CedsOptionSetMapping] WHERE CedsGlobalId = '000424' AND CedsOptionSetDescription = @StateName)
-	SELECT @SchoolYear = (SELECT SchoolYear FROM Staging.StateDetail)
+    DECLARE @SchoolYear int, @StateCode varchar(2), @StateName varchar(50), @StateAnsiCode varchar(5)
+    SELECT @SchoolYear = (	select sy.SchoolYear
+							from rds.DimSchoolYearDataMigrationTypes dm
+								inner join rds.dimschoolyears sy
+									on dm.dimschoolyearid = sy.dimschoolyearid
+							where IsSelected = 1
+							and dm.DataMigrationTypeId = 3
+						)
+    SELECT @StateCode = StateAbbreviationCode from Staging.StateDetail where SchoolYear = @schoolyear
+	SELECT @StateName = (	select CedsOptionSetDescription 
+							from ceds.CedsOptionSetMapping 
+							where CedsElementTechnicalName = 'StateAbbreviation' 
+							and CedsOptionSetCode = @StateCode
+						)
+	SELECT @StateAnsiCode = (	select CedsOptionSetCode 
+								from ceds.CedsOptionSetMapping 
+								where CedsElementTechnicalName = 'StateAnsiCode' 
+								and CedsOptionSetDescription = @StateName
+							)
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimCharterSchoolAuthorizers WHERE DimCharterSchoolAuthorizerId = -1)
+	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolAuthorizers WHERE DimCharterSchoolAuthorizerId = -1)
 	BEGIN
-		SET IDENTITY_INSERT RDS.DimCharterSchoolAuthorizers ON
-		INSERT INTO RDS.DimCharterSchoolAuthorizers (DimCharterSchoolAuthorizerId) VALUES (-1)
-		SET IDENTITY_INSERT RDS.DimCharterSchoolAuthorizers off
+		SET IDENTITY_INSERT rds.DimCharterSchoolAuthorizers ON
+		INSERT INTO rds.DimCharterSchoolAuthorizers (DimCharterSchoolAuthorizerId) VALUES (-1)
+		SET IDENTITY_INSERT rds.DimCharterSchoolAuthorizers off
 	END
 
 	CREATE TABLE #organizationTypes (
@@ -72,7 +86,7 @@ BEGIN
 		, smap.AddressPostalCode			 						'PhysicalAddressPostalCode'
 		, smap.AddressCountyAnsiCodeCode							'PhysicalAddressCountyAnsiCodeCode'
 		, sop.TelephoneNumber				 				
-		, NULL 														'WebSiteAddress'
+		, NULL 														'WebsiteAddress'
 		, 0 														'OutOfStateIndicator'
 		, scsa.RecordStartDateTime
 		, scsa.RecordEndDateTime
@@ -101,9 +115,8 @@ BEGIN
 	LEFT JOIN Staging.OrganizationPhone sop
 		ON scsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea = sop.OrganizationIdentifier
 		AND sop.OrganizationType = orgTypes.CharterSchoolAuthorizingOrganization
-	LEFT JOIN CEDS.CedsOptionSetMapping refcsat
-		ON refcsat.CedsOptionSetCode = ssrd.OutputCode
-		AND refcsat.CedsGlobalId = '001292' -- Charter School Authorizer Type
+	LEFT JOIN dbo.RefCharterSchoolAuthorizerType refcsat
+		ON refcsat.Code = ssrd.OutputCode
 
 -- MERGE INTO DimCharterSchoolAuthorizers
 	BEGIN TRY
@@ -116,9 +129,9 @@ BEGIN
 				trgt.StateAbbreviationCode 									= src.StateAbbreviationCode,
 				trgt.StateAnsiCode 											= src.StateAnsiCode,
 				trgt.StateAbbreviationDescription 							= src.StateAbbreviationDescription,
-				trgt.CharterSchoolAuthorizerTypeCode 			= src.CharterSchoolAuthorizerTypeCode,
-				trgt.CharterSchoolAuthorizerTypeDescription 	= src.CharterSchoolAuthorizerTypeDescription,
-				trgt.CharterSchoolAuthorizerTypeEdFactsCode	= src.CharterSchoolAuthorizerTypeEdFactsCode,						
+				trgt.CharterSchoolAuthorizerTypeCode 						= src.CharterSchoolAuthorizerTypeCode,
+				trgt.CharterSchoolAuthorizerTypeDescription 				= src.CharterSchoolAuthorizerTypeDescription,
+				trgt.CharterSchoolAuthorizerTypeEdFactsCode					= src.CharterSchoolAuthorizerTypeEdFactsCode,						
 				trgt.MailingAddressStreetNumberAndName						= src.MailingAddressStreetNumberAndName,
 				trgt.MailingAddressApartmentRoomOrSuiteNumber				= src.MailingAddressApartmentRoomOrSuiteNumber,
 				trgt.MailingAddressCity 									= src.MailingAddressCity,
@@ -133,7 +146,7 @@ BEGIN
 				trgt.PhysicalAddressPostalCode								= src.PhysicalAddressPostalCode,
 				trgt.PhysicalAddressCountyAnsiCodeCode						= src.PhysicalAddressCountyAnsiCodeCode,
 				trgt.TelephoneNumber										= src.TelephoneNumber,
-				trgt.WebSiteAddress											= src.WebSiteAddress,
+				trgt.WebsiteAddress											= src.WebsiteAddress,
 				trgt.RecordEndDateTime 										= src.RecordEndDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but not in Target
 		INSERT (
@@ -159,7 +172,7 @@ BEGIN
 			, PhysicalAddressPostalCode
 			, PhysicalAddressCountyAnsiCodeCode
 			, TelephoneNumber
-			, WebSiteAddress
+			, WebsiteAddress
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)
@@ -186,7 +199,7 @@ BEGIN
 			, src.PhysicalAddressPostalCode
 			, src.PhysicalAddressCountyAnsiCodeCode
 			, src.TelephoneNumber
-			, src.WebSiteAddress
+			, src.WebsiteAddress
 			, src.RecordStartDateTime
 			, src.RecordEndDateTime
 		);
@@ -218,6 +231,6 @@ BEGIN
 	END CATCH
 	
 END
-
 GO
+
 

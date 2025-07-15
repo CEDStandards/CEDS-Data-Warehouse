@@ -6,76 +6,79 @@ BEGIN
 
 	SET NOCOUNT ON
 	
-	DROP TABLE IF EXISTS #SchoolYears
+	IF OBJECT_ID(N'tempdb..#SchoolYears') IS NOT NULL DROP TABLE #SchoolYears
 	SELECT DISTINCT SchoolYear INTO #SchoolYears FROM Staging.K12Enrollment
 
+	DECLARE @SYEndDate DATE
+	SELECT @SYEndDate = CAST('6/30/' + CAST((select MAX(SchoolYear) from #SchoolYears) AS VARCHAR(4)) AS DATE)
+
 	--ALTER INDEX ALL ON RDS.FactK12StudentEnrollments DISABLE
-	DROP TABLE IF EXISTS #vwDimK12Demographics
+	IF OBJECT_ID(N'tempdb..#vwDimK12Demographics') IS NOT NULL DROP TABLE #vwDimK12Demographics
 	SELECT v.* INTO #vwDimK12Demographics FROM RDS.vwDimK12Demographics v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimK12Demographics ON #vwDimK12Demographics(SchoolYear, SexMap) INCLUDE (SexCode)
 
-	DROP TABLE IF EXISTS #vwDimIdeaStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimIdeaStatuses') IS NOT NULL DROP TABLE #vwDimIdeaStatuses
 	SELECT v.* INTO #vwDimIdeaStatuses FROM RDS.vwDimIdeaStatuses v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimIdeaStatuses ON #vwDimIdeaStatuses(SchoolYear, IdeaIndicatorMap, IdeaEducationalEnvironmentForEarlyChildhoodMap, IdeaEducationalEnvironmentForSchoolAgeMap, SpecialEducationExitReasonMap) INCLUDE (IdeaEducationalEnvironmentForEarlyChildhoodCode, IdeaEducationalEnvironmentForSchoolAgeCode, SpecialEducationExitReasonCode)
 
-	DROP TABLE IF EXISTS #vwDimEnglishLearnerStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimEnglishLearnerStatuses') IS NOT NULL DROP TABLE #vwDimEnglishLearnerStatuses
 	SELECT v.* INTO #vwDimEnglishLearnerStatuses FROM RDS.vwDimEnglishLearnerStatuses v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimEnglishLearnerStatuses ON #vwDimEnglishLearnerStatuses(SchoolYear, EnglishLearnerStatusMap, PerkinsEnglishLearnerStatusMap, TitleIIIAccountabilityProgressStatusMap, TitleIIILanguageInstructionProgramTypeMap) INCLUDE (EnglishLearnerStatusCode, PerkinsEnglishLearnerStatusCode, TitleIIIAccountabilityProgressStatusCode, TitleIIILanguageInstructionProgramTypeCode)
 
-	DROP TABLE IF EXISTS #vwDimGradeLevels
+	IF OBJECT_ID(N'tempdb..#vwDimGradeLevels') IS NOT NULL DROP TABLE #vwDimGradeLevels
 	SELECT v.* INTO #vwDimGradeLevels FROM RDS.vwDimGradeLevels  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear WHERE GradeLevelTypeDescription = 'Entry Grade Level' 
 	CREATE INDEX IX_vwDimGradeLevels ON #vwDimGradeLevels(SchoolYear, GradeLevelMap) INCLUDE (GradeLevelCode)
 
-	DROP TABLE IF EXISTS #vwDimHomelessnessStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimHomelessnessStatuses') IS NOT NULL DROP TABLE #vwDimHomelessnessStatuses
 	SELECT v.* INTO #vwDimHomelessnessStatuses FROM RDS.vwDimHomelessnessStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimHomelessnessStatuses ON #vwDimHomelessnessStatuses(SchoolYear, HomelessnessStatusMap, HomelessPrimaryNighttimeResidenceMap, HomelessServicedIndicatorMap, HomelessUnaccompaniedYouthStatusMap) INCLUDE (HomelessnessStatusCode, HomelessPrimaryNighttimeResidenceCode, HomelessServicedIndicatorCode, HomelessUnaccompaniedYouthStatusCode)
 
-	DROP TABLE IF EXISTS #vwDimEconomicallyDisadvantagedStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimEconomicallyDisadvantagedStatuses') IS NOT NULL DROP TABLE #vwDimEconomicallyDisadvantagedStatuses
 	SELECT v.* INTO #vwDimEconomicallyDisadvantagedStatuses FROM RDS.vwDimEconomicallyDisadvantagedStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimEconomicallyDisadvantagedStatuses ON #vwDimEconomicallyDisadvantagedStatuses(SchoolYear, EconomicDisadvantageStatusMap, EligibilityStatusForSchoolFoodServiceProgramsMap, NationalSchoolLunchProgramDirectCertificationIndicatorMap) INCLUDE (EconomicDisadvantageStatusCode, EligibilityStatusForSchoolFoodServiceProgramsCode, NationalSchoolLunchProgramDirectCertificationIndicatorCode)
 
-	DROP TABLE IF EXISTS #vwDimFosterCareStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimFosterCareStatuses') IS NOT NULL DROP TABLE #vwDimFosterCareStatuses
 	SELECT v.* INTO #vwDimFosterCareStatuses FROM RDS.vwDimFosterCareStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimFosterCareStatuses ON #vwDimFosterCareStatuses(SchoolYear, ProgramParticipationFosterCareMap) INCLUDE (ProgramParticipationFosterCareCode)
 
-	DROP TABLE IF EXISTS #vwDimImmigrantStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimImmigrantStatuses') IS NOT NULL DROP TABLE #vwDimImmigrantStatuses
 	SELECT v.* INTO #vwDimImmigrantStatuses FROM RDS.vwDimImmigrantStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimImmigrantStatuses ON #vwDimImmigrantStatuses(SchoolYear, TitleIIIImmigrantStatusMap, TitleIIIImmigrantParticipationStatusMap) INCLUDE (TitleIIIImmigrantStatusCode, TitleIIIImmigrantParticipationStatusCode)
 
-	DROP TABLE IF EXISTS #vwDimMigrantStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimMigrantStatuses') IS NOT NULL DROP TABLE #vwDimMigrantStatuses
 	SELECT v.* INTO #vwDimMigrantStatuses FROM RDS.vwDimMigrantStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimMigrantStatuses ON #vwDimMigrantStatuses(SchoolYear, MigrantStatusMap, MigrantEducationProgramEnrollmentTypeMap, ContinuationOfServicesReasonMap, MigrantEducationProgramServicesTypeMap, MigrantPrioritizedForServicesMap) INCLUDE (MigrantStatusCode, MigrantEducationProgramEnrollmentTypeCode, ContinuationOfServicesReasonCode, MigrantEducationProgramServicesTypeCode, MigrantPrioritizedForServicesCode)
 
-	DROP TABLE IF EXISTS #vwDimMilitaryStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimMilitaryStatuses') IS NOT NULL DROP TABLE #vwDimMilitaryStatuses
 	SELECT v.* INTO #vwDimMilitaryStatuses FROM RDS.vwDimMilitaryStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimMilitaryStatuses ON #vwDimMilitaryStatuses(SchoolYear, MilitaryConnectedStudentIndicatorMap, ActiveMilitaryStatusIndicatorMap, MilitaryBranchMap, MilitaryVeteranStatusIndicatorMap) INCLUDE (MilitaryConnectedStudentIndicatorCode, ActiveMilitaryStatusIndicatorCode, MilitaryBranchCode, MilitaryVeteranStatusIndicatorCode)
 
-	DROP TABLE IF EXISTS #vwDimIdeaDisabilityTypes
+	IF OBJECT_ID(N'tempdb..#vwDimIdeaDisabilityTypes') IS NOT NULL DROP TABLE #vwDimIdeaDisabilityTypes
 	SELECT v.* INTO #vwDimIdeaDisabilityTypes FROM RDS.vwDimIdeaDisabilityTypes  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimIdeaDisabilityTypes ON #vwDimIdeaDisabilityTypes(SchoolYear, IdeaDisabilityTypeMap) INCLUDE (IdeaDisabilityTypeCode)
 
-	DROP TABLE IF EXISTS #vwDimTitleIIIStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimTitleIIIStatuses') IS NOT NULL DROP TABLE #vwDimTitleIIIStatuses
 	SELECT v.* INTO #vwDimTitleIIIStatuses FROM RDS.vwDimTitleIIIStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimTitleIIIStatuses ON #vwDimTitleIIIStatuses(SchoolYear, TitleIIIProgramParticipationMap, FormerEnglishLearnerYearStatusMap, ProficiencyStatusMap) INCLUDE (TitleIIIProgramParticipationCode, FormerEnglishLearnerYearStatusCode, ProficiencyStatusCode)
 
-	DROP TABLE IF EXISTS #vwDimDisabilityStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimDisabilityStatuses') IS NOT NULL DROP TABLE #vwDimDisabilityStatuses
 	SELECT v.* INTO #vwDimDisabilityStatuses FROM RDS.vwDimDisabilityStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimDisabilityStatuses ON #vwDimDisabilityStatuses(SchoolYear, DisabilityStatusMap, Section504StatusMap, DisabilityConditionTypeMap, DisabilityDeterminationSourceTypeMap) INCLUDE (DisabilityStatusCode, DisabilityConditionTypeCode, DisabilityDeterminationSourceTypeCode)
 
-	DROP TABLE IF EXISTS #vwDimIndividualizedProgramStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimIndividualizedProgramStatuses') IS NOT NULL DROP TABLE #vwDimIndividualizedProgramStatuses
 	SELECT v.* INTO #vwDimIndividualizedProgramStatuses FROM RDS.vwDimIndividualizedProgramStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimIndividualizedProgramStatuses ON #vwDimIndividualizedProgramStatuses(SchoolYear, IndividualizedProgramTypeMap, StudentSupportServiceTypeMap) INCLUDE (IndividualizedProgramTypeCode, StudentSupportServiceTypeCode)
 
-	DROP TABLE IF EXISTS #vwDimChildOutcomeSummaries
+	IF OBJECT_ID(N'tempdb..#vwDimChildOutcomeSummaries') IS NOT NULL DROP TABLE #vwDimChildOutcomeSummaries
 	SELECT v.* INTO #vwDimChildOutcomeSummaries FROM RDS.vwDimChildOutcomeSummaries  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimChildOutcomeSummaries ON #vwDimChildOutcomeSummaries(SchoolYear, CosRatingAMap, CosRatingBMap, CosRatingCMap, CosProgressAIndicatorMap, CosProgressBIndicatorMap, CosProgressCIndicatorMap) 
 				INCLUDE (CosRatingACode, CosRatingBCode, CosRatingCCode, CosProgressAIndicatorCode, CosProgressBIndicatorCode, CosProgressCIndicatorCode)
-	
-	DROP TABLE IF EXISTS #vwDimK12EnrollmentStatuses
+
+	IF OBJECT_ID(N'tempdb..#vwDimK12EnrollmentStatuses') IS NOT NULL DROP TABLE #vwDimK12EnrollmentStatuses
 	SELECT v.* INTO #vwDimK12EnrollmentStatuses FROM RDS.vwDimK12EnrollmentStatuses  v JOIN #SchoolYears t ON v.SchoolYear = t.SchoolYear
 	CREATE INDEX IX_vwDimK12EnrollmentStatuses ON #vwDimK12EnrollmentStatuses(SchoolYear, EnrollmentStatusMap, EntryTypeMap, ExitOrWithdrawalTypeMap) INCLUDE (EnrollmentStatusCode, EntryTypeCode, ExitOrWithdrawalTypeCode)
 
-	DROP TABLE IF EXISTS #Facts
+	IF OBJECT_ID(N'tempdb..#Facts') IS NOT NULL DROP TABLE #Facts
 	CREATE TABLE #Facts (
 			  [StagingId]											INT NOT NULL
 			, [SchoolYearId]										INT NULL
@@ -159,7 +162,7 @@ BEGIN
 		, rsy.DimSchoolYearId
 		, rddc.DimDataCollectionId					AS DataCollectionId
 		, countdate.DimDateId						AS CountDateId
-		, RDS.DimSeaId								AS SeaId
+		, rds.DimSeaId								AS SeaId
 		, rdi.DimIeuId								AS IeuId
 		, rdlAcc.DimLeaId							AS LeaAccountabilityId
 		, rdlAtt.DimLeaId							AS LeaAttendanceId
@@ -171,7 +174,7 @@ BEGIN
 		, rdp.DimPersonId							AS K12StudentId
 		, entryGrade.DimGradeLevelId				AS EntryGradeLevelId
 		, entryDate.DimDateId						AS EnrollmentEntryDateId
-		, ExitDate.DimDateId						AS EnrollmentExitDateId
+		, exitdate.DimDateId						AS EnrollmentExitDateId
 		, progStartDate.DimDateId					AS ProgramParticipationStartDateId
 		, serviceExitDate.DimDateId					AS SpecialEducationServicesExitDateId
 		, ske.FullTimeEquivalency					
@@ -197,34 +200,34 @@ BEGIN
 		ON ske.SchoolYear = rsy.SchoolYear
 	LEFT JOIN RDS.DimLeas rdlAcc
 		ON ske.LeaIdentifierSeaAccountability = rdlAcc.LeaIdentifierSea
-		AND ske.RecordStartDateTime BETWEEN rdlAcc.RecordStartDateTime AND ISNULL(rdlAcc.RecordEndDateTime, GETDATE())
+		AND ske.RecordStartDateTime BETWEEN rdlAcc.RecordStartDateTime AND ISNULL(rdlAcc.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimLeas rdlAtt
 		ON ske.LeaIdentifierSeaAttendance = rdlAtt.LeaIdentifierSea
-		AND ske.RecordStartDateTime BETWEEN rdlAtt.RecordStartDateTime AND ISNULL(rdlAtt.RecordEndDateTime, GETDATE())
+		AND ske.RecordStartDateTime BETWEEN rdlAtt.RecordStartDateTime AND ISNULL(rdlAtt.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimLeas rdlFun
 		ON ske.LeaIdentifierSeaFunding = rdlFun.LeaIdentifierSea
-		AND ske.RecordStartDateTime BETWEEN rdlFun.RecordStartDateTime AND ISNULL(rdlFun.RecordEndDateTime, GETDATE())
+		AND ske.RecordStartDateTime BETWEEN rdlFun.RecordStartDateTime AND ISNULL(rdlFun.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimLeas rdlGrad
 		ON ske.LeaIdentifierSeaGraduation = rdlGrad.LeaIdentifierSea
-		AND ske.RecordStartDateTime BETWEEN rdlGrad.RecordStartDateTime AND ISNULL(rdlGrad.RecordEndDateTime, GETDATE())
+		AND ske.RecordStartDateTime BETWEEN rdlGrad.RecordStartDateTime AND ISNULL(rdlGrad.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimLeas rdlIep
 		ON ske.LeaIdentifierSeaIndividualizedEducationProgram = rdlIep.LeaIdentifierSea
-		AND ske.RecordStartDateTime BETWEEN rdlIep.RecordStartDateTime AND ISNULL(rdlIep.RecordEndDateTime, GETDATE())
+		AND ske.RecordStartDateTime BETWEEN rdlIep.RecordStartDateTime AND ISNULL(rdlIep.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimK12Schools rdksch
 		ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
-		AND ske.RecordStartDateTime BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
+		AND ske.RecordStartDateTime BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimIeus rdi
 		ON (ISNULL(rdksch.IeuOrganizationIdentifierSea, 'MISSING') = rdi.IeuOrganizationIdentifierSea
 			OR ISNULL(rdlAcc.IeuOrganizationIdentifierSea, 'MISSING') = rdi.IeuOrganizationIdentifierSea)
-		AND ske.RecordStartDateTime BETWEEN rdi.RecordStartDateTime AND ISNULL(rdi.RecordEndDateTime, GETDATE())
+		AND ske.RecordStartDateTime BETWEEN rdi.RecordStartDateTime AND ISNULL(rdi.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimSeas rds
-		ON ske.RecordStartDateTime BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
+		ON ske.RecordStartDateTime BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
 	LEFT JOIN RDS.DimDataCollections rddc
 		ON ske.DataCollectionName = rddc.DataCollectionName 
 	LEFT JOIN RDS.DimDates entryDate
 		ON ske.EnrollmentEntryDate = entryDate.DateValue
-	LEFT JOIN RDS.DimDates ExitDate
-		ON ske.EnrollmentExitDate = ExitDate.DateValue
+	LEFT JOIN RDS.DimDates exitdate
+		ON ske.EnrollmentExitDate = exitdate.DateValue
 	LEFT JOIN RDS.DimDates countDate
 		ON ske.RecordStartDateTime = countDate.DateValue
 	--LEFT JOIN #vwDimResponsibleSchoolTypes rdrst
@@ -675,25 +678,25 @@ SELECT		  ISNULL([SchoolYearId]											, -1)
 	
 	--ALTER INDEX ALL ON RDS.FactSpecialEducation REBUILD;
 
-	DROP TABLE IF EXISTS #SchoolYears
-	DROP TABLE IF EXISTS #vwDimK12Demographics
-	DROP TABLE IF EXISTS #vwDimIdeaStatuses
-	DROP TABLE IF EXISTS #vwDimEnglishLearnerStatuses
-	DROP TABLE IF EXISTS #vwDimGradeLevels
-	DROP TABLE IF EXISTS #vwDimHomelessnessStatuses
-	DROP TABLE IF EXISTS #vwDimEconomicallyDisadvantagedStatuses
-	DROP TABLE IF EXISTS #vwDimFosterCareStatuses
-	DROP TABLE IF EXISTS #vwDimImmigrantStatuses
-	DROP TABLE IF EXISTS #vwDimMigrantStatuses
-	DROP TABLE IF EXISTS #vwDimMilitaryStatuses
-	DROP TABLE IF EXISTS #vwDimIdeaDisabilityTypes
-	DROP TABLE IF EXISTS #vwDimTitleIIIStatuses
-	DROP TABLE IF EXISTS #vwDimDisabilityStatuses
-	--DROP TABLE IF EXISTS #vwDimResponsibleSchoolTypes
-	DROP TABLE IF EXISTS #vwDimIndividualizedProgramStatuses
-	DROP TABLE IF EXISTS #vwDimChildOutcomeSummaries
-	DROP TABLE IF EXISTS #vwDimK12EnrollmentStatuses
-	DROP TABLE IF EXISTS #Facts
+	IF OBJECT_ID(N'tempdb..#SchoolYears') IS NOT NULL DROP TABLE #SchoolYears
+	IF OBJECT_ID(N'tempdb..#vwDimK12Demographics') IS NOT NULL DROP TABLE #vwDimK12Demographics
+	IF OBJECT_ID(N'tempdb..#vwDimIdeaStatuses') IS NOT NULL DROP TABLE #vwDimIdeaStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimEnglishLearnerStatuses') IS NOT NULL DROP TABLE #vwDimEnglishLearnerStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimGradeLevels') IS NOT NULL DROP TABLE #vwDimGradeLevels
+	IF OBJECT_ID(N'tempdb..#vwDimHomelessnessStatuses') IS NOT NULL DROP TABLE #vwDimHomelessnessStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimEconomicallyDisadvantagedStatuses') IS NOT NULL DROP TABLE #vwDimEconomicallyDisadvantagedStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimFosterCareStatuses') IS NOT NULL DROP TABLE #vwDimFosterCareStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimImmigrantStatuses') IS NOT NULL DROP TABLE #vwDimImmigrantStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimMigrantStatuses') IS NOT NULL DROP TABLE #vwDimMigrantStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimMilitaryStatuses') IS NOT NULL DROP TABLE #vwDimMilitaryStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimIdeaDisabilityTypes') IS NOT NULL DROP TABLE #vwDimIdeaDisabilityTypes
+	IF OBJECT_ID(N'tempdb..#vwDimTitleIIIStatuses') IS NOT NULL DROP TABLE #vwDimTitleIIIStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimDisabilityStatuses') IS NOT NULL DROP TABLE #vwDimDisabilityStatuses
+	--IF OBJECT_ID(N'tempdb..#vwDimResponsibleSchoolTypes') IS NOT NULL DROP TABLE #vwDimResponsibleSchoolTypes
+	IF OBJECT_ID(N'tempdb..#vwDimIndividualizedProgramStatuses') IS NOT NULL DROP TABLE #vwDimIndividualizedProgramStatuses
+	IF OBJECT_ID(N'tempdb..#vwDimChildOutcomeSummaries') IS NOT NULL DROP TABLE #vwDimChildOutcomeSummaries
+	IF OBJECT_ID(N'tempdb..#vwDimK12EnrollmentStatuses') IS NOT NULL DROP TABLE #vwDimK12EnrollmentStatuses
+	IF OBJECT_ID(N'tempdb..#Facts') IS NOT NULL DROP TABLE #Facts
 
 	INSERT INTO RDS.BridgeSpecialEducationRaces
 		(

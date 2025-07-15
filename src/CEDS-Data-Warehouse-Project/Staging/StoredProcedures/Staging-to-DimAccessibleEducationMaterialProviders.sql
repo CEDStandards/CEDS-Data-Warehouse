@@ -111,3 +111,4 @@ AS
         ON saemp.AccessibleEducationMaterialProviderOrganizationIdentifierSea = rdaemp.AccessibleEducationMaterialProviderOrganizationIdentifierSea
         AND saemp.RecordStartDateTime = rdaemp.RecordStartDateTime
     WHERE rdaemp.DimAccessibleEducationMaterialProviderId IS NULL;
+GO

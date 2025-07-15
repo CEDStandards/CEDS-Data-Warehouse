@@ -186,7 +186,7 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId								
 			, ISNULL(rdkd.DimK12DemographicId, -1)						K12DemographicId						
 			, 1															StudentCount							
-			, ISNULL(RDS.DimSeaId, -1)									SeaId									
+			, ISNULL(rds.DimSeaId, -1)									SeaId									
 			, -1														IeuId									
 			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
@@ -221,8 +221,8 @@ BEGIN
 			AND ((rdp.RecordStartDateTime BETWEEN @ReportingStartDate and @ReportingEndDate)
 				OR (rdp.RecordStartDateTime < @ReportingStartDate AND ISNULL(rdp.RecordEndDateTime, @SYEndDate) > @ReportingStartDate))
 		JOIN RDS.DimSeas rds
-			ON ((RDS.RecordStartDateTime BETWEEN @ReportingStartDate and @ReportingEndDate)
-				OR (RDS.RecordStartDateTime < @ReportingStartDate AND ISNULL(RDS.RecordEndDateTime, @SYEndDate) > @ReportingStartDate))
+			ON ((rds.RecordStartDateTime BETWEEN @ReportingStartDate and @ReportingEndDate)
+				OR (rds.RecordStartDateTime < @ReportingStartDate AND ISNULL(rds.RecordEndDateTime, @SYEndDate) > @ReportingStartDate))
 		LEFT JOIN RDS.DimLeas rdl
 			ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
 			AND ((rdl.RecordStartDateTime BETWEEN @ReportingStartDate and @ReportingEndDate)
@@ -394,7 +394,7 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-			insert into app.DataMigrationHistories
+			insert into App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

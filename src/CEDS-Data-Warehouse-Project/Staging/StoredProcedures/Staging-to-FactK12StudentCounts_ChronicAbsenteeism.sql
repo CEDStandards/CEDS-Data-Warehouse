@@ -42,25 +42,25 @@ BEGIN
 		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 
 	--Get the set of students from DimPeople to be used for the migrated SY
-		select K12StudentStudentIdentifierState
-			, max(DimPersonId)								DimPersonId
-			, min(RecordStartDateTime)						RecordStartDateTime
-			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(Birthdate, '1900-01-01'))			Birthdate
-		into #dimPeople
-		from RDS.DimPeople
-		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
-			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
-		and IsActiveK12Student = 1
-		group by K12StudentStudentIdentifierState
-		order by K12StudentStudentIdentifierState
+		SELECT K12StudentStudentIdentifierState
+			, MAX(DimPersonId)								DimPersonId
+			, MIN(RecordStartDateTime)						RecordStartDateTime
+			, MAX(ISNULL(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, MAX(ISNULL(Birthdate, '1900-01-01'))			Birthdate
+		INTO #dimPeople
+		FROM RDS.DimPeople
+		WHERE ((RecordStartDateTime <= @SYStartDate AND RecordEndDateTime > @SYStartDate)
+			OR (RecordStartDateTime > @SYStartDate AND ISNULL(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+		AND IsActiveK12Student = 1
+		GROUP BY K12StudentStudentIdentifierState
+		ORDER BY K12StudentStudentIdentifierState
 
-		create index IDX_dimPeople ON #dimPeople (K12StudentStudentIdentifierState, DimPersonId, RecordStartDateTime, RecordEndDateTime, Birthdate)
+		CREATE INDEX IDX_dimPeople ON #dimPeople (K12StudentStudentIdentifierState, DimPersonId, RecordStartDateTime, RecordEndDateTime, Birthdate)
 
 	--reset the RecordStartDateTime if the date is prior to the default start date of 7/1
-		update #dimPeople
-		set RecordStartDateTime = @SYStartDate
-		where RecordStartDateTime < @SYStartDate
+		UPDATE #dimPeople
+		SET RecordStartDateTime = @SYStartDate
+		WHERE RecordStartDateTime < @SYStartDate
 
 	--Create the temp views (and any relevant indexes) needed for this domain
 		SELECT *
@@ -220,7 +220,7 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId								
 			, ISNULL(rdkd.DimK12DemographicId, -1)						K12DemographicId						
 			, 1															StudentCount							
-			, ISNULL(RDS.DimSeaId, -1)									SeaId									
+			, ISNULL(rds.DimSeaId, -1)									SeaId									
 			, -1														IeuId									
 			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
@@ -249,7 +249,7 @@ BEGIN
 		JOIN RDS.DimSchoolYears rsy
 			ON ske.SchoolYear = rsy.SchoolYear
 		JOIN RDS.DimSeas rds
-			ON ske.EnrollmentEntryDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, @SYEndDate)
+			ON ske.EnrollmentEntryDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
 	--demographics			
 		JOIN RDS.vwDimK12Demographics rdkd
  			ON rsy.SchoolYear = rdkd.SchoolYear
@@ -421,9 +421,9 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-	insert into app.DataMigrationHistories
+	INSERT INTO App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
-		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
+		VALUES	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH
 
 END

@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [Staging].[Staging-to-DimIeus]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
@@ -95,9 +95,9 @@ BEGIN
 		AND sssrd1.TableFilter = '001418'
 		AND sko.SchoolYear = sssrd1.SchoolYear
 	WHERE sko.IeuIdentifierSea IS NOT NULL
-		AND (@DataCollectionName IS NULL
+		AND (@dataCollectionName IS NULL
 			OR (
-					sko.DataCollectionName = @DataCollectionName
+					sko.DataCollectionName = @dataCollectionName
 			)
 		)
 
@@ -222,3 +222,4 @@ BEGIN
 	DROP TABLE #Ieus
 
 END
+GO

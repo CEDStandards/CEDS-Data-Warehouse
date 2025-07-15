@@ -17,7 +17,12 @@ BEGIN
 		DECLARE 
 		@FactTypeId INT,
 		@SchoolYearId int,
-		@ChildCountDate date
+		@ChildCountDate date,
+		@SYStartDate date,
+		@SYEndDate date
+
+		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
+		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 		
 	--Setting variables to be used in the select statements 
 		SELECT @SchoolYearId = DimSchoolYearId 
@@ -39,19 +44,21 @@ BEGIN
 		FROM RDS.vwDimK12StaffStatuses
 		WHERE SchoolYear = @SchoolYear
 
-		CREATE CLUSTERED INDEX ix_tempvwK12StaffStatuses ON #vwK12StaffStatuses (SpecialEducationAgeGroupTaughtMap, EdFactsTeacherInexperiencedStatusMap, EdFactsTeacherOutOfFieldStatusMap, TeachingCredentialTypeMap, ParaprofessionalQualificationStatusMap, HighlyQualifiedTeacherIndicatorMap, SpecialEducationTeacherQualificationStatusMap, EdFactsCertificationStatusMap);
+		--CREATE CLUSTERED INDEX ix_tempvwK12StaffStatuses ON #vwK12StaffStatuses (SpecialEducationAgeGroupTaughtMap, EdFactsTeacherInexperiencedStatusMap, EdFactsTeacherOutOfFieldStatusMap
+		--	, TeachingCredentialTypeMap, ParaprofessionalQualificationStatusMap, HighlyQualifiedTeacherIndicatorMap, SpecialEducationTeacherQualificationStatusMap
+		--	, EdFactsCertificationStatusMap);
 		
 		SELECT *
 		INTO #vwK12StaffCategories
 		FROM RDS.vwDimK12StaffCategories
 		WHERE SchoolYear = @SchoolYear
 
-    CREATE CLUSTERED INDEX ix_tempvwK12StaffCategories ON #vwK12StaffCategories (K12StaffClassificationMap, SpecialEducationSupportServicesCategoryMap, TitleIProgramStaffCategoryMap);
+	   -- CREATE CLUSTERED INDEX ix_tempvwK12StaffCategories ON #vwK12StaffCategories (K12StaffClassificationMap, SpecialEducationSupportServicesCategoryMap, TitleIProgramStaffCategoryMap);
 
 		
 		SELECT @FactTypeId = DimFactTypeId 
 		FROM RDS.DimFactTypes
-		WHERE FactTypeCode = 'Submission'
+		WHERE FactTypeCode = 'staff'
 
 		DELETE RDS.FactK12StaffCounts
 		WHERE SchoolYearId = @SchoolYearId 
@@ -83,8 +90,8 @@ BEGIN
 			ssa.Id										StagingId
 			, rsy.DimSchoolYearId						SchoolYearId
 			, @FactTypeId								FactTypeId
-			, ISNULL(RDS.DimSeaId, -1)					SeaId
-			, ISNULL(rdl.DimLeaId, -1)					LeaId
+			, ISNULL(rds.DimSeaId, -1)					SeaId
+			, ISNULL(rdl.DimLeaID, -1)					LeaId
 			, ISNULL(rdksch.DimK12SchoolId, -1)			K12SchoolId
 			, ISNULL(rdp.DimPersonId, -1)				K12StaffId
 			, ISNULL(rdkss.DimK12StaffStatusId, -1)		K12StaffStatusId
@@ -93,21 +100,21 @@ BEGIN
 			, ISNULL(credIss.DimDateId, -1)				CredentialIssuanceDateId
 			, ISNULL(credExp.DimDateId, -1)				CredentialExpirationDateId
 			, 1											StaffCounts
-			, FullTimeEquivalency						StaffFullTimeEquivalency
+			, ISNULL(FullTimeEquivalency, 0)			StaffFullTimeEquivalency
 		FROM Staging.K12StaffAssignment ssa
 		JOIN RDS.DimSchoolYears rsy
 			ON ssa.SchoolYear = rsy.SchoolYear
 	--lea (rds)
 		LEFT JOIN RDS.DimLeas rdl
 			ON ssa.LeaIdentifierSea = rdl.LeaIdentifierSea
-			AND @ChildCountDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, GETDATE())
+			AND @ChildCountDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, @SYEndDate)
 	--k12 school (rds)
 		LEFT JOIN RDS.DimK12Schools rdksch
 			ON ssa.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
-			AND @ChildCountDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
+			AND @ChildCountDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, @SYEndDate)
 	--sea (rds)
 		LEFT JOIN RDS.DimSeas rds
-			ON @ChildCountDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
+			ON @ChildCountDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
 	--staff categories (rds)
 		LEFT JOIN #vwK12StaffCategories rdksc 
 			ON rsy.SchoolYear = rdksc.SchoolYear
@@ -118,11 +125,11 @@ BEGIN
 		LEFT JOIN #vwK12StaffStatuses rdkss
 			ON rsy.SchoolYear = rdkss.SchoolYear
 			AND ISNULL(ssa.SpecialEducationAgeGroupTaught, 'MISSING') = ISNULL(rdkss.SpecialEducationAgeGroupTaughtMap, rdkss.SpecialEducationAgeGroupTaughtCode)
-			AND ISNULL(ssa.EdFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherOutOfFieldStatusMap, rdkss.EdFactsTeacherOutOfFieldStatusCode)
+			AND ISNULL(ssa.EDFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EDFactsTeacherOutOfFieldStatusMap, rdkss.EDFactsTeacherOutOfFieldStatusCode)
 			AND ISNULL(ssa.EdFactsTeacherInexperiencedStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherInexperiencedStatusMap, rdkss.EdFactsTeacherInexperiencedStatusCode)
 			AND ISNULL(ssa.TeachingCredentialType, 'MISSING') = ISNULL(rdkss.TeachingCredentialTypeMap, rdkss.TeachingCredentialTypeCode)
 			AND ISNULL(ssa.ParaprofessionalQualificationStatus, 'MISSING') = ISNULL(rdkss.ParaprofessionalQualificationStatusMap, rdkss.ParaprofessionalQualificationStatusCode)
-			AND ISNULL(CAST(ssa.HighlyQualifiedTeacherIndicator AS SMALLINT), -1) = ISNULL(rdkss.HighlyQualifiedTeacherIndicatorMap, -1)
+			AND rdkss.HighlyQualifiedTeacherIndicatorCode = 'MISSING'
 			AND ISNULL(ssa.SpecialEducationTeacherQualificationStatus, 'MISSING') = ISNULL(rdkss.SpecialEducationTeacherQualificationStatusMap, rdkss.SpecialEducationTeacherQualificationStatusCode)
             AND	ISNULL(ssa.EdFactsCertificationStatus, 'MISSING') = ISNULL(rdkss.EdFactsCertificationStatusMap, rdkss.EdFactsCertificationStatusCode)
 	--credential issuance date	
@@ -138,8 +145,8 @@ BEGIN
 			AND ISNULL(ssa.FirstName, 'MISSING') = ISNULL(rdp.FirstName, 'MISSING')
 			AND ISNULL(ssa.MiddleName, 'MISSING') = ISNULL(rdp.MiddleName, 'MISSING')
 			AND ISNULL(ssa.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
-			AND @ChildCountDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
-			AND @ChildCountDate BETWEEN ssa.AssignmentStartDate AND ISNULL(ssa.AssignmentEndDate, GETDATE())
+			AND @ChildCountDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
+			AND @ChildCountDate BETWEEN ssa.AssignmentStartDate AND ISNULL(ssa.AssignmentEndDate, @SYEndDate)
 		
 	--Final insert into RDS.FactK12StaffCounts table
 		INSERT INTO RDS.FactK12StaffCounts ( 
@@ -177,7 +184,12 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-		INSERT INTO Staging.ValidationErrors VALUES ('Staging.Staging-to-FactK12StaffCounts', 'RDS.FactK12StaffCounts', 'FactK12StaffCounts', NULL, ERROR_MESSAGE(), 1, NULL, GETDATE())
+	insert into App.DataMigrationHistories
+		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH
 		
 END
+GO
+
+

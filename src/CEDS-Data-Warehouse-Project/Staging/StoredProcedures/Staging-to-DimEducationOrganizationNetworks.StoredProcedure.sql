@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [Staging].[Staging-to-DimEducationOrganizationNetworks]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
@@ -58,8 +58,8 @@ BEGIN
 			AND ssrd.TableName = 'RefOrganizationType'
 			AND ssrd.TableFilter = '001156'
 		WHERE seon.[EducationOrganizationNetworkIdentifierSea] IS NOT NULL
-			AND (@DataCollectionName IS NULL
-				OR seon.DataCollectionName = @DataCollectionName
+			AND (@dataCollectionName IS NULL
+				OR seon.DataCollectionName = @dataCollectionName
 			)
 
 	)

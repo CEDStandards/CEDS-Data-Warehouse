@@ -22,7 +22,7 @@ BEGIN
 			SET IDENTITY_INSERT RDS.DimPeople off
 		END
 
-		DROP TABLE IF EXISTS #People
+		IF OBJECT_ID(N'tempdb..#People') IS NOT NULL DROP TABLE #People
 		CREATE TABLE #People (
 			  Birthdate						  DATE
 			, FirstName						  NVARCHAR(50) NULL
@@ -235,6 +235,7 @@ BEGIN
 		ALTER INDEX IX_DimPeople_All ON RDS.DimPeople DISABLE
 		ALTER INDEX IX_DimPeople_IsActiveK12Student ON RDS.DimPeople DISABLE
 		ALTER INDEX IX_DimPeople_IsActiveK12Student_IsActivePsStudent_WithIncludes ON RDS.DimPeople DISABLE
+		ALTER INDEX IX_DimPeople_RecordEndDateTime_WithIncludes ON RDS.DimPeople DISABLE
 		
 		UPDATE person --25 minutes
 		SET RecordEndDateTime = NULL
@@ -242,7 +243,7 @@ BEGIN
 
 		ALTER INDEX ALL ON RDS.DimPeople REBUILD
 		
-		Drop Table If Exists #upd
+		IF OBJECT_ID(N'tempdb..#upd') IS NOT NULL DROP TABLE #upd
 
 		CREATE TABLE #upd (
 			  K12StudentStudentIdentifierState		NVARCHAR(60)
@@ -275,6 +276,7 @@ BEGIN
 		DECLARE @index SMALLINT = 0
 
 		ALTER INDEX IX_DimPeople_RecordStartDateTime_K12ID_PSID_RecordEndDateTime ON RDS.DimPeople DISABLE
+		ALTER INDEX IX_DimPeople_RecordEndDateTime_WithIncludes ON RDS.DimPeople DISABLE
 		ALTER INDEX IX_DimPeople_K12Students ON RDS.DimPeople DISABLE
 
 		WHILE @index <= 9
@@ -299,8 +301,8 @@ BEGIN
 			SET @index = @index + 1
 		END
 
-		DROP TABLE IF EXISTS #People
-		DROP TABLE IF EXISTS #upd
+		IF OBJECT_ID(N'tempdb..#People') IS NOT NULL DROP TABLE #People
+		IF OBJECT_ID(N'tempdb..#upd') IS NOT NULL DROP TABLE #upd
 		
 		ALTER INDEX ALL ON RDS.DimPeople REBUILD
 

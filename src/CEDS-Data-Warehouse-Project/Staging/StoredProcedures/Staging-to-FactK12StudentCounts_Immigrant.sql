@@ -1,3 +1,4 @@
+
 /**********************************************************************
 Author: AEM Corp
 Date:	2/20/2023
@@ -31,6 +32,27 @@ BEGIN
 
 		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
 		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
+
+	--Get the set of students from DimPeople to be used for the migrated SY
+		select K12StudentStudentIdentifierState
+			, max(DimPersonId)								DimPersonId
+			, min(RecordStartDateTime)						RecordStartDateTime
+			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, max(isnull(birthdate, '1900-01-01'))			BirthDate
+		into #dimPeople
+		from RDS.DimPeople
+		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
+			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+		and IsActiveK12Student = 1
+		group by K12StudentStudentIdentifierState
+		order by K12StudentStudentIdentifierState
+
+		create index IDX_dimPeople ON #dimPeople (K12StudentStudentIdentifierState, DimPersonId, RecordStartDateTime, RecordEndDateTime, Birthdate)
+
+	--reset the RecordStartDateTime if the date is prior to the default start date of 7/1
+		update #dimPeople
+		set RecordStartDateTime = @SYStartDate
+		where RecordStartDateTime < @SYStartDate
 
 	--Create the temp views (and any relevant indexes) needed for this domain
 		SELECT *
@@ -72,9 +94,9 @@ BEGIN
 			, RaceId								int null
 			, K12DemographicId						int null
 			, StudentCount							int null
-			, SeaId									int null
-			, IeuId									int null
-			, LeaId									int null
+			, SEAId									int null
+			, IEUId									int null
+			, LEAId									int null
 			, K12SchoolId							int null
 			, K12StudentId							int null
 			, IdeaStatusId							int null
@@ -86,7 +108,7 @@ BEGIN
 			, AttendanceId							int null
 			, CohortStatusId						int null
 			, NOrDStatusId							int null
-			, CteStatusId							int null
+			, CTEStatusId							int null
 			, K12EnrollmentStatusId					int null
 			, EnglishLearnerStatusId				int null
 			, HomelessnessStatusId					int null
@@ -101,7 +123,7 @@ BEGIN
 
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.Id														StagingId								
+			ske.id														StagingId								
 			, rsy.DimSchoolYearId										SchoolYearId							
 			, @FactTypeId												FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)							GradeLevelId							
@@ -109,9 +131,9 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId								
 			, ISNULL(rdkd.DimK12DemographicId, -1)						K12DemographicId						
 			, 1															StudentCount							
-			, ISNULL(RDS.DimSeaId, -1)									SeaId									
-			, -1														IeuId									
-			, ISNULL(rdl.DimLeaId, -1)									LeaId									
+			, ISNULL(rds.DimSeaId, -1)									SEAId									
+			, -1														IEUId									
+			, ISNULL(rdl.DimLeaID, -1)									LEAId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId							
 			, -1														IdeaStatusId							
@@ -123,7 +145,7 @@ BEGIN
 			, -1														AttendanceId							
 			, -1 														CohortStatusId						
 			, -1														NOrDStatusId							
-			, -1														CteStatusId							
+			, -1														CTEStatusId							
 			, -1														K12EnrollmentStatusId					
 			, ISNULL(rdels.DimEnglishLearnerStatusId, -1)				EnglishLearnerStatusId				
 			, -1														HomelessnessStatusId					
@@ -138,26 +160,32 @@ BEGIN
 		FROM Staging.K12Enrollment ske
 		JOIN RDS.DimSchoolYears rsy
 			ON ske.SchoolYear = rsy.SchoolYear
+		JOIN #dimPeople rdp
+			ON ske.StudentIdentifierState = rdp.StateStudentIdentifier
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ske.EnrollmentEntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
+		JOIN RDS.DimSeas rds
+			ON ske.EnrollmentEntryDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
 		LEFT JOIN RDS.DimLeas rdl
 			ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
-			AND ske.EnrollmentEntryDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, GETDATE())
+			AND ske.EnrollmentEntryDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, @SYEndDate)
 		LEFT JOIN RDS.DimK12Schools rdksch
 			ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
-			AND ske.EnrollmentEntryDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
-		JOIN RDS.DimSeas rds
-			ON ske.EnrollmentEntryDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
+			AND ske.EnrollmentEntryDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, @SYEndDate)
 	--english learner
 		LEFT JOIN Staging.PersonStatus el 
-			ON ske.StudentIdentifierState = el.StudentIdentifierState
+			ON ske.SchoolYear = el.SchoolYear
+			AND ske.StudentIdentifierState = el.StudentIdentifierState
 			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(el.LeaIdentifierSeaAccountability, '') 
 			AND ISNULL(ske.SchoolIdentifierSea, '') = ISNULL(el.SchoolIdentifierSea, '')
-			AND el.EnglishLearner_StatusStartDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, GETDATE())
+			AND el.EnglishLearner_StatusStartDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, @SYEndDate)
 	--immigrant status	
 		LEFT JOIN Staging.PersonStatus immigrant
-			ON ske.StudentIdentifierState = immigrant.StudentIdentifierState
+			ON ske.SchoolYear = immigrant.SchoolYear
+			AND ske.StudentIdentifierState = immigrant.StudentIdentifierState
 			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(immigrant.LeaIdentifierSeaAccountability, '')
 			AND ISNULL(ske.SchoolIdentifierSea, '') = ISNULL(immigrant.SchoolIdentifierSea, '')
-			AND immigrant.Immigrant_ProgramParticipationStartDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, GETDATE())
+			AND immigrant.Immigrant_ProgramParticipationStartDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, @SYEndDate)
 	--english learner (RDS)
 		LEFT JOIN RDS.vwDimEnglishLearnerStatuses rdels
 			ON rsy.SchoolYear = rdels.SchoolYear
@@ -171,14 +199,6 @@ BEGIN
 		LEFT JOIN #vwGradeLevels rgls
 			ON ske.GradeLevel = rgls.GradeLevelMap
 			AND rgls.GradeLevelTypeDescription = 'Entry Grade Level'
-		JOIN RDS.DimPeople rdp
-			ON ske.StudentIdentifierState = rdp.StateStudentIdentifier
-			AND rdp.IsActiveK12Student = 1
-			AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
-			AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
-			AND ISNULL(ske.LastOrSurname, 'MISSING') = rdp.LastOrSurname
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
-			AND ske.EnrollmentEntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 
 
 	--Final insert into RDS.FactK12StudentCounts table
@@ -190,9 +210,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SeaId]
-			, [IeuId]
-			, [LeaId]
+			, [SEAId]
+			, [IEUId]
+			, [LEAId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -204,7 +224,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CteStatusId]
+			, [CTEStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]
@@ -224,9 +244,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SeaId]
-			, [IeuId]
-			, [LeaId]
+			, [SEAId]
+			, [IEUId]
+			, [LEAId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -238,7 +258,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CteStatusId]
+			, [CTEStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]
@@ -255,10 +275,12 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-		INSERT INTO Staging.ValidationErrors VALUES ('Staging.Staging-to-FactK12StudentCounts_Immigrant', 'RDS.FactK12StudentCounts', 'FactK12StudentCounts', 'FactK12StudentCounts', ERROR_MESSAGE(), 1, NULL, GETDATE())
+	insert into App.DataMigrationHistories
+		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH
 
 END
-
 GO
+
 

@@ -114,7 +114,7 @@ BEGIN
     AND ISNULL(ska.TitleITargetedAssistanceStaffFundedCode, 'MISSING') = ISNULL(rdkes.TitleITargetedAssistanceStaffFundedMap, rdkes.TitleITargetedAssistanceStaffFundedCode)
     AND ISNULL(ska.MEPPersonnelIndicatorCode, 'MISSING') = ISNULL(rdkes.MEPPersonnelIndicatorMap, rdkes.MEPPersonnelIndicatorCode)
   LEFT JOIN RDS.DimK12JobPositions rdkp
-    ON ska.PositionIdentifierSea = RDS.DimK12JobPositions.PositionIdentifierSea
+    ON ska.JobPositionIdentifierSea = rdkp.JobPositionIdentifierSea
   LEFT JOIN RDS.DimK12Jobs rdkj
     ON ska.JobTitle = rdkj.JobTitle
   LEFT JOIN RDS.DimDates rda

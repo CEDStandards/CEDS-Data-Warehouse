@@ -4,8 +4,10 @@ Date:	5/1/2022
 Description: Migrates Organization Data from Staging to RDS.FactOrganizationCounts
 
 NOTE: This Stored Procedure processes files: 029, 035, 039, 103, 129, 130, 131, 163, 170, 190, 193, 196, 197, 198, 205, 206
+
+1/10/2024 JW CIID-5731
 ************************************************************************/
-CREATE PROCEDURE Staging.[Staging-to-FactOrganizationCounts]
+CREATE PROCEDURE [Staging].[Staging-to-FactOrganizationCounts]
 	@SchoolYear smallint 
 
 AS   
@@ -67,17 +69,19 @@ BEGIN
 		DECLARE @factTypeId AS INT
 		SELECT @factTypeId = DimFactTypeId FROM RDS.DimFactTypes WHERE FactTypeCode = 'directory'
 
-		DECLARE @dimSeaId AS INT, @DimK12StaffId INT, @DimIeuId INT, @dimLeaId INT, @DimK12SchoolId INT, @IsCharterSchool AS BIT, 
-			@leaOrganizationId AS INT, 
-			@schoolOrganizationId AS INT
+		DECLARE @dimSeaId AS INT, @DimK12StaffId INT, @DimIeuId INT, @dimLeaId INT, @DimK12SchoolId INT
+			, @IsCharterSchool AS BIT, @leaOrganizationId AS INT, @schoolOrganizationId AS INT
 		
 		DECLARE @count AS INT
 		DECLARE @dimCharterSchoolManagerId AS INT
 		DECLARE @dimCharterSchoolSecondaryManagerId AS INT
 		DECLARE @dimCharterSchoolAuthorizerId AS INT
 		DECLARE @dimCharterSchoolSecondaryAuthorizerId AS INT
-			
 
+		DECLARE @leaOperationalStatustypeId AS INT, @schOperationalStatustypeId AS INT
+		SELECT @leaOperationalStatustypeId = RefOperationalStatusTypeId FROM dbo.RefOperationalStatusType WHERE Code = '000174'
+		SELECT @schOperationalStatustypeId = RefOperationalStatusTypeId FROM dbo.RefOperationalStatusType WHERE Code = '000533'
+		
 		-- DELETE RECORDS FOR SCHOOL YEAR FROM FACT TABLE
 		DELETE FROM RDS.FactOrganizationCounts 
 		WHERE SchoolYearId = @SchoolYearId
@@ -175,6 +179,9 @@ BEGIN
 		INTO #SortLEAs
 		FROM 
 			RDS.DimLeas
+		-- CIID-5731 Begin --
+		WHERE RecordStartDateTime BETWEEN Staging.GetFiscalYearStartDate(@SchoolYear) AND Staging.GetFiscalYearEndDate(@SchoolYear) 
+		-- CIID-5731 End --
 
 		SELECT * 
 		INTO #DistinctLEAs
@@ -182,7 +189,6 @@ BEGIN
 		WHERE LeaIdentifierSea IS NOT NULL
 		AND row_num = 1
 	
-
 		INSERT INTO
 		[RDS].[FactOrganizationCounts] (
 			[SchoolYearId]
@@ -288,6 +294,9 @@ BEGIN
 				ORDER BY RecordStartDateTime desc) row_num
 		INTO #SortSchools
 		FROM RDS.DimK12Schools
+		-- CIID-5731 Begin --
+		WHERE RecordStartDateTime BETWEEN Staging.GetFiscalYearStartDate(@SchoolYear) AND Staging.GetFiscalYearEndDate(@SchoolYear) 
+		-- CIID-5731 End --
 
 
 		SELECT * 
@@ -371,7 +380,7 @@ BEGIN
 			, -1														AS LeaId
 			, -1														AS K12StaffId
 			, rk12s.DimK12SchoolId										AS K12SchoolId
-			, ISNULL(t.DimTitleIStatusId,-1)							AS TitleIStatusId
+			, ISNULL(t.DimOrganizationTitleIStatusId,-1)				AS TitleIStatusId
 			, -1														AS TitleIParentalInvolveRes
 			, -1														AS TitleIPartAAllocations
 			, isnull(CSAP.MinId,-1)										AS AuthorizingBodyCharterSchoolAuthorizerId
@@ -415,10 +424,10 @@ BEGIN
 			AND isnull(s.PersistentlyDangerousStatusMap, s.PersistentlyDangerousStatusCode) = isnull(sk12o.School_SchoolDangerousStatus, 'MISSING')
 			AND isnull(s.StatePovertyDesignationMap, s.StatePovertyDesignationCode) = isnull(sk12o.School_StatePovertyDesignation, 'MISSING')
 			AND isnull(s.ProgressAchievingEnglishLanguageProficiencyIndicatorTypeMap, s.ProgressAchievingEnglishLanguageProficiencyIndicatorTypeCode) = isnull(sk12o.School_ProgressAchievingEnglishLanguageProficiencyIndicatorType, 'MISSING')
-		LEFT JOIN RDS.DimTitleIStatuses t 
+		LEFT JOIN RDS.vwDimOrganizationTitleIStatuses t 
 			ON t.TitleIInstructionalServicesCode = NULL
 			AND t.TitleIProgramTypeCode = NULL 
-			AND t.TitleISchoolStatusCode = NULL 
+			AND isnull(t.TitleISchoolStatusMap, t.TitleISchoolStatusCode) = isnull(sk12o.School_TitleISchoolStatus, 'MISSING')    
 			AND t.TitleISupportServicesCode = NULL 
 		LEFT JOIN RDS.vwDimK12OrganizationStatuses organizationStatus 
 			ON organizationStatus.SchoolYear = sk12o.SchoolYear
@@ -433,11 +442,12 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-		INSERT INTO app.DataMigrationHistories(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+		INSERT INTO App.DataMigrationHistories(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		VALUES	(getutcdate(), 2, 'RDS.FactOrganizationCounts - Error Occurred - ' + CAST(ERROR_MESSAGE() AS VARCHAR(900)))
 	END CATCH
 
 END
 
 GO
+
 

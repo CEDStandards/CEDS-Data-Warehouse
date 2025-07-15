@@ -25,7 +25,12 @@ BEGIN
 		DECLARE 
 		@FactTypeId INT,
 		@SchoolYearId int,
-		@ChildCountDate date
+		@ChildCountDate date,
+		@SYStartDate date,
+		@SYEndDate date
+
+		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
+		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 		
 	--Setting variables to be used in the select statements 
 		SELECT @SchoolYearId = DimSchoolYearId 
@@ -40,9 +45,28 @@ BEGIN
 
 		SELECT @ChildCountDate = CAST(CAST(@SchoolYear - 1 AS CHAR(4)) + '-' + CAST(MONTH(@ChildCountDate) AS VARCHAR(2)) + '-' + CAST(DAY(@ChildCountDate) AS VARCHAR(2)) AS DATE)
 
+	--Get the set of students from DimPeople to be used for the migrated SY
+		select K12StudentStudentIdentifierState
+			, max(DimPersonId)								DimPersonId
+			, min(RecordStartDateTime)						RecordStartDateTime
+			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, max(isnull(birthdate, '1900-01-01'))			BirthDate
+		into #dimPeople
+		from RDS.DimPeople
+		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
+			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+		and IsActiveK12Student = 1
+		group by K12StudentStudentIdentifierState
+		order by K12StudentStudentIdentifierState
+
+		create index IDX_dimPeople ON #dimPeople (K12StudentStudentIdentifierState, DimPersonId, RecordStartDateTime, RecordEndDateTime, Birthdate)
+
+	--reset the RecordStartDateTime if the date is prior to the default start date of 7/1
+		update #dimPeople
+		set RecordStartDateTime = @SYStartDate
+		where RecordStartDateTime < @SYStartDate
 
 	--Create the temp tables (and any relevant indexes) needed for this domain
-
 		SELECT *
 		INTO #vwGradeLevels
 		FROM RDS.vwDimGradeLevels
@@ -55,7 +79,7 @@ BEGIN
 		FROM RDS.vwDimIdeaStatuses
 		WHERE SchoolYear = @SchoolYear
 
-		CREATE CLUSTERED INDEX ix_tempvwIdeaStatuses ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolAgeMap);
+		CREATE CLUSTERED INDEX ix_tempvwIdeaStatuses ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolageMap);
 
 		SELECT * 
 		INTO #vwRaces 
@@ -100,13 +124,11 @@ BEGIN
 			, RaceId								int null
 			, K12DemographicId						int null
 			, StudentCount							int null
-
 			, SeaId									int null
 			, IeuId									int null
 			, LeaId									int null
 			, K12SchoolId							int null
 			, K12StudentId							int null
-
 			, IdeaStatusId							int null
 			, LanguageId							int null
 			, MigrantStatusId						int null
@@ -123,7 +145,6 @@ BEGIN
 			, FosterCareStatusId					int null
 			, ImmigrantStatusId						int null
 			, PrimaryDisabilityTypeId				int null
-
 			, SpecialEducationServicesExitDateId	int null
 			, MigrantStudentQualifyingArrivalDateId	int null
 			, LastQualifyingMoveDateId				int null
@@ -139,9 +160,9 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId
 			, ISNULL(rdkd.DimK12DemographicId, -1)						K12DemographicId
 			, 1															StudentCount
-			, ISNULL(RDS.DimSeaId, -1)									SeaId
+			, ISNULL(rds.DimSeaId, -1)									SeaId
 			, -1														IeuId
-			, ISNULL(rdl.DimLeaId, -1)									LeaId
+			, ISNULL(rdl.DimLeaID, -1)									LeaId
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId
 			, ISNULL(rdis.DimIdeaStatusId, -1)							IdeaStatusId
@@ -175,52 +196,49 @@ BEGIN
 				ON RDS.Get_Age(ske.Birthdate, @ChildCountDate) = rda.AgeValue
 		--seas (rds)			
 			JOIN RDS.DimSeas rds
-				ON @ChildCountDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())		
+				ON @ChildCountDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)		
 		--program participation special education	
 			JOIN Staging.ProgramParticipationSpecialEducation sppse
-				ON ske.StudentIdentifierState = sppse.StudentIdentifierState
+				ON ske.SchoolYear = sppse.SchoolYear
+				AND ske.StudentIdentifierState = sppse.StudentIdentifierState
 				AND ISNULL(ske.LeaIdentifierSeaAccountability,'') = ISNULL(sppse.LeaIdentifierSeaAccountability,'')
 				AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(sppse.SchoolIdentifierSea,'')
-				AND @ChildCountDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, GETDATE())
+				AND @ChildCountDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, @SYEndDate)
+		--dimpeople	(rds)
+			JOIN #dimPeople rdp
+				ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
+				AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+				AND @ChildCountDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
+			LEFT JOIN RDS.DimDates rdd
+				ON sppse.ProgramParticipationEndDate = rdd.DateValue
+				AND rdd.DateValue BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
+		--leas (rds)	
+			LEFT JOIN RDS.DimLeas rdl
+				ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
+				AND @ChildCountDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, @SYEndDate)
+		--schools (rds)
+			LEFT JOIN RDS.DimK12Schools rdksch
+				ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
+				AND @ChildCountDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, @SYEndDate)
+		--grade levels (rds)
+			LEFT JOIN #vwGradeLevels rgls
+				ON ske.GradeLevel = rgls.GradeLevelMap
+				AND rgls.GradeLevelTypeDescription = 'Entry Grade Level'
 		--idea disability type			
-			JOIN Staging.IdeaDisabilityType sidt	
+			LEFT JOIN Staging.IdeaDisabilityType sidt	
 				ON ske.SchoolYear = sidt.SchoolYear
 				AND sidt.StudentIdentifierState = sppse.StudentIdentifierState
 				AND ISNULL(sidt.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '')
 				AND ISNULL(sidt.SchoolIdentifierSea, '') = ISNULL(sppse.SchoolIdentifierSea, '')
 				AND sidt.IsPrimaryDisability = 1
-				AND @ChildCountDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
-		--dimpeople	(rds)
-			JOIN RDS.DimPeople rdp
-				ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
-				AND IsActiveK12Student = 1
-				AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
-				AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
-				AND ISNULL(ske.LastOrSurname, 'MISSING') = rdp.LastOrSurname
-				AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
-				AND @ChildCountDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
-
-			LEFT JOIN RDS.DimDates rdd
-				ON sppse.ProgramParticipationEndDate = rdd.DateValue
-				AND rdd.DateValue BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
-		--leas (rds)	
-			LEFT JOIN RDS.DimLeas rdl
-				ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
-				AND @ChildCountDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, GETDATE())
-		--schools (rds)
-			LEFT JOIN RDS.DimK12Schools rdksch
-				ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
-				AND @ChildCountDate BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
-		--grade levels (rds)
-			LEFT JOIN #vwGradeLevels rgls
-				ON ske.GradeLevel = rgls.GradeLevelMap
-				AND rgls.GradeLevelTypeDescription = 'Entry Grade Level'
+				AND @ChildCountDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, @SYEndDate)
 		--person status 
 			LEFT JOIN Staging.PersonStatus el 
-				ON ske.StudentIdentifierState = el.StudentIdentifierState
+				ON ske.SchoolYear = el.SchoolYear
+				AND ske.StudentIdentifierState = el.StudentIdentifierState
 				AND ISNULL(ske.LeaIdentifierSeaAccountability,'') = ISNULL(el.LeaIdentifierSeaAccountability,'')
 				AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(el.SchoolIdentifierSea,'')
-				AND @ChildCountDate BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, GETDATE())
+				AND @ChildCountDate BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, @SYEndDate)
 		--english learner (rds)
 			LEFT JOIN #vwEnglishLearnerStatuses rdels
 				ON rsy.SchoolYear = rdels.SchoolYear
@@ -241,17 +259,17 @@ BEGIN
 					END
 		--idea status (rds)	
 			LEFT JOIN #vwIdeaStatuses rdis
-				ON rdis.IdeaIndicatorCode = 'Yes'
-				AND rdis.SpecialEducationExitReasonCode = 'MISSING'
+				ON ISNULL(CAST(sppse.IdeaIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
 				AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
 				AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
+				AND rdis.SpecialEducationExitReasonCode = 'MISSING'
 		--idea disability type (rds)
 			LEFT JOIN RDS.vwDimIdeaDisabilityTypes rdidt
 				ON sidt.SchoolYear = rdidt.SchoolYear
 				AND ISNULL(sidt.IdeaDisabilityTypeCode, 'MISSING') = ISNULL(rdidt.IdeaDisabilityTypeMap, rdidt.IdeaDisabilityTypeCode)
 				AND sidt.IsPrimaryDisability = 1
 			
-			WHERE @ChildCountDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, GETDATE())
+			WHERE @ChildCountDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, @SYEndDate)
 
 	--Final insert into RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
@@ -325,14 +343,12 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-		INSERT INTO Staging.ValidationErrors VALUES ('Staging.Staging-to-FactK12StudentCounts_ChildCount', 'RDS.FactK12StudentCounts', 'FactK12StudentCounts', 'FactK12StudentCounts', ERROR_MESSAGE(), 1, NULL, GETDATE())
-
-		insert into app.DataMigrationHistories
-			(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
-
+	insert into App.DataMigrationHistories
+		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH
 
 END
-
 GO
+
 

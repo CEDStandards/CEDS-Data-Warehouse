@@ -30,7 +30,7 @@ BEGIN
 	SELECT 
 		  rsy.DimSchoolYearId
 		, ISNULL(rddc.DimDataCollectionId, -1) AS DataCollectionId
-		, ISNULL(RDS.DimSeaId, -1) AS SeaId
+		, ISNULL(rds.DimSeaId, -1) AS SeaId
 		, ISNULL(rdi.DimIeuId, -1) AS IeuId
 		, ISNULL(rdlAcc.DimLeaId, -1) AS LeaAccountabilityId
 		, ISNULL(rdlAtt.DimLeaId, -1) AS LeaAttendanceId
@@ -85,7 +85,7 @@ BEGIN
 			OR ISNULL(rdlAcc.IeuOrganizationIdentifierSea, '') = rdi.IeuOrganizationIdentifierSea)
 		AND ske.RecordStartDateTime BETWEEN rdi.RecordStartDateTime AND CASE WHEN rdi.RecordEndDateTime IS NULL THEN GETDATE() ELSE rdi.RecordEndDateTime END
 	JOIN RDS.DimSeas rds
-		ON ske.RecordStartDateTime BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
+		ON ske.RecordStartDateTime BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
 	JOIN RDS.DimDataCollections rddc
 		ON ske.DataCollectionName = rddc.DataCollectionName 
 	LEFT JOIN RDS.DimPeople rdp
@@ -165,3 +165,4 @@ BEGIN
 Commit Transaction
 
 END
+GO

@@ -169,7 +169,7 @@ BEGIN
 			, ISNULL(rdr.DimRaceId, -1)									RaceId								
 			, -1														K12DemographicId						
 			, 1															StudentCount							
-			, ISNULL(RDS.DimSeaId, -1)									SeaId									
+			, ISNULL(rds.DimSeaId, -1)									SeaId									
 			, -1														IeuId									
 			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
@@ -200,7 +200,7 @@ BEGIN
 		JOIN RDS.DimSchoolYears rsy
 			ON ske.SchoolYear = rsy.SchoolYear
 		JOIN RDS.DimSeas rds
-			ON ske.EnrollmentEntryDate BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, @SYEndDate)
+			ON ske.EnrollmentEntryDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
 		JOIN #dimPeople rdp
 			ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
 			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
@@ -401,7 +401,7 @@ I believe Cohort is supposed to be in AcademicAwardStatuses but the dimension do
 
 	END TRY
 	BEGIN CATCH
-		insert into app.DataMigrationHistories
+		insert into App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

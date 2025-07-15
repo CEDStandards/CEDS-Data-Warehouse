@@ -35,9 +35,9 @@ CREATE TABLE [Staging].[PersonStatus] (
     [MilitaryConnectedStudentIndicator]                      NVARCHAR (100) NULL,
     [MilitaryConnected_StatusStartDate]                      DATE           NULL,
     [MilitaryConnected_StatusEndDate]                        DATE           NULL,
-    [MilitaryActiveStatusIndicator]                         NVARCHAR (100) NULL,
+    [MilitaryActiveStatusIndicator]                          NVARCHAR (100) NULL,
     [MilitaryBranch]                                         NVARCHAR (100) NULL,
-    [MilitaryVeteranStatusIndicator]                        NVARCHAR (100) NULL,
+    [MilitaryVeteranStatusIndicator]                         NVARCHAR (100) NULL,
     [ProgramType_FosterCare]                                 BIT            NULL,
     [FosterCare_ProgramParticipationStartDate]               DATE           NULL,
     [FosterCare_ProgramParticipationEndDate]                 DATE           NULL,
@@ -57,7 +57,9 @@ CREATE TABLE [Staging].[PersonStatus] (
     [PerkinsEnglishLearnerStatus_StatusEndDate]              DATE           NULL,
     [RecordStartDateTime]                                    DATETIME       NULL,
     [RecordEndDateTime]                                      DATETIME       NULL,
+    [SchoolYear]                                             SMALLINT       NULL,
     [DataCollectionName]                                     NVARCHAR (100) NULL,
+    [RunDateTime]                                            DATETIME       NULL,
     CONSTRAINT [PK_PersonStatus] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

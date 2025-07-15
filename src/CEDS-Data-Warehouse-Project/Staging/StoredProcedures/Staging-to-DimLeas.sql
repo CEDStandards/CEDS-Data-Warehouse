@@ -1,22 +1,43 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimLeas]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
 
 	--Get the correct values for the state 
-	declare @StateCode varchar(2), @StateName varchar(50), @StateAnsiCode varchar(5)
-	select @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	select @StateName = (select CedsOptionSetDescription from [CEDS].[CedsOptionSetMapping] where CedsGlobalId = '000267' and CedsOptionSetCode = @StateCode)
-	select @StateAnsiCode = (select CedsOptionSetCode from [CEDS].[CedsOptionSetMapping] where CedsGlobalId = '000424' and CedsOptionSetDescription = @StateName)
+    DECLARE @SchoolYear int, @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5)
+    SELECT @SchoolYear = (	select sy.SchoolYear
+							from rds.DimSchoolYearDataMigrationTypes dm
+								inner join rds.dimschoolyears sy
+									on dm.dimschoolyearid = sy.dimschoolyearid
+							where IsSelected = 1
+							and dm.DataMigrationTypeId = 3
+						)
+    SELECT @StateCode = StateAbbreviationCode from Staging.StateDetail where SchoolYear = @schoolyear
+	SELECT @StateName = (	select CedsOptionSetDescription 
+							from ceds.CedsOptionSetMapping 
+							where CedsElementTechnicalName = 'StateAbbreviation' 
+							and CedsOptionSetCode = @StateCode
+						)
+	SELECT @StateANSICode = (	select CedsOptionSetCode 
+								from ceds.CedsOptionSetMapping 
+								where CedsElementTechnicalName = 'StateANSICode' 
+								and CedsOptionSetDescription = @StateName
+							)
 
 	--Get the count of LEAs that are marked as Charter
-	declare @charterLeaCount as int
-	select @charterLeaCount = count(LeaIdentifierSea) from Staging.K12Organization where Lea_CharterSchoolIndicator = 1
+	DECLARE @charterLeaCount as int = 0
+	SELECT @charterLeaCount = count(distinct LEAIdentifierSea) 
+	FROM staging.K12Organization sko
+		LEFT JOIN staging.SourceSystemReferenceData sssrd
+			ON sko.LEA_Type = sssrd.InputCode
+			AND sssrd.TableName = 'RefLeaType'
+			AND sko.SchoolYear = sssrd.SchoolYear
+	WHERE sssrd.OutputCode = 'IndependentCharterDistrict'
 
 	--Insert the default 'missing' row if it doesn't exist
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimLeas WHERE DimLeaId = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimLeas WHERE DimLeaID = -1)
 	BEGIN
 		SET IDENTITY_INSERT RDS.DimLeas ON
 		INSERT INTO RDS.DimLeas (DimLeaId) VALUES (-1)
@@ -90,8 +111,8 @@ BEGIN
 				WHEN 'Other' THEN 8
 				WHEN 'IndependentCharterDistrict' THEN 7
 				ELSE -1
-			END 											AS LeaTypeEdFactsCode
-			, smam.AddressStreetNumberAndName 				AS MailingAddressStreetNumberAndName
+			END 											AS LeaTypeEdfactsCode
+			, smam.AddressStreetNumberAndName				AS MailingAddressStreetNumberAndName
 			, smam.AddressApartmentRoomOrSuiteNumber 		AS MailingAddressApartmentRoomOrSuiteNumber
 			, smam.AddressCity 								AS MailingAddressCity
 			, smam.StateAbbreviation 						AS MailingAddressStateAbbreviation
@@ -102,14 +123,14 @@ BEGIN
 					OR smam.StateAbbreviation <> ssd.StateAbbreviationCode THEN '1' 
 				ELSE 0 
 			END 											AS OutOfStateIndicator
-			, smap.AddressStreetNumberAndName 				AS PhysicalAddressStreetNumberAndName
+			, smap.AddressStreetNumberAndName				AS PhysicalAddressStreetNumberAndName
 			, smap.AddressApartmentRoomOrSuiteNumber		AS PhysicalAddressApartmentRoomOrSuiteNumber
 			, smap.AddressCity 								AS PhysicalAddressCity
 			, smap.StateAbbreviation 						AS PhysicalAddressStateAbbreviation
 			, smap.AddressPostalCode 						AS PhysicalAddressPostalCode
 			, smap.AddressCountyAnsiCodeCode				AS PhysicalAddressCountyAnsiCodeCode
-			, sop.TelephoneNumber
-			, sko.Lea_WebSiteAddress 						AS WebSiteAddress
+			, REPLACE(REPLACE(REPLACE(sop.TelephoneNumber,'-',''),'(',''),')','') AS TelephoneNumber
+			, sko.LEA_WebSiteAddress 						AS WebSiteAddress
 			, smap.Longitude
 			, smap.Latitude
 			, sssrd1.OutputCode 							AS LeaOperationalStatus
@@ -123,22 +144,27 @@ BEGIN
 				WHEN 'FutureAgency' THEN 7 
 				WHEN 'Reopened' THEN 8 
 				ELSE -1
-			END 											AS LeaOperationalStatusEdFactsCode
+			END 											AS LeaOperationalStatusEdfactsCode
 			, sko.Lea_OperationalStatusEffectiveDate 		AS OperationalStatusEffectiveDate
 			, sko.Lea_IsReportedFederally 					AS ReportedFederally
-			, CASE											
-				WHEN sko.Lea_CharterSchoolIndicator = 1 
-					AND ISNULL(sssrd4.OutputCode,'MISSING') in ('RegularNotInSupervisoryUnion', 'IndependentCharterDistrict')
-					THEN ISNULL(sssrd3.OutputCode, 'MISSING') 
-				ELSE IIF(@charterLeaCount > 0,'NOTCHR','NA') 
-			END 											AS CharterLeaStatus
-			, ISNULL(sssrd2.OutputCode, 'MISSING') 			AS ReconstitutedStatus
+			, CASE 
+				WHEN ISNULL(sssrd4.OutputCode,'MISSING') <> 'IndependentCharterDistrict'
+					AND @charterLeaCount > 0 THEN 'NOTCHR'
+				WHEN ISNULL(sssrd4.OutputCode,'MISSING') <> 'IndependentCharterDistrict'
+					AND @charterLeaCount = 0 THEN 'NA'
+				ELSE ISNULL(sssrd3.OutputCode, 'MISSING')
+			END												AS CharterLeaStatus
+			, NULL								 			AS ReconstitutedStatus
 			, sko.Lea_McKinneyVentoSubgrantRecipient 
 			, sko.Lea_RecordStartDateTime 					AS RecordStartDateTime
 			, sko.Lea_RecordEndDateTime 					AS RecordEndDateTime
 		FROM Staging.K12Organization sko
 		INNER JOIN Staging.StateDetail ssd
 			ON sko.SchoolYear = ssd.SchoolYear
+		LEFT JOIN staging.SourceSystemReferenceData sssrd4
+			ON sko.LEA_Type = sssrd4.InputCode
+			AND sssrd4.TableName = 'RefLeaType'
+			AND sko.SchoolYear = sssrd4.SchoolYear
 		LEFT JOIN Staging.OrganizationAddress smam
 			ON sko.LeaIdentifierSea = smam.OrganizationIdentifier
 			AND smam.OrganizationType in (select LeaOrganizationType from #organizationTypes ot where ot.SchoolYear = sko.SchoolYear)
@@ -150,42 +176,47 @@ BEGIN
 		LEFT JOIN Staging.OrganizationPhone sop
 			ON sko.LeaIdentifierSea = sop.OrganizationIdentifier
 			AND sop.OrganizationType in (select LeaOrganizationType from #organizationTypes ot where ot.SchoolYear = sko.SchoolYear)
-		LEFT JOIN Staging.SourceSystemReferenceData sssrd1
+		LEFT JOIN staging.SourceSystemReferenceData sssrd1
 			ON sko.Lea_OperationalStatus = sssrd1.InputCode
 			AND sssrd1.TableName = 'RefOperationalStatus'
 			AND sssrd1.TableFilter = '000174'
 			AND sko.SchoolYear = sssrd1.SchoolYear
-		LEFT JOIN Staging.SourceSystemReferenceData sssrd2
-			ON sko.School_ReconstitutedStatus = sssrd2.InputCode
-			AND sssrd2.TableName = 'RefReconstitutedStatus'
+		LEFT JOIN staging.SourceSystemReferenceData sssrd2
+			ON sop.InstitutionTelephoneNumberType = sssrd2.InputCode
+			AND sssrd2.TableName = 'RefInstitutionTelephoneType'
 			AND sko.SchoolYear = sssrd2.SchoolYear
-		LEFT JOIN Staging.SourceSystemReferenceData sssrd3
-			ON sko.Lea_CharterLeaStatus = sssrd3.InputCode
+		LEFT JOIN staging.SourceSystemReferenceData sssrd3
+			ON sko.LEA_CharterLeaStatus = sssrd3.InputCode
 			AND sssrd3.TableName = 'RefCharterLeaStatus'
 			AND sko.SchoolYear = sssrd3.SchoolYear
-		LEFT JOIN Staging.SourceSystemReferenceData sssrd4
-			ON sko.Lea_Type = sssrd4.InputCode
-			AND sssrd4.TableName = 'RefLeaType'
-			AND sko.SchoolYear = sssrd4.SchoolYear
-		WHERE @DataCollectionName IS NULL
+
+		WHERE 
+			sssrd2.OutputCode = 'Main'
+			AND sko.LeaIdentifierSea is not null 
+			AND
+			(@dataCollectionName IS NULL
 			OR (
-				sko.DataCollectionName = @DataCollectionName
-				AND ssd.DataCollectionName = @DataCollectionName
-				AND smam.DataCollectionName = @DataCollectionName
-				AND smap.DataCollectionName = @DataCollectionName
-				AND sop.DataCollectionName = @DataCollectionName
+				sko.DataCollectionName = @dataCollectionName
+				AND ssd.DataCollectionName = @dataCollectionName
+				AND smam.DataCollectionName = @dataCollectionName
+				AND smap.DataCollectionName = @dataCollectionName
+				AND sop.DataCollectionName = @dataCollectionName
+				)
 			)
 
 	)
-	MERGE RDS.DimLeas AS trgt
+	MERGE rds.DimLeas AS trgt
 	USING CTE AS src
 		ON trgt.LeaIdentifierSea = src.LeaIdentifierSea
 		AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
 	WHEN MATCHED THEN 
 		UPDATE SET 
-			trgt.LeaOrganizationName 							= src.LeaOrganizationName
+			trgt.StateANSICode									= @StateAnsiCode
+			, trgt.StateAbbreviationCode						= src.StateAbbreviationCode
+			, trgt.StateAbbreviationDescription					= @StateName
+			, trgt.LeaOrganizationName 							= src.LeaOrganizationName
 			, trgt.LeaIdentifierNces 							= src.LeaIdentifierNces
-			, trgt.PriorLeaIdentifierSea 						= src.PriorLeaIdentifierSea
+			, trgt.PriorLEAIdentifierSea 						= src.PriorLEAIdentifierSea
 			, trgt.LeaSupervisoryUnionIdentificationNumber 		= src.SupervisoryUnionIdentificationNumber
 			, trgt.LeaOperationalStatus 						= src.LeaOperationalStatus
 			, trgt.LeaOperationalStatusEdFactsCode 				= src.LeaOperationalStatusEdFactsCode
@@ -210,7 +241,7 @@ BEGIN
 			, trgt.PhysicalAddressStateAbbreviation				= src.PhysicalAddressStateAbbreviation
 			, trgt.PhysicalAddressPostalCode 					= src.PhysicalAddressPostalCode
 			, trgt.TelephoneNumber								= src.TelephoneNumber
-			, trgt.WebSiteAddress								= src.WebSiteAddress
+			, trgt.WebsiteAddress								= src.WebSiteAddress
 			, trgt.Longitude 									= src.Longitude
 			, trgt.Latitude 									= src.Latitude
 			, trgt.OutOfStateIndicator 							= src.OutOfStateIndicator
@@ -220,10 +251,10 @@ BEGIN
 		LeaOrganizationName
 		, LeaIdentifierNces
 		, LeaIdentifierSea
-		, PriorLeaIdentifierSea
+		, PriorLEAIdentifierSea
 		, SeaOrganizationName
 		, SeaOrganizationIdentifierSea
-		, StateAnsiCode
+		, StateANSICode
 		, StateAbbreviationCode
 		, StateAbbreviationDescription
 		, LeaSupervisoryUnionIdentificationNumber
@@ -248,7 +279,7 @@ BEGIN
 		, PhysicalAddressStateAbbreviation
 		, PhysicalAddressPostalCode
 		, TelephoneNumber
-		, WebSiteAddress
+		, WebsiteAddress
 		, Longitude
 		, Latitude
 		, CharterLeaStatus
@@ -259,12 +290,12 @@ BEGIN
 	) 	
 	VALUES (
 		src.LeaOrganizationName
-		, src.LeaIdentifierNCES
+		, src.LeaIdentifierNces
 		, src.LeaIdentifierSea
 		, src.PriorLeaIdentifierSea
 		, src.SeaOrganizationName
 		, src.SeaOrganizationIdentifierSea
-		, @StateAnsiCode
+		, @StateANSICode
 		, src.StateAbbreviationCode
 		, @StateName
 		, src.SupervisoryUnionIdentificationNumber
@@ -274,7 +305,7 @@ BEGIN
 		, src.ReportedFederally
 		, src.LeaTypeCode
 		, src.LeaTypeDescription
-		, src.LeaTypeEdFactsCode
+		, src.LeaTypeEdfactsCode
 		, src.MailingAddressStreetNumberAndName
 		, src.MailingAddressApartmentRoomOrSuiteNumber
 		, src.MailingAddressCity
@@ -289,7 +320,7 @@ BEGIN
 		, src.PhysicalAddressStateAbbreviation
 		, src.PhysicalAddressPostalCode
 		, src.TelephoneNumber
-		, src.WebSiteAddress
+		, src.WebsiteAddress
 		, src.Longitude
 		, src.Latitude
 		, src.CharterLeaStatus
@@ -305,14 +336,14 @@ BEGIN
 			startd.LeaIdentifierSea
 			, startd.RecordStartDateTime 
 			, min(endd.RecordStartDateTime) - 1 AS RecordEndDateTime
-		FROM RDS.DimLeas startd
-		JOIN RDS.DimLeas endd
+		FROM rds.DimLeas startd
+		JOIN rds.DimLeas endd
 			ON startd.LeaIdentifierSea = endd.LeaIdentifierSea
 			AND startd.RecordStartDateTime < endd.RecordStartDateTime
 		GROUP BY  startd.LeaIdentifierSea, startd.RecordStartDateTime
 	) 
 	UPDATE lea SET RecordEndDateTime = upd.RecordEndDateTime 
-	FROM RDS.DimLeas lea
+	FROM rds.DimLeas lea
 	JOIN upd	
 		ON lea.LeaIdentifierSea = upd.LeaIdentifierSea
 		AND lea.RecordStartDateTime = upd.RecordStartDateTime
@@ -321,10 +352,10 @@ BEGIN
 /* NOTE: Population of the BridgeLeaGradeLevels is done in Staging-to-DimK12Schools */
 
 	--Cleanup
-	DROP TABLE #organizationTypes
-	DROP TABLE #organizationLocationTypes
+	IF OBJECT_ID(N'tempdb..#organizationTypes') IS NOT NULL DROP TABLE #organizationTypes
+	IF OBJECT_ID(N'tempdb..#organizationLocationTypes') IS NOT NULL DROP TABLE #organizationLocationTypes
 
 END
-
 GO
+
 

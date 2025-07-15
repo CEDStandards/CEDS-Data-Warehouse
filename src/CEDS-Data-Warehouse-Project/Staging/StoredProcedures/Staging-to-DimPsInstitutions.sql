@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [Staging].[Staging-to-DimPsInstitutions]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
@@ -94,12 +94,12 @@ BEGIN
 			AND sssrd1.TableFilter = '001418'
 			AND spi.SchoolYear = sssrd1.SchoolYear
 		WHERE spi.InstitutionIpedsUnitId IS NOT NULL
-			AND (@DataCollectionName IS NULL
+			AND (@dataCollectionName IS NULL
 				OR (
-						spi.DataCollectionName = @DataCollectionName
-					AND smam.DataCollectionName = @DataCollectionName
-					AND smap.DataCollectionName = @DataCollectionName
-					AND sop.DataCollectionName = @DataCollectionName
+						spi.DataCollectionName = @dataCollectionName
+					AND smam.DataCollectionName = @dataCollectionName
+					AND smap.DataCollectionName = @dataCollectionName
+					AND sop.DataCollectionName = @dataCollectionName
 				)
 			)
 		GROUP BY 
@@ -220,10 +220,11 @@ BEGIN
 		AND PsInstitution.RecordStartDateTime = upd.RecordStartDateTime
 	WHERE upd.RecordEndDateTime <> '1900-01-01 00:00:00.000'
 
-		
-	DROP TABLE #PsInstitutionOrganizationTypes
-	DROP TABLE #organizationLocationTypes
+
+	IF OBJECT_ID(N'tempdb..#PsInstitutionOrganizationTypes') IS NOT NULL DROP TABLE #PsInstitutionOrganizationTypes
+	IF OBJECT_ID(N'tempdb..#organizationLocationTypes') IS NOT NULL DROP TABLE #organizationLocationTypes
 
 	ALTER INDEX ALL ON RDS.DimPsInstitutions REBUILD
 
-END 
+END
+GO

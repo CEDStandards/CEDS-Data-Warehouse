@@ -1,6 +1,6 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimSeas]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
@@ -182,21 +182,21 @@ BEGIN
 			, ssd.SeaContact_LastOrSurname
 			, ssd.SeaContact_PersonalTitleOrPrefix
 			, ssd.SeaContact_ElectronicMailAddress
-			, sop.TelephoneNumber
+			, REPLACE(REPLACE(REPLACE(sop.TelephoneNumber,'-',''),'(',''),')','') AS TelephoneNumber
 			, ssd.SeaContact_Identifier
 			, ssd.SeaContact_PositionTitle
-			, smam.AddressStreetNumberAndName AS MailingAddressStreet
-			, smam.AddressApartmentRoomOrSuiteNumber AS MailingAddressStreet2
-			, smam.AddressCity AS MailingAddressCity
-			, smam.StateAbbreviation AS MailingAddressState
-			, smam.AddressPostalCode AS MailingAddressPostalCode
-			, smam.AddressCountyAnsiCodeCode AS MailingCountyAnsiCode
-			, smap.AddressStreetNumberAndName AS PhysicalAddressStreet
-			, smap.AddressApartmentRoomOrSuiteNumber AS PhysicalAddressStreet2
-			, smap.AddressCity AS PhysicalAddressCity
-			, smap.StateAbbreviation AS PhysicalAddressState
-			, smap.AddressPostalCode AS PhysicalAddressPostalCode
-			, smap.AddressCountyAnsiCodeCode AS PhysicalCountyAnsiCode
+			, smam.AddressStreetNumberAndName				AS MailingAddressStreet
+			, smam.AddressApartmentRoomOrSuiteNumber 		AS MailingAddressStreet2
+			, smam.AddressCity 								AS MailingAddressCity
+			, smam.StateAbbreviation 						AS MailingAddressState
+			, smam.AddressPostalCode 						AS MailingAddressPostalCode
+			, smam.AddressCountyAnsiCodeCode 				AS MailingCountyAnsiCode
+			, smap.AddressStreetNumberAndName				AS PhysicalAddressStreet
+			, smap.AddressApartmentRoomOrSuiteNumber 		AS PhysicalAddressStreet2
+			, smap.AddressCity 								AS PhysicalAddressCity
+			, smap.StateAbbreviation 						AS PhysicalAddressState
+			, smap.AddressPostalCode 						AS PhysicalAddressPostalCode
+			, smap.AddressCountyAnsiCodeCode 				AS PhysicalCountyAnsiCode
 			, ssd.RecordStartDateTime 
 			, ssd.RecordEndDateTime 
 		FROM Staging.StateDetail ssd
@@ -212,8 +212,8 @@ BEGIN
 			ON ssd.SeaOrganizationIdentifierSea = sop.OrganizationIdentifier
 			AND sop.PrimaryTelephoneNumberIndicator = 1
 			AND sop.OrganizationType in (select SeaOrganizationType from #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
-		WHERE @DataCollectionName IS NULL	
-			OR ssd.DataCollectionName = @DataCollectionName
+		WHERE @dataCollectionName IS NULL	
+			OR ssd.DataCollectionName = @dataCollectionName
 	)
 	MERGE RDS.DimSeas AS trgt
 	USING CTE AS src
@@ -411,6 +411,7 @@ BEGIN
 		AND staff.RecordEndDateTime IS NULL	
 
 	--cleanup
-	DROP TABLE #People
+	IF OBJECT_ID(N'tempdb..#People') IS NOT NULL DROP TABLE #People
 
 END 	
+GO

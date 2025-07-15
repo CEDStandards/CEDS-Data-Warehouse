@@ -84,6 +84,10 @@ BEGIN
 		);
 
 		--End date previous records
+		UPDATE RDS.DimPeople
+        SET RecordEndDateTime = NULL
+        WHERE IsActiveK12Student = 1
+
 		;WITH upd AS (
 			SELECT 
 				  startd.K12StudentStudentIdentifierState
@@ -120,3 +124,4 @@ BEGIN
 	SET NOCOUNT OFF;
 
 END
+GO

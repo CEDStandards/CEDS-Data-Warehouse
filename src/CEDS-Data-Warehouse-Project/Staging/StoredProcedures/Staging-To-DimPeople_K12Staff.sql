@@ -1,3 +1,4 @@
+
 CREATE PROCEDURE [Staging].[Staging-To-DimPeople_K12Staff]
 	@dataCollectionId INT = NULL
 AS
@@ -89,6 +90,10 @@ BEGIN
 		);
 
 		--End date previous records
+		UPDATE RDS.DimPeople
+        SET RecordEndDateTime = NULL
+        WHERE IsActiveK12Staff = 1
+
 		;WITH upd AS (
 			SELECT 
 				  startd.K12StaffStaffMemberIdentifierState
@@ -127,3 +132,4 @@ BEGIN
 	SET NOCOUNT OFF;
 
 END
+GO

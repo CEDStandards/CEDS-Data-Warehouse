@@ -1,17 +1,20 @@
 ﻿
-CREATE PROCEDURE [Staging].[Staging-to-FactPsStudentAcademicRecord]
+CREATE PROCEDURE [Staging].[Staging-to-FactPsStudentAcademicRecords]
 AS
 
 	ALTER INDEX ALL ON RDS.FactPsStudentAcademicRecords DISABLE
 
-	DECLARE @firstDigit smallint = 1, @sql VARCHAR(MAX)
+	DECLARE @SYEndDate DATE
+	SELECT @SYEndDate = CAST('6/30/' + CAST((select MAX(SchoolYear) FROM Staging.PsStudentEnrollment) AS VARCHAR(4)) AS DATE)
+
+	DECLARE @firstDigit SMALLINT = 1, @sql VARCHAR(MAX)
 
 	WHILE @firstDigit < 10
 	BEGIN
 		
-		drop table if exists #Temp
+		IF OBJECT_ID(N'tempdb..#Temp') IS NOT NULL DROP TABLE #Temp
 
-		SELECT distinct
+		SELECT DISTINCT
 			  rsy.DimSchoolYearId								AS SchoolYearId
 			, -1												AS SeaId
 			, rdpi.DimPsInstitutionId							AS PsInstitutionId
@@ -30,7 +33,7 @@ AS
 			, -1 AS [APCreditsAwarded]
 			, -1 AS [CourseTotal]
 			,  1 AS [StudentCourseCount]
-		Into #Temp
+		INTO #Temp
 		FROM Staging.PsStudentAcademicRecord spsar
 		JOIN Staging.PsStudentEnrollment spse
 			ON spsar.InstitutionIpedsUnitId = spse.InstitutionIpedsUnitId
@@ -43,10 +46,10 @@ AS
 		JOIN RDS.DimDataCollections rddc
 			ON spsar.DataCollectionName = rddc.DataCollectionName
 		JOIN RDS.DimSchoolYears rsy
-			ON rddc.DataCollectionSchoolYear = cast(rsy.SchoolYear as nvarchar(10))
+			ON rddc.DataCollectionSchoolYear = cast(rsy.SchoolYear AS NVARCHAR(10))
 		JOIN RDS.DimPsInstitutions rdpi
 			ON spsar.[InstitutionIpedsUnitId] = rdpi.IPEDSIdentifier
-			AND spsar.EntryDate BETWEEN rdpi.RecordStartDateTime AND ISNULL(rdpi.RecordEndDateTime, GETDATE())
+			AND spsar.EntryDate BETWEEN rdpi.RecordStartDateTime AND ISNULL(rdpi.RecordEndDateTime, @SYEndDate)
 		LEFT JOIN RDS.vwDimAcademicTermDesignators rdatd
 			ON spsar.AcademicTermDesignator = rdatd.AcademicTermDesignatorMap
 			AND spsar.SchoolYear = rdatd.SchoolYear
@@ -75,12 +78,12 @@ AS
 			AND spse.SchoolYear = rdpd.SchoolYear
 		LEFT JOIN RDS.DimPeople rdp
 			ON spse.StudentIdentifierState = rdp.PsStudentStudentIdentifierState
-			AND spse.RecordStartDateTime BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
+			AND spse.RecordStartDateTime BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 			AND ISNULL(spse.FirstName, '') = ISNULL(rdp.FirstName, '')
 			AND ISNULL(spse.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 			AND ISNULL(spse.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
 			AND ISNULL(spse.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')	
-			AND spsar.EntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime , GETDATE())
+			AND spsar.EntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime , @SYEndDate)
 		WHERE spsar.StudentIdentifierState like CAST(@firstDigit AS VARCHAR(1)) + '%'
 
 		CREATE NONCLUSTERED INDEX [IX_temp] ON #Temp 
@@ -99,20 +102,32 @@ AS
 		Insert Into RDS.FactPsStudentAcademicRecords Select * From #Temp 
 
 		
-		DBCC SHRINKFILE ('CEDS-Data-Warehouse-V9-2-0-0_log', 1)
-		SELECT @Sql = 'USE TempDB
-						DBCC FREEPROCCACHE
-						DBCC SHRINKFILE (''tempdev'', 1633)
-						DBCC SHRINKFILE (''temp2'', 1633)
-						DBCC SHRINKFILE (''temp3'', 1633)
-						DBCC SHRINKFILE (''temp4'', 1633)
-						DBCC SHRINKFILE (''temp5'', 1633)
-						DBCC SHRINKFILE (''temp6'', 1633)
-						DBCC SHRINKFILE (''temp7'', 1633)
-						DBCC SHRINKFILE (''temp8'', 1633)
-						DBCC SHRINKFILE (''templog'', 1633)
-						USE CEDS'
-		exec (@sql)
+		DECLARE @LogFileName sysname
+		DECLARE @Sql nvarchar(max)
+
+		SELECT @LogFileName = name
+		FROM sys.database_files
+		WHERE type_desc = 'LOG'
+
+		SET @Sql = 'DBCC SHRINKFILE ([' + @LogFileName + '], 1)'
+
+		EXEC (@Sql)
+
+		SET @Sql = '
+		USE TempDB
+		DBCC FREEPROCCACHE
+		DBCC SHRINKFILE (''tempdev'', 1633)
+		DBCC SHRINKFILE (''temp2'', 1633)
+		DBCC SHRINKFILE (''temp3'', 1633)
+		DBCC SHRINKFILE (''temp4'', 1633)
+		DBCC SHRINKFILE (''temp5'', 1633)
+		DBCC SHRINKFILE (''temp6'', 1633)
+		DBCC SHRINKFILE (''temp7'', 1633)
+		DBCC SHRINKFILE (''temp8'', 1633)
+		DBCC SHRINKFILE (''templog'', 1633)
+		USE [' + DB_NAME() + ']'
+
+		EXEC (@Sql)
 
 		PRINT CAST(@firstDigit AS VARCHAR(1))  + '''s Done - FactPsStudentAcademicRecords'
 		SET @firstDigit = @firstDigit + 1

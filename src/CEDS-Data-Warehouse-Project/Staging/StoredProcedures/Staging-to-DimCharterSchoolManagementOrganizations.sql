@@ -1,5 +1,5 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimCharterSchoolManagementOrganizations]
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT = 0
 AS   
 
@@ -7,17 +7,31 @@ BEGIN
 
 	IF OBJECT_ID(N'tempdb..#CharterSchoolManagementOrganizations') IS NOT NULL DROP TABLE #CharterSchoolManagementOrganizations
 
-	DECLARE @StateCode varchar(2), @StateName varchar(50), @StateAnsiCode varchar(5), @SchoolYear int
-	SELECT @StateCode = (SELECT StateAbbreviationCode FROM Staging.StateDetail)
-	SELECT @StateName = (SELECT CedsOptionSetDescription FROM [CEDS].[CedsOptionSetMapping] WHERE CedsGlobalId = '000267' AND CedsOptionSetCode = @StateCode)
-	SELECT @StateAnsiCode = (SELECT CedsOptionSetCode FROM [CEDS].[CedsOptionSetMapping] WHERE CedsGlobalId = '000424' AND CedsOptionSetDescription = @StateName)
-	SELECT @SchoolYear = (select SchoolYear from Staging.StateDetail)
+    DECLARE @SchoolYear INT, @StateCode VARCHAR(2), @StateName VARCHAR(50), @StateAnsiCode VARCHAR(5)
+    SELECT @SchoolYear = (	SELECT sy.SchoolYear
+							FROM rds.DimSchoolYearDataMigrationTypes dm
+								INNER JOIN rds.dimschoolyears sy
+									ON dm.dimschoolyearid = sy.dimschoolyearid
+							WHERE IsSelected = 1
+							AND dm.DataMigrationTypeId = 3
+						)
+    SELECT @StateCode = StateAbbreviationCode FROM Staging.StateDetail WHERE SchoolYear = @SchoolYear
+	SELECT @StateName = (	SELECT CedsOptionSetDescription 
+							FROM ceds.CedsOptionSetMapping 
+							WHERE CedsElementTechnicalName = 'StateAbbreviation' 
+							AND CedsOptionSetCode = @StateCode
+						)
+	SELECT @StateAnsiCode = (	SELECT CedsOptionSetCode 
+								FROM ceds.CedsOptionSetMapping 
+								WHERE CedsElementTechnicalName = 'StateAnsiCode' 
+								AND CedsOptionSetDescription = @StateName
+							)
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimCharterSchoolManagementOrganizations WHERE DimCharterSchoolManagementOrganizationId = -1)
+	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolManagementOrganizations WHERE DimCharterSchoolManagementOrganizationId = -1)
 	BEGIN
-		SET IDENTITY_INSERT RDS.DimCharterSchoolManagementOrganizations ON
-		INSERT INTO RDS.DimCharterSchoolManagementOrganizations (DimCharterSchoolManagementOrganizationId) VALUES (-1)
-		SET IDENTITY_INSERT RDS.DimCharterSchoolManagementOrganizations off
+		SET IDENTITY_INSERT rds.DimCharterSchoolManagementOrganizations ON
+		INSERT INTO rds.DimCharterSchoolManagementOrganizations (DimCharterSchoolManagementOrganizationId) VALUES (-1)
+		SET IDENTITY_INSERT rds.DimCharterSchoolManagementOrganizations off
 	END
 
 	CREATE TABLE #organizationTypes (
@@ -68,7 +82,7 @@ BEGIN
 		, smap.StateAbbreviation		 									'PhysicalAddressStateAbbreviation'
 		, smap.AddressPostalCode					 						'PhysicalAddressPostalCode'
 		, sop.TelephoneNumber				 				
-		, NULL 																'WebSiteAddress'
+		, NULL 																'WebsiteAddress'
 		, 0 																'OutOfStateIndicator'
 		, scsmo.RecordStartDateTime
 		, scsmo.RecordEndDateTime
@@ -97,9 +111,8 @@ BEGIN
 	LEFT JOIN Staging.OrganizationPhone sop
 		ON scsmo.CharterSchoolManagementOrganizationOrganizationIdentifierEIN = sop.OrganizationIdentifier
 		AND sop.OrganizationType = orgTypes.CharterSchoolManagementOrganization
-	LEFT JOIN CEDS.CedsOptionSetMapping refcsmot
-		ON refcsmot.CedsOptionSetCode = ssrd.OutputCode
-		AND refcsmot.CedsGlobalId = '001650'  -- Charter School Management Organization Type
+	LEFT JOIN dbo.RefCharterSchoolManagementOrganizationType refcsmot
+		ON refcsmot.Code = ssrd.OutputCode
 
 -- MERGE INTO DimCharterSchoolManagementOrganizations
 	BEGIN TRY
@@ -125,7 +138,7 @@ BEGIN
 				, trgt.PhysicalAddressStateAbbreviation						= src.PhysicalAddressStateAbbreviation
 				, trgt.PhysicalAddressPostalCode							= src.PhysicalAddressPostalCode
 				, trgt.TelephoneNumber										= src.TelephoneNumber
-				, trgt.WebSiteAddress										= src.WebSiteAddress
+				, trgt.WebsiteAddress										= src.WebsiteAddress
 				, trgt.RecordEndDateTime 									= src.RecordEndDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but not in Target
 		INSERT (
@@ -147,7 +160,7 @@ BEGIN
 			, PhysicalAddressStateAbbreviation
 			, PhysicalAddressPostalCode
 			, TelephoneNumber
-			, WebSiteAddress
+			, WebsiteAddress
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)
@@ -170,7 +183,7 @@ BEGIN
 			, src.PhysicalAddressStateAbbreviation
 			, src.PhysicalAddressPostalCode
 			, src.TelephoneNumber
-			, src.WebSiteAddress
+			, src.WebsiteAddress
 			, src.RecordStartDateTime
 			, src.RecordEndDateTime
 		);
@@ -202,3 +215,6 @@ BEGIN
 	END CATCH
 	
 END
+GO
+
+

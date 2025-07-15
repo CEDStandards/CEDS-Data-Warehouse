@@ -12,7 +12,7 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
     [Sex]                                    NVARCHAR (30)  NULL,
     [Race]                                   NVARCHAR (100) NULL,
     [PositionTitle]                          NVARCHAR (200) NULL,
-	[PositionIdentifierSea]                  NVARCHAR (60)  NULL,
+	[JobPositionIdentifierSea]               NVARCHAR (60)  NULL,
 	[JobTitle]                               NVARCHAR (200) NULL,
 	[SEA_EducationJobTypeCode]               NVARCHAR (40)  NULL,
 	[SEA_LocalJobFunctionCode]               NVARCHAR (50)  NULL,
