@@ -1,7 +1,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	2/20/2023
-Description: Migrates High School Graduate Post-Secondary Enrollment Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates High School Graduate Post-Secondary Enrollment Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 160
 ************************************************************************/
@@ -37,12 +37,12 @@ BEGIN
 		SELECT K12StudentStudentIdentifierState
 			, max(DimPersonId)								DimPersonId
 			, min(RecordStartDateTime)						RecordStartDateTime
-			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(birthdate, '1900-01-01'))			BirthDate
+			, MAX(ISNULL(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, MAX(ISNULL(Birthdate, '1900-01-01'))			Birthdate
 		INTO #dimPeople
 		FROM RDS.DimPeople
 		WHERE ((RecordStartDateTime <= @SYStartDate AND RecordEndDateTime > @SYStartDate)
-			OR (RecordStartDateTime > @SYStartDate AND isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+			OR (RecordStartDateTime > @SYStartDate AND ISNULL(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
 		AND IsActiveK12Student = 1
 		GROUP BY K12StudentStudentIdentifierState
 		ORDER BY K12StudentStudentIdentifierState
@@ -81,7 +81,7 @@ BEGIN
 
 	--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'hsgradpsenroll'	--DimFactTypeId = 19
 
 	--Clear the Fact table of the data about to be migrated  
@@ -131,7 +131,7 @@ BEGIN
 
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.id														StagingId								
+			ske.Id														StagingId								
 			, rsy.DimSchoolYearId										SchoolYearId							
 			, @FactTypeId												FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)							GradeLevelId							
@@ -141,7 +141,7 @@ BEGIN
 			, 1															StudentCount							
 			, ISNULL(rds.DimSeaId, -1)									SeaId									
 			, -1														IeuId									
-			, ISNULL(rdl.DimLeaID, -1)									LeaId									
+			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId							
 			, ISNULL(rdis.DimIdeaStatusId, -1)							IdeaStatusId							
@@ -170,7 +170,7 @@ BEGIN
 			ON ske.SchoolYear = rsy.SchoolYear
 		JOIN #dimPeople rdp
 			ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 			AND ske.EnrollmentEntryDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 		JOIN RDS.DimSeas rds
 			ON ske.EnrollmentEntryDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, @SYEndDate)
@@ -185,7 +185,7 @@ BEGIN
 			ON ske.SchoolYear = psEnroll.SchoolYear
 			AND ske.StudentIdentifierState = psEnroll.StudentIdentifierState
 			AND ISNULL(ske.LastOrSurname, 'MISSING') = psEnroll.LastOrSurname
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(psEnroll.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(psEnroll.Birthdate, '1/1/1900')
 	--idea disability status
 		LEFT JOIN Staging.ProgramParticipationSpecialEducation idea
 			ON ske.SchoolYear = idea.SchoolYear
@@ -212,7 +212,7 @@ BEGIN
 			ON ske.SchoolYear = spr.SchoolYear
 			AND ske.StudentIdentifierState = spr.StudentIdentifierState
 			AND (ske.SchoolIdentifierSea = spr.SchoolIdentifierSea
-				OR ske.LEAIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
+				OR ske.LeaIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
 	--idea disability (RDS)
 		LEFT JOIN RDS.vwDimIdeaStatuses rdis
 			ON ske.SchoolYear = rdis.SchoolYear
@@ -244,7 +244,7 @@ BEGIN
 					ELSE 'Missing'
 				END
 
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]
@@ -318,7 +318,7 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-		insert into App.DataMigrationHistories
+		INSERT INTO App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

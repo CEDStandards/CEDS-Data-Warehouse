@@ -2,7 +2,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	1/6/2022
-Description: Migrates Graduate/Completer Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Graduate/Completer Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 040
 ************************************************************************/
@@ -46,15 +46,15 @@ BEGIN
 		SELECT @ReportingEndDate = CAST(CAST(@SchoolYear AS CHAR(4)) + '-09-30'AS DATE)
 
 	--Get the set of students from DimPeople to be used for the migrated SY
-		select K12StudentStudentIdentifierState
+		SELECT K12StudentStudentIdentifierState
 			, max(DimPersonId)								DimPersonId
 			, min(RecordStartDateTime)						RecordStartDateTime
-			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(Birthdate, '1900-01-01'))			Birthdate
+			, MAX(ISNULL(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, MAX(ISNULL(Birthdate, '1900-01-01'))			Birthdate
 		into #dimPeople
-		from RDS.DimPeople
+		FROM RDS.DimPeople
 		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
-			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+			or (RecordStartDateTime > @SYStartDate and ISNULL(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
 		and IsActiveK12Student = 1
 		group by K12StudentStudentIdentifierState
 		order by K12StudentStudentIdentifierState
@@ -394,7 +394,7 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-			insert into App.DataMigrationHistories
+			INSERT INTO App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

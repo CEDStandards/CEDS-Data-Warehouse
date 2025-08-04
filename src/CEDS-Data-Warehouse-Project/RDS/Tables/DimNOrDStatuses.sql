@@ -12,6 +12,14 @@ CREATE TABLE [RDS].[DimNOrDStatuses] (
     [DelinquentProgramTypeCode]           NVARCHAR (50)  CONSTRAINT [DF_DimNOrDStatuses_DelinquentProgramTypeCode] DEFAULT ('MISSING') NOT NULL,
     [DelinquentProgramTypeDescription]    NVARCHAR (100) CONSTRAINT [DF_DimNOrDStatuses_DelinquentProgramTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [DelinquentProgramTypeEdFactsCode]    NVARCHAR (50)  CONSTRAINT [DF_DimNOrDStatuses_DelinquentProgramTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentStatusCode] NVARCHAR (50) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentStatusCode] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentStatusDescription] NVARCHAR (100) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentStatusDescription] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentProgramEnrollmentSubpartCode] NVARCHAR (50) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentProgramEnrollmentSubpartCode] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentProgramEnrollmentSubpartDescription] NVARCHAR (100) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentProgramEnrollmentSubpartDescription] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentAcademicAchievementIndicatorCode] NVARCHAR (50) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentAcademicAchievementIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentAcademicAchievementIndicatorDescription] NVARCHAR (100) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentAcademicAchievementIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentAcademicOutcomeIndicatorCode] NVARCHAR (50) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentAcademicOutcomeIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+	[NeglectedOrDelinquentAcademicOutcomeIndicatorDescription] NVARCHAR (100) CONSTRAINT [DF_DimNOrDStatuses_NeglectedOrDelinquentAcademicOutcomeIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimNorDStatuses] PRIMARY KEY NONCLUSTERED ([DimNOrDStatusId] ASC) WITH (FILLFACTOR = 80)
 );
 

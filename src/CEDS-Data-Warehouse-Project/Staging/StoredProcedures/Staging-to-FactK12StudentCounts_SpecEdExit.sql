@@ -1,7 +1,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	3/1/2022
-Description: Migrates Exiting Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Exiting Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 009
 ************************************************************************/
@@ -277,7 +277,7 @@ BEGIN
 			AND PerkinsEnglishLearnerStatusCode = 'MISSING'
 
 		
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]

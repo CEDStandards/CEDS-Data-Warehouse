@@ -1,5 +1,5 @@
 ﻿CREATE  PROCEDURE Staging.[Staging-To-FactPsStudentEnrollments]
-	@DataCollectionName	VARCHAR(60) = NULL
+	@dataCollectionName	VARCHAR(60) = NULL
 AS
 BEGIN
 	--ALTER INDEX ALL ON RDS.FactPsStudentEnrollments DISABLE
@@ -78,8 +78,8 @@ BEGIN
 		ON spse.ExitDate = ExitDate.DateValue
 	LEFT JOIN RDS.DimDates psEntryDate
 		ON spse.EntryDateIntoPostsecondary = psEntryDate.DateValue
-	WHERE @DataCollectionName IS NULL 
-		OR spse.DataCollectionName = @DataCollectionName
+	WHERE @dataCollectionName IS NULL 
+		OR spse.DataCollectionName = @dataCollectionName
 	
 	--Only use LEFT joins to junk tables
 

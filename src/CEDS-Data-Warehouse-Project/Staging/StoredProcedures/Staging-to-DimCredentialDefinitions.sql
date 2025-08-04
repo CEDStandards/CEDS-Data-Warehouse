@@ -1,7 +1,7 @@
 /***********************************************************************
 Author: AEM Corp
 Date:	2/6/2024
-Description: Migrates Credential Definitions from Staging to RDS.DimCredentialDefinitions
+Description: Migrates Credential Definitions FROM Staging to RDS.DimCredentialDefinitions
 
 NOTE: This Stored Procedure processes files: 002, 089
 ************************************************************************/

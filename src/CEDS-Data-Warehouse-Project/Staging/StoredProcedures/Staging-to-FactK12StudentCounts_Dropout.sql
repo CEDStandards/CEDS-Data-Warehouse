@@ -1,7 +1,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	2/20/2023
-Description: Migrates Dropout Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Dropout Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 032
 
@@ -45,9 +45,6 @@ BEGIN
 			WHERE ExitOrWithdrawalTypeCode = '01927'
 				AND EnrollmentStatusCode = 'MISSING'
 				AND EntryTypeCode = 'MISSING'
-				AND PostSecondaryEnrollmentStatusCode = 'MISSING'
-				AND EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode = 'MISSING'
-				AND EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode = 'MISSING'
 				AND SchoolYear = @SchoolYear
 				)
 
@@ -57,9 +54,6 @@ BEGIN
 			WHERE ExitOrWithdrawalTypeCode = '01927'
 				AND EnrollmentStatusCode = 'MISSING'
 				AND EntryTypeCode = 'MISSING'
-				AND PostSecondaryEnrollmentStatusCode = 'MISSING'
-				AND EdFactsAcademicOrCareerAndTechnicalOutcomeTypeCode = 'MISSING'
-				AND EdFactsAcademicOrCareerAndTechnicalOutcomeExitTypeCode = 'MISSING'
 				AND SchoolYear = @SchoolYear
 				)
 
@@ -129,7 +123,7 @@ BEGIN
 			AND MigrantEducationProgramServicesTypeCode = 'MISSING'
 			AND MigrantPrioritizedForServicesCode = 'MISSING'
 			AND MEPContinuationOfServicesStatusCode = 'MISSING'
-			and ConsolidatedMEPFundsStatusCode = 'MISSING'
+			and ConsolidatedMepFundsStatusCode = 'MISSING'
 
 		CREATE CLUSTERED INDEX ix_tempvwMigrantStatuses
 			ON #vwMigrantStatuses (MigrantStatusMap) --, MigrantEducationProgramEnrollmentTypeCode, ContinuationOfServicesReasonCode, MigrantEducationProgramServicesTypeCode, MigrantPrioritizedForServicesCode, MEPContinuationOfServicesStatusCode, ConsolidatedMepFundsStatusCode);
@@ -187,7 +181,7 @@ BEGIN
 		INSERT INTO #Facts
 		SELECT 
 		DISTINCT
-			ske.id														StagingId								
+			ske.Id														StagingId								
 			, rsy.DimSchoolYearId										SchoolYearId							
 			, @FactTypeId												FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)							GradeLevelId							
@@ -197,7 +191,7 @@ BEGIN
 			, 1															StudentCount							
 			, ISNULL(rds.DimSeaId, -1)									SeaId									
 			, -1														IeuId									
-			, ISNULL(rdl.DimLeaID, -1)									LeaId									
+			, ISNULL(rdl.DimLeaId, -1)									LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId							
 			, ISNULL(rdis.DimIdeaStatusId, -1)							IdeaStatusId							
@@ -348,7 +342,7 @@ BEGIN
 	--idea disability (RDS)
 		LEFT JOIN RDS.vwDimIdeaStatuses rdis
 			ON ske.SchoolYear = rdis.SchoolYear
-			AND ISNULL(CAST(idea.IDEAIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
+			AND ISNULL(CAST(idea.IdeaIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
 			AND rdis.IdeaEducationalEnvironmentForSchoolAgeCode = 'MISSING'
 			AND rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode = 'MISSING'
 			AND rdis.SpecialEducationExitReasonCode = 'MISSING'
@@ -385,7 +379,7 @@ BEGIN
 
 		WHERE ske.ExitOrWithdrawalType = @ExitOrWithdrawalTypeMap
 
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]
@@ -459,7 +453,7 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-			insert into App.DataMigrationHistories
+			INSERT INTO App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

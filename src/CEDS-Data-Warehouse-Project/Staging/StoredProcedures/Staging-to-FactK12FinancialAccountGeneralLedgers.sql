@@ -2,7 +2,7 @@ CREATE PROCEDURE [Staging].[Staging-to-FactK12FinancialAccountGeneralLedgers]
 AS
 BEGIN
 
-    -- Insert data from Staging.K12FinancialAccountGeneralLedger into RDS.FactK12FinancialAccountGeneralLedgers
+    -- Insert data FROM Staging.K12FinancialAccountGeneralLedger into RDS.FactK12FinancialAccountGeneralLedgers
     INSERT INTO RDS.FactK12FinancialAccountGeneralLedgers (
           SeaId
         , IeuId

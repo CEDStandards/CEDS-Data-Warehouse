@@ -91,7 +91,7 @@ BEGIN
 			, rsy.DimSchoolYearId						SchoolYearId
 			, @FactTypeId								FactTypeId
 			, ISNULL(rds.DimSeaId, -1)					SeaId
-			, ISNULL(rdl.DimLeaID, -1)					LeaId
+			, ISNULL(rdl.DimLeaId, -1)					LeaId
 			, ISNULL(rdksch.DimK12SchoolId, -1)			K12SchoolId
 			, ISNULL(rdp.DimPersonId, -1)				K12StaffId
 			, ISNULL(rdkss.DimK12StaffStatusId, -1)		K12StaffStatusId
@@ -125,7 +125,7 @@ BEGIN
 		LEFT JOIN #vwK12StaffStatuses rdkss
 			ON rsy.SchoolYear = rdkss.SchoolYear
 			AND ISNULL(ssa.SpecialEducationAgeGroupTaught, 'MISSING') = ISNULL(rdkss.SpecialEducationAgeGroupTaughtMap, rdkss.SpecialEducationAgeGroupTaughtCode)
-			AND ISNULL(ssa.EDFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EDFactsTeacherOutOfFieldStatusMap, rdkss.EDFactsTeacherOutOfFieldStatusCode)
+			AND ISNULL(ssa.EdFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherOutOfFieldStatusMap, rdkss.EdFactsTeacherOutOfFieldStatusCode)
 			AND ISNULL(ssa.EdFactsTeacherInexperiencedStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherInexperiencedStatusMap, rdkss.EdFactsTeacherInexperiencedStatusCode)
 			AND ISNULL(ssa.TeachingCredentialType, 'MISSING') = ISNULL(rdkss.TeachingCredentialTypeMap, rdkss.TeachingCredentialTypeCode)
 			AND ISNULL(ssa.ParaprofessionalQualificationStatus, 'MISSING') = ISNULL(rdkss.ParaprofessionalQualificationStatusMap, rdkss.ParaprofessionalQualificationStatusCode)
@@ -148,7 +148,7 @@ BEGIN
 			AND @ChildCountDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 			AND @ChildCountDate BETWEEN ssa.AssignmentStartDate AND ISNULL(ssa.AssignmentEndDate, @SYEndDate)
 		
-	--Final insert into RDS.FactK12StaffCounts table
+	--Final INSERT INTO RDS.FactK12StaffCounts table
 		INSERT INTO RDS.FactK12StaffCounts ( 
 			SchoolYearId
 			, FactTypeId
@@ -184,7 +184,7 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-	insert into App.DataMigrationHistories
+	INSERT INTO App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

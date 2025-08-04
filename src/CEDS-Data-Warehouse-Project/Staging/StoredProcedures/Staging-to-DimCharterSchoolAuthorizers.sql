@@ -8,30 +8,30 @@ BEGIN
 	IF OBJECT_ID(N'tempdb..#CharterSchoolAuthorizers') IS NOT NULL DROP TABLE #CharterSchoolAuthorizers
 
     DECLARE @SchoolYear int, @StateCode varchar(2), @StateName varchar(50), @StateAnsiCode varchar(5)
-    SELECT @SchoolYear = (	select sy.SchoolYear
-							from rds.DimSchoolYearDataMigrationTypes dm
-								inner join rds.dimschoolyears sy
-									on dm.dimschoolyearid = sy.dimschoolyearid
+    SELECT @SchoolYear = (	SELECT sy.SchoolYear
+							FROM RDS.DimSchoolYearDataMigrationTypes dm
+								inner join RDS.DimSchoolYears sy
+									on dm.DimSchoolYearId = sy.DimSchoolYearId
 							where IsSelected = 1
 							and dm.DataMigrationTypeId = 3
 						)
-    SELECT @StateCode = StateAbbreviationCode from Staging.StateDetail where SchoolYear = @schoolyear
-	SELECT @StateName = (	select CedsOptionSetDescription 
-							from ceds.CedsOptionSetMapping 
+    SELECT @StateCode = StateAbbreviationCode FROM Staging.StateDetail where SchoolYear = @schoolyear
+	SELECT @StateName = (	SELECT CedsOptionSetDescription 
+							FROM CEDS.CedsOptionSetMapping 
 							where CedsElementTechnicalName = 'StateAbbreviation' 
 							and CedsOptionSetCode = @StateCode
 						)
-	SELECT @StateAnsiCode = (	select CedsOptionSetCode 
-								from ceds.CedsOptionSetMapping 
+	SELECT @StateAnsiCode = (	SELECT CedsOptionSetCode 
+								FROM CEDS.CedsOptionSetMapping 
 								where CedsElementTechnicalName = 'StateAnsiCode' 
 								and CedsOptionSetDescription = @StateName
 							)
 
-	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolAuthorizers WHERE DimCharterSchoolAuthorizerId = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimCharterSchoolAuthorizers WHERE DimCharterSchoolAuthorizerId = -1)
 	BEGIN
-		SET IDENTITY_INSERT rds.DimCharterSchoolAuthorizers ON
-		INSERT INTO rds.DimCharterSchoolAuthorizers (DimCharterSchoolAuthorizerId) VALUES (-1)
-		SET IDENTITY_INSERT rds.DimCharterSchoolAuthorizers off
+		SET IDENTITY_INSERT RDS.DimCharterSchoolAuthorizers ON
+		INSERT INTO RDS.DimCharterSchoolAuthorizers (DimCharterSchoolAuthorizerId) VALUES (-1)
+		SET IDENTITY_INSERT RDS.DimCharterSchoolAuthorizers off
 	END
 
 	CREATE TABLE #organizationTypes (
@@ -86,7 +86,7 @@ BEGIN
 		, smap.AddressPostalCode			 						'PhysicalAddressPostalCode'
 		, smap.AddressCountyAnsiCodeCode							'PhysicalAddressCountyAnsiCodeCode'
 		, sop.TelephoneNumber				 				
-		, NULL 														'WebsiteAddress'
+		, NULL 														'WebSiteAddress'
 		, 0 														'OutOfStateIndicator'
 		, scsa.RecordStartDateTime
 		, scsa.RecordEndDateTime
@@ -146,7 +146,7 @@ BEGIN
 				trgt.PhysicalAddressPostalCode								= src.PhysicalAddressPostalCode,
 				trgt.PhysicalAddressCountyAnsiCodeCode						= src.PhysicalAddressCountyAnsiCodeCode,
 				trgt.TelephoneNumber										= src.TelephoneNumber,
-				trgt.WebsiteAddress											= src.WebsiteAddress,
+				trgt.WebSiteAddress											= src.WebSiteAddress,
 				trgt.RecordEndDateTime 										= src.RecordEndDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but not in Target
 		INSERT (
@@ -172,7 +172,7 @@ BEGIN
 			, PhysicalAddressPostalCode
 			, PhysicalAddressCountyAnsiCodeCode
 			, TelephoneNumber
-			, WebsiteAddress
+			, WebSiteAddress
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)
@@ -199,7 +199,7 @@ BEGIN
 			, src.PhysicalAddressPostalCode
 			, src.PhysicalAddressCountyAnsiCodeCode
 			, src.TelephoneNumber
-			, src.WebsiteAddress
+			, src.WebSiteAddress
 			, src.RecordStartDateTime
 			, src.RecordEndDateTime
 		);

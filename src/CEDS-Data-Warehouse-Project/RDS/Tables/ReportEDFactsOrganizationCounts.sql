@@ -42,7 +42,7 @@ CREATE TABLE [RDS].[ReportEdFactsOrganizationCounts](
 	[SHAREDTIMESTATUS] [nvarchar](max) NULL,
 	[SchoolType] [nvarchar](50) NULL,
 	[SchoolTypeId] [nvarchar](max) NULL,
-	[StateANSICode] [nvarchar](100) NOT NULL,
+	[StateAnsiCode] [nvarchar](100) NOT NULL,
 	[StateCode] [nvarchar](100) NOT NULL,
 	[StateName] [nvarchar](1000) NOT NULL,
 	[SupervisoryUnionIdentificationNumber] [nchar](3) NULL,
@@ -264,19 +264,19 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'SchoolType'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a public school provides free public elementary and/or secondary education to eligible students under a specific charter executed, pursuant to a state charter school law, by an authorized chartering agency/authority and that is designated by such authority to be a public charter school.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'CharterSchoolIndicator'

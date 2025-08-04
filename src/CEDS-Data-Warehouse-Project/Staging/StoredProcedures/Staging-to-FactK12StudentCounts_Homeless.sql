@@ -1,7 +1,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	2/20/2023
-Description: Migrates Homeless Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Homeless Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 118, 194
 ************************************************************************/
@@ -41,12 +41,12 @@ BEGIN
 		SELECT K12StudentStudentIdentifierState
 			, max(DimPersonId)								DimPersonId
 			, min(RecordStartDateTime)						RecordStartDateTime
-			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(birthdate, '1900-01-01'))			BirthDate
+			, MAX(ISNULL(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, MAX(ISNULL(Birthdate, '1900-01-01'))			Birthdate
 		INTO #dimPeople
 		FROM RDS.DimPeople
 		WHERE ((RecordStartDateTime <= @SYStartDate AND RecordEndDateTime > @SYStartDate)
-			OR (RecordStartDateTime > @SYStartDate AND isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+			OR (RecordStartDateTime > @SYStartDate AND ISNULL(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
 		AND IsActiveK12Student = 1
 		GROUP BY K12StudentStudentIdentifierState
 		ORDER BY K12StudentStudentIdentifierState
@@ -81,7 +81,7 @@ BEGIN
 		WHERE SchoolYear = @SchoolYear
 
 		CREATE CLUSTERED INDEX ix_tempvwIdeaStatuses 
-			ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolageMap);
+			ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolAgeMap);
 
 		SELECT *
 		INTO #vwMigrantStatuses
@@ -89,7 +89,7 @@ BEGIN
 		WHERE SchoolYear = @SchoolYear
 
 		CREATE CLUSTERED INDEX ix_tempvwMigrantStatuses
-			ON #vwMigrantStatuses (MigrantStatusCode, MigrantEducationProgramEnrollmentTypeCode, ContinuationOfServicesReasonCode, ConsolidatedMEPFundsStatusCode, MigrantEducationProgramServicesTypeCode, MigrantPrioritizedForServicesCode);
+			ON #vwMigrantStatuses (MigrantStatusCode, MigrantEducationProgramEnrollmentTypeCode, ContinuationOfServicesReasonCode, ConsolidatedMepFundsStatusCode, MigrantEducationProgramServicesTypeCode, MigrantPrioritizedForServicesCode);
 
 	--Pull the EL Status into a temp table
 		SELECT DISTINCT 
@@ -106,7 +106,7 @@ BEGIN
 
 	-- Create Index for #tempELStatus 
 		CREATE INDEX IX_tempELStatus 
-			ON #tempELStatus(StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, Englishlearner_StatusStartDate, EnglishLearner_StatusEndDate)
+			ON #tempELStatus(StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, EnglishLearner_StatusStartDate, EnglishLearner_StatusEndDate)
 
 	--Pull the Migrant Status into a temp table
 		SELECT DISTINCT 
@@ -127,7 +127,7 @@ BEGIN
 
 		--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'homeless'	--FactTypeId = 16
 
 		--Clear the Fact table of the data about to be migrated  
@@ -179,7 +179,7 @@ BEGIN
 
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.id											StagingId								
+			ske.Id											StagingId								
 			, rsy.DimSchoolYearId							SchoolYearId							
 			, @FactTypeId									FactTypeId							
 			, ISNULL(rgls.DimGradeLevelId, -1)				GradeLevelId							
@@ -189,7 +189,7 @@ BEGIN
 			, 1												StudentCount							
 			, ISNULL(rds.DimSeaId, -1)						SeaId									
 			, -1											IeuId									
-			, ISNULL(rdl.DimLeaID, -1)						LeaId									
+			, ISNULL(rdl.DimLeaId, -1)						LeaId									
 			, ISNULL(rdksch.DimK12SchoolId, -1)				K12SchoolId							
 			, ISNULL(rdp.DimPersonId, -1)					K12StudentId							
 			, ISNULL(rdis.DimIdeaStatusId, -1)				IdeaStatusId
@@ -240,7 +240,7 @@ BEGIN
 			AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
 		JOIN #dimPeople rdp
 			ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 			AND hmStatus.Homelessness_StatusStartDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 		LEFT JOIN RDS.DimLeas rdl
 			ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
@@ -264,7 +264,7 @@ BEGIN
 			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '')
 			AND ISNULL(ske.SchoolIdentifierSea, '') = ISNULL(sppse.SchoolIdentifierSea, '')
 			AND hmStatus.Homelessness_StatusStartDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, @SYEndDate)
-			AND sppse.IDEAIndicator = 1
+			AND sppse.IdeaIndicator = 1
 	--idea disability type			
 		LEFT JOIN Staging.IdeaDisabilityType sidt	
 			ON ske.SchoolYear = sidt.SchoolYear
@@ -292,7 +292,7 @@ BEGIN
 			ON ske.SchoolYear = spr.SchoolYear
 			AND ske.StudentIdentifierState = spr.StudentIdentifierState
 			AND (ske.SchoolIdentifierSea = spr.SchoolIdentifierSea
-				OR ske.LEAIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
+				OR ske.LeaIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
 	--homelessness (RDS)
 		LEFT JOIN RDS.vwDimHomelessnessStatuses rdhs
 			ON ISNULL(CAST(hmStatus.HomelessnessStatus AS SMALLINT), -1) = ISNULL(CAST(rdhs.HomelessnessStatusMap AS SMALLINT), -1)
@@ -305,7 +305,7 @@ BEGIN
 			AND rdms.MigrantEducationProgramEnrollmentTypeCode = 'MISSING' 
 			AND rdms.ContinuationOfServicesReasonCode = 'MISSING'
 			AND rdms.MEPContinuationOfServicesStatusCode = 'MISSING'
-			AND rdms.ConsolidatedMEPFundsStatusCode = 'MISSING'
+			AND rdms.ConsolidatedMepFundsStatusCode = 'MISSING'
 			AND rdms.MigrantEducationProgramServicesTypeCode = 'MISSING'
 			AND rdms.MigrantPrioritizedForServicesCode = 'MISSING'
 	--english learner (RDS)
@@ -315,10 +315,10 @@ BEGIN
 			AND PerkinsEnglishLearnerStatusCode = 'MISSING'
 	--idea status (rds)	
 		LEFT JOIN #vwIdeaStatuses rdis
-			ON ISNULL(CAST(sppse.IDEAIndicator AS SMALLINT), -1) = ISNULL(CAST(rdis.IdeaIndicatorMap AS SMALLINT), -1)
+			ON ISNULL(CAST(sppse.IdeaIndicator AS SMALLINT), -1) = ISNULL(CAST(rdis.IdeaIndicatorMap AS SMALLINT), -1)
 			AND rdis.SpecialEducationExitReasonCode = 'MISSING'
-			AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
-			AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
+			AND ISNULL(sppse.IdeaEducationalEnvironmentForEarlyChildhood,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
+			AND ISNULL(sppse.IdeaEducationalEnvironmentForSchoolAge,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
 	--idea disability type (rds)
 		LEFT JOIN RDS.vwDimIdeaDisabilityTypes rdidt
 			ON sidt.SchoolYear = rdidt.SchoolYear
@@ -340,7 +340,7 @@ BEGIN
 		AND hmStatus.Homelessness_StatusStartDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, @SYEndDate)
 
 
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]
@@ -418,7 +418,7 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-			insert into App.DataMigrationHistories
+			INSERT INTO App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

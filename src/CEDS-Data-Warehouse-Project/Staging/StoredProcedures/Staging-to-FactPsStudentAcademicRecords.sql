@@ -5,9 +5,9 @@ AS
 	ALTER INDEX ALL ON RDS.FactPsStudentAcademicRecords DISABLE
 
 	DECLARE @SYEndDate DATE
-	SELECT @SYEndDate = CAST('6/30/' + CAST((select MAX(SchoolYear) FROM Staging.PsStudentEnrollment) AS VARCHAR(4)) AS DATE)
+	SELECT @SYEndDate = CAST('6/30/' + CAST((SELECT MAX(SchoolYear) FROM Staging.PsStudentEnrollment) AS VARCHAR(4)) AS DATE)
 
-	DECLARE @firstDigit SMALLINT = 1, @sql VARCHAR(MAX)
+	DECLARE @firstDigit SMALLINT = 1
 
 	WHILE @firstDigit < 10
 	BEGIN
@@ -99,11 +99,10 @@ AS
 				, EnrollmentExitDate
 				, DataCollectionId)
 
-		Insert Into RDS.FactPsStudentAcademicRecords Select * From #Temp 
+		INSERT INTO RDS.FactPsStudentAcademicRecords SELECT * FROM #Temp
 
-		
 		DECLARE @LogFileName sysname
-		DECLARE @Sql nvarchar(max)
+		DECLARE @Sql NVARCHAR(MAX)
 
 		SELECT @LogFileName = name
 		FROM sys.database_files

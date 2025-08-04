@@ -18,9 +18,10 @@ CREATE TABLE [Staging].[ProgramParticipationSpecialEducation] (
     [ProgramParticipationEndDate]                         DATE           NULL,
     [IdeaIndicator]                                       BIT            NULL,
     [SpecialEducationExitReason]                          NVARCHAR (100) NULL,
-    [IDEAEducationalEnvironmentForEarlyChildhood]         NVARCHAR (100) NULL,
-    [IDEAEducationalEnvironmentForSchoolAge]              NVARCHAR (100) NULL,
+    [IdeaEducationalEnvironmentForEarlyChildhood]         NVARCHAR (100) NULL,
+    [IdeaEducationalEnvironmentForSchoolAge]              NVARCHAR (100) NULL,
     [SpecialEducationFTE]                                 DECIMAL (5, 2) NULL,
+    [SchoolYear]                                          SMALLINT       NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_ProgramParticipationSpecialEducation] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
@@ -55,25 +56,25 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001966' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22923' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'DataCollectionName';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForEarlyChildhood';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForEarlyChildhood';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The program in which children ages 3 through 5 attend and in which these children receive special education and related services.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForEarlyChildhood';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The program in which children ages 3 through 5 attend and in which these children receive special education and related services.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForEarlyChildhood';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Educational Environment for Early Childhood' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForEarlyChildhood';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Educational Environment for Early Childhood' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForEarlyChildhood';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000559' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForEarlyChildhood';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000559' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForEarlyChildhood';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21550' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForEarlyChildhood';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21550' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForEarlyChildhood';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForSchoolAge';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForSchoolAge';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The setting in which children ages 6 through 21, receive special education and related services.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForSchoolAge';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The setting in which children ages 6 through 21, receive special education and related services.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForSchoolAge';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Educational Environment for School Age' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForSchoolAge';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'IDEA Educational Environment for School Age' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForSchoolAge';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000535' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForSchoolAge';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000535' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForSchoolAge';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21526' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IDEAEducationalEnvironmentForSchoolAge';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21526' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaEducationalEnvironmentForSchoolAge';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'ProgramParticipationSpecialEducation', @level2type=N'COLUMN',@level2name=N'IdeaIndicator';
 GO

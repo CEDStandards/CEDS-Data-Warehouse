@@ -1,7 +1,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	1/6/2022
-Description: Migrates Child Count Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Child Count Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 002, 089
 ************************************************************************/
@@ -46,15 +46,15 @@ BEGIN
 		SELECT @ChildCountDate = CAST(CAST(@SchoolYear - 1 AS CHAR(4)) + '-' + CAST(MONTH(@ChildCountDate) AS VARCHAR(2)) + '-' + CAST(DAY(@ChildCountDate) AS VARCHAR(2)) AS DATE)
 
 	--Get the set of students from DimPeople to be used for the migrated SY
-		select K12StudentStudentIdentifierState
+		SELECT K12StudentStudentIdentifierState
 			, max(DimPersonId)								DimPersonId
 			, min(RecordStartDateTime)						RecordStartDateTime
-			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(birthdate, '1900-01-01'))			BirthDate
+			, MAX(ISNULL(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, MAX(ISNULL(Birthdate, '1900-01-01'))			Birthdate
 		into #dimPeople
-		from RDS.DimPeople
+		FROM RDS.DimPeople
 		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
-			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+			or (RecordStartDateTime > @SYStartDate and ISNULL(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
 		and IsActiveK12Student = 1
 		group by K12StudentStudentIdentifierState
 		order by K12StudentStudentIdentifierState
@@ -79,7 +79,7 @@ BEGIN
 		FROM RDS.vwDimIdeaStatuses
 		WHERE SchoolYear = @SchoolYear
 
-		CREATE CLUSTERED INDEX ix_tempvwIdeaStatuses ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolageMap);
+		CREATE CLUSTERED INDEX ix_tempvwIdeaStatuses ON #vwIdeaStatuses (IdeaIndicatorMap, IdeaEducationalEnvironmentForSchoolAgeMap);
 
 		SELECT * 
 		INTO #vwRaces 
@@ -162,7 +162,7 @@ BEGIN
 			, 1															StudentCount
 			, ISNULL(rds.DimSeaId, -1)									SeaId
 			, -1														IeuId
-			, ISNULL(rdl.DimLeaID, -1)									LeaId
+			, ISNULL(rdl.DimLeaId, -1)									LeaId
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId
 			, ISNULL(rdis.DimIdeaStatusId, -1)							IdeaStatusId
@@ -207,7 +207,7 @@ BEGIN
 		--dimpeople	(rds)
 			JOIN #dimPeople rdp
 				ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
-				AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+				AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 				AND @ChildCountDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 			LEFT JOIN RDS.DimDates rdd
 				ON sppse.ProgramParticipationEndDate = rdd.DateValue
@@ -260,8 +260,8 @@ BEGIN
 		--idea status (rds)	
 			LEFT JOIN #vwIdeaStatuses rdis
 				ON ISNULL(CAST(sppse.IdeaIndicator AS SMALLINT), -1) = ISNULL(rdis.IdeaIndicatorMap, -1)
-				AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
-				AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
+				AND ISNULL(sppse.IdeaEducationalEnvironmentForEarlyChildhood,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
+				AND ISNULL(sppse.IdeaEducationalEnvironmentForSchoolAge,'MISSING') = ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
 				AND rdis.SpecialEducationExitReasonCode = 'MISSING'
 		--idea disability type (rds)
 			LEFT JOIN RDS.vwDimIdeaDisabilityTypes rdidt
@@ -271,7 +271,7 @@ BEGIN
 			
 			WHERE @ChildCountDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, @SYEndDate)
 
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]
@@ -343,7 +343,7 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-	insert into App.DataMigrationHistories
+	INSERT INTO App.DataMigrationHistories
 		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH

@@ -1,6 +1,6 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimAeProviders]
 	@factTypeCode AS VARCHAR(50) = 'directory',
-	@DataCollectionName AS VARCHAR(50) = NULL,
+	@dataCollectionName AS VARCHAR(50) = NULL,
 	@runAsTest AS BIT 
 AS 
 BEGIN
@@ -104,12 +104,12 @@ BEGIN
             AND sssrd3.TableName = 'RefLevelOfInstitution'
             AND spi.ProgramYear = sssrd2.SchoolYear
 		WHERE spi.AdultEducationServiceProviderIdentifierSea IS NOT NULL
-			AND (@DataCollectionName IS NULL
+			AND (@dataCollectionName IS NULL
 				OR (
-						spi.DataCollectionName = @DataCollectionName
-					AND smam.DataCollectionName = @DataCollectionName
-					AND smap.DataCollectionName = @DataCollectionName
-					AND sop.DataCollectionName = @DataCollectionName
+						spi.DataCollectionName = @dataCollectionName
+					AND smam.DataCollectionName = @dataCollectionName
+					AND smap.DataCollectionName = @dataCollectionName
+					AND sop.DataCollectionName = @dataCollectionName
 				)
 			)
 		GROUP BY 

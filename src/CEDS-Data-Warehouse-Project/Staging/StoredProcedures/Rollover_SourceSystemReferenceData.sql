@@ -7,11 +7,11 @@ BEGIN
 	-- Build a temp table of all School Years that exist in Staging.StateDetail (typically there will only be one year)
 	-- This assures that SourceSystemReferenceData has records that correspond to the staging school year.
 	IF OBJECT_ID(N'tempdb..#SchoolYearsInStaging') IS NOT NULL DROP TABLE #SchoolYearsInStaging
-	select distinct SchoolYear into #SchoolYearsInStaging from Staging.StateDetail 
-	while exists(select top 1 * from #SchoolYearsInStaging)
+	SELECT DISTINCT SchoolYear into #SchoolYearsInStaging FROM Staging.StateDetail 
+	while exists(SELECT TOP 1 * FROM #SchoolYearsInStaging)
 		begin
-			select @MaxSchoolYearInSSRD = (select max(SchoolYear) from Staging.SourceSystemReferenceData)
-			select @StagingSchoolYear = (select top 1 SchoolYear from #SchoolYearsInStaging)
+			SELECT @MaxSchoolYearInSSRD = (SELECT MAX(SchoolYear) FROM Staging.SourceSystemReferenceData)
+			SELECT @StagingSchoolYear = (SELECT TOP 1 SchoolYear FROM #SchoolYearsInStaging)
 
 				-- Roll the Staging.SourceSystemReferenceData OptionSets into the next school year
 				-- if there are no records in SourceSystemReferenceData for the Staging School Year
@@ -19,11 +19,11 @@ BEGIN
 					BEGIN
 		
 						-- Verify there are records from the previous year to roll forward
-						if (select count(*) from Staging.SourceSystemReferenceData where SchoolYear = @StagingSchoolYear-1) = 0
+						if (SELECT COUNT(*) FROM Staging.SourceSystemReferenceData where SchoolYear = @StagingSchoolYear-1) = 0
 							begin
 								if @MaxSchoolYearInSSRD = 0
 									begin
-										insert into app.DataMigrationHistories (DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+										INSERT INTO App.DataMigrationHistories (DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 										values (getutcdate(), 4, 'ERROR: Rollover of SourceSystemReferenceData Failed for ' + convert(varchar, @StagingSchoolYear) + ' because no records exist for any previous years.') 
 										return
 									end
@@ -45,17 +45,17 @@ BEGIN
 						FROM Staging.SourceSystemReferenceData
 						WHERE SchoolYear = @MaxSchoolYearInSSRD
 					END
-				delete from #SchoolYearsInStaging where SchoolYear = @StagingSchoolYear
+				delete FROM #SchoolYearsInStaging where SchoolYear = @StagingSchoolYear
 
 				if @MaxSchoolYearInSSRD = @StagingSchoolYear - 1
 					begin
-						insert into app.DataMigrationHistories (DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
-						values (getutcdate(), 4, 'SourceSystemReferenceData rolled over for ' + convert(varchar, @StagingSchoolYear) + ' from ' + convert(varchar, @MaxSchoolYearInSSRD)) 
+						INSERT INTO App.DataMigrationHistories (DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+						values (getutcdate(), 4, 'SourceSystemReferenceData rolled over for ' + convert(varchar, @StagingSchoolYear) + ' FROM ' + convert(varchar, @MaxSchoolYearInSSRD)) 
 					end
 				else
 					begin
-						insert into app.DataMigrationHistories (DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
-						values (getutcdate(), 4, 'NOTE: SourceSystemReferenceData rolled over for ' + convert(varchar, @StagingSchoolYear) + ' from ' + convert(varchar, @MaxSchoolYearInSSRD) + ' because no data existed for ' + convert(varchar, @StagingSchoolYear-1) ) 
+						INSERT INTO App.DataMigrationHistories (DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+						values (getutcdate(), 4, 'NOTE: SourceSystemReferenceData rolled over for ' + convert(varchar, @StagingSchoolYear) + ' FROM ' + convert(varchar, @MaxSchoolYearInSSRD) + ' because no data existed for ' + convert(varchar, @StagingSchoolYear-1) ) 
 					end	
 		end -- end of loop
 

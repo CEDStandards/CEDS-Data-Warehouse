@@ -30,7 +30,7 @@ CREATE TABLE [RDS].[ReportEdFactsK12StudentAssessments](
 	[ReportYear] [nvarchar](40) NOT NULL,
 	[SECTION504STATUS] [nvarchar](50) NULL,
 	[SEX] [nvarchar](50) NULL,
-	[StateANSICode] [nvarchar](100) NOT NULL,
+	[StateAnsiCode] [nvarchar](100) NOT NULL,
 	[StateAbbreviationCode] [nvarchar](100) NOT NULL,
 	[StateAbbreviationDescription] [nvarchar](1000) NOT NULL,
 	[TableTypeAbbrv] [nvarchar](max) NULL,
@@ -327,19 +327,19 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'SEX'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateANSICode'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateAnsiCode'
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The abbreviation for the state (within the United States) or outlying area in which an address is located.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentAssessments', @level2type=N'COLUMN',@level2name=N'StateAbbreviationCode'

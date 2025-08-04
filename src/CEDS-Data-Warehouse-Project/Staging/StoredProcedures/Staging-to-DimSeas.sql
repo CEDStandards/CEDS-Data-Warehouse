@@ -202,16 +202,16 @@ BEGIN
 		FROM Staging.StateDetail ssd
 		LEFT JOIN Staging.OrganizationAddress smam
 			ON ssd.SeaOrganizationIdentifierSea = smam.OrganizationIdentifier
-			AND smam.AddressTypeForOrganization = (select MailingAddressType from #organizationLocationTypes lt WHERE lt.SchoolYear = smam.SchoolYear)
-			AND smam.OrganizationType in (select SeaOrganizationType from #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
+			AND smam.AddressTypeForOrganization = (SELECT MailingAddressType FROM #organizationLocationTypes lt WHERE lt.SchoolYear = smam.SchoolYear)
+			AND smam.OrganizationType in (SELECT SeaOrganizationType FROM #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
 		LEFT JOIN Staging.OrganizationAddress smap
 			ON ssd.SeaOrganizationIdentifierSea = smap.OrganizationIdentifier
-			AND smap.AddressTypeForOrganization = (select PhysicalAddressType from #organizationLocationTypes lt WHERE lt.SchoolYear = smap.SchoolYear)
-			AND smap.OrganizationType in (select SeaOrganizationType from #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
+			AND smap.AddressTypeForOrganization = (SELECT PhysicalAddressType FROM #organizationLocationTypes lt WHERE lt.SchoolYear = smap.SchoolYear)
+			AND smap.OrganizationType in (SELECT SeaOrganizationType FROM #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
 		LEFT JOIN Staging.OrganizationPhone sop
 			ON ssd.SeaOrganizationIdentifierSea = sop.OrganizationIdentifier
 			AND sop.PrimaryTelephoneNumberIndicator = 1
-			AND sop.OrganizationType in (select SeaOrganizationType from #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
+			AND sop.OrganizationType in (SELECT SeaOrganizationType FROM #organizationTypes ot WHERE ot.SchoolYear = smam.SchoolYear)
 		WHERE @dataCollectionName IS NULL	
 			OR ssd.DataCollectionName = @dataCollectionName
 	)

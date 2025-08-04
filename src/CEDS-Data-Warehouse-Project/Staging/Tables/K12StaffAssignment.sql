@@ -59,6 +59,7 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
 	[ClassroomPositionTypeCode]              NVARCHAR (50)  NULL,
 	[ClassroomPositionTypeDescription]       NVARCHAR (200) NULL,
 	[PrimaryAssignmentIndicatorCode]         NVARCHAR (50)  NULL,
+    [TitleIIILanguageInstructionIndicator]   BIT            NULL,
     [SchoolYear]                             SMALLINT       NULL,
     [DataCollectionName]                     NVARCHAR (100) NULL,
     [RecordStartDateTime]                    DATETIME       NULL,

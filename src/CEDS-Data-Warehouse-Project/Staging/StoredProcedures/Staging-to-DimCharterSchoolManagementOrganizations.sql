@@ -9,29 +9,29 @@ BEGIN
 
     DECLARE @SchoolYear INT, @StateCode VARCHAR(2), @StateName VARCHAR(50), @StateAnsiCode VARCHAR(5)
     SELECT @SchoolYear = (	SELECT sy.SchoolYear
-							FROM rds.DimSchoolYearDataMigrationTypes dm
-								INNER JOIN rds.dimschoolyears sy
-									ON dm.dimschoolyearid = sy.dimschoolyearid
+							FROM RDS.DimSchoolYearDataMigrationTypes dm
+								INNER JOIN RDS.DimSchoolYears sy
+									ON dm.DimSchoolYearId = sy.DimSchoolYearId
 							WHERE IsSelected = 1
 							AND dm.DataMigrationTypeId = 3
 						)
     SELECT @StateCode = StateAbbreviationCode FROM Staging.StateDetail WHERE SchoolYear = @SchoolYear
 	SELECT @StateName = (	SELECT CedsOptionSetDescription 
-							FROM ceds.CedsOptionSetMapping 
+							FROM CEDS.CedsOptionSetMapping 
 							WHERE CedsElementTechnicalName = 'StateAbbreviation' 
 							AND CedsOptionSetCode = @StateCode
 						)
 	SELECT @StateAnsiCode = (	SELECT CedsOptionSetCode 
-								FROM ceds.CedsOptionSetMapping 
+								FROM CEDS.CedsOptionSetMapping 
 								WHERE CedsElementTechnicalName = 'StateAnsiCode' 
 								AND CedsOptionSetDescription = @StateName
 							)
 
-	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolManagementOrganizations WHERE DimCharterSchoolManagementOrganizationId = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimCharterSchoolManagementOrganizations WHERE DimCharterSchoolManagementOrganizationId = -1)
 	BEGIN
-		SET IDENTITY_INSERT rds.DimCharterSchoolManagementOrganizations ON
-		INSERT INTO rds.DimCharterSchoolManagementOrganizations (DimCharterSchoolManagementOrganizationId) VALUES (-1)
-		SET IDENTITY_INSERT rds.DimCharterSchoolManagementOrganizations off
+		SET IDENTITY_INSERT RDS.DimCharterSchoolManagementOrganizations ON
+		INSERT INTO RDS.DimCharterSchoolManagementOrganizations (DimCharterSchoolManagementOrganizationId) VALUES (-1)
+		SET IDENTITY_INSERT RDS.DimCharterSchoolManagementOrganizations off
 	END
 
 	CREATE TABLE #organizationTypes (
@@ -82,7 +82,7 @@ BEGIN
 		, smap.StateAbbreviation		 									'PhysicalAddressStateAbbreviation'
 		, smap.AddressPostalCode					 						'PhysicalAddressPostalCode'
 		, sop.TelephoneNumber				 				
-		, NULL 																'WebsiteAddress'
+		, NULL 																'WebSiteAddress'
 		, 0 																'OutOfStateIndicator'
 		, scsmo.RecordStartDateTime
 		, scsmo.RecordEndDateTime
@@ -138,7 +138,7 @@ BEGIN
 				, trgt.PhysicalAddressStateAbbreviation						= src.PhysicalAddressStateAbbreviation
 				, trgt.PhysicalAddressPostalCode							= src.PhysicalAddressPostalCode
 				, trgt.TelephoneNumber										= src.TelephoneNumber
-				, trgt.WebsiteAddress										= src.WebsiteAddress
+				, trgt.WebSiteAddress										= src.WebSiteAddress
 				, trgt.RecordEndDateTime 									= src.RecordEndDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but not in Target
 		INSERT (
@@ -160,7 +160,7 @@ BEGIN
 			, PhysicalAddressStateAbbreviation
 			, PhysicalAddressPostalCode
 			, TelephoneNumber
-			, WebsiteAddress
+			, WebSiteAddress
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)
@@ -183,7 +183,7 @@ BEGIN
 			, src.PhysicalAddressStateAbbreviation
 			, src.PhysicalAddressPostalCode
 			, src.TelephoneNumber
-			, src.WebsiteAddress
+			, src.WebSiteAddress
 			, src.RecordStartDateTime
 			, src.RecordEndDateTime
 		);

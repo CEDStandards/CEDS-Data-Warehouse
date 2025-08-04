@@ -21,6 +21,15 @@ CREATE TABLE [RDS].[FactK12StudentAssessments] (
     [K12DemographicId]                        INT           CONSTRAINT [DF_FactK12StudentAssessments_K12DemographicId] DEFAULT ((-1)) NOT NULL,
     [NOrDStatusId]                            INT           CONSTRAINT [DF_FactK12StudentAssessments_NOrDStatusId] DEFAULT ((-1)) NOT NULL,
     [TitleIIIStatusId]                        INT           CONSTRAINT [DF_FactK12StudentAssessments_TitleIIIStatusId] DEFAULT ((-1)) NOT NULL,
+    [EconomicallyDisadvantagedStatusId]       INT           CONSTRAINT [DF_FactK12StudentAssessments_EconomicallyDisadvantagedStatusId] DEFAULT ((-1)) NOT NULL,
+    [EnglishLearnerStatusId]                  INT           CONSTRAINT [DF_FactK12StudentAssessments_EnglishLearnerStatusId] DEFAULT ((-1)) NOT NULL,
+    [FosterCareStatusId]                      INT           CONSTRAINT [DF_FactK12StudentAssessments_FosterCareStatusId] DEFAULT ((-1)) NOT NULL,
+    [HomelessnessStatusId]                    INT           CONSTRAINT [DF_FactK12StudentAssessments_HomelessnessStatusId] DEFAULT ((-1)) NOT NULL,
+    [ImmigrantStatusId]                       INT           CONSTRAINT [DF_FactK12StudentAssessments_ImmigrantStatusId] DEFAULT ((-1)) NOT NULL,
+    [MigrantStatusId]                         INT           CONSTRAINT [DF_FactK12StudentAssessments_MigrantStatusId] DEFAULT ((-1)) NOT NULL,
+    [MilitaryStatusId]                        INT           CONSTRAINT [DF_FactK12StudentAssessments_MilitaryStatusId] DEFAULT ((-1)) NOT NULL,
+    [TitleIStatusId]                          INT           CONSTRAINT [DF_FactK12StudentAssessments_TitleIStatusId] DEFAULT ((-1)) NOT NULL,
+    [PrimaryDisabilityTypeId]                 INT           CONSTRAINT [DF_FactK12StudentAssessments_PrimaryDisabilityTypeId] DEFAULT ((-1)) NOT NULL,
     [AssessmentCount]                         INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentCount] DEFAULT ((1)) NOT NULL,
     [AssessmentResultScoreValueRawScore]      NVARCHAR (35) NULL,
     [AssessmentResultScoreValueScaleScore]    NVARCHAR (35) NULL,
@@ -50,7 +59,16 @@ CREATE TABLE [RDS].[FactK12StudentAssessments] (
     CONSTRAINT [FK_FactK12StudentAssessments_NOrDStatuses] FOREIGN KEY ([NOrDStatusId]) REFERENCES [RDS].[DimNOrDStatuses] ([DimNOrDStatusId]),
     CONSTRAINT [FK_FactK12StudentAssessments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentAssessments_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
-    CONSTRAINT [FK_FactK12StudentAssessments_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId])
+    CONSTRAINT [FK_FactK12StudentAssessments_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_EconomicallyDisadvantagedStatusId] FOREIGN KEY ([EconomicallyDisadvantagedStatusId]) REFERENCES [RDS].[DimEconomicallyDisadvantagedStatuses] ([DimEconomicallyDisadvantagedStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_EnglishLearnerStatusId] FOREIGN KEY ([EnglishLearnerStatusId]) REFERENCES [RDS].[DimEnglishLearnerStatuses] ([DimEnglishLearnerStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_FosterCareStatusId] FOREIGN KEY ([FosterCareStatusId]) REFERENCES [RDS].[DimFosterCareStatuses] ([DimFosterCareStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_HomelessnessStatusId] FOREIGN KEY ([HomelessnessStatusId]) REFERENCES [RDS].[DimHomelessnessStatuses] ([DimHomelessnessStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_ImmigrantStatusId] FOREIGN KEY ([ImmigrantStatusId]) REFERENCES [RDS].[DimImmigrantStatuses] ([DimImmigrantStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_MilitaryStatusId] FOREIGN KEY ([MilitaryStatusId]) REFERENCES [RDS].[DimMilitaryStatuses] ([DimMilitaryStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_TitleIStatusId] FOREIGN KEY ([TitleIStatusId]) REFERENCES [RDS].[DimTitleIStatuses] ([DimTitleIStatusId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_PrimaryDisabilityTypeId] FOREIGN KEY ([PrimaryDisabilityTypeId]) REFERENCES [RDS].[DimIdeaDisabilityTypes] ([DimIdeaDisabilityTypeId])
 );
 GO
 
@@ -95,6 +113,24 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_NOrDStatusId] ON [RDS].[FactK12StudentAssessments]([NOrDStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_TitleIIIStatusId] ON [RDS].[FactK12StudentAssessments]([TitleIIIStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_EconomicallyDisadvantagedStatusId] ON [RDS].[FactK12StudentAssessments]([EconomicallyDisadvantagedStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_EnglishLearnerStatusId] ON [RDS].[FactK12StudentAssessments]([EnglishLearnerStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_FosterCareStatusId] ON [RDS].[FactK12StudentAssessments]([FosterCareStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_HomelessnessStatusId] ON [RDS].[FactK12StudentAssessments]([HomelessnessStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_ImmigrantStatusId] ON [RDS].[FactK12StudentAssessments]([ImmigrantStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_MigrantStatusId] ON [RDS].[FactK12StudentAssessments]([MigrantStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_MilitaryStatusId] ON [RDS].[FactK12StudentAssessments]([MilitaryStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_TitleIStatusId] ON [RDS].[FactK12StudentAssessments]([TitleIStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_PrimaryDisabilityTypeId] ON [RDS].[FactK12StudentAssessments]([PrimaryDisabilityTypeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 
 

@@ -17,6 +17,7 @@ CREATE TABLE [Staging].[ProgramParticipationTitleI] (
     [ProgramParticipationBeginDate]                       DATE           NULL,
     [ProgramParticipationEndDate]                         DATE           NULL,
     [TitleIIndicator]                                     NVARCHAR (100) NULL,
+    [SchoolYear]                                          SMALLINT       NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
     [RunDateTime]                                         DATETIME       NULL,
     CONSTRAINT [PK_ProgramParticipationTitleI] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)

@@ -24,8 +24,10 @@ CREATE TABLE [Staging].[ProgramParticipationTitleIII] (
     [TitleIIILanguageInstructionProgramType]              VARCHAR (100)  NULL,
     [TitleIIIImmigrantStatus_StartDate]                   DATE           NULL,
     [TitleIIIImmigrantStatus_EndDate]                     DATE           NULL,
-    [DataCollectionName]                                  NVARCHAR (100) NULL,
     [RunDateTime]                                         DATETIME       NULL,
+    [EnglishLearnerExitedStatus]                          BIT            NULL,
+    [SchoolYear]                                          SMALLINT       NULL,
+    [DataCollectionName]                                  NVARCHAR (100) NULL,
     CONSTRAINT [PK_ProgramParticipationTitleIII] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

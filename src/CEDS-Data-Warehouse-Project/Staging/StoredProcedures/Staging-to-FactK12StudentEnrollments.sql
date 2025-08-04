@@ -1,12 +1,12 @@
 ﻿CREATE PROCEDURE [Staging].[Staging-to-FactK12StudentEnrollments]
-	@DataCollectionName	VARCHAR(60) = NULL
+	@dataCollectionName	VARCHAR(60) = NULL
 AS
 
 	IF OBJECT_ID(N'tempdb..#SchoolYears') IS NOT NULL DROP TABLE #SchoolYears
-	SELECT DISTINCT SchoolYear INTO #SchoolYears FROM Staging.K12Enrollment WHERE (@DataCollectionName IS NULL OR DataCollectionName = @DataCollectionName)
+	SELECT DISTINCT SchoolYear INTO #SchoolYears FROM Staging.K12Enrollment WHERE (@dataCollectionName IS NULL OR DataCollectionName = @dataCollectionName)
 
 	DECLARE @SYEndDate DATE
-	SELECT @SYEndDate = CAST('6/30/' + CAST((select MAX(SchoolYear) from #SchoolYears) AS VARCHAR(4)) AS DATE)
+	SELECT @SYEndDate = CAST('6/30/' + CAST((SELECT MAX(SchoolYear) FROM #SchoolYears) AS VARCHAR(4)) AS DATE)
 
 	IF OBJECT_ID(N'tempdb..#vwDimK12Demographics') IS NOT NULL DROP TABLE #vwDimK12Demographics
 	SELECT v.* INTO #vwDimK12Demographics FROM RDS.vwDimK12Demographics v JOIN #SchoolYears t on v.SchoolYear = t.SchoolYear
@@ -233,8 +233,8 @@ AS
 		ON ske.CohortGraduationYear = gradCohortYear.SchoolYear
 	LEFT JOIN RDS.DimDates countdate
 		ON ISNULL(ske.RecordStartDateTime, '1/1/1900') = ISNULL(countDate.DateValue, '1/1/1900')
-	WHERE @DataCollectionName IS NULL
-		OR ske.DataCollectionName = @DataCollectionName
+	WHERE @dataCollectionName IS NULL
+		OR ske.DataCollectionName = @dataCollectionName
 
 	CREATE UNIQUE CLUSTERED INDEX IX_Facts ON #Facts(StagingId) 
 
@@ -460,9 +460,9 @@ AS
 		AND ISNULL(sidt.SchoolIdentifierSea, '') = ISNULL(sppse.SchoolIdentifierSea, '')
 	JOIN #vwDimIdeaStatuses rdis
 		ON ske.SchoolYear = rdis.SchoolYear
-		AND ISNULL(CAST(sppse.IDEAIndicator AS SMALLINT), -1)													= rdis.IdeaIndicatorMap
-		AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood, 'MISSING')								= ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
-		AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge, 'MISSING')										= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
+		AND ISNULL(CAST(sppse.IdeaIndicator AS SMALLINT), -1)													= rdis.IdeaIndicatorMap
+		AND ISNULL(sppse.IdeaEducationalEnvironmentForEarlyChildhood, 'MISSING')								= ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
+		AND ISNULL(sppse.IdeaEducationalEnvironmentForSchoolAge, 'MISSING')										= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
 		AND ISNULL(sppse.SpecialEducationExitReason, 'MISSING')													= ISNULL(rdis.SpecialEducationExitReasonMap, rdis.SpecialEducationExitReasonCode) 
 	LEFT JOIN #vwDimIdeaDisabilityTypes rdidtPrimary
 		ON ske.SchoolYear																						= rdidtPrimary.SchoolYear
@@ -483,7 +483,7 @@ AS
 	FROM #Facts f
 	JOIN Staging.K12Enrollment ske
 		ON f.StagingId = ske.Id
-	JOIN Staging.ProgramParticipationCte sppc
+	JOIN Staging.ProgramParticipationCTE sppc
 		ON ISNULL(ske.DataCollectionName, '')																	= ISNULL(sppc.DataCollectionName, '')
 		AND ISNULL(ske.LeaIdentifierSeaAccountability, '')														= ISNULL(sppc.LeaIdentifierSeaAccountability, '')
 		AND ISNULL(ske.LeaIdentifierSeaAttendance, '')															= ISNULL(sppc.LeaIdentifierSeaAttendance, '')
@@ -579,7 +579,7 @@ AS
 		AND ISNULL(sps.PerkinsEnglishLearnerStatus, -1)															= rdels.PerkinsEnglishLearnerStatusMap
 	LEFT JOIN #vwDimTitleIIIStatuses rdtiiis
 		ON ske.SchoolYear																						= rdtiiis.SchoolYear
-		AND ISNULL(CAST(spptiii.TitleIiiImmigrantStatus AS SMALLINT), -1)										= rdtiiis.ProgramParticipationTitleIIILiepMap 
+		AND ISNULL(CAST(spptiii.TitleIIIImmigrantStatus AS SMALLINT), -1)										= rdtiiis.ProgramParticipationTitleIIILiepMap 
 		AND ISNULL(spptiii.Proficiency_TitleIII, 'MISSING')														= ISNULL(rdtiiis.ProficiencyStatusMap, rdtiiis.ProficiencyStatusCode)
 		AND ISNULL(spptiii.TitleIIIAccountabilityProgressStatus, 'MISSING')										= ISNULL(rdtiiis.TitleIIIAccountabilityProgressStatusMap, rdtiiis.TitleIIIAccountabilityProgressStatusCode)
 		AND ISNULL(spptiii.TitleIIILanguageInstructionProgramType, 'MISSING')									= ISNULL(rdtiiis.TitleIIILanguageInstructionProgramTypeMap, rdtiiis.TitleIIILanguageInstructionProgramTypeCode)
@@ -644,7 +644,7 @@ AS
 		, [LeaAccountabilityId]                           
 		, [LeaAttendanceId]                               
 		, [LeaFundingId]                                  
-		, [LeaGraduationID]                               
+		, [LeaGraduationId]                               
 		, [LeaIndividualizedEducationProgramId]           
 		, [LeaMembershipResidentId]
 		, [K12SchoolId]                        
@@ -703,7 +703,7 @@ AS
 		, ISNULL([LeaAccountabilityId]                           , -1)
 		, ISNULL([LeaAttendanceId]                               , -1)
 		, ISNULL([LeaFundingId]                                  , -1)
-		, ISNULL([LeaGraduationID]                               , -1)
+		, ISNULL([LeaGraduationId]                               , -1)
 		, ISNULL([LeaIndividualizedEducationProgramId]           , -1)
 		, ISNULL([LeaMembershipResidentId]						 , -1)
 		, ISNULL([K12SchoolId]									 , -1)
@@ -771,15 +771,15 @@ AS
 	JOIN RDS.DimK12Schools rdks
 		ON rfkse.K12SchoolId = rdks.DimK12SchoolId
 	JOIN RDS.DimLeas rdlsAcc
-		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaID
+		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaId
 	JOIN RDS.DimLeas rdlsAtt
-		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaID
+		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaId
 	JOIN RDS.DimLeas rdlsFun
-		ON rfkse.LeaFundingId = rdlsFun.DimLeaID
+		ON rfkse.LeaFundingId = rdlsFun.DimLeaId
 	JOIN RDS.DimLeas rdlsGrad
-		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaID
+		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaId
 	JOIN RDS.DimLeas rdlsIep
-		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaID
+		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaId
 	JOIN RDS.DimDates countDate
 		ON rfkse.CountDateId = countDate.DimDateId
 	JOIN RDS.DimDates entryDate
@@ -788,7 +788,7 @@ AS
 		ON rfkse.EnrollmentExitDateId = exitDate.DimDateId
 	JOIN RDS.DimDataCollections rddc
 		ON rfkse.DataCollectionId = rddc.DimDataCollectionId
-		AND rddc.DataCollectionName = @DataCollectionName
+		AND rddc.DataCollectionName = @dataCollectionName
 	JOIN RDS.DimResponsibleSchoolTypes rdrst
 		ON rfkse.ResponsibleSchoolTypeId = rdrst.DimResponsibleSchoolTypeId
 	LEFT JOIN Staging.K12Enrollment ske
@@ -850,20 +850,20 @@ AS
 	JOIN RDS.DimK12Schools rdks
 		ON rfkse.K12SchoolId = rdks.DimK12SchoolId
 	JOIN RDS.DimLeas rdlsAcc
-		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaID
+		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaId
 	JOIN RDS.DimLeas rdlsAtt
-		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaID
+		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaId
 	JOIN RDS.DimLeas rdlsFun
-		ON rfkse.LeaFundingId = rdlsFun.DimLeaID
+		ON rfkse.LeaFundingId = rdlsFun.DimLeaId
 	JOIN RDS.DimLeas rdlsGrad
-		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaID
+		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaId
 	JOIN RDS.DimLeas rdlsIep
-		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaID
+		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaId
 	JOIN RDS.DimDates countDate
 		ON rfkse.CountDateId = countDate.DimDateId
 	JOIN RDS.DimDataCollections rddc
 		ON rfkse.DataCollectionId = rddc.DimDataCollectionId
-		AND rddc.DataCollectionName = @DataCollectionName
+		AND rddc.DataCollectionName = @dataCollectionName
 	JOIN RDS.DimResponsibleSchoolTypes rdrst
 		ON rfkse.ResponsibleSchoolTypeId = rdrst.DimResponsibleSchoolTypeId
 	LEFT JOIN Staging.IdeaDisabilityType sidt
@@ -900,20 +900,20 @@ AS
 	JOIN RDS.DimK12Schools rdks
 		ON rfkse.K12SchoolId = rdks.DimK12SchoolId
 	JOIN RDS.DimLeas rdlsAcc
-		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaID
+		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaId
 	JOIN RDS.DimLeas rdlsAtt
-		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaID
+		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaId
 	JOIN RDS.DimLeas rdlsFun
-		ON rfkse.LeaFundingId = rdlsFun.DimLeaID
+		ON rfkse.LeaFundingId = rdlsFun.DimLeaId
 	JOIN RDS.DimLeas rdlsGrad
-		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaID
+		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaId
 	JOIN RDS.DimLeas rdlsIep
-		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaID
+		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaId
 	JOIN RDS.DimDates countDate
 		ON rfkse.CountDateId = countDate.DimDateId
 	JOIN RDS.DimDataCollections rddc
 		ON rfkse.DataCollectionId = rddc.DimDataCollectionId
-		AND rddc.DataCollectionName = @DataCollectionName
+		AND rddc.DataCollectionName = @dataCollectionName
 	LEFT JOIN Staging.K12StudentAddress sksa
 		ON rdp.K12StudentStudentIdentifierState = sksa.StudentIdentifierState
 		AND ISNULL(rdks.SchoolIdentifierSea, '') = ISNULL(sksa.SchoolIdentifierSea, '')

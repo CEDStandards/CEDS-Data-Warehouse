@@ -13,8 +13,8 @@ AS
             , SchoolIdentifierSea
             , CASE 
                 WHEN COUNT(InputCode) > 1 
-                    THEN (select max(InputCode)
-                                   from Staging.SourceSystemReferenceData
+                    THEN (SELECT MAX(InputCode)
+                                   FROM Staging.SourceSystemReferenceData
                                    where TableName = 'refRace'
                                    and SchoolYear = spr.SchoolYear
                                    and OutputCode = 'TwoOrMoreRaces'

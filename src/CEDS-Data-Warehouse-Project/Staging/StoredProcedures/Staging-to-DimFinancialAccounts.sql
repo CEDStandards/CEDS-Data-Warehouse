@@ -1,5 +1,5 @@
 CREATE PROCEDURE [Staging].[Staging-to-DimFinancialAccounts]
-	@DataCollectionName AS VARCHAR(50) = NULL
+	@dataCollectionName AS VARCHAR(50) = NULL
 AS 
 BEGIN
 

@@ -2,7 +2,7 @@ CREATE PROCEDURE [Staging].[Staging-to-FactCredentialAwards]
 AS
 BEGIN
 
-  -- Insert data from Staging.CredentialAward into RDS.FactCredentialAwards
+  -- Insert data FROM Staging.CredentialAward into RDS.FactCredentialAwards
   INSERT INTO RDS.FactCredentialAwards (
       [CredentialIssuerId]
     , [CredentialDefinitionId]

@@ -2,7 +2,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	2/20/2023
-Description: Migrates Chronic Absenteeism Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Chronic Absenteeism Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 195
 ************************************************************************/
@@ -347,7 +347,7 @@ BEGIN
 					ELSE CAST(ske.NumberOfSchoolDays - ske.NumberOfDaysAbsent  AS decimal(5,2)) / CAST(ske.NumberOfSchoolDays AS decimal(5,2))
 				END) AS decimal(5,4)) <= 0.9
 
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]

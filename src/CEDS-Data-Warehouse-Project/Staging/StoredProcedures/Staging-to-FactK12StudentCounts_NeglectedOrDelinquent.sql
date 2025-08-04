@@ -2,7 +2,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	2/20/2023
-Description: Migrates Neglected Or Delinquent Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Neglected Or Delinquent Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 
 FS119 
@@ -67,15 +67,15 @@ BEGIN
 		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
 
 	--Get the set of students from DimPeople to be used for the migrated SY
-		select K12StudentStudentIdentifierState
+		SELECT K12StudentStudentIdentifierState
 			, max(DimPersonId)								DimPersonId
 			, min(RecordStartDateTime)						RecordStartDateTime
-			, max(isnull(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
-			, max(isnull(Birthdate, '1900-01-01'))			Birthdate
+			, MAX(ISNULL(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, MAX(ISNULL(Birthdate, '1900-01-01'))			Birthdate
 		into #dimPeople
-		from RDS.DimPeople
+		FROM RDS.DimPeople
 		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
-			or (RecordStartDateTime > @SYStartDate and isnull(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+			or (RecordStartDateTime > @SYStartDate and ISNULL(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
 		and IsActiveK12Student = 1
 		group by K12StudentStudentIdentifierState
 		order by K12StudentStudentIdentifierState
@@ -213,8 +213,8 @@ BEGIN
 			, ISNULL(EndDate.DimDateId, -1)								StatusEndDateNeglectedOrDelinquentId
 		FROM Staging.K12Enrollment ske
 		JOIN Staging.K12Organization sko
-			on isnull(ske.LeaIdentifierSeaAccountability,'') = isnull(sko.LeaIdentifierSea,'')
-			and isnull(ske.SchoolIdentifierSea,'') = isnull(sko.SchoolIdentifierSea,'')
+			on ISNULL(ske.LeaIdentifierSeaAccountability,'') = ISNULL(sko.LeaIdentifierSea,'')
+			and ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(sko.SchoolIdentifierSea,'')
 			and Lea_IsReportedFederally = 1
 		JOIN RDS.DimSchoolYears rsy
 			ON ske.SchoolYear = rsy.SchoolYear
@@ -322,7 +322,7 @@ BEGIN
 		WHERE SchoolYearId = @SchoolYearId 
 			AND FactTypeId = @FactTypeId
 
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]

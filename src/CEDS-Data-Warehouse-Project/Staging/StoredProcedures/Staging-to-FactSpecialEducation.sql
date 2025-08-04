@@ -1,6 +1,6 @@
 ﻿
 CREATE PROCEDURE [Staging].[Staging-To-FactSpecialEducation]
-	@DataCollectionName	VARCHAR(60) = NULL
+	@dataCollectionName	VARCHAR(60) = NULL
 AS
 BEGIN
 
@@ -10,7 +10,7 @@ BEGIN
 	SELECT DISTINCT SchoolYear INTO #SchoolYears FROM Staging.K12Enrollment
 
 	DECLARE @SYEndDate DATE
-	SELECT @SYEndDate = CAST('6/30/' + CAST((select MAX(SchoolYear) from #SchoolYears) AS VARCHAR(4)) AS DATE)
+	SELECT @SYEndDate = CAST('6/30/' + CAST((SELECT MAX(SchoolYear) FROM #SchoolYears) AS VARCHAR(4)) AS DATE)
 
 	--ALTER INDEX ALL ON RDS.FactK12StudentEnrollments DISABLE
 	IF OBJECT_ID(N'tempdb..#vwDimK12Demographics') IS NOT NULL DROP TABLE #vwDimK12Demographics
@@ -240,8 +240,8 @@ BEGIN
 		ON sppse.ProgramParticipationBeginDate			= progStartDate.DateValue
 	LEFT JOIN RDS.DimDates serviceExitDate
 		ON sppse.ProgramParticipationEndDate			= serviceExitDate.DateValue
-	WHERE @DataCollectionName IS NULL
-		OR ske.DataCollectionName = @DataCollectionName
+	WHERE @dataCollectionName IS NULL
+		OR ske.DataCollectionName = @dataCollectionName
 
 	CREATE NONCLUSTERED INDEX IX_Facts ON #Facts(StagingId) 
 
@@ -458,8 +458,8 @@ BEGIN
 	JOIN #vwDimIdeaStatuses rdis
 		ON ske.SchoolYear = rdis.SchoolYear
 		AND ISNULL(CAST(sps.IdeaIndicator AS SMALLINT), -1)						= rdis.IdeaIndicatorMap
-		AND ISNULL(sppse.IDEAEducationalEnvironmentForEarlyChildhood, 'MISSING')= ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
-		AND ISNULL(sppse.IDEAEducationalEnvironmentForSchoolAge, 'MISSING')		= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
+		AND ISNULL(sppse.IdeaEducationalEnvironmentForEarlyChildhood, 'MISSING')= ISNULL(rdis.IdeaEducationalEnvironmentForEarlyChildhoodMap, rdis.IdeaEducationalEnvironmentForEarlyChildhoodCode)
+		AND ISNULL(sppse.IdeaEducationalEnvironmentForSchoolAge, 'MISSING')		= ISNULL(rdis.IdeaEducationalEnvironmentForSchoolAgeMap, rdis.IdeaEducationalEnvironmentForSchoolAgeCode)
 		AND ISNULL(sppse.SpecialEducationExitReason, 'MISSING')					= ISNULL(rdis.SpecialEducationExitReasonMap, rdis.SpecialEducationExitReasonCode) 
 
 	UPDATE #Facts
@@ -725,7 +725,7 @@ SELECT		  ISNULL([SchoolYearId]											, -1)
 		ON rfse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaId
 	JOIN RDS.DimDataCollections rddc
 		ON rfse.DataCollectionId = rddc.DimDataCollectionId
-		AND rddc.DataCollectionName = @DataCollectionName
+		AND rddc.DataCollectionName = @dataCollectionName
 	JOIN RDS.DimDates countDate
 		ON rfse.CountDateId = countDate.DimDateId
 	LEFT JOIN Staging.K12PersonRace skpr
@@ -782,7 +782,7 @@ SELECT		  ISNULL([SchoolYearId]											, -1)
 		ON rfse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaId
 	JOIN RDS.DimDataCollections rddc
 		ON rfse.DataCollectionId = rddc.DimDataCollectionId
-		AND rddc.DataCollectionName = @DataCollectionName
+		AND rddc.DataCollectionName = @dataCollectionName
 	JOIN RDS.DimDates countDate
 		ON rfse.CountDateId = countDate.DimDateId
 	LEFT JOIN Staging.IdeaDisabilityType sidt

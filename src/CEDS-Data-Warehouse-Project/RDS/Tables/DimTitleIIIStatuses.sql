@@ -14,6 +14,9 @@ CREATE TABLE [RDS].[DimTitleIIIStatuses] (
     [TitleIIILanguageInstructionProgramTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimTitleIIIStatuses_TitleIIILanguageInstructionProgramTypeCode] DEFAULT ('MISSING') NOT NULL,
     [TitleIIILanguageInstructionProgramTypeDescription] NVARCHAR (100) CONSTRAINT [DF_DimTitleIIIStatuses_TitleIIILanguageInstructionProgramTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [TitleIIILanguageInstructionProgramTypeEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimTitleIIIStatuses_TitleIIILanguageInstructionProgramTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+	[EnglishLearnerExitedStatusCode]                   NVARCHAR (50) CONSTRAINT [DF_DimTitleIIIStatuses_EnglishLearnerExitedStatusCode] DEFAULT ('MISSING') NOT NULL,
+	[EnglishLearnerExitedStatusDescription]            NVARCHAR (200) CONSTRAINT [DF_DimTitleIIIStatuses_EnglishLearnerExitedStatusDescription] DEFAULT ('MISSING') NOT NULL,
+	[EnglishLearnerExitedStatusEdFactsCode]            NVARCHAR (50) CONSTRAINT [DF_DimTitleIIIStatuses_EnglishLearnerExitedStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimTitleIIIStatuses] PRIMARY KEY CLUSTERED ([DimTitleIIIStatusId] ASC) WITH (FILLFACTOR = 80)
 );
 

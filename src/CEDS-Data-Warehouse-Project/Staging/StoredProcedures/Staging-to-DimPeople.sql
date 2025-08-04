@@ -262,7 +262,7 @@ BEGIN
 		JOIN RDS.DimPeople endd
 			ON ISNULL(startd.[K12StudentStudentIdentifierState],startd.[PsStudentStudentIdentifierState])
 				=ISNULL(endd.[K12StudentStudentIdentifierState],endd.[PsStudentStudentIdentifierState]) 
-		WHERE startd.RecordStartDateTime < isnull(endd.RecordStartDateTime,getdate())
+		WHERE startd.RecordStartDateTime < ISNULL(endd.RecordStartDateTime,getdate())
 			AND ISNULL(startd.K12StudentStudentIdentifierState, startd.PsStudentStudentIdentifierState) IS NOT NULL
 		GROUP BY
 			  startd.[K12StudentStudentIdentifierState]

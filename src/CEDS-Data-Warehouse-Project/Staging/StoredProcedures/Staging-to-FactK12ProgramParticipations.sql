@@ -3,7 +3,7 @@
 AS BEGIN
 
 	DECLARE @SYEndDate DATE
-	SELECT @SYEndDate = CAST('6/30/' + CAST((select MAX(SchoolYear) from Staging.K12Enrollment) AS VARCHAR(4)) AS DATE)
+	SELECT @SYEndDate = CAST('6/30/' + CAST((SELECT MAX(SchoolYear) FROM Staging.K12Enrollment) AS VARCHAR(4)) AS DATE)
 
 	CREATE TABLE #Facts (
 		   [StagingId]									INT
@@ -140,7 +140,7 @@ AS BEGIN
 	JOIN RDS.DimDates entryDate
 		ON skpp.EntryDate = entryDate.DateValue
 	JOIN RDS.DimDates exitDate
-		ON skpp.exitDate = exitDate.DateValue
+		ON skpp.ExitDate = exitDate.DateValue
 	LEFT JOIN RDS.vwDimK12ProgramTypes rdkpt
 		ON ISNULL(skpp.ProgramType, 'MISSING')										= ISNULL(rdkpt.ProgramTypeMap, rdkpt.ProgramTypeCode)
 		AND skpp.SchoolYear = rdkpt.SchoolYear
@@ -256,15 +256,15 @@ AS BEGIN
 	JOIN RDS.DimK12Schools rdks
 		ON rfkse.K12SchoolId = rdks.DimK12SchoolId
 	JOIN RDS.DimLeas rdlsAcc
-		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaID
+		ON rfkse.LeaAccountabilityId = rdlsAcc.DimLeaId
 	JOIN RDS.DimLeas rdlsAtt
-		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaID
+		ON rfkse.LeaAttendanceId = rdlsAtt.DimLeaId
 	JOIN RDS.DimLeas rdlsFun
-		ON rfkse.LeaFundingId = rdlsFun.DimLeaID
+		ON rfkse.LeaFundingId = rdlsFun.DimLeaId
 	JOIN RDS.DimLeas rdlsGrad
-		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaID
+		ON rfkse.LeaGraduationId = rdlsGrad.DimLeaId
 	JOIN RDS.DimLeas rdlsIep
-		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaID
+		ON rfkse.LeaIndividualizedEducationProgramId = rdlsIep.DimLeaId
 	JOIN RDS.DimSeas rdlsSea
 		ON rfkse.SeaId = rdlsSea.DimSeaId
 	JOIN RDS.DimDataCollections rddc

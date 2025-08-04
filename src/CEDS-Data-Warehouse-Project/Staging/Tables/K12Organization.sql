@@ -63,7 +63,7 @@ CREATE TABLE [Staging].[K12Organization] (
     [School_TargetedSupport]                                               VARCHAR (100)  NULL,
     [School_ConsolidatedMigrantEducationProgramFundsStatus]                BIT            NULL,
     [School_MigrantEducationProgramProjectType]                            VARCHAR (100)  NULL,
-    [School_TitleIPartASchoolDesignation]                                  VARCHAR (100)  NULL,
+    [School_TitleISchoolStatus]                                            VARCHAR (100)  NULL,
     [School_AdministrativeFundingControl]                                  NVARCHAR (100) NULL,
     [School_IsReportedFederally]                                           BIT            NULL,
     [School_RecordStartDateTime]                                           DATETIME       NULL,
@@ -85,7 +85,7 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_Staging_K12Organization_School_RecordStartDateTime]
     ON [Staging].[K12Organization]([School_RecordStartDateTime] ASC)
-    INCLUDE([SchoolIdentifierSea], [School_TitleIPartASchoolDesignation], [School_RecordEndDateTime]);
+    INCLUDE([SchoolIdentifierSea], [School_TitleISchoolStatus], [School_RecordEndDateTime]);
 
 GO
 

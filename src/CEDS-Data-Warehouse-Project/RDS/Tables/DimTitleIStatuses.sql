@@ -1,200 +1,314 @@
-CREATE TABLE [RDS].[DimTitleIStatuses] (
-    [DimTitleIStatusId]                      INT            IDENTITY (1, 1) NOT NULL,
-    [TitleIInstructionalServicesCode]        NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleIInstructionalServicesCode] DEFAULT ('MISSING') NOT NULL,
-    [TitleIInstructionalServicesDescription] NVARCHAR (100) CONSTRAINT [DF_DimTitleIStatuses_TitleIInstructionalServicesDescription] DEFAULT ('MISSING') NOT NULL,
-    [TitleIInstructionalServicesEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleIInstructionalServicesEdFactsCode] DEFAULT ('MISSING') NOT NULL,
-    [TitleIProgramTypeCode]                  NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleIProgramTypeCode] DEFAULT ('MISSING') NOT NULL,
-    [TitleIProgramTypeDescription]           NVARCHAR (100) CONSTRAINT [DF_DimTitleIStatuses_TitleIProgramTypeDescription] DEFAULT ('MISSING') NOT NULL,
-    [TitleIProgramTypeEdFactsCode]           NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleIProgramTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
-    [TitleISchoolStatusCode]                 NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleISchoolStatusCode] DEFAULT ('MISSING') NOT NULL,
-    [TitleISchoolStatusDescription]          NVARCHAR (100) CONSTRAINT [DF_DimTitleIStatuses_TitleISchoolStatusDescription] DEFAULT ('MISSING') NOT NULL,
-    [TitleISchoolStatusEdFactsCode]          NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleISchoolStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
-    [TitleISupportServicesCode]              NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleISupportServicesCode] DEFAULT ('MISSING') NOT NULL,
-    [TitleISupportServicesDescription]       NVARCHAR (100) CONSTRAINT [DF_DimTitleIStatuses_TitleISupportServicesDescription] DEFAULT ('MISSING') NOT NULL,
-    [TitleISupportServicesEdFactsCode]       NVARCHAR (50)  CONSTRAINT [DF_DimTitleIStatuses_TitleISupportServicesEdFactsCode] DEFAULT ('MISSING') NOT NULL,
-    CONSTRAINT [PK_DimTitleIStatuses] PRIMARY KEY CLUSTERED ([DimTitleIStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
-);
-
-
+CREATE TABLE [RDS].[DimTitleIStatuses](
+	[DimTitleIStatusId] [int] IDENTITY(1,1) NOT NULL,
+	[TitleIIndicatorCode] [nvarchar](50) NULL,
+	[TitleIIndicatorDescription] [nvarchar](100) NULL,
+	[TitleIIndicatorEdFactsCode] [nvarchar](50) NULL,
+	[SchoolChoiceAppliedforTransferStatusCode] [nvarchar](50) NULL,
+	[SchoolChoiceAppliedforTransferStatusDescription] [nvarchar](100) NULL,
+	[SchoolChoiceEligibleforTransferStatusCode] [nvarchar](50) NULL,
+	[SchoolChoiceEligibleforTransferStatusDescription] [nvarchar](100) NULL,
+	[SchoolChoiceTransferStatusCode] [nvarchar](50) NULL,
+	[SchoolChoiceTransferStatusDescription] [nvarchar](100) NULL,
+	[TitleISchoolSupplementalServicesAppliedStatusCode] [nvarchar](50) NULL,
+	[TitleISchoolSupplementalServicesAppliedStatusDescription] [nvarchar](100) NULL,
+	[TitleISchoolSupplementalServicesEligibleStatusCode] [nvarchar](50) NULL,
+	[TitleISchoolSupplementalServicesEligibleStatusDescription] [nvarchar](100) NULL,
+	[TitleISchoolSupplementalServicesReceivedStatusCode] [nvarchar](50) NULL,
+	[TitleISchoolSupplementalServicesReceivedStatusDescription] [nvarchar](100) NULL,
+	[TitleISchoolwideProgramParticipationCode] [nvarchar](50) NULL,
+	[TitleISchoolwideProgramParticipationDescription] [nvarchar](100) NULL,
+	[TitleITargetedAssistanceParticipationCode] [nvarchar](50) NULL,
+	[TitleITargetedAssistanceParticipationDescription] [nvarchar](100) NULL,
+ CONSTRAINT [PK_DimTitleIStatuses] PRIMARY KEY CLUSTERED 
+(
+	[DimTitleIStatusId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitle1Statuses_Title1SchoolStatusEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleISchoolStatusEdFactsCode] ASC);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student is participating in and served by programs under Title I, Part A of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorCode'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitleIStatuses_TitleISchoolStatusEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleISchoolStatusEdFactsCode] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorCode'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitle1Statuses_Title1ProgramTypeEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleIProgramTypeEdFactsCode] ASC);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000281' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorCode'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitleIStatuses_TitleISupportServicesEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleISupportServicesEdFactsCode] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000281' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorCode'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitleIStatuses_Codes]
-    ON [RDS].[DimTitleIStatuses]([TitleISchoolStatusCode] ASC, [TitleIInstructionalServicesCode] ASC, [TitleISupportServicesCode] ASC, [TitleIProgramTypeCode] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorCode'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitle1Statuses_Title1InstructionalServicesEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleIInstructionalServicesEdFactsCode] ASC);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student is participating in and served by programs under Title I, Part A of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorDescription'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitle1Statuses_Codes]
-    ON [RDS].[DimTitleIStatuses]([TitleISchoolStatusCode] ASC, [TitleIInstructionalServicesCode] ASC, [TitleISupportServicesCode] ASC, [TitleIProgramTypeCode] ASC);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorDescription'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitleIStatuses_TitleIInstructionalServicesEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleIInstructionalServicesEdFactsCode] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000281' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorDescription'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitle1Statuses_Title1SupportServicesEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleISupportServicesEdFactsCode] ASC);
-
-
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000281' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorDescription'
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimTitleIStatuses_TitleIProgramTypeEdFactsCode]
-    ON [RDS].[DimTitleIStatuses]([TitleIProgramTypeEdFactsCode] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorDescription'
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student is participating in and served by programs under Title I, Part A of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorEdFactsCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of instructional services provided to students in ESEA Title I programs.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorEdFactsCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Instructional Services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000281' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorEdFactsCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000282' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000281' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorEdFactsCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21282' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIIndicatorEdFactsCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a student applied to transfer in the current year (regardless of whether the student transferred), OR previously applied and transferred under the public school choice provisions and continue to attend the transfer school in the current year.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of instructional services provided to students in ESEA Title I programs.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Choice Applied for Transfer Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Instructional Services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000235' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000282' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000235' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21282' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a student applied to transfer in the current year (regardless of whether the student transferred), OR previously applied and transferred under the public school choice provisions and continue to attend the transfer school in the current year.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of instructional services provided to students in ESEA Title I programs.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Choice Applied for Transfer Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Instructional Services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000235' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000282' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000235' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21282' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIInstructionalServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceAppliedforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication the student is eligible to transfer for the current school year under the public school choice provisions or who applied and transferred in the current school year under the public school choice provisions or previously applied and transferred under the public school choice provisions and continue to attend the transfer school in the current year.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of Title I program offered in the school or district.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Choice Eligible for Transfer Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000236' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000284' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000236' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21284' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication the student is eligible to transfer for the current school year under the public school choice provisions or who applied and transferred in the current school year under the public school choice provisions or previously applied and transferred under the public school choice provisions and continue to attend the transfer school in the current year.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of Title I program offered in the school or district.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Choice Eligible for Transfer Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000236' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000284' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000236' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21284' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceEligibleforTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an eligible student transferred to the school under the provisions for public school choice in accordance with Title I, Part A, Section 1116 of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of Title I program offered in the school or district.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Choice Transfer Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Program Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000237' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000284' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000237' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21284' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleIProgramTypeEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an eligible student transferred to the school under the provisions for public school choice in accordance with Title I, Part A, Section 1116 of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a school is designated under state and federal regulations as being eligible for participation in programs authorized by Title I of ESEA as amended and whether it has a Title I program.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Choice Transfer Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000237' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000285' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000237' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21285' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'SchoolChoiceTransferStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an eligible student applied/requested to receive supplemental educational services under Title I, Part A, Section 1116 of ESEA as amended during the school year.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a school is designated under state and federal regulations as being eligible for participation in programs authorized by Title I of ESEA as amended and whether it has a Title I program.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Supplemental Services Applied Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000286' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000285' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000286' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21285' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an eligible student applied/requested to receive supplemental educational services under Title I, Part A, Section 1116 of ESEA as amended during the school year.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that a school is designated under state and federal regulations as being eligible for participation in programs authorized by Title I of ESEA as amended and whether it has a Title I program.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Supplemental Services Applied Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000286' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000285' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000286' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21285' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolStatusEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesAppliedStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student is eligible to receive supplemental educational services during the school year in accordance with Title I, Part A, Section 1116 of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of support services provided to students in Title I programs.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Supplemental Services Eligible Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Support Services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000287' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000289' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000287' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21289' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether a student is eligible to receive supplemental educational services during the school year in accordance with Title I, Part A, Section 1116 of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of support services provided to students in Title I programs.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Supplemental Services Eligible Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Support Services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000287' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000289' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000287' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21289' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesDescription';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesEligibleStatusDescription'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an eligible student received supplemental educational services during the school year in accordance with Title I, Part A, Section 1116 of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of support services provided to students in Title I programs.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Supplemental Services Received Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Support Services' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000288' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000289' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000288' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusCode'
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21289' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISupportServicesEdFactsCode';
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusCode'
 GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an eligible student received supplemental educational services during the school year in accordance with Title I, Part A, Section 1116 of ESEA as amended.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I School Supplemental Services Received Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000288' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000288' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolSupplementalServicesReceivedStatusDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student participates in and is served by a schoolwide program (SWP) under Title I of ESEA, Part A, Sections 1114.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Schoolwide Program Participation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000550' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000550' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student participates in and is served by a schoolwide program (SWP) under Title I of ESEA, Part A, Sections 1114.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Schoolwide Program Participation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000550' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000550' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleISchoolwideProgramParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student participates in and is served by a targeted assistance (TAS) program under Title I of ESEA, Part A, Sections 1115.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Targeted Assistance Participation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000551' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000551' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationCode'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the student participates in and is served by a targeted assistance (TAS) program under Title I of ESEA, Part A, Sections 1115.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title I Targeted Assistance Participation' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000551' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000551' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationDescription'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimTitleIStatuses', @level2type=N'COLUMN',@level2name=N'TitleITargetedAssistanceParticipationDescription'
+GO
+
+

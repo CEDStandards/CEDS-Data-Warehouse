@@ -1,7 +1,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	5/1/2022
-Description: Migrates Organization Data from Staging to RDS.FactOrganizationCounts
+Description: Migrates Organization Data FROM Staging to RDS.FactOrganizationCounts
 
 NOTE: This Stored Procedure processes files: 029, 035, 039, 103, 129, 130, 131, 163, 170, 190, 193, 196, 197, 198, 205, 206
 
@@ -156,18 +156,18 @@ BEGIN
 		FROM Staging.StateDetail ssd
 		INNER JOIN RDS.DimSeas Sea
 			ON ssd.SeaOrganizationIdentifierSea = Sea.SeaOrganizationIdentifierSea
-			AND isnull(Sea.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) >= '6/30/' + convert(varchar, @SchoolYear)
+			AND ISNULL(Sea.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) >= '6/30/' + convert(varchar, @SchoolYear)
 		LEFT JOIN Staging.OrganizationFederalFunding soff 
 			ON ssd.SeaOrganizationIdentifierSea = soff.OrganizationIdentifier
 			AND ssd.SchoolYear = soff.SchoolYear
-			AND soff.OrganizationType in (select SeaOrganizationType from #seaOrganizationTypes)
+			AND soff.OrganizationType in (SELECT SeaOrganizationType FROM #seaOrganizationTypes)
 			--AND soff.ReapAlternativeFundingStatusCode IS NOT NULL -- Not sure if we need this
 
 
 		-------------------------------
 		--LEA
 		-------------------------------
-		-- Get distinct list of LEAs from Staging along with latest start date (in cases where more than one status/startdate exists for an LEA
+		-- Get distinct list of LEAs FROM Staging along with latest start date (in cases where more than one status/startdate exists for an LEA
 		IF OBJECT_ID(N'tempdb..#SortLEAs') IS NOT NULL DROP TABLE #SortLEAs
 		IF OBJECT_ID(N'tempdb..#DistinctLEAs') IS NOT NULL DROP TABLE #DistinctLEAs
 
@@ -225,7 +225,7 @@ BEGIN
 			, -1															AS K12StaffId
 			, -1															AS K12SchoolId
 			, -1															AS TitleIStatusId
-			, isnull(round(soff.ParentalInvolvementReservationFunds,0),0)	AS TitleIParentalInvolveRes
+			, ISNULL(round(soff.ParentalInvolvementReservationFunds,0),0)	AS TitleIParentalInvolveRes
 			, CASE WHEN soff.FederalProgramCode ='84.010' 
 				THEN round(soff.FederalProgramsFundingAllocation,0) 
 				ELSE 0 
@@ -265,7 +265,7 @@ BEGIN
 		LEFT JOIN Staging.OrganizationFederalFunding soff
 			ON sko.LeaIdentifierSea = soff.OrganizationIdentifier
 			AND sko.SchoolYear = soff.SchoolYear
-			AND soff.OrganizationType in (select LeaOrganizationType from #leaOrganizationTypes)
+			AND soff.OrganizationType in (SELECT LeaOrganizationType FROM #leaOrganizationTypes)
 			--AND soff.ReapAlternativeFundingStatusCode IS NOT NULL
 
 		LEFT JOIN RDS.vwDimK12OrganizationStatuses organizationStatus
@@ -273,7 +273,7 @@ BEGIN
 			AND organizationStatus.GunFreeSchoolsActReportingStatusCode = 'Missing'
 			AND organizationStatus.HighSchoolGraduationRateIndicatorStatusCode = 'Missing'
 			AND organizationStatus.ReapAlternativeFundingStatusCode = 'Missing'
-			AND ISNULL(CAST(sko.Lea_McKinneyVentoSubgrantRecipient AS SMALLINT), -1) = isnull(organizationStatus.McKinneyVentoSubgrantRecipientMap, -1)
+			AND ISNULL(CAST(sko.Lea_McKinneyVentoSubgrantRecipient AS SMALLINT), -1) = ISNULL(organizationStatus.McKinneyVentoSubgrantRecipientMap, -1)
 			
 
 		-------------------------------
@@ -281,7 +281,7 @@ BEGIN
 		-------------------------------
 		DECLARE @SchoolIdentifierSea VARCHAR(60)
 
-		-- Get distinct list of Schools from Staging along with latest start date (in cases where more than one status/startdate exists for a school
+		-- Get distinct list of Schools FROM Staging along with latest start date (in cases where more than one status/startdate exists for a school
 		IF OBJECT_ID(N'tempdb..#SortSchools') IS NOT NULL DROP TABLE #SortSchools
 		IF OBJECT_ID(N'tempdb..#DistinctSchools') IS NOT NULL DROP TABLE #DistinctSchools
 		IF OBJECT_ID(N'tempdb..#DimCharterSchoolAuthorizers_Primary') IS NOT NULL DROP TABLE #DimCharterSchoolAuthorizers_Primary
@@ -318,7 +318,7 @@ BEGIN
 			ON sko.School_CharterSchoolIndicator = 1
 			AND rcsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea = sko.School_CharterPrimaryAuthorizer
 		WHERE rcsa.RecordStartDateTime >= '7/1/' + convert(varchar, @SchoolYear-1) 
-		AND isnull(rcsa.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) <= '6/30/' + convert(varchar, @SchoolYear)
+		AND ISNULL(rcsa.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) <= '6/30/' + convert(varchar, @SchoolYear)
 		GROUP BY rcsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 			, CharterSchoolAuthorizerTypeCode
 			, sko.SchoolIdentifierSea
@@ -336,7 +336,7 @@ BEGIN
 			ON sko.School_CharterSchoolIndicator = 1
 			AND rcsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea = sko.School_CharterSecondaryAuthorizer
 		WHERE rcsa.RecordStartDateTime >= '7/1/' + convert(varchar, @SchoolYear-1) 
-		AND isnull(rcsa.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) <= '6/30/' + convert(varchar, @SchoolYear)
+		AND ISNULL(rcsa.RecordEndDateTime, '6/30/' + convert(varchar, @SchoolYear)) <= '6/30/' + convert(varchar, @SchoolYear)
 		GROUP BY rcsa.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 			, CharterSchoolAuthorizerTypeCode
 			, sko.SchoolIdentifierSea
@@ -383,8 +383,8 @@ BEGIN
 			, ISNULL(t.DimOrganizationTitleIStatusId,-1)				AS TitleIStatusId
 			, -1														AS TitleIParentalInvolveRes
 			, -1														AS TitleIPartAAllocations
-			, isnull(CSAP.MinId,-1)										AS AuthorizingBodyCharterSchoolAuthorizerId
-			, isnull(CSAS.MinId,-1)										AS SecondaryAuthorizingBodyCharterSchoolAuthorizerId
+			, ISNULL(CSAP.MinId,-1)										AS AuthorizingBodyCharterSchoolAuthorizerId
+			, ISNULL(CSAS.MinId,-1)										AS SecondaryAuthorizingBodyCharterSchoolAuthorizerId
 			, -1														AS CharterSchoolManagementOrganizationId
 			, -1														AS CharterSchoolUpdatedManagementOrganizationId
 			, -1														AS ReasonApplicabilityId
@@ -416,22 +416,22 @@ BEGIN
 			)
 
 		LEFT JOIN RDS.vwDimK12SchoolStatuses s
-			ON isnull(s.MagnetOrSpecialProgramEmphasisSchoolMap, s.MagnetOrSpecialProgramEmphasisSchoolCode) = isnull(sk12o.School_MagnetOrSpecialProgramEmphasisSchool, 'MISSING')
-			AND isnull(s.NslpStatusMap, s.NslpStatusCode) = isnull(sk12o.School_NationalSchoolLunchProgramStatus, 'MISSING')
-			AND isnull(s.SharedTimeIndicatorMap, s.SharedTimeIndicatorCode) = isnull(sk12o.School_SharedTimeIndicator, 'MISSING')
-			AND isnull(s.VirtualSchoolStatusMap, s.VirtualSchoolStatusCode) = isnull(sk12o.School_VirtualSchoolStatus, 'MISSING')
+			ON ISNULL(s.MagnetOrSpecialProgramEmphasisSchoolMap, s.MagnetOrSpecialProgramEmphasisSchoolCode) = ISNULL(sk12o.School_MagnetOrSpecialProgramEmphasisSchool, 'MISSING')
+			AND ISNULL(s.NslpStatusMap, s.NslpStatusCode) = ISNULL(sk12o.School_NationalSchoolLunchProgramStatus, 'MISSING')
+			AND ISNULL(s.SharedTimeIndicatorMap, s.SharedTimeIndicatorCode) = ISNULL(sk12o.School_SharedTimeIndicator, 'MISSING')
+			AND ISNULL(s.VirtualSchoolStatusMap, s.VirtualSchoolStatusCode) = ISNULL(sk12o.School_VirtualSchoolStatus, 'MISSING')
 			AND s.SchoolImprovementStatusCode = 'MISSING' 
-			AND isnull(s.PersistentlyDangerousStatusMap, s.PersistentlyDangerousStatusCode) = isnull(sk12o.School_SchoolDangerousStatus, 'MISSING')
-			AND isnull(s.StatePovertyDesignationMap, s.StatePovertyDesignationCode) = isnull(sk12o.School_StatePovertyDesignation, 'MISSING')
-			AND isnull(s.ProgressAchievingEnglishLanguageProficiencyIndicatorTypeMap, s.ProgressAchievingEnglishLanguageProficiencyIndicatorTypeCode) = isnull(sk12o.School_ProgressAchievingEnglishLanguageProficiencyIndicatorType, 'MISSING')
+			AND ISNULL(s.PersistentlyDangerousStatusMap, s.PersistentlyDangerousStatusCode) = ISNULL(sk12o.School_SchoolDangerousStatus, 'MISSING')
+			AND ISNULL(s.StatePovertyDesignationMap, s.StatePovertyDesignationCode) = ISNULL(sk12o.School_StatePovertyDesignation, 'MISSING')
+			AND ISNULL(s.ProgressAchievingEnglishLanguageProficiencyIndicatorTypeMap, s.ProgressAchievingEnglishLanguageProficiencyIndicatorTypeCode) = ISNULL(sk12o.School_ProgressAchievingEnglishLanguageProficiencyIndicatorType, 'MISSING')
 		LEFT JOIN RDS.vwDimOrganizationTitleIStatuses t 
 			ON t.TitleIInstructionalServicesCode = NULL
 			AND t.TitleIProgramTypeCode = NULL 
-			AND isnull(t.TitleISchoolStatusMap, t.TitleISchoolStatusCode) = isnull(sk12o.School_TitleISchoolStatus, 'MISSING')    
+			AND ISNULL(t.TitleISchoolStatusMap, t.TitleISchoolStatusCode) = ISNULL(sk12o.School_TitleISchoolStatus, 'MISSING')    
 			AND t.TitleISupportServicesCode = NULL 
 		LEFT JOIN RDS.vwDimK12OrganizationStatuses organizationStatus 
 			ON organizationStatus.SchoolYear = sk12o.SchoolYear
-			AND isnull(sk12o.School_GunFreeSchoolsActReportingStatus, 'MISSING') = isnull(organizationStatus.GunFreeSchoolsActReportingStatusMap, organizationStatus.GunFreeSchoolsActReportingStatusCode)
+			AND ISNULL(sk12o.School_GunFreeSchoolsActReportingStatus, 'MISSING') = ISNULL(organizationStatus.GunFreeSchoolsActReportingStatusMap, organizationStatus.GunFreeSchoolsActReportingStatusCode)
 			AND organizationStatus.HighSchoolGraduationRateIndicatorStatusCode = 'MISSING' 
 			AND organizationStatus.ReapAlternativeFundingStatusCode = 'MISSING' 
 			AND organizationStatus.McKinneyVentoSubgrantRecipientCode = 'MISSING' 

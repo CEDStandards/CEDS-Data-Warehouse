@@ -2,7 +2,7 @@ CREATE PROCEDURE [Staging].[Staging-to-FactK12StaffAssignments]
 AS
 BEGIN
 
-  -- Insert data from Staging.K12StaffAssignment into RDS.FactK12StaffAssignments
+  -- Insert data FROM Staging.K12StaffAssignment into RDS.FactK12StaffAssignments
   INSERT INTO RDS.FactK12StaffAssignments (
       [LeaId]
     , [SchoolYearId]
