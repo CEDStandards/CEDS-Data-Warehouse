@@ -11,7 +11,7 @@ CREATE TABLE [RDS].[DimHomelessnessStatuses] (
     [HomelessUnaccompaniedYouthStatusCode]         NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusCode] DEFAULT ('MISSING') NOT NULL,
     [HomelessUnaccompaniedYouthStatusDescription]  NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusDescription] DEFAULT ('MISSING') NOT NULL,
     [HomelessUnaccompaniedYouthStatusEdFactsCode]  NVARCHAR (50)  CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
-    CONSTRAINT [PK_DimHomelessnessStatusId] PRIMARY KEY CLUSTERED ([DimHomelessnessStatusId] ASC)
+    CONSTRAINT [PK_DimHomelessnessStatuses] PRIMARY KEY CLUSTERED ([DimHomelessnessStatusId] ASC)
 );
 
 

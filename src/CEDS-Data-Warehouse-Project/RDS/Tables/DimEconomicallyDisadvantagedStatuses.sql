@@ -8,7 +8,7 @@ CREATE TABLE [RDS].[DimEconomicallyDisadvantagedStatuses] (
     [EligibilityStatusForSchoolFoodServiceProgramsEdFactsCode]          NVARCHAR (50)  CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_EligibilityStatusForSchoolFoodServiceProgramsEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     [NationalSchoolLunchProgramDirectCertificationIndicatorCode]        NVARCHAR (100) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_NationalSchoolLunchProgramDirectCertificationIndicatorCode] DEFAULT ('MISSING') NOT NULL,
     [NationalSchoolLunchProgramDirectCertificationIndicatorDescription] NVARCHAR (300) CONSTRAINT [DF_DimEconomicallyDisadvantagedStatuses_NationalSchoolLunchProgramDirectCertificationIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
-    CONSTRAINT [PK_DimEconomicallyDisadvantagedStatusId] PRIMARY KEY CLUSTERED ([DimEconomicallyDisadvantagedStatusId] ASC)
+    CONSTRAINT [PK_DimEconomicallyDisadvantagedStatuses] PRIMARY KEY CLUSTERED ([DimEconomicallyDisadvantagedStatusId] ASC)
 );
 
 

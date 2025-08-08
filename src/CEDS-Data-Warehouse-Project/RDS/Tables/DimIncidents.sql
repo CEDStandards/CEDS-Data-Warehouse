@@ -2,7 +2,7 @@ CREATE TABLE [RDS].[DimIncidents] (
     [DimIncidentId]       INT            IDENTITY (1, 1) NOT NULL,
     [IncidentIdentifier]        NVARCHAR (40),
     [IncidentDescription] VARCHAR (MAX)
-    CONSTRAINT [PK_DimIncidentId] PRIMARY KEY CLUSTERED ([DimIncidentId] ASC)
+    CONSTRAINT [PK_DimIncidents] PRIMARY KEY CLUSTERED ([DimIncidentId] ASC)
 );
 
 

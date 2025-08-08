@@ -12,7 +12,7 @@ CREATE TABLE [RDS].[DimChildOutcomeSummaries] (
     [CosProgressBIndicatorDescription] NVARCHAR (300) CONSTRAINT [DF_DimChildOutcomeSummaries_CosProgressBIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
     [CosProgressCIndicatorCode]        NVARCHAR (100) CONSTRAINT [DF_DimChildOutcomeSummaries_CosProgressCIndicatorCode] DEFAULT ('MISSING') NOT NULL,
     [CosProgressCIndicatorDescription] NVARCHAR (300) CONSTRAINT [DF_DimChildOutcomeSummaries_CosProgressCIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
-    CONSTRAINT [PK_DimChildOutcomeSummaryId] PRIMARY KEY CLUSTERED ([DimChildOutcomeSummaryId] ASC)
+    CONSTRAINT [PK_DimChildOutcomeSummaries] PRIMARY KEY CLUSTERED ([DimChildOutcomeSummaryId] ASC)
 );
 
 

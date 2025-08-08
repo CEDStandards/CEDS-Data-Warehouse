@@ -2,7 +2,7 @@ CREATE TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions](
 	[BridgeCredentialAwardCompetencyDefinitionId] [int] IDENTITY(1,1) NOT NULL,
 	[FactCredentialAwardId] [int] NULL,
 	[CompetencyDefinitionId] [int] NULL,
- CONSTRAINT [PK_FactCredentialAward] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_BridgeCredentialAwardCompetencyDefinitions] PRIMARY KEY CLUSTERED 
 (
 	[BridgeCredentialAwardCompetencyDefinitionId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]

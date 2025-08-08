@@ -2,7 +2,7 @@ CREATE TABLE [RDS].[DimDisciplineReasons] (
     [DimDisciplineReasonId]       INT            IDENTITY (1, 1) NOT NULL,
     [DisciplineReasonCode]        NVARCHAR (50)  CONSTRAINT [DF_DimDisciplineReasons_DisciplineReasonCode] DEFAULT ('MISSING') NOT NULL,
     [DisciplineReasonDescription] NVARCHAR (200) CONSTRAINT [DF_DimDisciplineReasons_DisciplineReasonDescription] DEFAULT ('MISSING') NOT NULL,
-    CONSTRAINT [PK_DimDisciplineReasonId] PRIMARY KEY CLUSTERED ([DimDisciplineReasonId] ASC)
+    CONSTRAINT [PK_DimDisciplineReasons] PRIMARY KEY CLUSTERED ([DimDisciplineReasonId] ASC)
 );
 
 

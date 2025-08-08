@@ -6,7 +6,7 @@ CREATE TABLE [RDS].[DimIndividualizedProgramStatuses] (
     [StudentSupportServiceTypeDescription]    NVARCHAR (300) CONSTRAINT [DF_DimIndividualizedProgramStatuses_StudentSupportServiceTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [ConsentToEvaluationIndicatorCode]        NVARCHAR (100) CONSTRAINT [DF_DimIndividualizedProgramStatuses_ConsentToEvaluationIndicatorCode] DEFAULT ('MISSING') NOT NULL,
     [ConsentToEvaluationIndicatorDescription] NVARCHAR (300) CONSTRAINT [DF_DimIndividualizedProgramStatuses_ConsentToEvaluationIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
-    CONSTRAINT [PK_DimIndividualizedProgramStatusId] PRIMARY KEY CLUSTERED ([DimIndividualizedProgramStatusId] ASC)
+    CONSTRAINT [PK_DimIndividualizedProgramStatuses] PRIMARY KEY CLUSTERED ([DimIndividualizedProgramStatusId] ASC)
 );
 
 

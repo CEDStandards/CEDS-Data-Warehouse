@@ -4,7 +4,7 @@ CREATE TABLE [RDS].[DimAssessmentAccommodations] (
     [AssessmentAccommodationCategoryDescription] NVARCHAR (300) CONSTRAINT [DF_DimAssessmentAccommodations_AssessmentAccommodationCategoryDescription] DEFAULT ('MISSING') NOT NULL,
     [AccommodationTypeCode]                      NVARCHAR (100) CONSTRAINT [DF_DimAssessmentAccommodations_AccommodationTypeCode] DEFAULT ('MISSING') NOT NULL,
     [AccommodationTypeDescription]               NVARCHAR (300) CONSTRAINT [DF_DimAssessmentAccommodations_AccommodationTypeDescription] DEFAULT ('MISSING') NOT NULL,
-    CONSTRAINT [PK_DimAssessmentAccommodationId] PRIMARY KEY CLUSTERED ([DimAssessmentAccommodationId] ASC)
+    CONSTRAINT [PK_DimAssessmentAccommodations] PRIMARY KEY CLUSTERED ([DimAssessmentAccommodationId] ASC)
 );
 
 

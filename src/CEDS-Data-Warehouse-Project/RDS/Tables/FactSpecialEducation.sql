@@ -50,7 +50,7 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     [FullTimeEquivalency]                                DECIMAL (5, 2) NULL,
     [SpecialEducationFTE]                                DECIMAL (5, 2) NULL,
     [StudentCount]                                       TINYINT        NULL,
-    CONSTRAINT [PK_FactSpecialEducationId] PRIMARY KEY CLUSTERED ([FactSpecialEducationId] ASC),
+    CONSTRAINT [PK_FactSpecialEducation] PRIMARY KEY CLUSTERED ([FactSpecialEducationId] ASC),
     CONSTRAINT [FK_FactSpecialEducation_ChildOutcomeSummaryAtExitId] FOREIGN KEY ([ChildOutcomeSummaryAtExitId]) REFERENCES [RDS].[DimChildOutcomeSummaries] ([DimChildOutcomeSummaryId]),
     CONSTRAINT [FK_FactSpecialEducation_ChildOutcomeSummaryBaselineId] FOREIGN KEY ([ChildOutcomeSummaryBaselineId]) REFERENCES [RDS].[DimChildOutcomeSummaries] ([DimChildOutcomeSummaryId]),
     CONSTRAINT [FK_FactSpecialEducation_ChildOutcomeSummaryDateAtExitId] FOREIGN KEY ([ChildOutcomeSummaryDateAtExitId]) REFERENCES [RDS].[DimDates] ([DimDateId]),

@@ -7,7 +7,7 @@ CREATE TABLE [RDS].[DimCompetencyDefinitions] (
     [CompetencyDefinitionType]           NVARCHAR (60)  NULL,
     [CompetencyDefinitionValidStartDate] DATETIME       CONSTRAINT [DF_DimCompetencyDefinitionsCompetencyDefinitionValudStartDate] DEFAULT (getdate()) NOT NULL,
     [CompetencyDefinitionValidEndDate]   DATETIME       NULL,
-    CONSTRAINT [PK_DimCompetencyDefinitionId] PRIMARY KEY CLUSTERED ([DimCompetencyDefinitionId] ASC)
+    CONSTRAINT [PK_DimCompetencyDefinitions] PRIMARY KEY CLUSTERED ([DimCompetencyDefinitionId] ASC)
 );
 
 

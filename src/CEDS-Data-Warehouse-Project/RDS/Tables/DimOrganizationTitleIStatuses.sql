@@ -19,12 +19,6 @@ CREATE TABLE [RDS].[DimOrganizationTitleIStatuses] (
 GO
 
 CREATE NONCLUSTERED INDEX [IX_DimOrganizationTitleIStatuses_TitleISchoolStatusEdFactsCode]
-    ON [RDS].[DimOrganizationTitleIStatuses]([TitleISchoolStatusEdFactsCode] ASC);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_DimOrganizationTitleIStatuses_TitleISchoolStatusEdFactsCode]
     ON [RDS].[DimOrganizationTitleIStatuses]([TitleISchoolStatusEdFactsCode] ASC) WITH (DATA_COMPRESSION = PAGE);
 
 
@@ -50,30 +44,6 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_DimOrganizationTitleIStatuses_TitleIInstructionalServicesEdFactsCode]
     ON [RDS].[DimOrganizationTitleIStatuses]([TitleIInstructionalServicesEdFactsCode] ASC);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_DimOrganizationTitleIStatuses_Codes]
-    ON [RDS].[DimOrganizationTitleIStatuses]([TitleISchoolStatusCode] ASC, [TitleIInstructionalServicesCode] ASC, [TitleISupportServicesCode] ASC, [TitleIProgramTypeCode] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_DimOrganizationTitleIStatuses_TitleIInstructionalServicesEdFactsCode]
-    ON [RDS].[DimOrganizationTitleIStatuses]([TitleIInstructionalServicesEdFactsCode] ASC) WITH (DATA_COMPRESSION = PAGE);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_DimOrganizationTitleIStatuses_TitleISupportServicesEdFactsCode]
-    ON [RDS].[DimOrganizationTitleIStatuses]([TitleISupportServicesEdFactsCode] ASC);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_DimOrganizationTitleIStatuses_TitleIProgramTypeEdFactsCode]
-    ON [RDS].[DimOrganizationTitleIStatuses]([TitleIProgramTypeEdFactsCode] ASC) WITH (DATA_COMPRESSION = PAGE);
 
 
 GO

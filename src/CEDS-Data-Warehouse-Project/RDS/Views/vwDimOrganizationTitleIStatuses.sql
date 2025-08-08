@@ -1,7 +1,7 @@
-CREATE VIEW RDS.vwDimTitleIStatuses
+CREATE VIEW RDS.vwDimOrganizationTitleIStatuses
 AS
 	SELECT
-		  rdt1s.DimTitleIStatusId
+		  rdt1s.DimOrganizationTitleIStatusId
 		, rsy.SchoolYear
 		, rdt1s.TitleIInstructionalServicesCode
 		, sssrd1.InputCode AS TitleIInstructionalServicesMap
@@ -11,7 +11,7 @@ AS
 		, sssrd3.InputCode AS TitleISchoolStatusMap
 		, rdt1s.TitleISupportServicesCode
 		, sssrd4.InputCode AS TitleISupportServicesMap
-	FROM RDS.DimTitleIStatuses rdt1s
+	FROM RDS.DimOrganizationTitleIStatuses rdt1s
 	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
 	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 		ON rdt1s.TitleISupportServicesCode = sssrd1.OutputCode
