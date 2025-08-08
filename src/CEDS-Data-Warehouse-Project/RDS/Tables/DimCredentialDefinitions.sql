@@ -1,6 +1,13 @@
 CREATE TABLE [RDS].[DimCredentialDefinitions](
 	[DimCredentialDefinitionId] [int] IDENTITY(1,1) NOT NULL,
 	[CredentialDefinitionIdentifierCtid] [nvarchar](512) NULL,
+	[CredentialDefinitionIdentifierUri] [nvarchar](512) NULL,
+	[CredentialDefinitionIdentifierUrl] [nvarchar](50) NULL,
+	[CredentialDefinitionIdentifierUrn] [nvarchar](50) NULL,
+	[CredentialDefinitionIdentifierUuid] [nvarchar](50) NULL,
+	[CredentialDefinitionIdentifierArk] [nvarchar](50) NULL,
+	[CredentialDefinitionIdentifierDoi] [nvarchar](50) NULL,
+	[CredentialDefinitionIdentifierInfo] [nvarchar](50) NULL,
 	[CredentialDefinitionTitle] [nvarchar](300) NULL,
 	[CredentialDefinitionDescription] [nvarchar](300) NULL,
 	[CredentialTypeCode] [nvarchar](50) NOT NULL,

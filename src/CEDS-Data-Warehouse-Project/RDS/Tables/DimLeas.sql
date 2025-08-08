@@ -22,12 +22,14 @@ CREATE TABLE [RDS].[DimLeas] (
     [MailingAddressPostalCode]                  NVARCHAR (17)   NULL,
     [MailingAddressStateAbbreviation]           NVARCHAR (50)   NULL,
     [MailingAddressCountyAnsiCodeCode]          NCHAR (5)       NULL,
+    [MailingAddressCountyName]                  NVARCHAR (30)   NULL,
     [PhysicalAddressStreetNumberAndName]        NVARCHAR (150)  NULL,
     [PhysicalAddressApartmentRoomOrSuiteNumber] NVARCHAR (40)   NULL,
     [PhysicalAddressCity]                       NVARCHAR (30)   NULL,
     [PhysicalAddressPostalCode]                 NVARCHAR (17)   NULL,
     [PhysicalAddressStateAbbreviation]          NVARCHAR (50)   NULL,
     [PhysicalAddressCountyAnsiCodeCode]         NCHAR (5)       NULL,
+    [PhysicalAddressCountyName]                 NVARCHAR (30)   NULL,
     [Longitude]                                 NVARCHAR (20)   NULL,
     [Latitude]                                  NVARCHAR (20)   NULL,
     [TelephoneNumber]                           NVARCHAR (24)   NULL,
@@ -39,7 +41,6 @@ CREATE TABLE [RDS].[DimLeas] (
     [CharterLeaStatus]                          NVARCHAR (50)   NULL,
     [ReconstitutedStatus]                       NVARCHAR (50)   NULL,
     [McKinneyVentoSubgrantRecipient]            NVARCHAR (50)   NULL,
-    [NameOfInstitution]                         NVARCHAR (1000) NULL,
     [RecordStartDateTime]                       DATETIME        NULL,
     [RecordEndDateTime]                         DATETIME        NULL,
     CONSTRAINT [PK_DimLeas] PRIMARY KEY CLUSTERED ([DimLeaId] ASC)
@@ -250,16 +251,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000269' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'MailingAddressStreetNumberAndName';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21269' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'MailingAddressStreetNumberAndName';
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'NameOfInstitution';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The full legally accepted name of the institution.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'NameOfInstitution';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Name of Institution' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'NameOfInstitution';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000191' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'NameOfInstitution';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21191' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'NameOfInstitution';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimLeas', @level2type=N'COLUMN',@level2name=N'OperationalStatusEffectiveDate';
 GO
