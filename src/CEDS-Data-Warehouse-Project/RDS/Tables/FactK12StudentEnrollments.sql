@@ -61,6 +61,7 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     [StatusEndDateTitleIIIImmigrantId]           INT            CONSTRAINT [DF_FactK12StudentEnrollments_StatusEndDateTitleIIIImmigrantId] DEFAULT ((-1)) NOT NULL,
     [StatusStartDateTitleIIIImmigrantId]         INT            CONSTRAINT [DF_FactK12StudentEnrollments_StatusStartDateTitleIIIImmigrantId] DEFAULT ((-1)) NOT NULL,
     [TitleIIIStatusId]                           INT            CONSTRAINT [DF_FactK12StudentEnrollments_TitleIIIStatusId] DEFAULT ((-1)) NOT NULL,
+    [TitleIStatusId]                             INT            CONSTRAINT [DF_FactK12StudentEnrollments_TitleIStatusId] DEFAULT ((-1)) NOT NULL,
     [FullTimeEquivalency]                        DECIMAL (5, 2) NULL,
     [StudentCount]                               INT            NOT NULL,
     [ResponsibleSchoolTypeId]                    INT            CONSTRAINT [DF_FactK12StudentEnrollments_ResponsibleSchoolTypeId] DEFAULT ((-1)) NOT NULL,
@@ -129,6 +130,7 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     CONSTRAINT [FK_FactK12StudentEnrollments_StatusStartDateTitleIIIImmigrantId] FOREIGN KEY ([StatusStartDateTitleIIIImmigrantId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_RecordStatusId] FOREIGN KEY ([RecordStatusId]) REFERENCES [RDS].[DimRecordStatuses] ([DimRecordStatusId]),
+    CONSTRAINT [FK_FactK12StudentEnrollments_TitleIStatusId] FOREIGN KEY ([TitleIStatusId]) REFERENCES [RDS].[DimTitleIStatuses] ([DimTitleIStatusId]),
 );
 
 
@@ -257,7 +259,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_LeaMembershipResidentId] ON [RDS].[FactK12StudentEnrollments]([LeaMembershipResidentId] ASC);
 GO
 CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_DisabilityStatusId] ON [RDS].[FactK12StudentEnrollments]([DisabilityStatusId] ASC);
-
+GO
+CREATE NONCLUSTERED INDEX [IXFX_FactK12StudentEnrollments_TitleIStatusId] ON [RDS].[FactK12StudentEnrollments]([TitleIStatusId] ASC);
 
 GO
 

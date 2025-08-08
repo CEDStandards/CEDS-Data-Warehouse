@@ -18,6 +18,10 @@ CREATE TABLE [RDS].[DimK12Courses] (
     [CourseFundingProgramAllowed]    NVARCHAR (30)  NULL,
     [CoreAcademicCourseCode]         NVARCHAR (50)  NULL,
     [CoreAcademicCourseDescription]  NVARCHAR (200) NULL,
+    [CourseBeginDate]                DATETIME       NULL,
+    [CourseEndDate]                  DATETIME       NULL,
+    [RecordStartDateTime]            DATETIME       NULL,
+    [RecordEndDateTime]              DATETIME       NULL,
     CONSTRAINT [PK_DimK12Courses] PRIMARY KEY CLUSTERED ([DimK12CourseId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

@@ -16,6 +16,7 @@ CREATE TABLE [RDS].[FactK12ProgramParticipations] (
     [K12ProgramTypeId]                    INT    CONSTRAINT [DF_FactK12ProgramParticipations_K12ProgramTypeId] DEFAULT ((-1)) NOT NULL,
     [ProgramParticipationStartDateId]     INT    CONSTRAINT [DF_FactK12ProgramParticipations_ProgramParticipationStartDateId] DEFAULT ((-1)) NOT NULL,
     [ProgramParticipationExitDateId]      INT    CONSTRAINT [DF_FactK12ProgramParticipations_ProgramParticipationExitDateId] DEFAULT ((-1)) NOT NULL,
+    [TitleIIIStatusId]                    INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIStatusId] DEFAULT ((-1)) NOT NULL,
     [StudentCount]                        INT    CONSTRAINT [DF_FactK12ProgramParticipations_StudentCount] DEFAULT ((1)) NOT NULL,
     CONSTRAINT [PK_FactK12ProgramParticipations] PRIMARY KEY CLUSTERED ([FactK12ProgramParticipationId] ASC),
     CONSTRAINT [FK_FactK12ProgramParticipations_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]),
@@ -32,6 +33,7 @@ CREATE TABLE [RDS].[FactK12ProgramParticipations] (
     CONSTRAINT [FK_FactK12ProgramParticipations_LeaIndividualizedEducationProgramId] FOREIGN KEY ([LeaIndividualizedEducationProgramId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_ProgramParticipationExitDateId] FOREIGN KEY ([ProgramParticipationExitDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_ProgramParticipationStartDateId] FOREIGN KEY ([ProgramParticipationStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId])
 );
@@ -131,6 +133,12 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12ProgramParticipations_LeaFundingId]
     ON [RDS].[FactK12ProgramParticipations]([LeaFundingId] ASC);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12ProgramParticipations_TitleIIIStatusId]
+    ON [RDS].[FactK12ProgramParticipations]([TitleIIIStatusId] ASC);
 
 
 GO

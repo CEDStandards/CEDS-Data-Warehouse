@@ -105,7 +105,7 @@ BEGIN
 		WHERE SchoolYear = @SchoolYear
 
 		CREATE CLUSTERED INDEX ix_tempvwCohortStatuses
-			ON #vwCohortStatuses (CohortStatusCode);
+			ON #vwCohortStatuses (EdFactsCohortGraduationStatusCode);
 
 		--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 

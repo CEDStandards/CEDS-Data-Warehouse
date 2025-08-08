@@ -2,7 +2,8 @@ CREATE TABLE [RDS].[DimPsInstitutions] (
     [DimPsInstitutionId]                        INT            IDENTITY (1, 1) NOT NULL,
     [NameOfInstitution]                         NVARCHAR (128) NOT NULL,
     [ShortNameOfInstitution]                    NVARCHAR (30)  NOT NULL,
-    [IPEDSIdentifier]                           INT            NOT NULL,
+    [IPEDSIdentifier]                           INT            NULL,
+    [Opeid]                                     NVARCHAR (50)  NULL,
     [OrganizationOperationalStatus]             NVARCHAR (20)  NOT NULL,
     [OperationalStatusEffectiveDate]            DATETIME       NOT NULL,
     [MostPrevalentLevelOfInstitutionCode]       NVARCHAR (20)  NULL,
@@ -30,7 +31,7 @@ CREATE TABLE [RDS].[DimPsInstitutions] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimPsInstitutions_InstitutionIpedsUnitId]
+CREATE NONCLUSTERED INDEX [IX_DimPsInstitutions_IPEDSIdentifier]
     ON [RDS].[DimPsInstitutions]([IPEDSIdentifier] ASC) WITH (DATA_COMPRESSION = PAGE);
 
 
@@ -44,7 +45,6 @@ CREATE NONCLUSTERED INDEX [IX_DimPsInstitution_IpedsUnitId_RecordStartDateTime]
 GO
 
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = 'An organization that provides educational programs for individuals who have completed OR otherwise LEFT educational programs IN secondary school(s).', @level0type = N'SCHEMA', @level0name = N'RDS', @level1type = N'TABLE', @level1name = N'DimPsInstitutions';
-
 
 GO
 

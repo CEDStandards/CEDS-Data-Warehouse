@@ -340,11 +340,11 @@ BEGIN
 --Generate can handle this determination in 2 ways
 --	1. populate AttendanceRate in Staging.K12Enrollment and Generate will just use that value
 --		NOTE: This is % of class days attended, not % of days absent
---	2. populate NumberOfSchoolDays and NumberOfDaysAbsent in Staging.K12Enrollment and Generate will calculate the Absentee Rate
+--	2. populate NumberOfDaysInAttendance and NumberOfDaysAbsent in Staging.K12Enrollment and Generate will calculate the Absentee Rate
 		WHERE	
-			CAST((CASE WHEN ske.NumberOfSchoolDays = '0' THEN 0
+			CAST((CASE WHEN ske.NumberOfDaysInAttendance = '0' THEN 0
 					WHEN ske.NumberOfDaysAbsent = '0' THEN 1
-					ELSE CAST(ske.NumberOfSchoolDays - ske.NumberOfDaysAbsent  AS decimal(5,2)) / CAST(ske.NumberOfSchoolDays AS decimal(5,2))
+					ELSE CAST(ske.NumberOfDaysInAttendance - ske.NumberOfDaysAbsent  AS decimal(5,2)) / CAST(ske.NumberOfDaysInAttendance AS decimal(5,2))
 				END) AS decimal(5,4)) <= 0.9
 
 	--Final INSERT INTO RDS.FactK12StudentCounts table
