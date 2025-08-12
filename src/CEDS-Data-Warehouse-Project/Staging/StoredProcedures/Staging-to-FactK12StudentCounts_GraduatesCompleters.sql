@@ -242,8 +242,8 @@ BEGIN
 			AND ske.StudentIdentifierState = sppse.StudentIdentifierState
 			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '') 
 			AND ISNULL(ske.SchoolIdentifierSea, '') = ISNULL(sppse.SchoolIdentifierSea, '')
-			AND ((sppse.ProgramParticipationBeginDate BETWEEN @ReportingStartDate and @ReportingEndDate)
-				OR (sppse.ProgramParticipationBeginDate < @ReportingStartDate AND ISNULL(sppse.ProgramParticipationEndDate, @SYEndDate) > @ReportingStartDate))
+			AND ((sppse.ProgramParticipationStartDate BETWEEN @ReportingStartDate and @ReportingEndDate)
+				OR (sppse.ProgramParticipationStartDate < @ReportingStartDate AND ISNULL(sppse.ProgramParticipationExitDate, @SYEndDate) > @ReportingStartDate))
 	--race
 		LEFT JOIN RDS.vwUnduplicatedRaceMap spr
 			ON ske.SchoolYear = spr.SchoolYear

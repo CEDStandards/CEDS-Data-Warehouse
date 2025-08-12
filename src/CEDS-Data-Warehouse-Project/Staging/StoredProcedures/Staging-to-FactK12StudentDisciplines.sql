@@ -165,8 +165,8 @@ BEGIN
 				AND ISNULL(sidt.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '')
 				AND ISNULL(sidt.SchoolIdentifierSea, '') 			= ISNULL(sppse.SchoolIdentifierSea, '')
 				AND sidt.IsPrimaryDisability = 1
-				AND ((sidt.RecordStartDateTime <= sppse.ProgramParticipationBeginDate and ISNULL(sidt.RecordEndDateTime, @SYEndDate) > sppse.ProgramParticipationBeginDate)
-					or (sidt.RecordStartDateTime > sppse.ProgramParticipationBeginDate and sidt.RecordStartDateTime < ISNULL(sppse.ProgramParticipationEndDate, @SYEndDate)))
+				AND ((sidt.RecordStartDateTime <= sppse.ProgramParticipationStartDate and ISNULL(sidt.RecordEndDateTime, @SYEndDate) > sppse.ProgramParticipationStartDate)
+					or (sidt.RecordStartDateTime > sppse.ProgramParticipationStartDate and sidt.RecordStartDateTime < ISNULL(sppse.ProgramParticipationExitDate, @SYEndDate)))
 
 	-- Create Index for #tempIdeaDisability
 		CREATE INDEX IX_ideaDisability 
@@ -177,8 +177,8 @@ BEGIN
 			StudentIdentifierState
 			, LeaIdentifierSeaAccountability
 			, SchoolIdentifierSea
-			, ProgramParticipationBeginDate
-			, ProgramParticipationEndDate
+			, ProgramParticipationStartDate
+			, ProgramParticipationExitDate
 			, IdeaIndicator
 			, IdeaEducationalEnvironmentForEarlyChildhood
 			, IdeaEducationalEnvironmentForSchoolAge
@@ -191,7 +191,7 @@ BEGIN
 	-- Create Index for #tempIdeaStatus 
 	-- 1/1/2024
 		CREATE INDEX IX_ideaStatus 
-			ON #tempIdeaStatus (StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, ProgramParticipationBeginDate, ProgramParticipationEndDate)
+			ON #tempIdeaStatus (StudentIdentifierState, LeaIdentifierSeaAccountability, SchoolIdentifierSea, ProgramParticipationStartDate, ProgramParticipationExitDate)
 		CREATE INDEX IX_ideaStatus1 
 			ON #tempIdeaStatus (IdeaIndicator, IdeaEducationalEnvironmentForEarlyChildhood, IdeaEducationalEnvironmentForSchoolAge)
 
@@ -317,7 +317,7 @@ BEGIN
 				AND sd.StudentIdentifierState 						= sppse.StudentIdentifierState
 				AND ISNULL(sd.LeaIdentifierSeaAccountability,'') 	= ISNULL(sppse.LeaIdentifierSeaAccountability,'')
 				AND ISNULL(sd.SchoolIdentifierSea,'') 				= ISNULL(sppse.SchoolIdentifierSea,'')
-				AND sd.DisciplinaryActionStartDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, @SYEndDate)
+				AND sd.DisciplinaryActionStartDate BETWEEN sppse.ProgramParticipationStartDate AND ISNULL(sppse.ProgramParticipationExitDate, @SYEndDate)
 		--idea disability type
 			LEFT JOIN #tempIdeaDisability sidt
 				ON sidt.SchoolYear 									= sd.SchoolYear

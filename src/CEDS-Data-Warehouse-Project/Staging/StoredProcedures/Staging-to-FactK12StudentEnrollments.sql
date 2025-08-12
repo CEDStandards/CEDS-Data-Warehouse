@@ -473,9 +473,9 @@ AS
 		AND ISNULL(sidt.IdeaDisabilityTypeCode, 'MISSING')														= ISNULL(rdidtSecondary.IdeaDisabilityTypeMap, rdidtSecondary.IdeaDisabilityTypeCode)
 		AND sidt.IsSecondaryDisability																			= 1
 	LEFT JOIN RDS.DimDates rddiStart
-		ON sppse.ProgramParticipationBeginDate																	= rddiStart.DateValue
+		ON sppse.ProgramParticipationStartDate																	= rddiStart.DateValue
 	LEFT JOIN RDS.DimDates rddiEnd
-		ON sppse.ProgramParticipationEndDate																	= rddiEnd.DateValue
+		ON sppse.ProgramParticipationExitDate																	= rddiEnd.DateValue
 
 
 	UPDATE #Facts

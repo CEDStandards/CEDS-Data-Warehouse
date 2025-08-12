@@ -233,7 +233,7 @@ BEGIN
 			AND ske.StudentIdentifierState = sppse.StudentIdentifierState
 			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '') 
 			AND ISNULL(ske.SchoolIdentifierSea, '') = ISNULL(sppse.SchoolIdentifierSea, '')
-			AND @ReportingDate between sppse.ProgramParticipationBeginDate and ISNULL(sppse.ProgramParticipationEndDate, @SYEndDate)
+			AND @ReportingDate between sppse.ProgramParticipationStartDate and ISNULL(sppse.ProgramParticipationExitDate, @SYEndDate)
 	--english learner (rds)
 		LEFT JOIN #vwEnglishLearnerStatuses rdels
 			ON ISNULL(CAST(el.EnglishLearnerStatus AS SMALLINT), -1) = ISNULL(CAST(rdels.EnglishLearnerStatusMap AS SMALLINT), -1)

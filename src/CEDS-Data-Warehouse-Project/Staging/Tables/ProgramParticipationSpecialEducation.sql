@@ -32,17 +32,17 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationSpecialEducation_WithIdentifiers]
     ON [Staging].[ProgramParticipationSpecialEducation]([DataCollectionName] ASC, [StudentIdentifierState] ASC, [LeaIdentifierSeaAccountability] ASC, [LeaIdentifierSeaAttendance] ASC, [LeaIdentifierSeaFunding] ASC, [LeaIdentifierSeaGraduation] ASC, [LeaIdentifierSeaIndividualizedEducationProgram] ASC, [SchoolIdentifierSea] ASC)
-    INCLUDE([ProgramParticipationBeginDate], [ProgramParticipationEndDate], [SpecialEducationFTE]);
+    INCLUDE([ProgramParticipationStartDate], [ProgramParticipationExitDate], [SpecialEducationFTE]);
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationSpecialEducation_StudentIdentifierState_LeaIdentifierSeaAccountability]
     ON [Staging].[ProgramParticipationSpecialEducation]([StudentIdentifierState] ASC, [LeaIdentifierSeaAccountability] ASC)
-    INCLUDE([ProgramParticipationEndDate]);
+    INCLUDE([ProgramParticipationExitDate]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationSpecialEducation_ProgramParticipationEndDate]
-    ON [Staging].[ProgramParticipationSpecialEducation]([ProgramParticipationEndDate] ASC)
+CREATE NONCLUSTERED INDEX [IX_Staging_ProgramParticipationSpecialEducation_ProgramParticipationExitDate]
+    ON [Staging].[ProgramParticipationSpecialEducation]([ProgramParticipationExitDate] ASC)
     INCLUDE([StudentIdentifierState], [LeaIdentifierSeaAccountability], [SchoolIdentifierSea]);
 GO
 

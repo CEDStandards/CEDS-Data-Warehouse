@@ -237,9 +237,9 @@ BEGIN
 		ON ske.SchoolYear = entryGrade.SchoolYear
 		AND ske.GradeLevel = entryGrade.GradeLevelMap
 	LEFT JOIN RDS.DimDates progStartDate
-		ON sppse.ProgramParticipationBeginDate			= progStartDate.DateValue
+		ON sppse.ProgramParticipationStartDate			= progStartDate.DateValue
 	LEFT JOIN RDS.DimDates serviceExitDate
-		ON sppse.ProgramParticipationEndDate			= serviceExitDate.DateValue
+		ON sppse.ProgramParticipationExitDate			= serviceExitDate.DateValue
 	WHERE @dataCollectionName IS NULL
 		OR ske.DataCollectionName = @dataCollectionName
 
