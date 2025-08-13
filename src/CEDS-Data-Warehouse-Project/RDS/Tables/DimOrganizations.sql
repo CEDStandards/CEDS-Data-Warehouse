@@ -1,27 +1,27 @@
 CREATE TABLE [RDS].[DimOrganizations]
 (
-	[DimOrganizationId] int NOT NULL IDENTITY (1, 1),
-	[OrganizationName] nvarchar(1000) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[ShortNameOfOrganization] varchar(30) NOT NULL,
-	[OrganizationIdentifierSea] nvarchar(40) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[OrganizationIdentifierDuns] nvarchar(40) NULL,
-	[OrganizationIdentifierFein] nvarchar(40) NULL,
-	[OrganizationTypeCode] nvarchar(50) NOT NULL,
-	[OrganizationTypeDescription] nvarchar(1000) NOT NULL,
-	[OrganizationOperationalStatusCode] nvarchar(50) NOT NULL,
-	[OrganizationOperationalStatusDescription] nvarchar(1000) NOT NULL,
-	[OperationalStatusEffectiveDate] date NULL,
-	[StateAnsiCode] nvarchar(10) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[StateAbbreviationCode] nvarchar(10) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[StateAbbreviationDescription] nvarchar(1000) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[TelephoneNumberMain] nvarchar(24) NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[TelephoneNumberFax] nvarchar(24) NULL,
-	[ElectronicMailAddress] nvarchar(128) NULL,
-	[WebSiteAddress] nvarchar(300) NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[OutOfStateIndicator] bit NULL,
-	[OrganizationRegionGeoJson] nvarchar(max) NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
-	[RecordStartDateTime] datetime NOT NULL,
-	[RecordEndDateTime] datetime NULL
+	[DimOrganizationId] INT NOT NULL IDENTITY (1, 1),
+	[OrganizationName] NVARCHAR(1000) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[ShortNameOfOrganization] VARCHAR(30) NOT NULL,
+	[OrganizationIdentifierSea] NVARCHAR(40) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[OrganizationIdentifierDuns] NVARCHAR(40) NULL,
+	[OrganizationIdentifierFein] NVARCHAR(40) NULL,
+	[OrganizationTypeCode] NVARCHAR(50) NOT NULL,
+	[OrganizationTypeDescription] NVARCHAR(1000) NOT NULL,
+	[OrganizationOperationalStatusCode] NVARCHAR(50) NOT NULL,
+	[OrganizationOperationalStatusDescription] NVARCHAR(1000) NOT NULL,
+	[OperationalStatusEffectiveDate] DATE NULL,
+	[StateAnsiCode] NVARCHAR(10) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[StateAbbreviationCode] NVARCHAR(10) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[StateAbbreviationDescription] NVARCHAR(1000) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[TelephoneNumberMain] NVARCHAR(24) NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[TelephoneNumberFax] NVARCHAR(24) NULL,
+	[ElectronicMailAddress] NVARCHAR(128) NULL,
+	[WebSiteAddress] NVARCHAR(300) NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[OutOfStateIndicator] BIT NULL,
+	[OrganizationRegionGeoJson] NVARCHAR(MAX) NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
+	[RecordStartDateTime] DATETIME NOT NULL,
+	[RecordEndDateTime] DATETIME NULL
 )
 GO
 

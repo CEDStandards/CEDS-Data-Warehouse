@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[ProgramParticipationNorD] (
-	[ID]                                                    INT IDENTITY(1,1) NOT NULL,
+	[Id]                                                    INT IDENTITY(1,1) NOT NULL,
 	[StudentIdentifierState]                                NVARCHAR(40) NULL,
 	[LeaIdentifierSeaAccountability]                        NVARCHAR(50) NULL,
 	[LeaIdentifierSeaAttendance]                            NVARCHAR(50) NULL,
