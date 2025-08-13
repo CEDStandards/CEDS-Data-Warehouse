@@ -39,6 +39,9 @@ CREATE TABLE [RDS].[DimPeople] (
     [PersonalTitleOrPrefix]                            NVARCHAR (200) NULL,
     [PositionTitle]                                    NVARCHAR (200) NULL,
     [GenerationCodeOrSuffix]                           NVARCHAR (75)   NULL,
+    [HighestLevelOfEducationCompletedCode]             NVARCHAR (50)   NULL,
+    [HighestLevelOfEducationCompletedDescription]      NVARCHAR (200)   NULL,
+
     CONSTRAINT [PK_DimPeople] PRIMARY KEY CLUSTERED ([DimPersonId] ASC)
 );
 
