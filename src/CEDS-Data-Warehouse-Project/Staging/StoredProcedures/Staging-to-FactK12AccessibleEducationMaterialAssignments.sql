@@ -52,7 +52,7 @@ BEGIN
 		ON ske.StudentIdentifierState = sppse.StudentIdentifierState
 		AND ISNULL(ske.LeaIdentifierSeaAccountability,'') = ISNULL(sppse.LeaIdentifierSeaAccountability,'')
 		AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(sppse.SchoolIdentifierSea,'')
-		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, GETDATE())
+		AND ISNULL(saema.LearningResourceIssuedDate, @CountDate) BETWEEN sppse.ProgramParticipationStartDate AND ISNULL(sppse.ProgramParticipationExitDate, GETDATE())
 	WHERE sd.Section504Status = 1
 		OR sppse.IdeaIndicator = 1
 	)

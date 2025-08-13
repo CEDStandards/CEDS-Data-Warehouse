@@ -203,14 +203,14 @@ BEGIN
 				AND ske.StudentIdentifierState = sppse.StudentIdentifierState
 				AND ISNULL(ske.LeaIdentifierSeaAccountability,'') = ISNULL(sppse.LeaIdentifierSeaAccountability,'')
 				AND ISNULL(ske.SchoolIdentifierSea,'') = ISNULL(sppse.SchoolIdentifierSea,'')
-				AND @ChildCountDate BETWEEN sppse.ProgramParticipationBeginDate AND ISNULL(sppse.ProgramParticipationEndDate, @SYEndDate)
+				AND @ChildCountDate BETWEEN sppse.ProgramParticipationStartDate AND ISNULL(sppse.ProgramParticipationExitDate, @SYEndDate)
 		--dimpeople	(rds)
 			JOIN #dimPeople rdp
 				ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
 				AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 				AND @ChildCountDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 			LEFT JOIN RDS.DimDates rdd
-				ON sppse.ProgramParticipationEndDate = rdd.DateValue
+				ON sppse.ProgramParticipationExitDate = rdd.DateValue
 				AND rdd.DateValue BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, @SYEndDate)
 		--leas (rds)	
 			LEFT JOIN RDS.DimLeas rdl
