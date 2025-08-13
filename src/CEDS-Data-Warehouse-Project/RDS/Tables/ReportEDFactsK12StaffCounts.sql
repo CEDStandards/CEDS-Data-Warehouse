@@ -1,5 +1,5 @@
-CREATE TABLE [RDS].[ReportEdFactsK12StaffCounts] (
-    [ReportEdFactsK12StaffCountId]               INT             IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [RDS].[ReportEDFactsK12StaffCounts] (
+    [ReportEDFactsK12StaffCountId]               INT             IDENTITY (1, 1) NOT NULL,
     [SPECIALEDUCATIONAGEGROUPTAUGHT]             NVARCHAR (50)   NULL,
     [EDFACTSCERTIFICATIONSTATUS]                 NVARCHAR (50)   NULL,
     [Categories]                                 NVARCHAR (300)  NULL,
@@ -32,7 +32,7 @@ CREATE TABLE [RDS].[ReportEdFactsK12StaffCounts] (
     [EDFACTSTEACHERINEXPERIENCEDSTATUS]          NVARCHAR (50)   NULL,
     [PARAPROFESSIONALQUALIFICATIONSTATUS]        NVARCHAR (50)   NULL,
     [TEACHINGCREDENTIALTYPE]                     NVARCHAR (50)   NULL,
-    CONSTRAINT [PK_ReportEdFactsK12StaffCounts] PRIMARY KEY CLUSTERED ([ReportEdFactsK12StaffCountId] ASC) WITH (DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_ReportEDFactsK12StaffCounts] PRIMARY KEY CLUSTERED ([ReportEDFactsK12StaffCountId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 
 

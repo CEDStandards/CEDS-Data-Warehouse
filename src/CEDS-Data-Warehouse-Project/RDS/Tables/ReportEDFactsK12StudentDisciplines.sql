@@ -1,5 +1,5 @@
-CREATE TABLE [RDS].[ReportEdFactsK12StudentDisciplines] (
-    [ReportEdFactsK12StudentDisciplineId]           INT             IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [RDS].[ReportEDFactsK12StudentDisciplines] (
+    [ReportEDFactsK12StudentDisciplineId]           INT             IDENTITY (1, 1) NOT NULL,
     [AGE]                                           NVARCHAR (50)   NULL,
     [SPECIALEDUCATIONEXITREASON]                    NVARCHAR (50)   NULL,
     [CTEPARTICIPANT]                                NVARCHAR (50)   NULL,
@@ -58,59 +58,60 @@ CREATE TABLE [RDS].[ReportEdFactsK12StudentDisciplines] (
     [IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD]   NVARCHAR (50)   NULL,
     [DISCIPLINEREASON]                              NVARCHAR (50)   NULL,
     [INCIDENTBEHAVIOR]                              NVARCHAR (50)   NULL,
-    [INCIDENTINJURYTYPE]                            NVARCHAR (50)   NULL
+    [INCIDENTINJURYTYPE]                            NVARCHAR (50)   NULL,
+    CONSTRAINT [PK_ReportEDFactsK12StudentDisciplines] PRIMARY KEY CLUSTERED ([ReportEDFactsK12StudentDisciplineId] ASC)
 );
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_FactStudentDisciplineReports_ReportCode_ReportYear_ReportLevel_CategorySetCode]
-    ON [RDS].[ReportEdFactsK12StudentDisciplines]([ReportCode] ASC, [ReportYear] ASC, [ReportLevel] ASC, [CategorySetCode] ASC);
+    ON [RDS].[ReportEDFactsK12StudentDisciplines]([ReportCode] ASC, [ReportYear] ASC, [ReportLevel] ASC, [CategorySetCode] ASC);
 
 
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A person who ; (A) (i) has worked primarily without remuneration to care for a home and family, and for that reason has diminished marketable skills;    (ii) has been dependent on the income of another family member but is no longer supported by that income; or    (iii) is a parent whose youngest dependent child will become ineligible to receive assistance under part A of title IV of the Social Security Act (42 U.S.C. 601 et seq.) not later than 2 years after the date on which the parent applies for assistance under such title; and (B)   is unemployed or underemployed and is experiencing difficulty in obtaining or upgrading employment.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A person who ; (A) (i) has worked primarily without remuneration to care for a home and family, and for that reason has diminished marketable skills;    (ii) has been dependent on the income of another family member but is no longer supported by that income; or    (iii) is a parent whose youngest dependent child will become ineligible to receive assistance under part A of title IV of the Social Security Act (42 U.S.C. 601 et seq.) not later than 2 years after the date on which the parent applies for assistance under such title; and (B)   is unemployed or underemployed and is experiencing difficulty in obtaining or upgrading employment.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career-Technical-Adult Education Displaced Homemaker Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career-Technical-Adult Education Displaced Homemaker Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000084' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000084' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21084' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21084' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEAEDISPLACEDHOMEMAKERINDICATOR';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of how CTE concentrators are included in the state''s computation of its graduation rate.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of how CTE concentrators are included in the state''s computation of its graduation rate.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career and Technical Education Graduation Rate Inclusion' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career and Technical Education Graduation Rate Inclusion' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTEGRADUATIONRATEINCLUSION';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether CTE participants were members of an underrepresented gender group (where one gender comprises less than 25 percent of the persons employed in those occupations or field of work).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether CTE participants were members of an underrepresented gender group (where one gender comprises less than 25 percent of the persons employed in those occupations or field of work).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career Technical Education Nontraditional Gender Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Career Technical Education Nontraditional Gender Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000588' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000588' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21581' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21581' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'CTENONTRADITIONALGENDERSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Identifies the consequences of an incident for the student(s) involved in an incident as perpetrator(s).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Identifies the consequences of an incident for the student(s) involved in an incident as perpetrator(s).' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Disciplinary Action Taken' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Disciplinary Action Taken' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000488' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000488' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21479' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21479' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINARYACTIONTAKEN';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEMETHODFORFIREARMSINCIDENTS';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEMETHODFORFIREARMSINCIDENTS';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The method used to discipline students who are not children with disabilities (IDEA) involved in firearms and other outcomes of firearms incidents.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'DISCIPLINEMETHODFORFIREARMSINCIDENTS';
 GO
@@ -502,7 +503,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the child is an immigrant according to the Title III of ESEA definition, meaning children who are aged 3 through 21; were not born in any state; and have not been attending one or more schools in any one or more States for more than 3 full academic years.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that the child is an immigrant according to the Title III of ESEA definition, meaning children who are aged 3 through 21; were not born in any state; and have not been attending one or more schools in any one or more States for more than 3 full academic years.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Title III Immigrant Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTSTATUS';
 GO

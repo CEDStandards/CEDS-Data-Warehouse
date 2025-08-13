@@ -12,7 +12,7 @@ CREATE TABLE [RDS].[FactOrganizationStatusCounts] (
     [OrganizationStatusCount]                        INT NOT NULL,
     [SchoolQualityOrStudentSuccessIndicatorId]       INT CONSTRAINT [DF_FactOrganizationStatusCounts_SchoolQualityOrStudentSuccessIndicatorId] DEFAULT ((-1)) NOT NULL,
     [SchoolPerformanceIndicatorCategoryId]           INT CONSTRAINT [DF_FactOrganizationStatusCounts_SchoolPerformanceIndicatorCategoryId] DEFAULT ((-1)) NOT NULL,
-    CONSTRAINT [PK_FactOrganizationStatusCount] PRIMARY KEY CLUSTERED ([FactOrganizationStatusCountId] ASC),
+    CONSTRAINT [PK_FactOrganizationStatusCounts] PRIMARY KEY CLUSTERED ([FactOrganizationStatusCountId] ASC),
     CONSTRAINT [FK_FactOrganizationStatusCounts_DimFactTypes] FOREIGN KEY ([FactTypeId]) REFERENCES [RDS].[DimFactTypes] ([DimFactTypeId]),
     CONSTRAINT [FK_FactOrganizationStatusCounts_DimIdeaStatuses] FOREIGN KEY ([IdeaStatusId]) REFERENCES [RDS].[DimIdeaStatuses] ([DimIdeaStatusId]),
     CONSTRAINT [FK_FactOrganizationStatusCounts_DimK12Demographics] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
@@ -23,7 +23,7 @@ CREATE TABLE [RDS].[FactOrganizationStatusCounts] (
     CONSTRAINT [FK_FactOrganizationStatusCounts_DimSchoolPerformanceIndicators] FOREIGN KEY ([SchoolPerformanceIndicatorId]) REFERENCES [RDS].[DimSchoolPerformanceIndicators] ([DimSchoolPerformanceIndicatorId]),
     CONSTRAINT [FK_FactOrganizationStatusCounts_DimSchoolPerformanceIndicatorStateDefinedStatuses] FOREIGN KEY ([SchoolPerformanceIndicatorStateDefinedStatusId]) REFERENCES [RDS].[DimSchoolPerformanceIndicatorStateDefinedStatuses] ([DimSchoolPerformanceIndicatorStateDefinedStatusId]),
     CONSTRAINT [FK_FactOrganizationStatusCounts_DimSchoolQualityOrStudentSuccessIndicators] FOREIGN KEY ([SchoolQualityOrStudentSuccessIndicatorId]) REFERENCES [RDS].[DimSchoolQualityOrStudentSuccessIndicators] ([DimSchoolQualityOrStudentSuccessIndicatorId]),
-    CONSTRAINT [FK_FactOrganizationStatusCounts_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId])
+    CONSTRAINT [FK_FactOrganizationStatusCounts_DimK12Schools] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId])
 );
 
 

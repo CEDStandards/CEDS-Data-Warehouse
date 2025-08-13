@@ -41,7 +41,7 @@ CREATE TABLE [RDS].[FactK12StudentCounts](
 	[CohortGraduationYearId] [int] NOT NULL,
 	[EnrollmentEntryDateId] [int] NOT NULL,
 	[EnrollmentExitDateId] [int] NOT NULL,
- CONSTRAINT [PK_FactStudentCounts] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_FactK12StudentCounts] PRIMARY KEY CLUSTERED 
 (
 	[FactK12StudentCountId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 80, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -211,11 +211,11 @@ GO
 ALTER TABLE [RDS].[FactK12StudentCounts] CHECK CONSTRAINT [FK_FactK12StudentCounts_EconomicallyDisadvantagedStatusId]
 GO
 
-ALTER TABLE [RDS].[FactK12StudentCounts]  WITH CHECK ADD  CONSTRAINT [FK_FactK12StudentCounts_EnglishLearnerId] FOREIGN KEY([EnglishLearnerStatusId])
+ALTER TABLE [RDS].[FactK12StudentCounts]  WITH CHECK ADD  CONSTRAINT [FK_FactK12StudentCounts_EnglishLearnerStatusId] FOREIGN KEY([EnglishLearnerStatusId])
 REFERENCES [RDS].[DimEnglishLearnerStatuses] ([DimEnglishLearnerStatusId])
 GO
 
-ALTER TABLE [RDS].[FactK12StudentCounts] CHECK CONSTRAINT [FK_FactK12StudentCounts_EnglishLearnerId]
+ALTER TABLE [RDS].[FactK12StudentCounts] CHECK CONSTRAINT [FK_FactK12StudentCounts_EnglishLearnerStatusId]
 GO
 
 ALTER TABLE [RDS].[FactK12StudentCounts]  WITH NOCHECK ADD  CONSTRAINT [FK_FactK12StudentCounts_EnrollmentEntryDateId] FOREIGN KEY([EnrollmentEntryDateId])

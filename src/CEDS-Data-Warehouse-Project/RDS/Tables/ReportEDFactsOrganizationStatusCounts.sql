@@ -1,5 +1,5 @@
-CREATE TABLE [RDS].[ReportEdFactsOrganizationStatusCounts] (
-    [ReportEdFactsOrganizationStatusCountId] INT             IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [RDS].[ReportEDFactsOrganizationStatusCounts] (
+    [ReportEDFactsOrganizationStatusCountId] INT             IDENTITY (1, 1) NOT NULL,
     [Categories]                             NVARCHAR (300)  NULL,
     [CategorySetCode]                        NVARCHAR (40)   NULL,
     [ReportCode]                             NVARCHAR (40)   NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE [RDS].[ReportEdFactsOrganizationStatusCounts] (
     [MILITARYCONNECTEDSTATUS]                NVARCHAR (50)   NULL,
     [SEX]                                    NVARCHAR (50)   NULL,
     [INDICATORSTATUSTYPECODE]                NVARCHAR (50)   NULL,
-    CONSTRAINT [PK_ReportEdFactsOrganizationStatusCounts] PRIMARY KEY CLUSTERED ([ReportEdFactsOrganizationStatusCountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_ReportEDFactsOrganizationStatusCounts] PRIMARY KEY CLUSTERED ([ReportEDFactsOrganizationStatusCountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 

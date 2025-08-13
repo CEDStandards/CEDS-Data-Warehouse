@@ -9,7 +9,7 @@ GO
 /* Create Primary Keys, Indexes, Uniques, Checks */
 
 ALTER TABLE [RDS].[BridgeDirectoryOrganizationAddresses] 
- ADD CONSTRAINT [PK_BridgeDirectoryAddresses]
+ ADD CONSTRAINT [PK_BridgeDirectoryOrganizationAddresses]
 	PRIMARY KEY CLUSTERED ([BridgeDirectoryAddressId] ASC)
 GO
 
@@ -17,7 +17,7 @@ CREATE NONCLUSTERED INDEX [IXFK_BridgeDirectoryOrganizationAddresses_FactDirecto
  ON [RDS].[BridgeDirectoryOrganizationAddresses] ([FactDirectoryId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_BridgeDirectoryOrganizationAddresses_OrganizationAddresseId] 
+CREATE NONCLUSTERED INDEX [IXFK_BridgeDirectoryOrganizationAddresses_OrganizationAddressId] 
  ON [RDS].[BridgeDirectoryOrganizationAddresses] ([OrganizationAddressId] ASC)
 GO
 

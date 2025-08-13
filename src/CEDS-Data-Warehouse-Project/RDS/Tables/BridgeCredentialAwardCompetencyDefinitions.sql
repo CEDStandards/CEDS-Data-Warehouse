@@ -9,16 +9,16 @@ CREATE TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions]  WITH CHECK ADD  CONSTRAINT [FK_FactCredentialAwardCompetencyDefinitions_CompetencyDefinitionId] FOREIGN KEY([CompetencyDefinitionId])
+ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions]  WITH CHECK ADD  CONSTRAINT [FK_BridgeCredentialAwardCompetencyDefinitions_CompetencyDefinitionId] FOREIGN KEY([CompetencyDefinitionId])
 REFERENCES [RDS].[DimCompetencyDefinitions] ([DimCompetencyDefinitionId])
 GO
 
-ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions] CHECK CONSTRAINT [FK_FactCredentialAwardCompetencyDefinitions_CompetencyDefinitionId]
+ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions] CHECK CONSTRAINT [FK_BridgeCredentialAwardCompetencyDefinitions_CompetencyDefinitionId]
 GO
 
-ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions]  WITH CHECK ADD  CONSTRAINT [FK_FactCredentialAwardCompetencyDefinitions_FactCredentialAwards] FOREIGN KEY([FactCredentialAwardId])
+ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions]  WITH CHECK ADD  CONSTRAINT [FK_BridgeCredentialAwardCompetencyDefinitions_FactCredentialAwards] FOREIGN KEY([FactCredentialAwardId])
 REFERENCES [RDS].[FactCredentialAwards] ([FactCredentialAwardId])
 GO
 
-ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions] CHECK CONSTRAINT [FK_FactCredentialAwardCompetencyDefinitions_FactCredentialAwards]
+ALTER TABLE [RDS].[BridgeCredentialAwardCompetencyDefinitions] CHECK CONSTRAINT [FK_BridgeCredentialAwardCompetencyDefinitions_FactCredentialAwards]
 GO

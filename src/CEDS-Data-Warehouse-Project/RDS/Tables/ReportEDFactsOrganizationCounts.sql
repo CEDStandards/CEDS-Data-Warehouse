@@ -1,4 +1,4 @@
-CREATE TABLE [RDS].[ReportEdFactsOrganizationCounts](
+CREATE TABLE [RDS].[ReportEDFactsOrganizationCounts](
 	[ReportEDFactsOrganizationCountId] [int] IDENTITY(1,1) NOT NULL,
 	[CSSOEmail] [nvarchar](100) NULL,
 	[CSSOFirstName] [nvarchar](100) NULL,
@@ -92,7 +92,7 @@ CREATE TABLE [RDS].[ReportEdFactsOrganizationCounts](
 	[ReasonApplicabilityCode] [varchar](50) NULL,
 	[SubgroupCode] [varchar](50) NULL,
 	[CharterSchoolAuthorizerType] [nvarchar](100) NULL,
- CONSTRAINT [PK_FactOrganizationCountReports] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ReportEDFactsOrganizationCounts] PRIMARY KEY CLUSTERED 
 (
 	[ReportEDFactsOrganizationCountId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -102,7 +102,7 @@ GO
 ALTER TABLE [RDS].[ReportEdFactsOrganizationCounts] ADD  CONSTRAINT [DF_ReportEDFactsOrganizationCounts_OutOfStateIndicator]  DEFAULT (N'0') FOR [OutOfStateIndicator]
 GO
 
-ALTER TABLE [RDS].[ReportEdFactsOrganizationCounts] ADD  CONSTRAINT [DF_ReportEDFactsOrganizationCounts_ParentOrganizationStateId]  DEFAULT (N'0') FOR [ParentOrganizationStateId]
+ALTER TABLE [RDS].[ReportEDFactsOrganizationCounts] ADD  CONSTRAINT [DF_ReportEDFactsOrganizationCounts_ParentOrganizationStateId]  DEFAULT (N'0') FOR [ParentOrganizationStateId]
 GO
 
 ALTER TABLE [RDS].[ReportEdFactsOrganizationCounts] ADD  CONSTRAINT [DF_ReportEDFactsOrganizationCounts_TitleiParentalInvolveRes]  DEFAULT ((0)) FOR [TitleiParentalInvolveRes]
@@ -111,7 +111,7 @@ GO
 ALTER TABLE [RDS].[ReportEdFactsOrganizationCounts] ADD  CONSTRAINT [DF_ReportEDFactsOrganizationCounts_TitleiPartaAllocations]  DEFAULT ((0)) FOR [TitleiPartaAllocations]
 GO
 
-ALTER TABLE [RDS].[ReportEdFactsOrganizationCounts] ADD  CONSTRAINT [DF_ReportEDFactsOrganizationCounts_ParentOrganizationNcesId]  DEFAULT ((0)) FOR [ParentOrganizationNcesId]
+ALTER TABLE [RDS].[ReportEDFactsOrganizationCounts] ADD  CONSTRAINT [DF_ReportEDFactsOrganizationCounts_ParentOrganizationNcesId]  DEFAULT ((0)) FOR [ParentOrganizationNcesId]
 GO
 
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The full legal first name given to a person at birth, baptism, or through legal change.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEdFactsOrganizationCounts', @level2type=N'COLUMN',@level2name=N'CSSOFirstName'

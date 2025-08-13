@@ -1,5 +1,5 @@
-CREATE TABLE [RDS].[ReportEdFactsK12StudentAttendance] (
-    [ReportEdFactsK12StudentAttendanceId] INT             IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [RDS].[ReportEDFactsK12StudentAttendance] (
+    [ReportEDFactsK12StudentAttendanceId] INT             IDENTITY (1, 1) NOT NULL,
     [Categories]                          NVARCHAR (300)  NULL,
     [CategorySetCode]                     NVARCHAR (40)   NOT NULL,
     [ECODISSTATUS]                        NVARCHAR (50)   NULL,
@@ -24,7 +24,8 @@ CREATE TABLE [RDS].[ReportEdFactsK12StudentAttendance] (
     [MILITARYCONNECTEDSTATUS]             NVARCHAR (50)   NULL,
     [HOMELESSNIGHTTIMERESIDENCE]          NVARCHAR (50)   NULL,
     [HOMELESSUNACCOMPANIEDYOUTHSTATUS]    NVARCHAR (50)   NULL,
-    [ATTENDANCE]                          VARCHAR (50)    NULL
+    [ATTENDANCE]                          VARCHAR (50)    NULL,
+    CONSTRAINT [PK_ReportEDFactsK12StudentAttendance] PRIMARY KEY CLUSTERED ([ReportEDFactsK12StudentAttendanceId] ASC)
 );
 
 
