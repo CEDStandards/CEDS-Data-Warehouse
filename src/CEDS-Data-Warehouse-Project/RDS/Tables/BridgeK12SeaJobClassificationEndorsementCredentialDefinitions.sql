@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[BridgeK12SeaJobClassificationEndorsementCredentialDefinitions]
+CREATE TABLE [RDS].[BridgeK12SeaJobClassificationEndorsementCredentialDefinitions]
 (
   [BridgeK12SeaJobClassificationEndorsementCredentialDefinitionId] INT NOT NULL IDENTITY(1,1),
   [FactK12SeaJobClassificationEndorsementRequirementId] INT NOT NULL,

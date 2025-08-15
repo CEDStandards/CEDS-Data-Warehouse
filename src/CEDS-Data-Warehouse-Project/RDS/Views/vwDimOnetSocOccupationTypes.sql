@@ -1,4 +1,4 @@
-CREATE VIEW [dbo].[vwDimOnetSocOccupationTypes]
+CREATE VIEW [RDS].[vwDimOnetSocOccupationTypes]
 AS
   SELECT
     [DimOnetSocOccupationTypeId],

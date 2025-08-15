@@ -1,4 +1,4 @@
-CREATE VIEW [dbo].[vwDimCredentialAwardStatuses]
+CREATE VIEW [RDS].[vwDimCredentialAwardStatuses]
 AS
   SELECT
     DimCredentialAwardStatusId,
