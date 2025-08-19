@@ -3,7 +3,7 @@ CREATE TABLE [RDS].[DimAccessibilityFeatures] (
     [AccessibilityFeatureTypeCode] NVARCHAR(50) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureTypeCode] DEFAULT ('MISSING') NOT NULL,
     [AccessibilityFeatureTypeDescription] NVARCHAR(200) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [AccessibilityFeatureApplicationTypeCode] NVARCHAR(50) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureApplicationTypeCode] DEFAULT ('MISSING') NOT NULL,
-    [AccessibilityFeatureApplicationDescription] NVARCHAR(200) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureApplicationDescription] DEFAULT ('MISSING') NOT NULL,
+    [AccessibilityFeatureApplicationTypeDescription] NVARCHAR(200) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureApplicationTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [AccessibilityFeatureCategoryCode] NVARCHAR(50) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureCategoryCode] DEFAULT ('MISSING') NOT NULL,
     [AccessibilityFeatureCategoryDescription] NVARCHAR(200) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureCategoryDescription] DEFAULT ('MISSING') NOT NULL,
     [AccessibilityFeatureDeliveryMethodCode] NVARCHAR(50) CONSTRAINT [DF_DimAccessibilityFeatures_AccessibilityFeatureDeliveryMethodCode] DEFAULT ('MISSING') NOT NULL,
@@ -25,6 +25,16 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002167' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureApplicationTypeCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002167' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureApplicationTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureApplicationTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of how this accessibility feature can be applied.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureApplicationTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Accessibility Feature Application Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureApplicationTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002167' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureApplicationTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002167' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureApplicationTypeDescription';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAccessibilityFeatures', @level2type=N'COLUMN',@level2name=N'AccessibilityFeatureCategoryCode';
 GO
