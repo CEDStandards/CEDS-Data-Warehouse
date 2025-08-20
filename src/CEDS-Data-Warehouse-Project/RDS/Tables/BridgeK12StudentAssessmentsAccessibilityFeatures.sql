@@ -1,5 +1,5 @@
 CREATE TABLE [RDS].[BridgeK12StudentAssessmentAccessibilityFeatures] (
-    [BridgeK12StudentAssessmentAccessibilityFeatureIdId] INT IDENTITY (1, 1) NOT NULL,
+    [BridgeK12StudentAssessmentAccessibilityFeatureId] INT IDENTITY (1, 1) NOT NULL,
     [FactK12StudentAssessmentId]                    INT NOT NULL,
     [AccessibilityFeatureId]                        INT             CONSTRAINT [DF_BridgeK12StudentAssessmentAccessibilityFeatures_AccessibilityFeatureId] DEFAULT ((-1)) NOT NULL,
     [AccessibilityFeatureLanguageTypeId]            INT             CONSTRAINT [DF_BridgeK12StudentAssessmentAccessibilityFeatures_AccessibilityFeatureLanguageTypeId] DEFAULT ((-1)) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE [RDS].[BridgeK12StudentAssessmentAccessibilityFeatures] (
 
 
 
-    CONSTRAINT [PK_BridgeK12StudentAssessmentAccessibilityFeatures] PRIMARY KEY CLUSTERED ([BridgeK12StudentAssessmentAccessibilityFeatureIdId] ASC),
+    CONSTRAINT [PK_BridgeK12StudentAssessmentAccessibilityFeatures] PRIMARY KEY CLUSTERED ([BridgeK12StudentAssessmentAccessibilityFeatureId] ASC),
     CONSTRAINT [FK_BridgeK12StudentAssessmentAccessibilityFeatures_FactK12StudentAssessmentId] FOREIGN KEY ([FactK12StudentAssessmentId]) REFERENCES [RDS].[FactK12StudentAssessments] ([FactK12StudentAssessmentId]),
     CONSTRAINT [FK_BridgeK12StudentAssessmentAccessibilityFeatures_AccessibilityFeatureId] FOREIGN KEY ([AccessibilityFeatureId]) REFERENCES [RDS].[DimAccessibilityFeatures] ([DimAccessibilityFeatureId]),
     CONSTRAINT [FK_BridgeK12StudentAssessmentAccessibilityFeatures_AccessibilityFeatureLanguageTypeId] FOREIGN KEY ([AccessibilityFeatureLanguageTypeId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]),

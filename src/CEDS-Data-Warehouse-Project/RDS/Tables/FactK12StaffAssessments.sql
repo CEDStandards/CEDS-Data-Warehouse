@@ -7,7 +7,7 @@ CREATE TABLE [RDS].[FactK12StaffAssessments]
 	[PsInstitutionId] 										BIGINT 			CONSTRAINT [DF_FactK12StaffAssessments_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
 	[EmployerId] 											INT 			CONSTRAINT [DF_FactK12StaffAssessments_EmployerId] DEFAULT ((-1)) NOT NULL,
 	[AssessmentId] 											INT 			CONSTRAINT [DF_FactK12StaffAssessments_AssessmentId] DEFAULT ((-1)) NOT NULL,
-	[AssessmentAccommodationId] 							INT 			CONSTRAINT [DF_FactK12StaffAssessments_AssessmentAccommodationId] DEFAULT ((-1)) NOT NULL,
+	[AccessibilityFeatureId] 								INT 			CONSTRAINT [DF_FactK12StaffAssessments_AccessibilityFeatureId] DEFAULT ((-1)) NOT NULL,
 	[AssessmentAdministrationId] 							INT 			CONSTRAINT [DF_FactK12StaffAssessments_AssessmentAdministrationId] DEFAULT ((-1)) NOT NULL,
 	[AssessmentFormId] 										INT 			CONSTRAINT [DF_FactK12StaffAssessments_AssessmentFormId] DEFAULT ((-1)) NOT NULL,
 	[AssessmentParticipationSessionId] 						INT 			CONSTRAINT [DF_FactK12StaffAssessments_AssessmentParticipationSessionId] DEFAULT ((-1)) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE [RDS].[FactK12StaffAssessments]
 	[AssessmentResultScoreValueTScore] 						NVARCHAR (70) 	CONSTRAINT [DF_FactK12StaffAssessments_AssessmentResultScoreValueTScore] DEFAULT ((0)) NOT NULL,
 	[AssessmentResultScoreValueZScore] 						NVARCHAR (70) 	CONSTRAINT [DF_FactK12StaffAssessments_AssessmentResultScoreValueZScore] DEFAULT ((0)) NOT NULL,
 	CONSTRAINT [PK_FactK12StaffAssessments]	PRIMARY KEY CLUSTERED ([FactK12StaffAssessmentId] ASC),
-	CONSTRAINT [FK_FactK12StaffAssessments_AssessmentAccommodationId] FOREIGN KEY ([AssessmentAccommodationId]) REFERENCES [RDS].[DimAssessmentAccommodations] ([DimAssessmentAccommodationId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssessments_AccessibilityFeatureId] FOREIGN KEY ([AccessibilityFeatureId]) REFERENCES [RDS].[DimAccessibilityFeatures] ([DimAccessibilityFeatureId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_AssessmentAdministrationId] FOREIGN KEY ([AssessmentAdministrationId]) REFERENCES [RDS].[DimAssessmentAdministrations] ([DimAssessmentAdministrationId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_AssessmentFormId] FOREIGN KEY ([AssessmentFormId]) REFERENCES [RDS].[DimAssessmentForms] ([DimAssessmentFormId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_AssessmentId] FOREIGN KEY ([AssessmentId]) REFERENCES [RDS].[DimAssessments] ([DimAssessmentId]) ON DELETE No Action ON UPDATE No Action,
@@ -67,8 +67,8 @@ CREATE TABLE [RDS].[FactK12StaffAssessments]
 	CONSTRAINT [FK_FactK12StaffAssessments_StandardOccupationalClassificationId] FOREIGN KEY ([StandardOccupationalClassificationId]) REFERENCES [RDS].[DimStandardOccupationalClassifications] ([DimStandardOccupationalClassificationId]) ON DELETE No Action ON UPDATE No Action)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimAssessmentAccommodations] 
- ON [RDS].[FactK12StaffAssessments] ([AssessmentAccommodationId] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimAccessibilityFeatures] 
+ ON [RDS].[FactK12StaffAssessments] ([AccessibilityFeatureId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimAssessmentAdministrations] 
