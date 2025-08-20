@@ -7,7 +7,7 @@ CREATE TABLE [RDS].[FactDirectory]
 	[PsInstitutionID] int NULL,
 	[IeuId] int NULL,
 	[K12SchoolId] int NULL,
-	[AdultEducationServiceProviderId] int NULL,
+	[AeProviderId] int NULL,
 	[ComprehensiveAndTargetedSupportI] int NULL,
 	[NOrDStatusId] int NULL,
 	[CharterSchoolManagementOrganizationId] int NULL,
@@ -29,8 +29,8 @@ ALTER TABLE [RDS].[FactDirectory]
 	PRIMARY KEY CLUSTERED ([FactDirectoryId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimAdultEducationServiceProviders] 
- ON [RDS].[FactDirectory] ([AdultEducationServiceProviderId] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimAeProviders] 
+ ON [RDS].[FactDirectory] ([AeProviderId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimAlternativeSchoolStatuses] 
@@ -99,8 +99,8 @@ GO
 
 /* Create Foreign Key Constraints */
 
-ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirctory_DimAdultEducationServiceProviderId]
-	FOREIGN KEY ([AdultEducationServiceProviderId]) REFERENCES [RDS].[DimAdultEducationServiceProviders] ([DimAdultEducationServiceProviderId]) ON DELETE No Action ON UPDATE No Action
+ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirctory_DimAeProviderId]
+	FOREIGN KEY ([AeProviderId]) REFERENCES [RDS].[DimAeProviders] ([DimAeProviderId]) ON DELETE No Action ON UPDATE No Action
 GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_AlternativeSchoolStatusId]
