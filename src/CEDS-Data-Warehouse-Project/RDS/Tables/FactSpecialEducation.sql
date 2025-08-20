@@ -78,7 +78,7 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     CONSTRAINT [FK_FactSpecialEducation_IndividualizedProgramStatusId] FOREIGN KEY ([IndividualizedProgramStatusId]) REFERENCES [RDS].[DimIndividualizedProgramStatuses] ([DimIndividualizedProgramStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactSpecialEducation_K12EnrollmentStatusId] FOREIGN KEY ([K12EnrollmentStatusId]) REFERENCES [RDS].[DimK12EnrollmentStatuses] ([DimK12EnrollmentStatusId]),
-    CONSTRAINT [FK_FactSpecialEducation_DimK12Schools] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
+    CONSTRAINT [FK_FactSpecialEducation_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactSpecialEducation_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
     CONSTRAINT [FK_FactSpecialEducation_LeaAccountabilityId] FOREIGN KEY ([LeaAccountabilityId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactSpecialEducation_LeaAttendanceId] FOREIGN KEY ([LeaAttendanceId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
