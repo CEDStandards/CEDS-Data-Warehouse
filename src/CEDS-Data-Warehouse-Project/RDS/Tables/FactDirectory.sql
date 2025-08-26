@@ -99,7 +99,7 @@ GO
 
 /* Create Foreign Key Constraints */
 
-ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirctory_DimAeProviderId]
+ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_DimAeProviderId]
 	FOREIGN KEY ([AeProviderId]) REFERENCES [RDS].[DimAeProviders] ([DimAeProviderId]) ON DELETE No Action ON UPDATE No Action
 GO
 

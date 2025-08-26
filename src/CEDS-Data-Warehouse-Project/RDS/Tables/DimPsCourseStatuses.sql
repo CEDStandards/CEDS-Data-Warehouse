@@ -1,5 +1,5 @@
 CREATE TABLE [RDS].[DimPsCourseStatuses] (
-    [DimPsCourseStatusId]              INT            NOT NULL,
+    [DimPsCourseStatusId]              INT    IDENTITY (1, 1) NOT NULL,
     [CourseLevelTypeCode]              NVARCHAR (50)  CONSTRAINT [DF_DimPsCourseStatuses_CourseLevelTypeCode] DEFAULT ('MISSING') NOT NULL,
     [CourseLevelTypeDescription]       NVARCHAR (200) CONSTRAINT [DF_DimPsCourseStatuses_CourseLevelTypeDescription] DEFAULT ('MISSING') NOT NULL,
     [CourseHonorsTypeCode]             NVARCHAR (50)  CONSTRAINT [DF_DimPsCourseStatuses_CourseHonorsTypeCode] DEFAULT ('MISSING') NOT NULL,

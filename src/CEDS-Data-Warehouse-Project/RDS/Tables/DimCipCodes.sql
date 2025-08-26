@@ -1,6 +1,7 @@
 CREATE TABLE [RDS].[DimCipCodes] (
-    [DimCipCodeId]          INT            NOT NULL,
-    [CipCode]               NVARCHAR (7)   NULL,
+    [DimCipCodeId]          INT           IDENTITY (1, 1) NOT NULL,
+    [CipCode]           NVARCHAR (7)   NULL,
+    [CipDescription]    NVARCHAR (200) NULL,
     [CipUseCode]            NVARCHAR (50)  NULL,
     [CipUseDescription]     NVARCHAR (200) NULL,
     [CipVersionCode]        NVARCHAR (50)  NULL,

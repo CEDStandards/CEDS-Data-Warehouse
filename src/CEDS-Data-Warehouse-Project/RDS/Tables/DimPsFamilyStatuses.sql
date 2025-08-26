@@ -4,7 +4,8 @@ CREATE TABLE [RDS].[DimPsFamilyStatuses] (
     [DependencyStatusDescription]             NVARCHAR (200) CONSTRAINT [DF_DimPsFamilyStatuses_DependencyStatusDescription] DEFAULT ('MISSING') NOT NULL,
     [NumberOfDependentsTypeCode]              NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_NumberOfDependentsTypeCode] DEFAULT ('MISSING') NOT NULL,
     [NumberOfDependentsTypeDescription]       NVARCHAR (200) CONSTRAINT [DF_DimPsFamilyStatuses_NumberOfDependentsTypeDescription] DEFAULT ('MISSING') NOT NULL,
-    [SingleParentOrSinglePregnantWomanStatus] BIT            CONSTRAINT [DF_DimPsFamilyStatuses_SingleParentOrSinglePregnantWomanStatus] DEFAULT ((0)) NOT NULL,
+    [SingleParentOrSinglePregnantWomanStatusCode] NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_SingleParentOrSinglePregnantWomanStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [SingleParentOrSinglePregnantWomanStatusDescription] NVARCHAR (200)  CONSTRAINT [DF_DimPsFamilyStatuses_SingleParentOrSinglePregnantWomanStatusDescription] DEFAULT ('MISSING') NOT NULL,
     [MaternalGuardianEducationCode]           NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_MaternalGuardianEducationCode] DEFAULT ('MISSING') NOT NULL,
     [MaternalGuardianEducationDescription]    NVARCHAR (200) CONSTRAINT [DF_DimPsFamilyStatuses_MaternalGuardianEducationDescription] DEFAULT ('MISSING') NOT NULL,
     [PaternalGuardianEducationCode]           NVARCHAR (50)  CONSTRAINT [DF_DimPsFamilyStatuses_PaternalGuardianEducationCode] DEFAULT ('MISSING') NOT NULL,
@@ -101,13 +102,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001230' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22195' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'PaternalGuardianEducationDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatus';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatusCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A student who, at some time during the school year, is either a pregnant female student who is unmarried; or a male or female student who is unmarried or legally separated from a spouse and has a minor child or children.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A student who, at some time during the school year, is either a pregnant female student who is unmarried; or a male or female student who is unmarried or legally separated from a spouse and has a minor child or children.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatusCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Single Parent or Single Pregnant Woman Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Single Parent or Single Pregnant Woman Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatusCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000580' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000580' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatusCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21573' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatus';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21573' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPsFamilyStatuses', @level2type=N'COLUMN',@level2name=N'SingleParentOrSinglePregnantWomanStatusCode';
 GO
