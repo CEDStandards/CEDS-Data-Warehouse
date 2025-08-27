@@ -9,7 +9,9 @@ CREATE TABLE [RDS].[FactK12ParentOrGuardians]
 	[LeaId] INT NOT NULL,
 	[K12SchoolId] INT NOT NULL,
 	[K12StudentId] BIGINT NOT NULL,
+    [K12Student_CurrentId] BIGINT NOT NULL DEFAULT -1,
 	[ParentOrGuardianId] BIGINT NOT NULL,
+    [ParentOrGuardian_CurrentId] BIGINT NOT NULL DEFAULT -1,
     [ParentOrGuardianPersonAddressId] INT NOT NULL,
     [PersonRelationshipToLearnerContactInformationId] INT NOT NULL,
     [ContactIndicatorId] INT NOT NULL,
@@ -24,7 +26,9 @@ CREATE TABLE [RDS].[FactK12ParentOrGuardians]
     CONSTRAINT [FK_FactK12ParentOrGuardians_Leas] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_K12Schools] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_K12Students] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12ParentOrGuardians_ParentOrGuardians] FOREIGN KEY ([ParentOrGuardianId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_FactK12ParentOrGuardians_K12Students_Current] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_FactK12ParentOrGuardians_ParentOrGuardians] FOREIGN KEY ([ParentOrGuardianId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_FactK12ParentOrGuardians_ParentOrGuardians_Current] FOREIGN KEY ([ParentOrGuardian_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_PersonRelationshipToLearnerContactInformation] FOREIGN KEY ([PersonRelationshipToLearnerContactInformationId]) REFERENCES [RDS].[DimPersonRelationshipToLearnerContactInformation] ([DimPersonRelationshipToLearnerContactInformationId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_ContactIndicators] FOREIGN KEY ([ContactIndicatorId]) REFERENCES [RDS].[DimContactIndicators] ([DimContactIndicatorId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12ParentOrGuardians_PersonRelationships] FOREIGN KEY ([PersonRelationshipId]) REFERENCES [RDS].[DimPersonRelationships] ([DimPersonRelationshipId]) ON DELETE No Action ON UPDATE No Action,
@@ -48,8 +52,16 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_K12Student]
  ON [RDS].[FactK12ParentOrGuardians] ([K12StudentId] ASC)
 GO
 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_K12Student_Current] 
+ ON [RDS].[FactK12ParentOrGuardians] ([K12Student_CurrentId] ASC)
+GO
+
 CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_ParentOrGuardian] 
  ON [RDS].[FactK12ParentOrGuardians] ([ParentOrGuardianId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_ParentOrGuardian_Current] 
+ ON [RDS].[FactK12ParentOrGuardians] ([ParentOrGuardian_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12ParentOrGuardians_DimSchoolYears] 

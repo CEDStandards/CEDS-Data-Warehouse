@@ -5,6 +5,7 @@ CREATE TABLE [RDS].[FactPsStudentEnrollments] (
     [CountDateId]                  INT    CONSTRAINT [DF_FactPsStudentEnrollments_CountDateId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionId]              INT    CONSTRAINT [DF_FactPsStudentEnrollments_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
     [PsStudentId]                  BIGINT CONSTRAINT [DF_FactPsStudentEnrollments_PsStudentId] DEFAULT ((-1)) NOT NULL,
+    [PsStudent_CurrentId]          BIGINT CONSTRAINT [DF_FactPsStudentEnrollments_PsStudent_CurrentId] DEFAULT ((-1)) NOT NULL,
     [AcademicTermDesignatorId]     INT    CONSTRAINT [DF_FactPsStudentEnrollments_AcademicTermDesignatorId] DEFAULT ((-1)) NOT NULL,
     [EntryDateIntoPostSecondaryId] INT    CONSTRAINT [DF_FactPsStudentEnrollments_EntryDateIntoPostSecondaryId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentEntryDateId]        INT    CONSTRAINT [DF_FactPsStudentEnrollments_EnrollmentEntryDateId] DEFAULT ((-1)) NOT NULL,
@@ -23,6 +24,7 @@ CREATE TABLE [RDS].[FactPsStudentEnrollments] (
     CONSTRAINT [FK_FactPsStudentEnrollments_PsInstitutionId] FOREIGN KEY ([PsInstitutionId]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionId]),
     CONSTRAINT [FK_FactPsStudentEnrollments_PsInstitutionStatusId] FOREIGN KEY ([PsInstitutionStatusId]) REFERENCES [RDS].[DimPsInstitutionStatuses] ([DimPsInstitutionStatusId]),
     CONSTRAINT [FK_FactPsStudentEnrollments_PsStudentId] FOREIGN KEY ([PsStudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactPsStudentEnrollments_PsStudent_CurrentId] FOREIGN KEY ([PsStudent_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactPsStudentEnrollments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId])
 );
 
@@ -58,6 +60,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsInstitutionId] ON [RDS].[FactPsStudentEnrollments]([PsInstitutionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsStudentId] ON [RDS].[FactPsStudentEnrollments]([PsStudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_PsStudent_CurrentId] ON [RDS].[FactPsStudentEnrollments]([PsStudent_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentEnrollments_AcademicTermDesignatorId] ON [RDS].[FactPsStudentEnrollments]([AcademicTermDesignatorId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO

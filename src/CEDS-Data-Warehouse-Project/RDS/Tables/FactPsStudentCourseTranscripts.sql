@@ -4,6 +4,7 @@ CREATE TABLE [RDS].[FactPsStudentCourseTranscripts] (
     [DataCollectionId]                      INT    CONSTRAINT [DF_FactPsStudentCourseTranscripts_DataCollectionId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionId]                       INT    CONSTRAINT [DF_FactPsStudentCourseTranscripts_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
     [PsStudentId]                           BIGINT CONSTRAINT [DF_FactPsStudentCourseTranscripts_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [PsStudent_CurrentId]                   BIGINT CONSTRAINT [DF_FactPsStudentCourseTranscripts_PsStudent_CurrentId] DEFAULT ((-1)) NOT NULL,
     [AcademicTermDesignatorId]              INT    CONSTRAINT [DF_FactPsStudentCourseTranscripts_AcademicTermDesignatorId] DEFAULT ((-1)) NOT NULL,
     [CipCodeId]                             INT    CONSTRAINT [DF_FactPsStudentCourseTranscripts_CipCodeId] DEFAULT ((-1)) NOT NULL,
     [StatePsCourseId]                       INT    CONSTRAINT [DF_FactPsStudentCourseTranscripts_StatePsCourseId] DEFAULT ((-1)) NOT NULL,
@@ -42,9 +43,16 @@ CREATE TABLE [RDS].[FactPsStudentCourseTranscripts] (
     CONSTRAINT [FK_FactPsStudentCourseTranscripts_PsInstitutionId] FOREIGN KEY ([PsInstitutionId]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionId]),
     CONSTRAINT [FK_FactPsStudentCourseTranscripts_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactPsStudentCourseTranscripts_PsStudentId] FOREIGN KEY ([PsStudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactPsStudentCourseTranscripts_PsStudent_CurrentId] FOREIGN KEY ([PsStudent_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactPsStudentCourseTranscripts_CourseGradePointAverageIndicatorId] FOREIGN KEY ([CourseGradePointAverageIndicatorId]) REFERENCES [RDS].[DimCourseGradePointAverageIndicators] ([DimCourseGradePointAverageIndicatorId])
 
 );
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentCourseTranscripts_PsStudent_CurrentId]
+    ON [RDS].[FactPsStudentCourseTranscripts]([PsStudent_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
 
 GO
 

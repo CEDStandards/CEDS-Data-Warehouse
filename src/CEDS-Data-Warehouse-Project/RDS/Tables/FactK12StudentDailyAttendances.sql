@@ -8,6 +8,7 @@ CREATE TABLE [RDS].[FactK12StudentDailyAttendances](
 	[LeaId] [int] NOT NULL,
 	[K12SchoolId] [int] NOT NULL,
 	[PersonId] [bigint] NOT NULL,
+	[Person_CurrentId] [bigint] NOT NULL,
 	[AttendanceId] [int] NOT NULL,
 	[AttendanceEventDurationDay] [decimal](9, 2) NOT NULL,
 	[AttendanceEventDurationMinutes] [decimal](9, 2) NOT NULL,
@@ -61,6 +62,9 @@ ALTER TABLE [RDS].[FactK12StudentDailyAttendances] ADD  CONSTRAINT [DF_FactK12St
 GO
 
 ALTER TABLE [RDS].[FactK12StudentDailyAttendances] ADD  CONSTRAINT [DF_FactK12StudentDailyAttendances_PersonId]  DEFAULT ((-1)) FOR [PersonId]
+GO
+
+ALTER TABLE [RDS].[FactK12StudentDailyAttendances] ADD  CONSTRAINT [DF_FactK12StudentDailyAttendances_Person_CurrentId]  DEFAULT ((-1)) FOR [Person_CurrentId]
 GO
 
 ALTER TABLE [RDS].[FactK12StudentDailyAttendances] ADD  CONSTRAINT [DF_FactK12StudentDailyAttendances_AttendanceId]  DEFAULT ((-1)) FOR [AttendanceId]
@@ -119,7 +123,16 @@ ALTER TABLE [RDS].[FactK12StudentDailyAttendances]  WITH CHECK ADD  CONSTRAINT [
 REFERENCES [RDS].[DimPeople] ([DimPersonId])
 GO
 
+ALTER TABLE [RDS].[FactK12StudentDailyAttendances]  WITH CHECK ADD  CONSTRAINT [FK_FactK12StudentDailyAttendances_Person_CurrentId] FOREIGN KEY([Person_CurrentId])
+REFERENCES [RDS].[DimPeople_Current] ([DimPersonId])
+GO
+
+ALTER TABLE [RDS].[FactK12StudentDailyAttendances] CHECK CONSTRAINT [FK_FactK12StudentDailyAttendances_Person_CurrentId]
+GO
+
 ALTER TABLE [RDS].[FactK12StudentDailyAttendances] CHECK CONSTRAINT [FK_FactK12StudentDailyAttendances_PersonId]
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDailyAttendances_Person_CurrentId] ON [RDS].[FactK12StudentDailyAttendances]([Person_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 
 ALTER TABLE [RDS].[FactK12StudentDailyAttendances]  WITH CHECK ADD  CONSTRAINT [FK_FactK12StudentDailyAttendances_AttendanceId] FOREIGN KEY([AttendanceId])

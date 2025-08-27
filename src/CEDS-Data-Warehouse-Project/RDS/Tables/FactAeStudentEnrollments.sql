@@ -3,6 +3,7 @@ CREATE TABLE [RDS].[FactAeStudentEnrollments] (
     [ProgramYearId]                     INT            CONSTRAINT [DF_FactAeStudentEnrollments_ProgramYearId] DEFAULT ((-1)) NOT NULL,
     [DataCollectionId]                    INT            CONSTRAINT [DF_FactAeStudentEnrollments_DataCollectionId] DEFAULT ((-1)) NOT NULL,
     [AeStudentId]                         BIGINT         CONSTRAINT [DF_FactAeStudentEnrollments_AeStudentId] DEFAULT ((-1)) NOT NULL,
+    [AeStudent_CurrentId]                 BIGINT         CONSTRAINT [DF_FactAeStudentEnrollments_AeStudent_CurrentId] DEFAULT ((-1)) NOT NULL,
     [AeProviderId]                        INT            CONSTRAINT [DF_FactAeStudentEnrollments_AeProviderId] DEFAULT ((-1)) NOT NULL,
     [AeProgramTypeId]                     INT            CONSTRAINT [DF_FactAeStudentEnrollments_AeProgramTypeId] DEFAULT ((-1)) NOT NULL,
     [AeProgramTransitionIndicatorId]      INT            CONSTRAINT [DF_FactAeStudentEnrollments_AeProgramTransitionIndicatorId] DEFAULT ((-1)) NOT NULL,
@@ -51,6 +52,7 @@ CREATE TABLE [RDS].[FactAeStudentEnrollments] (
     CONSTRAINT [FK_FactAeStudentEnrollments_ProgramYearId] FOREIGN KEY ([ProgramYearId]) REFERENCES [RDS].[DimProgramYears] ([DimProgramYearId]),
     CONSTRAINT [FK_FactAeStudentEnrollments_AeProviderId] FOREIGN KEY ([AeProviderId]) REFERENCES [RDS].[DimAeProviders] ([DimAeProviderId]),
     CONSTRAINT [FK_FactAeStudentEnrollments_AeStudentId] FOREIGN KEY ([AeStudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactAeStudentEnrollments_AeStudent_CurrentId] FOREIGN KEY ([AeStudent_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactAeStudentEnrollments_AeProgramParticipantIndicatorId] FOREIGN KEY ([AeProgramParticipantIndicatorId]) REFERENCES [RDS].[DimAeProgramParticipantIndicators] ([DimAeProgramParticipantIndicatorId]),
     CONSTRAINT [FK_FactAeStudentEnrollments_AeProgramParticipantAssessmentIndicatorId] FOREIGN KEY ([AeProgramParticipantAssessmentIndicatorId]) REFERENCES [RDS].[DimAeProgramParticipantAssessmentIndicators] ([DimAeProgramParticipantAssessmentIndicatorId]),
     CONSTRAINT [FK_FactAeStudentEnrollments_AeProgramEmploymentIndicatorId] FOREIGN KEY ([AeProgramEmploymentIndicatorId]) REFERENCES [RDS].[DimAeProgramEmploymentIndicators] ([DimAeProgramEmploymentIndicatorId]),
@@ -77,6 +79,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeProviderId] ON [RDS].[FactAeStudentEnrollments]([AeProviderId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeStudentId] ON [RDS].[FactAeStudentEnrollments]([AeStudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeStudent_CurrentId] ON [RDS].[FactAeStudentEnrollments]([AeStudent_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactAeStudentEnrollments_AeProgramParticipantIndicatorId] ON [RDS].[FactAeStudentEnrollments]([AeProgramParticipantIndicatorId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO

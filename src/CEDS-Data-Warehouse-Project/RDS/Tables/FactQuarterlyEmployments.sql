@@ -5,6 +5,7 @@ CREATE TABLE [RDS].[FactQuarterlyEmployments]
 	[EmploymentRecordReferencePeriodEndDateId] int NOT NULL,
 	[EmployerId] int NULL,
 	[PersonId] bigint NOT NULL,
+	[Person_CurrentId] bigint NOT NULL,
 	[OnetSocOccupationTypeId] int NOT NULL,
 	[StandardOccupationalClassificationId] int NOT NULL,
     [NaicsCodeId] int NOT NULL,
@@ -25,6 +26,7 @@ CREATE TABLE [RDS].[FactQuarterlyEmployments]
     CONSTRAINT [FK_FactQuarterlyEmployments_EmploymentRecordReferencePeriodEndDateId] FOREIGN KEY ([EmploymentRecordReferencePeriodEndDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactQuarterlyEmployments_EmployerId] FOREIGN KEY ([EmployerId]) REFERENCES [RDS].[DimEmployers] ([DimEmployerId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactQuarterlyEmployments_PersonId] FOREIGN KEY ([PersonId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactQuarterlyEmployments_Person_CurrentId] FOREIGN KEY ([Person_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactQuarterlyEmployments_OnetSocOccupationTypeId] FOREIGN KEY ([OnetSocOccupationTypeId]) REFERENCES [RDS].[DimOnetSocOccupationTypes] ([DimOnetSocOccupationTypeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactQuarterlyEmployments_StandardOccupationalClassificationId] FOREIGN KEY ([StandardOccupationalClassificationId]) REFERENCES [RDS].[DimStandardOccupationalClassifications] ([DimStandardOccupationalClassificationId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactQuarterlyEmployments_NaicsCodeId] FOREIGN KEY ([NaicsCodeId]) REFERENCES [RDS].[DimNaicsCodes] ([DimNaicsCodeId]) ON DELETE No Action ON UPDATE No Action,
@@ -73,6 +75,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_FactQuarterlyEmployments_PersonId] 
  ON [RDS].[FactQuarterlyEmployments] ([PersonId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IX_FactQuarterlyEmployments_Person_CurrentId] 
+ ON [RDS].[FactQuarterlyEmployments] ([Person_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IX_FactQuarterlyEmployments_EmploymentRecordReferencePeriodStartDateId] 

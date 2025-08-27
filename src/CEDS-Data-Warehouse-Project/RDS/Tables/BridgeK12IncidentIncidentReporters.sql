@@ -3,18 +3,24 @@ CREATE TABLE [RDS].[BridgeK12IncidentIncidentReporters]
     [BridgeK12IncidentIncidentReporterId] int NOT NULL IDENTITY (1, 1),
     [FactK12IncidentId] INT NULL,
     [PersonId] BIGINT NULL,
+    [Person_CurrentId] BIGINT NULL DEFAULT -1,
     [IncidentReporterTypeCode] NVARCHAR(50) NULL,
     [IncidentReporterTypeDescription] NVARCHAR(200) NULL,
     [IncidentInjuryTypeCode] NVARCHAR(50) NULL,
     [IncidentInjuryTypeDescription] NVARCHAR(200) NULL,
     CONSTRAINT [PK_BridgeK12IncidentIncidentReporters] PRIMARY KEY CLUSTERED ([BridgeK12IncidentIncidentReporterId] ASC),
     CONSTRAINT [FK_BridgeK12IncidentIncidentReporters_FactK12IncidentId] FOREIGN KEY ([FactK12IncidentId]) REFERENCES [RDS].[FactK12Incidents] ([FactK12IncidentId]) ON DELETE No Action ON UPDATE No Action,
-    CONSTRAINT [FK_BridgeK12IncidentIncidentReporters_PersonId] FOREIGN KEY ([PersonId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action
+    CONSTRAINT [FK_BridgeK12IncidentIncidentReporters_PersonId] FOREIGN KEY ([PersonId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_BridgeK12IncidentIncidentReporters_Person_CurrentId] FOREIGN KEY ([Person_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action
 )
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_BridgeK12IncidentIncidentReporters_PersonId] 
  ON [RDS].[BridgeK12IncidentIncidentReporters] ([PersonId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_BridgeK12IncidentIncidentReporters_Person_CurrentId] 
+ ON [RDS].[BridgeK12IncidentIncidentReporters] ([Person_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_BridgeK12IncidentIncidentReporters_FactK12IncidentId] 

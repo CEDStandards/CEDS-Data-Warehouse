@@ -4,6 +4,7 @@ CREATE TABLE [RDS].[FactK12AccessibleEducationMaterialAssignments]
 	[SchoolYearId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_SchoolYearId] DEFAULT ((-1)) NOT NULL,
 	[CountDateId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_CountDateId] DEFAULT ((-1)) NOT NULL,
 	[K12StudentId] bigint CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_K12StudentId] DEFAULT ((-1)) NOT NULL,
+	[K12Student_CurrentId] bigint CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
 	[SeaId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_SeaId] DEFAULT ((-1)) NOT NULL,
 	[IeuId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_IeuId] DEFAULT ((-1)) NOT NULL,
 	[LeaId] int CONSTRAINT [DF_FactK12AccessibleEducationMaterialAssignment_LeaId] DEFAULT ((-1)) NOT NULL,
@@ -76,6 +77,7 @@ CREATE TABLE [RDS].[FactK12AccessibleEducationMaterialAssignments]
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_K12EnrollmentStatusId] FOREIGN KEY ([K12EnrollmentStatusId]) REFERENCES [RDS].[DimK12EnrollmentStatuses] ([DimK12EnrollmentStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_LearningResourceIssuedDateId] FOREIGN KEY ([LearningResourceIssuedDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12AccessibleEducationMaterialAssignments_LearningResourceOrderedDateId] FOREIGN KEY ([LearningResourceOrderedDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
@@ -195,6 +197,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_LearningResourceReceivedDateId] 
  ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([LearningResourceReceivedDateId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_K12Student_CurrentId] 
+ ON [RDS].[FactK12AccessibleEducationMaterialAssignments] ([K12Student_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12AccessibleEducationMaterialAssignments_CourseSectionStartDateId] 

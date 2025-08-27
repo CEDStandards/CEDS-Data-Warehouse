@@ -15,6 +15,7 @@ CREATE TABLE [RDS].[FactK12GraduationCohorts] (
     [LeaResidentId]						INT             CONSTRAINT [DF_FactK12GraduationCohorts_LeaResidentId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]						INT             CONSTRAINT [DF_FactK12GraduationCohorts_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]						BIGINT          CONSTRAINT [DF_FactK12GraduationCohorts_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]                BIGINT          CONSTRAINT [DF_FactK12GraduationCohorts_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [K12EnrollmentStatusId]             INT             CONSTRAINT [DF_FactK12GraduationCohorts_K12EnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
     [K12DropoutStatusId]                INT             CONSTRAINT [DF_FactK12GraduationCohorts_K12DropoutStatusId] DEFAULT ((-1)) NOT NULL,
     [CohortId]                          INT             CONSTRAINT [DF_FactK12GraduationCohorts_CohortId] DEFAULT ((-1)) NOT NULL,
@@ -47,6 +48,7 @@ CREATE TABLE [RDS].[FactK12GraduationCohorts] (
     CONSTRAINT [FK_FactK12GraduationCohorts_LeaResidentId] FOREIGN KEY ([LeaResidentId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12GraduationCohorts_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_K12EnrollmentStatusId] FOREIGN KEY ([K12EnrollmentStatusId]) REFERENCES [RDS].[DimK12EnrollmentStatuses] ([DimK12EnrollmentStatusId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_K12DropoutStatusId] FOREIGN KEY ([K12DropoutStatusId]) REFERENCES [RDS].[DimK12DropoutStatuses] ([DimK12DropoutStatusId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_CohortId] FOREIGN KEY ([CohortId]) REFERENCES [RDS].[DimCohorts] ([DimCohortId]),
@@ -98,6 +100,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12GraduationCohorts_K12StudentId]
     ON [RDS].[FactK12GraduationCohorts]([K12StudentId] ASC);
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12GraduationCohorts_K12Student_CurrentId]
+    ON [RDS].[FactK12GraduationCohorts]([K12Student_CurrentId] ASC);
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12GraduationCohorts_SeaId]
