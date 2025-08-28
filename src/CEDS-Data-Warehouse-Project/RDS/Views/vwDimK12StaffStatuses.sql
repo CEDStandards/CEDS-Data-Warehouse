@@ -8,8 +8,6 @@ CREATE VIEW RDS.vwDimK12StaffStatuses AS
 		, sssrd2.InputCode AS EdFactsTeacherInexperiencedStatusMap
 		, rdkss.EdFactsTeacherOutOfFieldStatusCode 
 		, sssrd3.InputCode AS EdFactsTeacherOutOfFieldStatusMap
-		, rdkss.TeachingCredentialTypeCode
-		, sssrd4.InputCode AS TeachingCredentialTypeMap
 		, rdkss.ParaprofessionalQualificationStatusCode
 		, sssrd5.InputCode AS ParaprofessionalQualificationStatusMap
 		, rdkss.HighlyQualifiedTeacherIndicatorCode
@@ -23,8 +21,6 @@ CREATE VIEW RDS.vwDimK12StaffStatuses AS
 		, sssrd7.InputCode AS EdFactsCertificationStatusMap
 		, rdkss.SpecialEducationRelatedServicesPersonnelCode
 		, sssrd8.InputCode AS SpecialEducationRelatedServicesPersonnelMap
-		, rdkss.TeachingCredentialBasisCode
-		, sssrd9.InputCode AS TeachingCredentialBasisMap
 		, rdkss.CTEInstructorIndustryCertificationCode
 		, sssrd10.InputCode AS CTEInstructorIndustryCertificationMap
 		, rdkss.SpecialEducationParaprofessionalCode
@@ -45,10 +41,6 @@ CREATE VIEW RDS.vwDimK12StaffStatuses AS
 		ON rdkss.EdFactsTeacherOutOfFieldStatusCode = sssrd3.OutputCode
 		AND sssrd3.TableName = 'RefOutOfFieldStatus'
 		AND rsy.SchoolYear = sssrd3.SchoolYear
-	LEFT JOIN Staging.SourceSystemReferenceData sssrd4
-		ON rdkss.TeachingCredentialTypeCode = sssrd4.OutputCode
-		AND sssrd4.TableName = 'RefTeachingCredentialType'
-		AND rsy.SchoolYear = sssrd4.SchoolYear
 	LEFT JOIN Staging.SourceSystemReferenceData sssrd5
 		ON rdkss.ParaprofessionalQualificationStatusCode = sssrd5.OutputCode
 		AND sssrd5.TableName = 'RefParaprofessionalQualification'
@@ -65,10 +57,6 @@ CREATE VIEW RDS.vwDimK12StaffStatuses AS
 		ON rdkss.SpecialEducationRelatedServicesPersonnelCode = sssrd8.OutputCode
 		AND sssrd8.TableName = 'RefSpecialEducationRelatedServicesPersonnel'
 		AND rsy.SchoolYear = sssrd8.SchoolYear
-	LEFT JOIN Staging.SourceSystemReferenceData sssrd9
-		ON rdkss.TeachingCredentialBasisCode = sssrd9.OutputCode
-		AND sssrd9.TableName = 'RefTeachingCredentialBasis'
-		AND rsy.SchoolYear = sssrd9.SchoolYear
 	LEFT JOIN Staging.SourceSystemReferenceData sssrd10
 		ON rdkss.CTEInstructorIndustryCertificationCode = sssrd10.OutputCode
 		AND sssrd10.TableName = 'RefCTEInstructorIndustryCertification'

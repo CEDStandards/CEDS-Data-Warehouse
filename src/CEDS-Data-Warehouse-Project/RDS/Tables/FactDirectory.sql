@@ -132,7 +132,7 @@ ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_DimNOrDStatus
 GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_EarlyChildhoodOrganizationStatusId]
-	FOREIGN KEY ([EarlyChildhoodOrganizationStatusId]) REFERENCES [RDS].[DimEarlyChildhoolOrganizationStatuses] ([DimEarlyChildhoodOrganizationStatuses]) ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ([EarlyChildhoodOrganizationStatusId]) REFERENCES [RDS].[DimEarlyChildhoolOrganizationStatuses] ([DimEarlyChildhoodOrganizationStatusId]) ON DELETE No Action ON UPDATE No Action
 GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_EarlyLearningOrganizationId]

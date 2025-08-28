@@ -7,6 +7,7 @@ CREATE TABLE [RDS].[FactK12StaffEvaluationParts]
 	[SchoolYearId] int NULL,
 	[K12StaffCategoryId] int NULL,
 	[K12StaffStatusId] int NULL,
+	[TeachingCredentialStatusId] int NULL,
 	[K12EmploymentStatusId] int NULL,
 	[IeuId] int NULL,
 	[EmployerId] int NULL,
@@ -35,6 +36,7 @@ CREATE TABLE [RDS].[FactK12StaffEvaluationParts]
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffEvaluationParts_TeachingCredentialStatusId] FOREIGN KEY ([TeachingCredentialStatusId]) REFERENCES [RDS].[DimTeachingCredentialStatuses] ([DimTeachingCredentialStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_LeaJobClassificationId] FOREIGN KEY ([LeaJobClassificationId]) REFERENCES [RDS].[DimLeaJobClassifications] ([DimLeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_OnetSocOccupationTypeId] FOREIGN KEY ([OnetSocOccupationTypeId]) REFERENCES [RDS].[DimOnetSocOccupationTypes] ([DimOnetSocOccupationTypeId]) ON DELETE No Action ON UPDATE No Action,
@@ -83,6 +85,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_DimK12StaffStatuses] 
  ON [RDS].[FactK12StaffEvaluationParts] ([K12StaffStatusId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_DimTeachingCredentialStatuses] 
+ ON [RDS].[FactK12StaffEvaluationParts] ([TeachingCredentialStatusId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_DimLeaJobClassifications] 

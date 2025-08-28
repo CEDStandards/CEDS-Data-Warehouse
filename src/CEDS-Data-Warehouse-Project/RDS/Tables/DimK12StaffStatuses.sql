@@ -12,9 +12,6 @@ CREATE TABLE [RDS].[DimK12StaffStatuses] (
     [EdFactsTeacherInexperiencedStatusCode]                 NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_EdFactsTeacherInexperiencedStatusCode] DEFAULT ('MISSING') NOT NULL,
     [EdFactsTeacherInexperiencedStatusDescription]          NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_EdFactsTeacherInexperiencedStatusDescription] DEFAULT ('MISSING') NOT NULL,
     [EdFactsTeacherInexperiencedStatusEdFactsCode]          NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_EdFactsTeacherInexperiencedStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
-    [TeachingCredentialTypeCode]                            NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_TeachingCredentialTypeCode] DEFAULT ('MISSING') NOT NULL,
-    [TeachingCredentialTypeDescription]                     NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_TeachingCredentialTypeDescription] DEFAULT ('MISSING') NOT NULL,
-    [TeachingCredentialTypeEdFactsCode]                     NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_TeachingCredentialTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     [EdFactsTeacherOutOfFieldStatusCode]                    NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_EdFactsTeacherOutOfFieldStatusCode] DEFAULT ('MISSING') NOT NULL,
     [EdFactsTeacherOutOfFieldStatusDescription]             NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_EdFactsTeacherOutOfFieldStatusDescription] DEFAULT ('MISSING') NOT NULL,
     [EdFactsTeacherOutOfFieldStatusEdFactsCode]             NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_EdFactsTeacherOutOfFieldStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
@@ -26,8 +23,6 @@ CREATE TABLE [RDS].[DimK12StaffStatuses] (
     [ParaprofessionalQualificationStatusEdFactsCode]        NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_ParaprofessionalQualificationStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     [SpecialEducationRelatedServicesPersonnelCode]          NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationRelatedServicesPersonnelCode] DEFAULT ('MISSING') NOT NULL,                
     [SpecialEducationRelatedServicesPersonnelDescription]   NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationRelatedServicesPersonnelDescription] DEFAULT ('MISSING') NOT NULL,                        
-    [TeachingCredentialBasisCode]                           NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_TeachingCredentialBasisCode] DEFAULT ('MISSING') NOT NULL,
-    [TeachingCredentialBasisDescription]                    NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_TeachingCredentialBasisDescription] DEFAULT ('MISSING') NOT NULL,        
     [CTEInstructorIndustryCertificationCode]                NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_CTEInstructorIndustryCertificationCode] DEFAULT ('MISSING') NOT NULL,            
     [CTEInstructorIndustryCertificationDescription]         NVARCHAR (200) CONSTRAINT [DF_DimK12StaffStatuses_CTEInstructorIndustryCertificationDescription] DEFAULT ('MISSING') NOT NULL,                
     [SpecialEducationParaprofessionalCode]                  NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffStatuses_SpecialEducationParaprofessionalCode] DEFAULT ('MISSING') NOT NULL,        
@@ -43,12 +38,10 @@ CREATE NONCLUSTERED COLUMNSTORE INDEX CSI_DimK12StaffStatuses ON RDS.DimK12Staff
 , [EdFactsCertificationStatusCode]
 , [HighlyQualifiedTeacherIndicatorCode]
 , [EdFactsTeacherInexperiencedStatusCode]
-, [TeachingCredentialTypeCode]
 , [EdFactsTeacherOutOfFieldStatusCode]
 , [SpecialEducationTeacherQualificationStatusCode]
 , [ParaprofessionalQualificationStatusCode]
 , [SpecialEducationRelatedServicesPersonnelCode]
-, [TeachingCredentialBasisCode]
 , [CTEInstructorIndustryCertificationCode]
 , [SpecialEducationParaprofessionalCode]
 , [SpecialEducationTeacherCode]
@@ -64,7 +57,7 @@ CREATE NONCLUSTERED INDEX [IX_DimK12StaffStatuses_HighlyQualifiedTeacherIndicato
 GO
 
 CREATE NONCLUSTERED INDEX [IX_DimK12StaffStatuses_Codes]
-    ON [RDS].[DimK12StaffStatuses]([SpecialEducationAgeGroupTaughtCode] ASC, [EdFactsCertificationStatusCode] ASC, [HighlyQualifiedTeacherIndicatorCode] ASC, [EdFactsTeacherInexperiencedStatusCode] ASC, [TeachingCredentialTypeCode] ASC, [EdFactsTeacherOutOfFieldStatusCode] ASC, [SpecialEducationTeacherQualificationStatusCode] ASC, [ParaprofessionalQualificationStatusCode] ASC);
+    ON [RDS].[DimK12StaffStatuses]([SpecialEducationAgeGroupTaughtCode] ASC, [EdFactsCertificationStatusCode] ASC, [HighlyQualifiedTeacherIndicatorCode] ASC, [EdFactsTeacherInexperiencedStatusCode] ASC, [EdFactsTeacherOutOfFieldStatusCode] ASC, [SpecialEducationTeacherQualificationStatusCode] ASC, [ParaprofessionalQualificationStatusCode] ASC);
 
 
 GO
@@ -102,11 +95,6 @@ GO
 CREATE NONCLUSTERED INDEX [IX_DimK12StaffStatuses_EdFactsTeacherOutOfFieldStatusEdFactsCode]
     ON [RDS].[DimK12StaffStatuses]([EdFactsTeacherOutOfFieldStatusEdFactsCode] ASC);
 
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_DimK12StaffStatuses_TeachingCredentialTypeEdFactsCode]
-    ON [RDS].[DimK12StaffStatuses]([TeachingCredentialTypeEdFactsCode] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
@@ -320,34 +308,4 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001996' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'SpecialEducationTeacherQualificationStatusEdFactsCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22993' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'SpecialEducationTeacherQualificationStatusEdFactsCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the category of a legal document giving authorization to perform teaching assignment services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Teaching Credential Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the category of a legal document giving authorization to perform teaching assignment services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Teaching Credential Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeEdFactsCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of the category of a legal document giving authorization to perform teaching assignment services.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeEdFactsCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Teaching Credential Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeEdFactsCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeEdFactsCode';
-GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffStatuses', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeEdFactsCode';
 GO

@@ -9,6 +9,7 @@ BEGIN
     , [K12SchoolId]
     , [K12StaffStatusId]
     , [K12StaffCategoryId]
+    , [TeachingCredentialStatusId]
     , [SeaId]
     , [K12StaffId]
     , [IeuId]
@@ -38,6 +39,7 @@ BEGIN
     , ISNULL(rdksch.[DimK12SchoolId], -1)
     , ISNULL(rdkss.[DimK12StaffStatusId], -1)
     , ISNULL(rdksc.[DimK12StaffCategoryId], -1)
+    , ISNULL(rdtcs.[DimTeachingCredentialStatusId], -1)
     , ISNULL(RDS.[DimSeaId], -1)
     , ISNULL(rdp.[DimPersonId], -1)
     , ISNULL(rdieu.[DimIeuId], -1)
@@ -93,16 +95,18 @@ BEGIN
 			AND ISNULL(ska.SpecialEducationAgeGroupTaught, 'MISSING') = ISNULL(rdkss.SpecialEducationAgeGroupTaughtMap, rdkss.SpecialEducationAgeGroupTaughtCode)
 			AND ISNULL(ska.EdFactsTeacherOutOfFieldStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherOutOfFieldStatusMap, rdkss.EdFactsTeacherOutOfFieldStatusCode)
 			AND ISNULL(ska.EdFactsTeacherInexperiencedStatus, 'MISSING') = ISNULL(rdkss.EdFactsTeacherInexperiencedStatusMap, rdkss.EdFactsTeacherInexperiencedStatusCode)
-			AND ISNULL(ska.TeachingCredentialType, 'MISSING') = ISNULL(rdkss.TeachingCredentialTypeMap, rdkss.TeachingCredentialTypeCode)
 			AND ISNULL(ska.ParaprofessionalQualificationStatus, 'MISSING') = ISNULL(rdkss.ParaprofessionalQualificationStatusMap, rdkss.ParaprofessionalQualificationStatusCode)
 			AND ISNULL(CAST(ska.HighlyQualifiedTeacherIndicator AS SMALLINT), -1) = ISNULL(rdkss.HighlyQualifiedTeacherIndicatorMap, -1)
 			AND ISNULL(ska.SpecialEducationTeacherQualificationStatus, 'MISSING') = ISNULL(rdkss.SpecialEducationTeacherQualificationStatusMap, rdkss.SpecialEducationTeacherQualificationStatusCode)
 			AND ISNULL(ska.EdFactsCertificationStatus, 'MISSING') = ISNULL(rdkss.EdFactsCertificationStatusMap, rdkss.EdFactsCertificationStatusCode)  
 			AND ISNULL(ska.SpecialEducationRelatedServicesPersonnel, 'MISSING') = ISNULL(rdkss.SpecialEducationRelatedServicesPersonnelMap, rdkss.SpecialEducationRelatedServicesPersonnelCode)
-			AND ISNULL(ska.TeachingCredentialBasis, 'MISSING') = ISNULL(rdkss.TeachingCredentialBasisMap, rdkss.TeachingCredentialBasisCode)
 			AND ISNULL(ska.CTEInstructorIndustryCertification, 'MISSING') = ISNULL(rdkss.CTEInstructorIndustryCertificationMap, rdkss.CTEInstructorIndustryCertificationCode)
 			AND ISNULL(ska.SpecialEducationParaprofessional, 'MISSING') = ISNULL(rdkss.SpecialEducationParaprofessionalMap, rdkss.SpecialEducationParaprofessionalCode)
 			AND ISNULL(ska.SpecialEducationTeacher, 'MISSING') = ISNULL(rdkss.SpecialEducationTeacherMap, rdkss.SpecialEducationTeacherCode)
+  LEFT JOIN RDS.vwDimTeachingCredentialStatuses rdtcs
+            ON rsy.SchoolYear = rdtcs.SchoolYear
+            AND ISNULL(ska.TeachingCredentialType, 'MISSING') = ISNULL(rdtcs.TeachingCredentialTypeMap, rdtcs.TeachingCredentialTypeCode)
+            AND ISNULL(ska.TeachingCredentialBasis, 'MISSING') = ISNULL(rdtcs.TeachingCredentialBasisMap, rdtcs.TeachingCredentialBasisCode)
   LEFT JOIN RDS.DimScedCodes rdsc
     ON ska.ScedCourseCode = rdsc.ScedCourseCode
   LEFT JOIN RDS.DimOnetSocOccupationTypes rdonet

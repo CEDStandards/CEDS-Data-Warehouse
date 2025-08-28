@@ -1,6 +1,6 @@
 CREATE TABLE [CEDS].[CodeSet](
 	[CodeSetID] [int] IDENTITY(1,1) NOT NULL,
-	[Description] [varchar](50) NOT NULL,
+	[Description] [varchar](100) NOT NULL,
 	[HtmlColumns] [int] NOT NULL,
 	[GeneratedHtml] [varchar](max) NULL,
 	[GeneratedExcel] [varchar](max) NULL,
