@@ -7,6 +7,7 @@ CREATE TABLE [RDS].[FactK12StudentCounts](
 	[LeaId] [int] NOT NULL,
 	[K12SchoolId] [int] NOT NULL,
 	[K12StudentId] [bigint] NOT NULL,
+	[K12Student_CurrentId] [bigint] CONSTRAINT [DF_FactK12StudentCounts_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
 	[AgeId] [int] NOT NULL,
 	[AttendanceId] [int] NOT NULL,
 	[CohortStatusId] [int] NOT NULL,
@@ -307,6 +308,16 @@ REFERENCES [RDS].[DimPeople] ([DimPersonId])
 GO
 
 ALTER TABLE [RDS].[FactK12StudentCounts] CHECK CONSTRAINT [FK_FactK12StudentCounts_K12StudentId]
+GO
+
+ALTER TABLE [RDS].[FactK12StudentCounts]  WITH CHECK ADD  CONSTRAINT [FK_FactK12StudentCounts_K12Student_CurrentId] FOREIGN KEY([K12Student_CurrentId])
+REFERENCES [RDS].[DimPeople_Current] ([DimPersonId])
+GO
+
+ALTER TABLE [RDS].[FactK12StudentCounts] CHECK CONSTRAINT [FK_FactK12StudentCounts_K12Student_CurrentId]
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCounts_K12Student_CurrentId] ON [RDS].[FactK12StudentCounts]([K12Student_CurrentId] ASC) WITH (FILLFACTOR = 80);
 GO
 
 ALTER TABLE [RDS].[FactK12StudentCounts]  WITH CHECK ADD  CONSTRAINT [FK_FactK12StudentCounts_LanguageId] FOREIGN KEY([LanguageId])

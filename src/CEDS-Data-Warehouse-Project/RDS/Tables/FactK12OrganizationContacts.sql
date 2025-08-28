@@ -9,6 +9,7 @@ CREATE TABLE [RDS].[FactK12OrganizationContacts]
 	[LeaId] INT NOT NULL,
 	[K12SchoolId] INT NOT NULL,
 	[ContactId] BIGINT NOT NULL,
+    [Contact_CurrentId] BIGINT NOT NULL DEFAULT -1,
     [ContactPersonAddressId] INT NOT NULL,
     [ContactIndicatorId] INT NOT NULL,
 	CONSTRAINT [PK_FactK12OrganizationContacts] PRIMARY KEY CLUSTERED ([FactK12OrganizationContactId] ASC),
@@ -19,6 +20,7 @@ CREATE TABLE [RDS].[FactK12OrganizationContacts]
     CONSTRAINT [FK_FactK12OrganizationContacts_Ieus] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12OrganizationContacts_Leas] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12OrganizationContacts_Contacts] FOREIGN KEY ([ContactId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+    CONSTRAINT [FK_FactK12OrganizationContacts_Contact_CurrentId] FOREIGN KEY ([Contact_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12OrganizationContacts_ContactIndicators] FOREIGN KEY ([ContactIndicatorId]) REFERENCES [RDS].[DimContactIndicators] ([DimContactIndicatorId]) ON DELETE No Action ON UPDATE No Action,
     CONSTRAINT [FK_FactK12OrganizationContacts_ContactPersonAddresses] FOREIGN KEY ([ContactPersonAddressId]) REFERENCES [RDS].[DimPersonAddresses] ([DimPersonAddressId]) ON DELETE No Action ON UPDATE No Action)
 GO
@@ -37,6 +39,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12OrganizationContacts_Contact] 
  ON [RDS].[FactK12OrganizationContacts] ([ContactId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12OrganizationContacts_Contact_CurrentId] 
+ ON [RDS].[FactK12OrganizationContacts] ([Contact_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12OrganizationContacts_DimSchoolYears] 

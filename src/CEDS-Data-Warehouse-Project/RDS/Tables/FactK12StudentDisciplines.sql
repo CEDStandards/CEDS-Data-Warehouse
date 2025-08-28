@@ -8,6 +8,7 @@ CREATE TABLE [RDS].[FactK12StudentDisciplines] (
     [LeaId]                             INT             CONSTRAINT [DF_FactK12StudentDisciplines_LeaId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                       INT             CONSTRAINT [DF_FactK12StudentDisciplines_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                      BIGINT          CONSTRAINT [DF_FactK12StudentDisciplines_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]              BIGINT          CONSTRAINT [DF_FactK12StudentDisciplines_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [AgeId]                             INT             CONSTRAINT [DF_FactK12StudentDisciplines_AgeId] DEFAULT ((-1)) NOT NULL,
     [CteStatusId]                       INT             CONSTRAINT [DF_FactK12StudentDisciplines_CteStatusId] DEFAULT ((-1)) NOT NULL,
     [DisabilityStatusId]                INT             CONSTRAINT [DF_FactK12StudentDisciplines_DisabilityStatusId] DEFAULT ((-1)) NOT NULL,
@@ -62,6 +63,7 @@ CREATE TABLE [RDS].[FactK12StudentDisciplines] (
     CONSTRAINT [FK_FactK12StudentDisciplines_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12StudentDisciplines_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_IeuID] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]),
     CONSTRAINT [FK_FactK12StudentDisciplines_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]),
@@ -94,6 +96,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12SchoolId] ON [RDS].[FactK12StudentDisciplines]([K12SchoolId] ASC) WITH (FILLFACTOR = 80);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12StudentId] ON [RDS].[FactK12StudentDisciplines]([K12StudentId] ASC) WITH (FILLFACTOR = 80);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_K12Student_CurrentId] ON [RDS].[FactK12StudentDisciplines]([K12Student_CurrentId] ASC) WITH (FILLFACTOR = 80);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentDisciplines_AgeId] ON [RDS].[FactK12StudentDisciplines]([AgeId] ASC) WITH (FILLFACTOR = 80);
 GO

@@ -5,6 +5,7 @@ CREATE TABLE [RDS].[FactOrganizationCounts] (
     [SeaId]                                             INT           CONSTRAINT [DF_FactOrganizationCounts_SeaId] DEFAULT ((-1)) NOT NULL,
     [LeaId]                                             INT           CONSTRAINT [DF_FactOrganizationCounts_LeaId] DEFAULT ((-1)) NOT NULL,
     [K12StaffId]                                        BIGINT        CONSTRAINT [DF_FactOrganizationCounts_K12StaffId] DEFAULT ((-1)) NOT NULL,
+    [K12Staff_CurrentId]                                BIGINT        CONSTRAINT [DF_FactOrganizationCounts_K12Staff_CurrentId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                                       INT           CONSTRAINT [DF_FactOrganizationCounts_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [AuthorizingBodyCharterSchoolAuthorizerId]          INT           CONSTRAINT [DF_FactOrganizationCounts_AuthorizingBodyCharterSchoolAuthorizerId] DEFAULT ((-1)) NOT NULL,
     [CharterSchoolManagementOrganizationId]             INT           CONSTRAINT [DF_FactOrganizationCounts_CharterSchoolManagementOrganizationId] DEFAULT ((-1)) NOT NULL,
@@ -35,6 +36,7 @@ CREATE TABLE [RDS].[FactOrganizationCounts] (
     CONSTRAINT [FK_FactOrganizationCounts_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactOrganizationCounts_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
     CONSTRAINT [FK_FactOrganizationCounts_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactOrganizationCounts_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactOrganizationCounts_SecondaryAuthorizingBodyCharterSchoolAuthorizerId] FOREIGN KEY ([SecondaryAuthorizingBodyCharterSchoolAuthorizerId]) REFERENCES [RDS].[DimCharterSchoolAuthorizers] ([DimCharterSchoolAuthorizerId]),
     CONSTRAINT [FK_FactOrganizationCounts_CharterSchoolUpdatedManagementOrganizationId] FOREIGN KEY ([CharterSchoolUpdatedManagementOrganizationId]) REFERENCES [RDS].[DimCharterSchoolManagementOrganizations] ([DimCharterSchoolManagementOrganizationId]),
     CONSTRAINT [FK_FactOrganizationCounts_CharterSchoolStatusId] FOREIGN KEY ([CharterSchoolStatusId]) REFERENCES [RDS].[DimCharterSchoolStatuses] ([DimCharterSchoolStatusId]),
@@ -64,6 +66,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationCounts_SeaId] ON [RDS].[FactOrganizationCounts]([SeaId] ASC) WITH (FILLFACTOR = 80);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationCounts_K12StaffId] ON [RDS].[FactOrganizationCounts]([K12StaffId] ASC) WITH (FILLFACTOR = 80);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationCounts_K12Staff_CurrentId] ON [RDS].[FactOrganizationCounts]([K12Staff_CurrentId] ASC) WITH (FILLFACTOR = 80);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactOrganizationCounts_SecondaryAuthorizingBodyCharterSchoolAuthorizerId] ON [RDS].[FactOrganizationCounts]([SecondaryAuthorizingBodyCharterSchoolAuthorizerId] ASC) WITH (FILLFACTOR = 80);
 GO

@@ -6,6 +6,7 @@ CREATE TABLE [RDS].[FactK12StaffCounts] (
     [LeaId]                                 INT             CONSTRAINT [DF_FactK12StaffCounts_LeaId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                           INT             CONSTRAINT [DF_FactK12StaffCounts_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StaffId]                            BIGINT          CONSTRAINT [DF_FactK12StaffCounts_K12StaffId] DEFAULT ((-1)) NOT NULL,
+    [K12Staff_CurrentId]                    BIGINT          CONSTRAINT [DF_FactK12StaffCounts_K12Staff_CurrentId] DEFAULT ((-1)) NOT NULL,
     [K12StaffStatusId]                      INT             CONSTRAINT [DF_FactK12StaffCounts_K12StaffStatusId] DEFAULT ((-1)) NOT NULL,
     [K12StaffCategoryId]                    INT             CONSTRAINT [DF_FactK12StaffCounts_K12StaffCategoryId] DEFAULT ((-1)) NOT NULL,
     [TeachingCredentialStatusId]            INT             CONSTRAINT [DF_FactK12StaffCounts_TeachingCredentialStatusId] DEFAULT ((-1)) NOT NULL,
@@ -19,6 +20,7 @@ CREATE TABLE [RDS].[FactK12StaffCounts] (
     CONSTRAINT [FK_FactK12StaffCounts_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StaffCounts_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]),
     CONSTRAINT [FK_FactK12StaffCounts_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12StaffCounts_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StaffCounts_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]),
     CONSTRAINT [FK_FactK12StaffCounts_TeachingCredentialStatusId] FOREIGN KEY ([TeachingCredentialStatusId]) REFERENCES [RDS].[DimTeachingCredentialStatuses] ([DimTeachingCredentialStatusId]),
     CONSTRAINT [FK_FactK12StaffCounts_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
@@ -71,6 +73,12 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCounts_K12Staffid]
     ON [RDS].[FactK12StaffCounts]([K12StaffId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
+
+GO
+
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCounts_K12Staff_CurrentId]
+    ON [RDS].[FactK12StaffCounts]([K12Staff_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 GO
 

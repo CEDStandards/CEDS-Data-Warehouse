@@ -4,6 +4,7 @@ CREATE TABLE [RDS].[FactCredentialAwards](
 	[CredentialIssuerId] [int] NULL,
 	[CredentialDefinitionId] [int] NULL,
 	[CredentialAwardRecipientPersonId] [bigint] NULL,
+	[CredentialAwardRecipientPerson_CurrentId] [bigint] NULL DEFAULT -1,
 	[CredentialAwardStatusId] [int] NULL,
 	[SchoolYearId] [int] NULL,
 	[CredentialAwardId] [int] NULL,
@@ -37,6 +38,12 @@ GO
 
 ALTER TABLE [RDS].[FactCredentialAwards]  WITH CHECK ADD  CONSTRAINT [FK_FactCredentialAwards_CredentialAwardRecipientId] FOREIGN KEY([CredentialAwardRecipientPersonId])
 REFERENCES [RDS].[DimPeople] ([DimPersonId])
+GO
+ALTER TABLE [RDS].[FactCredentialAwards]  WITH CHECK ADD  CONSTRAINT [FK_FactCredentialAwards_CredentialAwardRecipient_CurrentId] FOREIGN KEY([CredentialAwardRecipientPerson_CurrentId])
+REFERENCES [RDS].[DimPeople_Current] ([DimPersonId])
+GO
+
+ALTER TABLE [RDS].[FactCredentialAwards] CHECK CONSTRAINT [FK_FactCredentialAwards_CredentialAwardRecipient_CurrentId]
 GO
 
 ALTER TABLE [RDS].[FactCredentialAwards] CHECK CONSTRAINT [FK_FactCredentialAwards_CredentialAwardRecipientId]

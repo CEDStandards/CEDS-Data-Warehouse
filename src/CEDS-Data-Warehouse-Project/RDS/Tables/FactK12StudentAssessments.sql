@@ -8,6 +8,7 @@ CREATE TABLE [RDS].[FactK12StudentAssessments] (
     [LeaId]                                   INT           CONSTRAINT [DF_FactK12StudentAssessments_LeaId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                             INT           CONSTRAINT [DF_FactK12StudentAssessments_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                            BIGINT        CONSTRAINT [DF_FactK12StudentAssessments_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]                    BIGINT        CONSTRAINT [DF_FactK12StudentAssessments_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [AssessmentId]                            INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentId] DEFAULT ((-1)) NOT NULL,
     [AssessmentSubtestId]                     INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentSubtestId] DEFAULT ((-1)) NOT NULL,
     [AssessmentAdministrationId]              INT           CONSTRAINT [DF_FactK12StudentAssessments_AssessmentAdministrationId] DEFAULT ((-1)) NOT NULL,
@@ -62,6 +63,7 @@ CREATE TABLE [RDS].[FactK12StudentAssessments] (
     CONSTRAINT [FK_FactK12StudentAssessments_IdeaStatusId] FOREIGN KEY ([IdeaStatusId]) REFERENCES [RDS].[DimIdeaStatuses] ([DimIdeaStatusId]),
     CONSTRAINT [FK_FactK12StudentAssessments_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentAssessments_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12StudentAssessments_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentAssessments_IeuId] FOREIGN KEY ([IeuId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]),
     CONSTRAINT [FK_FactK12StudentAssessments_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentAssessments_NOrDStatuses] FOREIGN KEY ([NOrDStatusId]) REFERENCES [RDS].[DimNOrDStatuses] ([DimNOrDStatusId]),
@@ -95,6 +97,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_K12SchoolId] ON [RDS].[FactK12StudentAssessments]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_K12StudentId] ON [RDS].[FactK12StudentAssessments]([K12StudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_K12Student_CurrentId] ON [RDS].[FactK12StudentAssessments]([K12Student_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAssessments_AssessmentId] ON [RDS].[FactK12StudentAssessments]([AssessmentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO

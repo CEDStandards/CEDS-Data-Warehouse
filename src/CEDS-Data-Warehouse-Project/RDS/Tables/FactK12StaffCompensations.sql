@@ -12,6 +12,7 @@ CREATE TABLE [RDS].[FactK12StaffCompensations]
 	[LeaId] int NOT NULL,
 	[EmployerId] int NULL,
 	[K12StaffId] bigint NOT NULL,
+	[K12Staff_CurrentId] bigint CONSTRAINT [DF_FactK12StaffCompensations_K12Staff_CurrentId] DEFAULT ((-1)) NOT NULL,
 	[OnetSocOccupationTypeId] int NOT NULL,
 	[StandardOccupationalClassificationId] int NOT NULL,
 	[K12StaffCategoryId] int NOT NULL,
@@ -44,6 +45,7 @@ CREATE TABLE [RDS].[FactK12StaffCompensations]
 	CONSTRAINT [FK_FactK12StaffCompensations_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCompensations_EmployerId] FOREIGN KEY ([EmployerId]) REFERENCES [RDS].[DimEmployers] ([DimEmployerId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCompensations_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCompensations_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCompensations_OnetSocOccupationTypeId] FOREIGN KEY ([OnetSocOccupationTypeId]) REFERENCES [RDS].[DimOnetSocOccupationTypes] ([DimOnetSocOccupationTypeId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCompensations_StandardOccupationalClassificationId] FOREIGN KEY ([StandardOccupationalClassificationId]) REFERENCES [RDS].[DimStandardOccupationalClassifications] ([DimStandardOccupationalClassificationId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCompensations_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
@@ -104,6 +106,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCompensations_K12StaffId] 
  ON [RDS].[FactK12StaffCompensations] ([K12StaffId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCompensations_K12Staff_CurrentId] 
+ ON [RDS].[FactK12StaffCompensations] ([K12Staff_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCompensations_K12StaffStatusId] 

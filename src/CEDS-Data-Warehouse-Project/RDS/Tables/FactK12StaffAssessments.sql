@@ -4,6 +4,7 @@ CREATE TABLE [RDS].[FactK12StaffAssessments]
 	[SchoolYearId] 											INT 			CONSTRAINT [DF_FactK12StaffAssessments_SchoolYearId] DEFAULT ((-1)) NOT NULL,
 	[DataCollectionId] 										INT 			CONSTRAINT [DF_FactK12StaffAssessments_DataCollectionId] DEFAULT ((-1)) NOT NULL,
 	[K12StaffPersonId] 										BIGINT 			CONSTRAINT [DF_FactK12StaffAssessments_K12StaffPersonId] DEFAULT ((-1)) NOT NULL,
+	[K12StaffPerson_CurrentId] 								BIGINT 			CONSTRAINT [DF_FactK12StaffAssessments_K12StaffPerson_CurrentId] DEFAULT ((-1)) NOT NULL,
 	[PsInstitutionId] 										BIGINT 			CONSTRAINT [DF_FactK12StaffAssessments_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
 	[EmployerId] 											INT 			CONSTRAINT [DF_FactK12StaffAssessments_EmployerId] DEFAULT ((-1)) NOT NULL,
 	[AssessmentId] 											INT 			CONSTRAINT [DF_FactK12StaffAssessments_AssessmentId] DEFAULT ((-1)) NOT NULL,
@@ -60,6 +61,7 @@ CREATE TABLE [RDS].[FactK12StaffAssessments]
 	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffAssignmentStatusId] FOREIGN KEY ([K12StaffAssignmentStatusId]) REFERENCES [RDS].[DimK12StaffAssignmentStatuses] ([DimK12StaffAssignmentStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffPersonId]	FOREIGN KEY ([K12StaffPersonId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffPerson_CurrentId]	FOREIGN KEY ([K12StaffPerson_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_K12StaffStatusId]	FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_TeachingCredentialStatusId] FOREIGN KEY ([TeachingCredentialStatusId]) REFERENCES [RDS].[DimTeachingCredentialStatuses] (DimTeachingCredentialStatusId) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssessments_LeaJobClassificationId] FOREIGN KEY ([LeaJobClassificationId]) REFERENCES [RDS].[DimLeaJobClassifications] ([DimLeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
@@ -167,6 +169,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimPeople] 
  ON [RDS].[FactK12StaffAssessments] ([K12StaffPersonId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_K12StaffPerson_CurrentId] 
+ ON [RDS].[FactK12StaffAssessments] ([K12StaffPerson_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_DimPsInstitutions] 

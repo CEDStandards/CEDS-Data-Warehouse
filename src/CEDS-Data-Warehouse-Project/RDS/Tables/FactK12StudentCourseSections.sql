@@ -12,6 +12,7 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     [LeaInstructionId]                    INT    CONSTRAINT [DF_FactK12StudentCourseSections_LeaInstructionId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                         INT    CONSTRAINT [DF_FactK12StudentCourseSections_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                        BIGINT CONSTRAINT [DF_FactK12StudentCourseSections_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]                BIGINT CONSTRAINT [DF_FactK12StudentCourseSections_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [K12DemographicId]                    INT    CONSTRAINT [DF_FactK12StudentCourseSections_K12DemographicId] DEFAULT ((-1)) NOT NULL,
     [K12CourseSectionId]                  INT    CONSTRAINT [DF_FactK12StudentCourseSections_K12CourseSectionId] DEFAULT ((-1)) NOT NULL,
     [StateK12CourseId]                    INT    CONSTRAINT [DF_FactK12StudentCourseSections_StateK12CourseId] DEFAULT ((-1)) NOT NULL,
@@ -51,6 +52,7 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     CONSTRAINT [FK_FactK12StudentCourseSections_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_LanguageId] FOREIGN KEY ([LanguageId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_LeaAccountabilityId] FOREIGN KEY ([LeaAccountabilityId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_LeaAttendanceId] FOREIGN KEY ([LeaAttendanceId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
@@ -180,6 +182,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12SchoolId] ON [RDS].[FactK12StudentCourseSections]([K12SchoolId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12StudentId] ON [RDS].[FactK12StudentCourseSections]([K12StudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12Student_CurrentId] ON [RDS].[FactK12StudentCourseSections]([K12Student_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12DemographicId] ON [RDS].[FactK12StudentCourseSections]([K12DemographicId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO

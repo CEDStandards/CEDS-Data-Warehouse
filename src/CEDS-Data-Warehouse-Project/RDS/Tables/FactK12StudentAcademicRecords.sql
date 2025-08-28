@@ -8,6 +8,7 @@ CREATE TABLE [RDS].[FactK12StudentAcademicRecords] (
     [LeaInstructionId]                                  INT     CONSTRAINT [DF_FactK12StudentAcademicRecords_LeaInstructionId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                                       INT     CONSTRAINT [DF_FactK12StudentAcademicRecords_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                                      BIGINT  CONSTRAINT [DF_FactK12StudentAcademicRecords_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]                              BIGINT  CONSTRAINT [DF_FactK12StudentAcademicRecords_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [K12AcademicAwardStatusId]                          INT     CONSTRAINT [DF_FactK12StudentAcademicRecords_K12AcademicAwardStatusId] DEFAULT ((-1)) NOT NULL,
     [HighSchoolGradePointAverageWeighted]               DECIMAl (5,4) NULL,
     [HighSchoolGradePointAverageCumulativeWeighted]     DECIMAL (5,4) NULL,
@@ -24,6 +25,7 @@ CREATE TABLE [RDS].[FactK12StudentAcademicRecords] (
     CONSTRAINT [FK_FactK12StudentAcademicRecords_AcademicTermDesignatorId] FOREIGN KEY ([AcademicTermDesignatorId]) REFERENCES [RDS].[DimAcademicTermDesignators] ([DimAcademicTermDesignatorId]),
     CONSTRAINT [FK_FactK12StudentAcademicRecords_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]),
     CONSTRAINT [FK_FactK12StudentAcademicRecords_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12StudentAcademicRecords_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentAcademicRecords_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentAcademicRecords_CountDateId] FOREIGN KEY ([CountDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12StudentAcademicRecords_ProjectedGraduationDateId] FOREIGN KEY ([ProjectedGraduationDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
@@ -79,6 +81,11 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAcademicRecords_K12StudentId]
     ON [RDS].[FactK12StudentAcademicRecords]([K12StudentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentAcademicRecords_K12Student_CurrentId]
+    ON [RDS].[FactK12StudentAcademicRecords]([K12Student_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 GO
 

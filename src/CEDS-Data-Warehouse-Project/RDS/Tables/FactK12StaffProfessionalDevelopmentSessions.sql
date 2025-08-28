@@ -3,6 +3,7 @@ CREATE TABLE [RDS].[FactK12StaffProfessionalDevelopmentSessions]
 	[FactK12StaffProfessionalDevelopmentSessionId] int NOT NULL IDENTITY (1, 1),
 	[SchoolYearId] int NOT NULL,
 	[K12StaffId] bigint NOT NULL,
+	[K12Staff_CurrentId] bigint NOT NULL DEFAULT -1,
 	[K12StaffStatusId] int NOT NULL,
 	[TeachingCredentialStatusId] int NOT NULL,
 	[K12EmploymentStatusId] int NOT NULL,
@@ -35,6 +36,7 @@ CREATE TABLE [RDS].[FactK12StaffProfessionalDevelopmentSessions]
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_K12StaffAssignmentStatusId] FOREIGN KEY ([K12StaffAssignmentStatusId]) REFERENCES [RDS].[DimK12StaffAssignmentStatuses] ([DimK12StaffAssignmentStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_TeachingCredentialStatusId] FOREIGN KEY ([TeachingCredentialStatusId]) REFERENCES [RDS].[DimTeachingCredentialStatuses] ([DimTeachingCredentialStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffProfessionalDevelopmentSessions_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
@@ -114,6 +116,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_K12StaffId] 
  ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([K12StaffId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_K12Staff_CurrentId] 
+ ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([K12Staff_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_K12StaffStatusId] 

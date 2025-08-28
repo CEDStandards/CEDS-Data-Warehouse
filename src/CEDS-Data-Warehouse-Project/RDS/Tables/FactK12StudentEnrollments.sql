@@ -8,6 +8,7 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     [SeaId]                                      INT            CONSTRAINT [DF_FactK12StudentEnrollments_SeaId] DEFAULT ((-1)) NOT NULL,
     [IeuId]                                      INT            CONSTRAINT [DF_FactK12StudentEnrollments_IeuId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                               BIGINT         CONSTRAINT [DF_FactK12StudentEnrollments_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]                       BIGINT         CONSTRAINT [DF_FactK12StudentEnrollments_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [LeaAccountabilityId]                        INT            CONSTRAINT [DF_FactK12StudentEnrollments_LeaAccountabilityId] DEFAULT ((-1)) NOT NULL,
     [LeaAttendanceId]                            INT            CONSTRAINT [DF_FactK12StudentEnrollments_LeaAttendanceId] DEFAULT ((-1)) NOT NULL,
     [LeaFundingId]                               INT            CONSTRAINT [DF_FactK12StudentEnrollments_LeaFundingId] DEFAULT ((-1)) NOT NULL,
@@ -98,6 +99,7 @@ CREATE TABLE [RDS].[FactK12StudentEnrollments] (
     CONSTRAINT [FK_FactK12StudentEnrollments_CteOutcomeIndicatorId] FOREIGN KEY ([CteOutcomeIndicatorId]) REFERENCES [RDS].[DimCteOutcomeIndicators] ([DimCteOutcomeIndicatorId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12StudentEnrollments_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_LanguageHomeId] FOREIGN KEY ([LanguageHomeId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_LanguageNativeId] FOREIGN KEY ([LanguageNativeId]) REFERENCES [RDS].[DimLanguages] ([DimLanguageId]),
     CONSTRAINT [FK_FactK12StudentEnrollments_LeaAccountabilityId] FOREIGN KEY ([LeaAccountabilityId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
@@ -147,6 +149,8 @@ GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentEnrollments_IeuId] ON [RDS].[FactK12StudentEnrollments]([IeuId] ASC);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentEnrollments_K12StudentId] ON [RDS].[FactK12StudentEnrollments]([K12StudentId] ASC);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentEnrollments_K12Student_CurrentId] ON [RDS].[FactK12StudentEnrollments]([K12Student_CurrentId] ASC);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentEnrollments_LeaAccountabilityId] ON [RDS].[FactK12StudentEnrollments]([LeaAccountabilityId] ASC);
 GO

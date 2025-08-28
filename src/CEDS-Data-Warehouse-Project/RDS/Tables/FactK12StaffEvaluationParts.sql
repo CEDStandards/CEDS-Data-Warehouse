@@ -12,6 +12,7 @@ CREATE TABLE [RDS].[FactK12StaffEvaluationParts]
 	[IeuId] int NULL,
 	[EmployerId] int NULL,
 	[K12StaffId] bigint NULL,
+	[K12Staff_CurrentId] bigint NULL DEFAULT -1,
 	[K12JobId] int NULL,
 	[K12PositionId] int NULL,
 	[K12DemographicId] int NULL,
@@ -35,6 +36,7 @@ CREATE TABLE [RDS].[FactK12StaffEvaluationParts]
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_TeachingCredentialStatusId] FOREIGN KEY ([TeachingCredentialStatusId]) REFERENCES [RDS].[DimTeachingCredentialStatuses] ([DimTeachingCredentialStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
@@ -105,6 +107,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_DimPeople] 
  ON [RDS].[FactK12StaffEvaluationParts] ([K12StaffId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_K12Staff_CurrentId] 
+ ON [RDS].[FactK12StaffEvaluationParts] ([K12Staff_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_DimSchoolYears] 
