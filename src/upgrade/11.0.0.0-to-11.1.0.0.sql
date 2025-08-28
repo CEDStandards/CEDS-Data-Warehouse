@@ -1,5 +1,0 @@
-ALTER TABLE [RDS].[DimFederalFinancialExpenditureClassifications]
-DROP COLUMN FinancialExpenditureProjectReportingCodeCode
-
-ALTER TABLE [RDS].[DimFederalFinancialExpenditureClassifications]
-DROP COLUMN FinancialExpenditureProjectReportingCodeDescription
