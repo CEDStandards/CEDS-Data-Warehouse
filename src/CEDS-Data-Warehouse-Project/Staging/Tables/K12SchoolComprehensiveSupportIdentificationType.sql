@@ -1,15 +1,14 @@
 CREATE TABLE [Staging].[K12SchoolComprehensiveSupportIdentificationType] (
-    [Id]                                      INT           IDENTITY (1, 1) NOT NULL,
-    [SchoolYear]                              VARCHAR (4)   NULL,
-    [LEAIdentifierSea]                        VARCHAR (100) NULL,
-    [SchoolIdentifierSea]                     VARCHAR (100) NULL,
-    [ComprehensiveSupport]                    VARCHAR (20)  NULL,
-    [ComprehensiveSupportReasonApplicability] VARCHAR (20)  NULL,
-    [RecordStartDateTime]                     DATETIME      NULL,
-    [RecordEndDateTime]                       DATETIME      NULL,
-    [OrganizationId]                          INT           NULL,
-    [K12SchoolId]                             INT           NULL,
-    [RunDateTime]                             DATETIME      NULL,
+    [Id]                                      INT				IDENTITY (1, 1) NOT NULL,
+    [SchoolYear]                              NVARCHAR (4)		NULL,
+    [LeaIdentifierSea]                        NVARCHAR (100)	NULL,
+    [SchoolIdentifierSea]                     NVARCHAR (100)	NULL,
+    [ComprehensiveSupport]                    NVARCHAR (20)		NULL,
+    [ComprehensiveSupportReasonApplicability] NVARCHAR (20)		NULL,
+    [RecordStartDateTime]                     DATETIME			NULL,
+    [RecordEndDateTime]                       DATETIME			NULL,
+    [DataCollectionName]                      NVARCHAR (100)	NULL,
+    [RunDateTime]                             DATETIME			NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
@@ -46,35 +45,24 @@ EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0typ
 
 GO
 
-EXECUTE sp_addextendedproperty @name = N'Identifier', @value = N'IDS', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'OrganizationId';
-
-
-GO
-
 EXECUTE sp_addextendedproperty @name = N'Lookup', @value = N'RefComprehensiveSupportReasonApplicability', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'ComprehensiveSupportReasonApplicability';
 
 
 GO
 
-EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'LEAIdentifierSea';
-
-
-GO
-
-EXECUTE sp_addextendedproperty @name = N'Identifier', @value = N'IDS', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'K12SchoolId';
-
+EXECUTE sp_addextendedproperty @name = N'Required', @value = N'True', @level0type = N'SCHEMA', @level0name = N'Staging', @level1type = N'TABLE', @level1name = N'K12SchoolComprehensiveSupportIdentificationType', @level2type = N'COLUMN', @level2name = N'LeaIdentifierSea';
 
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LEAIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LeaIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a local education agency by a school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LEAIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a local education agency by a school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LeaIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Local Education Agency Identifier' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LEAIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Local Education Agency Identifier' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LeaIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001068' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LEAIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001068' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LeaIdentifierSea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21153' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LEAIdentifierSea';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21153' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'LeaIdentifierSea';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'K12SchoolComprehensiveSupportIdentificationType', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime';
 GO

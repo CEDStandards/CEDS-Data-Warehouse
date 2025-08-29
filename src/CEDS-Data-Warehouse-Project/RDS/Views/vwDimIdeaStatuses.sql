@@ -15,6 +15,6 @@ AS
 			WHEN 'No' THEN 0
 			ELSE 0
 		END AS IdeaIndicatorMap
-	FROM rds.DimIdeaStatuses rdis
+	FROM RDS.DimIdeaStatuses rdis
 	CROSS JOIN RDS.DimSchoolYears rdsy
 

@@ -4,7 +4,7 @@ CREATE TABLE [RDS].[BridgeLeaGradeLevels] (
     [GradeLevelId]          INT CONSTRAINT [DF_BridgeLeaGradeLevels_GradeLevelId] DEFAULT ((-1)) NOT NULL,
     CONSTRAINT [PK_BridgeLeaGradeLevels] PRIMARY KEY CLUSTERED ([BridgeLeaGradeLevelId] ASC),
     CONSTRAINT [FK_BridgeLeaGradeLevels_GradeLevelId] FOREIGN KEY ([GradeLevelId]) REFERENCES [RDS].[DimGradeLevels] ([DimGradeLevelId]),
-    CONSTRAINT [FK_BridgeLeaGradeLevels_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaID])
+    CONSTRAINT [FK_BridgeLeaGradeLevels_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId])
 );
 
 

@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimPsDemographics] (
     [DimPsDemographicId] INT            IDENTITY (1, 1) NOT NULL,
-    [SexCode]            NVARCHAR (50)  NULL,
-    [SexDescription]     NVARCHAR (200) NULL,
+    [SexCode]            NVARCHAR (50)  CONSTRAINT [DF_DimPsDemographics_SexCode] DEFAULT ('MISSING') NOT NULL,
+    [SexDescription]     NVARCHAR (200) CONSTRAINT [DF_DimPsDemographics_SexDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimPsDemographics] PRIMARY KEY CLUSTERED ([DimPsDemographicId] ASC)
 );
 

@@ -1,9 +1,9 @@
 CREATE TABLE [RDS].[DimAges] (
     [DimAgeId]       INT            IDENTITY (1, 1) NOT NULL,
-    [AgeCode]        NVARCHAR (50)  NULL,
-    [AgeDescription] NVARCHAR (200) NULL,
-    [AgeEdFactsCode] NVARCHAR (50)  NULL,
-    [AgeValue]       INT            NOT NULL,
+    [AgeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimAges_AgeCode] DEFAULT ('MISSING') NOT NULL,
+    [AgeDescription] NVARCHAR (200) CONSTRAINT [DF_DimAges_AgeDescription] DEFAULT ('MISSING') NOT NULL,
+    [AgeEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimAges_AgeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [AgeValue]       INT            CONSTRAINT [DF_DimAges_AgeValue] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimAges] PRIMARY KEY CLUSTERED ([DimAgeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

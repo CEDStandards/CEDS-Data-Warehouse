@@ -1,17 +1,17 @@
 CREATE TABLE [RDS].[DimHomelessnessStatuses] (
     [DimHomelessnessStatusId]                      INT            IDENTITY (1, 1) NOT NULL,
-    [HomelessnessStatusCode]                       NVARCHAR (100) NOT NULL,
-    [HomelessnessStatusDescription]                NVARCHAR (300) NOT NULL,
-    [HomelessnessStatusEdFactsCode]                NVARCHAR (50)  NULL,
-    [HomelessPrimaryNighttimeResidenceCode]        NVARCHAR (100) NOT NULL,
-    [HomelessPrimaryNighttimeResidenceDescription] NVARCHAR (300) NOT NULL,
-    [HomelessPrimaryNighttimeResidenceEdfactsCode] NVARCHAR (50)  NOT NULL,
-    [HomelessServicedIndicatorCode]                NVARCHAR (100) NOT NULL,
-    [HomelessServicedIndicatorDescription]         NVARCHAR (300) NOT NULL,
-    [HomelessUnaccompaniedYouthStatusCode]         NVARCHAR (100) NOT NULL,
-    [HomelessUnaccompaniedYouthStatusDescription]  NVARCHAR (300) NOT NULL,
-    [HomelessUnaccompaniedYouthStatusEdfactsCode]  NVARCHAR (50)  NOT NULL,
-    CONSTRAINT [PK_DimHomelessnessStatusId] PRIMARY KEY CLUSTERED ([DimHomelessnessStatusId] ASC)
+    [HomelessnessStatusCode]                       NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessnessStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessnessStatusDescription]                NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessnessStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessnessStatusEdFactsCode]                NVARCHAR (50)  CONSTRAINT [DF_DimHomelessnessStatuses_HomelessnessStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessPrimaryNighttimeResidenceCode]        NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessPrimaryNighttimeResidenceCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessPrimaryNighttimeResidenceDescription] NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessPrimaryNighttimeResidenceDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessPrimaryNighttimeResidenceEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimHomelessnessStatuses_HomelessPrimaryNighttimeResidenceEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessServicedIndicatorCode]                NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessServicedIndicatorCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessServicedIndicatorDescription]         NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessServicedIndicatorDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessUnaccompaniedYouthStatusCode]         NVARCHAR (100) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [HomelessUnaccompaniedYouthStatusDescription]  NVARCHAR (300) CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [HomelessUnaccompaniedYouthStatusEdFactsCode]  NVARCHAR (50)  CONSTRAINT [DF_DimHomelessnessStatuses_HomelessUnaccompaniedYouthStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    CONSTRAINT [PK_DimHomelessnessStatuses] PRIMARY KEY CLUSTERED ([DimHomelessnessStatusId] ASC)
 );
 
 
@@ -67,15 +67,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000146' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21146' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The primary nighttime residence of the person at the time the person was identified as homeless.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The primary nighttime residence of the person at the time the person was identified as homeless.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Homeless Primary Nighttime Residence' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Homeless Primary Nighttime Residence' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000146' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000146' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21146' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21146' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessPrimaryNighttimeResidenceEdFactsCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessServicedIndicatorCode';
 GO
@@ -117,13 +117,13 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000148' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21148' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that homeless youths were unaccompanied by parents or legal guardians.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication that homeless youths were unaccompanied by parents or legal guardians.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Homeless Unaccompanied Youth Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Homeless Unaccompanied Youth Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000148' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000148' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21148' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21148' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimHomelessnessStatuses', @level2type=N'COLUMN',@level2name=N'HomelessUnaccompaniedYouthStatusEdFactsCode';
 GO

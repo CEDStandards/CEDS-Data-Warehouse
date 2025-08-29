@@ -1,33 +1,33 @@
-CREATE VIEW rds.vwDimMilitaryStatuses 
+CREATE VIEW RDS.vwDimMilitaryStatuses 
 AS
 	SELECT
 		  rdms.DimMilitaryStatusId
 		, rsy.SchoolYear
 		, rdms.MilitaryConnectedStudentIndicatorCode
 		, sssrd1.OutputCode AS MilitaryConnectedStudentIndicatorMap
-		, rdms.MilitaryActiveStudentIndicatorCode
-		, sssrd2.OutputCode AS MilitaryActiveStudentIndicatorMap
+		, rdms.ActiveMilitaryStatusIndicatorCode
+		, sssrd2.OutputCode AS ActiveMilitaryStatusIndicatorMap
 		, rdms.MilitaryBranchCode
 		, sssrd3.OutputCode AS MilitaryBranchMap
-		, rdms.MilitaryVeteranStudentIndicatorCode
-		, sssrd4.OutputCode AS MilitaryVeteranStudentIndicatorMap
-	FROM rds.DimMilitaryStatuses rdms
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
-	LEFT JOIN staging.SourceSystemReferenceData sssrd1
+		, rdms.MilitaryVeteranStatusIndicatorCode
+		, sssrd4.OutputCode AS MilitaryVeteranStatusIndicatorMap
+	FROM RDS.DimMilitaryStatuses rdms
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
 		ON rdms.MilitaryConnectedStudentIndicatorCode = sssrd1.OutputCode
 		AND sssrd1.TableName = 'RefMilitaryConnectedStudentIndicator'
 		AND rsy.SchoolYear = sssrd1.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd2
-		ON rdms.MilitaryActiveStudentIndicatorCode = sssrd2.OutputCode
-		AND sssrd2.TableName = 'RefMilitaryActiveStudentIndicator'
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd2
+		ON rdms.ActiveMilitaryStatusIndicatorCode = sssrd2.OutputCode
+		AND sssrd2.TableName = 'RefActiveMilitaryStatusndicator'
 		AND rsy.SchoolYear = sssrd2.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd3
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd3
 		ON rdms.MilitaryBranchCode = sssrd3.OutputCode
 		AND sssrd3.TableName = 'RefMilitaryBranch'
 		AND rsy.SchoolYear = sssrd3.SchoolYear
-	LEFT JOIN staging.SourceSystemReferenceData sssrd4
-		ON rdms.MilitaryVeteranStudentIndicatorCode = sssrd4.OutputCode
-		AND sssrd3.TableName = 'RefMilitaryVeteranStudentIndicator'
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd4
+		ON rdms.MilitaryVeteranStatusIndicatorCode = sssrd4.OutputCode
+		AND sssrd3.TableName = 'RefMilitaryVeteranStatusIndicator'
 		AND rsy.SchoolYear = sssrd4.SchoolYear
 
 GO

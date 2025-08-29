@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimStandardOccupationalClassifications](
-	[DimStandardOccupationalClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[StandardOccupationalClassificationCode] [nvarchar](100) NULL,
-	[StandardOccupationalClassificationDescription] [nvarchar](4000) NULL,	
+	[DimStandardOccupationalClassificationId] 					[int] IDENTITY(1,1) NOT NULL,
+	[StandardOccupationalClassificationCode] 					[nvarchar](100) 	CONSTRAINT [DF_DimStandardOccupationalClassifications_StandardOccupationalClassificationCode] DEFAULT ('MISSING') NOT NULL,
+	[StandardOccupationalClassificationDescription] 			[nvarchar](4000) 	CONSTRAINT [DF_DimStandardOccupationalClassifications_StandardOccupationalClassificationDescription] DEFAULT ('MISSING') NOT NULL,	
  CONSTRAINT [PK_DimStandardOccupationalClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimStandardOccupationalClassificationId] ASC

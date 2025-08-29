@@ -4,10 +4,10 @@ CREATE TABLE [RDS].[DimCharterSchoolManagementOrganizations] (
     [CharterSchoolManagementOrganizationOrganizationIdentifierSea] NVARCHAR (MAX) NULL,
     [StateAbbreviationDescription]                                 NVARCHAR (MAX) NULL,
     [StateAbbreviationCode]                                        NVARCHAR (MAX) NULL,
-    [StateANSICode]                                                NVARCHAR (MAX) NULL,
+    [StateAnsiCode]                                                NVARCHAR (MAX) NULL,
     [CharterSchoolManagementOrganizationTypeCode]                  NVARCHAR (50)  NULL,
     [CharterSchoolManagementOrganizationTypeDescription]           NVARCHAR (100) NULL,
-    [CharterSchoolManagementOrganizationTypeEdfactsCode]           NVARCHAR (50)  NULL,
+    [CharterSchoolManagementOrganizationTypeEdFactsCode]           NVARCHAR (50)  NULL,
     [MailingAddressCity]                                           NVARCHAR (30)  NULL,
     [MailingAddressPostalCode]                                     NVARCHAR (17)  NULL,
     [MailingAddressStateAbbreviation]                              NVARCHAR (50)  NULL,
@@ -68,15 +68,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001650' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22631' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of organization that is a separate legal entity that 1) contracts with one or more charter schools to manage, operate, and oversee the charter schools; or 2) holds a charter, or charters, to operate multiple charter schools.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of organization that is a separate legal entity that 1) contracts with one or more charter schools to manage, operate, and oversee the charter schools; or 2) holds a charter, or charters, to operate multiple charter schools.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Charter School Management Organization Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Charter School Management Organization Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001650' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001650' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdFactsCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22631' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdfactsCode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22631' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'CharterSchoolManagementOrganizationTypeEdFactsCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'MailingAddressCity';
 GO
@@ -208,15 +208,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000267' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21267' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateAbbreviationDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCharterSchoolManagementOrganizations', @level2type=N'COLUMN',@level2name=N'TelephoneNumber';
 GO

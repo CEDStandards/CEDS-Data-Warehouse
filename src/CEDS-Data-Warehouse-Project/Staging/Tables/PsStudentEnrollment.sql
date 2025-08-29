@@ -17,10 +17,6 @@ CREATE TABLE [Staging].[PsStudentEnrollment] (
     [RecordStartDateTime]               DATETIME       NULL,
     [RecordEndDateTime]                 DATETIME       NULL,
     [DataCollectionName]                NVARCHAR (100) NULL,
-    [DataCollectionId]                  INT            NULL,
-    [PersonId]                          INT            NULL,
-    [OrganizationPersonRoleId]          INT            NULL,
-    [OrganizationId_PsInstitution]      INT            NULL,
     CONSTRAINT [PK_PsTermEnrollment] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

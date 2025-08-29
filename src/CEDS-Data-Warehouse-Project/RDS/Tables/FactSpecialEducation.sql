@@ -14,6 +14,7 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     [K12SchoolId]                                        INT            CONSTRAINT [DF_FactSpecialEducation_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [ResponsibleSchoolTypeId]                            INT            CONSTRAINT [DF_FactSpecialEducation_ResponsibleSchoolTypeId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                                       BIGINT         CONSTRAINT [DF_FactSpecialEducation_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]                               BIGINT         CONSTRAINT [DF_FactSpecialEducation_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentEntryDateId]                              INT            CONSTRAINT [DF_FactSpecialEducation_EnrollmentEntryDateId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentExitDateId]                               INT            CONSTRAINT [DF_FactSpecialEducation_EnrollmentExitDateId] DEFAULT ((-1)) NOT NULL,
     [ConsentToEvaluationDateId]                          INT            CONSTRAINT [DF_FactSpecialEducation_ConsentToEvaluationDateId] DEFAULT ((-1)) NOT NULL,
@@ -50,7 +51,7 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     [FullTimeEquivalency]                                DECIMAL (5, 2) NULL,
     [SpecialEducationFTE]                                DECIMAL (5, 2) NULL,
     [StudentCount]                                       TINYINT        NULL,
-    CONSTRAINT [PK_FactSpecialEducationId] PRIMARY KEY CLUSTERED ([FactSpecialEducationId] ASC),
+    CONSTRAINT [PK_FactSpecialEducation] PRIMARY KEY CLUSTERED ([FactSpecialEducationId] ASC),
     CONSTRAINT [FK_FactSpecialEducation_ChildOutcomeSummaryAtExitId] FOREIGN KEY ([ChildOutcomeSummaryAtExitId]) REFERENCES [RDS].[DimChildOutcomeSummaries] ([DimChildOutcomeSummaryId]),
     CONSTRAINT [FK_FactSpecialEducation_ChildOutcomeSummaryBaselineId] FOREIGN KEY ([ChildOutcomeSummaryBaselineId]) REFERENCES [RDS].[DimChildOutcomeSummaries] ([DimChildOutcomeSummaryId]),
     CONSTRAINT [FK_FactSpecialEducation_ChildOutcomeSummaryDateAtExitId] FOREIGN KEY ([ChildOutcomeSummaryDateAtExitId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
@@ -80,12 +81,13 @@ CREATE TABLE [RDS].[FactSpecialEducation] (
     CONSTRAINT [FK_FactSpecialEducation_K12EnrollmentStatusId] FOREIGN KEY ([K12EnrollmentStatusId]) REFERENCES [RDS].[DimK12EnrollmentStatuses] ([DimK12EnrollmentStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactSpecialEducation_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
-    CONSTRAINT [FK_FactSpecialEducation_LeaAccountabilityId] FOREIGN KEY ([LeaAccountabilityId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactSpecialEducation_LeaAttendanceId] FOREIGN KEY ([LeaAttendanceId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactSpecialEducation_LeaFundingId] FOREIGN KEY ([LeaFundingId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactSpecialEducation_LeaGraduationId] FOREIGN KEY ([LeaGraduationId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactSpecialEducation_LeaIndividualizedEducationProgramId] FOREIGN KEY ([LeaIndividualizedEducationProgramId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactSpecialEducation_LeaIEPServiceProviderId] FOREIGN KEY ([LeaIEPServiceProviderId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
+    CONSTRAINT [FK_FactSpecialEducation_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
+    CONSTRAINT [FK_FactSpecialEducation_LeaAccountabilityId] FOREIGN KEY ([LeaAccountabilityId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactSpecialEducation_LeaAttendanceId] FOREIGN KEY ([LeaAttendanceId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactSpecialEducation_LeaFundingId] FOREIGN KEY ([LeaFundingId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactSpecialEducation_LeaGraduationId] FOREIGN KEY ([LeaGraduationId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactSpecialEducation_LeaIndividualizedEducationProgramId] FOREIGN KEY ([LeaIndividualizedEducationProgramId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactSpecialEducation_LeaIEPServiceProviderId] FOREIGN KEY ([LeaIEPServiceProviderId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactSpecialEducation_MigrantStatusId] FOREIGN KEY ([MigrantStatusId]) REFERENCES [RDS].[DimMigrantStatuses] ([DimMigrantStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_MilitaryStatusId] FOREIGN KEY ([MilitaryStatusId]) REFERENCES [RDS].[DimMilitaryStatuses] ([DimMilitaryStatusId]),
     CONSTRAINT [FK_FactSpecialEducation_NOrDStatusId] FOREIGN KEY ([NOrDStatusId]) REFERENCES [RDS].[DimNOrDStatuses] ([DimNOrDStatusId]),
@@ -205,7 +207,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactSpecialEducation_GradeLevelId]
 
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactSpecialEducation_DimK12Schools_K12SchoolId]
+CREATE NONCLUSTERED INDEX [IXFK_FactSpecialEducation_K12SchoolId]
     ON [RDS].[FactSpecialEducation]([K12SchoolId] ASC);
 
 
@@ -404,4 +406,10 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001242' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'SpecialEducationFTE';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22208' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactSpecialEducation', @level2type=N'COLUMN',@level2name=N'SpecialEducationFTE';
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactSpecialEducation_K12Student_CurrentId]
+    ON [RDS].[FactSpecialEducation]([K12Student_CurrentId] ASC);
+
+
 GO

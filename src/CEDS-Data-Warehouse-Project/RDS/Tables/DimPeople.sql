@@ -3,7 +3,7 @@ CREATE TABLE [RDS].[DimPeople] (
     [FirstName]                                        NVARCHAR (75)  NULL,
     [MiddleName]                                       NVARCHAR (75)  NULL,
     [LastOrSurname]                                    NVARCHAR (75)  NULL,
-    [BirthDate]                                        DATE           NULL,
+    [Birthdate]                                        DATE           NULL,
     [ELChildChildIdentifierState]                      NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierState]                 NVARCHAR (40)  NULL,
     [K12StudentStudentIdentifierDistrict]              NVARCHAR (40)  NULL,
@@ -16,6 +16,9 @@ CREATE TABLE [RDS].[DimPeople] (
     [K12StaffStaffMemberIdentifierDistrict]            NVARCHAR (40)  NULL,
     [PsStaffStaffMemberIdentifierState]                NVARCHAR (40)  NULL,
     [PersonIdentifierDriversLicense]                   NVARCHAR (40)  NULL,
+    [PersonIdentifierSSN]                              NVARCHAR (40)  NULL,
+    [PersonIdentifierState]                            NVARCHAR (40)  NULL,
+    [StudentIdentifierState]                           NVARCHAR (40)  NULL,
     [IsActiveELChild]                                  BIT            NULL,
     [IsActiveK12Student]                               BIT            NULL,
     [IsActivePsStudent]                                BIT            NULL,
@@ -35,7 +38,11 @@ CREATE TABLE [RDS].[DimPeople] (
     [TelephoneNumberWork]                              NVARCHAR (48)  NULL,
     [PersonalTitleOrPrefix]                            NVARCHAR (200) NULL,
     [PositionTitle]                                    NVARCHAR (200) NULL,
-    CONSTRAINT [PK_DimPersonId] PRIMARY KEY CLUSTERED ([DimPersonId] ASC)
+    [GenerationCodeOrSuffix]                           NVARCHAR (75)   NULL,
+    [HighestLevelOfEducationCompletedCode]             NVARCHAR (50)   NULL,
+    [HighestLevelOfEducationCompletedDescription]      NVARCHAR (200)   NULL,
+
+    CONSTRAINT [PK_DimPeople] PRIMARY KEY CLUSTERED ([DimPersonId] ASC)
 );
 
 
@@ -50,20 +57,20 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_DimPeople_IsActiveK12Student_IsActivePsStudent_WithIncludes]
     ON [RDS].[DimPeople]([IsActiveK12Student] ASC, [IsActivePsStudent] ASC)
-    INCLUDE([BirthDate], [K12StudentStudentIdentifierState], [RecordStartDateTime]);
+    INCLUDE([Birthdate], [K12StudentStudentIdentifierState], [RecordStartDateTime]);
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_DimPeople_K12Students]
-    ON [RDS].[DimPeople]([K12StudentStudentIdentifierState] ASC, [FirstName] ASC, [MiddleName] ASC, [LastOrSurname] ASC, [BirthDate] ASC, [RecordStartDateTime] ASC, [RecordEndDateTime] ASC);
+    ON [RDS].[DimPeople]([K12StudentStudentIdentifierState] ASC, [FirstName] ASC, [MiddleName] ASC, [LastOrSurname] ASC, [Birthdate] ASC, [RecordStartDateTime] ASC, [RecordEndDateTime] ASC);
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_DimPeople_RecordStartDateTime_WithIncludes]
     ON [RDS].[DimPeople]([RecordStartDateTime] ASC)
-    INCLUDE([FirstName], [MiddleName], [LastOrSurname], [BirthDate], [K12StudentStudentIdentifierState], [PsStudentStudentIdentifierState], [K12StaffStaffMemberIdentifierState]);
+    INCLUDE([FirstName], [MiddleName], [LastOrSurname], [Birthdate], [K12StudentStudentIdentifierState], [PsStudentStudentIdentifierState], [K12StaffStaffMemberIdentifierState]);
 
 
 GO
@@ -104,7 +111,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Identifi
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierDistrict';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21157' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierDistrict';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierDistrict';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierNationalMigrant';
 GO
@@ -114,7 +121,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Identifi
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierNationalMigrant';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21157' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierNationalMigrant';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierNationalMigrant';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierState';
 GO
@@ -124,7 +131,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Identifi
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21157' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'K12StudentStudentIdentifierState';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'LastOrSurname';
 GO
@@ -174,7 +181,7 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Identifi
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PsStudentStudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21157' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PsStudentStudentIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PsStudentStudentIdentifierState';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'RecordEndDateTime';
 GO
@@ -214,17 +221,17 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Identifi
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'AeStudentStudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21157' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'AeStudentStudentIdentifierState';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'AeStudentStudentIdentifierState';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The year, month and day on which a person was born.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Birthdate' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'BirthDate';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21033' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'Birthdate';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'FirstName';
 GO
@@ -425,4 +432,68 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000279' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'TelephoneNumberWork';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21279' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'TelephoneNumberWork';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An appendage, if any, used to denote a person''s generation in his family (e.g., Jr., Sr., III)..' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Generation Code or Suffix' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000121' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000121' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'GenerationCodeOrSuffix';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a person by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Person Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001572' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001572' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElement', @value=N'Person Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementGlobalId', @value=N'001571' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionCode', @value=N'SSN' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/001571' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierSSN';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a person by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Person Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001572' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001572' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElement', @value=N'Person Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementGlobalId', @value=N'001571' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionCode', @value=N'State' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/001571' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'PersonIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to a student by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Student Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001071' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElement', @value=N'Student Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementGlobalId', @value=N'001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionCode', @value=N'State' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_SuffixConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/001075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimPeople', @level2type=N'COLUMN',@level2name=N'StudentIdentifierState';
 GO

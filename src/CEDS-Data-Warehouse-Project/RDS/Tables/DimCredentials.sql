@@ -5,12 +5,12 @@ CREATE TABLE [RDS].[DimCredentials] (
     [CredentialDefinitionAlternateName]                   NVARCHAR (300) NULL,
     [CredentialDefinitionCategorySystem]                  NVARCHAR (30)  NULL,
     [CredentialDefinitionCategoryType]                    NVARCHAR (60)  NULL,
-    [CredentialDefinitionStatusTypeCode]                  NVARCHAR (50)  NULL,
-    [CredentialDefinitionStatusTypeDescription]           NVARCHAR (300) NULL,
-    [CredentialDefinitionIntendedPurposeTypeCode]         NVARCHAR (50)  NULL,
-    [CredentialDefinitionIntendedPurposeTypeDescription]  NVARCHAR (300) NULL,
-    [CredentialDefinitionAssessmentMethodTypeCode]        NVARCHAR (50)  NULL,
-    [CredentialDefinitionAssessmentMethodTypeDescription] NVARCHAR (300) NULL,
+    [CredentialDefinitionStatusTypeCode]                  NVARCHAR (50)  CONSTRAINT [DF_DimCredentials_CredentialDefinitionStatusTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [CredentialDefinitionStatusTypeDescription]           NVARCHAR (300) CONSTRAINT [DF_DimCredentials_CredentialDefinitionStatusTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [CredentialDefinitionIntendedPurposeTypeCode]         NVARCHAR (50)  CONSTRAINT [DF_DimCredentials_CredentialDefinitionIntendedPurposeTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [CredentialDefinitionIntendedPurposeTypeDescription]  NVARCHAR (300) CONSTRAINT [DF_DimCredentials_CredentialDefinitionIntendedPurposeTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [CredentialDefinitionAssessmentMethodTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimCredentials_CredentialDefinitionAssessmentMethodTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [CredentialDefinitionAssessmentMethodTypeDescription] NVARCHAR (300) CONSTRAINT [DF_DimCredentials_CredentialDefinitionAssessmentMethodTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimCredentials] PRIMARY KEY CLUSTERED ([DimCredentialId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

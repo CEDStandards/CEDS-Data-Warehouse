@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimImmigrantStatuses] (
     [DimImmigrantStatusId]                            INT            IDENTITY (1, 1) NOT NULL,
-    [TitleIIIImmigrantStatusCode]                     NVARCHAR (100) NOT NULL,
-    [TitleIIIImmigrantStatusDescription]              NVARCHAR (300) NOT NULL,
-    [TitleIIIImmigrantStatusEdFactsCode]              NVARCHAR (50)  NOT NULL,
-    [TitleIIIImmigrantParticipationStatusCode]        NVARCHAR (100) NOT NULL,
-    [TitleIIIImmigrantParticipationStatusDescription] NVARCHAR (300) NOT NULL,
-    [TitleIIIImmigrantParticipationStatusEdFactsCode] NVARCHAR (50)  NOT NULL,
+    [TitleIIIImmigrantStatusCode]                     NVARCHAR (100) CONSTRAINT [DF_DimImmigrantStatuses_TitleIIIImmigrantStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [TitleIIIImmigrantStatusDescription]              NVARCHAR (300) CONSTRAINT [DF_DimImmigrantStatuses_TitleIIIImmigrantStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [TitleIIIImmigrantStatusEdFactsCode]              NVARCHAR (50)  CONSTRAINT [DF_DimImmigrantStatuses_TitleIIIImmigrantStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [TitleIIIImmigrantParticipationStatusCode]        NVARCHAR (100) CONSTRAINT [DF_DimImmigrantStatuses_TitleIIIImmigrantParticipationStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [TitleIIIImmigrantParticipationStatusDescription] NVARCHAR (300) CONSTRAINT [DF_DimImmigrantStatuses_TitleIIIImmigrantParticipationStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [TitleIIIImmigrantParticipationStatusEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimImmigrantStatuses_TitleIIIImmigrantParticipationStatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimImmigrantStatuses] PRIMARY KEY CLUSTERED ([DimImmigrantStatusId] ASC)
 );
 

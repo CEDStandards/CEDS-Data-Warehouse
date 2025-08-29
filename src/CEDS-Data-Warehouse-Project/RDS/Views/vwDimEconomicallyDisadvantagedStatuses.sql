@@ -1,4 +1,4 @@
-CREATE VIEW rds.vwDimEconomicallyDisadvantagedStatuses 
+CREATE VIEW RDS.vwDimEconomicallyDisadvantagedStatuses 
 AS
 	SELECT
 		  DimEconomicallyDisadvantagedStatusId
@@ -17,9 +17,9 @@ AS
 			WHEN 'No' THEN 0
 			ELSE -1
 		  END AS NationalSchoolLunchProgramDirectCertificationIndicatorMap
-	FROM rds.DimEconomicallyDisadvantagedStatuses rdeds
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
-	LEFT JOIN staging.SourceSystemReferenceData sssrd
+	FROM RDS.DimEconomicallyDisadvantagedStatuses rdeds
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd
 		ON rdeds.EligibilityStatusForSchoolFoodServiceProgramsCode = sssrd.OutputCode
 		AND sssrd.TableName = 'RefFoodServiceEligibility'
 		AND rsy.SchoolYear = sssrd.SchoolYear

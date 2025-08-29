@@ -31,7 +31,7 @@ CREATE TABLE [RDS].[ReportEDFactsK12StudentDisciplines] (
     [ReportYear]                                    NVARCHAR (40)   NOT NULL,
     [SECTION504STATUS]                              NVARCHAR (50)   NULL,
     [SEX]                                           NVARCHAR (50)   NULL,
-    [StateANSICode]                                 NVARCHAR (100)  NOT NULL,
+    [StateAnsiCode]                                 NVARCHAR (100)  NOT NULL,
     [StateAbbreviationCode]                         NVARCHAR (100)  NOT NULL,
     [StateAbbreviationDescription]                  NVARCHAR (1000) NOT NULL,
     [TableTypeAbbrv]                                NVARCHAR (MAX)  NULL,
@@ -58,7 +58,8 @@ CREATE TABLE [RDS].[ReportEDFactsK12StudentDisciplines] (
     [IDEAEDUCATIONALENVIRONMENTFOREARLYCHILDHOOD]   NVARCHAR (50)   NULL,
     [DISCIPLINEREASON]                              NVARCHAR (50)   NULL,
     [INCIDENTBEHAVIOR]                              NVARCHAR (50)   NULL,
-    [INCIDENTINJURYTYPE]                            NVARCHAR (50)   NULL
+    [INCIDENTINJURYTYPE]                            NVARCHAR (50)   NULL,
+    CONSTRAINT [PK_ReportEDFactsK12StudentDisciplines] PRIMARY KEY CLUSTERED ([ReportEDFactsK12StudentDisciplineId] ASC)
 );
 
 
@@ -360,15 +361,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000267' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21267' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateAbbreviationDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StudentDisciplines', @level2type=N'COLUMN',@level2name=N'TITLEIIIIMMIGRANTPARTICIPATIONSTATUS';
 GO

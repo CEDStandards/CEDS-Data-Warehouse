@@ -10,7 +10,7 @@ CREATE TABLE [RDS].[DimAssessmentAdministrations] (
     [SchoolIdentifier]                          NVARCHAR (40)  NULL,
     [SchoolIdentificationSystem]                NVARCHAR (40)  NULL,
     [LocalEducationAgencyIdentifier]            NVARCHAR (40)  NULL,
-    [LEAIdentificationSystem]                   NVARCHAR (40)  NULL,
+    [LeaIdentificationSystem]                   NVARCHAR (40)  NULL,
     [AssessmentAdministrationOrganizationName]  NVARCHAR (40)  NULL,
     [AssessmentAdministrationPeriodDescription] NVARCHAR (40)  NULL,
     [AssessmentSecureIndicator]                 NVARCHAR (40)  NULL,
@@ -132,15 +132,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000384' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21375' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'AssessmentSecureIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LEAIdentificationSystem';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LeaIdentificationSystem';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a local education agency.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LEAIdentificationSystem';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a local education agency.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LeaIdentificationSystem';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Local Education Agency Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LEAIdentificationSystem';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Local Education Agency Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LeaIdentificationSystem';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001072' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LEAIdentificationSystem';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001072' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LeaIdentificationSystem';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21159' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LEAIdentificationSystem';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21159' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LeaIdentificationSystem';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimAssessmentAdministrations', @level2type=N'COLUMN',@level2name=N'LocalEducationAgencyIdentifier';
 GO

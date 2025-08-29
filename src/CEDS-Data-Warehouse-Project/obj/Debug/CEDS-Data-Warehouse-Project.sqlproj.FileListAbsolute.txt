@@ -9,4 +9,4 @@ c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\CEDS-Data
 c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\bin\Debug\CEDS-Data-Warehouse-Project.dll
 c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\bin\Debug\CEDS-Data-Warehouse-Project.pdb
 c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\bin\Debug\master.dacpac
-c:\Repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\CEDS-Data-Warehouse-Project.sqlproj.CopyComplete
+c:\repos\CEDS-Data-Warehouse\src\CEDS-Data-Warehouse-Project\obj\Debug\CEDS-Dat.1380294F.Up2Date

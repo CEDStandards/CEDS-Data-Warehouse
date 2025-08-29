@@ -1,14 +1,14 @@
 CREATE TABLE [RDS].[DimDisabilityStatuses] (
     [DimDisabilityStatusId]                        INT            IDENTITY (1, 1) NOT NULL,
-    [DisabilityStatusCode]                         NVARCHAR (100) NULL,
-    [DisabilityStatusDescription]                  NVARCHAR (300) NULL,
-    [Section504StatusCode]                         NVARCHAR (100) NULL,
-    [Section504StatusDescription]                  NVARCHAR (300) NULL,
-    [Section504StatusEdFactsCode]                  NVARCHAR (50)  NULL,
-    [DisabilityConditionTypeCode]                  NVARCHAR (100) NULL,
-    [DisabilityConditionTypeDescription]           NVARCHAR (300) NULL,
-    [DisabilityDeterminationSourceTypeCode]        NVARCHAR (100) NULL,
-    [DisabilityDeterminationSourceTypeDescription] NVARCHAR (300) NULL,
+    [DisabilityStatusCode]                         NVARCHAR (100) CONSTRAINT [DF_DimDisabilityStatuses_DisabilityStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [DisabilityStatusDescription]                  NVARCHAR (300) CONSTRAINT [DF_DimDisabilityStatuses_DisabilityStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [Section504StatusCode]                         NVARCHAR (100) CONSTRAINT [DF_DimDisabilityStatuses_Section504StatusCode] DEFAULT ('MISSING') NOT NULL,
+    [Section504StatusDescription]                  NVARCHAR (300) CONSTRAINT [DF_DimDisabilityStatuses_Section504StatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [Section504StatusEdFactsCode]                  NVARCHAR (50)  CONSTRAINT [DF_DimDisabilityStatuses_Section504StatusEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [DisabilityConditionTypeCode]                  NVARCHAR (100) CONSTRAINT [DF_DimDisabilityStatuses_DisabilityConditionTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [DisabilityConditionTypeDescription]           NVARCHAR (300) CONSTRAINT [DF_DimDisabilityStatuses_DisabilityConditionTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [DisabilityDeterminationSourceTypeCode]        NVARCHAR (100) CONSTRAINT [DF_DimDisabilityStatuses_DisabilityDeterminationSourceTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [DisabilityDeterminationSourceTypeDescription] NVARCHAR (300) CONSTRAINT [DF_DimDisabilityStatuses_DisabilityDeterminationSourceTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimDisabilityStatuses] PRIMARY KEY CLUSTERED ([DimDisabilityStatusId] ASC) WITH (FILLFACTOR = 80)
 );
 

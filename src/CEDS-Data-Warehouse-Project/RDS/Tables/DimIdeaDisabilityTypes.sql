@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimIdeaDisabilityTypes] (
     [DimIdeaDisabilityTypeId]       INT            IDENTITY (1, 1) NOT NULL,
-    [IdeaDisabilityTypeCode]        NVARCHAR (100) NULL,
-    [IdeaDisabilityTypeDescription] NVARCHAR (300) NULL,
-    [IdeaDisabilityTypeEdFactsCode] NVARCHAR (50)  NULL,
+    [IdeaDisabilityTypeCode]        NVARCHAR (100) CONSTRAINT [DF_DimIdeaDisabilityTypes_IdeaDisabilityTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [IdeaDisabilityTypeDescription] NVARCHAR (300) CONSTRAINT [DF_DimIdeaDisabilityTypes_IdeaDisabilityTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [IdeaDisabilityTypeEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimIdeaDisabilityTypes_IdeaDisabilityTypeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimIdeaDisabilityTypes] PRIMARY KEY CLUSTERED ([DimIdeaDisabilityTypeId] ASC)
 );
 

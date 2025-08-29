@@ -2,6 +2,7 @@ CREATE TABLE [Staging].[StagingValidationResults] (
     [Id]                      INT           IDENTITY (1, 1) NOT NULL,
     [StagingValidationRuleId] INT           NULL,
     [SchoolYear]              INT           NULL,
+    [FactTypeOrReportCode]    VARCHAR (50)  NULL,
     [ReportGroupOrCode]       VARCHAR (50)  NULL,
     [StagingTableName]        VARCHAR (200) NULL,
     [ColumnName]              VARCHAR (100) NULL,

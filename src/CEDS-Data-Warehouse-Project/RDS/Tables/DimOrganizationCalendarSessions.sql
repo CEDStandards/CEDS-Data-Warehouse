@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimOrganizationCalendarSessions] (
     [DimOrganizationCalendarSessionId]  INT            IDENTITY (1, 1) NOT NULL,
-    [SessionBeginDate]                  DATETIME       NULL,
-    [SessionEndDate]                    DATETIME       NULL,
-    [SessionCode]                       NVARCHAR (30)  NULL,
-    [SessionDescription]                NVARCHAR (MAX) NULL,
-    [AcademicTermDesignatorCode]        NVARCHAR (30)  NULL,
-    [AcademicTermDesignatorDescription] NVARCHAR (MAX) NULL,
+    [SessionBeginDate]                  DATETIME       NOT NULL,
+    [SessionEndDate]                    DATETIME       NOT NULL,
+    [SessionCode]                       NVARCHAR (30)  CONSTRAINT [DF_DimOrganizationCalendarSessions_SessionCode] DEFAULT ('MISSING') NOT NULL,
+    [SessionDescription]                NVARCHAR (MAX) CONSTRAINT [DF_DimOrganizationCalendarSessions_SessionDescription] DEFAULT ('MISSING') NOT NULL,
+    [AcademicTermDesignatorCode]        NVARCHAR (30)  CONSTRAINT [DF_DimOrganizationCalendarSessions_AcademicTermDesignatorCode] DEFAULT ('MISSING') NOT NULL,
+    [AcademicTermDesignatorDescription] NVARCHAR (MAX) CONSTRAINT [DF_DimOrganizationCalendarSessions_AcademicTermDesignatorDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimOrganizationCalendarSessions] PRIMARY KEY CLUSTERED ([DimOrganizationCalendarSessionId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

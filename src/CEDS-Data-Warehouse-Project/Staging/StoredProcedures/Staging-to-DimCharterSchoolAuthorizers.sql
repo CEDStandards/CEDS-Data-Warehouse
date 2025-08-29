@@ -7,17 +7,31 @@ BEGIN
 
 	IF OBJECT_ID(N'tempdb..#CharterSchoolAuthorizers') IS NOT NULL DROP TABLE #CharterSchoolAuthorizers
 
-	DECLARE @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5), @SchoolYear int
-	SELECT @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	SELECT @StateName = (select [Description] from dbo.RefState where Code = @StateCode)
-	SELECT @StateANSICode = (select Code from dbo.RefStateANSICode where [Description] = @StateName)
-	SELECT @SchoolYear = (select SchoolYear from Staging.StateDetail)
+    DECLARE @SchoolYear int, @StateCode varchar(2), @StateName varchar(50), @StateAnsiCode varchar(5)
+    SELECT @SchoolYear = (	SELECT sy.SchoolYear
+							FROM RDS.DimSchoolYearDataMigrationTypes dm
+								inner join RDS.DimSchoolYears sy
+									on dm.DimSchoolYearId = sy.DimSchoolYearId
+							where IsSelected = 1
+							and dm.DataMigrationTypeId = 3
+						)
+    SELECT @StateCode = StateAbbreviationCode FROM Staging.StateDetail where SchoolYear = @schoolyear
+	SELECT @StateName = (	SELECT CedsOptionSetDescription 
+							FROM CEDS.CedsOptionSetMapping 
+							where CedsElementTechnicalName = 'StateAbbreviation' 
+							and CedsOptionSetCode = @StateCode
+						)
+	SELECT @StateAnsiCode = (	SELECT CedsOptionSetCode 
+								FROM CEDS.CedsOptionSetMapping 
+								where CedsElementTechnicalName = 'StateAnsiCode' 
+								and CedsOptionSetDescription = @StateName
+							)
 
-	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolAuthorizers WHERE DimCharterSchoolAuthorizerId = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimCharterSchoolAuthorizers WHERE DimCharterSchoolAuthorizerId = -1)
 	BEGIN
-		SET IDENTITY_INSERT rds.DimCharterSchoolAuthorizers ON
-		INSERT INTO rds.DimCharterSchoolAuthorizers (DimCharterSchoolAuthorizerId) VALUES (-1)
-		SET IDENTITY_INSERT rds.DimCharterSchoolAuthorizers off
+		SET IDENTITY_INSERT RDS.DimCharterSchoolAuthorizers ON
+		INSERT INTO RDS.DimCharterSchoolAuthorizers (DimCharterSchoolAuthorizerId) VALUES (-1)
+		SET IDENTITY_INSERT RDS.DimCharterSchoolAuthorizers off
 	END
 
 	CREATE TABLE #organizationTypes (
@@ -55,10 +69,10 @@ BEGIN
 		, scsa.CharterSchoolAuthorizingOrganizationOrganizationName
 		, @StateName			 									'StateAbbreviationDescription'
 		, @StateCode 												'StateAbbreviationCode'
-		, @StateANSICode 											'StateANSICode'
-		, scsa.CharterSchoolAuthorizerType				'CharterSchoolAuthorizerTypeCode'
+		, @StateAnsiCode 											'StateAnsiCode'
+		, ssrd.OutputCode											'CharterSchoolAuthorizerTypeCode'
 		, refcsat.[Definition] 										'CharterSchoolAuthorizerTypeDescription'
-		, ssrd.OutputCode				 							'CharterSchoolAuthorizerTypeEdFactsCode'
+		, ssrd.OutputCode											'CharterSchoolAuthorizerTypeEdFactsCode'
 		, smam.AddressStreetNumberAndName				 			'MailingAddressStreetNumberAndName'
 		, smam.AddressApartmentRoomOrSuiteNumber					'MailingAddressApartmentRoomOrSuiteNumber'
 		, smam.AddressCity 											'MailingAddressCity'
@@ -72,7 +86,7 @@ BEGIN
 		, smap.AddressPostalCode			 						'PhysicalAddressPostalCode'
 		, smap.AddressCountyAnsiCodeCode							'PhysicalAddressCountyAnsiCodeCode'
 		, sop.TelephoneNumber				 				
-		, NULL 														'WebsiteAddress'
+		, NULL 														'WebSiteAddress'
 		, 0 														'OutOfStateIndicator'
 		, scsa.RecordStartDateTime
 		, scsa.RecordEndDateTime
@@ -106,18 +120,18 @@ BEGIN
 
 -- MERGE INTO DimCharterSchoolAuthorizers
 	BEGIN TRY
-		MERGE rds.DimCharterSchoolAuthorizers AS trgt
+		MERGE RDS.DimCharterSchoolAuthorizers AS trgt
 		USING #CharterSchoolAuthorizers AS src
 			ON trgt.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea = src.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 			AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
 		WHEN MATCHED THEN UPDATE
 			SET trgt.CharterSchoolAuthorizingOrganizationOrganizationName 	= src.CharterSchoolAuthorizingOrganizationOrganizationName,							
 				trgt.StateAbbreviationCode 									= src.StateAbbreviationCode,
-				trgt.StateANSICode 											= src.StateANSICode,
+				trgt.StateAnsiCode 											= src.StateAnsiCode,
 				trgt.StateAbbreviationDescription 							= src.StateAbbreviationDescription,
-				trgt.CharterSchoolAuthorizerTypeCode 			= src.CharterSchoolAuthorizerTypeCode,
-				trgt.CharterSchoolAuthorizerTypeDescription 	= src.CharterSchoolAuthorizerTypeDescription,
-				trgt.CharterSchoolAuthorizerTypeEdFactsCode	= src.CharterSchoolAuthorizerTypeEdFactsCode,						
+				trgt.CharterSchoolAuthorizerTypeCode 						= src.CharterSchoolAuthorizerTypeCode,
+				trgt.CharterSchoolAuthorizerTypeDescription 				= src.CharterSchoolAuthorizerTypeDescription,
+				trgt.CharterSchoolAuthorizerTypeEdFactsCode					= src.CharterSchoolAuthorizerTypeEdFactsCode,						
 				trgt.MailingAddressStreetNumberAndName						= src.MailingAddressStreetNumberAndName,
 				trgt.MailingAddressApartmentRoomOrSuiteNumber				= src.MailingAddressApartmentRoomOrSuiteNumber,
 				trgt.MailingAddressCity 									= src.MailingAddressCity,
@@ -132,14 +146,14 @@ BEGIN
 				trgt.PhysicalAddressPostalCode								= src.PhysicalAddressPostalCode,
 				trgt.PhysicalAddressCountyAnsiCodeCode						= src.PhysicalAddressCountyAnsiCodeCode,
 				trgt.TelephoneNumber										= src.TelephoneNumber,
-				trgt.WebsiteAddress											= src.WebsiteAddress,
+				trgt.WebSiteAddress											= src.WebSiteAddress,
 				trgt.RecordEndDateTime 										= src.RecordEndDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but not in Target
 		INSERT (
 			CharterSchoolAuthorizingOrganizationOrganizationName
 			, CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 			, StateAbbreviationCode
-			, StateANSICode
+			, StateAnsiCode
 			, StateAbbreviationDescription
 			, CharterSchoolAuthorizerTypeCode
 			, CharterSchoolAuthorizerTypeDescription
@@ -158,7 +172,7 @@ BEGIN
 			, PhysicalAddressPostalCode
 			, PhysicalAddressCountyAnsiCodeCode
 			, TelephoneNumber
-			, WebsiteAddress
+			, WebSiteAddress
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)
@@ -166,7 +180,7 @@ BEGIN
 			src.CharterSchoolAuthorizingOrganizationOrganizationName
 			,src.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 			, StateAbbreviationCode
-			, StateANSICode
+			, StateAnsiCode
 			, StateAbbreviationDescription
 			, src.CharterSchoolAuthorizerTypeCode
 			, src.CharterSchoolAuthorizerTypeDescription
@@ -185,7 +199,7 @@ BEGIN
 			, src.PhysicalAddressPostalCode
 			, src.PhysicalAddressCountyAnsiCodeCode
 			, src.TelephoneNumber
-			, src.WebsiteAddress
+			, src.WebSiteAddress
 			, src.RecordStartDateTime
 			, src.RecordEndDateTime
 		);
@@ -195,15 +209,15 @@ BEGIN
 				startd.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 				, startd.RecordStartDateTime
 				, min(endd.RecordStartDateTime) - 1 AS RecordEndDateTime 
-			FROM rds.DimCharterSchoolAuthorizers startd
-			JOIN rds.DimCharterSchoolAuthorizers endd
+			FROM RDS.DimCharterSchoolAuthorizers startd
+			JOIN RDS.DimCharterSchoolAuthorizers endd
 				ON startd.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea = endd.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 				AND startd.RecordStartDateTime < endd.RecordStartDateTime
 			GROUP BY startd.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea, startd.RecordStartDateTime
 		) 
 
 		UPDATE charter SET RecordEndDateTime = upd.RecordEndDateTime 
-		FROM rds.DimCharterSchoolAuthorizers charter
+		FROM RDS.DimCharterSchoolAuthorizers charter
 		JOIN upd	
 			ON charter.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea = upd.CharterSchoolAuthorizingOrganizationOrganizationIdentifierSea
 			AND charter.RecordStartDateTime = upd.RecordStartDateTime
@@ -211,12 +225,12 @@ BEGIN
 	
 	END TRY
 	BEGIN CATCH
-		INSERT INTO app.DataMigrationHistories(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+		INSERT INTO App.DataMigrationHistories(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		VALUES	(getutcdate(), 2, 'RDS.DimCharterSchoolAuthorizers - Error Occurred - ' + CAST(ERROR_MESSAGE() AS VARCHAR(900)))
 
 	END CATCH
 	
 END
-
 GO
+
 
