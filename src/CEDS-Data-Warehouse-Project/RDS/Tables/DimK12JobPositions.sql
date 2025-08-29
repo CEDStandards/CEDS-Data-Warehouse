@@ -3,7 +3,7 @@ CREATE TABLE [RDS].[DimK12JobPositions]
 	[DimK12JobPositionId] int NOT NULL IDENTITY (1, 1),
 	[JobPositionIdentifierSea] nvarchar(40) NULL,
 	[JobPositionIdentifierLea] nvarchar(40) NULL,
-	[JobPostitionIdentiferSchool] nvarchar(40) NULL,
+	[JobPositionIdentifierSchool] nvarchar(40) NULL,
 	[PositionTitle] nvarchar(400) NULL,
 	[HourlyWage] [decimal](10, 2) NULL,
 	[StaffCompensationBaseSalary] [decimal](10, 2) NULL,
