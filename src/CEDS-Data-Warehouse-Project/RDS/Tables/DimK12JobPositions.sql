@@ -48,23 +48,23 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionCode', @value=N'L
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/002076' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierLea';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code used to identify a job position.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code used to identify a job position.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Job Position Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Job Position Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002075' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionElement', @value=N'Job Position Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionElement', @value=N'Job Position Identification System' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionElementGlobalId', @value=N'002076' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionElementGlobalId', @value=N'002076' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionCode', @value=N'School' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionCode', @value=N'School' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/002076' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPostitionIdentiferSchool';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_ConcatenatedOptionElementURL', @value=N'https://ceds.ed.gov/element/002076' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'JobPositionIdentifierSchool';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12JobPositions', @level2type=N'COLUMN',@level2name=N'PositionTitle';
 GO
