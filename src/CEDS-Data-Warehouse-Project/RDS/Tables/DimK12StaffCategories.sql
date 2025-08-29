@@ -9,10 +9,10 @@ CREATE TABLE [RDS].[DimK12StaffCategories] (
     [TitleIProgramStaffCategoryCode]                        NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffCategories_TitleIProgramStaffCategoryCode] DEFAULT ('MISSING') NOT NULL,
     [TitleIProgramStaffCategoryDescription]                 NVARCHAR (100) CONSTRAINT [DF_DimK12StaffCategories_TitleIProgramStaffCategoryDescription] DEFAULT ('MISSING') NOT NULL,
     [TitleIProgramStaffCategoryEdFactsCode]                 NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffCategories_TitleIProgramStaffCategoryEdFactsCode] DEFAULT ('MISSING') NOT NULL,
-    [MigrantEducationProgramStaffCategoryCode]              NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffCategories_MigrantEducationProgramStaffCategoryCode] DEFAULT 'MISSING' NOT NULL,
-    [MigrantEducationProgramStaffCategoryDescription]       NVARCHAR (200) CONSTRAINT [DF_DimK12StaffCategories_MigrantEducationProgramStaffCategoryDescription] DEFAULT 'MISSING' NOT NULL,
-    [ProfessionalEducationalJobClassificationCode]          NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffCategories_ProfessionalEducationalJobClassificationCode] DEFAULT 'MISSING' NOT NULL,
-    [ProfessionalEducationalJobClassificationDescription]   NVARCHAR (200) CONSTRAINT [DF_DimK12StaffCategories_ProfessionalEducationalJobClassificationDescription] DEFAULT 'MISSING' NOT NULL,
+    [MigrantEducationProgramStaffCategoryCode]              NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffCategories_MigrantEducationProgramStaffCategoryCode] DEFAULT ('MISSING') NOT NULL,
+    [MigrantEducationProgramStaffCategoryDescription]       NVARCHAR (200) CONSTRAINT [DF_DimK12StaffCategories_MigrantEducationProgramStaffCategoryDescription] DEFAULT ('MISSING') NOT NULL,
+    [ProfessionalEducationalJobClassificationCode]          NVARCHAR (50)  CONSTRAINT [DF_DimK12StaffCategories_ProfessionalEducationalJobClassificationCode] DEFAULT ('MISSING') NOT NULL,
+    [ProfessionalEducationalJobClassificationDescription]   NVARCHAR (200) CONSTRAINT [DF_DimK12StaffCategories_ProfessionalEducationalJobClassificationDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimK12StaffCategories] PRIMARY KEY CLUSTERED ([DimK12StaffCategoryId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 
