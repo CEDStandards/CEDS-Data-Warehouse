@@ -15,5 +15,5 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Academic Award T
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000003' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12AcademicAwards', @level2type=N'COLUMN',@level2name=N'AcademicAwardTitle';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'ttps://ceds.ed.gov/element/000003' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12AcademicAwards', @level2type=N'COLUMN',@level2name=N'AcademicAwardTitle';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000003' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12AcademicAwards', @level2type=N'COLUMN',@level2name=N'AcademicAwardTitle';
 GO
