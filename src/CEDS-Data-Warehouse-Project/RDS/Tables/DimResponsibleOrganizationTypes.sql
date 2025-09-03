@@ -1,9 +1,9 @@
 CREATE TABLE [RDS].[DimResponsibleOrganizationTypes] (
     [DimResponsibleOrganizationTypeId]   INT            IDENTITY (1, 1) NOT NULL,
-    [ResponsibleDistrictTypeCode]        NVARCHAR (50)  NOT NULL,
-    [ResponsibleDistrictTypeDescription] NVARCHAR (200) NOT NULL,
-    [ResponsibleSchoolTypeCode]          NVARCHAR (50)  NOT NULL,
-    [ResponsibleSchoolTypeDescription]   NVARCHAR (200) NOT NULL,
+    [ResponsibleDistrictTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimResponsibleOrganizationTypes_ResponsibleDistrictTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [ResponsibleDistrictTypeDescription] NVARCHAR (200) CONSTRAINT [DF_DimResponsibleOrganizationTypes_ResponsibleDistrictTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [ResponsibleSchoolTypeCode]          NVARCHAR (50)  CONSTRAINT [DF_DimResponsibleOrganizationTypes_ResponsibleSchoolTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [ResponsibleSchoolTypeDescription]   NVARCHAR (200) CONSTRAINT [DF_DimResponsibleOrganizationTypes_ResponsibleSchoolTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimResponsibleOrganizationTypes] PRIMARY KEY CLUSTERED ([DimResponsibleOrganizationTypeId] ASC)
 );
 

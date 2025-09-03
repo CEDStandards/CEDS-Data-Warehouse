@@ -1,13 +1,23 @@
-CREATE VIEW rds.vwDimPsEnrollmentStatuses
+CREATE VIEW RDS.vwDimPsEnrollmentStatuses
 AS
 	SELECT
-		  [DimPsEnrollmentStatusId]
-		, sssrd.SchoolYear
-		, [PostsecondaryExitOrWithdrawalTypeCode]                
-		, ISNULL(sssrd.InputCode, 'MISSING') AS [PostsecondaryExitOrWithdrawalTypeMap]         
-	FROM rds.DimPsEnrollmentStatuses rdpes
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
-	LEFT JOIN staging.SourceSystemReferenceData sssrd
-		ON rdpes.[PostsecondaryExitOrWithdrawalTypeCode] = sssrd.OutputCode
-		AND sssrd.TableName = 'RefPSExitOrWithdrawalType'
-		AND rsy.SchoolYear = sssrd.SchoolYear
+		  rdpes.[DimPsEnrollmentStatusId]
+		, rsy.SchoolYear
+		, rdpes.[PostsecondaryExitOrWithdrawalTypeCode]                
+		, ISNULL(sssrd1.InputCode, 'MISSING') AS [PostsecondaryExitOrWithdrawalTypeMap]
+		, rdpes.[PostsecondaryEnrollmentStatusCode]
+		, ISNULL(sssrd2.InputCode, 'MISSING') AS [PostsecondaryEnrollmentStatusMap]       
+	FROM RDS.DimPsEnrollmentStatuses rdpes
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd1
+		ON rdpes.[PostsecondaryExitOrWithdrawalTypeCode] = sssrd1.OutputCode
+		AND sssrd1.TableName = 'RefPSExitOrWithdrawalType'
+		AND rsy.SchoolYear = sssrd1.SchoolYear
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd2
+		ON rdpes.[PostsecondaryEnrollmentStatusCode] = sssrd2.OutputCode
+		AND sssrd2.TableName = 'RefPSEnrollmentStatus'
+		AND rsy.SchoolYear = sssrd2.SchoolYear
+
+GO
+
+

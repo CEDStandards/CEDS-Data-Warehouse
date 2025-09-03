@@ -15,12 +15,6 @@ CREATE TABLE [Staging].[Assessment] (
     [AssessmentPerformanceLevelLabel]                      VARCHAR (100)  NULL,
     [AssessmentTypeAdministeredToEnglishLearners]          VARCHAR (100)  NULL,
     [DataCollectionName]                                   NVARCHAR (100) NULL,
-    [DataCollectionId]                                     INT            NULL,
-    [AssessmentId]                                         INT            NULL,
-    [AssessmentAdministrationId]                           INT            NULL,
-    [AssessmentSubtestId]                                  INT            NULL,
-    [AssessmentFormId]                                     INT            NULL,
-    [AssessmentPerformanceLevelId]                         INT            NULL,
     [RunDateTime]                                          DATETIME       NULL,
     CONSTRAINT [PK_Assessment] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );

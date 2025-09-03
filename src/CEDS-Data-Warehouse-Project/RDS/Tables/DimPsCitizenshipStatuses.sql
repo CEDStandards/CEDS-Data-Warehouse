@@ -1,9 +1,9 @@
 CREATE TABLE [RDS].[DimPsCitizenshipStatuses] (
     [DimPsCitizenshipStatusId]                 BIGINT         IDENTITY (1, 1) NOT NULL,
-    [UnitedStatesCitizenshipStatusCode]        NVARCHAR (50)  NULL,
-    [UnitedStatesCitizenshipStatusDescription] NVARCHAR (200) NULL,
-    [VisaTypeCode]                             NVARCHAR (50)  NULL,
-    [VisaTypeDescription]                      NVARCHAR (200) NULL,
+    [UnitedStatesCitizenshipStatusCode]        NVARCHAR (50)  CONSTRAINT [DF_DimPsCitizenshipStatuses_UnitedStatesCitizenshipStatusCode] DEFAULT ('MISSING') NOT NULL,
+    [UnitedStatesCitizenshipStatusDescription] NVARCHAR (200) CONSTRAINT [DF_DimPsCitizenshipStatuses_UnitedStatesCitizenshipStatusDescription] DEFAULT ('MISSING') NOT NULL,
+    [VisaTypeCode]                             NVARCHAR (50)  CONSTRAINT [DF_DimPsCitizenshipStatuses_VisaTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [VisaTypeDescription]                      NVARCHAR (200) CONSTRAINT [DF_DimPsCitizenshipStatuses_VisaTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimPsCitizenshipStatuses] PRIMARY KEY CLUSTERED ([DimPsCitizenshipStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

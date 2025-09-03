@@ -1,7 +1,7 @@
 /**********************************************************************
 Author: AEM Corp
 Date:	3/1/2022
-Description: Migrates Exiting Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Exiting Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 009
 ************************************************************************/
@@ -87,7 +87,7 @@ BEGIN
 
 
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
+		FROM RDS.DimFactTypes
 		WHERE FactTypeCode = 'specedexit'
 
 		DELETE RDS.FactK12StudentCounts
@@ -108,9 +108,9 @@ BEGIN
 			, K12DemographicId						int null
 			, StudentCount							int null
 
-			, SEAId									int null
-			, IEUId									int null
-			, LEAId									int null
+			, SeaId									int null
+			, IeuId									int null
+			, LeaId									int null
 			, K12SchoolId							int null
 			, K12StudentId							int null
 
@@ -123,7 +123,7 @@ BEGIN
 			, AttendanceId							int null
 			, CohortStatusId						int null
 			, NOrDStatusId							int null
-			, CTEStatusId							int null
+			, CteStatusId							int null
 			, K12EnrollmentStatusId					int null
 			, EnglishLearnerStatusId				int null
 			, HomelessnessStatusId					int null
@@ -148,9 +148,9 @@ BEGIN
 			, ISNULL(rdkd.DimK12DemographicId, -1)						K12DemographicId
 			, 1															StudentCount
 
-			, ISNULL(rds.DimSeaId, -1)									SEAId
-			, -1														IEUId
-			, ISNULL(rdl.DimLeaID, -1)									LEAId
+			, ISNULL(RDS.DimSeaId, -1)									SeaId
+			, -1														IeuId
+			, ISNULL(rdl.DimLeaId, -1)									LeaId
 			, ISNULL(rdksch.DimK12SchoolId, -1)							K12SchoolId
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId
 
@@ -163,7 +163,7 @@ BEGIN
 			, -1														AttendanceId
 			, -1														CohortStatusId
 			, -1														NOrDStatusId
-			, -1														CTEStatusId
+			, -1														CteStatusId
 			, -1														K12EnrollmentStatusId
 			, -1 														EnglishLearnerStatusId
 			, -1														HomelessnessStatusId
@@ -177,7 +177,7 @@ BEGIN
 
 		FROM Staging.ProgramParticipationSpecialEducation sppse
 		JOIN RDS.DimDates rdd
-			ON sppse.ProgramParticipationEndDate = rdd.DateValue
+			ON sppse.ProgramParticipationExitDate = rdd.DateValue
 		JOIN Staging.K12Enrollment ske
 			ON ske.StudentIdentifierState = sppse.StudentIdentifierState
 			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '') 
@@ -192,12 +192,12 @@ BEGIN
 			ON ske.SchoolIdentifierSea = rdksch.SchoolIdentifierSea
 			AND rdd.DateValue BETWEEN rdksch.RecordStartDateTime AND ISNULL(rdksch.RecordEndDateTime, GETDATE())
 		JOIN RDS.DimSeas rds
-			ON rdd.DateValue BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
+			ON rdd.DateValue BETWEEN RDS.RecordStartDateTime AND ISNULL(RDS.RecordEndDateTime, GETDATE())
 		LEFT JOIN RDS.vwUnduplicatedRaceMap spr
 			ON ske.SchoolYear = spr.SchoolYear
 			AND ske.StudentIdentifierState = spr.StudentIdentifierState
 			AND (ske.SchoolIdentifierSea = spr.SchoolIdentifierSea
-				OR ske.LEAIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
+				OR ske.LeaIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
 		JOIN RDS.vwDimK12Demographics rdkd
  			ON rsy.SchoolYear = rdkd.SchoolYear
 			AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
@@ -216,10 +216,10 @@ BEGIN
 			AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
 			AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 			AND ISNULL(ske.LastOrSurname, 'MISSING') = rdp.LastOrSurname
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 			AND rdd.DateValue BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
 			AND IsActiveK12Student = 1
-		WHERE sppse.ProgramParticipationEndDate IS NOT NULL		
+		WHERE sppse.ProgramParticipationExitDate IS NOT NULL		
 
 	--Get a unique set of Lea IDs to match against for Title I and Migrant update
 		IF OBJECT_ID('tempdb..#uniqueLEAs') IS NOT NULL 
@@ -227,17 +227,17 @@ BEGIN
 
 		CREATE TABLE #uniqueLEAs (
 			  LeaIdentifierSea					VARCHAR(50)
-			, LEA_RecordStartDateTime			DATETIME
-			, LEA_RecordEndDateTime				DATETIME
-			, LEA_TitleIProgramType				VARCHAR(50)
-			, LEA_TitleIinstructionalService	VARCHAR(50)
-			, LEA_K12LeaTitleISupportService	VARCHAR(50)
+			, Lea_RecordStartDateTime			DATETIME
+			, Lea_RecordEndDateTime				DATETIME
+			, Lea_TitleIProgramType				VARCHAR(50)
+			, Lea_TitleIinstructionalService	VARCHAR(50)
+			, Lea_K12LeaTitleISupportService	VARCHAR(50)
 		)
 
 		INSERT INTO #uniqueLEAs
-		SELECT DISTINCT LeaIdentifierSea, LEA_RecordStartDateTime, LEA_RecordEndDateTime, LEA_TitleIProgramType, LEA_TitleIinstructionalService, LEA_K12LeaTitleISupportService
+		SELECT DISTINCT LeaIdentifierSea, Lea_RecordStartDateTime, Lea_RecordEndDateTime, Lea_TitleIProgramType, Lea_TitleIinstructionalService, Lea_K12LeaTitleISupportService
 		FROM Staging.K12Organization
-		WHERE LEA_IsReportedFederally = 1
+		WHERE Lea_IsReportedFederally = 1
 		
 	--Update the #Facts table with IDEA data
 		UPDATE #Facts
@@ -251,7 +251,7 @@ BEGIN
 			AND ISNULL(sidt.LeaIdentifierSeaAccountability, '') = ISNULL(sppse.LeaIdentifierSeaAccountability, '')
 			AND ISNULL(sidt.SchoolIdentifierSea, '') = ISNULL(sppse.SchoolIdentifierSea, '')
 			AND sidt.IsPrimaryDisability = 1
-			AND sppse.ProgramParticipationEndDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
+			AND sppse.ProgramParticipationExitDate BETWEEN sidt.RecordStartDateTime AND ISNULL(sidt.RecordEndDateTime, GETDATE())
 		JOIN RDS.vwDimIdeaStatuses rdis
 			ON  ISNULL(sppse.SpecialEducationExitReason, 'MISSING') = ISNULL(rdis.SpecialEducationExitReasonMap, rdis.SpecialEducationExitReasonCode)
 			AND IdeaIndicatorCode = 'Yes'
@@ -271,13 +271,13 @@ BEGIN
 			ON sppse.StudentIdentifierState = el.StudentIdentifierState
 			AND ISNULL(sppse.LeaIdentifierSeaAccountability, '') = ISNULL(el.LeaIdentifierSeaAccountability, '')
 			AND ISNULL(sppse.SchoolIdentifierSea, '') = ISNULL(el.SchoolIdentifierSea, '')
-			AND sppse.ProgramParticipationEndDate BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, GETDATE())
+			AND sppse.ProgramParticipationExitDate BETWEEN el.EnglishLearner_StatusStartDate AND ISNULL(el.EnglishLearner_StatusEndDate, GETDATE())
 		JOIN RDS.vwDimEnglishLearnerStatuses rdels
 			ON ISNULL(CAST(el.EnglishLearnerStatus AS SMALLINT), -1) = ISNULL(rdels.EnglishLearnerStatusMap, -1)
 			AND PerkinsEnglishLearnerStatusCode = 'MISSING'
 
 		
-	--Final insert into RDS.FactK12StudentCounts table
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			[SchoolYearId]
 			, [FactTypeId]
@@ -286,9 +286,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -299,7 +299,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]
@@ -319,9 +319,9 @@ BEGIN
 			, [RaceId]
 			, [K12DemographicId]
 			, [StudentCount]
-			, [SEAId]
-			, [IEUId]
-			, [LEAId]
+			, [SeaId]
+			, [IeuId]
+			, [LeaId]
 			, [K12SchoolId]
 			, [K12StudentId]
 			, [IdeaStatusId]
@@ -332,7 +332,7 @@ BEGIN
 			, [AttendanceId]
 			, [CohortStatusId]
 			, [NOrDStatusId]
-			, [CTEStatusId]
+			, [CteStatusId]
 			, [K12EnrollmentStatusId]
 			, [EnglishLearnerStatusId]
 			, [HomelessnessStatusId]

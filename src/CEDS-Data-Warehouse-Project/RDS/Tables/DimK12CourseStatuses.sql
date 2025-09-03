@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimK12CourseStatuses] (
     [DimK12CourseStatusId]                 INT            IDENTITY (1, 1) NOT NULL,
-    [CourseLevelCharacteristicCode]        NVARCHAR (50)  NOT NULL,
-    [CourseLevelCharacteristicDescription] NVARCHAR (200) NOT NULL,
+    [CourseLevelCharacteristicCode]        NVARCHAR (50)  CONSTRAINT [DF_DimK12CourseStatuses_CourseLevelCharacteristicCode] DEFAULT ('MISSING') NOT NULL,
+    [CourseLevelCharacteristicDescription] NVARCHAR (200) CONSTRAINT [DF_DimK12CourseStatuses_CourseLevelCharacteristicDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimK12CourseStatuses] PRIMARY KEY CLUSTERED ([DimK12CourseStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

@@ -11,11 +11,6 @@ CREATE TABLE [Staging].[PsInstitution] (
     [DataCollectionName]                  NVARCHAR (100) NULL,
     [RecordStartDateTime]                 DATETIME       NULL,
     [RecordEndDateTime]                   DATETIME       NULL,
-    [OrganizationId]                      INT            NULL,
-    [OrganizationOperationalStatusId]     INT            NULL,
-    [OperationalStatusId]                 INT            NULL,
-    [MostPrevalentLevelOfInstitutionId]   INT            NULL,
-    [PredominantCalendarSystemId]         INT            NULL,
     CONSTRAINT [PK_PsInstitution] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimK12ProgramTypes] (
     [DimK12ProgramTypeId]    INT            IDENTITY (1, 1) NOT NULL,
-    [ProgramTypeCode]        NVARCHAR (50)  NOT NULL,
-    [ProgramTypeDescription] NVARCHAR (60)  NULL,
-    [ProgramTypeDefinition]  NVARCHAR (MAX) NULL,
+    [ProgramTypeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimK12ProgramTypes_ProgramTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [ProgramTypeDescription] NVARCHAR (60)  CONSTRAINT [DF_DimK12ProgramTypes_ProgramTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [ProgramTypeDefinition]  NVARCHAR (MAX) CONSTRAINT [DF_DimK12ProgramTypes_ProgramTypeDefinition] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimK12ProgramTypes] PRIMARY KEY CLUSTERED ([DimK12ProgramTypeId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

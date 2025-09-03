@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimFederalFinancialAccountClassifications](
-	[DimFederalFinancialAccountClassificationId] [int] IDENTITY(1,1) NOT NULL,
-	[FinancialAccountCategoryCode] [nvarchar](50) NULL,
-	[FinancialAccountCategoryDescription] [nvarchar](150) NULL,
-	[FinancialAccountProgramCodeCode] [nvarchar](50) NULL,
-	[FinancialAccountProgramCodeDescription] [nvarchar](150) NULL,
-	[FinancialAccountFundClassificationCode] [nvarchar](50) NULL,
-	[FinancialAccountFundClassificationDescription] [nvarchar](150) NULL,
+	[DimFederalFinancialAccountClassificationId] 						[int] IDENTITY(1,1) NOT NULL,
+	[FinancialAccountCategoryCode] 										[nvarchar] (50) 	CONSTRAINT [DF_DimFederalFinancialAccountClassifications_FinancialAccountCategoryCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountCategoryDescription] 								[nvarchar] (150) 	CONSTRAINT [DF_DimFederalFinancialAccountClassifications_FinancialAccountCategoryDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountProgramCodeCode] 									[nvarchar] (50) 	CONSTRAINT [DF_DimFederalFinancialAccountClassifications_FinancialAccountProgramCodeCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountProgramCodeDescription] 							[nvarchar] (150) 	CONSTRAINT [DF_DimFederalFinancialAccountClassifications_FinancialAccountProgramCodeDescription] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountFundClassificationCode] 							[nvarchar] (50) 	CONSTRAINT [DF_DimFederalFinancialAccountClassifications_FinancialAccountFundClassificationCode] DEFAULT ('MISSING') NOT NULL,
+	[FinancialAccountFundClassificationDescription] 					[nvarchar] (150) 	CONSTRAINT [DF_DimFederalFinancialAccountClassifications_FinancialAccountFundClassificationDescription] DEFAULT ('MISSING') NOT NULL,
  CONSTRAINT [PK_DimFederalFinancialAccountClassifications] PRIMARY KEY NONCLUSTERED 
 (
 	[DimFederalFinancialAccountClassificationId] ASC

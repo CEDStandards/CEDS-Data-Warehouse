@@ -6,6 +6,7 @@ CREATE TABLE [RDS].[DimK12Schools] (
     [NameOfInstitution]                         NVARCHAR (1000) NULL,
     [SchoolIdentifierNces]                      NVARCHAR (50)   NULL,
     [SchoolIdentifierSea]                       NVARCHAR (50)   NULL,
+    [SchoolIdentifierAct]                       NVARCHAR (50)   NULL,
     [SeaOrganizationName]                       NVARCHAR (1000) NULL,
     [SeaOrganizationIdentifierSea]              NVARCHAR (50)   NULL,
     [StateAnsiCode]                             NVARCHAR (10)   NULL,
@@ -46,7 +47,9 @@ CREATE TABLE [RDS].[DimK12Schools] (
     [IeuOrganizationName]                       NVARCHAR (1000) NULL,
     [IeuOrganizationIdentifierSea]              NVARCHAR (50)   NULL,
     [MailingAddressCountyAnsiCodeCode]          CHAR (5)        NULL,
+    [MailingAddressCountyName]                  NVARCHAR (30)   NULL,
     [PhysicalAddressCountyAnsiCodeCode]         CHAR (5)        NULL,
+    [PhysicalAddressCountyName]                 NVARCHAR (30)   NULL,
     [Longitude]                                 VARCHAR (20)    NULL,
     [Latitude]                                  VARCHAR (20)    NULL,
     [SchoolOperationalStatusEffectiveDate]      DATETIME        NULL,
@@ -60,7 +63,7 @@ CREATE TABLE [RDS].[DimK12Schools] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_DimSchools_StateANSICode]
+CREATE NONCLUSTERED INDEX [IX_DimSchools_StateAnsiCode]
     ON [RDS].[DimK12Schools]([StateAnsiCode] ASC);
 
 
@@ -588,4 +591,14 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000533' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolOperationalStatusEffectiveDate';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21524' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolOperationalStatusEffectiveDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierAct';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierAct';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'School Identifier' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierAct';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001069' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierAct';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21155' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12Schools', @level2type=N'COLUMN',@level2name=N'SchoolIdentifierAct';
 GO

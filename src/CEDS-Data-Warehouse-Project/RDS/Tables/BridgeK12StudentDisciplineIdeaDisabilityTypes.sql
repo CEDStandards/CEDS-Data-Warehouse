@@ -2,7 +2,7 @@ CREATE TABLE [RDS].[BridgeK12StudentDisciplineIdeaDisabilityTypes] (
     [BridgeK12StudentDisciplineIdeaDisabilityTypeId] INT IDENTITY (1, 1) NOT NULL,
     [IdeaDisabilityTypeId]                           INT NULL,
     [FactK12StudentDisciplineId]                     INT NULL,
-    CONSTRAINT [PK_BridgeK12StudentDisciplineIdeaDisabilityTypeId] PRIMARY KEY NONCLUSTERED ([BridgeK12StudentDisciplineIdeaDisabilityTypeId] ASC),
+    CONSTRAINT [PK_BridgeK12StudentDisciplineIdeaDisabilityTypes] PRIMARY KEY NONCLUSTERED ([BridgeK12StudentDisciplineIdeaDisabilityTypeId] ASC),
     CONSTRAINT [FK_BridgeK12StudentDisciplineIdeaDisabilityTypes_FactK12StudentDisciplines] FOREIGN KEY ([FactK12StudentDisciplineId]) REFERENCES [RDS].[FactK12StudentDisciplines] ([FactK12StudentDisciplineId]),
     CONSTRAINT [FK_BridgeK12StudentDisciplineIdeaDisabilityTypes_IdeaDisabilityTypeId] FOREIGN KEY ([IdeaDisabilityTypeId]) REFERENCES [RDS].[DimIdeaDisabilityTypes] ([DimIdeaDisabilityTypeId])
 );

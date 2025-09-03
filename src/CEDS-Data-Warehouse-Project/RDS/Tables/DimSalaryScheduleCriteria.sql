@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimSalaryScheduleCriteria](
-	[DimSalaryScheduleCriteriaId] [int] IDENTITY(1,1) NOT NULL,
-	[SalaryScheduleCriterionName] [nvarchar](100) NULL,
-	[SalaryScheduleCriterionDescription] [nvarchar](4000) NULL,	
-	[SalaryScheduleCriterionValue] [nvarchar](100) NULL,
+	[DimSalaryScheduleCriteriaId] 				[int] IDENTITY(1,1) NOT NULL,
+	[SalaryScheduleCriterionName] 				[nvarchar](100) 	CONSTRAINT [DF_DimSalaryScheduleCriteria_SalaryScheduleCriterionName] DEFAULT ('MISSING') NOT NULL,
+	[SalaryScheduleCriterionDescription] 		[nvarchar](4000)	CONSTRAINT [DF_DimSalaryScheduleCriteria_SalaryScheduleCriterionDescription] DEFAULT ('MISSING') NOT NULL,	
+	[SalaryScheduleCriterionValue] 				[nvarchar](100) 	CONSTRAINT [DF_DimSalaryScheduleCriteria_SalaryScheduleCriterionValue] DEFAULT ('MISSING') NOT NULL,
  CONSTRAINT [PK_DimSalaryScheduleCriteria] PRIMARY KEY NONCLUSTERED 
 (
 	[DimSalaryScheduleCriteriaId] ASC

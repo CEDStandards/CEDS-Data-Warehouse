@@ -11,11 +11,13 @@ CREATE TABLE [RDS].[FactK12ProgramParticipations] (
     [LeaIndividualizedEducationProgramId] INT    CONSTRAINT [DF_FactK12ProgramParticipations_LeaIndividualizedEducationProgramId] DEFAULT ((-1)) NOT NULL,
     [K12SchoolId]                         INT    CONSTRAINT [DF_FactK12ProgramParticipations_K12SchoolId] DEFAULT ((-1)) NOT NULL,
     [K12StudentId]                        BIGINT CONSTRAINT [DF_FactK12ProgramParticipations_K12StudentId] DEFAULT ((-1)) NOT NULL,
+    [K12Student_CurrentId]                BIGINT CONSTRAINT [DF_FactK12ProgramParticipations_K12Student_CurrentId] DEFAULT ((-1)) NOT NULL,
     [IdeaStatusId]                        INT    CONSTRAINT [DF_FactK12ProgramParticipations_IdeaStatusId] DEFAULT ((-1)) NOT NULL,
     [K12DemographicId]                    INT    CONSTRAINT [DF_FactK12ProgramParticipations_K12DemographicId] DEFAULT ((-1)) NOT NULL,
     [K12ProgramTypeId]                    INT    CONSTRAINT [DF_FactK12ProgramParticipations_K12ProgramTypeId] DEFAULT ((-1)) NOT NULL,
     [ProgramParticipationStartDateId]     INT    CONSTRAINT [DF_FactK12ProgramParticipations_ProgramParticipationStartDateId] DEFAULT ((-1)) NOT NULL,
     [ProgramParticipationExitDateId]      INT    CONSTRAINT [DF_FactK12ProgramParticipations_ProgramParticipationExitDateId] DEFAULT ((-1)) NOT NULL,
+    [TitleIIIStatusId]                    INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIStatusId] DEFAULT ((-1)) NOT NULL,
     [StudentCount]                        INT    CONSTRAINT [DF_FactK12ProgramParticipations_StudentCount] DEFAULT ((1)) NOT NULL,
     [TitleIIIAccountabilityProgressStatusCode] INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIAccountabilityProgressStatusCode] DEFAULT ((1)) NOT NULL,
     [ProficiencyTargetStatusForReadingAndLanguageArtsCodeId] INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIAccountabilityProgressStatusCodeID] DEFAULT ((1)) NOT NULL,
@@ -31,13 +33,15 @@ CREATE TABLE [RDS].[FactK12ProgramParticipations] (
     CONSTRAINT [FK_FactK12ProgramParticipations_K12ProgramTypes] FOREIGN KEY ([K12ProgramTypeId]) REFERENCES [RDS].[DimK12ProgramTypes] ([DimK12ProgramTypeId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_K12StudentId] FOREIGN KEY ([K12StudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
-    CONSTRAINT [FK_FactK12ProgramParticipations_LeaAccountabilityId] FOREIGN KEY ([LeaAccountabilityId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactK12ProgramParticipations_LeaAttendanceId] FOREIGN KEY ([LeaAttendanceId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactK12ProgramParticipations_LeaFundingId] FOREIGN KEY ([LeaFundingId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactK12ProgramParticipations_LeaGraduationID] FOREIGN KEY ([LeaGraduationId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
-    CONSTRAINT [FK_FactK12ProgramParticipations_LeaIndividualizedEducationProgramId] FOREIGN KEY ([LeaIndividualizedEducationProgramId]) REFERENCES [RDS].[DimLeas] ([DimLeaID]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_K12Student_CurrentId] FOREIGN KEY ([K12Student_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_LeaAccountabilityId] FOREIGN KEY ([LeaAccountabilityId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_LeaAttendanceId] FOREIGN KEY ([LeaAttendanceId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_LeaFundingId] FOREIGN KEY ([LeaFundingId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_LeaGraduationId] FOREIGN KEY ([LeaGraduationId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_LeaIndividualizedEducationProgramId] FOREIGN KEY ([LeaIndividualizedEducationProgramId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_ProgramParticipationExitDateId] FOREIGN KEY ([ProgramParticipationExitDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_ProgramParticipationStartDateId] FOREIGN KEY ([ProgramParticipationStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_ExitReasonCodeId] FOREIGN KEY ([ExitReasonCodeId]) REFERENCES [RDS].[DimExitReasonCodes] ([DimExitReasonCodeId]),
@@ -49,6 +53,11 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12ProgramParticipations_K12StudentId]
     ON [RDS].[FactK12ProgramParticipations]([K12StudentId] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12ProgramParticipations_K12Student_CurrentId]
+    ON [RDS].[FactK12ProgramParticipations]([K12Student_CurrentId] ASC);
 
 
 GO
@@ -139,6 +148,12 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12ProgramParticipations_LeaFundingId]
     ON [RDS].[FactK12ProgramParticipations]([LeaFundingId] ASC);
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12ProgramParticipations_TitleIIIStatusId]
+    ON [RDS].[FactK12ProgramParticipations]([TitleIIIStatusId] ASC);
 
 
 GO

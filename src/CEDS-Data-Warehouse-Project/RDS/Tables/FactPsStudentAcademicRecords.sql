@@ -3,12 +3,13 @@ CREATE TABLE [RDS].[FactPsStudentAcademicRecords] (
     [SchoolYearId]                              INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_SchoolYearId] DEFAULT ((-1)) NOT NULL,
     [CountDateId]                               INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_CountDateId] DEFAULT ((-1)) NOT NULL,
     [SeaId]                                     INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_SeaId] DEFAULT ((-1)) NOT NULL,
-    [PsInstitutionID]                           INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
+    [PsInstitutionId]                           INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsInstitutionId] DEFAULT ((-1)) NOT NULL,
     [PsStudentId]                               BIGINT          CONSTRAINT [DF_FactPsStudentAcademicRecords_PsStudentId] DEFAULT ((-1)) NOT NULL,
+    [PsStudent_CurrentId]                       BIGINT          CONSTRAINT [DF_FactPsStudentAcademicRecords_PsStudent_CurrentId] DEFAULT ((-1)) NOT NULL,
     [AcademicTermDesignatorId]                  INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_AcademicTermDesignatorId] DEFAULT ((-1)) NOT NULL,
     [PsDemographicId]                           INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsDemographicId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionStatusId]                     INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsInstitutionStatusId] DEFAULT ((-1)) NOT NULL,
-    [PsEnrollmentStatusId]                      BIGINT          CONSTRAINT [DF_FactPsStudentAcademicRecords_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
+    [PsEnrollmentStatusId]                      INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentEntryDateId]                     INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_EnrollmentEntryDateId] DEFAULT ((-1)) NOT NULL,
     [EnrollmentExitDateId]                      INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_EnrollmentExitDateId] DEFAULT ((-1)) NOT NULL,
     [DataCollectionId]                          INT             CONSTRAINT [DF_FactPsStudentAcademicRecords_DataCollectionId] DEFAULT ((-1)) NOT NULL,
@@ -26,9 +27,10 @@ CREATE TABLE [RDS].[FactPsStudentAcademicRecords] (
     CONSTRAINT [FK_FactPsStudentAcademicRecords_EnrollmentExitDateId] FOREIGN KEY ([EnrollmentExitDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsDemographicId] FOREIGN KEY ([PsDemographicId]) REFERENCES [RDS].[DimPsDemographics] ([DimPsDemographicId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsEnrollmentStatusId] FOREIGN KEY ([PsEnrollmentStatusId]) REFERENCES [RDS].[DimPsEnrollmentStatuses] ([DimPsEnrollmentStatusId]),
-    CONSTRAINT [FK_FactPsStudentAcademicRecords_PsInstitutionId] FOREIGN KEY ([PsInstitutionID]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionID]),
+    CONSTRAINT [FK_FactPsStudentAcademicRecords_PsInstitutionId] FOREIGN KEY ([PsInstitutionId]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsInstitutionStatusId] FOREIGN KEY ([PsInstitutionStatusId]) REFERENCES [RDS].[DimPsInstitutionStatuses] ([DimPsInstitutionStatusId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_PsStudentId] FOREIGN KEY ([PsStudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactPsStudentAcademicRecords_PsStudent_CurrentId] FOREIGN KEY ([PsStudent_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_CountDateId] FOREIGN KEY ([CountDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactPsStudentAcademicRecords_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId])
@@ -74,7 +76,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_AcademicTermDesigna
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_PsInstitutionId]
-    ON [RDS].[FactPsStudentAcademicRecords]([PsInstitutionID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+    ON [RDS].[FactPsStudentAcademicRecords]([PsInstitutionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
@@ -208,4 +210,9 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000362' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompletedCredit';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21361' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactPsStudentAcademicRecords', @level2type=N'COLUMN',@level2name=N'InstructionalActivityHoursCompletedCredit';
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactPsStudentAcademicRecords_PsStudent_CurrentId]
+    ON [RDS].[FactPsStudentAcademicRecords]([PsStudent_CurrentId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+
+
 GO

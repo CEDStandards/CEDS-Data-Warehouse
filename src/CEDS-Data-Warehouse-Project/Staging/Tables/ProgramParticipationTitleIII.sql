@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[ProgramParticipationTitleIII] (
-    [ID]                                                  INT            IDENTITY (1, 1) NOT NULL,
+    [Id]                                                  INT            IDENTITY (1, 1) NOT NULL,
     [SchoolIdentifierSea]                                 NVARCHAR (50)  NULL,
     [LeaIdentifierSeaAccountability]                      NVARCHAR (50)  NULL,
     [LeaIdentifierSeaAttendance]                          NVARCHAR (50)  NULL,
@@ -14,8 +14,8 @@ CREATE TABLE [Staging].[ProgramParticipationTitleIII] (
     [ResponsibleSchoolTypeIndividualizedEducationProgram] BIT            NULL,
     [ResponsibleSchoolTypeTransportation]                 BIT            NULL,
     [ResponsibleSchoolTypeIepServiceProvider]             BIT            NULL,
-    [ProgramParticipationBeginDate]                       DATE           NULL,
-    [ProgramParticipationEndDate]                         DATE           NULL,
+    [ProgramParticipationStartDate]                       DATE           NULL,
+    [ProgramParticipationExitDate]                         DATE           NULL,
     [TitleIIIImmigrantParticipationStatus]                BIT            NULL,
     [Proficiency_TitleIII]                                VARCHAR (100)  NULL,
     [TitleIIIAccountabilityProgressStatus]                VARCHAR (100)  NULL,
@@ -24,16 +24,11 @@ CREATE TABLE [Staging].[ProgramParticipationTitleIII] (
     [TitleIIILanguageInstructionProgramType]              VARCHAR (100)  NULL,
     [TitleIIIImmigrantStatus_StartDate]                   DATE           NULL,
     [TitleIIIImmigrantStatus_EndDate]                     DATE           NULL,
-    [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [DataCollectionID]                                    INT            NULL,
-    [PersonID]                                            INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [OrganizationPersonRoleID_TitleIIIProgram]            INT            NULL,
-    [OrganizationID_TitleIIIProgram]                      INT            NULL,
-    [PersonProgramParticipationId]                        INT            NULL,
-    [ImmigrationPersonStatusId]                           INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
-    CONSTRAINT [PK_ProgramParticipationTitleIII] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    [EnglishLearnerExitedStatus]                          BIT            NULL,
+    [SchoolYear]                                          SMALLINT       NULL,
+    [DataCollectionName]                                  NVARCHAR (100) NULL,
+    CONSTRAINT [PK_ProgramParticipationTitleIII] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 

@@ -6,7 +6,7 @@ CREATE TABLE [RDS].[DimEducationOrganizationNetworks] (
     [OrganizationName]                  NVARCHAR (60)  NOT NULL,
     [RecordStartDateTime]               DATETIME       NOT NULL,
     [RecordEndDateTime]                 DATETIME       NULL,
-    CONSTRAINT [PK_DimEducationOrganizationNetworkId] PRIMARY KEY CLUSTERED ([DimEducationOrganizationNetworkId] ASC)
+    CONSTRAINT [PK_DimEducationOrganizationNetworks] PRIMARY KEY CLUSTERED ([DimEducationOrganizationNetworkId] ASC)
 );
 
 

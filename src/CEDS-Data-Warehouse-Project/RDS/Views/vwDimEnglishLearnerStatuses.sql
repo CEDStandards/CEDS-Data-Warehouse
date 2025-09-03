@@ -1,4 +1,4 @@
-CREATE VIEW rds.vwDimEnglishLearnerStatuses 
+CREATE VIEW RDS.vwDimEnglishLearnerStatuses 
 AS
 	SELECT
 		DimEnglishLearnerStatusId
@@ -15,8 +15,8 @@ AS
 			WHEN 'No' THEN 0
 			ELSE -1
 		END AS PerkinsEnglishLearnerStatusMap
-	FROM rds.DimEnglishLearnerStatuses rdels
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
+	FROM RDS.DimEnglishLearnerStatuses rdels
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
 
 GO
 

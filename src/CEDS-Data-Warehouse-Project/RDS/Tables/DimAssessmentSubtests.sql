@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[DimAssessmentSubtests] (
     [DimAssessmentSubtestId]                     INT            IDENTITY (1, 1) NOT NULL,
     [AssessmentFormNumber]                       NVARCHAR (30)  NULL,
-    [AssessmentAcademicSubjectCode]              NVARCHAR (100) NOT NULL,
-    [AssessmentAcademicSubjectDescription]       NVARCHAR (400) NOT NULL,
+    [AssessmentAcademicSubjectCode]              NVARCHAR (100) CONSTRAINT [DF_DimAssessmentSubtests_AssessmentAcademicSubjectCode] DEFAULT ('MISSING') NOT NULL,
+    [AssessmentAcademicSubjectDescription]       NVARCHAR (400) CONSTRAINT [DF_DimAssessmentSubtests_AssessmentAcademicSubjectDescription] DEFAULT ('MISSING') NOT NULL,
     [AssessmentSubtestIdentifierInternal]        NVARCHAR (40)  NOT NULL,
     [AssessmentSubtestTitle]                     NVARCHAR (40)  NOT NULL,
     [AssessmentSubtestAbbreviation]              NVARCHAR (40)  NOT NULL,

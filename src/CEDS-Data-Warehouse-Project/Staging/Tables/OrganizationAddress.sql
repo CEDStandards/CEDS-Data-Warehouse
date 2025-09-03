@@ -15,9 +15,6 @@ CREATE TABLE [Staging].[OrganizationAddress] (
     [DataCollectionName]                NVARCHAR (100) NULL,
     [RecordStartDateTime]               DATETIME       NULL,
     [RecordEndDateTime]                 DATETIME       NULL,
-    [RefStateId]                        INT            NULL,
-    [OrganizationId]                    VARCHAR (100)  NULL,
-    [LocationId]                        VARCHAR (100)  NULL,
     [RunDateTime]                       DATETIME       NULL,
     CONSTRAINT [PK_OrganizationAddress] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 100, STATISTICS_NORECOMPUTE = ON, DATA_COMPRESSION = PAGE)
 );

@@ -1,11 +1,11 @@
 CREATE TABLE [RDS].[DimAssessmentStatuses] (
     [DimAssessmentStatusId]        INT            IDENTITY (1, 1) NOT NULL,
-    [ProgressLevelCode]            NVARCHAR (50)  NULL,
-    [ProgressLevelDescription]     NVARCHAR (100) NULL,
-    [ProgressLevelEdFactsCode]     NVARCHAR (50)  NULL,
-    [AssessedFirstTimeCode]        NVARCHAR (50)  NULL,
-    [AssessedFirstTimeDescription] NVARCHAR (100) NULL,
-    [AssessedFirstTimeEdFactsCode] NVARCHAR (50)  NULL,
+    [ProgressLevelCode]            NVARCHAR (50)  CONSTRAINT [DF_DimAssessmentStatuses_ProgressLevelCode] DEFAULT ('MISSING') NOT NULL,
+    [ProgressLevelDescription]     NVARCHAR (100) CONSTRAINT [DF_DimAssessmentStatuses_ProgressLevelDescription] DEFAULT ('MISSING') NOT NULL,
+    [ProgressLevelEdFactsCode]     NVARCHAR (50)  CONSTRAINT [DF_DimAssessmentStatuses_ProgressLevelEdFactsCode] DEFAULT ('MISSING') NOT NULL,
+    [AssessedFirstTimeCode]        NVARCHAR (50)  CONSTRAINT [DF_DimAssessmentStatuses_AssessedFirstTimeCode] DEFAULT ('MISSING') NOT NULL,
+    [AssessedFirstTimeDescription] NVARCHAR (100) CONSTRAINT [DF_DimAssessmentStatuses_AssessedFirstTimeDescription] DEFAULT ('MISSING') NOT NULL,
+    [AssessedFirstTimeEdFactsCode] NVARCHAR (50)  CONSTRAINT [DF_DimAssessmentStatuses_AssessedFirstTimeEdFactsCode] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimAssessmentStatuses] PRIMARY KEY CLUSTERED ([DimAssessmentStatusId] ASC) WITH (FILLFACTOR = 80)
 );
 

@@ -8,9 +8,9 @@ AS
 			when RaceCode = 'HispanicorLatinoEthnicity' then 'HispanicorLatinoEthnicity' 
 			else sssrd.InputCode end
 		  as RaceMap
-	FROM rds.DimRaces rdr
-	CROSS JOIN (SELECT DISTINCT SchoolYear FROM staging.SourceSystemReferenceData) rsy
-	LEFT JOIN staging.SourceSystemReferenceData sssrd
+	FROM RDS.DimRaces rdr
+	CROSS JOIN (SELECT DISTINCT SchoolYear FROM Staging.SourceSystemReferenceData) rsy
+	LEFT JOIN Staging.SourceSystemReferenceData sssrd
 		ON rdr.RaceCode = sssrd.OutputCode
 		AND sssrd.TableName = 'refRace'
 		AND rsy.SchoolYear = sssrd.SchoolYear

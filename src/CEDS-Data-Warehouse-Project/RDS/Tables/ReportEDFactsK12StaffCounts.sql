@@ -16,7 +16,7 @@ CREATE TABLE [RDS].[ReportEDFactsK12StaffCounts] (
     [ReportLevel]                                NVARCHAR (40)   NOT NULL,
     [ReportYear]                                 NVARCHAR (40)   NOT NULL,
     [SPECIALEDUCATIONSUPPORTSERVICESCATEGORY]    NVARCHAR (50)   NULL,
-    [StateANSICode]                              NVARCHAR (100)  NOT NULL,
+    [StateAnsiCode]                              NVARCHAR (100)  NOT NULL,
     [StateAbbreviationCode]                      NVARCHAR (100)  NOT NULL,
     [StateAbbreviationDescription]               NVARCHAR (1000) NOT NULL,
     [TableTypeAbbrv]                             NVARCHAR (MAX)  NULL,
@@ -144,15 +144,15 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000267' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21267' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateAbbreviationDescription';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The American National Standards Institute (ANSI) two-digit code for the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'State ANSI Code' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000424' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateANSICode';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=21414' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'StateAnsiCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'TITLEIIIACCOUNTABILITYPROGRESSSTATUS';
 GO
@@ -178,7 +178,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_G
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an educator holds the certification or licensure required by their assignment.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSCERTIFICATIONSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EDFacts Certification Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSCERTIFICATIONSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EdFacts Certification Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSCERTIFICATIONSTATUS';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001997' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSCERTIFICATIONSTATUS';
 GO
@@ -188,7 +188,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_G
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether teachers have been identified as inexperienced as defined by the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHERINEXPERIENCEDSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EDFacts Teacher Inexperienced Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHERINEXPERIENCEDSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EdFacts Teacher Inexperienced Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHERINEXPERIENCEDSTATUS';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001961' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHERINEXPERIENCEDSTATUS';
 GO
@@ -198,7 +198,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_G
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether teachers have been identified as teaching a subject or field for which they are not certified or licensed as defined by the state.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHEROUTOFFIELDSTATUS';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EDFacts Teacher Out of Field Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHEROUTOFFIELDSTATUS';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'EdFacts Teacher Out of Field Status' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHEROUTOFFIELDSTATUS';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001962' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'ReportEDFactsK12StaffCounts', @level2type=N'COLUMN',@level2name=N'EDFACTSTEACHEROUTOFFIELDSTATUS';
 GO

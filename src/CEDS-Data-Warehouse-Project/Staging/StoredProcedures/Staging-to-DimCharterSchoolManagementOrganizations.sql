@@ -7,17 +7,31 @@ BEGIN
 
 	IF OBJECT_ID(N'tempdb..#CharterSchoolManagementOrganizations') IS NOT NULL DROP TABLE #CharterSchoolManagementOrganizations
 
-	DECLARE @StateCode varchar(2), @StateName varchar(50), @StateANSICode varchar(5), @SchoolYear int
-	SELECT @StateCode = (select StateAbbreviationCode from Staging.StateDetail)
-	SELECT @StateName = (select [Description] from dbo.RefState where Code = @StateCode)
-	SELECT @StateANSICode = (select Code from dbo.RefStateANSICode where [Description] = @StateName)
-	SELECT @SchoolYear = (select SchoolYear from Staging.StateDetail)
+    DECLARE @SchoolYear INT, @StateCode VARCHAR(2), @StateName VARCHAR(50), @StateAnsiCode VARCHAR(5)
+    SELECT @SchoolYear = (	SELECT sy.SchoolYear
+							FROM RDS.DimSchoolYearDataMigrationTypes dm
+								INNER JOIN RDS.DimSchoolYears sy
+									ON dm.DimSchoolYearId = sy.DimSchoolYearId
+							WHERE IsSelected = 1
+							AND dm.DataMigrationTypeId = 3
+						)
+    SELECT @StateCode = StateAbbreviationCode FROM Staging.StateDetail WHERE SchoolYear = @SchoolYear
+	SELECT @StateName = (	SELECT CedsOptionSetDescription 
+							FROM CEDS.CedsOptionSetMapping 
+							WHERE CedsElementTechnicalName = 'StateAbbreviation' 
+							AND CedsOptionSetCode = @StateCode
+						)
+	SELECT @StateAnsiCode = (	SELECT CedsOptionSetCode 
+								FROM CEDS.CedsOptionSetMapping 
+								WHERE CedsElementTechnicalName = 'StateAnsiCode' 
+								AND CedsOptionSetDescription = @StateName
+							)
 
-	IF NOT EXISTS (SELECT 1 FROM rds.DimCharterSchoolManagementOrganizations WHERE DimCharterSchoolManagementOrganizationId = -1)
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimCharterSchoolManagementOrganizations WHERE DimCharterSchoolManagementOrganizationId = -1)
 	BEGIN
-		SET IDENTITY_INSERT rds.DimCharterSchoolManagementOrganizations ON
-		INSERT INTO rds.DimCharterSchoolManagementOrganizations (DimCharterSchoolManagementOrganizationId) VALUES (-1)
-		SET IDENTITY_INSERT rds.DimCharterSchoolManagementOrganizations off
+		SET IDENTITY_INSERT RDS.DimCharterSchoolManagementOrganizations ON
+		INSERT INTO RDS.DimCharterSchoolManagementOrganizations (DimCharterSchoolManagementOrganizationId) VALUES (-1)
+		SET IDENTITY_INSERT RDS.DimCharterSchoolManagementOrganizations off
 	END
 
 	CREATE TABLE #organizationTypes (
@@ -55,10 +69,10 @@ BEGIN
 		, scsmo.CharterSchoolManagementOrganizationOrganizationName
 		, @StateName			 											'StateAbbreviationDescription'
 		, @StateCode 														'StateAbbreviationCode'
-		, @StateANSICode 													'StateANSICode'
+		, @StateAnsiCode 													'StateAnsiCode'
 		, scsmo.CharterSchoolManagementOrganizationType						'CharterSchoolManagementOrganizationTypeCode'
 		, refcsmot.[Definition]												'CharterSchoolManagementOrganizationTypeDescription'
-		, ssrd.OutputCode				 									'CharterSchoolManagementOrganizationTypeEdfactsCode'
+		, ssrd.OutputCode				 									'CharterSchoolManagementOrganizationTypeEdFactsCode'
 		, smam.AddressStreetNumberAndName				 					'MailingAddressStreetNumberAndName'
 		, smam.AddressCity 													'MailingAddressCity'
 		, smam.StateAbbreviation 											'MailingAddressStateAbbreviation'
@@ -68,7 +82,7 @@ BEGIN
 		, smap.StateAbbreviation		 									'PhysicalAddressStateAbbreviation'
 		, smap.AddressPostalCode					 						'PhysicalAddressPostalCode'
 		, sop.TelephoneNumber				 				
-		, NULL 																'WebsiteAddress'
+		, NULL 																'WebSiteAddress'
 		, 0 																'OutOfStateIndicator'
 		, scsmo.RecordStartDateTime
 		, scsmo.RecordEndDateTime
@@ -102,14 +116,14 @@ BEGIN
 
 -- MERGE INTO DimCharterSchoolManagementOrganizations
 	BEGIN TRY
-		MERGE rds.DimCharterSchoolManagementOrganizations AS trgt
+		MERGE RDS.DimCharterSchoolManagementOrganizations AS trgt
 		USING #CharterSchoolManagementOrganizations AS src
 			ON trgt.CharterSchoolManagementOrganizationOrganizationIdentifierSea = src.CharterSchoolManagementOrganizationOrganizationIdentifierSea
 			AND ISNULL(trgt.RecordStartDateTime, '') = ISNULL(src.RecordStartDateTime, '')
 		WHEN MATCHED THEN UPDATE
 			SET trgt.CharterSchoolManagementOrganizationOrganizationName 	= src.CharterSchoolManagementOrganizationOrganizationName							
 				, trgt.StateAbbreviationCode 								= src.StateAbbreviationCode
-				, trgt.StateANSICode 										= src.StateANSICode
+				, trgt.StateAnsiCode 										= src.StateAnsiCode
 				, trgt.StateAbbreviationDescription 						= src.StateAbbreviationDescription
 				, trgt.CharterSchoolManagementOrganizationTypeCode 			= src.CharterSchoolManagementOrganizationTypeCode
 				, trgt.CharterSchoolManagementOrganizationTypeDescription 	= src.CharterSchoolManagementOrganizationTypeDescription
@@ -124,14 +138,14 @@ BEGIN
 				, trgt.PhysicalAddressStateAbbreviation						= src.PhysicalAddressStateAbbreviation
 				, trgt.PhysicalAddressPostalCode							= src.PhysicalAddressPostalCode
 				, trgt.TelephoneNumber										= src.TelephoneNumber
-				, trgt.WebsiteAddress										= src.WebsiteAddress
+				, trgt.WebSiteAddress										= src.WebSiteAddress
 				, trgt.RecordEndDateTime 									= src.RecordEndDateTime
 		WHEN NOT MATCHED BY TARGET THEN     --- Records Exists in Source but not in Target
 		INSERT (
 			CharterSchoolManagementOrganizationOrganizationName
 			, CharterSchoolManagementOrganizationOrganizationIdentifierSea
 			, StateAbbreviationCode
-			, StateANSICode
+			, StateAnsiCode
 			, StateAbbreviationDescription
 			, CharterSchoolManagementOrganizationTypeCode
 			, CharterSchoolManagementOrganizationTypeDescription
@@ -146,7 +160,7 @@ BEGIN
 			, PhysicalAddressStateAbbreviation
 			, PhysicalAddressPostalCode
 			, TelephoneNumber
-			, WebsiteAddress
+			, WebSiteAddress
 			, RecordStartDateTime
 			, RecordEndDateTime
 		)
@@ -154,7 +168,7 @@ BEGIN
 			src.CharterSchoolManagementOrganizationOrganizationName
 			,src.CharterSchoolManagementOrganizationOrganizationIdentifierSea
 			, StateAbbreviationCode
-			, StateANSICode
+			, StateAnsiCode
 			, StateAbbreviationDescription
 			, src.CharterSchoolManagementOrganizationTypeCode
 			, src.CharterSchoolManagementOrganizationTypeDescription
@@ -169,7 +183,7 @@ BEGIN
 			, src.PhysicalAddressStateAbbreviation
 			, src.PhysicalAddressPostalCode
 			, src.TelephoneNumber
-			, src.WebsiteAddress
+			, src.WebSiteAddress
 			, src.RecordStartDateTime
 			, src.RecordEndDateTime
 		);
@@ -179,15 +193,15 @@ BEGIN
 				startd.CharterSchoolManagementOrganizationOrganizationIdentifierSea
 				, startd.RecordStartDateTime
 				, min(endd.RecordStartDateTime) - 1 AS RecordEndDateTime 
-			FROM rds.DimCharterSchoolManagementOrganizations startd
-			JOIN rds.DimCharterSchoolManagementOrganizations endd
+			FROM RDS.DimCharterSchoolManagementOrganizations startd
+			JOIN RDS.DimCharterSchoolManagementOrganizations endd
 				ON startd.CharterSchoolManagementOrganizationOrganizationIdentifierSea = endd.CharterSchoolManagementOrganizationOrganizationIdentifierSea
 				AND startd.RecordStartDateTime < endd.RecordStartDateTime
 			GROUP BY startd.CharterSchoolManagementOrganizationOrganizationIdentifierSea, startd.RecordStartDateTime
 		) 
 
 		UPDATE charter SET RecordEndDateTime = upd.RecordEndDateTime 
-		FROM rds.DimCharterSchoolManagementOrganizations charter
+		FROM RDS.DimCharterSchoolManagementOrganizations charter
 		JOIN upd	
 			ON charter.CharterSchoolManagementOrganizationOrganizationIdentifierSea = upd.CharterSchoolManagementOrganizationOrganizationIdentifierSea
 			AND charter.RecordStartDateTime = upd.RecordStartDateTime
@@ -195,9 +209,12 @@ BEGIN
 	
 	END TRY
 	BEGIN CATCH
-		INSERT INTO app.DataMigrationHistories(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+		INSERT INTO App.DataMigrationHistories(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
 		VALUES	(getutcdate(), 2, 'RDS.DimCharterSchoolManagementOrganizations - Error Occurred - ' + CAST(ERROR_MESSAGE() AS VARCHAR(900)))
 
 	END CATCH
 	
 END
+GO
+
+

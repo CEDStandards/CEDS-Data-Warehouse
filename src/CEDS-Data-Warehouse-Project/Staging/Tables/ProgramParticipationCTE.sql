@@ -1,5 +1,5 @@
 CREATE TABLE [Staging].[ProgramParticipationCTE] (
-    [ID]                                                  INT            IDENTITY (1, 1) NOT NULL,
+    [Id]                                                  INT            IDENTITY (1, 1) NOT NULL,
     [RecordId]                                            VARCHAR (100)  NULL,
     [StudentIdentifierState]                              NVARCHAR (40)  NULL,
     [LeaIdentifierSeaAccountability]                      NVARCHAR (50)  NULL,
@@ -15,8 +15,8 @@ CREATE TABLE [Staging].[ProgramParticipationCTE] (
     [ResponsibleSchoolTypeIndividualizedEducationProgram] BIT            NULL,
     [ResponsibleSchoolTypeTransportation]                 BIT            NULL,
     [ResponsibleSchoolTypeIepServiceProvider]             BIT            NULL,
-    [ProgramParticipationBeginDate]                       DATE           NULL,
-    [ProgramParticipationEndDate]                         DATE           NULL,
+    [ProgramParticipationStartDate]                       DATE           NULL,
+    [ProgramParticipationExitDate]                         DATE           NULL,
     [DiplomaCredentialType]                               VARCHAR (100)  NULL,
     [DiplomaCredentialType_2]                             VARCHAR (100)  NULL,
     [DiplomaCredentialAwardDate]                          DATE           NULL,
@@ -36,13 +36,6 @@ CREATE TABLE [Staging].[ProgramParticipationCTE] (
     [CTENontraditionalCompletion]                         BIT            NULL,
     [CteExitReason]                                       VARCHAR (100)  NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
-    [DataCollectionID]                                    INT            NULL,
-    [PersonID]                                            INT            NULL,
-    [OrganizationID_School]                               INT            NULL,
-    [OrganizationPersonRoleID_School]                     INT            NULL,
-    [OrganizationPersonRoleID_CTEProgram]                 INT            NULL,
-    [OrganizationID_CTEProgram]                           INT            NULL,
-    [PersonProgramParticipationId]                        INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
     [ProgramIdentifier]                                   INT            NULL,
     [AttendanceEventDurationDay]                          INT            NULL,
@@ -50,7 +43,7 @@ CREATE TABLE [Staging].[ProgramParticipationCTE] (
 	[PerkinsNontraditionalTypeDescription]                NVARCHAR (100) NULL,
     [EntryGradeLevelCode]                                 INT            NULL,
 	
-    CONSTRAINT [PK_ProgramParticipationCTE] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
+    CONSTRAINT [PK_ProgramParticipationCTE] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 
 

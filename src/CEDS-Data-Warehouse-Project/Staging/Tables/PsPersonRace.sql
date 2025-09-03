@@ -8,11 +8,6 @@ CREATE TABLE [Staging].[PsPersonRace] (
     [RecordStartDateTime]         DATETIME       NULL,
     [RecordEndDateTime]           DATETIME       NULL,
     [DataCollectionName]          NVARCHAR (100) NULL,
-    [PersonId]                    INT            NULL,
-    [PersonDemographicRaceId]     INT            NULL,
-    [OrganizationId]              INT            NULL,
-    [RefRaceId]                   INT            NULL,
-    [RefAcademicTermDesignatorId] INT            NULL,
     [RunDateTime]                 DATETIME       NULL,
     CONSTRAINT [PK_PsPersonRace] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
@@ -20,26 +15,20 @@ CREATE TABLE [Staging].[PsPersonRace] (
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_PsPersonRace_RefRaceId]
-    ON [Staging].[PsPersonRace]([RefRaceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+CREATE NONCLUSTERED INDEX [IX_PsPersonRace_RaceType]
+    ON [Staging].[PsPersonRace]([RaceType] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
 
-CREATE NONCLUSTERED INDEX [IX_PsPersonRace_RefAcademicTermDesignatorId]
-    ON [Staging].[PsPersonRace]([RefAcademicTermDesignatorId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+CREATE NONCLUSTERED INDEX [IX_PsPersonRace_AcademicTermDesignator]
+    ON [Staging].[PsPersonRace]([AcademicTermDesignator] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO
 
 CREATE NONCLUSTERED INDEX [IX_PsPersonRace_RecordStartDateTime]
     ON [Staging].[PsPersonRace]([RecordStartDateTime] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
-
-
-GO
-
-CREATE NONCLUSTERED INDEX [IX_PsPersonRace_PersonDemographicRaceId]
-    ON [Staging].[PsPersonRace]([PersonDemographicRaceId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 
 
 GO

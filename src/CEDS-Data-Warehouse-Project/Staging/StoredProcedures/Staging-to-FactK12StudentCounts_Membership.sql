@@ -1,7 +1,8 @@
+
 /**********************************************************************
 Author: AEM Corp
 Date:	2/17/2023
-Description: Migrates Membership Data from Staging to RDS.FactK12StudentCounts
+Description: Migrates Membership Data FROM Staging to RDS.FactK12StudentCounts
 
 NOTE: This Stored Procedure processes files: 033, 052
 ************************************************************************/
@@ -22,12 +23,18 @@ BEGIN
 		IF OBJECT_ID(N'tempdb..#vwEconomicallyDisadvantagedStatuses') IS NOT NULL DROP TABLE #vwEconomicallyDisadvantagedStatuses
 
 		DECLARE 
+		--@SchoolYear SMALLINT = 2024,
+
 		@FactTypeId INT,
 		@SchoolYearId int,
+		@SYStartDate date,
+		@SYEndDate date,
 		@MembershipDate date
 		
-	--Setting variables to be used in the select statements
-		
+		SET @SYStartDate = Staging.GetFiscalYearStartDate(@SchoolYear)
+		SET @SYEndDate = Staging.GetFiscalYearEndDate(@SchoolYear)
+
+	--Get the Membership date from Toggle (if set)
 		SELECT @SchoolYearId = DimSchoolYearId 
 		FROM RDS.DimSchoolYears
 		WHERE SchoolYear = @SchoolYear
@@ -37,7 +44,7 @@ BEGIN
 		JOIN App.ToggleResponses tr
 			ON tq.ToggleQuestionId = tr.ToggleQuestionId
 		WHERE tq.EmapsQuestionAbbrv = 'MEMBERDTE'
-
+ 
 		IF ISNULL(@MembershipDate, '') = ''
 		BEGIN
 			SELECT @MembershipDate = CAST(CAST(@SchoolYear - 1 AS CHAR(4)) + '-10-01' AS DATE)
@@ -47,43 +54,63 @@ BEGIN
 			SELECT @MembershipDate = CAST(CAST(@SchoolYear - 1 AS CHAR(4)) + '-' + CAST(MONTH(@MembershipDate) AS VARCHAR(2)) + '-' + CAST(DAY(@MembershipDate) AS VARCHAR(2)) AS DATE)
 		END
 
+	--Check if Grade 13, Ungraded, and/or Adult Education should be included based on Toggle responses
+		DECLARE @toggleGrade13 AS BIT
+		DECLARE @toggleUngraded AS BIT
+		DECLARE @toggleAdultEd AS BIT
 
---Check if Grade 13, Ungraded, and/or Adult Education should be included based on Toggle responses
-	declare @toggleGrade13 as bit
- 	declare @toggleUngraded as bit
-	declare @toggleAdultEd as bit
+		SELECT  @toggleGrade13 = ISNULL( CASE WHEN r.ResponseValue = 'true' THEN 1 ELSE 0 END, 0 ) 
+		FROM App.ToggleQuestions q 
+		LEFT OUTER JOIN App.ToggleResponses r 
+			ON r.ToggleQuestionId = q.ToggleQuestionId
+		WHERE q.EmapsQuestionAbbrv = 'CCDGRADE13'
 
-	select @toggleGrade13 = ISNULL( case when r.ResponseValue = 'true' then 1 else 0 end, 0 ) 
-	from app.ToggleQuestions q 
-	left outer join app.ToggleResponses r on r.ToggleQuestionId = q.ToggleQuestionId
-	where q.EmapsQuestionAbbrv = 'CCDGRADE13'
+		SELECT @toggleUngraded = ISNULL( CASE WHEN r.ResponseValue = 'true' THEN 1 ELSE 0 END, 0 ) 
+		FROM App.ToggleQuestions q 
+		LEFT OUTER JOIN App.ToggleResponses r 
+			ON r.ToggleQuestionId = q.ToggleQuestionId
+		WHERE q.EmapsQuestionAbbrv = 'CCDUNGRADED'
 
-	select @toggleUngraded = ISNULL( case when r.ResponseValue = 'true' then 1 else 0 end, 0 ) 
-	from app.ToggleQuestions q 
-	left outer join app.ToggleResponses r on r.ToggleQuestionId = q.ToggleQuestionId
-	where q.EmapsQuestionAbbrv = 'CCDUNGRADED'
+		SELECT @toggleAdultEd = ISNULL( CASE WHEN r.ResponseValue = 'true' THEN 1 ELSE 0 END, 0 )  
+		FROM App.ToggleQuestions q 
+		LEFT OUTER JOIN App.ToggleResponses r 
+			ON r.ToggleQuestionId = q.ToggleQuestionId
+		WHERE q.EmapsQuestionAbbrv = 'ADULTEDU'
 
-	select @toggleAdultEd = ISNULL( case when r.ResponseValue = 'true' then 1 else 0 end, 0 )  
-	from app.ToggleQuestions q 
-	left outer join app.ToggleResponses r on r.ToggleQuestionId = q.ToggleQuestionId
-	where q.EmapsQuestionAbbrv = 'ADULTEDU'
+		--temp table to hold valid grades to be included 
+		DECLARE @GradesList TABLE (GradeLevel varchar(3)) 
+		INSERT INTO @GradesList VALUES ('PK'),('KG'),('01'),('02'),('03'),('04'),('05'),('06'),('07'),('08'),('09'),('10'),('11'),('12')
 
-	--temp table to hold valid grades to be included 
-	DECLARE @GradesList TABLE (GradeLevel varchar(3)) 
-	INSERT INTO @GradesList VALUES ('PK'),('KG'),('01'),('02'),('03'),('04'),('05'),('06'),('07'),('08'),('09'),('10'),('11'),('12')
+		--Add the 3 additional grade levels if they should be included
+		IF @toggleGrade13 = 1
+		INSERT INTO @GradesList VALUES ('13')
 
-	--Add the 3 additional grade levels if they should be included
-	IF @toggleGrade13 = 1
-	INSERT INTO @GradesList VALUES ('13')
+		IF @toggleUngraded = 1
+		INSERT INTO @GradesList VALUES ('UG')
 
-	IF @toggleUngraded = 1
-	INSERT INTO @GradesList VALUES ('UG')
+		IF @toggleAdultEd = 1
+		INSERT INTO @GradesList VALUES ('ABE')
 
-	IF @toggleAdultEd = 1
-	INSERT INTO @GradesList VALUES ('ABE')
+	--Get the set of students from DimPeople to be used for the migrated SY
+		SELECT K12StudentStudentIdentifierState
+			, max(DimPersonId)								DimPersonId
+			, min(RecordStartDateTime)						RecordStartDateTime
+			, MAX(ISNULL(RecordEndDateTime, @SYEndDate))	RecordEndDateTime
+			, MAX(ISNULL(Birthdate, '1900-01-01'))			Birthdate
+		into #dimPeople
+		FROM RDS.DimPeople
+		where ((RecordStartDateTime <= @SYStartDate and RecordEndDateTime > @SYStartDate)
+			or (RecordStartDateTime > @SYStartDate and ISNULL(RecordEndDateTime, @SYEndDate) <= @SYEndDate))
+		and IsActiveK12Student = 1
+		group by K12StudentStudentIdentifierState
+		order by K12StudentStudentIdentifierState
 
+		create index IDX_dimPeople ON #dimPeople (K12StudentStudentIdentifierState, DimPersonId, RecordStartDateTime, RecordEndDateTime, Birthdate)
 
-
+	--reset the RecordStartDateTime if the date is prior to the default start date of 7/1
+		update #dimPeople
+		set RecordStartDateTime = @SYStartDate
+		where RecordStartDateTime < @SYStartDate
 
 	--Create the temp tables (and any relevant indexes) needed for this domain
 		SELECT *
@@ -117,11 +144,12 @@ BEGIN
 		CREATE CLUSTERED INDEX ix_tempvwEconomicallyDisadvantagedStatuses
 			ON #vwEconomicallyDisadvantagedStatuses (EconomicDisadvantageStatusCode, EligibilityStatusForSchoolFoodServiceProgramsCode);
 
-
+		--Set the correct Fact Type
 		SELECT @FactTypeId = DimFactTypeId 
-		FROM rds.DimFactTypes
-		WHERE FactTypeCode = 'membership'
+		FROM RDS.DimFactTypes
+		WHERE FactTypeCode = 'membership' --FactTypeId = 6
 
+		--Clear the Fact table of the data about to be migrated  
 		DELETE RDS.FactK12StudentCounts
 		WHERE SchoolYearId = @SchoolYearId 
 			AND FactTypeId = @FactTypeId
@@ -131,17 +159,16 @@ BEGIN
 		
 	--Create and load #Facts temp table
 		CREATE TABLE #Facts (
-			StagingId								int not null
-			, SchoolYearId							int null
+			  SchoolYearId							int null
 			, FactTypeId							int null
 			, GradeLevelId							int null
 			, AgeId									int null
 			, RaceId								int null
 			, K12DemographicId						int null
 			, StudentCount							int null
-			, SEAId									int null
-			, IEUId									int null
-			, LEAId									int null
+			, SeaId									int null
+			, IeuId									int null
+			, LeaId									int null
 			, K12SchoolId							int null
 			, K12StudentId							int null
 			, IdeaStatusId							int null
@@ -152,7 +179,7 @@ BEGIN
 			, AttendanceId							int null
 			, CohortStatusId						int null
 			, NOrDStatusId							int null
-			, CTEStatusId							int null
+			, CteStatusId							int null
 			, K12EnrollmentStatusId					int null
 			, EnglishLearnerStatusId				int null
 			, HomelessnessStatusId					int null
@@ -165,20 +192,18 @@ BEGIN
 			, LastQualifyingMoveDateId				int null
 		)
 
-
 		INSERT INTO #Facts
 		SELECT DISTINCT
-			ske.id														StagingId
-			, rsy.DimSchoolYearId										SchoolYearId
+			@SchoolYearId 												SchoolYearId
 			, @FactTypeId												FactTypeId
 			, ISNULL(rgls.DimGradeLevelId, -1)							GradeLevelId
 			, rda.DimAgeId												AgeId
 			, ISNULL(rdr.DimRaceId, -1)									RaceId
 			, ISNULL(rdkd.DimK12DemographicId, -1)						K12DemographicId
 			, 1															StudentCount
-			, ISNULL(rds.DimSeaId, -1)									SEAId
-			, -1														IEUId
-			, ISNULL(rdl.DimLeaID, -1)									LEAId
+			, ISNULL(rds.DimSeaId, -1)									SeaId
+			, -1														IeuId
+			, ISNULL(rdl.DimLeaId, -1)									LeaId
 			, ISNULL(rdpch.DimK12SchoolId, -1)							K12SchoolId
 			, ISNULL(rdp.DimPersonId, -1)								K12StudentId
 			, -1														IdeaStatusId
@@ -189,40 +214,65 @@ BEGIN
 			, -1														AttendanceId
 			, -1														CohortStatusId
 			, -1														NOrDStatusId 
-			, -1														CTEStatusId
+			, -1														CteStatusId
 			, -1														K12EnrollmentStatusId
 			, -1														EnglishLearnerStatusId
 			, -1														HomelessnessStatusId
 			, ISNULL(rdeds.DimEconomicallyDisadvantagedStatusId, -1)	EconomicallyDisadvantagedStatusId
-			, -1														FosterCareStatusId
+			, -1 														FosterCareStatusId
 			, -1														ImmigrantStatusId
 			, -1														PrimaryDisabilityTypeId
 			, -1														SpecialEducationServicesExitDateId 
 			, -1														MigrantStudentQualifyingArrivalDateId
 			, -1														LastQualifyingMoveDateId
 
-		FROM Staging.K12Enrollment ske
+		FROM Staging.K12Enrollment	ske		
 		JOIN RDS.DimSchoolYears rsy
 			ON ske.SchoolYear = rsy.SchoolYear
-		JOIN RDS.DimPeople rdp
-			ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
-			AND rdp.IsActiveK12Student = 1
-			AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
-			AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
-			AND ISNULL(ske.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
-			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
-			AND @MembershipDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, GETDATE())
+	--sea
 		JOIN RDS.DimSeas rds
-			ON @MembershipDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, GETDATE())
+			ON @MembershipDate BETWEEN rds.RecordStartDateTime AND ISNULL(rds.RecordEndDateTime, '1/1/9999')
+	--age
 		JOIN RDS.DimAges rda
 			ON RDS.Get_Age(ske.Birthdate, @MembershipDate) = rda.AgeValue
+	--demographics			
 		JOIN RDS.vwDimK12Demographics rdkd
-			ON rsy.SchoolYear = rdkd.SchoolYear
+			ON ske.SchoolYear = rdkd.SchoolYear
 			AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)	
+	--student info	
+		JOIN #dimPeople rdp
+			ON ske.StudentIdentifierState = rdp.K12StudentStudentIdentifierState
+			AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
+			AND @MembershipDate BETWEEN rdp.RecordStartDateTime AND ISNULL(rdp.RecordEndDateTime, '1/1/9999')
+	--lea
+		LEFT JOIN RDS.DimLeas rdl
+			ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
+			AND @MembershipDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, '1/1/9999')
+	--school
+		LEFT JOIN RDS.DimK12Schools rdpch
+			ON ske.SchoolIdentifierSea = rdpch.SchoolIdentifierSea
+			AND @MembershipDate BETWEEN rdpch.RecordStartDateTime AND ISNULL(rdpch.RecordEndDateTime, '1/1/9999')
+	  	LEFT JOIN Staging.K12Organization						org
+			ON ske.SchoolYear 											=	org.SchoolYear
+			AND	ISNULL(ske.SchoolIdentifierSea, '')						= 	ISNULL(org.SchoolIdentifierSea, '')
+			AND @MembershipDate BETWEEN org.School_RecordStartDateTime AND ISNULL(org.School_RecordEndDateTime, '1/1/9999')
+	--economically disadvantaged
+		LEFT JOIN Staging.PersonStatus ecodis
+			ON ske.SchoolYear 											= ecoDis.SchoolYear
+			AND ecodis.StudentIdentifierState							= ske.StudentIdentifierState
+			AND	ISNULL(ecodis.LeaIdentifierSeaAccountability, '')		= ISNULL(ske.LeaIdentifierSeaAccountability, '')
+			AND	ISNULL(ecodis.SchoolIdentifierSea, '')					= ISNULL(ske.SchoolIdentifierSea, '')
+			AND	@MembershipDate BETWEEN ecodis.EconomicDisadvantage_StatusStartDate AND ISNULL(ecodis.EconomicDisadvantage_StatusEndDate, '1/1/9999')
+		LEFT JOIN #vwEconomicallyDisadvantagedStatuses rdeds
+			ON rdeds.SchoolYear = ske.SchoolYear
+			AND ISNULL(ecodis.EligibilityStatusForSchoolFoodServicePrograms, 'MISSING') = ISNULL(rdeds.EligibilityStatusForSchoolFoodServiceProgramsMap, 'MISSING')
+			AND ISNULL(CAST(ecodis.NationalSchoolLunchProgramDirectCertificationIndicator AS SMALLINT), -1)  = ISNULL(rdeds.NationalSchoolLunchProgramDirectCertificationIndicatorMap, -1)
+			AND ISNULL(CAST(ecodis.EconomicDisadvantageStatus as SMALLINT), -1) = ISNULL(rdeds.EconomicDisadvantageStatusMap, -1)
+	--race	
 		LEFT JOIN #vwUnduplicatedRaceMap spr 
 			ON ske.StudentIdentifierState = spr.StudentIdentifierState
 			AND (ske.SchoolIdentifierSea = spr.SchoolIdentifierSea
-				OR ske.LEAIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
+				OR ske.LeaIdentifierSeaAccountability = spr.LeaIdentifierSeaAccountability)
 		LEFT JOIN #vwRaces rdr
 			ON ISNULL(rdr.RaceMap, rdr.RaceCode) =
 				CASE
@@ -230,34 +280,16 @@ BEGIN
 					WHEN spr.RaceMap IS NOT NULL THEN spr.RaceMap
 					ELSE 'Missing'
 				END
-		LEFT JOIN RDS.DimK12Schools rdpch
-			ON ske.SchoolIdentifierSea = rdpch.SchoolIdentifierSea
-			AND @MembershipDate BETWEEN rdpch.RecordStartDateTime AND ISNULL(rdpch.RecordEndDateTime, GETDATE())
-		LEFT JOIN Staging.PersonStatus sps	
-			ON ske.StudentIdentifierState = sps.StudentIdentifierState
-			AND ISNULL(ske.LeaIdentifierSeaAccountability, '') = ISNULL(sps.LeaIdentifierSeaAccountability, '')
-			AND ISNULL(ske.SchoolIdentifierSea, '') = ISNULL(sps.SchoolIdentifierSea, '')
-
-		LEFT JOIN #vwEconomicallyDisadvantagedStatuses rdeds
-			ON rdeds.SchoolYear = ske.SchoolYear
-			AND ISNULL(sps.EligibilityStatusForSchoolFoodServicePrograms, 'MISSING') = ISNULL(rdeds.EligibilityStatusForSchoolFoodServiceProgramsMap, 'MISSING')
-			AND ISNULL(CAST(sps.NationalSchoolLunchProgramDirectCertificationIndicator AS SMALLINT), -1)  = isnull(rdeds.NationalSchoolLunchProgramDirectCertificationIndicatorMap, -1)
-			AND ISNULL(CAST(sps.EconomicDisadvantageStatus as SMALLINT), -1) = ISNULL(rdeds.EconomicDisadvantageStatusMap, -1)
-
+	--grade
 		LEFT JOIN #vwGradeLevels rgls
 			ON rgls.SchoolYear = ske.SchoolYear
 			AND ske.GradeLevel = rgls.GradeLevelMap
 			AND rgls.GradeLevelTypeDescription = 'Entry Grade Level'
 
-		LEFT JOIN RDS.DimLeas rdl
-			ON ske.LeaIdentifierSeaAccountability = rdl.LeaIdentifierSea
-			AND @MembershipDate BETWEEN rdl.RecordStartDateTime AND ISNULL(rdl.RecordEndDateTime, GETDATE())
-
-		WHERE @MembershipDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, GETDATE())
-		AND GradeLevel IN (SELECT GradeLevel FROM @GradesList)
-
-
-	--Final insert into RDS.FactK12StudentCounts table
+	WHERE @MembershipDate BETWEEN ske.EnrollmentEntryDate AND ISNULL(ske.EnrollmentExitDate, '1/1/9999')
+		AND rgls.GradeLevelCode IN (SELECT GradeLevel FROM @GradesList) AND ske.SchoolYear = @SchoolYear
+		
+	--Final INSERT INTO RDS.FactK12StudentCounts table
 		INSERT INTO RDS.FactK12StudentCounts (
 			SchoolYearId
 			, FactTypeId
@@ -329,7 +361,12 @@ BEGIN
 
 	END TRY
 	BEGIN CATCH
-		INSERT INTO Staging.ValidationErrors VALUES ('Staging.Staging-to-FactK12StudentCounts_Membership', 'RDS.FactK12StudentCounts', 'FactK12StudentCounts', 'FactK12StudentCounts', ERROR_MESSAGE(), 1, NULL, GETDATE())
+			INSERT INTO App.DataMigrationHistories
+		(DataMigrationHistoryDate, DataMigrationTypeId, DataMigrationHistoryMessage) 
+		values	(getutcdate(), 2, 'ERROR: ' + ERROR_MESSAGE())
 	END CATCH
 
 END
+GO
+
+

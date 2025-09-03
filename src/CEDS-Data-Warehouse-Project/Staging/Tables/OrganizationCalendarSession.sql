@@ -8,10 +8,6 @@ CREATE TABLE [Staging].[OrganizationCalendarSession] (
     [SessionType]                   NVARCHAR (100) NULL,
     [AcademicTermDesignator]        NVARCHAR (100) NULL,
     [DataCollectionName]            NVARCHAR (50)  NULL,
-    [DataCollectionId]              INT            NULL,
-    [OrganizationId]                INT            NULL,
-    [OrganizationCalendarId]        INT            NULL,
-    [OrganizationCalendarSessionId] INT            NULL,
     CONSTRAINT [PK_Session] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

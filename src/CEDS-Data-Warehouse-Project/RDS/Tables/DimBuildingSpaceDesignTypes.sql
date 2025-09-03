@@ -1,7 +1,7 @@
 CREATE TABLE [RDS].[DimBuildingSpaceDesignTypes] (
     [DimBuildingSpaceDesignTypeId]       INT            IDENTITY (1, 1) NOT NULL,
-    [BuildingSpaceDesignTypeCode]        NVARCHAR (100) NOT NULL,
-    [BuildingSpaceDesignTypeDescription] NVARCHAR (300) NOT NULL,
+    [BuildingSpaceDesignTypeCode]        NVARCHAR (100) CONSTRAINT [DF_DimBuildingSpaceDesignTypes_BuildingSpaceDesignTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [BuildingSpaceDesignTypeDescription] NVARCHAR (300) CONSTRAINT [DF_DimBuildingSpaceDesignTypes_BuildingSpaceDesignTypeDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimBuildingSpaceDesignTypes] PRIMARY KEY CLUSTERED ([DimBuildingSpaceDesignTypeId] ASC)
 );
 

@@ -1,9 +1,9 @@
 CREATE TABLE [RDS].[DimPsAcademicAwardStatuses] (
     [DimPsAcademicAwardStatusId]                            INT            IDENTITY (1, 1) NOT NULL,
-    [PescAwardLevelTypeCode]                                NVARCHAR (50)  NULL,
-    [PescAwardLevelTypeDescription]                         NVARCHAR (400) NULL,
-    [ProfessionalOrTechnicalCredentialConferredCode]        NVARCHAR (50)  NULL,
-    [ProfessionalOrTechnicalCredentialConferredDescription] NVARCHAR (200) NULL,
+    [PescAwardLevelTypeCode]                                NVARCHAR (50)  CONSTRAINT [DF_DimPsAcademicAwardStatuses_PescAwardLevelTypeCode] DEFAULT ('MISSING') NOT NULL,
+    [PescAwardLevelTypeDescription]                         NVARCHAR (400) CONSTRAINT [DF_DimPsAcademicAwardStatuses_PescAwardLevelTypeDescription] DEFAULT ('MISSING') NOT NULL,
+    [ProfessionalOrTechnicalCredentialConferredCode]        NVARCHAR (50)  CONSTRAINT [DF_DimPsAcademicAwardStatuses_ProfessionalOrTechnicalCredentialConferredCode] DEFAULT ('MISSING') NOT NULL,
+    [ProfessionalOrTechnicalCredentialConferredDescription] NVARCHAR (200) CONSTRAINT [DF_DimPsAcademicAwardStatuses_ProfessionalOrTechnicalCredentialConferredDescription] DEFAULT ('MISSING') NOT NULL,
     CONSTRAINT [PK_DimPsAcademicAwardStatuses] PRIMARY KEY CLUSTERED ([DimPsAcademicAwardStatusId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

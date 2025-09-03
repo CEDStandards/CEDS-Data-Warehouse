@@ -23,10 +23,6 @@ CREATE TABLE [Staging].[K12StudentAddress] (
     [DataCollectionName]                             NVARCHAR (100) NULL,
     [RecordStartDateTime]                            DATETIME       NULL,
     [RecordEndDateTime]                              DATETIME       NULL,
-    [DataCollectionId]                               INT            NULL,
-    [RefStateId]                                     INT            NULL,
-    [OrganizationId]                                 NVARCHAR (100) NULL,
-    [LocationId]                                     NVARCHAR (100) NULL,
     [RunDateTime]                                    DATETIME       NULL,
     CONSTRAINT [PK_K12StudentAddress] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 100, STATISTICS_NORECOMPUTE = ON, DATA_COMPRESSION = PAGE)
 );

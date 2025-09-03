@@ -5,7 +5,7 @@ BEGIN
 
 	Begin Transaction
  
-	INSERT INTO rds.FactK12StudentCourseSections
+	INSERT INTO RDS.FactK12StudentCourseSections
 		(
 		  SchoolYearId
 		, DataCollectionId
@@ -19,7 +19,7 @@ BEGIN
 		, K12SchoolId
 		, K12StudentId
 		, K12DemographicId
-		, K12CourseId
+		, StateK12CourseId
 		, K12CourseStatusId
 		, ScedCodeId
 		, CipCodeId
@@ -94,7 +94,7 @@ BEGIN
 		AND ISNULL(ske.FirstName, '') = ISNULL(rdp.FirstName, '')
 		AND ISNULL(ske.MiddleName, '') = ISNULL(rdp.MiddleName, '')
 		AND ISNULL(ske.LastOrSurname, 'MISSING') = ISNULL(rdp.LastOrSurname, 'MISSING')
-		AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.BirthDate, '1/1/1900')
+		AND ISNULL(ske.Birthdate, '1/1/1900') = ISNULL(rdp.Birthdate, '1/1/1900')
 	LEFT JOIN RDS.vwDimK12Demographics rdkd
 		ON rsy.SchoolYear = rdkd.SchoolYear
 		AND ISNULL(ske.Sex, 'MISSING') = ISNULL(rdkd.SexMap, rdkd.SexCode)
@@ -125,13 +125,13 @@ BEGIN
 	JOIN RDS.DimK12Schools rdks
 		ON rfksc.K12SchoolId = rdks.DimK12SchoolId
 	JOIN RDS.DimLeas rdlsAcc
-		ON rfksc.LeaAccountabilityId = rdlsAcc.DimLeaID
+		ON rfksc.LeaAccountabilityId = rdlsAcc.DimLeaId
 	JOIN RDS.DimLeas rdlsAtt
-		ON rfksc.LeaAttendanceId = rdlsAtt.DimLeaID
+		ON rfksc.LeaAttendanceId = rdlsAtt.DimLeaId
 	JOIN RDS.DimLeas rdlsFun
-		ON rfksc.LeaFundingId = rdlsFun.DimLeaID
+		ON rfksc.LeaFundingId = rdlsFun.DimLeaId
 	JOIN RDS.DimLeas rdlsGrad
-		ON rfksc.LeaGraduationId = rdlsGrad.DimLeaID
+		ON rfksc.LeaGraduationId = rdlsGrad.DimLeaId
 	JOIN RDS.DimDataCollections rddc
 		ON rfksc.DataCollectionId = rddc.DimDataCollectionId
 	LEFT JOIN Staging.K12PersonRace skpr
@@ -165,3 +165,4 @@ BEGIN
 Commit Transaction
 
 END
+GO

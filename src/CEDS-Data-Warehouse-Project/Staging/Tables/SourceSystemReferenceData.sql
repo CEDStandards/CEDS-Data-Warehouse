@@ -5,6 +5,8 @@ CREATE TABLE [Staging].[SourceSystemReferenceData] (
     [TableFilter]                 VARCHAR (100)  NULL,
     [InputCode]                   NVARCHAR (200) NULL,
     [OutputCode]                  NVARCHAR (200) NULL,
+    [GlobalId]                    NVARCHAR (20)  NULL,
+    [ElementName]                 NVARCHAR (150) NULL, 
     CONSTRAINT [PK_SourceSystemReferenceData] PRIMARY KEY CLUSTERED ([SourceSystemReferenceDataId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

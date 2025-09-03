@@ -8,12 +8,12 @@ CREATE TABLE [Staging].[EarlyLearningChildOutcomeSummary] (
     [LeaIdentifierSeaGraduation]                     NVARCHAR (50)  NULL,
     [LeaIdentifierSeaIndividualizedEducationProgram] NVARCHAR (50)  NULL,
     [SchoolIdentifierSea]                            NVARCHAR (50)  NULL,
-    [COSRatingA]                                     NVARCHAR (100) NULL,
-    [COSProgressAIndicator]                          BIT            NULL,
-    [COSRatingB]                                     NVARCHAR (100) NULL,
-    [COSProgressBIndicator]                          BIT            NULL,
-    [COSRatingC]                                     NVARCHAR (100) NULL,
-    [COSProgresscIndicator]                          BIT            NULL,
+    [CosRatingA]                                     NVARCHAR (100) NULL,
+    [CosProgressAIndicator]                          BIT            NULL,
+    [CosRatingB]                                     NVARCHAR (100) NULL,
+    [CosProgressBIndicator]                          BIT            NULL,
+    [CosRatingC]                                     NVARCHAR (100) NULL,
+    [CosProgressCIndicator]                          BIT            NULL,
     [EarlyLearningOutcomeTimePoint]                  NVARCHAR (100) NULL,
     [EarlyLearningOutcomeDate]                       DATE           NULL,
     [DataCollectionName]                             NVARCHAR (100) NULL,
@@ -30,65 +30,65 @@ CREATE NONCLUSTERED INDEX [IX_Staging_EarlyLearningChildOutcomeSummary_DataColle
 
 GO
 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressAIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicates that the child demonstrates progress in positive social-emotional skills, including social relationships.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicates that the child demonstrates progress in positive social-emotional skills, including social relationships.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressAIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Progress A Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Progress A Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressAIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001504' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001504' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressAIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22476' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressAIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22476' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressAIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressBIndicator';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressBIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicates that the child demonstrates progress in acquisition and use of knowledge and skills, including early language/communication.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressBIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicates that the child demonstrates progress in acquisition and use of knowledge and skills, including early language/communication.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressBIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Progress B Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressBIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Progress B Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressBIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001505' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressBIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001505' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressBIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22477' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgressBIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22477' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressBIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgresscIndicator';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressCIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicates that the child demonstrates progress in use of appropriate behaviors to meet their needs.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgresscIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Indicates that the child demonstrates progress in use of appropriate behaviors to meet their needs.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressCIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Progress C Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgresscIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Progress C Indicator' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressCIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001506' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgresscIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001506' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressCIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22478' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSProgresscIndicator';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22478' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosProgressCIndicator';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingA';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingA';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Child''s level of functioning in positive social-emotional skills (including social relationships).' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingA';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Child''s level of functioning in positive social-emotional skills (including social relationships).' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingA';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Rating A' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingA';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Rating A' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingA';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001507' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingA';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001507' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingA';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22479' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingA';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22479' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingA';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingB';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingB';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Child''s level of functioning in the acquisition and use of knowledge and skills (including early language/communication.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingB';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Child''s level of functioning in the acquisition and use of knowledge and skills (including early language/communication.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingB';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Rating B' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingB';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Rating B' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingB';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001508' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingB';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001508' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingB';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22480' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingB';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22480' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingB';
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingC';
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingC';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Child''s level of functioning in the use of appropriate behaviors to meet their needs.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingC';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'Child''s level of functioning in the use of appropriate behaviors to meet their needs.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingC';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Rating C' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingC';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Child Outcomes Summary Rating C' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingC';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001509' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingC';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001509' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingC';
 GO
-EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22481' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'COSRatingC';
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22481' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'CosRatingC';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'EarlyLearningChildOutcomeSummary', @level2type=N'COLUMN',@level2name=N'DataCollectionName';
 GO

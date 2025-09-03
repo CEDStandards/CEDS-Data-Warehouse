@@ -1,13 +1,13 @@
 CREATE TABLE [RDS].[DimDates] (
     [DimDateId]      INT           IDENTITY (1, 1) NOT NULL,
-    [DateValue]      DATETIME2 (7) NULL,
-    [Day]            INT           NULL,
-    [DayOfWeek]      NVARCHAR (50) NULL,
-    [DayOfYear]      INT           NULL,
-    [Month]          INT           NULL,
-    [MonthName]      NVARCHAR (50) NULL,
-    [SubmissionYear] NVARCHAR (50) NULL,
-    [Year]           INT           NULL,
+    [DateValue]      DATETIME2 (7) CONSTRAINT [DF_DimDates_DateValue] DEFAULT ('1/1/1900') NOT NULL,
+    [Day]            INT           CONSTRAINT [DF_DimDates_Day] DEFAULT ((0)) NOT NULL,
+    [DayOfWeek]      NVARCHAR (50) CONSTRAINT [DF_DimDates_DayOfWeek] DEFAULT ('MISSING') NOT NULL,
+    [DayOfYear]      INT           CONSTRAINT [DF_DimDates_DayOfYear] DEFAULT ((0)) NOT NULL,
+    [Month]          INT           CONSTRAINT [DF_DimDates_Month] DEFAULT ((0)) NOT NULL,
+    [MonthName]      NVARCHAR (50) CONSTRAINT [DF_DimDates_MonthName] DEFAULT ('MISSING') NOT NULL,
+    [SubmissionYear] NVARCHAR (50) CONSTRAINT [DF_DimDates_SubmissionYear] DEFAULT ('MISSING') NOT NULL,
+    [Year]           INT           CONSTRAINT [DF_DimDates_Year] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_DimDates] PRIMARY KEY CLUSTERED ([DimDateId] ASC)
 );
 
