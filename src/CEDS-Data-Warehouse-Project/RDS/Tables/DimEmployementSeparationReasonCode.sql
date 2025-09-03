@@ -1,4 +1,4 @@
-CREATE TABLE [NHED].[DimEmploymentSeparationReasonCodes](
+CREATE TABLE [RDS].[DimEmploymentSeparationReasonCodes](
 	[EmploymentSeparationReasonCodeID] [int] IDENTITY(1,1) NOT NULL,
 	[EmploymentSeparationReasonCode] [char](1) NOT NULL,
 	[EmploymentSeparationReasonDescription] [varchar](20) NOT NULL,

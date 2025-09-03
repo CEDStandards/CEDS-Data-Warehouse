@@ -30,7 +30,7 @@ CREATE TABLE [RDS].[FactK12StudentAssessments] (
     [AssessmentResultScoreValueACTScore]      NVARCHAR (35) NULL,
     [AssessmentResultScoreValueSATScore]      NVARCHAR (35) NULL,
     [TitleISchoolSupplementalServicesEligibleStatus]  INT           CONSTRAINT [DF_FactK12StudentAssessments_TitleISchoolSupplementalServicesEligibleStatus] DEFAULT ((1)) NOT NULL,
-	[MigrantStatus]  INT           CONSTRAINT [DF_FactK12StudentAssessments_TitleISchoolSupplementalServicesEligibleStatus] DEFAULT ((1)) NOT NULL,
+	[MigrantStatus]  INT           CONSTRAINT [DF_FactK12StudentAssessments_MigrantStatus] DEFAULT ((1)) NOT NULL,
 	[HomelessnessStatus]  INT           CONSTRAINT [DF_FactK12StudentAssessments_HomelessnessStatus] DEFAULT ((1)) NOT NULL,
 	[ActiveMilitaryStatusIndicator]  INT           CONSTRAINT [DF_FactK12StudentAssessments_ActiveMilitaryStatusIndicator] DEFAULT ((1)) NOT NULL,
     CONSTRAINT [PK_FactK12StudentAssessments] PRIMARY KEY CLUSTERED ([FactK12StudentAssessmentId] ASC) WITH (FILLFACTOR = 80),

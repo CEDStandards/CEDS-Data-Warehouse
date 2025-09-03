@@ -1,4 +1,4 @@
-CREATE TABLE [NHED].[DimOrganizationBuildings](
+CREATE TABLE [RDS].[DimOrganizationBuildings](
     [DimOrganizationBuildingId]       INT            IDENTITY (1, 1) NOT NULL,
 	[FacilitiesIdentifier] [int] NOT NULL,
 	[FacilityBuildingName] [varchar](250) NULL,

@@ -40,7 +40,7 @@ CREATE TABLE [RDS].[FactK12ProgramParticipations] (
     CONSTRAINT [FK_FactK12ProgramParticipations_ProgramParticipationStartDateId] FOREIGN KEY ([ProgramParticipationStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
-    CONSTRAINT [FK_FactK12ProgramParticipations_SeaId] FOREIGN KEY ([ExitReasonCodeId]) REFERENCES [RDS].[DimExitReasonCodes] ([DimExitReasonCodeId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_ExitReasonCodeId] FOREIGN KEY ([ExitReasonCodeId]) REFERENCES [RDS].[DimExitReasonCodes] ([DimExitReasonCodeId]),
     
 );
 
