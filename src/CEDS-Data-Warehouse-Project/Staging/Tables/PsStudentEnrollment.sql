@@ -21,6 +21,23 @@ CREATE TABLE [Staging].[PsStudentEnrollment] (
     [PersonId]                          INT            NULL,
     [OrganizationPersonRoleId]          INT            NULL,
     [OrganizationId_PsInstitution]      INT            NULL,
+    [LEASupervisoryUnionIdentificationNumber] NVARCHAR (100) NULL,
+	[LeaIdentifierSea]                         NVARCHAR (50) NULL,
+	[SchoolIdentifierSea]                NVARCHAR (50) NULL,
+	[CourseBeginDate]                      DATETIME NULL,
+    [CourseEndDate]                      DATETIME NULL,
+	[BranchCode]                         NVARCHAR (50) NULL,
+	[NCESCollegeCourseMapCode1]          NVARCHAR (50) NULL,
+	[NCESCollegeCourseMapCode2]          NVARCHAR (50) NULL,
+	[PostsecondaryCourseTitle1]          NVARCHAR (255) NULL,
+	[PostsecondaryCourseTitle2]          NVARCHAR (255) NULL,
+    [StudentLevel]                       NVARCHAR (50) NULL,
+    [DegreeOrCertificateSeekingStudent]   NVARCHAR (50) NULL,
+    [FirstTimeFullTime]                   NVARCHAR (50) NULL,
+    [GradePointAverage]                   NVARCHAR (50) NULL,
+    [CreditsEarned]                      NVARCHAR (50) NULL,
+    [PostsecondaryEnrollmentType]         NVARCHAR (50) NULL,
+    [AcademicAwardLevelConferred]        NVARCHAR (1) NULL,
     CONSTRAINT [PK_PsTermEnrollment] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

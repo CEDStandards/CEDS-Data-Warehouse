@@ -52,6 +52,8 @@ CREATE TABLE [RDS].[DimK12Schools] (
     [SchoolOperationalStatusEffectiveDate]      DATETIME        NULL,
     [AdministrativeFundingControlCode]          NVARCHAR (50)   NULL,
     [AdministrativeFundingControlDescription]   NVARCHAR (200)  NULL,
+    [SchoolLevel]                               NVARCHAR (5)    NULL,
+    [CharterSchoolOpenEnrollmentIndicator]      BIT NULL,
     CONSTRAINT [PK_DimK12Schools] PRIMARY KEY CLUSTERED ([DimK12SchoolId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

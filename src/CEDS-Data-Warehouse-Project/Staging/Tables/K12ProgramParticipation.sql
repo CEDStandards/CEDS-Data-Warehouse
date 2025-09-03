@@ -27,6 +27,12 @@ CREATE TABLE [Staging].[K12ProgramParticipation] (
     [ProgramOrganizationId_School]                        INT            NULL,
     [OrganizationPersonRoleId_LEA]                        INT            NULL,
     [OrganizationPersonRoleId_School]                     INT            NULL,
+    [TitleIIIAccountabilityProgressStatusCode]            BIT            NULL,
+	[ProficiencyTargetStatusForReadingAndLanguageArtsCode] NVARCHAR (50) NULL,
+	[EnglishLearnerStatus]                               BIT            NULL,
+	[TitleIIIEnglishLearnerParticipationStatus]         BIT            NULL,
+	[ExitReasonCode]                                    INT            NULL,
+	[ProgramTypeDescription]                         NVARCHAR (500) NULL,
     CONSTRAINT [PK_K12ProgramParticipation] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

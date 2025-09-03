@@ -44,6 +44,12 @@ CREATE TABLE [Staging].[ProgramParticipationCTE] (
     [OrganizationID_CTEProgram]                           INT            NULL,
     [PersonProgramParticipationId]                        INT            NULL,
     [RunDateTime]                                         DATETIME       NULL,
+    [ProgramIdentifier]                                   INT            NULL,
+    [AttendanceEventDurationDay]                          INT            NULL,
+	[PerkinsNontraditionalTypeCode]                       INT            NULL,
+	[PerkinsNontraditionalTypeDescription]                NVARCHAR (100) NULL,
+    [EntryGradeLevelCode]                                 INT            NULL,
+	
     CONSTRAINT [PK_ProgramParticipationCTE] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

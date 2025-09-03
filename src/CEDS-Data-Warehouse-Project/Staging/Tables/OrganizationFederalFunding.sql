@@ -3,6 +3,7 @@ CREATE TABLE [Staging].[OrganizationFederalFunding] (
     [OrganizationIdentifier]              NVARCHAR (50)   NULL,
     [OrganizationType]                    VARCHAR (100)   NULL,
     [FederalProgramCode]                  VARCHAR (10)    NULL,
+    [ProgramName]                         VARCHAR (50)    NULL,
     [FederalProgramsFundingAllocation]    NUMERIC (12, 2) NULL,
     [ParentalInvolvementReservationFunds] NUMERIC (12, 2) NULL,
     [REAPAlternativeFundingStatusCode]    VARCHAR (100)   NULL,

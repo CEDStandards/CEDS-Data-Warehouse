@@ -29,9 +29,17 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
     [ProgramTypeCode]                            NVARCHAR (100) NULL,
     [SchoolYear]                                 SMALLINT       NULL,
     [DataCollectionName]                         NVARCHAR (100) NULL,
+    [StaffCompensationTotalSalary]                 DECIMAL (5, 4) NULL,
+    [WageCollectionCode]                           NVARCHAR (100) NULL,
     [RecordStartDateTime]                    DATETIME       NULL,
     [RecordEndDateTime]                      DATETIME       NULL,
     [RunDateTime]                            DATETIME       NULL,
+    [EmploymentSeparationReasonCode]         CHAR(1) NULL,
+    [PrefixCode]                             NVARCHAR (10) NULL,
+	[GenerationCodeOrSuffix]                  NVARCHAR (10) NULL,
+	[CredentialSourceCode]                    NVARCHAR (10) NULL,
+	[CredentialDefinitionDateEffective]        DATETIME NULL,
+	[CredentialExpirationDate]                  DATETIME NULL,
     CONSTRAINT [PK_K12StaffAssignment] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

@@ -42,6 +42,10 @@ CREATE TABLE [Staging].[AssessmentResult] (
     [OrganizationID_School]                          INT           NULL,
     [OrganizationPersonRoleId_School]                INT           NULL,
     [RunDateTime]                                    DATETIME      NULL,
+    [TitleISchoolSupplementalServicesEligibleStatus]   INT           NULL,
+	[MigrantStatus]                                     INT           NULL,
+	[HomelessnessStatus]                                 INT           NULL,
+	[ActiveMilitaryStatusIndicator]                     BIT           NULL,
     CONSTRAINT [PK_AssessmentResult] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

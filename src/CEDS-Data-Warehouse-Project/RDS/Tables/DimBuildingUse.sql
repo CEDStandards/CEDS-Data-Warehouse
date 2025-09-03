@@ -1,0 +1,9 @@
+CREATE TABLE [RDS].[DimBuildingUse](
+	[BuildingUseTypeId] [int] IDENTITY(1,1) NOT NULL,
+	[BuildingUseTypeCode] [varchar](50) NULL,
+	[BuildingUseTypeDescription] [varchar](50) NULL,
+ CONSTRAINT [PK_BuildingUseID] PRIMARY KEY NONCLUSTERED 
+(
+	[BuildingUseTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
