@@ -36,9 +36,6 @@ SELECT
     d.[K12StaffStaffMemberIdentifierDistrict],
     d.[PsStaffStaffMemberIdentifierState],
     d.[PersonIdentifierDriversLicense],
-    d.[PersonIdentifierSSN],
-    d.[PersonIdentifierState],
-    d.[StudentIdentifierState],
     d.[IsActiveELChild],
     d.[IsActiveK12Student],
     d.[IsActivePsStudent],
@@ -55,10 +52,7 @@ SELECT
     d.[TelephoneNumberMobile],
     d.[TelephoneNumberWork],
     d.[PersonalTitleOrPrefix],
-    d.[PositionTitle],
-    d.[GenerationCodeOrSuffix],
-    d.[HighestLevelOfEducationCompletedCode],
-    d.[HighestLevelOfEducationCompletedDescription]
+    d.[PositionTitle]
 INTO #DimPeople_Current_Src
 FROM RDS.DimPeople d
 WHERE d.RecordEndDateTime IS NULL;
@@ -85,9 +79,6 @@ UPDATE tgt
         [K12StaffStaffMemberIdentifierDistrict] = src.[K12StaffStaffMemberIdentifierDistrict],
         [PsStaffStaffMemberIdentifierState] = src.[PsStaffStaffMemberIdentifierState],
         [PersonIdentifierDriversLicense] = src.[PersonIdentifierDriversLicense],
-        [PersonIdentifierSSN] = src.[PersonIdentifierSSN],
-        [PersonIdentifierState] = src.[PersonIdentifierState],
-        [StudentIdentifierState] = src.[StudentIdentifierState],
         [IsActiveELChild] = src.[IsActiveELChild],
         [IsActiveK12Student] = src.[IsActiveK12Student],
         [IsActivePsStudent] = src.[IsActivePsStudent],
@@ -104,12 +95,13 @@ UPDATE tgt
         [TelephoneNumberMobile] = src.[TelephoneNumberMobile],
         [TelephoneNumberWork] = src.[TelephoneNumberWork],
         [PersonalTitleOrPrefix] = src.[PersonalTitleOrPrefix],
-        [PositionTitle] = src.[PositionTitle],
-        [GenerationCodeOrSuffix] = src.[GenerationCodeOrSuffix],
-        [HighestLevelOfEducationCompletedCode] = src.[HighestLevelOfEducationCompletedCode],
-        [HighestLevelOfEducationCompletedDescription] = src.[HighestLevelOfEducationCompletedDescription]
+        [PositionTitle] = src.[PositionTitle]
 FROM RDS.DimPeople_Current tgt
-JOIN #DimPeople_Current_Src src ON src.DimPersonId = tgt.DimPersonId;
+JOIN #DimPeople_Current_Src src 
+    ON ISNULL(src.K12StudentStudentIdentifierState, '') = ISNULL(tgt.K12StudentStudentIdentifierState, '')
+    AND ISNULL(src.K12StaffStaffMemberIdentifierState, '') = ISNULL(tgt.K12StaffStaffMemberIdentifierState, '')
+    AND src.Birthdate = tgt.Birthdate
+WHERE tgt.DimPersonId = src.DimPersonId;
 
 -- Insert missing current rows, preserving DimPersonId
 IF EXISTS (
@@ -119,39 +111,32 @@ IF EXISTS (
     WHERE t.DimPersonId IS NULL
 )
 BEGIN
-    PRINT 'Inserting new rows into RDS.DimPeople_Current with IDENTITY_INSERT ON';
-    SET IDENTITY_INSERT RDS.DimPeople_Current ON;
+    PRINT 'Inserting new rows into RDS.DimPeople_Current';
     INSERT INTO RDS.DimPeople_Current (
-        [DimPersonId],
         [FirstName], [MiddleName], [LastOrSurname], [Birthdate],
         [ELChildChildIdentifierState],
         [K12StudentStudentIdentifierState], [K12StudentStudentIdentifierDistrict], [K12StudentStudentIdentifierNationalMigrant],
         [PsStudentStudentIdentifierState], [AeStudentStudentIdentifierState], [WorkforceProgramParticipantPersonIdentifierState],
         [ELStaffStaffMemberIdentifierState], [K12StaffStaffMemberIdentifierState], [K12StaffStaffMemberIdentifierDistrict], [PsStaffStaffMemberIdentifierState],
-        [PersonIdentifierDriversLicense], [PersonIdentifierSSN], [PersonIdentifierState], [StudentIdentifierState],
         [IsActiveELChild], [IsActiveK12Student], [IsActivePsStudent], [IsActiveAeStudent], [IsActiveWorkforceProgramParticipant], [IsActiveELStaff], [IsActiveK12Staff], [IsActivePsStaff],
         [ElectronicMailAddressHome], [ElectronicMailAddressOrganizational], [ElectronicMailAddressWork],
-        [TelephoneNumberFax], [TelephoneNumberHome], [TelephoneNumberMobile], [TelephoneNumberWork],
-        [PersonalTitleOrPrefix], [PositionTitle], [GenerationCodeOrSuffix],
-        [HighestLevelOfEducationCompletedCode], [HighestLevelOfEducationCompletedDescription]
+        [TelephoneNumberFax], [TelephoneNumberHome], [TelephoneNumberMobile], [TelephoneNumberWork]
     )
     SELECT 
-        s.[DimPersonId],
         s.[FirstName], s.[MiddleName], s.[LastOrSurname], s.[Birthdate],
         s.[ELChildChildIdentifierState],
         s.[K12StudentStudentIdentifierState], s.[K12StudentStudentIdentifierDistrict], s.[K12StudentStudentIdentifierNationalMigrant],
         s.[PsStudentStudentIdentifierState], s.[AeStudentStudentIdentifierState], s.[WorkforceProgramParticipantPersonIdentifierState],
         s.[ELStaffStaffMemberIdentifierState], s.[K12StaffStaffMemberIdentifierState], s.[K12StaffStaffMemberIdentifierDistrict], s.[PsStaffStaffMemberIdentifierState],
-        s.[PersonIdentifierDriversLicense], s.[PersonIdentifierSSN], s.[PersonIdentifierState], s.[StudentIdentifierState],
         s.[IsActiveELChild], s.[IsActiveK12Student], s.[IsActivePsStudent], s.[IsActiveAeStudent], s.[IsActiveWorkforceProgramParticipant], s.[IsActiveELStaff], s.[IsActiveK12Staff], s.[IsActivePsStaff],
         s.[ElectronicMailAddressHome], s.[ElectronicMailAddressOrganizational], s.[ElectronicMailAddressWork],
-        s.[TelephoneNumberFax], s.[TelephoneNumberHome], s.[TelephoneNumberMobile], s.[TelephoneNumberWork],
-        s.[PersonalTitleOrPrefix], s.[PositionTitle], s.[GenerationCodeOrSuffix],
-        s.[HighestLevelOfEducationCompletedCode], s.[HighestLevelOfEducationCompletedDescription]
+        s.[TelephoneNumberFax], s.[TelephoneNumberHome], s.[TelephoneNumberMobile], s.[TelephoneNumberWork]
     FROM #DimPeople_Current_Src s
-    LEFT JOIN RDS.DimPeople_Current t ON t.DimPersonId = s.DimPersonId
+    LEFT JOIN RDS.DimPeople_Current t
+        ON ISNULL(s.K12StudentStudentIdentifierState, '') = ISNULL(t.K12StudentStudentIdentifierState, '')
+        AND ISNULL(s.K12StaffStaffMemberIdentifierState, '') = ISNULL(t.K12StaffStaffMemberIdentifierState, '')
+        AND s.Birthdate = t.Birthdate
     WHERE t.DimPersonId IS NULL;
-    SET IDENTITY_INSERT RDS.DimPeople_Current OFF;
 END
 
 COMMIT TRAN;
@@ -163,7 +148,10 @@ IF OBJECT_ID('tempdb..#DimPeople_HistoricalToCurrent') IS NOT NULL DROP TABLE #D
     -- Direct mapping for current rows where IDs are identical between DimPeople and DimPeople_Current
     SELECT d.DimPersonId AS HistoricalDimPersonId, c.DimPersonId AS CurrentDimPersonId
     FROM RDS.DimPeople d
-    JOIN RDS.DimPeople_Current c ON c.DimPersonId = d.DimPersonId
+    JOIN RDS.DimPeople_Current c 
+        ON ISNULL(d.K12StudentStudentIdentifierState, '') = ISNULL(c.K12StudentStudentIdentifierState, '')
+        AND ISNULL(d.K12StaffStaffMemberIdentifierState, '') = ISNULL(c.K12StaffStaffMemberIdentifierState, '')
+        AND d.Birthdate = c.Birthdate
     WHERE d.RecordEndDateTime IS NULL
 )
 , candidates AS (
@@ -178,8 +166,6 @@ IF OBJECT_ID('tempdb..#DimPeople_HistoricalToCurrent') IS NOT NULL DROP TABLE #D
             CASE WHEN d.K12StaffStaffMemberIdentifierDistrict IS NOT NULL AND d.K12StaffStaffMemberIdentifierDistrict = c.K12StaffStaffMemberIdentifierDistrict THEN 90 ELSE 0 END +
             CASE WHEN d.ELStaffStaffMemberIdentifierState IS NOT NULL AND d.ELStaffStaffMemberIdentifierState = c.ELStaffStaffMemberIdentifierState THEN 80 ELSE 0 END +
             CASE WHEN d.WorkforceProgramParticipantPersonIdentifierState IS NOT NULL AND d.WorkforceProgramParticipantPersonIdentifierState = c.WorkforceProgramParticipantPersonIdentifierState THEN 80 ELSE 0 END +
-            CASE WHEN d.PersonIdentifierState IS NOT NULL AND d.PersonIdentifierState = c.PersonIdentifierState THEN 70 ELSE 0 END +
-            CASE WHEN d.PersonIdentifierSSN IS NOT NULL AND d.PersonIdentifierSSN = c.PersonIdentifierSSN THEN 60 ELSE 0 END +
             CASE WHEN d.PersonIdentifierDriversLicense IS NOT NULL AND d.PersonIdentifierDriversLicense = c.PersonIdentifierDriversLicense THEN 50 ELSE 0 END +
             CASE WHEN d.Birthdate IS NOT NULL AND c.Birthdate IS NOT NULL AND d.Birthdate = c.Birthdate THEN 5 ELSE 0 END +
             CASE WHEN d.FirstName IS NOT NULL AND c.FirstName IS NOT NULL AND d.FirstName = c.FirstName THEN 2 ELSE 0 END +
@@ -193,9 +179,8 @@ IF OBJECT_ID('tempdb..#DimPeople_HistoricalToCurrent') IS NOT NULL DROP TABLE #D
       OR (d.K12StaffStaffMemberIdentifierDistrict IS NOT NULL AND d.K12StaffStaffMemberIdentifierDistrict = c.K12StaffStaffMemberIdentifierDistrict)
       OR (d.ELStaffStaffMemberIdentifierState IS NOT NULL AND d.ELStaffStaffMemberIdentifierState = c.ELStaffStaffMemberIdentifierState)
       OR (d.WorkforceProgramParticipantPersonIdentifierState IS NOT NULL AND d.WorkforceProgramParticipantPersonIdentifierState = c.WorkforceProgramParticipantPersonIdentifierState)
-      OR (d.PersonIdentifierState IS NOT NULL AND d.PersonIdentifierState = c.PersonIdentifierState)
-      OR (d.PersonIdentifierSSN IS NOT NULL AND d.PersonIdentifierSSN = c.PersonIdentifierSSN)
       OR (d.PersonIdentifierDriversLicense IS NOT NULL AND d.PersonIdentifierDriversLicense = c.PersonIdentifierDriversLicense)
+	  )
 , direct_or_candidates AS (
     SELECT HistoricalDimPersonId, CurrentDimPersonId, 1000000 AS Score
     FROM direct_map
