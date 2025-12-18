@@ -30,6 +30,11 @@ CREATE TABLE [RDS].[FactK12StaffAssignments]
 	[DataCollectionId] int NULL,
 	[LeaJobClassificationId] int NULL,
 	[SeaJobClassificationId] int NULL,
+	[JobPositionStatusDateId] int NULL,
+	[AssignmentProgramTypeId] int NULL,
+	[SeaFinancialExpenditureClassificationId] int NULL,
+	[CharterSchoolAuthorizerId] int NULL,
+	[CharterSchoolManagementOrganizationId] int NULL,
 	[FullTimeEquivalency] decimal(3,2) NOT NULL,
 	[K12StaffAssignmentCount] int NOT NULL,
 	CONSTRAINT [PK_FactK12StaffAssignments] PRIMARY KEY CLUSTERED ([FactK12StaffAssignmentId] ASC),
@@ -61,7 +66,12 @@ CREATE TABLE [RDS].[FactK12StaffAssignments]
 	CONSTRAINT [FK_FactK12StaffAssignments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_IeuEmployerId] FOREIGN KEY ([IeuEmployerId]) REFERENCES [RDS].[DimIeus] ([DimIeuId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffAssignments_LeaEmployerId] FOREIGN KEY ([LeaEmployerId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action
+	CONSTRAINT [FK_FactK12StaffAssignments_LeaEmployerId] FOREIGN KEY ([LeaEmployerId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssignments_JobPositionStatusDateId] FOREIGN KEY ([JobPositionStatusDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssignments_AssignmentProgramTypeId] FOREIGN KEY ([AssignmentProgramTypeId]) REFERENCES [RDS].[DimProgramTypes] ([DimProgramTypeId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssignments_SeaFinancialExpenditureClassificationId] FOREIGN KEY ([SeaFinancialExpenditureClassificationId]) REFERENCES [RDS].[DimSeaFinancialExpenditureClassifications] ([DimSeaFinancialExpenditureClassificationId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssignments_CharterSchoolAuthorizerId] FOREIGN KEY ([CharterSchoolAuthorizerId]) REFERENCES [RDS].[DimCharterSchoolAuthorizers] ([DimCharterSchoolAuthorizerId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffAssignments_CharterSchoolManagementOrganizationId] FOREIGN KEY ([CharterSchoolManagementOrganizationId]) REFERENCES [RDS].[DimCharterSchoolManagementOrganizations] ([DimCharterSchoolManagementOrganizationId]) ON DELETE No Action ON UPDATE No Action
 )
 GO
 
