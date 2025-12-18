@@ -22,6 +22,7 @@ CREATE TABLE [RDS].[FactK12StaffEvaluationParts]
 	[StaffEvaluationScale] nvarchar(80) NULL,
 	[StaffEvaluationScoreOrRating] nvarchar(60) NULL,
 	[StaffEvaluationPartStatusId] int NULL,
+	[StaffEvaluationScaleId] int NULL,
 	[OnetSocOccupationTypeId] int NULL,
 	[DataCollectionId] int NULL,
 	[SeaJobClassificationId] int NULL,
@@ -45,7 +46,8 @@ CREATE TABLE [RDS].[FactK12StaffEvaluationParts]
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_SeaJobClassificationId] FOREIGN KEY ([SeaJobClassificationId]) REFERENCES [RDS].[DimSeaJobClassifications] ([DimSeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffEvaluationParts_StaffEvaluationPartStatusId] FOREIGN KEY ([StaffEvaluationPartStatusId]) REFERENCES [RDS].[DimStaffEvaluationPartStatuses] ([DimStaffEvaluationPartStatusId]) ON DELETE No Action ON UPDATE No Action
+	CONSTRAINT [FK_FactK12StaffEvaluationParts_StaffEvaluationPartStatusId] FOREIGN KEY ([StaffEvaluationPartStatusId]) REFERENCES [RDS].[DimStaffEvaluationPartStatuses] ([DimStaffEvaluationPartStatusId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffEvaluationParts_StaffEvaluationScaleId] FOREIGN KEY ([StaffEvaluationScaleId]) REFERENCES [RDS].[DimStaffEvaluationScales] ([DimStaffEvaluationScaleId]) ON DELETE No Action ON UPDATE No Action
 )
 GO
 
@@ -127,4 +129,8 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_DimStaffEvaluationPartStatuses] 
  ON [RDS].[FactK12StaffEvaluationParts] ([StaffEvaluationPartStatusId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEvaluationParts_DimStaffEvaluationScales] 
+ ON [RDS].[FactK12StaffEvaluationParts] ([StaffEvaluationScaleId] ASC)
 GO

@@ -543,6 +543,7 @@
     <Build Include="RDS\Tables\DimSeas.sql" />
     <Build Include="RDS\Tables\DimStaffCompensationTypes.sql" />
     <Build Include="RDS\Tables\DimStaffEvaluationPartStatuses.sql" />
+    <Build Include="RDS\Tables\DimStaffEvaluationScales.sql" />
     <Build Include="RDS\Tables\DimStandardOccupationalClassifications.sql" />
     <Build Include="RDS\Tables\DimStateDefinedCustomIndicators.sql" />
     <Build Include="RDS\Tables\DimStateDefinedStatuses.sql" />
