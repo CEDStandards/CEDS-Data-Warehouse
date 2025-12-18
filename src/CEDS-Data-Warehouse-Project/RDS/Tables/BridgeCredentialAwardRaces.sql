@@ -1,4 +1,4 @@
-CREATE TABLE [SOM].[BridgeCredentialAwardRaces]
+CREATE TABLE [RDS].[BridgeCredentialAwardRaces]
 (
 	[BridgeCredentialAwardRaceId] int NOT NULL,
 	[FactCredentialAwardId] int NULL,
@@ -12,9 +12,9 @@ CREATE TABLE [SOM].[BridgeCredentialAwardRaces]
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_BridgeCredentialAwardRaces_FactCredentialAwardId] 
- ON [SOM].[BridgeCredentialAwardRaces] ([FactCredentialAwardId] ASC)
+ ON [RDS].[BridgeCredentialAwardRaces] ([FactCredentialAwardId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_BridgeCredentialAwardRaces_RaceId] 
- ON [SOM].[BridgeCredentialAwardRaces] ([RaceId] ASC)
+ ON [RDS].[BridgeCredentialAwardRaces] ([RaceId] ASC)
 GO
