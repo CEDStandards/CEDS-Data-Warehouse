@@ -1,6 +1,6 @@
 CREATE TABLE [RDS].[BridgeCredentialAwardRaces]
 (
-	[BridgeCredentialAwardRaceId] int NOT NULL,
+	[BridgeCredentialAwardRaceId] int IDENTITY (1, 1) NOT NULL,
 	[FactCredentialAwardId] int NULL,
 	[RaceId] int NULL,
 
