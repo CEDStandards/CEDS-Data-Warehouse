@@ -476,6 +476,7 @@
     <Build Include="RDS\Tables\DimK12EmploymentStatuses.sql" />
     <Build Include="RDS\Tables\DimK12EnrollmentStatuses.sql" />
     <Build Include="RDS\Tables\DimK12JobPositions.sql" />
+    <Build Include="RDS\Tables\DimK12JobPositionStatuses.sql" />
     <Build Include="RDS\Tables\DimK12Jobs.sql" />
     <Build Include="RDS\Tables\DimK12OrganizationStatuses.sql" />
     <Build Include="RDS\Tables\DimK12ProgramTypes.sql" />
