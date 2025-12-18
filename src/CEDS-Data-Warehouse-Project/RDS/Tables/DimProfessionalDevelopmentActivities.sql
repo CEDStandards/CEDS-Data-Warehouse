@@ -24,6 +24,8 @@ CREATE TABLE [RDS].[DimProfessionalDevelopmentActivities]
 	[ProfessionalDevelopmentActivityApprovalCode] nvarchar(30) NULL,
 	[ProfessionalDevelopmentActivityCode] nvarchar(100) NULL,
 	[ProfessionalDevelopmentActivityCost] decimal(18,2) NULL,
+	[ProfessionalDevelopmentApprovalStartDate] date NULL,
+	[ProfessionalDevelopmentApprovalEndDate] date NULL,
 	CONSTRAINT [PK_DimProfessionalDevelopmentActivities] PRIMARY KEY CLUSTERED ([DimProfessionalDevelopmentActivityId] ASC)
 )
 GO
@@ -257,4 +259,24 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001388' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentSessionLanguageDescription';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001388' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentSessionLanguageDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalStartDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The date on which the professional development activity approval begins.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalStartDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Professional Development Approval Start Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalStartDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'TBD1032A' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalStartDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://github.com/CEDStandards/CEDS-Elements/issues/1032' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalStartDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalEndDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The date on which the professional development activity approval ends.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalEndDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Professional Development Approval End Date' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalEndDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'TBD1032B' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalEndDate';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://github.com/CEDStandards/CEDS-Elements/issues/1032' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimProfessionalDevelopmentActivities', @level2type=N'COLUMN',@level2name=N'ProfessionalDevelopmentApprovalEndDate';
 GO
