@@ -19,7 +19,7 @@ CREATE TABLE [RDS].[DimSeaJobClassifications](
 	[SpecialEducationSupportServicesCategoryCode] [nvarchar](100) NOT NULL,
 	[SpecialEducationSupportServicesCategoryDescription] [nvarchar](2000) NOT NULL,
 	[EvaluationRequiredIndicatorCode] [varchar](50) NULL,
-	[EvaluationRequiredIndiciatorDescription] [varchar](200) NULL,
+	[EvaluationRequiredIndicatorDescription] [varchar](200) NULL,
 	[RecordStartDateTime] [datetime] NOT NULL,
 	[RecordEndDateTime] [datetime] NULL,
  CONSTRAINT [PK_DimSeaJobClassifications] PRIMARY KEY CLUSTERED 
