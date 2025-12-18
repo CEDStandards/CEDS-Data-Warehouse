@@ -23,8 +23,8 @@ CREATE TABLE [RDS].[FactK12StaffCourseSections]
 	[K12StaffAssignmentStartDateId] int NOT NULL DEFAULT -1,
 	[K12StaffAssignmentEndDateId] int NOT NULL DEFAULT -1,
 	[K12StaffCategoryId] int NOT NULL DEFAULT -1,
-	[K12StaffMemberId] bigint NOT NULL DEFAULT -1,
-	[K12StaffMember_CurrentId] bigint NOT NULL DEFAULT -1,
+	[K12StaffId] bigint NOT NULL DEFAULT -1,
+	[K12Staff_CurrentId] bigint NOT NULL DEFAULT -1,
 	[K12StaffStatusId] int NOT NULL DEFAULT -1,
 	[ScedCodeId] int NOT NULL DEFAULT -1,
 	[K12StaffMemberCount] int NOT NULL DEFAULT 1,
@@ -64,8 +64,8 @@ CREATE TABLE [RDS].[FactK12StaffCourseSections]
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12SchoolInstructionId] FOREIGN KEY ([K12SchoolInstructionId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffMemberId] FOREIGN KEY ([K12StaffMemberId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
-	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffMember_CurrentId] FOREIGN KEY ([K12StaffMember_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffCourseSections_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffStatusId] FOREIGN KEY ([K12StaffStatusId]) REFERENCES [RDS].[DimK12StaffStatuses] ([DimK12StaffStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_LeaId] FOREIGN KEY ([LeaId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffCourseSections_LeaInstructionId] FOREIGN KEY ([LeaInstructionId]) REFERENCES [RDS].[DimLeas] ([DimLeaId]) ON DELETE No Action ON UPDATE No Action,
@@ -180,11 +180,11 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimCalendarSessions]
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimPeople] 
- ON [RDS].[FactK12StaffCourseSections] ([K12StaffMemberId] ASC)
+ ON [RDS].[FactK12StaffCourseSections] ([K12StaffId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_K12StaffMember_CurrentId] 
- ON [RDS].[FactK12StaffCourseSections] ([K12StaffMember_CurrentId] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_K12Staff_CurrentId] 
+ ON [RDS].[FactK12StaffCourseSections] ([K12Staff_CurrentId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_DimScedCodes] 
@@ -219,8 +219,8 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_K12CourseSectionId]
  ON [RDS].[FactK12StaffCourseSections] ([K12CourseSectionId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IX_FactK12StaffCourseSections_K12StaffMemberId] 
- ON [RDS].[FactK12StaffCourseSections] ([K12StaffMemberId] ASC)
+CREATE NONCLUSTERED INDEX [IX_FactK12StaffCourseSections_K12StaffId] 
+ ON [RDS].[FactK12StaffCourseSections] ([K12StaffId] ASC)
 GO
 
 
