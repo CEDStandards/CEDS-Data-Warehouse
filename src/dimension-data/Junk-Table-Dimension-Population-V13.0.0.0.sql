@@ -5734,9 +5734,13 @@ GO
 						, [ClassroomPositionTypeDescription]
 						, [PrimaryAssignmentIndicatorCode]
 						, [PrimaryAssignmentIndicatorDescription]
+						, [MigrantEducationProgramSessionTypeCode]
+						, [MigrantEducationProgramSessionTypeDescription]
 					)
 			VALUES (
 					-1
+					, 'MISSING'
+					, 'MISSING'
 					, 'MISSING'
 					, 'MISSING'
 					, 'MISSING'
@@ -5792,6 +5796,17 @@ GO
 	WHERE CedsElementTechnicalName = 'PrimaryAssignmentIndicator'
 	ORDER BY CedsOptionSetCode
 
+	CREATE TABLE #MigrantEducationProgramSessionType (MigrantEducationProgramSessionTypeCode VARCHAR(50), MigrantEducationProgramSessionTypeDescription VARCHAR(200))
+
+	INSERT INTO #MigrantEducationProgramSessionType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #MigrantEducationProgramSessionType
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName like 'MigrantEducationProgramSessionType'
+	ORDER BY CedsOptionSetCode
+
 	-- Insert into DimK12PositionStatuses table
 	INSERT INTO [RDS].[DimK12StaffAssignmentStatuses] (
 		[ItinerantTeacherCode]
@@ -5808,9 +5823,12 @@ GO
 		, cpt.ClassroomPositionTypeDescription
 		, pai.PrimaryAssignmentIndicatorCode
 		, pai.PrimaryAssignmentIndicatorDescription
+		, mepst.MigrantEducationProgramSessionTypeCode
+		, mepst.MigrantEducationProgramSessionTypeDescription
 	FROM #ItinerantTeacherCode itc
 	CROSS JOIN #ClassroomPositionType cpt
 	CROSS JOIN #PrimaryAssignmentIndicator pai
+	CROSS JOIN #MigrantEducationProgramSessionType mepst
 	LEFT JOIN [RDS].[DimK12StaffAssignmentStatuses] kps
 		ON itc.ItinerantTeacherCode = kps.ItinerantTeacherCode
 		AND cpt.ClassroomPositionTypeCode = kps.ClassroomPositionTypeCode
