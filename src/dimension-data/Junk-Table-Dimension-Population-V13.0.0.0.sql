@@ -5815,6 +5815,8 @@ GO
 		, [ClassroomPositionTypeDescription]
 		, [PrimaryAssignmentIndicatorCode]
 		, [PrimaryAssignmentIndicatorDescription]
+		, [MigrantEducationProgramSessionTypeCode]
+		, [MigrantEducationProgramSessionTypeDescription]
 	)
 	SELECT 
 		itc.ItinerantTeacherCode
