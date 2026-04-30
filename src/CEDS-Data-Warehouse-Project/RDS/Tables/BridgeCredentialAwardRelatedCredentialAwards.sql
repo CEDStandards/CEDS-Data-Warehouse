@@ -2,8 +2,8 @@ CREATE TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards](
 	[BridgeCredentialAwardRelatedCredentialAwardId] [int] IDENTITY(1,1) NOT NULL,
 	[FactCredentialAwardId] [int] NULL,
 	[RelatedFactCredentialAwardId] [int] NULL,
-	[CredentialAwardRelationshipCode] [nvarchar](50) NOT NULL,
-	[CredentialAwardRelationshipDescription] [nvarchar](200) NOT NULL,
+	[CredentialAwardRelationshipTypeCode] [nvarchar](50) NOT NULL,
+	[CredentialAwardRelationshipTypeDescription] [nvarchar](200) NOT NULL,
  CONSTRAINT [PK_BridgeCredentialAwardRelatedCredentialAwards] PRIMARY KEY CLUSTERED 
 (
 	[BridgeCredentialAwardRelatedCredentialAwardId] ASC
@@ -11,10 +11,10 @@ CREATE TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards] ADD  DEFAULT ('MISSING') FOR [CredentialAwardRelationshipCode]
+ALTER TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards] ADD  DEFAULT ('MISSING') FOR [CredentialAwardRelationshipTypeCode]
 GO
 
-ALTER TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards] ADD  DEFAULT ('MISSING') FOR [CredentialAwardRelationshipDescription]
+ALTER TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards] ADD  DEFAULT ('MISSING') FOR [CredentialAwardRelationshipTypeDescription]
 GO
 
 ALTER TABLE [RDS].[BridgeCredentialAwardRelatedCredentialAwards]  WITH CHECK ADD  CONSTRAINT [FK_BridgeCredentialAwardRelatedCredentialAwards_FactCredentialAwards] FOREIGN KEY([FactCredentialAwardId])

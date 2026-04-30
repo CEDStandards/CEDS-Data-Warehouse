@@ -8,7 +8,7 @@ CREATE TABLE [RDS].[FactDirectory]
 	[IeuId] int NULL,
 	[K12SchoolId] int NULL,
 	[AeProviderId] int NULL,
-	[ComprehensiveAndTargetedSupportI] int NULL,
+	[ComprehensiveAndTargetedSupportId] int NULL,
 	[NOrDStatusId] int NULL,
 	[CharterSchoolManagementOrganizationId] int NULL,
 	[CharterSchoolStatusId] int NULL,
@@ -50,7 +50,7 @@ CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimCharterSchoolStatuses]
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimComprehensiveAndTargetedSupports] 
- ON [RDS].[FactDirectory] ([ComprehensiveAndTargetedSupportI] ASC)
+ ON [RDS].[FactDirectory] ([ComprehensiveAndTargetedSupportId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimDataCollections] 
@@ -120,7 +120,7 @@ ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_CharterSchool
 GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_ComprehensiveAndTargetedSupportId]
-	FOREIGN KEY ([ComprehensiveAndTargetedSupportI]) REFERENCES [RDS].[DimComprehensiveAndTargetedSupports] ([DimComprehensiveAndTargetedSupportId]) ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ([ComprehensiveAndTargetedSupportId]) REFERENCES [RDS].[DimComprehensiveAndTargetedSupports] ([DimComprehensiveAndTargetedSupportId]) ON DELETE No Action ON UPDATE No Action
 GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_DataCollectionId]
@@ -132,7 +132,7 @@ ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_DimNOrDStatus
 GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_EarlyChildhoodOrganizationStatusId]
-	FOREIGN KEY ([EarlyChildhoodOrganizationStatusId]) REFERENCES [RDS].[DimEarlyChildhoolOrganizationStatuses] ([DimEarlyChildhoodOrganizationStatusId]) ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ([EarlyChildhoodOrganizationStatusId]) REFERENCES [RDS].[DimEarlyChildhoodOrganizationStatuses] ([DimEarlyChildhoodOrganizationStatusId]) ON DELETE No Action ON UPDATE No Action
 GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_EarlyLearningOrganizationId]

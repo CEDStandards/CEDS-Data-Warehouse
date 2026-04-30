@@ -72,11 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="CEDS\Tables\CedsOptionSetMapping.sql" />
-    <Build Include="CEDS\Tables\Code.sql" />
-    <Build Include="CEDS\Tables\CodeSet.sql" />
-    <Build Include="CEDS\Tables\CodeSetxCode.sql" />
-    <Build Include="CEDS\Tables\Term.sql" />
-    <Build Include="CEDS\Tables\TermxCodeSet.sql" />
     <Build Include="Staging\Functions\GetFiscalYearEndDate.sql" />
     <Build Include="Staging\Functions\GetFiscalYearStartDate.sql" />
     <Build Include="Staging\Tables\AccessibleEducationMaterialAssignment.sql" />
@@ -423,7 +418,7 @@
     <Build Include="RDS\Tables\DimDisabilityStatuses.sql" />
     <Build Include="RDS\Tables\DimDisciplineReasons.sql" />
     <Build Include="RDS\Tables\DimDisciplineStatuses.sql" />
-    <Build Include="RDS\Tables\DimEarlyChildhoolOrganizationStatuses.sql" />
+    <Build Include="RDS\Tables\DimEarlyChildhoodOrganizationStatuses.sql" />
     <Build Include="RDS\Tables\DimEarlyLearningOrganizations.sql" />
     <Build Include="RDS\Tables\DimEconomicallyDisadvantagedStatuses.sql" />
     <Build Include="RDS\Tables\DimEducationOrganizationNetworks.sql" />

@@ -26,6 +26,8 @@ CREATE TABLE [RDS].[FactK12StaffEvaluationParts]
 	[DataCollectionId] int NULL,
 	[SeaJobClassificationId] int NULL,
 	[LeaJobClassificationId] int NULL,
+	[RecordStartDateTime] datetime NULL,
+	[RecordEndDateTime] datetime NULL,
 	CONSTRAINT [PK_FactK12StaffEvaluationParts] PRIMARY KEY CLUSTERED ([FactK12StaffEvaluationPartId] ASC),
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEvaluationParts_EmployerId] FOREIGN KEY ([EmployerId]) REFERENCES [RDS].[DimEmployers] ([DimEmployerId]) ON DELETE No Action ON UPDATE No Action,
