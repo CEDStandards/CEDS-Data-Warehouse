@@ -41,17 +41,15 @@
                     CredentialAwardRelationshipCode        -> CredentialAwardRelationshipTypeCode
                     CredentialAwardRelationshipDescription -> CredentialAwardRelationshipTypeDescription
                   (Column renames are done via sp_rename; data is preserved.)
+                  Update associated index names that reference the renamed FactDirectory column.
 
     SECTION 5 - Add new FK constraint:
                   RDS.FactK12AcademicCalendarEvents ->
                     FK_FactK12AcademicCalendarEvents_CalendarEventDayId
                     referencing RDS.DimCalendarEventDays
 
-    SECTION 6 - Update associated index names that reference the renamed
-                FactDirectory column.
 
-    NOTE: The CEDSOptionSetMapping insert/update script should be appended
-    after this script per normal release process.
+    Run the CEDSOptionSetMappingUpdate script following this script.
 
     *** BACK UP YOUR DATABASE BEFORE RUNNING THIS SCRIPT ***
 */
@@ -278,7 +276,7 @@ IF NOT EXISTS (
       AND name = 'RecordStartDateTime'
 )
     ALTER TABLE [RDS].[FactK12StaffEvaluationParts]
-        ADD [RecordStartDateTime] INT NULL;
+        ADD [RecordStartDateTime] DATETIME NULL;
 GO
 
 PRINT N'  RDS.FactK12StaffEvaluationParts -> adding [RecordEndDateTime]...';
@@ -288,7 +286,7 @@ IF NOT EXISTS (
       AND name = 'RecordEndDateTime'
 )
     ALTER TABLE [RDS].[FactK12StaffEvaluationParts]
-        ADD [RecordEndDateTime] INT NULL;
+        ADD [RecordEndDateTime] DATETIME NULL;
 GO
 
 -- 3c. Staging.K12Organization: add SchoolIdentifierSat (nullable NVARCHAR 50)

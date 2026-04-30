@@ -418,7 +418,7 @@
     <Build Include="RDS\Tables\DimDisabilityStatuses.sql" />
     <Build Include="RDS\Tables\DimDisciplineReasons.sql" />
     <Build Include="RDS\Tables\DimDisciplineStatuses.sql" />
-    <Build Include="RDS\Tables\DimEarlyChildhoolOrganizationStatuses.sql" />
+    <Build Include="RDS\Tables\DimEarlyChildhoodOrganizationStatuses.sql" />
     <Build Include="RDS\Tables\DimEarlyLearningOrganizations.sql" />
     <Build Include="RDS\Tables\DimEconomicallyDisadvantagedStatuses.sql" />
     <Build Include="RDS\Tables\DimEducationOrganizationNetworks.sql" />
