@@ -82,6 +82,8 @@ ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12Aca
 GO
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_CalendarSessionId]  DEFAULT ((-1)) FOR [CalendarSessionId]
 GO
+ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_CalendarEventDayId]  DEFAULT ((-1)) FOR [CalendarEventDayId]
+GO
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_AcademicTermDesignatorId]  DEFAULT ((-1)) FOR [AcademicTermDesignatorId]
 GO
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] ADD  CONSTRAINT [DF_FactK12AcademicCalendarEvents_CalendarCrisisId]  DEFAULT ((-1)) FOR [CalendarCrisisId]
@@ -166,6 +168,13 @@ REFERENCES [RDS].[DimCalendarSessions] ([DimCalendarSessionId])
 GO
 
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] CHECK CONSTRAINT [FK_FactK12AcademicCalendarEvents_CalendarSessionId]
+GO
+
+ALTER TABLE [RDS].[FactK12AcademicCalendarEvents]  WITH CHECK ADD  CONSTRAINT [FK_FactK12AcademicCalendarEvents_CalendarEventDayId] FOREIGN KEY([CalendarEventDayId])
+REFERENCES [RDS].[DimCalendarEventDays] ([DimCalendarEventDayId])
+GO
+
+ALTER TABLE [RDS].[FactK12AcademicCalendarEvents] CHECK CONSTRAINT [FK_FactK12AcademicCalendarEvents_CalendarEventDayId]
 GO
 
 ALTER TABLE [RDS].[FactK12AcademicCalendarEvents]  WITH CHECK ADD  CONSTRAINT [FK_FactK12AcademicCalendarEvents_AcademicTermDesignatorId] FOREIGN KEY([AcademicTermDesignatorId])

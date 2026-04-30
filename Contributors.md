@@ -11,6 +11,8 @@ Version 11.0.0.0 contains contributions from [Maine Department of Education](htt
 
 Version 13.0.0.0 contains contributions from numerous state departments of education, solution providers, and organizations. In total, more than 40 organizations have contributed to the release of Version 13.
 
+Version 14.0.0.0 is a smaller release with minimual updates performed to align the version with the Version 14.0.0.0 release of the CEDS Ontology.
+
 CEDS is continuing to work with stakeholders to continue expansion of the Data Warehouse. The CEDS team is excited to continue to partner with you, the community, in this new era.
 
 

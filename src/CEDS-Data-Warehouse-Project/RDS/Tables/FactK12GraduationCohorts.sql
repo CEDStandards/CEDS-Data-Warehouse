@@ -52,7 +52,7 @@ CREATE TABLE [RDS].[FactK12GraduationCohorts] (
     CONSTRAINT [FK_FactK12GraduationCohorts_K12EnrollmentStatusId] FOREIGN KEY ([K12EnrollmentStatusId]) REFERENCES [RDS].[DimK12EnrollmentStatuses] ([DimK12EnrollmentStatusId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_K12DropoutStatusId] FOREIGN KEY ([K12DropoutStatusId]) REFERENCES [RDS].[DimK12DropoutStatuses] ([DimK12DropoutStatusId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_CohortId] FOREIGN KEY ([CohortId]) REFERENCES [RDS].[DimCohorts] ([DimCohortId]),
-    CONSTRAINT [FK_FactK12GraduationCohorts_CohortStatusId] FOREIGN KEY ([CohortId]) REFERENCES [RDS].[DimCohortStatuses] ([DimCohortStatusId]),
+    CONSTRAINT [FK_FactK12GraduationCohorts_CohortStatusId] FOREIGN KEY ([CohortStatusId]) REFERENCES [RDS].[DimCohortStatuses] ([DimCohortStatusId]),
 	CONSTRAINT [FK_FactK12GraduationCohorts_GradeLevelId] FOREIGN KEY ([GradeLevelId]) REFERENCES [RDS].[DimGradeLevels] ([DimGradeLevelId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_K12DemographicId] FOREIGN KEY ([K12DemographicId]) REFERENCES [RDS].[DimK12Demographics] ([DimK12DemographicId]),
     CONSTRAINT [FK_FactK12GraduationCohorts_EconomicallyDisadvantagedStatusId] FOREIGN KEY ([EconomicallyDisadvantagedStatusId]) REFERENCES [RDS].[DimEconomicallyDisadvantagedStatuses] ([DimEconomicallyDisadvantagedStatusId]),

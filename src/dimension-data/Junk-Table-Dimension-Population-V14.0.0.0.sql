@@ -3128,6 +3128,12 @@ GO
 				WHEN 'SpecialEducationTeachers' THEN 'MISSING'
 				WHEN 'StudentSupportServicesStaff' THEN 'STUSUP'
 				WHEN 'UngradedTeachers' THEN 'UGTCH'
+				WHEN 'ElementarySchoolCounselors' THEN 'ELMGUI'
+				WHEN 'SecondarySchoolCounselors' THEN 'SECGUI'
+				WHEN 'LEAAdministrators' THEN 'LEAADM'
+				WHEN 'LEAAdministrative Support Staff' THEN 'LEASUP'
+				WHEN 'SchoolAdministrators' THEN 'SCHADM'
+				WHEN 'SchoolAdministrativeSupportStaff' THEN 'SCHSUP'
 				ELSE 'MISSING'
 			  END
 		FROM [CEDS].CedsOptionSetMapping
