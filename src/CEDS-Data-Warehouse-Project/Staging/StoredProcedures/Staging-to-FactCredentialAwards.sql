@@ -57,14 +57,14 @@ BEGIN
   (
       FactCredentialAwardId
     , RelatedFactCredentialAwardId
-    , CredentialAwardRelationshipCode 
-    , CredentialAwardRelationshipDescription
+    , CredentialAwardRelationshipTypeCode 
+    , CredentialAwardRelationshipTypeDescription
   )
   SELECT
       ISNULL(rfca.[FactCredentialAwardId], -1)
     , ISNULL(rfcarelated.[FactCredentialAwardId], -1)
-    , scarca.[CredentialAwardRelationshipCode]
-    , scarca.[CredentialAwardRelationshipDescription]
+    , scarca.[CredentialAwardRelationshipTypeCode]
+    , scarca.[CredentialAwardRelationshipTypeDescription]
   FROM Staging.CredentialAwardRelatedCredentialAward scarca
   JOIN RDS.DimCredentialAwards rdca
     ON scarca.ProfessionalCertificateOrLicenseNumber = rdca.ProfessionalCertificateOrLicenseNumber
