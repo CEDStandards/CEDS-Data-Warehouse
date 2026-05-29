@@ -285,6 +285,7 @@
     <Build Include="RDS\Tables\BridgeAeStudentEnrollmentAeProgramParticipantGoals.sql" />
     <Build Include="RDS\Tables\BridgeAeStudentEnrollmentRaces.sql" />
     <Build Include="RDS\Tables\BridgeCredentialAwardCompetencyDefinitions.sql" />
+    <Build Include="RDS\Tables\BridgeCredentialAwardRaces.sql" />
     <Build Include="RDS\Tables\BridgeCredentialAwardRelatedCredentialAwards.sql" />
     <Build Include="RDS\Tables\BridgeDirectoryActivities.sql" />
     <Build Include="RDS\Tables\BridgeDirectoryContacts.sql" />
@@ -309,7 +310,7 @@
     <Build Include="RDS\Tables\BridgeK12SchoolGradeLevels.sql" />
     <Build Include="RDS\Tables\BridgeK12SchoolGradeLevelsAuthorized.sql" />
     <Build Include="RDS\Tables\BridgeK12SchoolGradeLevelsOffered.sql" />
-    <Build Include="RDS\Tables\BridgeK12SeaJobCataloguesSeaFinancialAccountClassifications.sql" />
+    <Build Include="RDS\Tables\BridgeK12SeaJobCatalogueSeaFinancialAccountClassifications.sql" />
     <Build Include="RDS\Tables\BridgeK12SeaJobClassificationEndorsementCredentialDefinitions.sql" />
     <Build Include="RDS\Tables\BridgeK12StaffAssessmentRaces.sql" />
     <Build Include="RDS\Tables\BridgeK12StaffAssignmentCourseSections.sql" />
