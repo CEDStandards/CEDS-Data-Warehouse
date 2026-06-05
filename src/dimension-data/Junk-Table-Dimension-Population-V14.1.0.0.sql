@@ -25,10 +25,10 @@
 	Script 2 of 2
 	To create the CEDS Data Warehouse including population of the dimension tables, the following 3 scripts are needed:
 
-	Script 1: CEDS-Data-Warehouse-V14-0-0-0
-	Script 2: Junk-Table-Dimension-Population-V14.0.0.0
+	Script 1: CEDS-Data-Warehouse-V14-1-0-0
+	Script 2: Junk-Table-Dimension-Population-V14.1.0.0
 
-	You must have the CEDS Data Warehouse version 13.0.0.0 installed first. The CEDS schema tables in the warehouse house the element and option set information.
+	You must have the CEDS Data Warehouse version 14.0.0.0 installed first. The CEDS schema tables in the warehouse house the element and option set information.
 	These six tables act as a source for the junk table dimension population.
       
     Questions on this script can be sent to https://ceds.ed.gov/ContactUs.aspx
@@ -37,7 +37,7 @@
     http://ceds.ed.gov.
 */    
 
-USE [CEDS-Data-Warehouse-V14-0-0-0]
+USE [CEDS-Data-Warehouse-V14-1-0-0]
 GO
 
 	SET NOCOUNT ON;
