@@ -15313,9 +15313,13 @@ VALUES
 		   ,FacilityMortgageInterestTypeCode
 		   ,FacilityMortgageInterestTypeDescription
 		   ,FacilityMortgageTypeCode
-		   ,FacilityMortgageTypeDescription)
+		   ,FacilityMortgageTypeDescription
+		   ,FacilityOwnershipIndicatorCode
+		   ,FacilityOwnershipIndicatorDescription)
 			VALUES (
 				  -1
+				, 'MISSING'
+				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
 				, 'MISSING'
@@ -15374,6 +15378,17 @@ VALUES
 	FROM [CEDS].CedsOptionSetMapping
 	WHERE CedsElementTechnicalName = 'FacilityMortgageType'
 
+
+		CREATE TABLE #FacilityOwnershipIndicator (FacilityOwnershipIndicatorCode VARCHAR(50), FacilityOwnershipIndicatorDescription VARCHAR(200))
+
+		INSERT INTO #FacilityOwnershipIndicator VALUES ('MISSING', 'MISSING')
+		INSERT INTO #FacilityOwnershipIndicator
+		SELECT
+			  CedsOptionSetCode
+			, CedsOptionSetDescription
+		FROM [CEDS].CedsOptionSetMapping
+		WHERE CedsElementTechnicalName = 'FacilityOwnershipIndicator'
+
 	INSERT INTO RDS.DimFacilityStatuses
 		  (FacilityLeaseAmountCategoryCode
 		   ,FacilityLeaseAmountCategoryDescription
@@ -15382,7 +15397,9 @@ VALUES
 		   ,FacilityMortgageInterestTypeCode
 		   ,FacilityMortgageInterestTypeDescription
 		   ,FacilityMortgageTypeCode
-		   ,FacilityMortgageTypeDescription)
+		   ,FacilityMortgageTypeDescription
+			   ,FacilityOwnershipIndicatorCode
+			   ,FacilityOwnershipIndicatorDescription)
 	SELECT DISTINCT
 		  a.FacilityLeaseAmountCategoryCode
 		, a.FacilityLeaseAmountCategoryDescription
@@ -15392,21 +15409,26 @@ VALUES
 		, c.FacilityMortgageInterestTypeDescription
 		, d.FacilityMortgageTypeCode
 		, d.FacilityMortgageTypeDescription
+			, e.FacilityOwnershipIndicatorCode
+			, e.FacilityOwnershipIndicatorDescription
 	FROM #FacilityLeaseAmountCategory a
 	CROSS JOIN #FacilityLeaseType b
 	CROSS JOIN #FacilityMortgageInterestType c
 	CROSS JOIN #FacilityMortgageType d
+		CROSS JOIN #FacilityOwnershipIndicator e
 	LEFT JOIN RDS.DimFacilityStatuses main
 		ON a.FacilityLeaseAmountCategoryCode = main.FacilityLeaseAmountCategoryCode
 		AND b.FacilityLeaseTypeCode = main.FacilityLeaseTypeCode
 		AND c.FacilityMortgageInterestTypeCode = main.FacilityMortgageInterestTypeCode
 		AND d.FacilityMortgageTypeCode = main.FacilityMortgageTypeCode
+			AND e.FacilityOwnershipIndicatorCode = main.FacilityOwnershipIndicatorCode
 	WHERE main.DimFacilityStatusId IS NULL
 
 	DROP TABLE #FacilityLeaseAmountCategory
 	DROP TABLE #FacilityLeaseType
 	DROP TABLE #FacilityMortgageInterestType
 	DROP TABLE #FacilityMortgageType
+		DROP TABLE #FacilityOwnershipIndicator
 
 
 	PRINT 'Populate DimFacilityUtilization'
@@ -15423,19 +15445,48 @@ VALUES
 		SET IDENTITY_INSERT RDS.DimFacilityUtilization OFF
 	END
 
+	CREATE TABLE #BuildingUseType (BuildingUseTypeCode VARCHAR(50), BuildingUseTypeDescription VARCHAR(300))
+
+	INSERT INTO #BuildingUseType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #BuildingUseType
+	SELECT
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'BuildingUseType'
+
+
+	CREATE TABLE #BuildingCommunityUseSpaceType (BuildingCommunityUseSpaceTypeCode VARCHAR(50), BuildingCommunityUseSpaceTypeDescription VARCHAR(300))
+
+	INSERT INTO #BuildingCommunityUseSpaceType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #BuildingCommunityUseSpaceType
+	SELECT
+		  CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'BuildingCommunityUseSpaceType'
+
 	INSERT INTO RDS.DimFacilityUtilization
 		(
 			  BuildingUseTypeCode
-			, BuildingUseTypeDescription		
+			, BuildingUseTypeDescription
+			, BuildingCommunityUseSpaceTypeCode
+			, BuildingCommunityUseSpaceTypeDescription
 		)
-	SELECT 
-		  ceds.CedsOptionSetCode
-		, ceds.CedsOptionSetDescription
-	FROM [CEDS].CedsOptionSetMapping ceds
+	SELECT DISTINCT
+		  a.BuildingUseTypeCode
+		, a.BuildingUseTypeDescription
+		, b.BuildingCommunityUseSpaceTypeCode
+		, b.BuildingCommunityUseSpaceTypeDescription
+	FROM #BuildingUseType a
+	CROSS JOIN #BuildingCommunityUseSpaceType b
 	LEFT JOIN RDS.DimFacilityUtilization main
-		ON ceds.CedsOptionSetCode = main.BuildingUseTypeCode
+		ON a.BuildingUseTypeCode = main.BuildingUseTypeCode
+		AND b.BuildingCommunityUseSpaceTypeCode = main.BuildingCommunityUseSpaceTypeCode
 	WHERE main.DimFacilityUtilizationStatusId IS NULL
-		AND ceds.CedsElementTechnicalName = 'BuildingUseType'
+
+	DROP TABLE #BuildingUseType
+	DROP TABLE #BuildingCommunityUseSpaceType
 
 
 	PRINT 'Populate DimOrganizationTitleIStatuses'
