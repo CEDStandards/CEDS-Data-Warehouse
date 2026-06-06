@@ -15,11 +15,11 @@
 
 
 	Common Education Data Standards (CEDS)
-    Version 13.0.0.0
+    Version 14.1.0.0
 	CEDS Junk Table Dimension Population Script
 	  
     This script populates multiple Junk Dimension tables in the CEDS Data Warehouse
-	version 13.0.0.0. It does not populate all of the tables. Additional work continues in
+	version 14.1.0.0. It does not populate all of the tables. Additional work continues in
 	Open Source Community to fully populate all of the Junk Dimension tables.
 
 	Script 2 of 2
@@ -28,7 +28,7 @@
 	Script 1: CEDS-Data-Warehouse-V14-1-0-0
 	Script 2: Junk-Table-Dimension-Population-V14.1.0.0
 
-	You must have the CEDS Data Warehouse version 14.0.0.0 installed first. The CEDS schema tables in the warehouse house the element and option set information.
+	You must have the CEDS Data Warehouse version 14.1.0.0 installed first. The CEDS schema tables in the warehouse house the element and option set information.
 	These six tables act as a source for the junk table dimension population.
       
     Questions on this script can be sent to https://ceds.ed.gov/ContactUs.aspx
@@ -5749,9 +5749,13 @@ GO
 						, [ClassroomPositionTypeDescription]
 						, [PrimaryAssignmentIndicatorCode]
 						, [PrimaryAssignmentIndicatorDescription]
+						, [MigrantEducationProgramSessionTypeCode]
+						, [MigrantEducationProgramSessionTypeDescription]
 					)
 			VALUES (
 					-1
+					, 'MISSING'
+					, 'MISSING'
 					, 'MISSING'
 					, 'MISSING'
 					, 'MISSING'
@@ -5807,6 +5811,21 @@ GO
 	WHERE CedsElementTechnicalName = 'PrimaryAssignmentIndicator'
 	ORDER BY CedsOptionSetCode
 
+	-- Create temp table for MigrantEducationProgramSessionType
+	IF OBJECT_ID('tempdb..#MigrantEducationProgramSessionType') IS NOT NULL
+		DROP TABLE #MigrantEducationProgramSessionType
+
+	CREATE TABLE #MigrantEducationProgramSessionType (MigrantEducationProgramSessionTypeCode VARCHAR(50), MigrantEducationProgramSessionTypeDescription VARCHAR(200))
+
+	INSERT INTO #MigrantEducationProgramSessionType VALUES ('MISSING', 'MISSING')
+	INSERT INTO #MigrantEducationProgramSessionType
+	SELECT
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'MigrantEducationProgramSessionType'
+	ORDER BY CedsOptionSetCode
+
 	-- Insert into DimK12PositionStatuses table
 	INSERT INTO [RDS].[DimK12StaffAssignmentStatuses] (
 		[ItinerantTeacherCode]
@@ -5815,27 +5834,34 @@ GO
 		, [ClassroomPositionTypeDescription]
 		, [PrimaryAssignmentIndicatorCode]
 		, [PrimaryAssignmentIndicatorDescription]
+		, [MigrantEducationProgramSessionTypeCode]
+		, [MigrantEducationProgramSessionTypeDescription]
 	)
-	SELECT 
+	SELECT
 		itc.ItinerantTeacherCode
 		, itc.ItinerantTeacherDescription
 		, cpt.ClassroomPositionTypeCode
 		, cpt.ClassroomPositionTypeDescription
 		, pai.PrimaryAssignmentIndicatorCode
 		, pai.PrimaryAssignmentIndicatorDescription
+		, meps.MigrantEducationProgramSessionTypeCode
+		, meps.MigrantEducationProgramSessionTypeDescription
 	FROM #ItinerantTeacherCode itc
 	CROSS JOIN #ClassroomPositionType cpt
 	CROSS JOIN #PrimaryAssignmentIndicator pai
+	CROSS JOIN #MigrantEducationProgramSessionType meps
 	LEFT JOIN [RDS].[DimK12StaffAssignmentStatuses] kps
 		ON itc.ItinerantTeacherCode = kps.ItinerantTeacherCode
 		AND cpt.ClassroomPositionTypeCode = kps.ClassroomPositionTypeCode
 		AND pai.PrimaryAssignmentIndicatorCode = kps.PrimaryAssignmentIndicatorCode
+		AND meps.MigrantEducationProgramSessionTypeCode = kps.MigrantEducationProgramSessionTypeCode
 	WHERE kps.DimK12StaffAssignmentStatusId IS NULL
 
 	-- Drop temp tables
 	DROP TABLE #ItinerantTeacherCode
 	DROP TABLE #ClassroomPositionType
 	DROP TABLE #PrimaryAssignmentIndicator
+	DROP TABLE #MigrantEducationProgramSessionType
 
 
 	PRINT 'Populate DimK12CourseSectionStatuses'
@@ -15195,16 +15221,16 @@ VALUES
 	WHERE main.DimDisciplineReasonId IS NULL
 		AND ceds.CedsElementTechnicalName = 'DisciplineReason'
 
-	PRINT 'Populate DimEarlyChildhoolOrganizationStatuses'
+	PRINT 'Populate DimEarlyChildhoodOrganizationStatuses'
 	---------------------------------------------------
-	-- Populate DimEarlyChildhoolOrganizationStatuses ---
+	-- Populate DimEarlyChildhoodOrganizationStatuses ---
 	---------------------------------------------------
 
 
-	IF NOT EXISTS (SELECT 1 FROM RDS.DimEarlyChildhoolOrganizationStatuses d WHERE d.DimEarlyChildhoodOrganizationStatusId = -1) BEGIN
-		SET IDENTITY_INSERT RDS.DimEarlyChildhoolOrganizationStatuses ON
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimEarlyChildhoodOrganizationStatuses d WHERE d.DimEarlyChildhoodOrganizationStatusId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimEarlyChildhoodOrganizationStatuses ON
 
-		INSERT INTO [RDS].DimEarlyChildhoolOrganizationStatuses
+		INSERT INTO [RDS].DimEarlyChildhoodOrganizationStatuses
            (DimEarlyChildhoodOrganizationStatusId
 		   ,EarlyChildhoodProgramEnrollmentTypeCode
 		   ,EarlyChildhoodProgramEnrollmentTypeDescription
@@ -15218,7 +15244,7 @@ VALUES
 				, 'MISSING'
 				)
 
-		SET IDENTITY_INSERT RDS.DimEarlyChildhoolOrganizationStatuses OFF
+		SET IDENTITY_INSERT RDS.DimEarlyChildhoodOrganizationStatuses OFF
 	END
 
 
@@ -15245,7 +15271,7 @@ VALUES
 	WHERE CedsElementTechnicalName = 'EarlyLearningOtherFederalFundingSources'
 
 
-	INSERT INTO RDS.DimEarlyChildhoolOrganizationStatuses
+	INSERT INTO RDS.DimEarlyChildhoodOrganizationStatuses
 		  (EarlyChildhoodProgramEnrollmentTypeCode
 		   ,EarlyChildhoodProgramEnrollmentTypeDescription
 		   ,EarlyLearningOtherFederalFundingSourcesCode
@@ -15257,7 +15283,7 @@ VALUES
 		, b.EarlyLearningOtherFederalFundingSourcesDescription
 	FROM #EarlyChildhoodProgramEnrollmentType a
 	CROSS JOIN #EarlyLearningOtherFederalFundingSources b
-	LEFT JOIN RDS.DimEarlyChildhoolOrganizationStatuses main
+	LEFT JOIN RDS.DimEarlyChildhoodOrganizationStatuses main
 		ON a.EarlyChildhoodProgramEnrollmentTypeCode = main.EarlyChildhoodProgramEnrollmentTypeCode
 		AND b.EarlyLearningOtherFederalFundingSourcesCode = main.EarlyLearningOtherFederalFundingSourcesCode
 	WHERE main.DimEarlyChildhoodOrganizationStatusId IS NULL
