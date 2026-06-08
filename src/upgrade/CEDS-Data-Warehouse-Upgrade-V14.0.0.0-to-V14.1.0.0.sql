@@ -85,8 +85,8 @@ IF OBJECT_ID('RDS.DimK12JobPositionStatuses', 'U') IS NULL
         [DimK12JobPositionStatusId] INT IDENTITY (1, 1) NOT NULL,
         [JobPositionStatusCode] NVARCHAR(50) NULL,
         [JobPositionStatusDescription] NVARCHAR(200) NULL,
-        [JobPositionCancellationReasonCode] NVARCHAR(50) NULL,
-        [JobPositionCancellationReasonDescription] NVARCHAR(200) NULL,
+        [JobPositionStatusCancelledReasonCode] NVARCHAR(50) NULL,
+        [JobPositionStatusCancelledReasonDescription] NVARCHAR(200) NULL,
         CONSTRAINT [PK_DimK12JobPositionStatuses] PRIMARY KEY CLUSTERED ([DimK12JobPositionStatusId] ASC)
     );
 GO
@@ -253,12 +253,12 @@ ALTER TABLE [RDS].[DimK12StaffAssignmentStatuses] ALTER COLUMN [MigrantEducation
 GO
 
 -- 3h. RDS.DimProfessionalDevelopmentActivities : approval start / end dates
-PRINT N'  RDS.DimProfessionalDevelopmentActivities -> ProfessionalDevelopmentApproval dates...';
-IF NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID('RDS.DimProfessionalDevelopmentActivities') AND name = 'ProfessionalDevelopmentApprovalStartDate')
-    ALTER TABLE [RDS].[DimProfessionalDevelopmentActivities] ADD [ProfessionalDevelopmentApprovalStartDate] DATE NULL;
+PRINT N'  RDS.DimProfessionalDevelopmentActivities -> ProfessionalDevelopmentActivityApproval dates...';
+IF NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID('RDS.DimProfessionalDevelopmentActivities') AND name = 'ProfessionalDevelopmentActivityApprovalStartDate')
+    ALTER TABLE [RDS].[DimProfessionalDevelopmentActivities] ADD [ProfessionalDevelopmentActivityApprovalStartDate] DATE NULL;
 GO
-IF NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID('RDS.DimProfessionalDevelopmentActivities') AND name = 'ProfessionalDevelopmentApprovalEndDate')
-    ALTER TABLE [RDS].[DimProfessionalDevelopmentActivities] ADD [ProfessionalDevelopmentApprovalEndDate] DATE NULL;
+IF NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID('RDS.DimProfessionalDevelopmentActivities') AND name = 'ProfessionalDevelopmentActivityApprovalEndDate')
+    ALTER TABLE [RDS].[DimProfessionalDevelopmentActivities] ADD [ProfessionalDevelopmentActivityApprovalEndDate] DATE NULL;
 GO
 
 -- 3i. RDS.DimSeaJobClassifications : Evaluation Required Indicator
