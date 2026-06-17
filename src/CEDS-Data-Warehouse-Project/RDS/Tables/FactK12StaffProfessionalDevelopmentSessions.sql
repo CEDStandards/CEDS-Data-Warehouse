@@ -17,7 +17,6 @@ CREATE TABLE [RDS].[FactK12StaffProfessionalDevelopmentSessions]
 	[LeaId] int NOT NULL,
 	[K12SchoolId] int NOT NULL,
 	[ProfessionalDevelopmentActivityCredits] decimal(5,2) NULL,
-	[NumberOfCreditsEarnedProfessionalDevelopmentDays] decimal(5,2) NULL,
 	[NumberOfCreditsEarnedProfessionalDevelopmentHours] decimal(5,2) NULL,
 	[NumberOfCreditsEarnedDegreeCredit] decimal(5,2) NULL,
 	[NumberOfCreditsEarnedContinuingEducationUnits] decimal(5,2) NULL,

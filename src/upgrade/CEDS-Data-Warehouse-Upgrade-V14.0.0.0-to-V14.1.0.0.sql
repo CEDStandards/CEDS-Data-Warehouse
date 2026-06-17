@@ -448,9 +448,6 @@ GO
 IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IXFK_FactK12StaffProfessionalDevelopmentSessions_K12JobPositionStatusId' AND object_id = OBJECT_ID('RDS.FactK12StaffProfessionalDevelopmentSessions'))
     CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffProfessionalDevelopmentSessions_K12JobPositionStatusId] ON [RDS].[FactK12StaffProfessionalDevelopmentSessions] ([K12JobPositionStatusId] ASC);
 GO
-IF NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID('RDS.FactK12StaffProfessionalDevelopmentSessions') AND name = 'NumberOfCreditsEarnedProfessionalDevelopmentDays')
-    ALTER TABLE [RDS].[FactK12StaffProfessionalDevelopmentSessions] ADD [NumberOfCreditsEarnedProfessionalDevelopmentDays] DECIMAL(5,2) NULL;
-GO
 IF NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID('RDS.FactK12StaffProfessionalDevelopmentSessions') AND name = 'NumberOfCreditsEarnedProfessionalDevelopmentHours')
     ALTER TABLE [RDS].[FactK12StaffProfessionalDevelopmentSessions] ADD [NumberOfCreditsEarnedProfessionalDevelopmentHours] DECIMAL(5,2) NULL;
 GO
