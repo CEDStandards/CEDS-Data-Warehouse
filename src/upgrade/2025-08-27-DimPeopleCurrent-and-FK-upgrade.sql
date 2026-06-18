@@ -187,15 +187,15 @@ IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IXFK_FactK12StaffEmployme
     CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_K12Staff_CurrentId] ON [RDS].[FactK12StaffEmployments]([K12Staff_CurrentId] ASC);
 GO
 
--- FactK12StaffCourseSections (K12StaffMember_CurrentId)
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = 'K12StaffMember_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffCourseSections'))
-    ALTER TABLE [RDS].[FactK12StaffCourseSections] ADD [K12StaffMember_CurrentId] BIGINT NOT NULL DEFAULT -1;
+-- FactK12StaffCourseSections (K12Staff_CurrentId)
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = 'K12Staff_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffCourseSections'))
+    ALTER TABLE [RDS].[FactK12StaffCourseSections] ADD [K12Staff_CurrentId] BIGINT NOT NULL DEFAULT -1;
 GO
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_FactK12StaffCourseSections_K12StaffMember_CurrentId')
-    ALTER TABLE [RDS].[FactK12StaffCourseSections] ADD CONSTRAINT [FK_FactK12StaffCourseSections_K12StaffMember_CurrentId] FOREIGN KEY ([K12StaffMember_CurrentId]) REFERENCES [RDS].[DimPeople_Current]([DimPersonId]);
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_FactK12StaffCourseSections_K12Staff_CurrentId')
+    ALTER TABLE [RDS].[FactK12StaffCourseSections] ADD CONSTRAINT [FK_FactK12StaffCourseSections_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current]([DimPersonId]);
 GO
-IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IXFK_FactK12StaffCourseSections_K12StaffMember_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffCourseSections'))
-    CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_K12StaffMember_CurrentId] ON [RDS].[FactK12StaffCourseSections]([K12StaffMember_CurrentId] ASC);
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IXFK_FactK12StaffCourseSections_K12Staff_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffCourseSections'))
+    CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCourseSections_K12Staff_CurrentId] ON [RDS].[FactK12StaffCourseSections]([K12Staff_CurrentId] ASC);
 GO
 
 -- FactK12ParentOrGuardians (K12Student_CurrentId, ParentOrGuardian_CurrentId)
@@ -427,15 +427,15 @@ IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IXFK_FactK12StaffCompensa
     CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffCompensations_K12Staff_CurrentId] ON [RDS].[FactK12StaffCompensations]([K12Staff_CurrentId] ASC);
 GO
 
--- FactK12StaffAssessments (K12StaffPerson_CurrentId)
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = 'K12StaffPerson_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffAssessments'))
-    ALTER TABLE [RDS].[FactK12StaffAssessments] ADD [K12StaffPerson_CurrentId] BIGINT NOT NULL DEFAULT -1;
+-- FactK12StaffAssessments (K12Staff_CurrentId)
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = 'K12Staff_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffAssessments'))
+    ALTER TABLE [RDS].[FactK12StaffAssessments] ADD [K12Staff_CurrentId] BIGINT NOT NULL DEFAULT -1;
 GO
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_FactK12StaffAssessments_K12StaffPerson_CurrentId')
-    ALTER TABLE [RDS].[FactK12StaffAssessments] ADD CONSTRAINT [FK_FactK12StaffAssessments_K12StaffPerson_CurrentId] FOREIGN KEY ([K12StaffPerson_CurrentId]) REFERENCES [RDS].[DimPeople_Current]([DimPersonId]);
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_FactK12StaffAssessments_K12Staff_CurrentId')
+    ALTER TABLE [RDS].[FactK12StaffAssessments] ADD CONSTRAINT [FK_FactK12StaffAssessments_K12Staff_CurrentId] FOREIGN KEY ([K12Staff_CurrentId]) REFERENCES [RDS].[DimPeople_Current]([DimPersonId]);
 GO
-IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IXFK_FactK12StaffAssessments_K12StaffPerson_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffAssessments'))
-    CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_K12StaffPerson_CurrentId] ON [RDS].[FactK12StaffAssessments]([K12StaffPerson_CurrentId] ASC);
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IXFK_FactK12StaffAssessments_K12Staff_CurrentId' AND object_id = OBJECT_ID('RDS.FactK12StaffAssessments'))
+    CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssessments_K12Staff_CurrentId] ON [RDS].[FactK12StaffAssessments]([K12Staff_CurrentId] ASC);
 GO
 
 -- BridgeK12StudentCourseSectionK12Staff (K12Staff_CurrentId)

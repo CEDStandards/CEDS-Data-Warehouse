@@ -7,6 +7,7 @@ CREATE TABLE [Staging].[OrganizationAddress] (
     [AddressApartmentRoomOrSuiteNumber] VARCHAR (50)   NULL,
     [AddressCity]                       VARCHAR (30)   NULL,
     [AddressCountyAnsiCodeCode]         NVARCHAR (7)   NULL,
+    [AddressCountyName]                 NVARCHAR (30)  NULL,
     [StateAbbreviation]                 VARCHAR (2)    NULL,
     [AddressPostalCode]                 VARCHAR (17)   NULL,
     [Latitude]                          NVARCHAR (100) NULL,
@@ -51,6 +52,16 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001209' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressCountyAnsiCodeCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22176' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressCountyAnsiCodeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressCountyName';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The name of the county, parish, borough, or comparable unit (within a state) in which an address is located.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressCountyName';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Address County Name' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressCountyName';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000190' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressCountyName';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000190' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressCountyName';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'Staging', @level1type=N'TABLE',@level1name=N'OrganizationAddress', @level2type=N'COLUMN',@level2name=N'AddressPostalCode';
 GO

@@ -18,6 +18,8 @@ CREATE TABLE [RDS].[DimSeaJobClassifications](
 	[MigrantEducationProgramStaffCategoryDescription] [nvarchar](2000) NOT NULL,
 	[SpecialEducationSupportServicesCategoryCode] [nvarchar](100) NOT NULL,
 	[SpecialEducationSupportServicesCategoryDescription] [nvarchar](2000) NOT NULL,
+	[EvaluationRequiredIndicatorCode] [varchar](50) NULL,
+	[EvaluationRequiredIndicatorDescription] [varchar](200) NULL,
 	[RecordStartDateTime] [datetime] NOT NULL,
 	[RecordEndDateTime] [datetime] NULL,
  CONSTRAINT [PK_DimSeaJobClassifications] PRIMARY KEY CLUSTERED 
@@ -187,4 +189,24 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000283' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'TitleIProgramStaffCategoryDescription';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000283' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'TitleIProgramStaffCategoryDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an evaluation is required for the job classification.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Evaluation Required Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'TBD952' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://github.com/CEDStandards/CEDS-Elements/issues/952' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'An indication of whether an evaluation is required for the job classification.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Evaluation Required Indicator' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'TBD952' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://github.com/CEDStandards/CEDS-Elements/issues/952' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimSeaJobClassifications', @level2type=N'COLUMN',@level2name=N'EvaluationRequiredIndicatorDescription';
 GO

@@ -7,6 +7,8 @@ CREATE TABLE [RDS].[DimK12StaffAssignmentStatuses]
 	[ClassroomPositionTypeDescription] varchar(200) NOT NULL,
 	[PrimaryAssignmentIndicatorCode] varchar(50) NOT NULL,
 	[PrimaryAssignmentIndicatorDescription] varchar(200) NOT NULL,
+	[MigrantEducationProgramSessionTypeCode] varchar(50) NOT NULL,
+	[MigrantEducationProgramSessionTypeDescription] varchar(200) NOT NULL,
 	CONSTRAINT [PK_DimK12StaffAssignmentStatuses] PRIMARY KEY CLUSTERED ([DimK12StaffAssignmentStatusId] ASC)
 )
 GO
@@ -72,6 +74,25 @@ EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000525' , @leve
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000525' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'PrimaryAssignmentIndicatorDescription';
 GO
-
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The time of year that a Migrant Education Program operates.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Migrant Education Program Session Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000187' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19187' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The time of year that a Migrant Education Program operates.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Migrant Education Program Session Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000187' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19187' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimK12StaffAssignmentStatuses', @level2type=N'COLUMN',@level2name=N'MigrantEducationProgramSessionTypeDescription';
+GO
 
 

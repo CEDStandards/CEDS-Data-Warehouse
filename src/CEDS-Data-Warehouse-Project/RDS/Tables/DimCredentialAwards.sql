@@ -11,6 +11,7 @@ CREATE TABLE [RDS].[DimCredentialAwards](
 	[CredentialRevokedDate] [date] NULL,
 	[CredentialSuspensionStartDate] [date] NULL,
 	[CredentialSuspensionEndDate] [date] NULL,
+	[CredentialAwardIdentifierState] [varchar](512) NULL,
  CONSTRAINT [PK_DimCredentialAwards] PRIMARY KEY CLUSTERED 
 (
 	[DimCredentialAwardId] ASC
@@ -108,4 +109,14 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'001429' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialAwards', @level2type=N'COLUMN',@level2name=N'ProfessionalCertificateOrLicenseNumber';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/001429' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialAwards', @level2type=N'COLUMN',@level2name=N'ProfessionalCertificateOrLicenseNumber';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialAwards', @level2type=N'COLUMN',@level2name=N'CredentialAwardIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'A unique alphanumeric identifier or code assigned by a state to a credential award.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialAwards', @level2type=N'COLUMN',@level2name=N'CredentialAwardIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Credential Award Identifier State' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialAwards', @level2type=N'COLUMN',@level2name=N'CredentialAwardIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'TBD1030' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialAwards', @level2type=N'COLUMN',@level2name=N'CredentialAwardIdentifierState';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://github.com/CEDStandards/CEDS-Elements/issues/1030' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialAwards', @level2type=N'COLUMN',@level2name=N'CredentialAwardIdentifierState';
 GO
