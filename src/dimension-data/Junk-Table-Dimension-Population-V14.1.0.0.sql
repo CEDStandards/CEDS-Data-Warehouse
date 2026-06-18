@@ -1,5 +1,5 @@
 /*    
-	Copyright 2025 Common Education Data Standards
+	Copyright 2026 Common Education Data Standards
 	----------------------------------------------
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 	Open Source Community to fully populate all of the Junk Dimension tables.
 
 	Script 2 of 2
-	To create the CEDS Data Warehouse including population of the dimension tables, the following 3 scripts are needed:
+	To create the CEDS Data Warehouse including population of the dimension tables, the following 2 scripts are needed:
 
 	Script 1: CEDS-Data-Warehouse-V14-1-0-0
 	Script 2: Junk-Table-Dimension-Population-V14.1.0.0
