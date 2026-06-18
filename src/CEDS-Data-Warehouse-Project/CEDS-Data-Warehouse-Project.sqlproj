@@ -53,8 +53,8 @@
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
     <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
-  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
-  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="CEDS" />
@@ -285,6 +285,7 @@
     <Build Include="RDS\Tables\BridgeAeStudentEnrollmentAeProgramParticipantGoals.sql" />
     <Build Include="RDS\Tables\BridgeAeStudentEnrollmentRaces.sql" />
     <Build Include="RDS\Tables\BridgeCredentialAwardCompetencyDefinitions.sql" />
+    <Build Include="RDS\Tables\BridgeCredentialAwardRaces.sql" />
     <Build Include="RDS\Tables\BridgeCredentialAwardRelatedCredentialAwards.sql" />
     <Build Include="RDS\Tables\BridgeDirectoryActivities.sql" />
     <Build Include="RDS\Tables\BridgeDirectoryContacts.sql" />
@@ -309,7 +310,7 @@
     <Build Include="RDS\Tables\BridgeK12SchoolGradeLevels.sql" />
     <Build Include="RDS\Tables\BridgeK12SchoolGradeLevelsAuthorized.sql" />
     <Build Include="RDS\Tables\BridgeK12SchoolGradeLevelsOffered.sql" />
-    <Build Include="RDS\Tables\BridgeK12SeaJobCataloguesSeaFinancialAccountClassifications.sql" />
+    <Build Include="RDS\Tables\BridgeK12SeaJobCatalogueSeaFinancialAccountClassifications.sql" />
     <Build Include="RDS\Tables\BridgeK12SeaJobClassificationEndorsementCredentialDefinitions.sql" />
     <Build Include="RDS\Tables\BridgeK12StaffAssessmentRaces.sql" />
     <Build Include="RDS\Tables\BridgeK12StaffAssignmentCourseSections.sql" />
@@ -471,6 +472,7 @@
     <Build Include="RDS\Tables\DimK12EmploymentStatuses.sql" />
     <Build Include="RDS\Tables\DimK12EnrollmentStatuses.sql" />
     <Build Include="RDS\Tables\DimK12JobPositions.sql" />
+    <Build Include="RDS\Tables\DimK12JobPositionStatuses.sql" />
     <Build Include="RDS\Tables\DimK12Jobs.sql" />
     <Build Include="RDS\Tables\DimK12OrganizationStatuses.sql" />
     <Build Include="RDS\Tables\DimK12ProgramTypes.sql" />
@@ -537,6 +539,7 @@
     <Build Include="RDS\Tables\DimSeas.sql" />
     <Build Include="RDS\Tables\DimStaffCompensationTypes.sql" />
     <Build Include="RDS\Tables\DimStaffEvaluationPartStatuses.sql" />
+    <Build Include="RDS\Tables\DimStaffEvaluationScales.sql" />
     <Build Include="RDS\Tables\DimStandardOccupationalClassifications.sql" />
     <Build Include="RDS\Tables\DimStateDefinedCustomIndicators.sql" />
     <Build Include="RDS\Tables\DimStateDefinedStatuses.sql" />
@@ -616,4 +619,14 @@
     <Build Include="RDS\Views\vwDimTeachingCredentialStatuses.sql" />
     <Build Include="RDS\Tables\DimPeople_Current.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Condition="'$(NetCoreBuild)' == 'true'">
+      <Version>1.0.0</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(NETCoreTargetsPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" Condition="'$(NetCoreBuild)' == 'true'" />
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
 </Project>

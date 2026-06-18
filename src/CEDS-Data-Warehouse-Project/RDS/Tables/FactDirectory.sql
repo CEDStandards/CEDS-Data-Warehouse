@@ -1,24 +1,26 @@
 CREATE TABLE [RDS].[FactDirectory]
 (
 	[FactDirectoryId] int NOT NULL IDENTITY (1, 1),
-	[LeaId] int NULL,
-	[OrganizationId] int NULL,
-	[SeaId] int NULL,
-	[PsInstitutionID] int NULL,
-	[IeuId] int NULL,
-	[K12SchoolId] int NULL,
-	[AeProviderId] int NULL,
-	[ComprehensiveAndTargetedSupportId] int NULL,
-	[NOrDStatusId] int NULL,
-	[CharterSchoolManagementOrganizationId] int NULL,
-	[CharterSchoolStatusId] int NULL,
-	[CharterSchoolAuthorizerId] int NULL,
-	[AlternativeSchoolStatusId] int NULL,
-	[K12SchoolStatusId] int NULL,
-	[EarlyChildhoodOrganizationStatusId] int NULL,
-	[EarlyLearningOrganizationId] int NULL,
-	[DataCollectionId] int NULL,
-	[SchoolYearId] int NULL
+	[LeaId] int NOT NULL CONSTRAINT [DF_FactDirectory_LeaId] DEFAULT ((-1)),
+	[OrganizationId] int NOT NULL CONSTRAINT [DF_FactDirectory_OrganizationId] DEFAULT ((-1)),
+	[SeaId] int NOT NULL CONSTRAINT [DF_FactDirectory_SeaId] DEFAULT ((-1)),
+	[PsInstitutionID] int NOT NULL CONSTRAINT [DF_FactDirectory_PsInstitutionID] DEFAULT ((-1)),
+	[IeuId] int NOT NULL CONSTRAINT [DF_FactDirectory_IeuId] DEFAULT ((-1)),
+	[K12SchoolId] int NOT NULL CONSTRAINT [DF_FactDirectory_K12SchoolId] DEFAULT ((-1)),
+	[AeProviderId] int NOT NULL CONSTRAINT [DF_FactDirectory_AeProviderId] DEFAULT ((-1)),
+	[ComprehensiveAndTargetedSupportId] int NOT NULL CONSTRAINT [DF_FactDirectory_ComprehensiveAndTargetedSupportId] DEFAULT ((-1)),
+	[NOrDStatusId] int NOT NULL CONSTRAINT [DF_FactDirectory_NOrDStatusId] DEFAULT ((-1)),
+	[CharterSchoolManagementOrganizationId] int NOT NULL CONSTRAINT [DF_FactDirectory_CharterSchoolManagementOrganizationId] DEFAULT ((-1)),
+	[CharterSchoolStatusId] int NOT NULL CONSTRAINT [DF_FactDirectory_CharterSchoolStatusId] DEFAULT ((-1)),
+	[CharterSchoolAuthorizerId] int NOT NULL CONSTRAINT [DF_FactDirectory_CharterSchoolAuthorizerId] DEFAULT ((-1)),
+	[AlternativeSchoolStatusId] int NOT NULL CONSTRAINT [DF_FactDirectory_AlternativeSchoolStatusId] DEFAULT ((-1)),
+	[K12SchoolStatusId] int NOT NULL CONSTRAINT [DF_FactDirectory_K12SchoolStatusId] DEFAULT ((-1)),
+	[EarlyChildhoodOrganizationStatusId] int NOT NULL CONSTRAINT [DF_FactDirectory_EarlyChildhoodOrganizationStatusId] DEFAULT ((-1)),
+	[EarlyLearningOrganizationId] int NOT NULL CONSTRAINT [DF_FactDirectory_EarlyLearningOrganizationId] DEFAULT ((-1)),
+	[DataCollectionId] int NOT NULL CONSTRAINT [DF_FactDirectory_DataCollectionId] DEFAULT ((-1)),
+	[SchoolYearId] int NOT NULL CONSTRAINT [DF_FactDirectory_SchoolYearId] DEFAULT ((-1)),
+	[OrganizationTitleIStatusId] int NOT NULL CONSTRAINT [DF_FactDirectory_OrganizationTitleIStatusId] DEFAULT ((-1)),
+	[PsInstitutionStatusId] int NOT NULL CONSTRAINT [DF_FactDirectory_PsInstitutionStatusId] DEFAULT ((-1))
 )
 GO
 
@@ -85,8 +87,16 @@ CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimOrganizations]
  ON [RDS].[FactDirectory] ([OrganizationId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimPsInstitutions] 
+CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimPsInstitutions]
  ON [RDS].[FactDirectory] ([PsInstitutionID] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimOrganizationTitleIStatuses]
+ ON [RDS].[FactDirectory] ([OrganizationTitleIStatusId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimPsInstitutionStatuses]
+ ON [RDS].[FactDirectory] ([PsInstitutionStatusId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactDirectory_DimSchoolYears] 
@@ -169,4 +179,12 @@ GO
 
 ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_SeaId]
 	FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_OrganizationTitleIStatusId]
+	FOREIGN KEY ([OrganizationTitleIStatusId]) REFERENCES [RDS].[DimOrganizationTitleIStatuses] ([DimOrganizationTitleIStatusId]) ON DELETE No Action ON UPDATE No Action
+GO
+
+ALTER TABLE [RDS].[FactDirectory] ADD CONSTRAINT [FK_FactDirectory_PsInstitutionStatusId]
+	FOREIGN KEY ([PsInstitutionStatusId]) REFERENCES [RDS].[DimPsInstitutionStatuses] ([DimPsInstitutionStatusId]) ON DELETE No Action ON UPDATE No Action
 GO

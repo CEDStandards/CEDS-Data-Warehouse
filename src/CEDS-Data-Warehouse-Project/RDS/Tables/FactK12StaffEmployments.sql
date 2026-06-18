@@ -17,12 +17,13 @@ CREATE TABLE [RDS].[FactK12StaffEmployments]
 	[OnetSocOccupationTypeId] int NOT NULL,
 	[StandardOccupationalClassificationId] int NOT NULL,
 	[K12StaffCategoryId] int NOT NULL,
-	[YearsOfPriorTeachingExperience] decimal(3,2) NOT NULL,
-	[YearsOfPriorProfessionalExperience] decimal(3,2) NOT NULL,
-	[YearsOfTotalExperience] decimal(3,2) NOT NULL,
-	[YearsofPriorAdultEducationTeachingExperience] decimal(3,2) NOT NULL,
+	[YearsOfPriorTeachingExperience] decimal(4,2) NOT NULL,
+	[YearsOfPriorProfessionalExperience] decimal(4,2) NOT NULL,
+	[YearsOfTotalExperience] decimal(4,2) NOT NULL,
+	[YearsofPriorAdultEducationTeachingExperience] decimal(4,2) NOT NULL,
 	[K12EmploymentStatusId] int NOT NULL,
 	[K12JobPositionId] int NOT NULL,
+	[K12JobPositionStatusId] int NOT NULL DEFAULT -1,
 	[K12JobId] int NOT NULL,
 	[LeaJobClassificationId] int NULL,
 	[SeaJobClassificationId] int NULL,
@@ -31,7 +32,7 @@ CREATE TABLE [RDS].[FactK12StaffEmployments]
 	[EmploymentEndDateId] int NOT NULL,
 	[HireDateId] int NOT NULL,
 	[K12DemographicId] int NULL,
-	[ContractDaysOfServicePerYear] decimal(3,2) NOT NULL,
+	[ContractDaysOfServicePerYear] decimal(4,2) NOT NULL,
 	[DataCollectionId] int NULL,
 	[RecordStatusId] int NOT NULL,
 
@@ -51,6 +52,7 @@ CREATE TABLE [RDS].[FactK12StaffEmployments]
 	CONSTRAINT [FK_FactK12StaffEmployments_K12StaffCategoryId] FOREIGN KEY ([K12StaffCategoryId]) REFERENCES [RDS].[DimK12StaffCategories] ([DimK12StaffCategoryId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_K12EmploymentStatusId] FOREIGN KEY ([K12EmploymentStatusId]) REFERENCES [RDS].[DimK12EmploymentStatuses] ([DimK12EmploymentStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_K12JobPositionId] FOREIGN KEY ([K12JobPositionId]) REFERENCES [RDS].[DimK12JobPositions] ([DimK12JobPositionId]) ON DELETE No Action ON UPDATE No Action,
+	CONSTRAINT [FK_FactK12StaffEmployments_K12JobPositionStatusId] FOREIGN KEY ([K12JobPositionStatusId]) REFERENCES [RDS].[DimK12JobPositionStatuses] ([DimK12JobPositionStatusId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_K12JobId] FOREIGN KEY ([K12JobId]) REFERENCES [RDS].[DimK12Jobs] ([DimK12JobId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_LeaJobClassificationId] FOREIGN KEY ([LeaJobClassificationId]) REFERENCES [RDS].[DimLeaJobClassifications] ([DimLeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffEmployments_SeaJobClassificationId] FOREIGN KEY ([SeaJobClassificationId]) REFERENCES [RDS].[DimSeaJobClassifications] ([DimSeaJobClassificationId]) ON DELETE No Action ON UPDATE No Action,
@@ -122,6 +124,10 @@ GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_K12JobPositionId] 
  ON [RDS].[FactK12StaffEmployments] ([K12JobPositionId] ASC)
+GO
+
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_K12JobPositionStatusId] 
+ ON [RDS].[FactK12StaffEmployments] ([K12JobPositionStatusId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffEmployments_K12JobId] 

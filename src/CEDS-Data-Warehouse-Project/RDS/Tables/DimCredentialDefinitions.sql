@@ -10,16 +10,16 @@ CREATE TABLE [RDS].[DimCredentialDefinitions](
 	[CredentialDefinitionIdentifierInfo] [nvarchar](50) NULL,
 	[CredentialDefinitionTitle] [nvarchar](300) NULL,
 	[CredentialDefinitionDescription] [nvarchar](300) NULL,
-	[CredentialTypeCode] [nvarchar](50) NOT NULL,
-	[CredentialTypeDescription] [nvarchar](200) NOT NULL,
+	[CredentialTypeCode] [nvarchar](50) NULL,
+	[CredentialTypeDescription] [nvarchar](200) NULL,
 	[CredentialDefinitionCategorySystem] [nvarchar](30) NULL,
 	[CredentialDefinitionCategoryType] [nvarchar](60) NULL,
-	[CredentialDefinitionStatusTypeCode] [nvarchar](50) NOT NULL,
-	[CredentialDefinitionStatusTypeDescription] [nvarchar](200) NOT NULL,
-	[CredentialDefinitionIntendedPurposeTypeCode] [nvarchar](50) NOT NULL,
-	[CredentialDefinitionIntendedPurposeTypeDescription] [nvarchar](200) NOT NULL,
-	[CredentialDefinitionAssessmentMethodTypeCode] [nvarchar](50) NOT NULL,
-	[CredentialDefinitionAssessmentMethodTypeDescription] [nvarchar](200) NOT NULL,
+	[CredentialDefinitionStatusTypeCode] [nvarchar](50) NULL,
+	[CredentialDefinitionStatusTypeDescription] [nvarchar](200) NULL,
+	[CredentialDefinitionIntendedPurposeTypeCode] [nvarchar](50) NULL,
+	[CredentialDefinitionIntendedPurposeTypeDescription] [nvarchar](200) NULL,
+	[CredentialDefinitionAssessmentMethodTypeCode] [nvarchar](50) NULL,
+	[CredentialDefinitionAssessmentMethodTypeDescription] [nvarchar](200) NULL,
 	[CredentialDefinitionCriteria] [nvarchar](300) NULL,
 	[CredentialDefinitionCriteriaURL] [nvarchar](512) NULL,
 	[CredentialDefinitionKeywords] [nvarchar](max) NULL,
@@ -30,13 +30,15 @@ CREATE TABLE [RDS].[DimCredentialDefinitions](
 	[CredentialOfferedEndDate] [date] NULL,
 	[CoreAcademicCourseCode] nvarchar(50) NULL,
 	[CoreAcademicCourseDescription] nvarchar(200) NULL,
-	[CTDLAudienceLevelTypeCode] [nvarchar](50) NOT NULL,
-	[CTDLAudienceLevelTypeDescription] [nvarchar](200) NOT NULL,
-	[CredentialDefinitionTerminalDegreeIndicatorCode] [nvarchar](50) NOT NULL,
-	[CredentialDefinitionTerminalDegreeIndicatorDescription] [nvarchar](200) NOT NULL,
-	[CredentialDefinitionScedCode] [nvarchar](50) NOT NULL,
-	[CredentialDefinitionLowGradeLevelCode] [nvarchar](50) NOT NULL,
-	[CredentialDefinitionHighGradeLevelCode] [nvarchar](50) NOT NULL,
+	[CTDLAudienceLevelTypeCode] [nvarchar](50) NULL,
+	[CTDLAudienceLevelTypeDescription] [nvarchar](200) NULL,
+	[CredentialDefinitionTerminalDegreeIndicatorCode] [nvarchar](50) NULL,
+	[CredentialDefinitionTerminalDegreeIndicatorDescription] [nvarchar](200)  NULL,
+	[CredentialDefinitionScedCode] [nvarchar](50)  NULL,
+	[CredentialDefinitionLowGradeLevelCode] [nvarchar](50) NULL,
+	[CredentialDefinitionHighGradeLevelCode] [nvarchar](50) NULL,
+	[TeachingCredentialTypeCode] [nvarchar](50) NULL,
+	[TeachingCredentialTypeDescription] [nvarchar](200) NULL,
  CONSTRAINT [PK_DimCredentialDefinitions] PRIMARY KEY CLUSTERED 
 (
 	[DimCredentialDefinitionId] ASC
@@ -89,6 +91,12 @@ GO
 ALTER TABLE [RDS].[DimCredentialDefinitions] ADD  DEFAULT ('MISSING') FOR [CredentialDefinitionHighGradeLevelCode]
 GO
 
+ALTER TABLE [RDS].[DimCredentialDefinitions] ADD  DEFAULT ('MISSING') FOR [TeachingCredentialTypeCode]
+GO
+
+ALTER TABLE [RDS].[DimCredentialDefinitions] ADD  DEFAULT ('MISSING') FOR [TeachingCredentialTypeDescription]
+GO
+
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
 GO
@@ -99,6 +107,26 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000518' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
 GO
 EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/000518' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of teaching credential a person holds.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Teaching Credential Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeCode';
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The type of teaching credential a person holds.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Teaching Credential Type' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'000278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=19278' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'TeachingCredentialTypeDescription';
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'DimCredentialDefinitions', @level2type=N'COLUMN',@level2name=N'CoreAcademicCourseDescription';
 GO
