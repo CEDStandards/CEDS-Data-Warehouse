@@ -8,6 +8,9 @@ CREATE TABLE [RDS].[DimDataCollections] (
     [DataCollectionCloseDate]              DATETIME       NULL,
     [DataCollectionAcademicSchoolYear]     NVARCHAR (7)   NULL,
     [DataCollectionSchoolYear]             NVARCHAR (7)   NULL,
+    [DataCollectionCertificationCloseDate] DATETIME       NULL,
+    [DataCollectionCertificationOpenDate]  DATETIME       NULL,
+    [DataCollectionCorrectionsEndDate]     DATETIME       NULL,
     CONSTRAINT [PK_DimCollections] PRIMARY KEY CLUSTERED ([DimDataCollectionId] ASC) WITH (DATA_COMPRESSION = PAGE)
 );
 

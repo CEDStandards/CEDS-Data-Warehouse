@@ -37,6 +37,7 @@ CREATE TABLE [RDS].[FactK12StaffAssignments]
 	[SeaFinancialExpenditureClassificationId] int NULL,
 	[FullTimeEquivalency] decimal(3,2) NOT NULL,
 	[K12StaffAssignmentCount] int NOT NULL,
+	[EvaluationRequiredIndicator] VARCHAR(15) NOT NULL,
 	CONSTRAINT [PK_FactK12StaffAssignments] PRIMARY KEY CLUSTERED ([FactK12StaffAssignmentId] ASC),
 	CONSTRAINT [FK_FactK12StaffAssignments_AssignmentEndDateId] FOREIGN KEY ([AssignmentEndDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
 	CONSTRAINT [FK_FactK12StaffAssignments_AssignmentStartDateId] FOREIGN KEY ([AssignmentStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
