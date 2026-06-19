@@ -36,10 +36,18 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     [StudentCourseSectionGradeEarned]       NVARCHAR(15) NULL,
     [StudentCourseSectionGradeNarrative]    NVARCHAR(300) NULL,
     [StudentCourseSectionCount]           INT    CONSTRAINT [DF_FactK12StudentCourseSections_StudentCourseSectionCount] DEFAULT ((1)) NOT NULL,
+    [K12StaffId]                          INT    CONSTRAINT [DF_FactK12StudentCourseSections_K12StaffId] DEFAULT ((-1)) NOT NULL,
+	  [CoreAcademicCourse]                  BIT    CONSTRAINT [DF_FactK12StudentCourseSections_CoreAcademicCourse] DEFAULT ((-1)) NOT NULL,
+	  [NumberOfCreditsAttempted]            INT    CONSTRAINT [DF_FactK12StudentCourseSections_NumberOfCreditsAttempted] DEFAULT ((-1)) NOT NULL,
+	  [NumberOfCreditsEarned]               INT    CONSTRAINT [DF_FactK12StudentCourseSections_NumberOfCreditsAttempted] DEFAULT ((-1)) NOT NULL,
+	  [ClassMeetingDays]                    INT    CONSTRAINT [DF_FactK12StudentCourseSections_ClassMeetingDays] DEFAULT ((-1)) NOT NULL,
+	  [CareerClusterId]                     INT    CONSTRAINT [DF_FactK12StudentCourseSections_CareerClusterId] DEFAULT ((-1)) NOT NULL,
+    [ClassroomIdentifier]                 BIGINT CONSTRAINT [DF_FactK12StudentCourseSections_ClassroomIdentifier] DEFAULT ((-1)) NOT NULL,
+	  [StudentCourseSectionGradeEarnedId]   INT    CONSTRAINT [DF_FactK12StudentCourseSections_StudentCourseSectionGradeEarnedId] DEFAULT ((-1)) NOT NULL,
+	  [SessionTypeId]                       INT CONSTRAINT [DF_FactK12StudentCourseSections_SessionTypeId] DEFAULT ((-1)) NOT NULL,
     [RecordStatusId]                  INT    CONSTRAINT [DF_FactK12StudentCourseSections_RecordStatusId] DEFAULT ((-1)) NOT NULL,
     [RecordStartDateTime] DATETIME NULL,
-	[RecordEndDateTime] DATETIME NULL,
-
+	  [RecordEndDateTime] DATETIME NULL,
     CONSTRAINT [PK_FactK12StudentCourseSections] PRIMARY KEY CLUSTERED ([FactK12StudentCourseSectionId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE),
     CONSTRAINT [FK_FactK12StudentCourseSections_CipCodeId] FOREIGN KEY ([CipCodeId]) REFERENCES [RDS].[DimCipCodes] ([DimCipCodeId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]),
@@ -63,6 +71,9 @@ CREATE TABLE [RDS].[FactK12StudentCourseSections] (
     CONSTRAINT [FK_FactK12StudentCourseSections_ScedCodeId] FOREIGN KEY ([ScedCodeId]) REFERENCES [RDS].[DimScedCodes] ([DimScedCodeId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_K12StaffId] FOREIGN KEY ([K12StaffId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_CareerClusterId] FOREIGN KEY ([CareerClusterId]) REFERENCES [RDS].[DimCareerClusters] ([DimCareerClusterId]),
+    CONSTRAINT [FK_FactK12StudentCourseSections_SessionTypeId] FOREIGN KEY ([SessionTypeId]) REFERENCES [RDS].[DimSessionTypes] ([DimSessionTypeId])
     CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] FOREIGN KEY ([K12CourseSectionEnrollmentStatusId]) REFERENCES [RDS].[DimK12CourseSectionEnrollmentStatuses] ([DimK12CourseSectionEnrollmentStatusId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_WorkBasedLearningStatusId] FOREIGN KEY ([WorkBasedLearningStatusId]) REFERENCES [RDS].[DimWorkBasedLearningStatuses] ([DimWorkBasedLearningStatusId]),
     CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionId] FOREIGN KEY ([K12CourseSectionId]) REFERENCES [RDS].[DimK12CourseSections] ([DimK12CourseSectionId]),
@@ -110,7 +121,10 @@ ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12S
 
 GO
 ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_SeaId];
+GO
 
+ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_CareerClusterId];
+GO
 GO
 ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId];
 
@@ -159,6 +173,10 @@ ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12S
 GO
 ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_LeaK12CourseId];
 
+ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_K12StaffId];
+GO
+
+ALTER TABLE [RDS].[FactK12StudentCourseSections] NOCHECK CONSTRAINT [FK_FactK12StudentCourseSections_SessionTypeId];
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_SchoolYearId] ON [RDS].[FactK12StudentCourseSections]([SchoolYearId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
@@ -203,6 +221,11 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_LanguageId] ON [RDS
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_EntryGradeLevelId] ON [RDS].[FactK12StudentCourseSections]([EntryGradeLevelId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12StaffId] ON [RDS].[FactK12StudentCourseSections]([K12StaffId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_CareerClusterId] ON [RDS].[FactK12StudentCourseSections]([CareerClusterId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
+GO
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_SessionTypeId] ON [RDS].[FactK12StudentCourseSections]([SessionTypeId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_K12CourseSectionEnrollmentStatusId] ON [RDS].[FactK12StudentCourseSections]([K12CourseSectionEnrollmentStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);
 GO
 CREATE NONCLUSTERED INDEX [IXFK_FactK12StudentCourseSections_WorkBasedLearningStatusId] ON [RDS].[FactK12StudentCourseSections]([WorkBasedLearningStatusId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE);

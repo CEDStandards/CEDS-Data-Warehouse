@@ -75,6 +75,8 @@ CREATE TABLE [Staging].[K12Organization] (
     [NewLEA]                                                               BIT            NULL,
     [NewSchool]                                                            BIT            NULL,
     [RunDateTime]                                                          DATETIME       NULL,
+    [SchoolLevel]                                                          NVARCHAR (5)    NULL,
+
     CONSTRAINT [PK_K12Organization] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 100, STATISTICS_NORECOMPUTE = ON, DATA_COMPRESSION = PAGE)
 );
 GO

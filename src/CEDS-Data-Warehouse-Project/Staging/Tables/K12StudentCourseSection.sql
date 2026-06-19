@@ -20,6 +20,21 @@ CREATE TABLE [Staging].[K12StudentCourseSection] (
     [RecordEndDateTime]                              DATETIME       NULL,
     [DataCollectionName]                             NVARCHAR (100) NULL,
     [RunDateTime]                                    DATETIME       NULL,
+    CourseDescription                                NVARCHAR (500) NULL,
+	SCEDCourseCode1                                  NVARCHAR (100) NULL,
+	SCEDCourseCode2                                  NVARCHAR (100) NULL,
+	SCEDCourseCode3                                  NVARCHAR (100) NULL,
+	StaffMemberIdentifier1                           NVARCHAR (15) NULL,
+	StaffMemberIdentifier2                           NVARCHAR (15) NULL,
+	StaffMemberIdentifier3                           NVARCHAR (15) NULL,
+	CoreAcademicCourse                               CHAR     (1)  NULL,
+	NumberOfCreditsAttempted                         NVARCHAR (5)  NULL,
+	NumberOfCreditsEarned                            NVARCHAR (5)  NULL,
+	ClassMeetingDays                                 NVARCHAR (5)  NULL,
+	CareerCluster                                    NVARCHAR (10) NULL,
+    ClassroomIdentifier                              NVARCHAR (15) NULL,
+	GradeEarned                                      NVARCHAR (3) NULL,
+	SessionTypeCode                                  INT,
     CONSTRAINT [PK_K12StudentCourseSection] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

@@ -20,6 +20,7 @@ CREATE TABLE [Staging].[ProgramParticipationTitleI] (
     [SchoolYear]                                          SMALLINT       NULL,
     [DataCollectionName]                                  NVARCHAR (100) NULL,
     [RunDateTime]                                         DATETIME       NULL,
+    [TitleIInstructionalServicesCode]                     NVARCHAR (50)  NULL,
     CONSTRAINT [PK_ProgramParticipationTitleI] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE)
 );
 

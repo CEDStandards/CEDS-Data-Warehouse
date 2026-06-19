@@ -1,3 +1,4 @@
+
 CREATE TABLE [Staging].[AssessmentResult](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[StudentIdentifierState] [nvarchar](40) NULL,
@@ -29,10 +30,14 @@ CREATE TABLE [Staging].[AssessmentResult](
 	[AssessmentScoreMetricType] [varchar](100) NULL,
 	[AssessmentAccommodationCategory] [nvarchar](100) NULL,
 	[AccessibilityFeatureType] [nvarchar](100) NULL,
-    [AccessibilityFeatureApplicationType] [nvarchar](100) NULL,
+  [AccessibilityFeatureApplicationType] [nvarchar](100) NULL,
 	[SchoolYear] [smallint] NULL,
 	[DataCollectionName] [nvarchar](100) NULL,
 	[RunDateTime] [datetime] NULL,
+  [TitleISchoolSupplementalServicesEligibleStatus]   INT           NULL,
+	[MigrantStatus]                                     INT           NULL,
+	[HomelessnessStatus]                                 INT           NULL,
+	[ActiveMilitaryStatusIndicator]                     BIT           NULL,
  CONSTRAINT [PK_AssessmentResult] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

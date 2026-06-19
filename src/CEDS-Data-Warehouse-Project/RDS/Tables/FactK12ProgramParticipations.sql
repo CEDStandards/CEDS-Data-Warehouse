@@ -19,6 +19,12 @@ CREATE TABLE [RDS].[FactK12ProgramParticipations] (
     [ProgramParticipationExitDateId]      INT    CONSTRAINT [DF_FactK12ProgramParticipations_ProgramParticipationExitDateId] DEFAULT ((-1)) NOT NULL,
     [TitleIIIStatusId]                    INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIStatusId] DEFAULT ((-1)) NOT NULL,
     [StudentCount]                        INT    CONSTRAINT [DF_FactK12ProgramParticipations_StudentCount] DEFAULT ((1)) NOT NULL,
+    [TitleIIIAccountabilityProgressStatusCode] INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIAccountabilityProgressStatusCode] DEFAULT ((1)) NOT NULL,
+    [ProficiencyTargetStatusForReadingAndLanguageArtsCodeId] INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIAccountabilityProgressStatusCodeID] DEFAULT ((1)) NOT NULL,
+    [EnglishLearnerStatus] INT    CONSTRAINT [DF_FactK12ProgramParticipations_EnglishLearnerStatus] DEFAULT ((1)) NOT NULL,
+    [TitleIIIEnglishLearnerParticipationStatus] INT    CONSTRAINT [DF_FactK12ProgramParticipations_TitleIIIEnglishLearnerParticipationStatus] DEFAULT ((1)) NOT NULL,
+    [ExitReasonCodeId] INT    CONSTRAINT [DF_FactK12ProgramParticipations_ExitReasonCodeId] DEFAULT ((1)) NOT NULL,
+   
     CONSTRAINT [PK_FactK12ProgramParticipations] PRIMARY KEY CLUSTERED ([FactK12ProgramParticipationId] ASC),
     CONSTRAINT [FK_FactK12ProgramParticipations_DataCollectionId] FOREIGN KEY ([DataCollectionId]) REFERENCES [RDS].[DimDataCollections] ([DimDataCollectionId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_IdeaStatusId] FOREIGN KEY ([IdeaStatusId]) REFERENCES [RDS].[DimIdeaStatuses] ([DimIdeaStatusId]),
@@ -37,7 +43,9 @@ CREATE TABLE [RDS].[FactK12ProgramParticipations] (
     CONSTRAINT [FK_FactK12ProgramParticipations_ProgramParticipationStartDateId] FOREIGN KEY ([ProgramParticipationStartDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_TitleIIIStatusId] FOREIGN KEY ([TitleIIIStatusId]) REFERENCES [RDS].[DimTitleIIIStatuses] ([DimTitleIIIStatusId]),
     CONSTRAINT [FK_FactK12ProgramParticipations_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
-    CONSTRAINT [FK_FactK12ProgramParticipations_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId])
+    CONSTRAINT [FK_FactK12ProgramParticipations_SeaId] FOREIGN KEY ([SeaId]) REFERENCES [RDS].[DimSeas] ([DimSeaId]),
+    CONSTRAINT [FK_FactK12ProgramParticipations_ExitReasonCodeId] FOREIGN KEY ([ExitReasonCodeId]) REFERENCES [RDS].[DimExitReasonCodes] ([DimExitReasonCodeId]),
+    
 );
 
 

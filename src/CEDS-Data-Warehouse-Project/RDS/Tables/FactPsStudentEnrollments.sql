@@ -13,6 +13,14 @@ CREATE TABLE [RDS].[FactPsStudentEnrollments] (
     [PsEnrollmentStatusId]         INT    CONSTRAINT [DF_FactPsStudentEnrollments_PsEnrollmentStatusId] DEFAULT ((-1)) NOT NULL,
     [PsInstitutionStatusId]        INT    CONSTRAINT [DF_FactPsStudentEnrollments_PsInstitutionStatusId] DEFAULT ((-1)) NOT NULL,
     [StudentCount]                 INT    CONSTRAINT [DF_FactPsStudentEnrollments_StudentCount] DEFAULT ((1)) NOT NULL,
+    [GradePointAverage]            DECIMAL(10,5) CONSTRAINT [DF_FactPsStudentEnrollments_GradePointAverage] DEFAULT ((1)) NOT NULL,
+    [CourseBeginDateId]            INT    CONSTRAINT [DF_FactPsStudentEnrollments_CourseBeginDateId] DEFAULT ((-1)) NOT NULL,
+    [CourseEndDateId]              INT    CONSTRAINT [DF_FactPsStudentEnrollments_CourseEndDateId] DEFAULT ((-1)) NOT NULL,
+    [NCESCollegeCourseMapCode]    INT    CONSTRAINT [DF_FactPsStudentEnrollments_NCESCollegeCourseMapCode] DEFAULT ((-1)) NOT NULL,
+    [StudentLevelId]              INT    CONSTRAINT [DF_FactPsStudentEnrollments_StudentLevelId] DEFAULT ((-1)) NOT NULL,	
+    [DegreeOrCertificateSeekingStudent]  INT    CONSTRAINT [DF_FactPsStudentEnrollments_DegreeOrCertificateSeekingStudent] DEFAULT ((-1)) NOT NULL,
+    [NumberOfCreditsEarned]     INT    CONSTRAINT [DF_FactPsStudentEnrollments_NumberOfCreditsEarned] DEFAULT ((-1)) NOT NULL,	
+
     CONSTRAINT [PK_FactPsStudentEnrollments] PRIMARY KEY CLUSTERED ([FactPsStudentEnrollmentId] ASC) WITH (DATA_COMPRESSION = PAGE),
     CONSTRAINT [FK_FactPsStudentEnrollments_AcademicTermDesignatorId] FOREIGN KEY ([AcademicTermDesignatorId]) REFERENCES [RDS].[DimAcademicTermDesignators] ([DimAcademicTermDesignatorId]),
     CONSTRAINT [FK_FactPsStudentEnrollments_CountDateId] FOREIGN KEY ([CountDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]),
@@ -24,8 +32,13 @@ CREATE TABLE [RDS].[FactPsStudentEnrollments] (
     CONSTRAINT [FK_FactPsStudentEnrollments_PsInstitutionId] FOREIGN KEY ([PsInstitutionId]) REFERENCES [RDS].[DimPsInstitutions] ([DimPsInstitutionId]),
     CONSTRAINT [FK_FactPsStudentEnrollments_PsInstitutionStatusId] FOREIGN KEY ([PsInstitutionStatusId]) REFERENCES [RDS].[DimPsInstitutionStatuses] ([DimPsInstitutionStatusId]),
     CONSTRAINT [FK_FactPsStudentEnrollments_PsStudentId] FOREIGN KEY ([PsStudentId]) REFERENCES [RDS].[DimPeople] ([DimPersonId]),
+
+    CONSTRAINT [FK_FactPsStudentEnrollments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId]),
+    CONSTRAINT [FK_FactPsStudentEnrollments_StudentLevelId] FOREIGN KEY ([StudentLevelId]) REFERENCES [RDS].[DimStudentLevel] ([StudentLevelId])
+
     CONSTRAINT [FK_FactPsStudentEnrollments_PsStudent_CurrentId] FOREIGN KEY ([PsStudent_CurrentId]) REFERENCES [RDS].[DimPeople_Current] ([DimPersonId]),
     CONSTRAINT [FK_FactPsStudentEnrollments_SchoolYearId] FOREIGN KEY ([SchoolYearId]) REFERENCES [RDS].[DimSchoolYears] ([DimSchoolYearId])
+
 );
 
 
@@ -47,7 +60,8 @@ ALTER TABLE [RDS].[FactPsStudentEnrollments] NOCHECK CONSTRAINT [FK_FactPsStuden
 
 GO
 ALTER TABLE [RDS].[FactPsStudentEnrollments] NOCHECK CONSTRAINT [FK_FactPsStudentEnrollments_SchoolYearId];
-
+GO
+ALTER TABLE [RDS].[FactPsStudentEnrollments] NOCHECK CONSTRAINT [FK_FactPsStudentEnrollments_StudentLevelId];
 
 GO
 

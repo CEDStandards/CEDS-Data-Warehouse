@@ -15,6 +15,7 @@ CREATE TABLE [RDS].[FactK12StaffCounts] (
     [CredentialExpirationDateId]         	INT             CONSTRAINT [DF_FactK12StaffCounts_CredentialExpirationDateId] DEFAULT ((-1)) NOT NULL,
     [StaffCount]                            INT             CONSTRAINT [DF_FactK12StaffCounts_StaffCount] DEFAULT ((1)) NOT NULL,
     [StaffFullTimeEquivalency]              DECIMAL (18, 3) NOT NULL,
+    [StaffCompensationTotalSalary]  decimal(10,2) NOT NULL,
     CONSTRAINT [PK_FactK12StaffCounts] PRIMARY KEY CLUSTERED ([FactK12StaffCountId] ASC) WITH (FILLFACTOR = 80, DATA_COMPRESSION = PAGE),
     CONSTRAINT [FK_FactK12StaffCounts_FactTypeId] FOREIGN KEY ([FactTypeId]) REFERENCES [RDS].[DimFactTypes] ([DimFactTypeId]),
     CONSTRAINT [FK_FactK12StaffCounts_K12SchoolId] FOREIGN KEY ([K12SchoolId]) REFERENCES [RDS].[DimK12Schools] ([DimK12SchoolId]),
