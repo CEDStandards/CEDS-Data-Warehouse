@@ -36,6 +36,7 @@ CREATE TABLE [RDS].[FactK12StaffAssignments]
 	[SeaJobClassificationId] int NULL,
 	[SeaFinancialExpenditureClassificationId] int NULL,
 	[FullTimeEquivalency] decimal(3,2) NOT NULL,
+	[YearsOfTotalExperience] decimal(4,2) NULL,
 	[K12StaffAssignmentCount] int NOT NULL,
 	CONSTRAINT [PK_FactK12StaffAssignments] PRIMARY KEY CLUSTERED ([FactK12StaffAssignmentId] ASC),
 	CONSTRAINT [FK_FactK12StaffAssignments_AssignmentEndDateId] FOREIGN KEY ([AssignmentEndDateId]) REFERENCES [RDS].[DimDates] ([DimDateId]) ON DELETE No Action ON UPDATE No Action,
@@ -187,7 +188,18 @@ CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssignments_SeaId]
  ON [RDS].[FactK12StaffAssignments] ([SeaId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssignments_LeaId] 
+CREATE NONCLUSTERED INDEX [IXFK_FactK12StaffAssignments_LeaId]
  ON [RDS].[FactK12StaffAssignments] ([LeaId] ASC)
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffAssignments', @level2type=N'COLUMN',@level2name=N'YearsOfTotalExperience';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Def_Desc', @value=N'The total number of years that a person has held this position or a similar position in one or more organizations.' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffAssignments', @level2type=N'COLUMN',@level2name=N'YearsOfTotalExperience';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_Element', @value=N'Years of Total Experience' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffAssignments', @level2type=N'COLUMN',@level2name=N'YearsOfTotalExperience';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_GlobalId', @value=N'002060' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffAssignments', @level2type=N'COLUMN',@level2name=N'YearsOfTotalExperience';
+GO
+EXEC sys.sp_addextendedproperty @name=N'CEDS_URL', @value=N'https://ceds.ed.gov/element/002060' , @level0type=N'SCHEMA',@level0name=N'RDS', @level1type=N'TABLE',@level1name=N'FactK12StaffAssignments', @level2type=N'COLUMN',@level2name=N'YearsOfTotalExperience';
 GO
 

@@ -21,6 +21,7 @@ CREATE TABLE [Staging].[K12StaffAssignment] (
 	[Lea_LocalJobFunctionCode]               NVARCHAR (50)  NULL,
 	[Lea_LocalJobCategoryCode]               NVARCHAR (50)  NULL,
     [FullTimeEquivalency]                    DECIMAL (5, 4) NULL,
+    [YearsOfTotalExperience]                 DECIMAL (4, 2) NULL,
     [SpecialEducationStaffCategory]          NVARCHAR (100) NULL,
     [K12StaffClassification]                 NVARCHAR (100) NULL,
     [TitleIProgramStaffCategory]             NVARCHAR (100) NULL,
