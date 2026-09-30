@@ -1244,11 +1244,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessibility Feature Language Type', N' AccessibilityFeatureLanguageType', N'002171', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', N'', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessibility Feature Language Type', N' AccessibilityFeatureLanguageType', N'002171', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', N'', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessibility Feature Language Type', [CedsElementTechnicalName] = N' AccessibilityFeatureLanguageType', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = N'', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessibility Feature Language Type', [CedsElementTechnicalName] = N' AccessibilityFeatureLanguageType', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = N'', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'bos')
@@ -3890,11 +3890,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessibility Feature Language Type', N' AccessibilityFeatureLanguageType', N'002171', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', N'', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessibility Feature Language Type', N' AccessibilityFeatureLanguageType', N'002171', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', N'', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessibility Feature Language Type', [CedsElementTechnicalName] = N' AccessibilityFeatureLanguageType', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = N'', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessibility Feature Language Type', [CedsElementTechnicalName] = N' AccessibilityFeatureLanguageType', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = N'', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'pus')
@@ -4880,11 +4880,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessibility Feature Language Type', N' AccessibilityFeatureLanguageType', N'002171', N'vol', N'Volap¸k', N'', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessibility Feature Language Type', N' AccessibilityFeatureLanguageType', N'002171', N'vol', N'Volap√ºk', N'', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessibility Feature Language Type', [CedsElementTechnicalName] = N' AccessibilityFeatureLanguageType', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = N'', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessibility Feature Language Type', [CedsElementTechnicalName] = N' AccessibilityFeatureLanguageType', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = N'', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002171' AND [CedsOptionSetCode] = N'vot')
@@ -5690,11 +5690,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002089' AND [CedsOptionSetCode] = N'1002')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessible Format Type', N'AccessibleFormatType', N'002089', N'1002', N'Braille', N'Braille code is a tactile system of raised dots that enables students who are blind or have low vision to read through touch. Braille consists of patterns of raised dots arranged in cells of up to six dots in a 3◊2 configuration. Each cell represents letters of the alphabet, punctuation, numbers, and whole words. (iii) In the case of a child who is blind or visually impaired, provide for instruction in Braille and the use of Braille unless the IEP Team determines, after an evaluation of the child''s reading and writing skills, needs, and appropriate reading and writing media (including an evaluation of the child''s future needs for instruction in Braille or the use of Braille), that instruction in Braille or the use of Braille is not appropriate for the child; Sec. 300.324 (a) (2) (iii)', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Accessible Format Type', N'AccessibleFormatType', N'002089', N'1002', N'Braille', N'Braille code is a tactile system of raised dots that enables students who are blind or have low vision to read through touch. Braille consists of patterns of raised dots arranged in cells of up to six dots in a 3◊≤ configuration. Each cell represents letters of the alphabet, punctuation, numbers, and whole words. (iii) In the case of a child who is blind or visually impaired, provide for instruction in Braille and the use of Braille unless the IEP Team determines, after an evaluation of the child''s reading and writing skills, needs, and appropriate reading and writing media (including an evaluation of the child''s future needs for instruction in Braille or the use of Braille), that instruction in Braille or the use of Braille is not appropriate for the child; Sec. 300.324 (a) (2) (iii)', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessible Format Type', [CedsElementTechnicalName] = N'AccessibleFormatType', [CedsOptionSetDescription] = N'Braille', [CedsOptionSetDefinition] = N'Braille code is a tactile system of raised dots that enables students who are blind or have low vision to read through touch. Braille consists of patterns of raised dots arranged in cells of up to six dots in a 3◊2 configuration. Each cell represents letters of the alphabet, punctuation, numbers, and whole words. (iii) In the case of a child who is blind or visually impaired, provide for instruction in Braille and the use of Braille unless the IEP Team determines, after an evaluation of the child''s reading and writing skills, needs, and appropriate reading and writing media (including an evaluation of the child''s future needs for instruction in Braille or the use of Braille), that instruction in Braille or the use of Braille is not appropriate for the child; Sec. 300.324 (a) (2) (iii)', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002089' AND [CedsOptionSetCode] = N'1002'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Accessible Format Type', [CedsElementTechnicalName] = N'AccessibleFormatType', [CedsOptionSetDescription] = N'Braille', [CedsOptionSetDefinition] = N'Braille code is a tactile system of raised dots that enables students who are blind or have low vision to read through touch. Braille consists of patterns of raised dots arranged in cells of up to six dots in a 3◊≤ configuration. Each cell represents letters of the alphabet, punctuation, numbers, and whole words. (iii) In the case of a child who is blind or visually impaired, provide for instruction in Braille and the use of Braille unless the IEP Team determines, after an evaluation of the child''s reading and writing skills, needs, and appropriate reading and writing media (including an evaluation of the child''s future needs for instruction in Braille or the use of Braille), that instruction in Braille or the use of Braille is not appropriate for the child; Sec. 300.324 (a) (2) (iii)', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002089' AND [CedsOptionSetCode] = N'1002'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002089' AND [CedsOptionSetCode] = N'1003')
@@ -11504,11 +11504,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Language', N'AssessmentLanguage', N'001089', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Language', N'AssessmentLanguage', N'001089', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Language', [CedsElementTechnicalName] = N'AssessmentLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Language', [CedsElementTechnicalName] = N'AssessmentLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'bos')
@@ -14150,11 +14150,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Language', N'AssessmentLanguage', N'001089', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Language', N'AssessmentLanguage', N'001089', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Language', [CedsElementTechnicalName] = N'AssessmentLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Language', [CedsElementTechnicalName] = N'AssessmentLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'pus')
@@ -15131,11 +15131,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Language', N'AssessmentLanguage', N'001089', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Language', N'AssessmentLanguage', N'001089', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Language', [CedsElementTechnicalName] = N'AssessmentLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Language', [CedsElementTechnicalName] = N'AssessmentLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001089' AND [CedsOptionSetCode] = N'vot')
@@ -16328,11 +16328,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Item Translation Display Language Type', N'AssessmentNeedItemTranslationDisplayLanguageType', N'001038', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Item Translation Display Language Type', N'AssessmentNeedItemTranslationDisplayLanguageType', N'001038', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Item Translation Display Language Type', [CedsElementTechnicalName] = N'AssessmentNeedItemTranslationDisplayLanguageType', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Item Translation Display Language Type', [CedsElementTechnicalName] = N'AssessmentNeedItemTranslationDisplayLanguageType', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'bos')
@@ -18974,11 +18974,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Item Translation Display Language Type', N'AssessmentNeedItemTranslationDisplayLanguageType', N'001038', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Item Translation Display Language Type', N'AssessmentNeedItemTranslationDisplayLanguageType', N'001038', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Item Translation Display Language Type', [CedsElementTechnicalName] = N'AssessmentNeedItemTranslationDisplayLanguageType', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Item Translation Display Language Type', [CedsElementTechnicalName] = N'AssessmentNeedItemTranslationDisplayLanguageType', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'pus')
@@ -19955,11 +19955,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Item Translation Display Language Type', N'AssessmentNeedItemTranslationDisplayLanguageType', N'001038', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Item Translation Display Language Type', N'AssessmentNeedItemTranslationDisplayLanguageType', N'001038', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Item Translation Display Language Type', [CedsElementTechnicalName] = N'AssessmentNeedItemTranslationDisplayLanguageType', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Item Translation Display Language Type', [CedsElementTechnicalName] = N'AssessmentNeedItemTranslationDisplayLanguageType', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001038' AND [CedsOptionSetCode] = N'vot')
@@ -20702,11 +20702,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Keyword Translation Language Type', N'AssessmentNeedKeywordTranslationLanguageType', N'001039', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Keyword Translation Language Type', N'AssessmentNeedKeywordTranslationLanguageType', N'001039', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Keyword Translation Language Type', [CedsElementTechnicalName] = N'AssessmentNeedKeywordTranslationLanguageType', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Keyword Translation Language Type', [CedsElementTechnicalName] = N'AssessmentNeedKeywordTranslationLanguageType', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'bos')
@@ -23348,11 +23348,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Keyword Translation Language Type', N'AssessmentNeedKeywordTranslationLanguageType', N'001039', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Keyword Translation Language Type', N'AssessmentNeedKeywordTranslationLanguageType', N'001039', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Keyword Translation Language Type', [CedsElementTechnicalName] = N'AssessmentNeedKeywordTranslationLanguageType', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Keyword Translation Language Type', [CedsElementTechnicalName] = N'AssessmentNeedKeywordTranslationLanguageType', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'pus')
@@ -24329,11 +24329,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Keyword Translation Language Type', N'AssessmentNeedKeywordTranslationLanguageType', N'001039', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Keyword Translation Language Type', N'AssessmentNeedKeywordTranslationLanguageType', N'001039', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Keyword Translation Language Type', [CedsElementTechnicalName] = N'AssessmentNeedKeywordTranslationLanguageType', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Keyword Translation Language Type', [CedsElementTechnicalName] = N'AssessmentNeedKeywordTranslationLanguageType', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001039' AND [CedsOptionSetCode] = N'vot')
@@ -25076,11 +25076,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Language Type', N'AssessmentNeedLanguageType', N'001023', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Language Type', N'AssessmentNeedLanguageType', N'001023', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Language Type', [CedsElementTechnicalName] = N'AssessmentNeedLanguageType', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Language Type', [CedsElementTechnicalName] = N'AssessmentNeedLanguageType', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'bos')
@@ -27722,11 +27722,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Language Type', N'AssessmentNeedLanguageType', N'001023', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Language Type', N'AssessmentNeedLanguageType', N'001023', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Language Type', [CedsElementTechnicalName] = N'AssessmentNeedLanguageType', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Language Type', [CedsElementTechnicalName] = N'AssessmentNeedLanguageType', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'pus')
@@ -28703,11 +28703,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Language Type', N'AssessmentNeedLanguageType', N'001023', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Need Language Type', N'AssessmentNeedLanguageType', N'001023', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Language Type', [CedsElementTechnicalName] = N'AssessmentNeedLanguageType', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Need Language Type', [CedsElementTechnicalName] = N'AssessmentNeedLanguageType', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001023' AND [CedsOptionSetCode] = N'vot')
@@ -29738,11 +29738,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Participant Session Language', N'AssessmentParticipantSessionLanguage', N'000371', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Participant Session Language', N'AssessmentParticipantSessionLanguage', N'000371', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Participant Session Language', [CedsElementTechnicalName] = N'AssessmentParticipantSessionLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Participant Session Language', [CedsElementTechnicalName] = N'AssessmentParticipantSessionLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'bos')
@@ -32384,11 +32384,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Participant Session Language', N'AssessmentParticipantSessionLanguage', N'000371', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Participant Session Language', N'AssessmentParticipantSessionLanguage', N'000371', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Participant Session Language', [CedsElementTechnicalName] = N'AssessmentParticipantSessionLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Participant Session Language', [CedsElementTechnicalName] = N'AssessmentParticipantSessionLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'pus')
@@ -33365,11 +33365,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Participant Session Language', N'AssessmentParticipantSessionLanguage', N'000371', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Assessment Participant Session Language', N'AssessmentParticipantSessionLanguage', N'000371', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Participant Session Language', [CedsElementTechnicalName] = N'AssessmentParticipantSessionLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Assessment Participant Session Language', [CedsElementTechnicalName] = N'AssessmentParticipantSessionLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000371' AND [CedsOptionSetCode] = N'vot')
@@ -36011,11 +36011,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001287' AND [CedsOptionSetCode] = N'ALaCarte')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Blended Learning Model Type', N'BlendedLearningModelType', N'001287', N'ALaCarte', N'A La Carte model', N'A model in which students take one or more courses entirely online with an online teacher of record and at the†same time continue to have brick-and-mortar educational experiences. Students may take the online courses either on the brick-and-mortar campus or off-site.†This differs from full-time online learning and the Enriched Virtual†model because it is not a whole-school experience.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Blended Learning Model Type', N'BlendedLearningModelType', N'001287', N'ALaCarte', N'A La Carte model', N'A model in which students take one or more courses entirely online with an online teacher of record and at the¬†same time continue to have brick-and-mortar educational experiences. Students may take the online courses either on the brick-and-mortar campus or off-site.¬†This differs from full-time online learning and the Enriched Virtual¬†model because it is not a whole-school experience.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Blended Learning Model Type', [CedsElementTechnicalName] = N'BlendedLearningModelType', [CedsOptionSetDescription] = N'A La Carte model', [CedsOptionSetDefinition] = N'A model in which students take one or more courses entirely online with an online teacher of record and at the†same time continue to have brick-and-mortar educational experiences. Students may take the online courses either on the brick-and-mortar campus or off-site.†This differs from full-time online learning and the Enriched Virtual†model because it is not a whole-school experience.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001287' AND [CedsOptionSetCode] = N'ALaCarte'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Blended Learning Model Type', [CedsElementTechnicalName] = N'BlendedLearningModelType', [CedsOptionSetDescription] = N'A La Carte model', [CedsOptionSetDefinition] = N'A model in which students take one or more courses entirely online with an online teacher of record and at the¬†same time continue to have brick-and-mortar educational experiences. Students may take the online courses either on the brick-and-mortar campus or off-site.¬†This differs from full-time online learning and the Enriched Virtual¬†model because it is not a whole-school experience.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001287' AND [CedsOptionSetCode] = N'ALaCarte'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001287' AND [CedsOptionSetCode] = N'EnrichedVirtual')
@@ -43715,11 +43715,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Definition Language', N'CompetencyDefinitionLanguage', N'000881', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Definition Language', N'CompetencyDefinitionLanguage', N'000881', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Definition Language', [CedsElementTechnicalName] = N'CompetencyDefinitionLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Definition Language', [CedsElementTechnicalName] = N'CompetencyDefinitionLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'bos')
@@ -46361,11 +46361,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Definition Language', N'CompetencyDefinitionLanguage', N'000881', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Definition Language', N'CompetencyDefinitionLanguage', N'000881', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Definition Language', [CedsElementTechnicalName] = N'CompetencyDefinitionLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Definition Language', [CedsElementTechnicalName] = N'CompetencyDefinitionLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'pus')
@@ -47342,11 +47342,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Definition Language', N'CompetencyDefinitionLanguage', N'000881', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Definition Language', N'CompetencyDefinitionLanguage', N'000881', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Definition Language', [CedsElementTechnicalName] = N'CompetencyDefinitionLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Definition Language', [CedsElementTechnicalName] = N'CompetencyDefinitionLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000881' AND [CedsOptionSetCode] = N'vot')
@@ -48242,11 +48242,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Framework Language', N'CompetencyFrameworkLanguage', N'000880', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Framework Language', N'CompetencyFrameworkLanguage', N'000880', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Framework Language', [CedsElementTechnicalName] = N'CompetencyFrameworkLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Framework Language', [CedsElementTechnicalName] = N'CompetencyFrameworkLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'bos')
@@ -50888,11 +50888,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Framework Language', N'CompetencyFrameworkLanguage', N'000880', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Framework Language', N'CompetencyFrameworkLanguage', N'000880', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Framework Language', [CedsElementTechnicalName] = N'CompetencyFrameworkLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Framework Language', [CedsElementTechnicalName] = N'CompetencyFrameworkLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'pus')
@@ -51869,11 +51869,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Framework Language', N'CompetencyFrameworkLanguage', N'000880', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Competency Framework Language', N'CompetencyFrameworkLanguage', N'000880', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Framework Language', [CedsElementTechnicalName] = N'CompetencyFrameworkLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Competency Framework Language', [CedsElementTechnicalName] = N'CompetencyFrameworkLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000880' AND [CedsOptionSetCode] = N'vot')
@@ -52985,11 +52985,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'CW')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'CW', N'CURA«AO', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'CW', N'CURA«ÅO', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'CURA«AO', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'CW'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'CURA«ÅO', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'CW'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'CY')
@@ -53012,11 +53012,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'CI')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'CI', N'C‘TE D''IVOIRE', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'CI', N'C‘îE D''IVOIRE', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'C‘TE D''IVOIRE', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'CI'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'C‘îE D''IVOIRE', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'CI'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'DK')
@@ -54137,20 +54137,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'RE')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'RE', N'R…UNION', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'RE', N'R…ïNION', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'R…UNION', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'RE'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'R…ïNION', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'RE'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'BL')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'BL', N'SAINT BARTH…LEMY', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'BL', N'SAINT BARTH…åEMY', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'SAINT BARTH…LEMY', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'BL'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'SAINT BARTH…åEMY', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'BL'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'SH')
@@ -54722,11 +54722,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'AX')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'AX', N'≈LAND ISLANDS', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country Code', N'CountryCode', N'000050', N'AX', N'≈åAND ISLANDS', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'≈LAND ISLANDS', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'AX'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country Code', [CedsElementTechnicalName] = N'CountryCode', [CedsOptionSetDescription] = N'≈åAND ISLANDS', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000050' AND [CedsOptionSetCode] = N'AX'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'AF')
@@ -55226,11 +55226,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'CW')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'CW', N'CURA«AO', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'CW', N'CURA«ÅO', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'CURA«AO', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'CW'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'CURA«ÅO', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'CW'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'CY')
@@ -55253,11 +55253,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'CI')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'CI', N'C‘TE D''IVOIRE', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'CI', N'C‘îE D''IVOIRE', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'C‘TE D''IVOIRE', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'CI'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'C‘îE D''IVOIRE', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'CI'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'DK')
@@ -56378,20 +56378,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'RE')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'RE', N'R…UNION', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'RE', N'R…ïNION', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'R…UNION', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'RE'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'R…ïNION', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'RE'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'BL')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'BL', N'SAINT BARTH…LEMY', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'BL', N'SAINT BARTH…åEMY', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'SAINT BARTH…LEMY', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'BL'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'SAINT BARTH…åEMY', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'BL'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'SH')
@@ -56963,11 +56963,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'AX')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'AX', N'≈LAND ISLANDS', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Country of Birth Code', N'CountryOfBirthCode', N'000051', N'AX', N'≈åAND ISLANDS', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'≈LAND ISLANDS', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'AX'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Country of Birth Code', [CedsElementTechnicalName] = N'CountryOfBirthCode', [CedsOptionSetDescription] = N'≈åAND ISLANDS', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000051' AND [CedsOptionSetCode] = N'AX'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001299' AND [CedsOptionSetCode] = N'AuditedCourse')
@@ -91064,11 +91064,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002116' AND [CedsOptionSetCode] = N'1011')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Indicator 11 Child Find Timeliness Reason', N'Indicator11ChildFindTimelinessReason', N'002116', N'1011', N'Evaluation completed in expected† time', N'The reason a student?s initial evaluation was timely was because the evaluation was completed in the expected time.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Indicator 11 Child Find Timeliness Reason', N'Indicator11ChildFindTimelinessReason', N'002116', N'1011', N'Evaluation completed in expected¬† time', N'The reason a student?s initial evaluation was timely was because the evaluation was completed in the expected time.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Indicator 11 Child Find Timeliness Reason', [CedsElementTechnicalName] = N'Indicator11ChildFindTimelinessReason', [CedsOptionSetDescription] = N'Evaluation completed in expected† time', [CedsOptionSetDefinition] = N'The reason a student?s initial evaluation was timely was because the evaluation was completed in the expected time.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002116' AND [CedsOptionSetCode] = N'1011'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Indicator 11 Child Find Timeliness Reason', [CedsElementTechnicalName] = N'Indicator11ChildFindTimelinessReason', [CedsOptionSetDescription] = N'Evaluation completed in expected¬† time', [CedsOptionSetDefinition] = N'The reason a student?s initial evaluation was timely was because the evaluation was completed in the expected time.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002116' AND [CedsOptionSetCode] = N'1011'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002116' AND [CedsOptionSetCode] = N'1008')
@@ -92531,11 +92531,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Instruction Language', N'InstructionLanguage', N'000448', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Instruction Language', N'InstructionLanguage', N'000448', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Instruction Language', [CedsElementTechnicalName] = N'InstructionLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Instruction Language', [CedsElementTechnicalName] = N'InstructionLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'bos')
@@ -95177,11 +95177,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Instruction Language', N'InstructionLanguage', N'000448', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Instruction Language', N'InstructionLanguage', N'000448', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Instruction Language', [CedsElementTechnicalName] = N'InstructionLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Instruction Language', [CedsElementTechnicalName] = N'InstructionLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'pus')
@@ -96158,11 +96158,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Instruction Language', N'InstructionLanguage', N'000448', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Instruction Language', N'InstructionLanguage', N'000448', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Instruction Language', [CedsElementTechnicalName] = N'InstructionLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Instruction Language', [CedsElementTechnicalName] = N'InstructionLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000448' AND [CedsOptionSetCode] = N'vot')
@@ -98750,11 +98750,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-2 Language Code', N'', N'000317', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-2 Language Code', N'', N'000317', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-2 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-2 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'bos')
@@ -101387,11 +101387,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-2 Language Code', N'', N'000317', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-2 Language Code', N'', N'000317', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-2 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-2 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'pus')
@@ -102377,11 +102377,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-2 Language Code', N'', N'000317', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-2 Language Code', N'', N'000317', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-2 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-2 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000317' AND [CedsOptionSetCode] = N'vot')
@@ -102593,11 +102593,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nmn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nmn', N'!XÛı', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nmn', N'!XÛµß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'!XÛı', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nmn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'!XÛµß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nmn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'alu')
@@ -102692,11 +102692,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aas')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aas', N'Aas·x', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aas', N'Aas·∏ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aas·x', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aas'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aas·∏ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aas'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbt')
@@ -102908,11 +102908,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aba')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aba', N'AbÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aba', N'AbÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AbÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aba'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AbÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aba'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpx')
@@ -103007,11 +103007,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'guq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'guq', N'AchÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'guq', N'AchÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AchÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'guq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AchÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'guq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ach')
@@ -103025,11 +103025,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'acs')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'acs', N'Acro·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'acs', N'Acro·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Acro·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'acs'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Acro·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'acs'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xad')
@@ -103574,11 +103574,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tba')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tba', N'Aikan„', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tba', N'Aikan„ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aikan„', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tba'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aikan„ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tba'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mwg')
@@ -103700,11 +103700,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aji')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aji', N'AjiÎ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aji', N'AjiÎß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AjiÎ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aji'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AjiÎß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aji'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'muc')
@@ -103718,11 +103718,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpc', N'AjyÌninka Apurucayali', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpc', N'AjyÛ∫ëÆka Apurucayali', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AjyÌninka Apurucayali', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AjyÛ∫ëÆka Apurucayali', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'akq')
@@ -104321,11 +104321,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zaq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zaq', N'Alo·pam Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zaq', N'Alo·∞°m Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Alo·pam Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zaq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Alo·∞°m Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zaq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aes')
@@ -104492,11 +104492,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ama')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ama', N'AmanayÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ama', N'AmanayÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AmanayÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ama'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AmanayÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ama'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aie')
@@ -104528,11 +104528,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpo', N'Amatl·n Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpo', N'Amatl·Æ†Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Amatl·n Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Amatl·Æ†Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'utp')
@@ -104870,11 +104870,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aan')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aan', N'AnambÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aan', N'AnambÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AnambÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aan'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AnambÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aan'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'imi')
@@ -105113,11 +105113,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aqt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aqt', N'AngaitÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aqt', N'AngaitÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AngaitÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aqt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AngaitÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aqt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'age')
@@ -105500,11 +105500,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apy')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'apy', N'ApalaÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'apy', N'ApalaÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ApalaÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apy'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ApalaÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apy'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ena')
@@ -105536,20 +105536,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'api')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'api', N'Apiak·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'api', N'Apiak·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Apiak·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'api'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Apiak·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'api'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'apn', N'ApinayÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'apn', N'ApinayÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ApinayÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ApinayÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'app')
@@ -105572,11 +105572,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'apu', N'Apurin„', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'apu', N'Apurin„ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Apurin„', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Apurin„ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'apx')
@@ -105725,11 +105725,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xaj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xaj', N'Ararandew·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xaj', N'Ararandew·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ararandew·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xaj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ararandew·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xaj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'arw')
@@ -105743,11 +105743,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'awt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'awt', N'ArawetÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'awt', N'ArawetÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ArawetÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'awt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ArawetÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'awt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'awm')
@@ -105770,11 +105770,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aae')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aae', N'ArbÎreshÎ Albanian', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aae', N'ArbÎ≤•shÎ†Ålbanian', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ArbÎreshÎ Albanian', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aae'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ArbÎ≤•shÎ†Ålbanian', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aae'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aqc')
@@ -105824,11 +105824,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxu', N'Arequipa-La UniÛn Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxu', N'Arequipa-La UniÛÆ†ëuechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arequipa-La UniÛn Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arequipa-La UniÛÆ†ëuechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aed')
@@ -105869,20 +105869,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aqr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aqr', N'Arh‚', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aqr', N'Arh‚ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arh‚', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aqr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arh‚ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aqr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aok')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aok', N'Arhˆ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aok', N'Arh√∂', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arhˆ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aok'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arh√∂', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aok'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aac')
@@ -105932,11 +105932,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ark')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ark', N'Arikap˙', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ark', N'Arikap√∫', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arikap˙', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ark'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Arikap√∫', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ark'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ari')
@@ -106094,20 +106094,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aru')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aru', N'Aru· (Amazonas State)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aru', N'Aru·†®Amazonas State)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aru· (Amazonas State)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aru'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aru·†®Amazonas State)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aru'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'arx')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'arx', N'Aru· (Rodonia State)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'arx', N'Aru·†®Rodonia State)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aru· (Rodonia State)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'arx'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aru·†®Rodonia State)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'arx'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aat')
@@ -106175,29 +106175,29 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cni')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cni', N'Ash·ninka', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cni', N'Ash·Æ©nka', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ash·ninka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cni'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ash·Æ©nka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cni'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cjo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cjo', N'AshÈninka Pajonal', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cjo', N'AshÈÆ©nka Pajonal', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AshÈninka Pajonal', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cjo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AshÈÆ©nka Pajonal', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cjo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'prq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'prq', N'AshÈninka PerenÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'prq', N'AshÈÆ©nka PerenÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AshÈninka PerenÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'prq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AshÈÆ©nka PerenÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'prq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'asl')
@@ -106310,11 +106310,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zoo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zoo', N'AsunciÛn Mixtepec Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zoo', N'AsunciÛÆ†çixtepec Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AsunciÛn Mixtepec Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zoo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AsunciÛÆ†çixtepec Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zoo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'asr')
@@ -106364,11 +106364,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mib')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mib', N'Atatl·huca Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mib', N'Atatl·®µca Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Atatl·huca Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mib'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Atatl·®µca Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mib'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'adb')
@@ -106499,11 +106499,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ati')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ati', N'AttiÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ati', N'AttiÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AttiÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ati'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AttiÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ati'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ocu')
@@ -106535,11 +106535,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aux')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aux', N'Aur·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aux', N'Aur·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aur·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aux'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Aur·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aux'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'auh')
@@ -106679,11 +106679,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'avv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'avv', N'Av·-Canoeiro', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'avv', N'Av·≠Éanoeiro', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Av·-Canoeiro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'avv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Av·≠Éanoeiro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'avv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vwa')
@@ -106796,11 +106796,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'awe')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'awe', N'AwetÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'awe', N'AwetÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AwetÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'awe'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'AwetÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'awe'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'azo')
@@ -107066,11 +107066,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpc', N'Azoy˙ Me''phaa', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpc', N'Azoy√∫ Me''phaa', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Azoy˙ Me''phaa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Azoy√∫ Me''phaa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bvj')
@@ -107381,11 +107381,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bsv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bsv', N'Baga SobanÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bsv', N'Baga SobanÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Baga SobanÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bsv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Baga SobanÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bsv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bfy')
@@ -107597,11 +107597,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bab')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bab', N'Bainouk-GunyuÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bab', N'Bainouk-GunyuÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Bainouk-GunyuÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bab'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Bainouk-GunyuÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bab'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bcb')
@@ -107678,11 +107678,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bkq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bkq', N'BakairÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bkq', N'BakairÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BakairÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bkq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BakairÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bkq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bqz')
@@ -107750,11 +107750,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bjw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bjw', N'BakwÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bjw', N'BakwÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BakwÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bjw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BakwÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bjw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bls')
@@ -108128,20 +108128,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bqk')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bqk', N'Banda-MbrËs', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bqk', N'Banda-MbrË≥ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Banda-MbrËs', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bqk'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Banda-MbrË≥ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bqk'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bfl')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bfl', N'Banda-NdÈlÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bfl', N'Banda-NdÈ¨©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Banda-NdÈlÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bfl'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Banda-NdÈ¨©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bfl'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yaj')
@@ -108398,11 +108398,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bci')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bci', N'BaoulÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bci', N'BaoulÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BaoulÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bci'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BaoulÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bci'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bhr')
@@ -108524,11 +108524,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boi')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'boi', N'BarbareÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'boi', N'BarbareÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BarbareÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boi'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BarbareÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boi'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gry')
@@ -108686,20 +108686,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bae')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bae', N'BarÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bae', N'BarÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BarÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bae'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BarÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bae'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mot')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mot', N'BarÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mot', N'BarÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BarÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mot'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BarÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mot'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bas')
@@ -109748,11 +109748,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'eot')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'eot', N'Beti (CÙte d''Ivoire)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'eot', N'Beti (C¥•†d''Ivoire)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Beti (CÙte d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'eot'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Beti (C¥•†d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'eot'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xub')
@@ -111323,11 +111323,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bor')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bor', N'BorÙro', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bor', N'Bor≤Øß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'BorÙro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bor'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Bor≤Øß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bor'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bwf')
@@ -112610,11 +112610,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'khd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'khd', N'B‰di Kanum', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'khd', N'B‰§© Kanum', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'B‰di Kanum', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'khd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'B‰§© Kanum', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'khd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dri')
@@ -112637,20 +112637,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cbb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cbb', N'CabiyarÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cbb', N'CabiyarÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CabiyarÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cbb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CabiyarÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cbb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cjp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cjp', N'CabÈcar', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cjp', N'CabÈ£°r', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CabÈcar', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cjp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CabÈ£°r', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cjp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'miu')
@@ -112781,11 +112781,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ckz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ckz', N'Cakchiquel-QuichÈ Mixed Language', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ckz', N'Cakchiquel-QuichÈ†çixed Language', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cakchiquel-QuichÈ Mixed Language', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ckz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cakchiquel-QuichÈ†çixed Language', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ckz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cky')
@@ -112808,11 +112808,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qud')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qud', N'CalderÛn Highland Quichua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qud', N'CalderÛÆ†àighland Quichua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CalderÛn Highland Quichua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qud'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CalderÛÆ†àighland Quichua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qud'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'caw')
@@ -112835,11 +112835,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rmq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'rmq', N'CalÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'rmq', N'CalÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CalÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rmq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CalÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rmq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'csx')
@@ -112898,11 +112898,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbh', N'Cams·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbh', N'Cams·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cams·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cams·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cmt')
@@ -113186,11 +113186,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cav')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cav', N'CavineÒa', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cav', N'CavineÒ°ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CavineÒa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cav'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CavineÒ°ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cav'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cyb')
@@ -113222,11 +113222,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxr', N'CaÒar Highland Quichua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxr', N'CaÒ°≤†Highland Quichua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CaÒar Highland Quichua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CaÒ°≤†Highland Quichua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sef')
@@ -113258,11 +113258,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cam')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cam', N'CemuhÓ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cam', N'CemuhÓß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CemuhÓ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cam'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CemuhÓß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cam'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cen')
@@ -113636,11 +113636,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cet')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cet', N'Cent˙˙m', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cet', N'Cent√∫√∫m', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cent˙˙m', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cet'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cent√∫√∫m', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cet'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cme')
@@ -113888,11 +113888,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'caj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'caj', N'ChanÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'caj', N'ChanÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ChanÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'caj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ChanÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'caj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cra')
@@ -114203,11 +114203,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mii')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mii', N'Chigmecatitl·n Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mii', N'Chigmecatitl·Æ†Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chigmecatitl·n Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mii'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chigmecatitl·Æ†Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mii'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'clc')
@@ -114392,11 +114392,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'maq', N'Chiquihuitl·n Mazatec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'maq', N'Chiquihuitl·Æ†Mazatec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chiquihuitl·n Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chiquihuitl·Æ†Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cax')
@@ -114410,20 +114410,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxa', N'Chiqui·n Ancash Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxa', N'Chiqui·Æ†Ancash Quechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chiqui·n Ancash Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chiqui·Æ†Ancash Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nhd', N'Chirip·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nhd', N'Chirip·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chirip·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Chirip·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cdf')
@@ -114545,11 +114545,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cht')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cht', N'CholÛn', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cht', N'CholÛÆß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CholÛn', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cht'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CholÛÆß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cht'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cog')
@@ -114599,11 +114599,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'caa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'caa', N'ChortÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'caa', N'ChortÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ChortÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'caa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ChortÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'caa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nct')
@@ -114788,11 +114788,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cao')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cao', N'Ch·cobo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cao', N'Ch·£Øbo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ch·cobo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cao'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ch·£Øbo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cao'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cib')
@@ -115031,20 +115031,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mco')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mco', N'Coatl·n Mixe', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mco', N'Coatl·Æ†Mixe', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Coatl·n Mixe', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mco'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Coatl·Æ†Mixe', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mco'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zps')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zps', N'Coatl·n Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zps', N'Coatl·Æ†Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Coatl·n Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zps'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Coatl·Æ†Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zps'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'miz')
@@ -115103,11 +115103,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'con')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'con', N'Cof·n', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'con', N'Cof·Æß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cof·n', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'con'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Cof·Æß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'con'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kog')
@@ -115238,11 +115238,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zoc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zoc', N'Copainal· Zoque', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zoc', N'Copainal·†öoque', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Copainal· Zoque', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zoc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Copainal·†öoque', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zoc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trc')
@@ -115427,11 +115427,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'crz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'crz', N'CruzeÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'crz', N'CruzeÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CruzeÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'crz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CruzeÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'crz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cua')
@@ -115526,11 +115526,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cup')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cup', N'CupeÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cup', N'CupeÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CupeÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cup'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CupeÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cup'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xcu')
@@ -115634,11 +115634,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cnc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cnc', N'CÙÙng', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cnc', N'C¥Æß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'CÙÙng', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cnc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'C¥Æß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cnc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kzf')
@@ -115688,11 +115688,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dtn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dtn', N'Daats''i¥in', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dtn', N'Daats''i¬¥in', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Daats''i¥in', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dtn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Daats''i¬¥in', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dtn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dbq')
@@ -115913,11 +115913,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bev')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bev', N'Daloa BÈtÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bev', N'Daloa BÈ¥©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Daloa BÈtÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bev'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Daloa BÈ¥©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bev'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dmm')
@@ -116012,11 +116012,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'daa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'daa', N'DangalÈat', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'daa', N'DangalÈ°¥', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'DangalÈat', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'daa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'DangalÈ°¥', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'daa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'thl')
@@ -116498,11 +116498,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dny')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dny', N'DenÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dny', N'DenÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'DenÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dny'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'DenÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dny'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'der')
@@ -117236,11 +117236,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dos')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dos', N'DogosÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dos', N'DogosÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'DogosÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dos'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'DogosÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dos'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dgo')
@@ -118046,20 +118046,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dnn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dnn', N'Dz˘˘ngoo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'dnn', N'Dz√π√πngoo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Dz˘˘ngoo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dnn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Dz√π√πngoo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dnn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kwa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kwa', N'D‚w', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kwa', N'D', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'D‚w', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kwa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'D‚∑ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kwa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'eee')
@@ -118082,11 +118082,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pbh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pbh', N'E''Òapa Woromaipu', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pbh', N'E''Ò°∞° Woromaipu', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'E''Òapa Woromaipu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pbh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'E''Ò°∞° Woromaipu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pbh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xtr')
@@ -118217,11 +118217,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qve')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qve', N'Eastern ApurÌmac Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qve', N'Eastern ApurÛ®ë£ Quechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Eastern ApurÌmac Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qve'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Eastern ApurÛ®ë£ Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qve'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aer')
@@ -118244,11 +118244,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gui')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gui', N'Eastern Bolivian GuaranÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gui', N'Eastern Bolivian GuaranÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Eastern Bolivian GuaranÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gui'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Eastern Bolivian GuaranÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gui'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ebk')
@@ -118658,11 +118658,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ebr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ebr', N'EbriÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ebr', N'EbriÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'EbriÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ebr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'EbriÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ebr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ebg')
@@ -119108,38 +119108,38 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bdc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bdc', N'Ember·-BaudÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bdc', N'Ember·≠ÇaudÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·-BaudÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bdc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·≠ÇaudÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bdc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cto')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cto', N'Ember·-CatÌo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cto', N'Ember·≠ÉatÙâ∞ß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·-CatÌo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cto'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·≠ÉatÙâ∞ß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cto'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cmi')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cmi', N'Ember·-ChamÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cmi', N'Ember·≠ÉhamÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·-ChamÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cmi'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·≠ÉhamÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cmi'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tdc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tdc', N'Ember·-TadÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tdc', N'Ember·≠îadÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·-TadÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tdc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ember·≠îadÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tdc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ebu')
@@ -119198,11 +119198,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'unk')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'unk', N'EnawenÈ-NawÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'unk', N'EnawenÈ≠éawÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'EnawenÈ-NawÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'unk'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'EnawenÈ≠éawÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'unk'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'end')
@@ -119522,11 +119522,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ots')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ots', N'Estado de MÈxico Otomi', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ots', N'Estado de MÈ∏©co Otomi', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Estado de MÈxico Otomi', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ots'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Estado de MÈ∏©co Otomi', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ots'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'est')
@@ -120053,11 +120053,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tlp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tlp', N'Filomena Mata-Coahuitl·n Totonac', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tlp', N'Filomena Mata-Coahuitl·Æ†Totonac', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Filomena Mata-Coahuitl·n Totonac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tlp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Filomena Mata-Coahuitl·Æ†Totonac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tlp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fss')
@@ -120260,11 +120260,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zos')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zos', N'Francisco LeÛn Zoque', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zos', N'Francisco LeÛÆ†öoque', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Francisco LeÛn Zoque', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zos'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Francisco LeÛÆ†öoque', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zos'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'frk')
@@ -120323,11 +120323,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fun')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'fun', N'FulniÙ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'fun', N'Fulniß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'FulniÙ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fun'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Fulniß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fun'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fum')
@@ -120395,11 +120395,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fwa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'fwa', N'Fw‚i', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'fwa', N'Fw‚©ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Fw‚i', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fwa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Fw‚©ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'fwa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pym')
@@ -120494,11 +120494,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xgf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xgf', N'Gabrielino-FernandeÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xgf', N'Gabrielino-FernandeÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Gabrielino-FernandeÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xgf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Gabrielino-FernandeÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xgf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gdk')
@@ -120593,11 +120593,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'btg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'btg', N'Gagnoa BÈtÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'btg', N'Gagnoa BÈ¥©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Gagnoa BÈtÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'btg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Gagnoa BÈ¥©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'btg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ggu')
@@ -121079,11 +121079,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gvo', N'Gavi„o Do Jiparan·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gvo', N'Gavi„Ø†Do Jiparan·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Gavi„o Do Jiparan·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Gavi„Ø†Do Jiparan·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gwt')
@@ -121466,11 +121466,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gha')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gha', N'GhadamËs', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gha', N'GhadamË≥ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GhadamËs', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gha'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GhadamË≥ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gha'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gpe')
@@ -121565,11 +121565,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bbj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bbj', N'Ghom·l·''', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bbj', N'Ghom·¨°''', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ghom·l·''', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bbj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ghom·¨°''', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bbj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aaa')
@@ -121880,11 +121880,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'god')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'god', N'GodiÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'god', N'GodiÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GodiÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'god'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GodiÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'god'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gdx')
@@ -122105,11 +122105,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gux')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gux', N'GourmanchÈma', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gux', N'GourmanchÈ≠°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GourmanchÈma', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gux'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GourmanchÈ≠°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gux'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'goj')
@@ -122267,20 +122267,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gub')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gub', N'Guajaj·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gub', N'Guajaj·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Guajaj·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gub'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Guajaj·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gub'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gvj', N'Guaj·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gvj', N'Guaj·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Guaj·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Guaj·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gum')
@@ -122375,11 +122375,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gta')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gta', N'GuatÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gta', N'GuatÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GuatÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gta'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'GuatÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gta'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'guo')
@@ -122528,11 +122528,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bet')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bet', N'Guiberoua BÈte', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bet', N'Guiberoua BÈ¥•', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Guiberoua BÈte', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bet'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Guiberoua BÈ¥•', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bet'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zgn')
@@ -123104,11 +123104,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztu', N'G¸il· Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztu', N'G√ºil·†öapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'G¸il· Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'G√ºil·†öapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'haq')
@@ -123302,11 +123302,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hao')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hao', N'Hakˆ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hao', N'Hak√∂', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hakˆ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hao'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hak√∂', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hao'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hal')
@@ -123752,11 +123752,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hed')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hed', N'HerdÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hed', N'HerdÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HerdÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hed'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HerdÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hed'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'her')
@@ -123923,11 +123923,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hir')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hir', N'Himarim„', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hir', N'Himarim„ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Himarim„', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hir'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Himarim„ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hir'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hin')
@@ -123995,11 +123995,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hix')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hix', N'Hixkary·na', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hix', N'Hixkary·Æ°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hixkary·na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hix'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hixkary·Æ°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hix'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lic')
@@ -124067,11 +124067,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hmv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hmv', N'Hmong DÙ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hmv', N'Hmong Dß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hmong DÙ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hmv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hmong Dß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hmv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hnj')
@@ -124139,11 +124139,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hoh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hoh', N'HobyÛt', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hoh', N'HobyÛ¥ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HobyÛt', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hoh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HobyÛ¥ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hoh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hhi')
@@ -124382,20 +124382,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qub')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qub', N'Huallaga Hu·nuco Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qub', N'Huallaga Hu·Æµco Quechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Huallaga Hu·nuco Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qub'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Huallaga Hu·Æµco Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qub'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qvh', N'HuamalÌes-Dos de Mayo Hu·nuco Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qvh', N'HuamalÒ¨∞≠Dos de Mayo Hu·Æµco Quechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HuamalÌes-Dos de Mayo Hu·nuco Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HuamalÒ¨∞≠Dos de Mayo Hu·Æµco Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hub')
@@ -124544,11 +124544,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'huy')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'huy', N'Hulaul·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'huy', N'Hulaul·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hulaul·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'huy'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hulaul·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'huy'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hui')
@@ -124697,11 +124697,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jup')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jup', N'HupdÎ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jup', N'HupdÎß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HupdÎ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jup'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HupdÎß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jup'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hap')
@@ -124769,20 +124769,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hrt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hrt', N'HÈrtevin', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hrt', N'HÈ≤¥evin', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HÈrtevin', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hrt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'HÈ≤¥evin', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hrt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'juh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'juh', N'Hıne', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'juh', N'H√µne', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Hıne', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'juh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'H√µne', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'juh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'iwk')
@@ -124976,11 +124976,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'idt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'idt', N'IdatÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'idt', N'IdatÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IdatÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'idt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IdatÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'idt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ide')
@@ -125066,11 +125066,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ife')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ife', N'IfË', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ife', N'IfËß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IfË', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ife'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IfËß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ife'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'igl')
@@ -125552,11 +125552,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'inz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'inz', N'IneseÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'inz', N'IneseÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IneseÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'inz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IneseÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'inz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'inb')
@@ -125894,11 +125894,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'irn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'irn', N'Ir·ntxe', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'irn', N'Ir·Æ¥xe', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ir·ntxe', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'irn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ir·Æ¥xe', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'irn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'isa')
@@ -126209,11 +126209,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'itz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'itz', N'Itz·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'itz', N'Itz·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Itz·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'itz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Itz·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'itz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ium')
@@ -126290,11 +126290,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzi')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzi', N'Ixcatl·n Mazatec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzi', N'Ixcatl·Æ†Mazatec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ixcatl·n Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzi'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ixcatl·Æ†Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzi'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ixl')
@@ -126407,20 +126407,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'inp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'inp', N'IÒapari', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'inp', N'IÒ°∞°ri', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IÒapari', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'inp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'IÒ°∞°ri', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'inp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jbt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jbt', N'JabutÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jbt', N'JabutÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'JabutÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jbt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'JabutÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jbt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jda')
@@ -126506,11 +126506,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'maj', N'Jalapa De DÌaz Mazatec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'maj', N'Jalapa De DÆ††Mazatec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Jalapa De DÌaz Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Jalapa De DÆ††Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bxl')
@@ -126551,11 +126551,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jaa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jaa', N'JamamadÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jaa', N'JamamadÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'JamamadÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jaa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'JamamadÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jaa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jax')
@@ -126650,11 +126650,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jru')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jru', N'JaprerÌa', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jru', N'Japrer©∞ß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'JaprerÌa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jru'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Japrer©∞ß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jru'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jqr')
@@ -127118,11 +127118,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jor')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jor', N'Jor·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jor', N'Jor·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Jor·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jor'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Jor·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jor'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jow')
@@ -127334,11 +127334,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jur')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jur', N'Jur˙na', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jur', N'Jur√∫na', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Jur˙na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jur'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Jur√∫na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jur'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jut')
@@ -127379,20 +127379,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nrf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nrf', N'JËrriais', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nrf', N'JË≤≤iais', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'JËrriais', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nrf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'JË≤≤iais', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nrf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jua')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jua', N'J˙ma', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'jua', N'J√∫ma', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'J˙ma', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jua'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'J√∫ma', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jua'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'quc')
@@ -127478,11 +127478,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbp', N'KabiyË', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbp', N'KabiyËß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KabiyË', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KabiyËß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'klz')
@@ -127667,11 +127667,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbc', N'KadiwÈu', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbc', N'KadiwÈµß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KadiwÈu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KadiwÈµß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zkd')
@@ -127883,11 +127883,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xai')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xai', N'KaimbÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xai', N'KaimbÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KaimbÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xai'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KaimbÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xai'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kgp')
@@ -127955,11 +127955,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kgk')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kgk', N'Kaiw·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kgk', N'Kaiw·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kaiw·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kgk'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kaiw·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kgk'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tcq')
@@ -128135,11 +128135,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'knz', N'KalamsÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'knz', N'KalamsÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KalamsÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KalamsÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wkl')
@@ -128405,11 +128405,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kay')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kay', N'Kamayur·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kay', N'Kamayur·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kamayur·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kay'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kamayur·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kay'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kam')
@@ -128459,11 +128459,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xbw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xbw', N'Kambiw·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xbw', N'Kambiw·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kambiw·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xbw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kambiw·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xbw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kmi')
@@ -128549,11 +128549,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knm')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'knm', N'KanamarÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'knm', N'KanamarÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KanamarÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knm'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KanamarÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knm'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zkn')
@@ -128675,11 +128675,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kty')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kty', N'Kango (Bas-UÈlÈ District)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kty', N'Kango (Bas-UÈ¨© District)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kango (Bas-UÈlÈ District)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kty'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kango (Bas-UÈ¨© District)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kty'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kzy')
@@ -128819,11 +128819,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kxo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kxo', N'KanoÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kxo', N'KanoÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KanoÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kxo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KanoÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kxo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ksk')
@@ -128918,11 +128918,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xpn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xpn', N'Kapinaw·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xpn', N'Kapinaw·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kapinaw·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xpn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kapinaw·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xpn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kpg')
@@ -129062,11 +129062,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kpj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kpj', N'Karaj·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kpj', N'Karaj·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Karaj·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kpj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Karaj·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kpj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xqa')
@@ -129260,29 +129260,29 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kmv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kmv', N'Karip˙na Creole French', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kmv', N'Karip√∫na Creole French', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Karip˙na Creole French', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kmv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Karip√∫na Creole French', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kmv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kzw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kzw', N'KarirÌ-XocÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kzw', N'KarirÛ¶ÅØcÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KarirÌ-XocÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kzw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KarirÛ¶ÅØcÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kzw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ktn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ktn', N'Kariti‚na', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ktn', N'Kariti‚Æ°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kariti‚na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ktn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kariti‚Æ°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ktn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kil')
@@ -129593,11 +129593,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kav')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kav', N'KatukÌna', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kav', N'KatukÛ∏êß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KatukÌna', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kav'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KatukÛ∏êß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kav'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pss')
@@ -129701,29 +129701,29 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ktx')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ktx', N'KaxararÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ktx', N'KaxararÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KaxararÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ktx'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KaxararÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ktx'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbb', N'Kaxui‚na', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kbb', N'Kaxui‚Æ°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kaxui‚na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kaxui‚Æ°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kbb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kyz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kyz', N'KayabÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kyz', N'KayabÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KayabÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kyz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KayabÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kyz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kyt')
@@ -129764,11 +129764,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'txu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'txu', N'KayapÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'txu', N'KayapÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KayapÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'txu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KayapÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'txu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gyd')
@@ -129962,11 +129962,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kek')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kek', N'KekchÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kek', N'KekchÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KekchÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kek'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KekchÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kek'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kel')
@@ -130268,11 +130268,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kpn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kpn', N'Kepkiriw·t', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kpn', N'Kepkiriw·¥ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kepkiriw·t', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kpn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kepkiriw·¥ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kpn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kuk')
@@ -130817,20 +130817,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kjm')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kjm', N'Kh·ng', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kjm', N'Kh·Æß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kh·ng', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kjm'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kh·Æß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kjm'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kkh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kkh', N'Kh¸n', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kkh', N'Kh√ºn', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kh¸n', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kkh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kh√ºn', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kkh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'blv')
@@ -130997,11 +130997,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kqp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kqp', N'KimrÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kqp', N'KimrÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KimrÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kqp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KimrÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kqp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cbw')
@@ -132248,11 +132248,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kfo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kfo', N'Koro (CÙte d''Ivoire)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kfo', N'Koro (C¥•†d''Ivoire)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Koro (CÙte d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kfo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Koro (C¥•†d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kfo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jkr')
@@ -132311,11 +132311,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kfz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kfz', N'KoromfÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kfz', N'KoromfÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KoromfÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kfz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KoromfÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kfz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kqj')
@@ -132347,11 +132347,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xxr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xxr', N'KoropÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xxr', N'KoropÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KoropÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xxr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KoropÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xxr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ktl')
@@ -132752,11 +132752,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xra')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xra', N'KrahÙ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xra', N'Krahß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KrahÙ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xra'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Krahß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xra'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rka')
@@ -133094,11 +133094,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kui')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kui', N'Kuik˙ro-Kalap·lo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kui', N'Kuik√∫ro-Kalap·¨Ø', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kuik˙ro-Kalap·lo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kui'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kuik√∫ro-Kalap·¨Ø', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kui'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vkj')
@@ -133787,11 +133787,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kyr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kyr', N'Kuru·ya', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kyr', N'Kuru·π°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kuru·ya', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kyr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kuru·π°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kyr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kus')
@@ -134390,29 +134390,29 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kmg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kmg', N'K‚te', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kmg', N'K‚¥•', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'K‚te', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kmg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'K‚¥•', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kmg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'keb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'keb', N'KÈlÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'keb', N'KÈ¨©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KÈlÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'keb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'KÈ¨©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'keb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ksh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ksh', N'Kˆlsch', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ksh', N'K√∂lsch', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Kˆlsch', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ksh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'K√∂lsch', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ksh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lbi')
@@ -134543,11 +134543,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpl')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpl', N'LachixÌo Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpl', N'LachixÙàÅöapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LachixÌo Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpl'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LachixÙàÅöapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpl'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lbj')
@@ -134804,11 +134804,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lkd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lkd', N'LakondÍ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lkd', N'LakondÍß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LakondÍ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lkd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LakondÍß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lkd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lkt')
@@ -135245,11 +135245,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztl')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztl', N'LapaguÌa-Guivini Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztl', N'Lapagu´ëáuivini Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LapaguÌa-Guivini Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztl'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Lapagu´ëáuivini Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztl'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lrg')
@@ -135425,11 +135425,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ltn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ltn', N'LatundÍ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ltn', N'LatundÍß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LatundÍ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ltn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LatundÍß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ltn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lav')
@@ -136532,11 +136532,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'trg', N'Lish·n Did·n', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'trg', N'Lish·Æ†Did·Æß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Lish·n Did·n', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Lish·Æ†Did·Æß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lis')
@@ -136847,11 +136847,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'loi')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'loi', N'Loma (CÙte d''Ivoire)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'loi', N'Loma (C¥•†d''Ivoire)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Loma (CÙte d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'loi'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Loma (C¥•†d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'loi'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lom')
@@ -137693,38 +137693,38 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lee')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lee', N'LyÈlÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lee', N'LyÈ¨©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LyÈlÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lee'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'LyÈ¨©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lee'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ldn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ldn', N'L·adan', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ldn', N'L·°§an', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'L·adan', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ldn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'L·°§an', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ldn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bwj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bwj', N'L·· L·· Bwamu', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bwj', N'L·°†L·°†Bwamu', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'L·· L·· Bwamu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bwj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'L·°†L·°†Bwamu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bwj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'khb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'khb', N'L¸', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'khb', N'L√º', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'L¸', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'khb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'L√º', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'khb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'msj')
@@ -137891,11 +137891,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbn', N'Macagu·n', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbn', N'Macagu·Æß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Macagu·n', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Macagu·Æß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzs')
@@ -138143,11 +138143,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xtm')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xtm', N'Magdalena PeÒasco Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xtm', N'Magdalena PeÒ°≥£o Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Magdalena PeÒasco Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xtm'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Magdalena PeÒ°≥£o Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xtm'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gkd')
@@ -138314,11 +138314,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vmf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vmf', N'Mainfr‰nkisch', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vmf', N'Mainfr‰Æ´isch', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mainfr‰nkisch', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vmf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mainfr‰Æ´isch', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vmf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xkl')
@@ -138620,11 +138620,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mpu', N'Makur·p', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mpu', N'Makur·∞ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Makur·p', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Makur·∞ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ymk')
@@ -139079,11 +139079,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gut')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gut', N'MalÈku JaÌka', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gut', N'MalÈ´µ JaÛàêß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MalÈku JaÌka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gut'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MalÈ´µ JaÛàêß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gut'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mam')
@@ -139115,11 +139115,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wmd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wmd', N'MamaindÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wmd', N'MamaindÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MamaindÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wmd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MamaindÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wmd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mmn')
@@ -140276,11 +140276,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'msp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'msp', N'Maritsau·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'msp', N'Maritsau·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Maritsau·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'msp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Maritsau·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'msp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zmy')
@@ -140456,11 +140456,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzr', N'Mar˙bo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzr', N'Mar√∫bo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mar˙bo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mar√∫bo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'myx')
@@ -140708,11 +140708,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'axg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'axg', N'Mato Grosso Ar·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'axg', N'Mato Grosso Ar·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mato Grosso Ar·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'axg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mato Grosso Ar·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'axg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtm')
@@ -140726,11 +140726,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mcf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mcf', N'MatsÈs', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mcf', N'MatsÈ≥ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MatsÈs', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mcf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MatsÈ≥ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mcf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mvb')
@@ -140780,11 +140780,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mpq', N'MatÌs', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mpq', N'MatÒâ∞ß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MatÌs', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MatÒâ∞ß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mph')
@@ -140879,11 +140879,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbl')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbl', N'MaxakalÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbl', N'MaxakalÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MaxakalÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbl'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MaxakalÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbl'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxl')
@@ -141023,20 +141023,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vmz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vmz', N'Mazatl·n Mazatec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vmz', N'Mazatl·Æ†Mazatec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mazatl·n Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vmz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mazatl·Æ†Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vmz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzl')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzl', N'Mazatl·n Mixe', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzl', N'Mazatl·Æ†Mixe', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mazatl·n Mixe', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzl'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mazatl·Æ†Mixe', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzl'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mfc')
@@ -141437,11 +141437,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gun')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gun', N'Mby· GuaranÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gun', N'Mby·†áuaranÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mby· GuaranÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gun'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mby·†áuaranÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gun'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mym')
@@ -141545,11 +141545,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mmh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mmh', N'Mehin·ku', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mmh', N'Mehin·´µ', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mehin·ku', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mmh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mehin·´µ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mmh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gdq')
@@ -141914,11 +141914,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mxv', N'MetlatÛnoc Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mxv', N'MetlatÛÆØ£ Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MetlatÛnoc Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MetlatÛÆØ£ Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtr')
@@ -142013,11 +142013,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zam')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zam', N'Miahuatl·n Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zam', N'Miahuatl·Æ†Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Miahuatl·n Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zam'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Miahuatl·Æ†Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zam'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mia')
@@ -142067,20 +142067,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mmc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mmc', N'Michoac·n Mazahua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mmc', N'Michoac·Æ†Mazahua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Michoac·n Mazahua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mmc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Michoac·Æ†Mazahua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mmc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ncl')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ncl', N'Michoac·n Nahuatl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ncl', N'Michoac·Æ†Nahuatl', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Michoac·n Nahuatl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ncl'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Michoac·Æ†Nahuatl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ncl'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'dnt')
@@ -142769,11 +142769,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lhs')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lhs', N'Mlahsˆ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lhs', N'Mlahs√∂', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mlahsˆ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lhs'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mlahs√∂', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lhs'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kja')
@@ -142895,11 +142895,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'moc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'moc', N'MocovÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'moc', N'MocovÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MocovÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'moc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MocovÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'moc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxd')
@@ -143318,11 +143318,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mnd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mnd', N'MondÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mnd', N'MondÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MondÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mnd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MondÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mnd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lol')
@@ -143498,11 +143498,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mop')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mop', N'Mop·n Maya', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mop', N'Mop·Æ†Maya', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mop·n Maya', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mop'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Mop·Æ†Maya', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mop'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'moq')
@@ -144245,11 +144245,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'myu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'myu', N'Munduruk˙', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'myu', N'Munduruk√∫', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Munduruk˙', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'myu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Munduruk√∫', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'myu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mhk')
@@ -144695,56 +144695,56 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gmd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gmd', N'M·ghdÏ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gmd', N'M·ß®dÏß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'M·ghdÏ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gmd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'M·ß®dÏß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gmd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tnr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tnr', N'MÈnik', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tnr', N'MÈÆ©k', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MÈnik', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tnr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MÈÆ©k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tnr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'miq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'miq', N'MÌskito', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'miq', N'MÒä±©to', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MÌskito', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'miq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MÒä±©to', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'miq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mhn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mhn', N'MÛcheno', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mhn', N'MÛ£®•no', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MÛcheno', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mhn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'MÛ£®•no', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mhn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mwq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mwq', N'M¸n Chin', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mwq', N'M√ºn Chin', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'M¸n Chin', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mwq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'M√ºn Chin', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mwq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'muh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'muh', N'M¸nd¸', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'muh', N'M√ºnd√º', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'M¸nd¸', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'muh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'M√ºnd√º', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'muh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nqo')
@@ -144857,11 +144857,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbj', N'NadÎb', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbj', N'NadÎ¢ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NadÎb', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NadÎ¢ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nfr')
@@ -145082,11 +145082,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nlz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nlz', N'Nalˆgo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nlz', N'Nal√∂go', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Nalˆgo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nlz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Nal√∂go', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nlz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nmx')
@@ -145244,11 +145244,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sen')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sen', N'NanerigÈ SÈnoufo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sen', N'NanerigÈ†ìÈÆØufo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NanerigÈ SÈnoufo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sen'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NanerigÈ†ìÈÆØufo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sen'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nzz')
@@ -145469,11 +145469,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ntu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ntu', N'Nat¸gu', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ntu', N'Nat√ºgu', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Nat¸gu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ntu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Nat√ºgu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ntu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nxa')
@@ -146711,11 +146711,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kcd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kcd', N'Ngk‚lmpw Kanum', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kcd', N'Ngk‚¨≠pw Kanum', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ngk‚lmpw Kanum', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kcd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ngk‚¨≠pw Kanum', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kcd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nra')
@@ -146900,11 +146900,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nuo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nuo', N'NguÙn', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nuo', N'NguÆß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NguÙn', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nuo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NguÆß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nuo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ngw')
@@ -146936,11 +146936,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gym')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gym', N'Ng‰bere', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gym', N'Ng‰¢•re', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ng‰bere', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gym'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ng‰¢•re', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gym'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nha')
@@ -147296,11 +147296,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cag')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cag', N'NivaclÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cag', N'NivaclÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NivaclÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cag'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NivaclÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cag'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hrc')
@@ -147764,11 +147764,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qvn', N'North JunÌn Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qvn', N'North JunÛ∏Åëuechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'North JunÌn Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'North JunÛ∏Åëuechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mrq')
@@ -148007,11 +148007,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bbo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bbo', N'Northern Bobo MadarÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bbo', N'Northern Bobo MadarÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Northern Bobo MadarÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bbo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Northern Bobo MadarÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bbo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rbk')
@@ -148070,11 +148070,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'emp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'emp', N'Northern Ember·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'emp', N'Northern Ember·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Northern Ember·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'emp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Northern Ember·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'emp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'frr')
@@ -148655,11 +148655,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nob', N'Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nob', N'Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nno')
@@ -148853,11 +148853,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbr', N'Nukak Mak˙', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mbr', N'Nukak Mak√∫', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Nukak Mak˙', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Nukak Mak√∫', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mbr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'klt')
@@ -148961,11 +148961,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kdk')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kdk', N'NumËË', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kdk', N'NumË®ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NumËË', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kdk'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NumË®ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kdk'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nut')
@@ -149474,11 +149474,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yly')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yly', N'Ny‚layu', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yly', N'Ny‚¨°yu', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ny‚layu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yly'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ny‚¨°yu', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yly'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nzd')
@@ -149528,29 +149528,29 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'neo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'neo', N'N·-Meo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'neo', N'N·≠çeo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'N·-Meo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'neo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'N·≠çeo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'neo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nee')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nee', N'NÍlÍmwa-Nixumwak', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nee', N'NÍ¨™mwa-Nixumwak', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NÍlÍmwa-Nixumwak', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nee'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'NÍ¨™mwa-Nixumwak', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nee'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hux')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hux', N'N¸pode Huitoto', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hux', N'N√ºpode Huitoto', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'N¸pode Huitoto', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hux'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'N√ºpode Huitoto', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hux'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xoc')
@@ -149582,11 +149582,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'obi')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'obi', N'ObispeÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'obi', N'ObispeÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ObispeÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'obi'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ObispeÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'obi'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'obl')
@@ -149663,11 +149663,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zac')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zac', N'Ocotl·n Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zac', N'Ocotl·Æ†Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ocotl·n Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zac'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ocotl·Æ†Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zac'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'odk')
@@ -149726,11 +149726,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'opy')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'opy', N'OfayÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'opy', N'OfayÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'OfayÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'opy'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'OfayÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'opy'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'arc')
@@ -149816,11 +149816,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'chj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'chj', N'Ojitl·n Chinantec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'chj', N'Ojitl·Æ†Chinantec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ojitl·n Chinantec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'chj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ojitl·Æ†Chinantec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'chj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'oka')
@@ -150212,11 +150212,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pro', N'Old ProvenÁal (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pro', N'Old ProvenÁ°¨ (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Old ProvenÁal (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Old ProvenÁ°¨ (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'orv')
@@ -150617,11 +150617,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ore')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ore', N'OrejÛn', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ore', N'OrejÛÆß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'OrejÛn', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ore'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'OrejÛÆß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ore'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'org')
@@ -151013,11 +151013,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'chz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'chz', N'OzumacÌn Chinantec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'chz', N'OzumacÛ∏ÅÉhinantec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'OzumacÌn Chinantec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'chz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'OzumacÛ∏ÅÉhinantec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'chz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pdi')
@@ -151238,11 +151238,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pri')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pri', N'PaicÓ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pri', N'PaicÓß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PaicÓ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pri'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PaicÓß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pri'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ppi')
@@ -151292,11 +151292,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pav')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pav', N'Paka·snovos', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pav', N'Paka·≥Æovos', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Paka·snovos', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pav'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Paka·≥Æovos', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pav'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pks')
@@ -151400,11 +151400,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'plu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'plu', N'Palik˙r', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'plu', N'Palik√∫r', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Palik˙r', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'plu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Palik√∫r', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'plu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pcf')
@@ -151553,20 +151553,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxh', N'Panao Hu·nuco Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qxh', N'Panao Hu·Æµco Quechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Panao Hu·nuco Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Panao Hu·Æµco Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qxh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kre')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kre', N'Panar·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kre', N'Panar·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Panar·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kre'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Panar·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kre'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'psn')
@@ -151697,20 +151697,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pax')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pax', N'PankararÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pax', N'PankararÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PankararÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pax'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PankararÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pax'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'paz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'paz', N'Pankarar˙', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'paz', N'Pankarar√∫', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pankarar˙', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'paz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pankarar√∫', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'paz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pkh')
@@ -151742,11 +151742,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'knt', N'Panoan KatukÌna', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'knt', N'Panoan KatukÛ∏êß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Panoan KatukÌna', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Panoan KatukÛ∏êß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'knt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pno')
@@ -151877,11 +151877,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gug')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gug', N'Paraguayan GuaranÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gug', N'Paraguayan GuaranÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Paraguayan GuaranÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gug'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Paraguayan GuaranÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gug'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pys')
@@ -151895,11 +151895,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pak')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pak', N'Parakan„', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pak', N'Parakan„ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Parakan„', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pak'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Parakan„ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pak'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'prf')
@@ -151913,11 +151913,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'paf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'paf', N'Paranaw·t', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'paf', N'Paranaw·¥ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Paranaw·t', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'paf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Paranaw·¥ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'paf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pbg')
@@ -151976,11 +151976,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pab')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pab', N'ParecÌs', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pab', N'ParecÒâ∞ß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ParecÌs', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pab'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ParecÒâ∞ß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pab'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pcj')
@@ -152039,20 +152039,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aap')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aap', N'Par· Ar·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aap', N'Par·†År·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Par· Ar·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aap'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Par·†År·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aap'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gvp', N'Par· Gavi„o', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gvp', N'Par·†áavi„Øß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Par· Gavi„o', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Par·†áavi„Øß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gvp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'psq')
@@ -152093,11 +152093,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pth')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pth', N'PataxÛ H„-Ha-H„e', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pth', N'PataxÛ†à£-Ha-H„•ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PataxÛ H„-Ha-H„e', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pth'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PataxÛ†à£-Ha-H„•ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pth'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ptp')
@@ -152174,11 +152174,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pad')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pad', N'PaumarÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pad', N'PaumarÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PaumarÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pad'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PaumarÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pad'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pnk')
@@ -152507,11 +152507,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mil')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mil', N'PeÒoles Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mil', N'PeÒØ¨•s Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PeÒoles Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mil'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PeÒØ¨•s Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mil'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pfl')
@@ -152813,11 +152813,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpu', N'Pichis AshÈninka', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpu', N'Pichis AshÈÆ©nka', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pichis AshÈninka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pichis AshÈÆ©nka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xpi')
@@ -152876,11 +152876,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'plg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'plg', N'Pilag·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'plg', N'Pilag·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pilag·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'plg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pilag·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'plg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'piv')
@@ -153002,11 +153002,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'myp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'myp', N'Pirah„', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'myp', N'Pirah„ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pirah„', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'myp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pirah„ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'myp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pir')
@@ -153263,11 +153263,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pok')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pok', N'Pokang·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pok', N'Pokang·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pokang·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pok'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pokang·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pok'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pof')
@@ -153479,11 +153479,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pog')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pog', N'Potigu·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pog', N'Potigu·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Potigu·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pog'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Potigu·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pog'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gdb')
@@ -153533,11 +153533,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pyn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pyn', N'Poyan·wa', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pyn', N'Poyan·∑°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Poyan·wa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pyn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Poyan·∑°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pyn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'prn')
@@ -153731,11 +153731,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yae')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yae', N'PumÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yae', N'PumÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PumÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yae'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PumÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yae'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pud')
@@ -153893,11 +153893,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'puy')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'puy', N'PurisimeÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'puy', N'PurisimeÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PurisimeÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'puy'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PurisimeÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'puy'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'suv')
@@ -153911,11 +153911,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pur')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pur', N'Purubor·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pur', N'Purubor·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Purubor·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pur'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Purubor·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pur'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pub')
@@ -154001,11 +154001,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pop')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pop', N'Pwapw‚', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pop', N'Pwapw‚ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pwapw‚', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pop'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pwapw‚ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pop'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kjp')
@@ -154082,56 +154082,56 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pbb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pbb', N'P·ez', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pbb', N'P·•∫', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'P·ez', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pbb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'P·•∫', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pbb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pfa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pfa', N'P··fang', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pfa', N'P·°¶ang', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'P··fang', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pfa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'P·°¶ang', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pfa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lkr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lkr', N'P‰ri', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lkr', N'P‰≤©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'P‰ri', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lkr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'P‰≤©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lkr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pev')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pev', N'PÈmono', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pev', N'PÈ≠Øno', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PÈmono', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pev'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PÈ≠Øno', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pev'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lme')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lme', N'PÈvÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lme', N'PÈ∂©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PÈvÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lme'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'PÈ∂©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lme'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pko')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pko', N'Pˆkoot', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pko', N'P√∂koot', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Pˆkoot', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pko'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'P√∂koot', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pko'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kjb')
@@ -154271,11 +154271,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'otq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'otq', N'QuerÈtaro Otomi', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'otq', N'QuerÈ¥°ro Otomi', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'QuerÈtaro Otomi', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'otq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'QuerÈ¥°ro Otomi', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'otq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pxm')
@@ -154334,11 +154334,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztq', N'Quioquitani-QuierÌ Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztq', N'Quioquitani-Quierñ°°potec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Quioquitani-QuierÌ Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Quioquitani-Quierñ°°potec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'chq')
@@ -154739,11 +154739,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zor')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zor', N'RayÛn Zoque', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zor', N'RayÛÆ†öoque', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'RayÛn Zoque', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zor'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'RayÛÆ†öoque', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zor'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rat')
@@ -154946,11 +154946,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rgr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'rgr', N'ResÌgaro', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'rgr', N'ResÚàë≤o', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ResÌgaro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rgr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'ResÚàë≤o', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rgr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ret')
@@ -155045,11 +155045,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zar')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zar', N'RincÛn Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zar', N'RincÛÆ†öapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'RincÛn Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zar'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'RincÛÆ†öapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zar'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rgu')
@@ -155567,11 +155567,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rcf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'rcf', N'RÈunion Creole French', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'rcf', N'RÈµÆion Creole French', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'RÈunion Creole French', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rcf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'RÈµÆion Creole French', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'rcf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ksw')
@@ -155693,11 +155693,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sae')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sae', N'SabanÍ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sae', N'SabanÍß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SabanÍ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sae'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SabanÍß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sae'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spy')
@@ -155729,11 +155729,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sbo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sbo', N'Sab¸m', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sbo', N'Sab√ºm', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sab¸m', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sbo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sab√ºm', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sbo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'quv')
@@ -155927,11 +155927,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'skf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'skf', N'Sakirabi·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'skf', N'Sakirabi·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sakirabi·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'skf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sakirabi·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'skf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'szy')
@@ -156044,11 +156044,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'slj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'slj', N'Salum·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'slj', N'Salum·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Salum·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'slj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Salum·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'slj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'esn')
@@ -156269,11 +156269,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztm')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztm', N'San AgustÌn Mixtepec Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztm', N'San AgustÛ∏Åçixtepec Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San AgustÌn Mixtepec Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztm'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San AgustÛ∏Åçixtepec Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztm'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpx')
@@ -156332,11 +156332,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'maa', N'San JerÛnimo TecÛatl Mazatec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'maa', N'San JerÛÆ©≠o TecÛ°¥¨ Mazatec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San JerÛnimo TecÛatl Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San JerÛÆ©≠o TecÛ°¥¨ Mazatec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'maa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'poe')
@@ -156368,11 +156368,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pps')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pps', N'San LuÌs Temalacayuca Popoloca', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pps', N'San LuÒàÅîemalacayuca Popoloca', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San LuÌs Temalacayuca Popoloca', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pps'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San LuÒàÅîemalacayuca Popoloca', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pps'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pls')
@@ -156386,20 +156386,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'trq', N'San MartÌn Itunyoso Triqui', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'trq', N'San MartÛ∏Åâtunyoso Triqui', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San MartÌn Itunyoso Triqui', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San MartÛ∏Åâtunyoso Triqui', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvs')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qvs', N'San MartÌn Quechua', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'qvs', N'San MartÛ∏Åëuechua', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San MartÌn Quechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvs'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San MartÛ∏Åëuechua', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'qvs'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'huv')
@@ -156467,11 +156467,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpt', N'San Vicente Coatl·n Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpt', N'San Vicente Coatl·Æ†Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San Vicente Coatl·n Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'San Vicente Coatl·Æ†Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ayn')
@@ -156485,11 +156485,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'spn', N'Sanapan·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'spn', N'Sanapan·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sanapan·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sanapan·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sad')
@@ -156683,65 +156683,65 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pca')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pca', N'Santa InÈs Ahuatempan Popoloca', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pca', N'Santa InÈ≥†Ahuatempan Popoloca', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa InÈs Ahuatempan Popoloca', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pca'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa InÈ≥†Ahuatempan Popoloca', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pca'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpn', N'Santa InÈs Yatzechi Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpn', N'Santa InÈ≥†Yatzechi Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa InÈs Yatzechi Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa InÈ≥†Yatzechi Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mdv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mdv', N'Santa LucÌa Monteverde Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mdv', N'Santa Luc®Åçonteverde Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa LucÌa Monteverde Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mdv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa Luc®Åçonteverde Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mdv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hvv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hvv', N'Santa MarÌa Del Mar Huave', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hvv', N'Santa Mar®ÅÑel Mar Huave', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa MarÌa Del Mar Huave', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hvv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa Mar®ÅÑel Mar Huave', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hvv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nhz', N'Santa MarÌa La Alta Nahuatl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nhz', N'Santa Mar®Ååa Alta Nahuatl', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa MarÌa La Alta Nahuatl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa Mar®Ååa Alta Nahuatl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpi')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpi', N'Santa MarÌa Quiegolani Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpi', N'Santa Mar®Åëuiegolani Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa MarÌa Quiegolani Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpi'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa Mar®Åëuiegolani Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpi'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mza')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mza', N'Santa MarÌa Zacatepec Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mza', N'Santa Mar®Åöacatepec Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa MarÌa Zacatepec Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mza'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Santa Mar®Åöacatepec Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mza'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cok')
@@ -156791,11 +156791,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xsu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xsu', N'Sanum·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xsu', N'Sanum·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sanum·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xsu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sanum·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xsu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spr')
@@ -156845,11 +156845,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'spc', N'SapÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'spc', N'SapÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SapÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SapÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'spc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mwm')
@@ -156890,11 +156890,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kwv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kwv', N'Sara Kaba N·‡', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kwv', N'Sara Kaba N·†ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sara Kaba N·‡', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kwv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sara Kaba N·†ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kwv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'skr')
@@ -157079,11 +157079,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mav')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mav', N'SaterÈ-MawÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mav', N'SaterÈ≠çawÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SaterÈ-MawÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mav'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SaterÈ≠çawÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mav'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sdl')
@@ -157682,11 +157682,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'seq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'seq', N'Senara SÈnoufo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'seq', N'Senara SÈÆØufo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Senara SÈnoufo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'seq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Senara SÈÆØufo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'seq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'syn')
@@ -158681,11 +158681,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zaa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zaa', N'Sierra de Ju·rez Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zaa', N'Sierra de Ju·≤•z Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sierra de Ju·rez Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zaa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sierra de Ju·≤•z Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zaa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sgx')
@@ -159149,11 +159149,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'srq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'srq', N'SirionÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'srq', N'SirionÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SirionÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'srq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SirionÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'srq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'srx')
@@ -159356,11 +159356,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kxq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kxq', N'Sm‰rky Kanum', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kxq', N'Sm‰≤´y Kanum', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sm‰rky Kanum', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kxq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sm‰≤´y Kanum', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kxq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sno')
@@ -159914,11 +159914,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpy')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpy', N'South Ucayali AshÈninka', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpy', N'South Ucayali AshÈÆ©nka', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'South Ucayali AshÈninka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpy'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'South Ucayali AshÈÆ©nka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpy'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mcy')
@@ -159995,11 +159995,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpd', N'Southeastern Ixtl·n Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpd', N'Southeastern Ixtl·Æ†Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southeastern Ixtl·n Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southeastern Ixtl·Æ†Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nit')
@@ -160013,11 +160013,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxy')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mxy', N'Southeastern Nochixtl·n Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mxy', N'Southeastern Nochixtl·Æ†Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southeastern Nochixtl·n Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxy'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southeastern Nochixtl·Æ†Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxy'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pom')
@@ -160139,11 +160139,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bwq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bwq', N'Southern Bobo MadarÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'bwq', N'Southern Bobo MadarÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southern Bobo MadarÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bwq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southern Bobo MadarÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'bwq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'obk')
@@ -160373,11 +160373,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nab')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nab', N'Southern Nambiku·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nab', N'Southern Nambiku·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southern Nambiku·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nab'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Southern Nambiku·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nab'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nbw')
@@ -161417,11 +161417,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'swx')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'swx', N'Suruah·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'swx', N'Suruah·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Suruah·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'swx'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Suruah·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'swx'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sde')
@@ -161435,20 +161435,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sru')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sru', N'SuruÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sru', N'SuruÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SuruÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sru'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SuruÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sru'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mdz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mdz', N'SuruÌ Do Par·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mdz', N'SuruëÅØ Par·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SuruÌ Do Par·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mdz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SuruëÅØ Par·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mdz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sqn')
@@ -161498,11 +161498,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'suy')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'suy', N'Suy·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'suy', N'Suy·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Suy·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'suy'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Suy·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'suy'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sva')
@@ -161651,47 +161651,47 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'slc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'slc', N'S·liba', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'slc', N'S·¨©ba', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'S·liba', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'slc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'S·¨©ba', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'slc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zkp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zkp', N'S„o Paulo Kaing·ng', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zkp', N'S„Ø†Paulo Kaing·Æß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'S„o Paulo Kaing·ng', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zkp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'S„Ø†Paulo Kaing·Æß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zkp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cri')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cri', N'S„otomense', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cri', N'S„Ø¥omense', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'S„otomense', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cri'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'S„Ø¥omense', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cri'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sep')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sep', N'SÏcÏtÈ SÈnoufo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sep', N'SÏ£¨tÈ†ìÈÆØufo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SÏcÏtÈ SÈnoufo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sep'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SÏ£¨tÈ†ìÈÆØufo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sep'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sss')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sss', N'SÙ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'sss', N'Sß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'SÙ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sss'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Sß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'sss'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lgn')
@@ -162083,11 +162083,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'twh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'twh', N'Tai DÛn', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'twh', N'Tai DÛÆß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tai DÛn', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'twh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tai DÛÆß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'twh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tiz')
@@ -162128,11 +162128,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tdd')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tdd', N'Tai N¸a', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tdd', N'Tai N√ºa', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tai N¸a', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tdd'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tai N√ºa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tdd'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpo')
@@ -162803,11 +162803,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tnc')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tnc', N'Tanimuca-Retuar„', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tnc', N'Tanimuca-Retuar„ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tanimuca-Retuar„', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tnc'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tanimuca-Retuar„ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tnc'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uji')
@@ -162857,20 +162857,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpj')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpj', N'TapietÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpj', N'TapietÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TapietÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpj'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TapietÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpj'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'taf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'taf', N'TapirapÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'taf', N'TapirapÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TapirapÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'taf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TapirapÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'taf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tro')
@@ -163136,11 +163136,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xtw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xtw', N'TawandÍ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xtw', N'TawandÍß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TawandÍ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xtw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TawandÍß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xtw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'twm')
@@ -163298,11 +163298,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tcw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tcw', N'Tecpatl·n Totonac', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tcw', N'Tecpatl·Æ†Totonac', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tecpatl·n Totonac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tcw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tecpatl·Æ†Totonac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tcw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tuq')
@@ -163532,11 +163532,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tqb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tqb', N'TembÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tqb', N'TembÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TembÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tqb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TembÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tqb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tdo')
@@ -163856,11 +163856,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tmg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tmg', N'TernateÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tmg', N'TernateÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TernateÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tmg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TernateÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tmg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tkg')
@@ -164018,11 +164018,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mxb', N'Tezoatl·n Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mxb', N'Tezoatl·Æ†Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tezoatl·n Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tezoatl·Æ†Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mxb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'thy')
@@ -164306,11 +164306,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtx')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mtx', N'Tida· Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mtx', N'Tida·†çixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tida· Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtx'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tida·†çixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtx'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tia')
@@ -164333,11 +164333,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'boo', N'TiemacËwË Bozo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'boo', N'TiemacË∑® Bozo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TiemacËwË Bozo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TiemacË∑® Bozo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tii')
@@ -164684,20 +164684,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tiq')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tiq', N'TiÈfo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tiq', N'TiÈ¶Ø', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TiÈfo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tiq'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TiÈ¶Ø', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tiq'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'boz', N'TiÈyaxo Bozo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'boz', N'TiÈπ°xo Bozo', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TiÈyaxo Bozo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TiÈπ°xo Bozo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'boz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tjj')
@@ -165413,11 +165413,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'trz', N'Tor·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'trz', N'Tor·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tor·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tor·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'trz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'als')
@@ -165494,11 +165494,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'neb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'neb', N'Toura (CÙte d''Ivoire)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'neb', N'Toura (C¥•†d''Ivoire)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Toura (CÙte d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'neb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Toura (C¥•†d''Ivoire)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'neb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'don')
@@ -165566,11 +165566,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tme')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tme', N'TremembÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tme', N'TremembÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TremembÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tme'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TremembÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tme'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'stg')
@@ -165638,20 +165638,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tri')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tri', N'TriÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tri', N'TriÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TriÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tri'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TriÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tri'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tka')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tka', N'Truk·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tka', N'Truk·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Truk·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tka'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Truk·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tka'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpy')
@@ -165665,11 +165665,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tsl')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tsl', N'Ts''¸n-Lao', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tsl', N'Ts''√ºn-Lao', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ts''¸n-Lao', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tsl'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ts''√ºn-Lao', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tsl'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tsa')
@@ -165764,11 +165764,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cas')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cas', N'TsimanÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cas', N'TsimanÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TsimanÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cas'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TsimanÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cas'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xmw')
@@ -166025,11 +166025,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tkf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tkf', N'TukumanfÈd', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tkf', N'TukumanfÈ§ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TukumanfÈd', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tkf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TukumanfÈ§ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tkf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tul')
@@ -166286,20 +166286,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpr', N'TuparÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpr', N'TuparÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TuparÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TuparÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpn', N'Tupinamb·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tpn', N'Tupinamb·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tupinamb·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tupinamb·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tpk')
@@ -166340,11 +166340,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'twt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'twt', N'Turiw·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'twt', N'Turiw·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Turiw·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'twt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Turiw·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'twt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tuz')
@@ -166538,20 +166538,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tux')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tux', N'Tuxin·wa', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tux', N'Tuxin·∑°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tuxin·wa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tux'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tuxin·∑°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tux'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tud')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tud', N'Tux·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tud', N'Tux·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tux·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tud'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Tux·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tud'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tue')
@@ -166637,47 +166637,47 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tyz')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tyz', N'T‡y', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tyz', N'T‡πß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T‡y', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tyz'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T‡πß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tyz'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tys')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tys', N'T‡y Sa Pa', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tys', N'T‡π†Sa Pa', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T‡y Sa Pa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tys'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T‡π†Sa Pa', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tys'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tyt')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tyt', N'T‡y Tac', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tyt', N'T‡π†Tac', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T‡y Tac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tyt'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T‡π†Tac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tyt'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lor')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lor', N'TÈÈn', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'lor', N'TÈ©Æ', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TÈÈn', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lor'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'TÈ©Æ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lor'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tub')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tub', N'T¸batulabal', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tub', N'T√ºbatulabal', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T¸batulabal', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tub'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'T√ºbatulabal', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tub'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uuu')
@@ -166700,11 +166700,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uam')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'uam', N'UamuÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'uam', N'UamuÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'UamuÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uam'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'UamuÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uam'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ksj')
@@ -166763,11 +166763,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpb', N'Ucayali-Yur˙a AshÈninka', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'cpb', N'Ucayali-Yur√∫a AshÈÆ©nka', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ucayali-Yur˙a AshÈninka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Ucayali-Yur√∫a AshÈÆ©nka', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'cpb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uda')
@@ -167195,11 +167195,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'umo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'umo', N'UmotÌna', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'umo', N'UmotÛ∏êß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'UmotÌna', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'umo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'UmotÛ∏êß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'umo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ump')
@@ -167645,20 +167645,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'urb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'urb', N'Urub˙-Kaapor', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'urb', N'Urub√∫-Kaapor', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Urub˙-Kaapor', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'urb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Urub√∫-Kaapor', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'urb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uks')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'uks', N'Urub˙-Kaapor Sign Language', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'uks', N'Urub√∫-Kaapor Sign Language', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Urub˙-Kaapor Sign Language', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uks'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Urub√∫-Kaapor Sign Language', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'uks'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ugy')
@@ -168176,11 +168176,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'veo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'veo', N'VentureÒo', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'veo', N'VentureÒØß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'VentureÒo', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'veo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'VentureÒØß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'veo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vep')
@@ -168365,11 +168365,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xvo')
@@ -168437,11 +168437,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'msn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'msn', N'VurÎs', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'msn', N'VurÎ≥ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'VurÎs', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'msn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'VurÎ≥ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'msn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vut')
@@ -168464,11 +168464,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vro', N'Vıro', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'vro', N'V√µro', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Vıro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'V√µro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wbm')
@@ -168878,11 +168878,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'waf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'waf', N'Wakon·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'waf', N'Wakon·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Wakon·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'waf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Wakon·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'waf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'lgl')
@@ -169283,11 +169283,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hwa')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hwa', N'WanÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'hwa', N'WanÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WanÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hwa'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WanÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'hwa'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'auc')
@@ -169670,11 +169670,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wau')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wau', N'Waur·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wau', N'Waur·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Waur·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wau'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Waur·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wau'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wuy')
@@ -169742,11 +169742,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wyr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wyr', N'WayorÛ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wyr', N'WayorÛß¨†',NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WayorÛ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wyr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WayorÛß¨†',[CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wyr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'vay')
@@ -170093,11 +170093,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gnw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gnw', N'Western Bolivian GuaranÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gnw', N'Western Bolivian GuaranÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Western Bolivian GuaranÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gnw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Western Bolivian GuaranÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gnw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'brv')
@@ -170561,29 +170561,29 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzh')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzh', N'WichÌ LhamtÈs G¸isnay', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mzh', N'WichìÅ®amtÈ≥†G√ºisnay', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WichÌ LhamtÈs G¸isnay', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzh'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WichìÅ®amtÈ≥†G√ºisnay', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mzh'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtp')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mtp', N'WichÌ LhamtÈs Nocten', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mtp', N'WichìÅ®amtÈ≥†Nocten', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WichÌ LhamtÈs Nocten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtp'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WichìÅ®amtÈ≥†Nocten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mtp'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wlv')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wlv', N'WichÌ LhamtÈs Vejoz', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wlv', N'WichìÅ®amtÈ≥†Vejoz', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WichÌ LhamtÈs Vejoz', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wlv'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WichìÅ®amtÈ≥†Vejoz', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wlv'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wig')
@@ -170678,11 +170678,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kst')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kst', N'WinyÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'kst', N'WinyÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WinyÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kst'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WinyÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kst'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gdr')
@@ -170705,11 +170705,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wir')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wir', N'WirafÈd', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wir', N'WirafÈ§ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WirafÈd', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wir'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WirafÈ§ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wir'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wgu')
@@ -171164,47 +171164,47 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tci')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tci', N'W·ra', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'tci', N'W·≤°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'W·ra', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tci'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'W·≤°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'tci'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'juw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'juw', N'W„pha', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'juw', N'W„∞®a', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'W„pha', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'juw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'W„∞®a', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'juw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wob', N'WË Northern', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wob', N'WË†éorthern', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WË Northern', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WË†éorthern', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gxx')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gxx', N'WË Southern', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gxx', N'WË†ìouthern', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WË Southern', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gxx'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WË†ìouthern', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gxx'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wec')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wec', N'WË Western', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wec', N'WË†óestern', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WË Western', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wec'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'WË†óestern', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wec'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'kao')
@@ -171227,11 +171227,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xkr')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xkr', N'Xakriab·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xkr', N'Xakriab·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xakriab·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xkr'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xakriab·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xkr'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xan')
@@ -171245,38 +171245,38 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztg', N'XanaguÌa Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ztg', N'Xanagu®Åöapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'XanaguÌa Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xanagu®Åöapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xav')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xav', N'Xav·nte', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xav', N'Xav·Æ¥e', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xav·nte', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xav'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xav·Æ¥e', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xav'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xer')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xer', N'XerÈnte', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xer', N'XerÈÆ¥e', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'XerÈnte', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xer'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'XerÈÆ¥e', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xer'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xet')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xet', N'Xet·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xet', N'Xet·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xet·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xet'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xet·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xet'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xho')
@@ -171308,11 +171308,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'too')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'too', N'Xicotepec De Ju·rez Totonac', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'too', N'Xicotepec De Ju·≤•z Totonac', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xicotepec De Ju·rez Totonac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'too'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xicotepec De Ju·≤•z Totonac', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'too'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xin')
@@ -171326,11 +171326,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'asn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'asn', N'Xing˙ AsurinÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'asn', N'Xing√∫ AsurinÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xing˙ AsurinÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'asn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xing√∫ AsurinÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'asn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xiy')
@@ -171353,11 +171353,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xir')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xir', N'Xiri‚na', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xir', N'Xiri‚Æ°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xiri‚na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xir'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xiri‚Æ°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xir'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ywt')
@@ -171380,11 +171380,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xoo')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xoo', N'Xukur˙', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'xoo', N'Xukur√∫', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xukur˙', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xoo'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Xukur√∫', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xoo'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'xwe')
@@ -171398,20 +171398,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ane')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ane', N'X‚r‚c˘˘', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ane', N'X‚≤¢c√π√π', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'X‚r‚c˘˘', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ane'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'X‚≤¢c√π√π', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ane'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'axx')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'axx', N'X‚r‚gurË', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'axx', N'X‚≤¢gurËß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'X‚r‚gurË', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'axx'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'X‚≤¢gurËß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'axx'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'muu')
@@ -171434,11 +171434,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ybn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ybn', N'Yaba‚na', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ybn', N'Yaba‚Æ°', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yaba‚na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ybn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yaba‚Æ°', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ybn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'jae')
@@ -171731,11 +171731,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpu', N'Yal·lag Zapotec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zpu', N'Yal·¨°g Zapotec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yal·lag Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yal·¨°g Zapotec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zpu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ymp')
@@ -172010,20 +172010,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'guu')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'guu', N'Yanomamˆ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'guu', N'Yanomam√∂', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yanomamˆ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'guu'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yanomam√∂', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'guu'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wca')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wca', N'Yanom·mi', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'wca', N'Yanom·≠©', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yanom·mi', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wca'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yanom·≠©', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'wca'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yns')
@@ -172064,11 +172064,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yre')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yre', N'YaourÈ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yre', N'YaourÈß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YaourÈ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yre'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YaourÈß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yre'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yap')
@@ -172298,11 +172298,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yaw')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yaw', N'YawalapitÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yaw', N'YawalapitÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YawalapitÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yaw'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YawalapitÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yaw'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ywn')
@@ -172766,11 +172766,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gud')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gud', N'YocobouÈ Dida', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'gud', N'YocobouÈ†Ñida', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YocobouÈ Dida', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gud'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YocobouÈ†Ñida', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gud'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yog')
@@ -172946,11 +172946,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpm')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mpm', N'Yosond˙a Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mpm', N'Yosond√∫a Mixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yosond˙a Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpm'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Yosond√∫a Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mpm'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yot')
@@ -173045,11 +173045,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mvg')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mvg', N'YucuaÒe Mixtec', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'mvg', N'YucuaÒ•†çixtec', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YucuaÒe Mixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mvg'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YucuaÒ•†çixtec', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mvg'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ycn')
@@ -173198,11 +173198,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yui')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yui', N'YurutÌ', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yui', N'YurutÚãÄß, NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YurutÌ', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yui'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'YurutÚãÄß, [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yui'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'mab')
@@ -173243,11 +173243,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yag')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yag', N'Y·mana', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'yag', N'Y·≠°na', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Y·mana', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yag'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Y·≠°na', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yag'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ztx')
@@ -173279,11 +173279,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhi')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nhi', N'Zacatl·n-Ahuacatl·n-Tepetzintla Nahuatl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'nhi', N'Zacatl·Æ≠Ahuacatl·Æ≠Tepetzintla Nahuatl', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Zacatl·n-Ahuacatl·n-Tepetzintla Nahuatl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhi'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Zacatl·Æ≠Ahuacatl·Æ≠Tepetzintla Nahuatl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'nhi'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zag')
@@ -173684,11 +173684,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pto')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pto', N'Zo''È', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'pto', N'Zo Èß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Zo''È', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pto'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Zo''Èß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'pto'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'yzk')
@@ -173819,11 +173819,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zro', N'Z·paro', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'zro', N'Z·∞°ro', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Z·paro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Z·∞°ro', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'zro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'gnk')
@@ -173837,38 +173837,38 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ahn')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ahn', N'¿h‡n', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'ahn', N'√Äh‡Æß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'¿h‡n', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ahn'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'√Äh‡Æß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'ahn'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'acb')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'acb', N'¡nc·', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'acb', N'√Ånc·ß¨', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'¡nc·', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'acb'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'√Ånc·ß¨', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'acb'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aom')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aom', N'÷mie', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'aom', N'÷≠ie', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'÷mie', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aom'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'÷≠ie', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'aom'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'oon')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'oon', N'÷nge', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-3 Language Code', N'', N'001637', N'oon', N'÷Æge', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'÷nge', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'oon'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-3 Language Code', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'÷Æge', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001637' AND [CedsOptionSetCode] = N'oon'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'afa')
@@ -174188,20 +174188,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'cpe')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-5 Language Family', N'', N'001638', N'cpe', N'Creoles and pidgins, English‚??based', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-5 Language Family', N'', N'001638', N'cpe', N'Creoles and pidgins, English‚øøbased', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-5 Language Family', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Creoles and pidgins, English‚??based', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'cpe'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-5 Language Family', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Creoles and pidgins, English‚øøbased', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'cpe'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'cpf')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-5 Language Family', N'', N'001638', N'cpf', N'Creoles and pidgins, French‚??based', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'ISO 639-5 Language Family', N'', N'001638', N'cpf', N'Creoles and pidgins, French‚øøbased', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-5 Language Family', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Creoles and pidgins, French‚??based', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'cpf'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'ISO 639-5 Language Family', [CedsElementTechnicalName] = N'', [CedsOptionSetDescription] = N'Creoles and pidgins, French‚øøbased', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'cpf'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001638' AND [CedsOptionSetCode] = N'cpp')
@@ -176492,11 +176492,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learner Activity Language', N'LearnerActivityLanguage', N'000938', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learner Activity Language', N'LearnerActivityLanguage', N'000938', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learner Activity Language', [CedsElementTechnicalName] = N'LearnerActivityLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learner Activity Language', [CedsElementTechnicalName] = N'LearnerActivityLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'bos')
@@ -179138,11 +179138,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learner Activity Language', N'LearnerActivityLanguage', N'000938', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learner Activity Language', N'LearnerActivityLanguage', N'000938', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learner Activity Language', [CedsElementTechnicalName] = N'LearnerActivityLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learner Activity Language', [CedsElementTechnicalName] = N'LearnerActivityLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'pus')
@@ -180119,11 +180119,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learner Activity Language', N'LearnerActivityLanguage', N'000938', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learner Activity Language', N'LearnerActivityLanguage', N'000938', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learner Activity Language', [CedsElementTechnicalName] = N'LearnerActivityLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learner Activity Language', [CedsElementTechnicalName] = N'LearnerActivityLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000938' AND [CedsOptionSetCode] = N'vot')
@@ -180947,254 +180947,254 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'AE')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'AE', N'Adult Education', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'AE', N'Adult Education', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Adult Education', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'AE'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Adult Education', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'AE'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'AS')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'AS', N'Associate''s degree', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'AS', N'Associate''s degree', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Associate''s degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'AS'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Associate''s degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'AS'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'BA')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'BA', N'Bachelor''s degree', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'BA', N'Bachelor''s degree', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Bachelor''s degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'BA'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Bachelor''s degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'BA'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'DO')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'DO', N'Doctoral degree', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'DO', N'Doctoral degree', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Doctoral degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'DO'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Doctoral degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'DO'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'08')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'08', N'Eighth grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'08', N'Eighth grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Eighth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'08'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Eighth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'08'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'11')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'11', N'Eleventh grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'11', N'Eleventh grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Eleventh grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'11'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Eleventh grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'11'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'05')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'05', N'Fifth grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'05', N'Fifth grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Fifth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'05'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Fifth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'05'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'01')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'01', N'First grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'01', N'First grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'First grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'01'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'First grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'01'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'04')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'04', N'Fourth grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'04', N'Fourth grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Fourth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'04'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Fourth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'04'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'13')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'13', N'Grade 13', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'13', N'Grade 13', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Grade 13', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'13'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Grade 13', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'13'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'IT')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'IT', N'Infant/toddler', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'IT', N'Infant/toddler', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Infant/toddler', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'IT'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Infant/toddler', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'IT'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'KG')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'KG', N'Kindergarten', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'KG', N'Kindergarten', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Kindergarten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'KG'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Kindergarten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'KG'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'MD')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'MD', N'Master''s degree', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'MD', N'Master''s degree', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Master''s degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'MD'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Master''s degree', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'MD'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'09')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'09', N'Ninth grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'09', N'Ninth grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Ninth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'09'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Ninth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'09'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'OT')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'OT', N'Other', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'OT', N'Other', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Other', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'OT'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Other', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'OT'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PB')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'PB', N'Post-baccalaureate certificate', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'PB', N'Post-baccalaureate certificate', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Post-baccalaureate certificate', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PB'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Post-baccalaureate certificate', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PB'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PD')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'PD', N'Post-doctoral certificate', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'PD', N'Post-doctoral certificate', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Post-doctoral certificate', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PD'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Post-doctoral certificate', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PD'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PM')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'PM', N'Post-master''s certificate', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'PM', N'Post-master''s certificate', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Post-master''s certificate', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PM'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Post-master''s certificate', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PM'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PK')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'PK', N'Prekindergarten', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'PK', N'Prekindergarten', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Prekindergarten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PK'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Prekindergarten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PK'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PR')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'PR', N'Preschool', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'PR', N'Preschool', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Preschool', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PR'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Preschool', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PR'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PT')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'PT', N'Professional or technical credential', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'PT', N'Professional or technical credential', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Professional or technical credential', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PT'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Professional or technical credential', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'PT'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'02')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'02', N'Second grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'02', N'Second grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Second grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'02'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Second grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'02'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'07')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'07', N'Seventh grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'07', N'Seventh grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Seventh grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'07'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Seventh grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'07'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'06')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'06', N'Sixth grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'06', N'Sixth grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Sixth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'06'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Sixth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'06'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'10')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'10', N'Tenth grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'10', N'Tenth grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Tenth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'10'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Tenth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'10'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'03')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'03', N'Third grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'03', N'Third grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Third grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'03'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Third grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'03'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'TK')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'TK', N'Transitional Kindergarten', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'TK', N'Transitional Kindergarten', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Transitional Kindergarten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'TK'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Transitional Kindergarten', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'TK'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'12')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level†', N'LearningResourceEducationLevel', N'001246', N'12', N'Twelfth grade', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Education Level¬†', N'LearningResourceEducationLevel', N'001246', N'12', N'Twelfth grade', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Twelfth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'12'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Education Level¬†', [CedsElementTechnicalName] = N'LearningResourceEducationLevel', [CedsOptionSetDescription] = N'Twelfth grade', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001246' AND [CedsOptionSetCode] = N'12'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001002' AND [CedsOptionSetCode] = N'Assessment')
@@ -181910,11 +181910,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Language', N'LearningResourceLanguage', N'000919', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Language', N'LearningResourceLanguage', N'000919', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Language', [CedsElementTechnicalName] = N'LearningResourceLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Language', [CedsElementTechnicalName] = N'LearningResourceLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'bos')
@@ -184556,11 +184556,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Language', N'LearningResourceLanguage', N'000919', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Language', N'LearningResourceLanguage', N'000919', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Language', [CedsElementTechnicalName] = N'LearningResourceLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Language', [CedsElementTechnicalName] = N'LearningResourceLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'pus')
@@ -185537,11 +185537,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Language', N'LearningResourceLanguage', N'000919', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Language', N'LearningResourceLanguage', N'000919', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Language', [CedsElementTechnicalName] = N'LearningResourceLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Language', [CedsElementTechnicalName] = N'LearningResourceLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000919' AND [CedsOptionSetCode] = N'vot')
@@ -186356,11 +186356,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'InterimSummativeAssessment')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Type', N'LearningResourceType', N'000928', N'InterimSummativeAssessment', N'Interim/Summative Assessment', N'An assessment instrument used to†evaluate student learning†at the end of an instructional unit by comparing it against some standard or benchmark. A learning resource of this type may be an "assessment form," i.e. one instance of the assessment instrument that can equate scores with another instance of the same assessment.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Type', N'LearningResourceType', N'000928', N'InterimSummativeAssessment', N'Interim/Summative Assessment', N'An assessment instrument used to¬†evaluate student learning¬†at the end of an instructional unit by comparing it against some standard or benchmark. A learning resource of this type may be an "assessment form," i.e. one instance of the assessment instrument that can equate scores with another instance of the same assessment.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Type', [CedsElementTechnicalName] = N'LearningResourceType', [CedsOptionSetDescription] = N'Interim/Summative Assessment', [CedsOptionSetDefinition] = N'An assessment instrument used to†evaluate student learning†at the end of an instructional unit by comparing it against some standard or benchmark. A learning resource of this type may be an "assessment form," i.e. one instance of the assessment instrument that can equate scores with another instance of the same assessment.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'InterimSummativeAssessment'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Type', [CedsElementTechnicalName] = N'LearningResourceType', [CedsOptionSetDescription] = N'Interim/Summative Assessment', [CedsOptionSetDefinition] = N'An assessment instrument used to¬†evaluate student learning¬†at the end of an instructional unit by comparing it against some standard or benchmark. A learning resource of this type may be an "assessment form," i.e. one instance of the assessment instrument that can equate scores with another instance of the same assessment.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'InterimSummativeAssessment'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'LearningActivity')
@@ -186374,11 +186374,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'Lesson')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Type', N'LearningResourceType', N'000928', N'Lesson', N'Lesson', N'A detailed description of the course of instruction for a ≠short period of time that is used by a teacher to guide class instruction.† A Unit contains one or more lessons.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Learning Resource Type', N'LearningResourceType', N'000928', N'Lesson', N'Lesson', N'A detailed description of the course of instruction for a ¬≠short period of time that is used by a teacher to guide class instruction.¬† A Unit contains one or more lessons.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Type', [CedsElementTechnicalName] = N'LearningResourceType', [CedsOptionSetDescription] = N'Lesson', [CedsOptionSetDefinition] = N'A detailed description of the course of instruction for a ≠short period of time that is used by a teacher to guide class instruction.† A Unit contains one or more lessons.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'Lesson'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Learning Resource Type', [CedsElementTechnicalName] = N'LearningResourceType', [CedsOptionSetDescription] = N'Lesson', [CedsOptionSetDefinition] = N'A detailed description of the course of instruction for a ¬≠short period of time that is used by a teacher to guide class instruction.¬† A Unit contains one or more lessons.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'Lesson'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000928' AND [CedsOptionSetCode] = N'Other')
@@ -188921,11 +188921,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'CW')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'CW', N'CURA«AO', N'CURA«AO', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'CW', N'CURA«ÅO', N'CURA«ÅO', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'CURA«AO', [CedsOptionSetDefinition] = N'CURA«AO', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'CW'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'CURA«ÅO', [CedsOptionSetDefinition] = N'CURA«ÅO', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'CW'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'CY')
@@ -188948,11 +188948,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'CI')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'CI', N'C‘TE D''IVOIRE', N'C‘TE D''IVOIRE', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'CI', N'C‘îE D''IVOIRE', N'C‘îE D''IVOIRE', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'C‘TE D''IVOIRE', [CedsOptionSetDefinition] = N'C‘TE D''IVOIRE', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'CI'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'C‘îE D''IVOIRE', [CedsOptionSetDefinition] = N'C‘îE D''IVOIRE', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'CI'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'DK')
@@ -190073,20 +190073,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'RE')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'RE', N'R…UNION', N'R…UNION', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'RE', N'R…ïNION', N'R…ïNION', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'R…UNION', [CedsOptionSetDefinition] = N'R…UNION', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'RE'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'R…ïNION', [CedsOptionSetDefinition] = N'R…ïNION', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'RE'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'BL')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'BL', N'SAINT BARTH…LEMY', N'SAINT BARTH…LEMY', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'BL', N'SAINT BARTH…åEMY', N'SAINT BARTH…åEMY', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'SAINT BARTH…LEMY', [CedsOptionSetDefinition] = N'SAINT BARTH…LEMY', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'BL'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'SAINT BARTH…åEMY', [CedsOptionSetDefinition] = N'SAINT BARTH…åEMY', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'BL'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'SH')
@@ -190658,11 +190658,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'AX')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'AX', N'≈LAND ISLANDS', N'≈LAND ISLANDS', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Military Country', N'MilitaryCountry', N'002034', N'AX', N'≈åAND ISLANDS', N'≈åAND ISLANDS', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'≈LAND ISLANDS', [CedsOptionSetDefinition] = N'≈LAND ISLANDS', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'AX'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Military Country', [CedsElementTechnicalName] = N'MilitaryCountry', [CedsOptionSetDescription] = N'≈åAND ISLANDS', [CedsOptionSetDefinition] = N'≈åAND ISLANDS', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'002034' AND [CedsOptionSetCode] = N'AX'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'002051' AND [CedsOptionSetCode] = N'AvailableForDeployment')
@@ -197084,11 +197084,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'nob')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Professional Development Session Language', N'ProfessionalDevelopmentSessionLanguage', N'001388', N'nob', N'BokmÂl, Norwegian; Norwegian BokmÂl', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Professional Development Session Language', N'ProfessionalDevelopmentSessionLanguage', N'001388', N'nob', N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Professional Development Session Language', [CedsElementTechnicalName] = N'ProfessionalDevelopmentSessionLanguage', [CedsOptionSetDescription] = N'BokmÂl, Norwegian; Norwegian BokmÂl', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'nob'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Professional Development Session Language', [CedsElementTechnicalName] = N'ProfessionalDevelopmentSessionLanguage', [CedsOptionSetDescription] = N'BokmÂ¨¨ Norwegian; Norwegian BokmÂ¨ß', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'nob'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'bos')
@@ -199730,11 +199730,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'pro')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Professional Development Session Language', N'ProfessionalDevelopmentSessionLanguage', N'001388', N'pro', N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Professional Development Session Language', N'ProfessionalDevelopmentSessionLanguage', N'001388', N'pro', N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Professional Development Session Language', [CedsElementTechnicalName] = N'ProfessionalDevelopmentSessionLanguage', [CedsOptionSetDescription] = N'ProvenÁal, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'pro'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Professional Development Session Language', [CedsElementTechnicalName] = N'ProfessionalDevelopmentSessionLanguage', [CedsOptionSetDescription] = N'ProvenÁ°¨, Old (to 1500); Occitan, Old (to 1500)', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'pro'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'pus')
@@ -200711,11 +200711,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'vol')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Professional Development Session Language', N'ProfessionalDevelopmentSessionLanguage', N'001388', N'vol', N'Volap¸k', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Professional Development Session Language', N'ProfessionalDevelopmentSessionLanguage', N'001388', N'vol', N'Volap√ºk', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Professional Development Session Language', [CedsElementTechnicalName] = N'ProfessionalDevelopmentSessionLanguage', [CedsOptionSetDescription] = N'Volap¸k', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'vol'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Professional Development Session Language', [CedsElementTechnicalName] = N'ProfessionalDevelopmentSessionLanguage', [CedsOptionSetDescription] = N'Volap√ºk', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'vol'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001388' AND [CedsOptionSetCode] = N'vot')
@@ -203312,11 +203312,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'CW')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'CW', N'CURA«AO', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'CW', N'CURA«ÅO', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'CURA«AO', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'CW'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'CURA«ÅO', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'CW'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'CY')
@@ -203339,11 +203339,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'CI')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'CI', N'C‘TE D''IVOIRE', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'CI', N'C‘îE D''IVOIRE', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'C‘TE D''IVOIRE', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'CI'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'C‘îE D''IVOIRE', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'CI'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'DK')
@@ -204464,20 +204464,20 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'RE')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'RE', N'R…UNION', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'RE', N'R…ïNION', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'R…UNION', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'RE'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'R…ïNION', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'RE'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'BL')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'BL', N'SAINT BARTH…LEMY', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'BL', N'SAINT BARTH…åEMY', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'SAINT BARTH…LEMY', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'BL'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'SAINT BARTH…åEMY', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'BL'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'SH')
@@ -205049,11 +205049,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'AX')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'AX', N'≈LAND ISLANDS', NULL, NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Qualifying Move From Country', N'QualifyingMoveFromCountry', N'000434', N'AX', N'≈åAND ISLANDS', NULL, NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'≈LAND ISLANDS', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'AX'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Qualifying Move From Country', [CedsElementTechnicalName] = N'QualifyingMoveFromCountry', [CedsOptionSetDescription] = N'≈åAND ISLANDS', [CedsOptionSetDefinition] = NULL, [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000434' AND [CedsOptionSetCode] = N'AX'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000435' AND [CedsOptionSetCode] = N'AL')
@@ -206561,11 +206561,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Assessment')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible District Type', N'ResponsibleDistrictType', N'000594', N'Assessment', N'Assessment', N'The role/relationship type assigned to an organization, institution, or agency†responsible for assessing the student.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible District Type', N'ResponsibleDistrictType', N'000594', N'Assessment', N'Assessment', N'The role/relationship type assigned to an organization, institution, or agency¬†responsible for assessing the student.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible District Type', [CedsElementTechnicalName] = N'ResponsibleDistrictType', [CedsOptionSetDescription] = N'Assessment', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency†responsible for assessing the student.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Assessment'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible District Type', [CedsElementTechnicalName] = N'ResponsibleDistrictType', [CedsOptionSetDescription] = N'Assessment', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency¬†responsible for assessing the student.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Assessment'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Attendance')
@@ -206624,11 +206624,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Resident')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible District Type', N'ResponsibleDistrictType', N'000594', N'Resident', N'Resident', N'The role/relationship type assigned to an organization, institution, or agency†in which the student resides.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible District Type', N'ResponsibleDistrictType', N'000594', N'Resident', N'Resident', N'The role/relationship type assigned to an organization, institution, or agency¬†in which the student resides.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible District Type', [CedsElementTechnicalName] = N'ResponsibleDistrictType', [CedsOptionSetDescription] = N'Resident', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency†in which the student resides.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Resident'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible District Type', [CedsElementTechnicalName] = N'ResponsibleDistrictType', [CedsOptionSetDescription] = N'Resident', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency¬†in which the student resides.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Resident'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000594' AND [CedsOptionSetCode] = N'Transportation')
@@ -206651,11 +206651,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Assessment')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible Organization Type', N'ResponsibleOrganizationType', N'001467', N'Assessment', N'Assessment', N'The role/relationship type assigned to an organization, institution, or agency†responsible for assessing the student.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible Organization Type', N'ResponsibleOrganizationType', N'001467', N'Assessment', N'Assessment', N'The role/relationship type assigned to an organization, institution, or agency¬†responsible for assessing the student.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible Organization Type', [CedsElementTechnicalName] = N'ResponsibleOrganizationType', [CedsOptionSetDescription] = N'Assessment', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency†responsible for assessing the student.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Assessment'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible Organization Type', [CedsElementTechnicalName] = N'ResponsibleOrganizationType', [CedsOptionSetDescription] = N'Assessment', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency¬†responsible for assessing the student.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Assessment'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Attendance')
@@ -206714,11 +206714,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Resident')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible Organization Type', N'ResponsibleOrganizationType', N'001467', N'Resident', N'Resident', N'The role/relationship type assigned to an organization, institution, or agency†in which the student resides.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible Organization Type', N'ResponsibleOrganizationType', N'001467', N'Resident', N'Resident', N'The role/relationship type assigned to an organization, institution, or agency¬†in which the student resides.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible Organization Type', [CedsElementTechnicalName] = N'ResponsibleOrganizationType', [CedsOptionSetDescription] = N'Resident', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency†in which the student resides.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Resident'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible Organization Type', [CedsElementTechnicalName] = N'ResponsibleOrganizationType', [CedsOptionSetDescription] = N'Resident', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency¬†in which the student resides.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Resident'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001467' AND [CedsOptionSetCode] = N'Transportation')
@@ -206741,11 +206741,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Assessment')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible School Type', N'ResponsibleSchoolType', N'000595', N'Assessment', N'Assessment', N'The role/relationship type assigned to an organization, institution, or agency†responsible for assessing the student.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible School Type', N'ResponsibleSchoolType', N'000595', N'Assessment', N'Assessment', N'The role/relationship type assigned to an organization, institution, or agency¬†responsible for assessing the student.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible School Type', [CedsElementTechnicalName] = N'ResponsibleSchoolType', [CedsOptionSetDescription] = N'Assessment', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency†responsible for assessing the student.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Assessment'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible School Type', [CedsElementTechnicalName] = N'ResponsibleSchoolType', [CedsOptionSetDescription] = N'Assessment', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency¬†responsible for assessing the student.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Assessment'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Attendance')
@@ -206804,11 +206804,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Resident')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible School Type', N'ResponsibleSchoolType', N'000595', N'Resident', N'Resident', N'The role/relationship type assigned to an organization, institution, or agency†in which the student resides.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'Responsible School Type', N'ResponsibleSchoolType', N'000595', N'Resident', N'Resident', N'The role/relationship type assigned to an organization, institution, or agency¬†in which the student resides.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible School Type', [CedsElementTechnicalName] = N'ResponsibleSchoolType', [CedsOptionSetDescription] = N'Resident', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency†in which the student resides.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Resident'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'Responsible School Type', [CedsElementTechnicalName] = N'ResponsibleSchoolType', [CedsOptionSetDescription] = N'Resident', [CedsOptionSetDefinition] = N'The role/relationship type assigned to an organization, institution, or agency¬†in which the student resides.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Resident'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'000595' AND [CedsOptionSetCode] = N'Transportation')
@@ -207344,11 +207344,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'22115')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'School Courses for the Exchange of Data Course Code', N'SCEDCourseCode', N'001517', N'22115', N'Academic Competition', N'Academic Competition courses prepare students to compete individually or in teams in organized contests that test their academic knowledge and skills. Specific content depends upon the competition (examples include†Academic Decathlon or Pentathlon, Model UN, subject-specific Olympiads, and Odyssey of the Mind); however, these courses typically foster research, public speaking, critical thinking, and teamwork skills. (Courses that focus on Forensics/Debate competitions should be coded with one of the Forensic Speech course codes.)', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'School Courses for the Exchange of Data Course Code', N'SCEDCourseCode', N'001517', N'22115', N'Academic Competition', N'Academic Competition courses prepare students to compete individually or in teams in organized contests that test their academic knowledge and skills. Specific content depends upon the competition (examples include¬†Academic Decathlon or Pentathlon, Model UN, subject-specific Olympiads, and Odyssey of the Mind); however, these courses typically foster research, public speaking, critical thinking, and teamwork skills. (Courses that focus on Forensics/Debate competitions should be coded with one of the Forensic Speech course codes.)', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'School Courses for the Exchange of Data Course Code', [CedsElementTechnicalName] = N'SCEDCourseCode', [CedsOptionSetDescription] = N'Academic Competition', [CedsOptionSetDefinition] = N'Academic Competition courses prepare students to compete individually or in teams in organized contests that test their academic knowledge and skills. Specific content depends upon the competition (examples include†Academic Decathlon or Pentathlon, Model UN, subject-specific Olympiads, and Odyssey of the Mind); however, these courses typically foster research, public speaking, critical thinking, and teamwork skills. (Courses that focus on Forensics/Debate competitions should be coded with one of the Forensic Speech course codes.)', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'22115'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'School Courses for the Exchange of Data Course Code', [CedsElementTechnicalName] = N'SCEDCourseCode', [CedsOptionSetDescription] = N'Academic Competition', [CedsOptionSetDefinition] = N'Academic Competition courses prepare students to compete individually or in teams in organized contests that test their academic knowledge and skills. Specific content depends upon the competition (examples include¬†Academic Decathlon or Pentathlon, Model UN, subject-specific Olympiads, and Odyssey of the Mind); however, these courses typically foster research, public speaking, critical thinking, and teamwork skills. (Courses that focus on Forensics/Debate competitions should be coded with one of the Forensic Speech course codes.)', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'22115'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'12104')
@@ -213850,11 +213850,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'19263')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'School Courses for the Exchange of Data Course Code', N'SCEDCourseCode', N'001517', N'19263', N'Home Environments and Design', N'Formerly known as Home DÈcor, Home Environments and Design courses provide students with knowledge and skills regarding interior design and decoration of the home for the individual or family. While exploring design principles, personal needs and style and decision making, students may have an opportunity to explore such topics as color, texture, furniture styles and arrangement, lighting, window treatments, floor, wall coverings and home improvement/modification. These courses emphasize personal (rather than commercial) use and application of home dÈcor principles.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'School Courses for the Exchange of Data Course Code', N'SCEDCourseCode', N'001517', N'19263', N'Home Environments and Design', N'Formerly known as Home DÈ£Ør, Home Environments and Design courses provide students with knowledge and skills regarding interior design and decoration of the home for the individual or family. While exploring design principles, personal needs and style and decision making, students may have an opportunity to explore such topics as color, texture, furniture styles and arrangement, lighting, window treatments, floor, wall coverings and home improvement/modification. These courses emphasize personal (rather than commercial) use and application of home dÈ£Ør principles.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'School Courses for the Exchange of Data Course Code', [CedsElementTechnicalName] = N'SCEDCourseCode', [CedsOptionSetDescription] = N'Home Environments and Design', [CedsOptionSetDefinition] = N'Formerly known as Home DÈcor, Home Environments and Design courses provide students with knowledge and skills regarding interior design and decoration of the home for the individual or family. While exploring design principles, personal needs and style and decision making, students may have an opportunity to explore such topics as color, texture, furniture styles and arrangement, lighting, window treatments, floor, wall coverings and home improvement/modification. These courses emphasize personal (rather than commercial) use and application of home dÈcor principles.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'19263'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'School Courses for the Exchange of Data Course Code', [CedsElementTechnicalName] = N'SCEDCourseCode', [CedsOptionSetDescription] = N'Home Environments and Design', [CedsOptionSetDefinition] = N'Formerly known as Home DÈ£Ør, Home Environments and Design courses provide students with knowledge and skills regarding interior design and decoration of the home for the individual or family. While exploring design principles, personal needs and style and decision making, students may have an opportunity to explore such topics as color, texture, furniture styles and arrangement, lighting, window treatments, floor, wall coverings and home improvement/modification. These courses emphasize personal (rather than commercial) use and application of home dÈ£Ør principles.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'19263'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'19205')
@@ -222616,11 +222616,11 @@ BEGIN
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'05254')
     BEGIN
-        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'School Courses for the Exchange of Data Course Code', N'SCEDCourseCode', N'001517', N'05254', N'Web Design', N'Web Design courses explore the creative and conceptual aspects of designing and developing interactive, multimedia web sites that emphaisze the principles of graphic design, interactivity, and usability. Students learn about a variety of visual, navigational, and structural approaches to navigation systems, visual hierarchy, basic animations, image preparation and file transferring protocols. Topics may include†conceptual development and structure, interactivity, and design aesthetics; appreciation and analysis development, construction, and programming of virtual, multimedia, and interactive experiences; their applications in Internet communications; and contextual, cultural, and historical aspects and considerations.', NULL, N'MISSING')
+        INSERT [CEDS].[CedsOptionSetMapping] ([CedsElementName], [CedsElementTechnicalName], [CedsGlobalId], [CedsOptionSetCode], [CedsOptionSetDescription], [CedsOptionSetDefinition], [EdFactsElementName], [EdFactsOptionSetCode]) VALUES (N'School Courses for the Exchange of Data Course Code', N'SCEDCourseCode', N'001517', N'05254', N'Web Design', N'Web Design courses explore the creative and conceptual aspects of designing and developing interactive, multimedia web sites that emphaisze the principles of graphic design, interactivity, and usability. Students learn about a variety of visual, navigational, and structural approaches to navigation systems, visual hierarchy, basic animations, image preparation and file transferring protocols. Topics may include¬†conceptual development and structure, interactivity, and design aesthetics; appreciation and analysis development, construction, and programming of virtual, multimedia, and interactive experiences; their applications in Internet communications; and contextual, cultural, and historical aspects and considerations.', NULL, N'MISSING')
     END
     ELSE IF @updateExisting = 1
     BEGIN
-        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'School Courses for the Exchange of Data Course Code', [CedsElementTechnicalName] = N'SCEDCourseCode', [CedsOptionSetDescription] = N'Web Design', [CedsOptionSetDefinition] = N'Web Design courses explore the creative and conceptual aspects of designing and developing interactive, multimedia web sites that emphaisze the principles of graphic design, interactivity, and usability. Students learn about a variety of visual, navigational, and structural approaches to navigation systems, visual hierarchy, basic animations, image preparation and file transferring protocols. Topics may include†conceptual development and structure, interactivity, and design aesthetics; appreciation and analysis development, construction, and programming of virtual, multimedia, and interactive experiences; their applications in Internet communications; and contextual, cultural, and historical aspects and considerations.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'05254'
+        UPDATE [CEDS].[CedsOptionSetMapping] SET [CedsElementName] = N'School Courses for the Exchange of Data Course Code', [CedsElementTechnicalName] = N'SCEDCourseCode', [CedsOptionSetDescription] = N'Web Design', [CedsOptionSetDefinition] = N'Web Design courses explore the creative and conceptual aspects of designing and developing interactive, multimedia web sites that emphaisze the principles of graphic design, interactivity, and usability. Students learn about a variety of visual, navigational, and structural approaches to navigation systems, visual hierarchy, basic animations, image preparation and file transferring protocols. Topics may include¬†conceptual development and structure, interactivity, and design aesthetics; appreciation and analysis development, construction, and programming of virtual, multimedia, and interactive experiences; their applications in Internet communications; and contextual, cultural, and historical aspects and considerations.', [EdFactsElementName] = NULL, [EdFactsOptionSetCode] = N'MISSING' WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'05254'
     END
 
     IF NOT EXISTS (SELECT 1 FROM [CEDS].[CedsOptionSetMapping] WHERE [CedsGlobalId] = N'001517' AND [CedsOptionSetCode] = N'10201')
