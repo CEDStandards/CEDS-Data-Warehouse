@@ -16442,3 +16442,82 @@ VALUES
 		AND ceds.CedsElementTechnicalName = 'WeaponType'
 
 
+	PRINT 'DimK12JobPositionStatuses'
+
+    ------------------------------------------------------------------------------
+	-- Populate DimK12JobPositionStatuses --
+	------------------------------------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimK12JobPositionStatuses d WHERE d.DimK12JobPositionStatusId = -1) BEGIN
+		SET IDENTITY_INSERT rds.DimK12JobPositionStatuses ON
+
+			INSERT INTO rds.DimK12JobPositionStatuses (
+						[DimK12JobPositionStatusId]
+						, [JobPositionStatusCode]
+						, [JobPositionStatusDescription]
+						, [JobPositionCancellationReasonCode]
+						, [JobPositionCancellationReasonDescription]
+					)
+			VALUES (
+					-1
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+					, 'MISSING'
+			)
+
+		SET IDENTITY_INSERT rds.DimK12JobPositionStatuses OFF
+	END
+
+	-- Create temp tables for all elements
+	IF OBJECT_ID('tempdb..#JobPositionStatus') IS NOT NULL
+		DROP TABLE #JobPositionStatus
+
+	CREATE TABLE #JobPositionStatus (JobPositionStatusCode VARCHAR(50), JobPositionStatusDescription VARCHAR(200))
+
+	INSERT INTO #JobPositionStatus VALUES ('MISSING', 'MISSING')
+	INSERT INTO #JobPositionStatus
+	SELECT 
+		CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'JobPositionStatus'
+	ORDER BY CedsOptionSetCode
+
+	-- Create temp tables for all elements
+	IF OBJECT_ID('tempdb..#JobPositionCancellationReason') IS NOT NULL
+		DROP TABLE #JobPositionCancellationReason
+
+	CREATE TABLE #JobPositionCancellationReason (JobPositionCancellationReasonCode VARCHAR(50), JobPositionCancellationReasonDescription VARCHAR(200))
+
+	INSERT INTO #JobPositionCancellationReason VALUES ('MISSING', 'MISSING')
+	INSERT INTO #JobPositionCancellationReason
+	SELECT 
+			CedsOptionSetCode
+		, CedsOptionSetDescription
+	FROM [CEDS].CedsOptionSetMapping
+	WHERE CedsElementTechnicalName = 'JobPositionCancellationReason'
+	ORDER BY CedsOptionSetCode
+
+	-- Insert into DimK12JobPositionStatuses table
+	INSERT INTO [RDS].[DimK12JobPositionStatuses] (
+		[JobPositionStatusCode]
+		, [JobPositionStatusDescription]
+		, [JobPositionCancellationReasonCode]
+		, [JobPositionCancellationReasonDescription]
+	)
+	SELECT
+		jps.JobPositionStatusCode
+		, jps.JobPositionStatusDescription
+		, jpcr.JobPositionCancellationReasonCode
+		, jpcr.JobPositionCancellationReasonDescription
+	FROM #JobPositionStatus jps
+	CROSS JOIN #JobPositionCancellationReason jpcr
+	LEFT JOIN [RDS].[DimK12JobPositionStatuses] kjps
+		ON jps.JobPositionStatusCode = kjps.JobPositionStatusCode
+		AND jpcr.JobPositionCancellationReasonCode = kjps.JobPositionCancellationReasonCode
+	WHERE kjps.DimK12JobPositionStatusId IS NULL
+	 
+	-- Drop temp tables
+	DROP TABLE #JobPositionStatus
+	DROP TABLE #JobPositionCancellationReason
