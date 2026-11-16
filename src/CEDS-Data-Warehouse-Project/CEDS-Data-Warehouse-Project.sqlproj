@@ -374,6 +374,7 @@
     <Build Include="RDS\Tables\DimAeProgramParticipantIndicators.sql" />
     <Build Include="RDS\Tables\DimAeProgramTransitionIndicators.sql" />
     <Build Include="RDS\Tables\DimAeProgramTypes.sql" />
+    <Build Include="RDS\Tables\DimActivities.sql" />
     <Build Include="RDS\Tables\DimAeProviders.sql" />
     <Build Include="RDS\Tables\DimAges.sql" />
     <Build Include="RDS\Tables\DimAlternativeSchoolStatuses.sql" />

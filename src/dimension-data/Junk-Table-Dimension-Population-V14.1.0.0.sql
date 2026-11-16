@@ -16441,4 +16441,17 @@ VALUES
 	WHERE main.DimWeaponId IS NULL
 		AND ceds.CedsElementTechnicalName = 'WeaponType'
 
+	PRINT 'Populate DimActivities'
+	---------------------------------------------------
+	-- Populate DimActivities (unknown member only) ---
+	---------------------------------------------------
+
+	IF NOT EXISTS (SELECT 1 FROM RDS.DimActivities d WHERE d.DimActivityId = -1) BEGIN
+		SET IDENTITY_INSERT RDS.DimActivities ON
+
+		INSERT INTO RDS.DimActivities (DimActivityId, ActivityIdentifier, ActivityTitle, ActivityDescription)
+			VALUES (-1, 'MISSING', 'MISSING', 'MISSING')
+
+		SET IDENTITY_INSERT RDS.DimActivities OFF
+	END
 

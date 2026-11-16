@@ -1,8 +1,8 @@
 CREATE TABLE [RDS].[BridgeDirectoryActivities]
 (
-	[BridgeDirectoryActivities] int NOT NULL IDENTITY (1, 1),
+	[BridgeDirectoryActivitiesId] int NOT NULL IDENTITY (1, 1),
 	[FactDirectoryId] int NULL,
-	[DimProfessionalDevelopmentActivityId] int NULL
+	[ActivityId] int NULL
 )
 GO
 
@@ -10,11 +10,11 @@ GO
 
 ALTER TABLE [RDS].[BridgeDirectoryActivities] 
  ADD CONSTRAINT [PK_BridgeDirectoryActivities]
-	PRIMARY KEY CLUSTERED ([BridgeDirectoryActivities] ASC)
+	PRIMARY KEY CLUSTERED ([BridgeDirectoryActivitiesId] ASC)
 GO
 
-CREATE NONCLUSTERED INDEX [IXFK_BridgeDirectoryActivities_DimProfessionalDevelopmentActivities] 
- ON [RDS].[BridgeDirectoryActivities] ([DimProfessionalDevelopmentActivityId] ASC)
+CREATE NONCLUSTERED INDEX [IXFK_BridgeDirectoryActivities_DimActivities] 
+ ON [RDS].[BridgeDirectoryActivities] ([ActivityId] ASC)
 GO
 
 CREATE NONCLUSTERED INDEX [IXFK_BridgeDirectoryActivities_FactDirectory] 
@@ -23,8 +23,8 @@ GO
 
 /* Create Foreign Key Constraints */
 
-ALTER TABLE [RDS].[BridgeDirectoryActivities] ADD CONSTRAINT [FK_BridgeDirectoryActivities_DimProfessionalDevelopmentActivityId]
-	FOREIGN KEY ([DimProfessionalDevelopmentActivityId]) REFERENCES [RDS].[DimProfessionalDevelopmentActivities] ([DimProfessionalDevelopmentActivityId]) ON DELETE No Action ON UPDATE No Action
+ALTER TABLE [RDS].[BridgeDirectoryActivities] ADD CONSTRAINT [FK_BridgeDirectoryActivities_ActivityId]
+	FOREIGN KEY ([ActivityId]) REFERENCES [RDS].[DimActivities] ([DimActivityId]) ON DELETE No Action ON UPDATE No Action
 GO
 
 ALTER TABLE [RDS].[BridgeDirectoryActivities] ADD CONSTRAINT [FK_BridgeDirectoryActivities_FactDirectory]

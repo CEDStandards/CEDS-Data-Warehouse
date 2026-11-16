@@ -5,6 +5,7 @@ CREATE TABLE [RDS].[DimOrganizations]
 	[ShortNameOfOrganization] VARCHAR(30) NOT NULL,
 	[OrganizationIdentifierSea] NVARCHAR(40) NOT NULL,	-- See the CEDS_GlobalId, CEDS_ElementTechnicalName, CEDS_URL, and CEDS_Def_Desc extended properties.
 	[OrganizationIdentifierDuns] NVARCHAR(40) NULL,
+	[OrganizationIdentifierSam] NVARCHAR(40) NULL,
 	[OrganizationIdentifierFein] NVARCHAR(40) NULL,
 	[OrganizationTypeCode] NVARCHAR(50) NOT NULL,
 	[OrganizationTypeDescription] NVARCHAR(1000) NOT NULL,
